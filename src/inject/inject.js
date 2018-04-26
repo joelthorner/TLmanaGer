@@ -8,7 +8,7 @@ chrome.extension.sendMessage({}, function(response) {
 		// console.log("Hello. This message was sent from scripts/inject.js");
 		if (document.getElementById("SML_osUtils")) {
 			document.getElementById("SML_osUtils").click();
-			
+			 
 			function findAncestor (el, cls) {
 				while ((el = el.parentElement) && !el.classList.contains(cls));
 				return el;
