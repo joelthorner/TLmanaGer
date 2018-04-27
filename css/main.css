@@ -1,0 +1,134 @@
+.body {
+  width: 275px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+a, svg {
+  -webkit-transition: all .15s ease-in-out;
+  -o-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+}
+
+header {
+  height: 60px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: -3px;
+}
+
+header .cont {
+  float: left;
+  width: calc(100% - 65px);
+  padding-right: 10px;
+}
+
+header .cont span {
+  display: block;
+}
+
+header .icon {
+  display: block;
+  width: 20px;
+  height: 40px;
+  float: left;
+  position: relative;
+}
+
+header .icon svg {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  fill: var(--gray);
+}
+
+header .icon:hover svg {
+  fill: var(--blue);
+}
+
+header img {
+  height: 35px;
+  width: 35px;
+  margin-right: 10px;
+  float: left;
+}
+
+main {
+  background-color: var(--light);
+  min-height: 150px;
+}
+
+main .options-ul {
+  margin: 0;
+}
+
+main .options-ul li + li {
+  margin-top: -1px;
+}
+
+main .options-ul li button {
+  display: block;
+  width: 100%;
+  font-size: 11px;
+  color: #666;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-width: 1px 0;
+  border-radius: 0;
+  text-align: left;
+  padding: 8px 10px;
+  position: relative;
+  padding-left: 40px;
+}
+
+main .options-ul li button:hover {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: #FFF;
+}
+
+main .options-ul li button:hover svg {
+  fill: #FFF;
+}
+
+main .options-ul li button svg {
+  position: absolute;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  fill: #888;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#options-body [for="opt-bg-lc"] {
+  width: 100%;
+}
+
+#options-body [for="opt-bg-lc"] a {
+  float: right;
+}
+
+#options-body main {
+  padding: 10px;
+}
+
+#options-body main .form-control {
+  font-size: 11px;
+}
+
+#options-body header .icon {
+  margin-right: 25px;
+}

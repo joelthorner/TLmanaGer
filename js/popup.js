@@ -1,9 +1,9 @@
 function clickHandler(e) {
-    chrome.runtime.sendMessage({directive: "popup-click"}, function(response) {
+    chrome.runtime.sendMessage({directive: "opt-add-guides"}, function(response) {
         this.close(); // close the popup when the background finishes processing request
     });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('click-me').addEventListener('click', clickHandler);
+   document.getElementById('opt-add-guides').addEventListener('click', clickHandler);
 })
