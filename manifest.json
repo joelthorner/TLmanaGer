@@ -1,6 +1,6 @@
 {
   "name": "TLmanaGer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "description": "Desarrollamiento tool",
   "homepage_url": "https://github.com/joelthorner",
@@ -22,14 +22,12 @@
   },
   "permissions": [
     "storage",
-    // "bookmarks",
     "chrome://favicon/",
     "clipboardRead",
     "clipboardWrite",
     "contentSettings",
     "contextMenus",
     "cookies",
-    // "fileBrowserHandler",
     "tts",
     "ttsEngine",
     "history",
@@ -40,14 +38,14 @@
     "*://*/*"
   ],
   "content_scripts": [
-    // {
-    //   "matches": [
-    //     "https://www.google.com/*"
-    //   ],
-    //   "css": [
-    //     "src/inject/inject.css"
-    //   ]
-    // },
+    {
+      "matches": [
+        "https://www.google.com/*"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ]
+    },
     {
       "matches": [
         "http://8x-os.logicommerce.net/*"

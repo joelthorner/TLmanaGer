@@ -301,7 +301,11 @@ header .cont {
   padding-right: 10px;
 }
 
-header .cont span {
+header .cont .badge {
+  margin-left: 10px;
+}
+
+header .cont > span {
   display: block;
 }
 
