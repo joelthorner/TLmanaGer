@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener(
         switch (request.directive) {
         case "opt-add-guides":
             // execute the content script
-            chrome.tabs.executeScript(null, { file: "/js/jquery/jquery.js" }, function() {
+            chrome.tabs.executeScript(null, { file: "/js/jquery-3.3.1.min.js" }, function() {
                 chrome.tabs.executeScript(null, { // defaults to the current tab
                     file: "/js/contentscript.js", // script to inject into page and run in sandbox
                     allFrames: true // This injects script into iframes in the page and doesn't work before 4.0.266.0.

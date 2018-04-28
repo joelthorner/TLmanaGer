@@ -7,3 +7,9 @@ function clickHandler(e) {
 document.addEventListener('DOMContentLoaded', function () {
    document.getElementById('opt-add-guides').addEventListener('click', clickHandler);
 })
+
+chrome.storage.sync.get(['optProfilePhoto'], function(result) {
+	if ($.type(result.optProfilePhoto) != 'undefined') {
+		$('#home-body header img').attr('src', result.optProfilePhoto);
+	}
+});
