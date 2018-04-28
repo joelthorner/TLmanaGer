@@ -3,13 +3,15 @@ chrome.storage.sync.get(['optBgLc'], function(result) {
 		chrome.storage.sync.set({optBgLc: $('#opt-bg-lc').val()}, function() {
 			// console.log('Value is set to ' + value);
 		});
+	}else{
+		$('#opt-bg-lc').val(result.optBgLc);
 	}
 });
 
 $('#opt-save').click(function(event) {
 	// chrome.storage.sync.set({ optBgLc: $('#opt-bg-lc').val() });
 	chrome.storage.sync.set({optBgLc: $('#opt-bg-lc').val()}, function() {
-		console.log('Value is set to ' + $('#opt-bg-lc').val());
+		// console.log('Value is set to ' + $('#opt-bg-lc').val());
 	});
 
 });
