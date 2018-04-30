@@ -474,6 +474,16 @@ main .options-ul li .btn svg {
   z-index: 2;
 }
 
+.andrea header img,
+.jt header img {
+  height: 60px;
+}
+
+.andrea .opt-profile-set.an,
+.jt .opt-profile-set.jt {
+  display: block !important;
+}
+
 .carlos#home-body main, .cani#home-body main {
   background-image: url(../../img/bg.gif);
   background-size: cover;
@@ -491,14 +501,6 @@ main .options-ul li .btn svg {
 
 .cani#home-body main {
   background-image: url(../../img/bg-2.gif);
-}
-
-.andrea#home-body header .settings-icon {
-  display: none;
-}
-
-.andrea#home-body header .banana-icon {
-  display: block !important;
 }
 
 .orto {
