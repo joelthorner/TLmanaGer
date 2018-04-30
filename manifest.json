@@ -1,6 +1,6 @@
 {
   "name": "TLmanaGer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "manifest_version": 2,
   "description": "Desarrollamiento tool",
   "homepage_url": "https://github.com/joelthorner",
@@ -46,11 +46,22 @@
     },
     {
       "matches": [
-        "http://8x-os.logicommerce.net/*", "http://8x.logicommerce.net/*"
+        "http://8x-os.logicommerce.net/*"
       ],
       "js": [
         "js/jquery-3.3.1.min.js", "js/initOptions.js", "src/inject/inject.js"
       ]
+    },
+    {
+      "matches": [
+        "http://*.sandbox.logicommerce.net/*"
+      ],
+      "js": [
+        "src/inject/injectOpenSaas.js"
+      ]
     }
+  ],
+  "web_accessible_resources": [
+    "js/executeUsingTabVars.js"
   ]
 }

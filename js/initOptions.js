@@ -1,7 +1,7 @@
 var DEFAULTS = {
 	optBgLc : "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35464e00bbef1a93e6958980d587acb5&auto=format&fit=crop&w=1950&q=80",
 	optProfilePhoto : "../../img/iceberg.svg",
-	userName : 'joel.torner'
+	userName : 'john.doe'
 };
 
 function aplyUsernameOpt(value){
@@ -12,6 +12,9 @@ function aplyUsernameOpt(value){
 	value = $.trim(value).toLowerCase();
 
 	switch (value){
+		case "joel.torner": 
+			$('body').addClass('jt');
+		break;
 		case "jordi.canizares": 
 			$('body').addClass('cani');
 		break;
@@ -27,35 +30,52 @@ function aplyUsernameOpt(value){
 	}
 }
 
+function aplyProfilePhotoOpt(value){
+	if ($('#options-body').length) {
+		$('#options-body .opt-profile-set').removeClass('selected');
+		$('#options-body img[src="' + value + '"]').parents('button').addClass('selected');
+	}
+}
+
 // init options ------------------------------------------------------------------------------------------------
 chrome.storage.sync.get(['optBgLc'], function(result) {
-	if ($.type(result.optBgLc) == 'undefined'){
-		var value = $('#opt-bg-lc').val();
-		if ($.type(value) == 'undefined') value = DEFAULTS.optBgLc;
+	var value = result.optProfilePhoto;
+	if ($.type(value) == 'undefined' || $.trim(value).length == 0){
 
-		chrome.storage.sync.set({optBgLc: value }, function() { });
+		value = $('#opt-bg-lc').val();
+		if ($.type(value) == 'undefined' || $.trim(value).length == 0)
+			value = DEFAULTS.optBgLc;
+
+		chrome.storage.sync.set({optBgLc: value }, function() {
+			$('#opt-bg-lc').val(result.optBgLc);
+		});
 	}else{
 		$('#opt-bg-lc').val(result.optBgLc);
 	}
 });
 chrome.storage.sync.get(['optProfilePhoto'], function(result) {
-	if ($.type(result.optProfilePhoto) == 'undefined') {
-		var value = $('.opt-profile-set.selected img').attr('src');
-		if ($.type(value) == 'undefined') value = DEFAULTS.optProfilePhoto;
+	var value = result.optProfilePhoto;
+	if ($.type(value) == 'undefined' || $.trim(value).length == 0){
 
-		chrome.storage.sync.set({optProfilePhoto: value }, function() {});
+		value = $('.opt-profile-set.selected img').attr('src');
+
+		if ($.type(value) == 'undefined' || $.trim(value).length == 0) 
+			value = DEFAULTS.optProfilePhoto;
+
+		chrome.storage.sync.set({optProfilePhoto: value }, function() {
+			aplyProfilePhotoOpt(value);
+		});
 	}else{
-		if ($('#options-body').length) {
-			$('#options-body .opt-profile-set').removeClass('selected');
-			$('#options-body img[src="'+result.optProfilePhoto+'"]').parents('button').addClass('selected');
-		}
+		aplyProfilePhotoOpt(value);
 	}
 });
 chrome.storage.sync.get(['userName'], function(result) {
-	console.log(result.userName);
-	if ($.type(result.userName) == 'undefined'){
-		var value = $.trim($('#opt-userName').val());
-		if ($.type(value) == 'undefined') value = DEFAULTS.userName;
+	var value = result.userName;
+	if ($.type(value) == 'undefined' || $.trim(value).length == 0){
+
+		value = $.trim($('#opt-userName').val());
+		if ($.type(value) == 'undefined' || $.trim(value).length == 0) 
+			value = DEFAULTS.userName;
 
 		chrome.storage.sync.set({userName: value }, function() {
 			aplyUsernameOpt(value);
