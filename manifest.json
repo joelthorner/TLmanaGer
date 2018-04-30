@@ -1,6 +1,6 @@
 {
   "name": "TLmanaGer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 2,
   "description": "Desarrollamiento tool",
   "homepage_url": "https://github.com/joelthorner",
@@ -28,8 +28,6 @@
     "contentSettings",
     "contextMenus",
     "cookies",
-    "tts",
-    "ttsEngine",
     "history",
     "idle",
     "management",
@@ -48,7 +46,7 @@
     },
     {
       "matches": [
-        "http://8x-os.logicommerce.net/*"
+        "http://8x-os.logicommerce.net/*", "http://8x.logicommerce.net/*"
       ],
       "js": [
         "js/jquery-3.3.1.min.js", "js/initOptions.js", "src/inject/inject.js"

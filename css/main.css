@@ -258,6 +258,16 @@
   }
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+a {
+  color: var(--blue);
+}
+
 .body {
   width: 275px;
   font-size: 12px;
@@ -303,6 +313,7 @@ header .cont {
 
 header .cont .badge {
   margin-left: 10px;
+  background-color: var(--blue);
 }
 
 header .cont > span {
@@ -461,4 +472,36 @@ main .options-ul li .btn svg {
   height: 30px;
   position: relative;
   z-index: 2;
+}
+
+.carlos#home-body main, .cani#home-body main {
+  background-image: url(../../img/bg.gif);
+  background-size: cover;
+  background-position: center;
+}
+
+.carlos#home-body main .options-ul li .btn:not(:hover), .cani#home-body main .options-ul li .btn:not(:hover) {
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #FFF;
+}
+
+.carlos#home-body main .options-ul li .btn:not(:hover) svg, .cani#home-body main .options-ul li .btn:not(:hover) svg {
+  fill: #FFF;
+}
+
+.cani#home-body main {
+  background-image: url(../../img/bg-2.gif);
+}
+
+.andrea#home-body header .settings-icon {
+  display: none;
+}
+
+.andrea#home-body header .banana-icon {
+  display: block !important;
+}
+
+.orto {
+  --blue: #e83e8c;
+  --green: #e83e8c;
 }
