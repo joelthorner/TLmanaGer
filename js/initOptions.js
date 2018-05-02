@@ -11,22 +11,16 @@ function aplyUsernameOpt(value){
 
 	value = $.trim(value).toLowerCase();
 
-	switch (value){
-		case "joel.torner": 
-			$('body').addClass('jt');
-		break;
-		case "jordi.canizares": 
-			$('body').addClass('cani');
-		break;
-		case "carlos.garcia": 
-			$('body').addClass('carlos');
-		break;
-		case "cristina.ortega": 
-			$('body').addClass('orto');
-		break;
-		case "andrea": 
-			$('body').addClass('andrea');
-		break;
+	if (value.indexOf('joelthorner') !== -1 || value.indexOf('torner') !== -1) {
+		$('body').addClass('jt');
+	}else if(value.indexOf('jordi.canizares') !== -1 || value.indexOf('canizares') !== -1){
+		$('body').addClass('cani');
+	}else if(value.indexOf('carlos') !== -1 || value.indexOf('carlos.garcia') !== -1){
+		$('body').addClass('carlos');
+	}else if(value.indexOf('andrea') !== -1 || value.indexOf('sanabria') !== -1){
+		$('body').addClass('andrea');
+	}else if(value.indexOf('cristina.ortega') !== -1 || value.indexOf('ortega') !== -1){
+		$('body').addClass('orto');
 	}
 }
 
@@ -39,7 +33,7 @@ function aplyProfilePhotoOpt(value){
 
 // init options ------------------------------------------------------------------------------------------------
 chrome.storage.sync.get(['optBgLc'], function(result) {
-	var value = result.optProfilePhoto;
+	var value = result.optBgLc;
 	if ($.type(value) == 'undefined' || $.trim(value).length == 0){
 
 		value = $('#opt-bg-lc').val();
@@ -47,10 +41,10 @@ chrome.storage.sync.get(['optBgLc'], function(result) {
 			value = DEFAULTS.optBgLc;
 
 		chrome.storage.sync.set({optBgLc: value }, function() {
-			$('#opt-bg-lc').val(result.optBgLc);
+			$('#opt-bg-lc').val(value);
 		});
 	}else{
-		$('#opt-bg-lc').val(result.optBgLc);
+		$('#opt-bg-lc').val(value);
 	}
 });
 chrome.storage.sync.get(['optProfilePhoto'], function(result) {
@@ -81,7 +75,7 @@ chrome.storage.sync.get(['userName'], function(result) {
 			aplyUsernameOpt(value);
 		});
 	}else{
-		aplyUsernameOpt(result.userName);
+		aplyUsernameOpt(value);
 	}
 });
 // end init options --------------------------------------------------------------------------------------------
