@@ -10,10 +10,20 @@ function optTestTokenizerHandler(e) {
 	});
 }
 
+function optRobartSvgHandler(e) {
+	chrome.runtime.sendMessage({directive: "opt-robart-svg"}, function(response) {
+		this.close(); // close the popup when the background finishes processing request
+	});
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('opt-add-guides').addEventListener('click', optAddGuidesHandler);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('opt-test-tokenizer').addEventListener('click', optTestTokenizerHandler);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById('opt-robart-svg').addEventListener('click', optRobartSvgHandler);
 });
