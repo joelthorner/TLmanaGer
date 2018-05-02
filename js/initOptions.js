@@ -10,7 +10,6 @@ function aplyUsernameOpt(value){
 	$('#userNameRes').html(value);
 
 	value = $.trim(value).toLowerCase();
-	console.log(value.indexOf('joel.torner'));
 
 	if (value.indexOf('joelthorner') !== -1 || value.indexOf('torner') !== -1) {
 		$('body').addClass('jt');
@@ -42,10 +41,10 @@ chrome.storage.sync.get(['optBgLc'], function(result) {
 			value = DEFAULTS.optBgLc;
 
 		chrome.storage.sync.set({optBgLc: value }, function() {
-			$('#opt-bg-lc').val(result.optBgLc);
+			$('#opt-bg-lc').val(value);
 		});
 	}else{
-		$('#opt-bg-lc').val(result.optBgLc);
+		$('#opt-bg-lc').val(value);
 	}
 });
 chrome.storage.sync.get(['optProfilePhoto'], function(result) {
@@ -76,7 +75,7 @@ chrome.storage.sync.get(['userName'], function(result) {
 			aplyUsernameOpt(value);
 		});
 	}else{
-		aplyUsernameOpt(result.userName);
+		aplyUsernameOpt(value);
 	}
 });
 // end init options --------------------------------------------------------------------------------------------
