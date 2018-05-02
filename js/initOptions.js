@@ -12,15 +12,15 @@ function aplyUsernameOpt(value){
 	value = $.trim(value).toLowerCase();
 	console.log(value.indexOf('joel.torner'));
 
-	if (value.indexOf('joel.torner') !== -1) {
+	if (value.indexOf('joelthorner') !== -1 || value.indexOf('torner') !== -1) {
 		$('body').addClass('jt');
-	}else if(value.indexOf('jordi.canizares') !== -1){
+	}else if(value.indexOf('jordi.canizares') !== -1 || value.indexOf('canizares') !== -1){
 		$('body').addClass('cani');
-	}else if(value.indexOf('carlos') !== -1){
+	}else if(value.indexOf('carlos') !== -1 || value.indexOf('carlos.garcia') !== -1){
 		$('body').addClass('carlos');
-	}else if(value.indexOf('andrea') !== -1){
+	}else if(value.indexOf('andrea') !== -1 || value.indexOf('sanabria') !== -1){
 		$('body').addClass('andrea');
-	}else if(value.indexOf('cristina.ortega') !== -1){
+	}else if(value.indexOf('cristina.ortega') !== -1 || value.indexOf('ortega') !== -1){
 		$('body').addClass('orto');
 	}
 }
