@@ -10,23 +10,18 @@ function aplyUsernameOpt(value){
 	$('#userNameRes').html(value);
 
 	value = $.trim(value).toLowerCase();
+	console.log(value.indexOf('joel.torner'));
 
-	switch (value){
-		case "joel.torner": 
-			$('body').addClass('jt');
-		break;
-		case "jordi.canizares": 
-			$('body').addClass('cani');
-		break;
-		case "carlos.garcia": 
-			$('body').addClass('carlos');
-		break;
-		case "cristina.ortega": 
-			$('body').addClass('orto');
-		break;
-		case "andrea": 
-			$('body').addClass('andrea');
-		break;
+	if (value.indexOf('joel.torner') !== -1) {
+		$('body').addClass('jt');
+	}else if(value.indexOf('jordi.canizares') !== -1){
+		$('body').addClass('cani');
+	}else if(value.indexOf('carlos') !== -1){
+		$('body').addClass('carlos');
+	}else if(value.indexOf('andrea') !== -1){
+		$('body').addClass('andrea');
+	}else if(value.indexOf('cristina.ortega') !== -1){
+		$('body').addClass('orto');
 	}
 }
 
@@ -39,7 +34,7 @@ function aplyProfilePhotoOpt(value){
 
 // init options ------------------------------------------------------------------------------------------------
 chrome.storage.sync.get(['optBgLc'], function(result) {
-	var value = result.optProfilePhoto;
+	var value = result.optBgLc;
 	if ($.type(value) == 'undefined' || $.trim(value).length == 0){
 
 		value = $('#opt-bg-lc').val();
