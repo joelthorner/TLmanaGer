@@ -25,6 +25,9 @@ function aplyUsernameOpt(value){
 }
 
 function aplyProfilePhotoOpt(value){
+	if ($('#home-body').length) {
+		$('#home-body header img').attr('src', value);
+	}
 	if ($('#options-body').length) {
 		$('#options-body .opt-profile-set').removeClass('selected');
 		$('#options-body img[src="' + value + '"]').parents('button').addClass('selected');
