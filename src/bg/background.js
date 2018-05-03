@@ -11,43 +11,70 @@
 //   	chrome.pageAction.show(sender.tab.id);
 //     sendResponse();
 //   });
+function executeScripts(tabId, injectDetailsArray)
+{
+	function createCallback(tabId, injectDetails, innerCallback) {
+		return function () {
+			chrome.tabs.executeScript(tabId, injectDetails, innerCallback);
+		};
+	}
+
+	var callback = null;
+
+	for (var i = injectDetailsArray.length - 1; i >= 0; --i)
+		callback = createCallback(tabId, injectDetailsArray[i], callback);
+
+	if (callback !== null)
+		callback();   // execute outermost function
+}
 
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        switch (request.directive) {
-        case "opt-add-guides":
-            // execute the content script
-            chrome.tabs.executeScript(null, { file: "/js/jquery-3.3.1.min.js" }, function() {
-                chrome.tabs.executeScript(null, { // defaults to the current tab
-                    file: "/js/contentscriptAddGuides.js", // script to inject into page and run in sandbox
-                    allFrames: true // This injects script into iframes in the page and doesn't work before 4.0.266.0.
-                });
-            });
-            sendResponse({}); // sending back empty response to sender
-            break;
-        
-        case "opt-test-tokenizer":
-            chrome.tabs.executeScript(null, { file: "/js/jquery-3.3.1.min.js" }, function() {
-                chrome.tabs.executeScript(null, {
-                    file: "/js/contentScriptTokenizer.js",
-                    allFrames: true
-                });
-            });
-            sendResponse({});
-            break;
+	function(request, sender, sendResponse) {
+		switch (request.directive) {
+			case "opt-add-guides":
+				// execute the content script
+				chrome.tabs.executeScript(null, { file: "/js/libs/jquery-3.3.1.min.js" }, function() {
+					 chrome.tabs.executeScript(null, { // defaults to the current tab
+						  file: "/js/contentscriptAddGuides.js", // script to inject into page and run in sandbox
+						  allFrames: true // This injects script into iframes in the page and doesn't work before 4.0.266.0.
+						});
+					});
+				sendResponse({}); // sending back empty response to sender
+				break;
 
-        case "opt-robart-svg":
-            chrome.tabs.executeScript(null, { file: "/js/jquery-3.3.1.min.js" }, function() {
-                chrome.tabs.executeScript(null, { 
-                    file: "/js/contentScriptFontAwes.js", 
-                    allFrames: true 
-                });
-            });
-            sendResponse({}); // sending back empty response to sender
-            break;
-        default:
-            // helps debug when request directive doesn't match
-            console.log("Unmatched request of '" + request + "' from script to background.js from " + sender);
-        }
-    }
+			case "opt-test-tokenizer":
+				chrome.tabs.executeScript(null, { file: "/js/libs/jquery-3.3.1.min.js" }, function() {
+					chrome.tabs.executeScript(null, {
+						file: "/js/contentScriptTokenizer.js",
+						allFrames: true
+					});
+				});
+				sendResponse({});
+				break;
+
+			case "opt-robart-svg":
+				chrome.tabs.executeScript(null, { file: "/js/libs/jquery-3.3.1.min.js" }, function() {
+					chrome.tabs.executeScript(null, { 
+						file: "/js/contentScriptFontAwes.js", 
+						allFrames: true 
+					});
+				});
+				sendResponse({}); // sending back empty response to sender
+				break;
+
+			case "mmp-add-block":
+				executeScripts(null, [ 
+					{ file: "/js/libs/jquery-3.3.1.min.js" }, 
+					// { code: "$.noConflict();" },
+					{ file: "/js/libs/draggabilly.pkgd.min.js" },
+					{ file: "/js/libs/jquery-resizable.min.js" },
+					{ file: "/js/mapping/contentScriptAddMappingBlck.js" }
+				])
+				break;
+			
+			default:
+				// helps debug when request directive doesn't match
+				console.log("Unmatched request of '" + request + "' from script to background.js from " + sender);
+		}
+	}
 );

@@ -289,7 +289,7 @@ a, svg {
   transition: all .15s ease-in-out;
 }
 
-header {
+header, .header {
   height: 60px;
   padding: 10px;
   display: -webkit-box;
@@ -301,26 +301,26 @@ header {
   margin-top: -3px;
 }
 
-#options-body.tw header {
+#options-body.tw header, #options-body.tw .header {
   display: none;
 }
 
-header .cont {
+header .cont, .header .cont {
   float: left;
   width: calc(100% - 65px);
   padding-right: 10px;
 }
 
-header .cont .badge {
+header .cont .badge, .header .cont .badge {
   margin-left: 10px;
   background-color: var(--blue);
 }
 
-header .cont > span {
+header .cont > span, .header .cont > span {
   display: block;
 }
 
-header .icon {
+header .icon, .header .icon {
   display: block;
   width: 20px;
   height: 40px;
@@ -328,7 +328,7 @@ header .icon {
   position: relative;
 }
 
-header .icon svg {
+header .icon svg, .header .icon svg {
   width: 15px;
   height: 15px;
   position: absolute;
@@ -340,31 +340,31 @@ header .icon svg {
   fill: var(--gray);
 }
 
-header .icon:hover svg {
+header .icon:hover svg, .header .icon:hover svg {
   fill: var(--blue);
 }
 
-header img {
+header img, .header img {
   height: 35px;
   width: 35px;
   margin-right: 10px;
   float: left;
 }
 
-main {
+main, .main {
   background-color: var(--light);
   min-height: 150px;
 }
 
-main .options-ul {
+main .options-ul, .main .options-ul {
   margin: 0;
 }
 
-main .options-ul li + li {
+main .options-ul li + li, .main .options-ul li + li {
   margin-top: -1px;
 }
 
-main .options-ul li .btn {
+main .options-ul li .btn, .main .options-ul li .btn {
   display: block;
   width: 100%;
   font-size: 11px;
@@ -379,17 +379,23 @@ main .options-ul li .btn {
   padding-left: 40px;
 }
 
-main .options-ul li .btn:hover {
+main .options-ul li .btn .badge, .main .options-ul li .btn .badge {
+  font-size: 10px;
+  margin-left: 5px;
+  top: 0;
+}
+
+main .options-ul li .btn:hover, .main .options-ul li .btn:hover {
   background-color: var(--blue);
   border-color: var(--blue);
   color: #FFF;
 }
 
-main .options-ul li .btn:hover svg {
+main .options-ul li .btn:hover svg, .main .options-ul li .btn:hover svg {
   fill: #FFF;
 }
 
-main .options-ul li .btn svg {
+main .options-ul li .btn svg, .main .options-ul li .btn svg {
   position: absolute;
   left: 10px;
   width: 24px;
@@ -506,4 +512,43 @@ main .options-ul li .btn svg {
 .orto {
   --blue: #e83e8c;
   --green: #e83e8c;
+}
+
+.submenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--light);
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-transition: all 350ms ease-in-out;
+  -o-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  border-left: 1px solid #ddd;
+}
+
+.submenu .header {
+  background-color: #FFF;
+}
+
+.submenu .header .icon {
+  margin-right: 25px;
+}
+
+.submenu.open {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.submenu .main {
+  position: absolute;
+  top: 57px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  overflow: auto;
 }
