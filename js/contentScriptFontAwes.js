@@ -70,7 +70,6 @@ if ($('.showNavStyles').length && !$('#___ALL').length) {
 
 	var $svgP = $('.showNavStyles').find('span[data-balloon="size: 2x"] > svg[data-icon]').parent();
 	var name = $.trim($('.showNavStyles h1').text());
-	console.log($('h1'));
 
 	var out_svg = $svgP.html();
 	out_svg = out_svg.replace(new RegExp('data-prefix="[a-z]{3}"\\s', "g"), '');
