@@ -1,3 +1,4 @@
+// options js execute ------------------------------------------
 function optAddGuidesHandler(e) {
 	chrome.runtime.sendMessage({directive: "opt-add-guides"}, function(response) {
 		this.close(); // close the popup when the background finishes processing request
@@ -26,4 +27,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('opt-robart-svg').addEventListener('click', optRobartSvgHandler);
+});
+
+
+// submenus ------------------------------------------
+$('.submenu .back').on('click', function(event) {
+	$(this).parents('.submenu').toggleClass('open');
+});
+
+$('.open-submenuer').on('click', function(event) {
+	$( $(this).data('target') ).toggleClass('open');
+}); 
+
+function mmpAddBlockHandler(e) {
+	chrome.runtime.sendMessage({directive: "mmp-add-block"}, function(response) {
+		this.close();
+	});
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById('mmp-add-block').addEventListener('click', mmpAddBlockHandler);
 });
