@@ -1,15 +1,15 @@
 var timestamp = new Date().getUTCMilliseconds();
 
 var _CSS = `
-	<style>
+	<style id="CSS_TLG_CSS">
 		.tlg-block{
-			border: 4px solid #c3cb00;
-			background-color: rgba(139, 144, 17, 0.17);
-			border-radius: 4px;
+			background-color: rgba(255, 0, 0, 0.15);
 			width: 200px;
 			height: 200px;
 			z-index: 2147483647;
 			position: absolute;
+			border: 4px solid red;
+			border-radius: 4px;
 		}
 		.tlg-block .win-size-grip{
 		  	position: absolute;
@@ -44,7 +44,10 @@ var _BLOCK = $('<div/>', {
 .append('<div class="win-size-grip"></div>')
 .append('<div class="handle"></div>');
 
-$('body').append(_BLOCK).append(_CSS);
+
+if (!$('#CSS_TLG_CSS').length) $('body').append(_CSS);
+
+$('body').append(_BLOCK);
 
 var $tlgBlock = $('.tlg-block').draggabilly({
 	containment: 'body',
