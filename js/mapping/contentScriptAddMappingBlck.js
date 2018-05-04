@@ -107,7 +107,7 @@ if (!$('#CSS_TLG_CSS').length) $('body').append(_CSS);
 $('body').append(_BLOCK);
 
 // FUNCTIONS --------------------------------------
-function getTextBlockRelPos($block, $text){
+function calculateXspace($block, $text){
 	var topBlock = parseInt($block.css('top')),
 		 leftBlock = parseInt($block.css('left')),
 		 topText = parseInt($text.css('top')),
@@ -157,7 +157,7 @@ $('.tlg-block-cont').each(function(index, el) {
 					// guardar rel on drag
 					var $text = $(tlgBlockId + '_TEXT');
 					var $block = $(tlgBlockId);
-					var data = getTextBlockRelPos($block, $text);
+					var data = calculateXspace($block, $text);
 
 					$text.data('x-rel', {
 						leftSpaceText: data.leftSpaceText,
@@ -169,13 +169,13 @@ $('.tlg-block-cont').each(function(index, el) {
 		// guardar rel
 		var $text = $(tlgBlockId + '_TEXT');
 		var $block = $(tlgBlockId);
-		var data = getTextBlockRelPos($block, $text);
+		var data = calculateXspace($block, $text);
 
 		$text.data('x-rel', {
 			leftSpaceText: data.leftSpaceText,
 			topSpaceText: data.topSpaceText
 		});
-		
+
 
 		// resizers
 		$(tlgBlockId).resizable({
@@ -188,7 +188,18 @@ $('.tlg-block-cont').each(function(index, el) {
 				'e' : tlgBlockId + '_egrip',
 				's' : tlgBlockId + '_sgrip',
 				'w' : tlgBlockId + '_wgrip'
-			 }
+			},
+			resize: function( event, ui ) {
+				// guardar rel on drag
+				var $text = $(tlgBlockId + '_TEXT');
+				var $block = $(tlgBlockId);
+				var data = calculateXspace($block, $text);
+
+				$text.data('x-rel', {
+					leftSpaceText: data.leftSpaceText,
+					topSpaceText: data.topSpaceText
+				});
+			}
 		});
 
 		$(this).data('tlg-init', true);
