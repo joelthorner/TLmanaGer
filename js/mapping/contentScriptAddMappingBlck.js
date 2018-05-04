@@ -154,7 +154,15 @@ $('.tlg-block-cont').each(function(index, el) {
 		$(tlgBlockId + '_TEXT')
 			.draggable({
 				drag: function( event, ui ) {
+					// guardar rel on drag
+					var $text = $(tlgBlockId + '_TEXT');
+					var $block = $(tlgBlockId);
+					var data = getTextBlockRelPos($block, $text);
 
+					$text.data('x-rel', {
+						leftSpaceText: data.leftSpaceText,
+						topSpaceText: data.topSpaceText
+					});
 				}
 			});
 
@@ -167,11 +175,7 @@ $('.tlg-block-cont').each(function(index, el) {
 			leftSpaceText: data.leftSpaceText,
 			topSpaceText: data.topSpaceText
 		});
-
-		// drag mantenir distance
-
-		// console.log(leftBlock,widthBlock,leftSpaceText);
-		// console.log($(tlgBlockId + '_TEXT').data('rel-distance'));
+		
 
 		// resizers
 		$(tlgBlockId).resizable({
