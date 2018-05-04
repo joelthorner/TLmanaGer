@@ -64,10 +64,8 @@ chrome.runtime.onMessage.addListener(
 
 			case "mmp-add-block":
 				executeScripts(null, [ 
-					{ file: "/js/libs/jquery-3.3.1.min.js" }, 
-					// { code: "$.noConflict();" },
-					{ file: "/js/libs/draggabilly.pkgd.min.js" },
-					{ file: "/js/libs/jquery-resizable.min.js" },
+					{ file: "/js/libs/jquery-3.3.1.min.js" },
+					{ file: "/js/libs/jquery-ui.js" },
 					{ file: "/js/mapping/contentScriptAddMappingBlck.js" }
 				])
 				break;
