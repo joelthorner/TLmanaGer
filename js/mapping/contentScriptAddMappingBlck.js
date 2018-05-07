@@ -95,8 +95,8 @@ var thisId = "ID_" + new Date().getUTCMilliseconds(),
 
 // make block ---------------------------------
 var _BLOCK = `
-	<div class="tlg-block-cont">
-		<!-- BLOCK COLOR -->
+	<div class="tlg-block-cont" id="${thisId}_MAIN">
+
 		<div id="${thisId}" class="tlg-block" style="left: ${thisLeft}px;top:${thisTop}px">
 
 			<div class="ui-resizable-handle ui-resizable-nw nwgrip" id="${thisId}_nwgrip"></div>
@@ -113,13 +113,17 @@ var _BLOCK = `
 		<div id="${thisId}_TEXT" class="tlg-block-text" style="left: ${thisLeft + 250}px;top:${thisTop}px" data-arrow-target="#${thisId}">
 			<div id="${thisId}_EDITOR"></div>
 		</div>
+
+		<svg xmlns="http://www.w3.org/2000/svg" class="tlg-arrow-connector-container" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; pointer-events: none;">
+			<line class="tlg-arrow-connector"/>
+		</svg>
 	</div>
 `;
 
 // make block --------------------------------------
 
 // console.block(_LOG); ba dum tss
-console.log(_BLOCK);
+// console.log(_BLOCK);
 
 
 // APENDS
@@ -144,7 +148,7 @@ function calculateXspace($block, $text){
 	}
 }
 
-function arrowCustomRender(connect, tlgBlockId){
+function setSvgBoundingBox(tlgBlockId){
 	var $block = $(tlgBlockId),
 		 $text = $(tlgBlockId + '_TEXT'),
 
@@ -170,21 +174,82 @@ function arrowCustomRender(connect, tlgBlockId){
 		 elMinBottom = elMaxBottom - elMinTop
 
 		;
-// console.log('blockRight', blockRight);
 
-// console.log('elMinTop', elMinTop);
-// console.log('elMinLeft', elMinLeft);
-// console.log('elMinRight', elMinRight);
-// console.log('elMinBottom', elMinBottom);
-// console.log('------------------------');
-
-	$('.tlg-arrow-connector-container').css({
+	// svg
+	$(tlgBlockId + '_MAIN .tlg-arrow-connector-container').css({
 		top: elMinTop,
 		left: elMinLeft,
 		width: elMinRight,
 		height: elMinBottom,
 	});
-	connect();
+
+	// LINES points
+	$block.data('points', {
+		TOP : { left: blockLeft + ($block.outerWidth(true) / 2), top: blockTop },
+		LEFT : { left: blockLeft, top: blockTop + ($block.outerHeight(true) / 2) },
+		BOTTOM : { left: blockLeft + ($block.outerWidth(true) / 2), top: blockTop + $block.outerHeight(true) },
+		RIGHT : { left: blockLeft + $block.outerWidth(true), top: blockTop + ($block.outerHeight(true) / 2) }
+	});
+
+	$text.data('points', {
+		TOP : { left: textLeft + ($text.outerWidth(true) / 2), top: textTop },
+		LEFT : { left: textLeft, top: textTop + ($text.outerHeight(true) / 2) },
+		BOTTOM : { left: textLeft + ($text.outerWidth(true) / 2), top: textTop + $text.outerHeight(true) },
+		RIGHT : { left: textLeft + $text.outerWidth(true), top: textTop + ($text.outerHeight(true) / 2) }
+	});
+
+	var pointsText = $text.data('points');
+	var pointsBlock = $block.data('points');
+
+	var coordsData = {}, hypotenuseMin = 9999999; // 9M
+
+	$.each(pointsText, function(textName, textPoints) {
+		$.each(pointsBlock, function(blockName, blockPoints) {
+			var x = textPoints.left - blockPoints.left;
+			var y = textPoints.top - blockPoints.top;
+
+			if(x < 0) x = x * -1;
+			if(y < 0) y = y * -1;
+
+			var h = Math.hypot(x, y);
+			if (h <= hypotenuseMin){
+				hypotenuseMin = h;
+				coordsData = { 
+					'text' : { 
+						pointName : textName,
+						pointCoords : textPoints
+					}, 
+					'block' : { 
+						pointName : blockName,
+						pointCoords : blockPoints
+					} 
+				};
+			}
+			// console.log('textName' + textName, 'blockName' + blockName, h);
+		});
+	});
+
+	// console.log(MORE_SHORT_H, coordsData);
+
+	var minLeft = 
+			coordsData.block.pointCoords.left < coordsData.text.pointCoords.left ? coordsData.block.pointCoords.left : coordsData.text.pointCoords.left,
+		 minTop = 
+			coordsData.block.pointCoords.top < coordsData.text.pointCoords.top ? coordsData.block.pointCoords.top : coordsData.text.pointCoords.top,
+		 maxLeft = 
+		 	coordsData.block.pointCoords.left > coordsData.text.pointCoords.left ? coordsData.block.pointCoords.left : coordsData.text.pointCoords.left,
+		 maxTop = 
+		 	coordsData.block.pointCoords.top > coordsData.text.pointCoords.top ? coordsData.block.pointCoords.top : coordsData.text.pointCoords.top
+		
+		svgTop = elMinTop,
+		svgLeft = elMinLeft 
+	;
+	console.log($(tlgBlockId + '_MAIN .tlg-arrow-connector'));
+	$(tlgBlockId + '_MAIN .tlg-arrow-connector').attr({
+		x1: minLeft - svgLeft,
+		y1: minTop - svgTop,
+		x2: maxLeft - svgLeft,
+		y2: maxTop - svgTop
+	});
 }
 
 // EVENTS ------------------------------------------
@@ -193,7 +258,7 @@ $('.tlg-block-cont').each(function(index, el) {
 	if ($(this).data('tlg-init') == undefined) {
 		
 		var tlgBlockId = '#' + $(this).find('.tlg-block').attr('id');
-		var connect = arrowConnector();
+		// var connect = arrowConnector(tlgBlockId);
 		
 		// move drag
 		$(tlgBlockId)
@@ -214,7 +279,7 @@ $('.tlg-block-cont').each(function(index, el) {
 					});
 
 					// arrow
-					arrowCustomRender(connect, tlgBlockId);
+					setSvgBoundingBox(tlgBlockId);
 				}
 			});
 
@@ -232,7 +297,7 @@ $('.tlg-block-cont').each(function(index, el) {
 					});
 
 					// arrow
-					arrowCustomRender(connect, tlgBlockId);
+					setSvgBoundingBox(tlgBlockId);
 				}
 			});
 
@@ -285,8 +350,8 @@ $('.tlg-block-cont').each(function(index, el) {
 		});
 
 		// line arrow
-		arrowCustomRender(connect, tlgBlockId);
-		d3.select(window).on("resize", arrowCustomRender(connect, tlgBlockId));
+		setSvgBoundingBox(tlgBlockId);
+		// d3.select(window).on("resize", setSvgBoundingBox(connect, tlgBlockId));
 
 
 		$(this).data('tlg-init', true);

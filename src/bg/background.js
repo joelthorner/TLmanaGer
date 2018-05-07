@@ -67,8 +67,6 @@ chrome.runtime.onMessage.addListener(
 					{ file: "/js/libs/jquery-3.3.1.min.js" },
 					{ file: "/js/libs/jquery-ui.js" },
 					{ file: "/js/libs/trumbowyg.min.js" },
-					{ file: "/js/libs/d3.v3.min.js" },
-					{ file: "/js/mapping/arrowConnector.js" },
 					{ file: "/js/mapping/contentScriptAddMappingBlck.js" }
 				])
 				break;
