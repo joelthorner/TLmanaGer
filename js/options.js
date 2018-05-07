@@ -20,6 +20,11 @@ $('#opt-save').click(function(event) {
 		save();
 		aplyUsernameOpt($('#opt-userName').val())
 	});
+
+	// check
+	chrome.storage.sync.set({optOSMode: $('#opt-os-mode').prop('checked')}, function() {
+		save();
+	});
 });
 
 $('.opt-profile-set').click(function(event) {
