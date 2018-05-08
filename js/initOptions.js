@@ -7,21 +7,21 @@ var DEFAULTS = {
 
 function aplyUsernameOpt(value){
 	$('#opt-userName').val(value);
-	$('body').removeClass('orto andrea');
+	$('body.tlgm-body').removeClass('orto andrea');
 	$('#userNameRes').html(value);
 
 	value = $.trim(value).toLowerCase();
 
 	if (value.indexOf('joelthorner') !== -1 || value.indexOf('torner') !== -1) {
-		$('body').addClass('jt');
+		$('body.tlgm-body').addClass('jt');
 	}else if(value.indexOf('jordi.canizares') !== -1 || value.indexOf('canizares') !== -1){
-		$('body').addClass('cani');
+		$('body.tlgm-body').addClass('cani');
 	}else if(value.indexOf('carlos') !== -1 || value.indexOf('carlos.garcia') !== -1){
-		$('body').addClass('carlos');
+		$('body.tlgm-body').addClass('carlos');
 	}else if(value.indexOf('andrea') !== -1 || value.indexOf('sanabria') !== -1){
-		$('body').addClass('andrea');
+		$('body.tlgm-body').addClass('andrea');
 	}else if(value.indexOf('cristina.ortega') !== -1 || value.indexOf('ortega') !== -1){
-		$('body').addClass('orto');
+		$('body.tlgm-body').addClass('orto');
 	}
 }
 
