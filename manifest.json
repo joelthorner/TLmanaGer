@@ -54,7 +54,7 @@
     },
     {
       "matches": [
-        "http://*.sandbox.logicommerce.net/*"
+        "http://*.logicommerce.net/*"
       ],
       "js": [
         "src/inject/injectOpenSaas.js"
