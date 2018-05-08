@@ -4,7 +4,7 @@ chrome.extension.sendMessage({}, function(response) {
 			clearInterval(readyStateCheckInterval);
 
 			// LC inject ----------------------------------------------------------------
-			if ($('#loginForm').length == 0) {
+			if ($('#loginForm').length == 0 && $('#bottomBar #startMenu').length) {
 				// ALL
 				var img = "";
 				chrome.storage.sync.get(['optBgLc', 'optOSMode'], function(result) {
