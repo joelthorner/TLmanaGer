@@ -1,67 +1,58 @@
 {
-  "name": "TLmanaGer",
-  "version": "1.0.11",
-  "manifest_version": 2,
-  "description": "Desarrollamiento tool",
-  "homepage_url": "https://github.com/joelthorner",
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
-  },
-  "default_locale": "en",
-  "background": {
-    "page": "src/bg/background.html",
-    "persistent": true
-  },
-  "options_page": "src/options/index.html",
-  "browser_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "Que vols dirt?",
-    "default_popup": "src/browser_action/browser_action.html"
-  },
-  "permissions": [
-    "storage",
-    "chrome://favicon/",
-    "clipboardRead",
-    "clipboardWrite",
-    "contentSettings",
-    "contextMenus",
-    "cookies",
-    "history",
-    "idle",
-    "management",
-    "notifications",
-    "tabs",
-    "*://*/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "css": [
-        "src/inject/inject.css"
-      ]
-    },
-    {
-      "matches": [
-        "http://*.logicommerce.net/*"
-      ],
-      "js": [
-        "js/libs/jquery-3.3.1.min.js", "js/initOptions.js", "src/inject/inject.js"
-      ]
-    },
-    {
-      "matches": [
-        "http://*.logicommerce.net/*"
-      ],
-      "js": [
-        "src/inject/injectOpenSaas.js"
-      ]
-    }
-  ],
-  "web_accessible_resources": [
-    "js/executeUsingTabVars.js"
-  ]
+	"name": "TLmanaGer",
+	"version": "1.0.12",
+	"manifest_version": 2,
+	"description": "Desarrollamiento tool",
+	"homepage_url": "https://github.com/joelthorner",
+	"icons": {
+		"16": "icons/icon16.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png"
+	},
+	"default_locale": "en",
+	"background": {
+		"page": "src/bg/background.html",
+		"persistent": true
+	},
+	"options_page": "src/options/index.html",
+	"browser_action": {
+		"default_icon": "icons/icon19.png",
+		"default_title": "Que vols dirt?",
+		"default_popup": "src/browser_action/browser_action.html"
+	},
+	"permissions": [
+		"storage",
+		"chrome://favicon/",
+		"clipboardRead",
+		"clipboardWrite",
+		"contentSettings",
+		"contextMenus",
+		"cookies",
+		"history",
+		"idle",
+		"management",
+		"notifications",
+		"tabs",
+		"*://*/*"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"http://8x-hk.logicommerce.net/*", 
+				"http://8x-os.logicommerce.net/*", 
+				"http://8x.logicommerce.net/*"
+			],
+			"js": [
+				"js/libs/jquery-3.3.1.min.js", "js/initOptions.js", "src/inject/injectLC.js"
+			]
+		},
+		{
+			"matches": [
+				"http://*.logicommerce.net/*"
+			],
+			"js": [
+				"js/libs/jquery-3.3.1.min.js", "js/initOptions.js", "src/inject/injectForceview.js"
+			]
+		}
+	]
 }

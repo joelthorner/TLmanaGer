@@ -23,7 +23,7 @@ if ($('.showNavStyles').length && !$('#___ALL').length) {
 					min-height: 1px;
 					padding-left: 15px;
 					padding-right: 15px;
-					width: 33.33333%;
+					width: 25%;
 				}
 				#robatori ._row ._col label{
 					margin-bottom: 10px;
@@ -63,6 +63,10 @@ if ($('.showNavStyles').length && !$('#___ALL').length) {
 						<label for="__use">SYMBOL</label>
 						<textarea name="__use" id="__use" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
 					</div>
+					<div class="_col">
+						<label for="__backgrund">BACKGROUND IMAGE <small>(no base 64) :D (editable per css)</small></label>
+						<textarea name="__backgrund" id="__backgrund" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -90,15 +94,18 @@ if ($('.showNavStyles').length && !$('#___ALL').length) {
 
 	var out_use = '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-'+name+'"></use></svg>';
 
+	var out_bg = `background-image: url('data:image/svg+xml;utf8,${out_svg}');`;
+
 	$('#__svg').val(out_svg);
 	$('#__sym').val(out_sym);
 	$('#__use').val(out_use);
+	$('#__backgrund').val(out_bg);
 
 	$('#__closert').click(function(event) {
 		$('#___ALL').remove();
 	});
 
-	$('#__svg, #__sym, #__use').on('focus', function(event) {
+	$('#__svg, #__sym, #__use, #__backgrund').on('focus', function(event) {
 		$(this).select();
 	});
 

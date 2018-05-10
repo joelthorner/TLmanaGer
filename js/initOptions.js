@@ -1,8 +1,7 @@
 var DEFAULTS = {
 	optBgLc : "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35464e00bbef1a93e6958980d587acb5&auto=format&fit=crop&w=1950&q=80",
 	optProfilePhoto : "../../img/iceberg.svg",
-	userName : 'john.doe',
-	optOSMode : true
+	userName : 'john.doe'
 };
 
 function aplyUsernameOpt(value){
@@ -49,6 +48,21 @@ chrome.storage.sync.get(['optOSMode'], function(result) {
 		});
 	}else{
 		$('#opt-os-mode').prop('checked', value);
+	}
+});
+chrome.storage.sync.get(['optForceview'], function(result) {
+	var value = result.optForceview;
+
+	if ($.type(value) == 'undefined'){
+
+		value = $('#opt-forceview').prop('checked');
+		// is true or false
+
+		chrome.storage.sync.set({optForceview: value }, function() {
+			$('#opt-forceview').prop('checked', value);
+		});
+	}else{
+		$('#opt-forceview').prop('checked', value);
 	}
 });
 chrome.storage.sync.get(['optBgLc'], function(result) {
