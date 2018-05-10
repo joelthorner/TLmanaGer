@@ -25,6 +25,11 @@ $('#opt-save').click(function(event) {
 	chrome.storage.sync.set({optOSMode: $('#opt-os-mode').prop('checked')}, function() {
 		save();
 	});
+
+	// check
+	chrome.storage.sync.set({optForceview: $('#opt-forceview').prop('checked')}, function() {
+		save();
+	});
 });
 
 $('.opt-profile-set').click(function(event) {
