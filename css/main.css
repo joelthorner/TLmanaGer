@@ -453,6 +453,8 @@ main .options-ul li .btn svg, .main .options-ul li .btn svg {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  max-height: 132px;
+  overflow: auto;
 }
 
 #options-body .list-group-max button {
