@@ -13,8 +13,14 @@ chrome.extension.sendMessage({}, function(response) {
 					var style = `
 						<style>
 							body{
+								background-color: #FFF;
 								background-image: url('${img}');
-								background-size: cover
+								background-size: cover;
+								background-position: center;
+								background-repeat: no-repeat;
+								background-clip: border-box;
+								background-origin: padding-box;
+								background-attachment: fixed;
 							}
 							.lastposts{
 								display:none !important;
