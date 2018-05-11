@@ -14,7 +14,7 @@ $('.basketSelectors.paymentSystemSelectors')
 	.prepend(`
 <input type="hidden" name="paymentSystemToken" id="paymentReference" value="">
 <div class="paymentSystemsTokens">
-	<div class="paymentSystemsTokenInfo">Tus tarjetas de crÃ©dito/dÃ©bito</div>
+	<div class="paymentSystemsTokenInfo">Tus tarjetas de crédito/débito</div>
 	<div class="paymentSystemToken">
 		<div class="check">
 			${possiblePlunginRadio}
