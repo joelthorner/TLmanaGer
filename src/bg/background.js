@@ -62,6 +62,16 @@ chrome.runtime.onMessage.addListener(
 				sendResponse({}); // sending back empty response to sender
 				break;
 
+			case "opt-update-imgs":
+				chrome.tabs.executeScript(null, { file: "/js/libs/jquery-3.3.1.min.js" }, function() {
+					chrome.tabs.executeScript(null, { 
+						file: "/js/contentScriptGETImgs.js", 
+						allFrames: true 
+					});
+				});
+				sendResponse({}); // sending back empty response to sender
+				break;
+
 			case "mmp-add-block":
 				executeScripts(null, [ 
 					{ file: "/js/libs/jquery-3.3.1.min.js" },
