@@ -17,6 +17,12 @@ function optRobartSvgHandler(e) {
 	});
 }
 
+function optUpdtGetImgsHandler(e) {
+	chrome.runtime.sendMessage({directive: "opt-update-imgs"}, function(response) {
+		this.close(); // close the popup when the background finishes processing request
+	});
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('opt-add-guides').addEventListener('click', optAddGuidesHandler);
 });
@@ -27,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('opt-robart-svg').addEventListener('click', optRobartSvgHandler);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById('opt-update-imgs').addEventListener('click', optUpdtGetImgsHandler);
 });
 
 

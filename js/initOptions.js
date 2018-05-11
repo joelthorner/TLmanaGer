@@ -43,6 +43,10 @@ chrome.storage.sync.get(['optOSMode'], function(result) {
 		value = $('#opt-os-mode').prop('checked');
 		// is true or false
 
+		if ($.type(value) == 'undefined'){
+			value = true;
+		}
+
 		chrome.storage.sync.set({optOSMode: value }, function() {
 			$('#opt-os-mode').prop('checked', value);
 		});
@@ -57,6 +61,10 @@ chrome.storage.sync.get(['optForceview'], function(result) {
 
 		value = $('#opt-forceview').prop('checked');
 		// is true or false
+
+		if ($.type(value) == 'undefined'){
+			value = true;
+		}
 
 		chrome.storage.sync.set({optForceview: value }, function() {
 			$('#opt-forceview').prop('checked', value);
