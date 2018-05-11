@@ -170,8 +170,6 @@ chrome.storage.sync.get(['optForceview'], function(result) {
 
 	 	var Cookies2 = Cookies.noConflict();
 		var cookie = Cookies2.get('FORCEVIEW');
-		
-		console.log(cookie);
 
 		if (typeof cookie == "undefined") {
 			// create
