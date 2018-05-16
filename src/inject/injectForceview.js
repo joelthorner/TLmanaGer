@@ -1,6 +1,6 @@
 chrome.storage.sync.get(['optForceview'], function(result) {
 
-	if (result.optForceview) {
+	if (result.optForceview && location.host.match(/[0-9]{1,5}.logicommerce.net/i)) {
 
 		/*!
 		 * JavaScript Cookie v2.2.0
