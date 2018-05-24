@@ -35,6 +35,25 @@ function aplyProfilePhotoOpt(value){
 }
 
 // init options ------------------------------------------------------------------------------------------------
+chrome.storage.sync.get(['optOSPagesMode'], function(result) {
+	var value = result.optOSPagesMode;
+
+	if ($.type(value) == 'undefined'){
+
+		value = $('#opt-os-pages-mode').prop('checked');
+		// is true or false
+
+		if ($.type(value) == 'undefined'){
+			value = false;
+		}
+
+		chrome.storage.sync.set({optOSPagesMode: value }, function() {
+			$('#opt-os-pages-mode').prop('checked', value);
+		});
+	}else{
+		$('#opt-os-pages-mode').prop('checked', value);
+	}
+});
 chrome.storage.sync.get(['optOSMode'], function(result) {
 	var value = result.optOSMode;
 
