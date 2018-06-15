@@ -1,6 +1,6 @@
 {
 	"name": "TLmanaGer",
-	"version": "1.0.17",
+	"version": "1.0.18",
 	"manifest_version": 2,
 	"description": "Desarrollamiento tool",
 	"homepage_url": "https://github.com/joelthorner",
@@ -52,6 +52,14 @@
 			],
 			"js": [
 				"js/libs/jquery-3.3.1.min.js", "js/initOptions.js", "src/inject/injectForceview.js"
+			]
+		},
+		{
+			"matches": [
+				"*://joelthorner.github.io/emilio-generator/*"
+			],
+			"js": [
+				"js/libs/jquery-3.3.1.min.js", "src/inject/emilioGenerator.js"
 			]
 		}
 	]
