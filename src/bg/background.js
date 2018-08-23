@@ -88,3 +88,17 @@ chrome.runtime.onMessage.addListener(
 		}
 	}
 );
+
+// External actions
+chrome.runtime.onMessageExternal.addListener(
+	function(request, sender, sendResponse) {
+		if (request) {
+			if (request.message) {
+				if (request.message == "version") {
+					sendResponse({ version: "1.0.19" });
+				}
+			}
+		}
+		return true;
+	}
+);
