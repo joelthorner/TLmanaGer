@@ -43,6 +43,12 @@ chrome.runtime.onMessage.addListener(
 					{ file: "js/actions/show-new-templates-2018.js" }
 				])
 				break;
+			case 'get-ftp-settings':
+				executeScripts(null, [ 
+					{ file: "js/libs/jquery-3.3.1.min.js" },
+					{ file: "js/actions/get-ftp-settings.js" }
+				])
+				break;
 		}
 	}
 );
