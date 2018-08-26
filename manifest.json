@@ -1,6 +1,6 @@
 {
 	"name": "TLmanaGer",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"manifest_version": 2,
 	"description": "Desarrollamiento tool",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -10,6 +10,7 @@
 		"48": "icons/icon48.png",
 		"128": "icons/icon128.png"
 	},
+	"default_locale": "en",
 	"background": {
 		"scripts": [
 			"js/background.js"
