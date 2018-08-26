@@ -53,3 +53,5 @@ Temporary Items
 
 *.config
 *.psd
+*.sublime-project
+*.sublime-workspace
