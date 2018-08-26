@@ -1,5 +1,4 @@
-# TLmanaGer
+# TLmanaGer-2
+Chrome extension
 
-![Demo image one](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-1.png)
-
-![Demo image two](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-2.png)
+![Design](https://raw.githubusercontent.com/joelthorner/TLmanaGer-2/master/design.png)
