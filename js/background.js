@@ -49,6 +49,18 @@ chrome.runtime.onMessage.addListener(
 					{ file: "js/actions/get-ftp-settings.js" }
 				])
 				break;
+			case 'testing-tokenizr':
+				executeScripts(null, [ 
+					{ file: "js/libs/jquery-3.3.1.min.js" },
+					{ file: "js/actions/testing-tokenizr.js" }
+				])
+				break;
+			case 'testing-notifys':
+				executeScripts(null, [ 
+					{ file: "js/libs/jquery-3.3.1.min.js" },
+					{ file: "js/actions/testing-notifys.js" }
+				])
+				break;
 		}
 	}
 );
