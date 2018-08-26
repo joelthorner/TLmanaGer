@@ -1,9 +1,9 @@
 {
-	"name": "TLmanaGer 2",
+	"name": "TLmanaGer",
 	"version": "2.0.0",
 	"manifest_version": 2,
-	"description": "Desarrollamiento tool 2",
-	"homepage_url": "https://github.com/joelthorner/TLmanaGer-2",
+	"description": "Desarrollamiento tool",
+	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
 	"icons": {
 		"16": "icons/icon16.png",
 		"32": "icons/icon32.png",
@@ -19,7 +19,7 @@
 	"options_page": "src/options/index.html",
 	"browser_action": {
 		"default_icon": "icons/icon32.png",
-		"default_title": "TLmanaGer 2",
+		"default_title": "TLmanaGer",
 		"default_popup": "src/popup/index.html"
 	},
 	"permissions": [
