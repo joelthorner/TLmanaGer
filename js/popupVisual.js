@@ -13,6 +13,10 @@ $(function() {
 	});
 
 	chrome.storage.sync.get(['optProfileName', 'optProfileAvatar'], function(result) {
+
+		if (typeof result.optProfileName == 'undefined') result.optProfileName = 'Booker DeWitt';
+		if (typeof result.optProfileAvatar == 'undefined') result.optProfileAvatar = 'img/logo.svg';
+		
 		$('.profile').attr('src', chrome.extension.getURL(result.optProfileAvatar));
 		$('.name-user').text(result.optProfileName);
 	});

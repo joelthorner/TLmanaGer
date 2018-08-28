@@ -1,5 +1,7 @@
 chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 
+	if (typeof result.optLcOpBarActive == 'undefined') result.optLcOpBarActive = true;
+
 	if (result.optLcOpBarActive && $("#SML_osUtils").length) {
 
 		$("#SML_osUtils").click();

@@ -1,4 +1,7 @@
 chrome.storage.sync.get(['optDevStealFa'], function(result) {
+
+	if (typeof result.optDevStealFa == 'undefined') result.optDevStealFa = true;
+
 	if (result.optDevStealFa) {
 
 		$(document).ready(function() {
