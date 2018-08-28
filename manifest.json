@@ -1,6 +1,6 @@
 {
 	"name": "TLmanaGer",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"manifest_version": 2,
 	"description": "Desarrollamiento tool",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -73,7 +73,11 @@
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
 				"js/inject/background-lc.js",
-				"js/inject/pages-grid-lc.js"
+				"js/inject/pages-grid-lc.js",
+				"js/inject/big-controls-lc.js"
+			],
+			"css": [
+				"css/inject/big-controls-ls.css"
 			]
 		},
 		{

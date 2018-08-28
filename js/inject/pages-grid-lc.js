@@ -1,5 +1,7 @@
 chrome.storage.sync.get(['optLcPagridActive'], function(result) {
 
+	if (typeof result.optLcPagridActive == 'undefined') result.optLcPagridActive = false;
+
 	if (result.optLcPagridActive) {
 		$(document).on('click.tlg', '[onclick*="openPages"]', function(event) {
 			if(!$('.pagesGroupContainer .positionLabel.init').length){

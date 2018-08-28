@@ -6,7 +6,8 @@ var defaults = {
 	optDevForceview: true,
 	optDevStealFa : true,
 	optProfileName: 'Booker DeWitt',
-	optProfileAvatar: 'img/logo.svg'
+	optProfileAvatar: 'img/logo.svg',
+	optLcBigControls: true
 };
 
 // Saves options to chrome.storage
@@ -21,7 +22,8 @@ function saveOptions() {
 		optDevForceview: $('#opt-dev-forceview').prop('checked'),
 		optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
 		optProfileName: $('#opt-profile-name').val(),
-		optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val()
+		optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
+		optLcBigControls: $('#opt-lc-big-controls').prop('checked')
 
 	}, function() {
 		// Update status to let user know options were saved.
@@ -105,6 +107,14 @@ function restoreOptions() {
 			})
 			.prop('checked', true)
 			.parents('.avatar').addClass('active')
+
+		$('#opt-lc-big-controls')
+			.prop('checked', items.optLcBigControls)
+			.filter(function(index) {
+				var $parent = $(this).parents('.mdc-switch');
+				if (items.optLcBigControls) $parent.addClass('mdc-switch--checked');
+				else $parent.removeClass('mdc-switch--checked');
+			})
 	});
 }
 

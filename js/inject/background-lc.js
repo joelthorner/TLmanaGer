@@ -1,5 +1,8 @@
 chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 
+	if (typeof result.optLcBgActive == 'undefined') result.optLcBgActive = true;
+	if (typeof result.optLcBgValue == 'undefined') result.optLcBgValue = chrome.extension.getURL('img/background-default.jpg');
+
 	if (result.optLcBgActive && !$('#loginForm').length) {
 		var style = `
 			<style>
