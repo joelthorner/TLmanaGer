@@ -96,7 +96,7 @@ var CHANGELOG = [
 		date: "2 Sep 2018",
 		lines: [
 			"Visual improvements",
-			"Contents improvements"
+			"Refactor options data"
 		]
 	}, { 
 		version: "2.0.3",
