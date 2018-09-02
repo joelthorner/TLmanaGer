@@ -17,6 +17,12 @@ body {
   font-size: 1rem;
 }
 
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
@@ -87,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popup {
-  min-width: 22.5rem;
+  width: 22.5rem;
   padding: 1.25rem;
 }
 
@@ -150,15 +156,24 @@ h1, h2, h3, h4, h5, h6 {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 0;
-  fill: #dddddd;
   cursor: pointer;
 }
 
-.header-popup .options:hover, .header-drawer-options .options:hover {
+.header-popup .options button, .header-drawer-options .options button {
+  width: 2.75rem;
+  height: 2.75rem;
+  fill: #dddddd;
+}
+
+.header-popup .options button:hover, .header-drawer-options .options button:hover {
   fill: #acacac;
 }
 
-.header-popup .options svg, .header-drawer-options .options svg {
+.header-popup .options button:focus, .header-drawer-options .options button:focus {
+  fill: #000;
+}
+
+.header-popup .options button svg, .header-drawer-options .options button svg {
   width: 1.25rem;
   height: 1.25rem;
   display: block;
@@ -185,6 +200,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   display: block;
   margin-bottom: 0.75rem;
+  max-width: 160px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mdc-ripple-surface.mdc-ripple-upgraded--background-focused:before,
@@ -375,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  padding: 0.625rem 0.3125rem;
+  padding: 0.625rem 0.5rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -410,19 +430,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 300;
   color: #9e9e9e;
   text-align: center;
   display: block;
-  line-height: 1.2;
-  margin-top: 0.5rem;
+  line-height: 0.75rem;
+  margin-top: 0.625rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 1.5rem;
 }
 
