@@ -18,67 +18,102 @@ html.dev-opensaas-bar .opensaasWindow.window {
 	right: 0!important;
 	height: 40px!important;
 	border: 0;
+	box-shadow: 0px 0px 7px -1px rgba(0,0,0,.75);
 }
 html.dev-opensaas-bar .opensaasWindow.window div.titleBar {
 	background-color: #333
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green {
 	position: fixed;
-	top: 3px;
+	top: 0;
+	height: 40px;
 	left: 42px;
-	height: 34px;
 	border-radius: 0;
 	padding-left: 0;
 	padding-right: 0;
 	width: 140px;
 	transition: all 150ms ease;
-	background-color: #222;
-	padding-top: 7px
+	background-color: #333;
+	padding-top: 7px;
+	letter-spacing: 0;
+	font-size: 12px;
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green:hover {
 	background-color: #444
 }
+html.dev-opensaas-bar .opensaasWindow.window input.green:active {
+	background-color: rgb(39, 39, 39);
+}
+html.dev-opensaas-bar .opensaasWindow.window .windowResizer {
+	display: none;
+}
 html.dev-opensaas-bar .opensaasWindow.window input.green.__updateCacheProducts__ {
-	left: 185px
+	left: 182px
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green.__updateCacheCategories__ {
-	left: 328px
+	left: 322px
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadApps__ {
-	left: 471px
+	left: 462px
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadEvents__ {
-	left: 614px
+	left: 602px
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green.__downloadProjectCode__ {
-	left: auto;
-	right: 3px;
-	width: 34px;
-	padding-top: 3px;
-	background-image : url('data:image/svg+xml;utf8,<svg aria-hidden="true" fill="#FFF" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"></path></svg>');
-	background-size: 20px;
-	background-position: center;
-	background-repeat: no-repeat;
+	left: 741px
 }
 html.dev-opensaas-bar .opensaasWindow div.windowContent {
 	height: 0
-}
-html.dev-opensaas-bar .messageBox [value="No"] {
-	margin-left: 0
-}
-html.dev-opensaas-bar .messageBox input[value="Sí"],
-html.dev-opensaas-bar .messageBox input[value="OK"] {
-	width: 180px;
-	height: 50px;
-	display: block;
-	margin: 0 auto 10px;
-	clear: both;
-	float: none;
-	margin-left: auto!important
 }
 html.dev-opensaas-bar .lastposts {
 	display: none !important;
 }
 html.dev-opensaas-bar body:not(.hidden-tlg-window) .window {
 	display: none !important;
+}
+html.dev-opensaas-bar .opensaasWindow img.windowIcon {
+	margin: 2px 5px 5px 9px;
+}
+html.dev-opensaas-bar .opensaasWindow div div.windowTitle img.windowIcon {
+	-webkit-animation: woahDude 5s ease infinite;
+	-o-animation: woahDude 5s ease infinite;
+	animation: woahDude 5s ease infinite;
+	filter: saturate(100);
+}
+html.dev-opensaas-bar .opensaasWindow div:not(.activedWindow) div.windowTitle img.windowIcon,
+html.dev-opensaas-bar .opensaasWindow div.activedWindow div.windowTitle img.windowIcon {
+	background-position: 0px -24px;
+}
+@-webkit-keyframes woahDude {
+	from { filter: hue-rotate(0deg); }
+	to 	{ filter: hue-rotate(365deg); }
+}
+@keyframes woahDude {
+	from { filter: hue-rotate(0deg); }
+	to 	{ filter: hue-rotate(365deg); }
+}
+.btn-os-xtra {
+	height: 40px;
+	width: 40px;
+	position: fixed;
+	background-repeat: no-repeat;
+	border: 0;
+	background-color: #333;
+	top: 0;
+	right: 0;
+	background-size: 20px 20px;
+	background-position: center;
+}
+.btn-os-xtra:hover {
+	background-color: #444
+}
+.btn-os-xtra:active {
+	background-color: rgb(39, 39, 39);
+}
+.btn-os-xtra-pag {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(255, 255, 255, 1)' aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3e%3cpath d='M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zm-22.6 22.7c2.1 2.1 3.5 4.6 4.2 7.4H256V32.5c2.8.7 5.3 2.1 7.4 4.2l83.9 83.9zM336 480H48c-8.8 0-16-7.2-16-16V48c0-8.8 7.2-16 16-16h176v104c0 13.3 10.7 24 24 24h104v304c0 8.8-7.2 16-16 16zm-48-244v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm0 64v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm0 64v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12z'%3e%3c/path%3e%3c/svg%3e")
+}
+.btn-os-xtra-ban {
+	right: 40px;
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(255, 255, 255, 1)' aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cpath d='M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z'%3e%3c/path%3e%3c/svg%3e")
 }

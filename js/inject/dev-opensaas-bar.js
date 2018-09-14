@@ -17,29 +17,36 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 						$('.messageBox .rightButtons input').first().click();
 						setTimeout(function() {
 							$('.messageBox .rightButtons input').first().click();
-							$('[ls="opensaas.utilCleanCacheCode"]').val('DONE!');
+							$('[ls="opensaas.utilCleanCacheCode"]').val('Done!');
 							setTimeout(function() {
 								$('body').removeClass('hidden-tlg');
-								$('[ls="opensaas.utilCleanCacheCode"]').val('FLUSH');
-							}, 500)
+								$('[ls="opensaas.utilCleanCacheCode"]').val('Flush redis');
+							}, 650)
 						}, 1000)
-					}, 250)
+					}, 300)
 				});
 
 				$wind.addClass('opensaasWindow');
 				
-				$('[ls="opensaas.utilCleanCacheCode"]').val('FLUSH');
-				$('[ls="opensaas.utilUpdateCacheProducts"]').val('PROD UPDATE');
-				$('[ls="opensaas.utilUpdateCacheCategories"]').val('CAT UPDATE');
-				$('[ls="opensaas.utilReloadApps"]').val('APP UPDATE');
-				$('[ls="opensaas.utilReloadEvents"]').val('EVENT UPDATE');
-				$('[ls="opensaas.utilDownloadProjectCode"]').val('');
+				$('[ls="opensaas.utilCleanCacheCode"]').val('Flush redis');
+				$('[ls="opensaas.utilUpdateCacheProducts"]').val('Product update');
+				$('[ls="opensaas.utilUpdateCacheCategories"]').val('Category update');
+				$('[ls="opensaas.utilReloadApps"]').val('App update');
+				$('[ls="opensaas.utilReloadEvents"]').val('Event update');
+				$('[ls="opensaas.utilDownloadProjectCode"]').val('Download code');
 
 				$('#windowContainer').after(
 					$(".opensaasWindow")
 				);
 				$('.taskMenuLink').first().remove();
 				$('body').addClass('hidden-tlg-window');
+
+				$('.__downloadProjectCode__').after(
+					'<button title="Pages" type="button" onclick="openPages();" class="btn-os-xtra btn-os-xtra-pag"></button>'
+				);
+				$('.__downloadProjectCode__').after(
+					'<button title="Banners" type="button" onclick="openBanners();" class="btn-os-xtra btn-os-xtra-ban"></button>'
+				);
 			}
 		}, 975);
 	}
