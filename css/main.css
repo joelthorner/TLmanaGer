@@ -141,6 +141,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+.mdc-snackbar {
+  z-index: 200;
+}
+
 .header-popup, .header-drawer-options {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -502,6 +506,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .options .mdc-drawer--permanent {
   width: 18.75rem;
+  border-right: 0;
 }
 
 .options .changelog {
@@ -561,16 +566,103 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   position: relative;
   overflow: auto;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.content-options .panel-options {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .content-options .option-block {
   margin-bottom: 1.875rem;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #FFF;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.content-options .option-block .bg-black {
+  border-radius: 0.3125rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 100;
   padding: 0 1.25rem 1.25rem;
+  height: 100%;
+}
+
+.content-options .option-block .bg-shadow {
+  border-radius: 0.3125rem;
+  display: block;
+  position: absolute;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: #FFF;
+}
+
+.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: white;
+}
+
+.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
+  border-bottom-color: rgba(255, 255, 255, 0.42);
+}
+
+.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.87);
+}
+
+.content-options .option-block .mdc-text-field .mdc-line-ripple {
+  background-color: #FFF;
+}
+
+.content-options .option-block .mdc-text-field .mdc-text-field__input {
+  caret-color: #FFF;
+}
+
+.content-options .option-block-1 {
+  float: left;
+  width: calc(50% - 0.9375rem);
+  margin-right: 0.9375rem;
+}
+
+.content-options .option-block-2 {
+  float: left;
+  width: calc(50% - 0.9375rem);
+  margin-left: 0.9375rem;
+}
+
+.content-options .option-block-3, .content-options .h1-options {
+  width: 100%;
 }
 
 .content-options .avatar-title {
   width: 100%;
   margin-bottom: 0.9375rem;
+}
+
+.content-options .grid-avatar {
+  overflow: hidden;
+}
+
+.content-options .option-avatar {
+  padding-left: 10px;
 }
 
 .content-options .avatar {
@@ -581,6 +673,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-options .h1-options {
   margin-top: 0;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  color: #FFF;
 }
 
 .content-options .h2-options {
@@ -604,26 +698,31 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
 }
 
-.content-options .active
-.avatar.active label {
+.content-options .avatar.active label {
   border-color: #007aff;
 }
 
-.content-options .active
-.avatar label {
+.content-options .avatar.active label img {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+.content-options .avatar label {
   display: block;
   overflow: hidden;
   border-radius: 0.5rem;
   height: 5rem;
   width: 5rem;
-  border: 2px solid #ebebeb;
+  border: 2px solid transparent;
 }
 
-.content-options .active
-.avatar label img {
+.content-options .avatar label img {
   height: 100%;
   width: 100%;
   display: block;
+  background-color: #FFF;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 .content-options .panel {
@@ -631,10 +730,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .panel.active {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .content-options .option {
+  padding-left: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -679,12 +781,14 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   bottom: 1.25rem;
   right: 20rem;
+  z-index: 200;
 }
 
 .content-options .reset-button-cont {
   position: fixed;
   bottom: 5.625rem;
   right: 20rem;
+  z-index: 200;
 }
 
 .content-options .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
@@ -696,8 +800,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .mdc-switch.mdc-switch--checked .mdc-switch__thumb, .content-options .mdc-switch.mdc-switch--checked .mdc-switch__track {
-  background-color: var(--mdc-theme-primary, #007aff);
-  border-color: var(--mdc-theme-primary, #007aff);
+  background-color: #FFF;
+  border-color: #FFF;
 }
 
 .content-options .mdc-switch.mdc-switch--checked ~ .option-conditioned {

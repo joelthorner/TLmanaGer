@@ -2,9 +2,19 @@ window.mdc.autoInit();
 
 // messages
 const snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
-// var listEle = document.querySelector('.changelog');
-// var list = new mdc.list.MDCList(listEle);
-// list.singleSelection = true;
+
+function saveBgOptions (){
+	// bg
+	chrome.storage.sync.get(['optLcBgValue'], function(result) {
+
+		if (typeof result.optLcBgValue == 'undefined') 
+			result.optLcBgValue = chrome.extension.getURL('img/background-default.jpg');
+		
+		$('.content-options, .bg-shadow')
+			.css('background-image', 'url(' + result.optLcBgValue + ')');
+
+	});
+}
 
 $(document).ready(function() {
 	new Tooltip($('#save-options')[0], {
@@ -56,4 +66,6 @@ $(document).ready(function() {
 			<li class="mdc-list-divider" role="separator"></li>
 		`);
 	});
+
+	saveBgOptions();
 });
