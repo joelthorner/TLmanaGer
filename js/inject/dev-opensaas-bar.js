@@ -4,6 +4,7 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 
 	if (result.optLcOpBarActive && $("#SML_osUtils").length) {
 
+		$('html').addClass('dev-opensaas-bar');
 		$("#SML_osUtils").click();
 
 		setTimeout(function(){

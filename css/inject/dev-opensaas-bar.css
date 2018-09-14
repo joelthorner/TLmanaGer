@@ -1,17 +1,17 @@
-html body {
+html.dev-opensaas-bar body {
 	height: calc(100% - 40px);
 }
-html #windowContainer {
+html.dev-opensaas-bar #windowContainer {
 	top: 40px;
 }
-html body.hidden-tlg div.messageBox, html body.hidden-tlg .overlay {
+html.dev-opensaas-bar body.hidden-tlg div.messageBox, html.dev-opensaas-bar body.hidden-tlg .overlay {
 	display: none !important;
 }
-html .opensaasWindow .windowButtons,
-html .opensaasWindow .windowTitle > span {
+html.dev-opensaas-bar .opensaasWindow .windowButtons,
+html.dev-opensaas-bar .opensaasWindow .windowTitle > span {
 	display: none
 }
-html .opensaasWindow.window {
+html.dev-opensaas-bar .opensaasWindow.window {
 	position: fixed;
 	top: 0!important;
 	left: 0!important;
@@ -19,10 +19,10 @@ html .opensaasWindow.window {
 	height: 40px!important;
 	border: 0;
 }
-html .opensaasWindow.window div.titleBar {
+html.dev-opensaas-bar .opensaasWindow.window div.titleBar {
 	background-color: #333
 }
-html .opensaasWindow.window input.green {
+html.dev-opensaas-bar .opensaasWindow.window input.green {
 	position: fixed;
 	top: 3px;
 	left: 42px;
@@ -35,22 +35,22 @@ html .opensaasWindow.window input.green {
 	background-color: #222;
 	padding-top: 7px
 }
-html .opensaasWindow.window input.green:hover {
+html.dev-opensaas-bar .opensaasWindow.window input.green:hover {
 	background-color: #444
 }
-html .opensaasWindow.window input.green.__updateCacheProducts__ {
+html.dev-opensaas-bar .opensaasWindow.window input.green.__updateCacheProducts__ {
 	left: 185px
 }
-html .opensaasWindow.window input.green.__updateCacheCategories__ {
+html.dev-opensaas-bar .opensaasWindow.window input.green.__updateCacheCategories__ {
 	left: 328px
 }
-html .opensaasWindow.window input.green.__reloadApps__ {
+html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadApps__ {
 	left: 471px
 }
-html .opensaasWindow.window input.green.__reloadEvents__ {
+html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadEvents__ {
 	left: 614px
 }
-html .opensaasWindow.window input.green.__downloadProjectCode__ {
+html.dev-opensaas-bar .opensaasWindow.window input.green.__downloadProjectCode__ {
 	left: auto;
 	right: 3px;
 	width: 34px;
@@ -60,14 +60,14 @@ html .opensaasWindow.window input.green.__downloadProjectCode__ {
 	background-position: center;
 	background-repeat: no-repeat;
 }
-html .opensaasWindow div.windowContent {
+html.dev-opensaas-bar .opensaasWindow div.windowContent {
 	height: 0
 }
-html .messageBox [value=No] {
+html.dev-opensaas-bar .messageBox [value="No"] {
 	margin-left: 0
 }
-html .messageBox input[value="Sí"],
-html .messageBox input[value=OK] {
+html.dev-opensaas-bar .messageBox input[value="Sí"],
+html.dev-opensaas-bar .messageBox input[value="OK"] {
 	width: 180px;
 	height: 50px;
 	display: block;
@@ -76,9 +76,9 @@ html .messageBox input[value=OK] {
 	float: none;
 	margin-left: auto!important
 }
-html .lastposts {
+html.dev-opensaas-bar .lastposts {
 	display: none !important;
 }
-html body:not(.hidden-tlg-window) .window {
+html.dev-opensaas-bar body:not(.hidden-tlg-window) .window {
 	display: none !important;
 }
