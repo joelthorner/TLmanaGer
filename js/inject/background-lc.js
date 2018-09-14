@@ -4,9 +4,10 @@ chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 	if (typeof result.optLcBgValue == 'undefined') result.optLcBgValue = chrome.extension.getURL('img/background-default.jpg');
 
 	if (result.optLcBgActive && !$('#loginForm').length) {
+		$('html').addClass('dev-background-bar');
 		var style = `
 			<style>
-				body {
+				html.dev-background-bar body {
 					background-color: #FFF;
 					background-image: url('${result.optLcBgValue}');
 					background-size: cover;
@@ -16,28 +17,28 @@ chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 					background-origin: padding-box;
 					background-attachment: fixed;
 				}
-				.lastposts{
+				html.dev-background-bar .lastposts{
 					display:none !important;
 				}
-				#desktop .search img {
+				html.dev-background-bar #desktop .search img {
 					filter: brightness(3);
 				}
-				#desktop .search input::placeholder {
+				html.dev-background-bar #desktop .search input::placeholder {
 					color: #FFF;
 				}
-				#desktop .search input, #desktop .shortcut {
+				html.dev-background-bar #desktop .search input, #desktop .shortcut {
 					background-color: rgba(0, 0, 0, 0.5);
 					border: 0;
 					color: #FFF;
 				}
-				#desktop .shortcut:not(:hover) img {
+				html.dev-background-bar #desktop .shortcut:not(:hover) img {
 					filter: brightness(2);
 				}
-				#desktop .shortcut div {
+				html.dev-background-bar #desktop .shortcut div {
 					text-transform: none;
 					color: #fff;
 				}
-				#desktop .logo img {
+				html.dev-background-bar #desktop .logo img {
 					display: none;
 				}
 			</style>
