@@ -132,7 +132,6 @@ $(document).ready(function() {
 
 	$('#save-options').click(function(event) {
 		saveOptions();
-		saveBgOptions();
 	});
 
 	$('#reset-options').click(function(event) {
@@ -143,6 +142,5 @@ $(document).ready(function() {
 			actionText: 'Close'
 		};
 		snackbar.show(dataObj);
-		saveBgOptions();
 	});
 });
