@@ -78,3 +78,27 @@ chrome.runtime.onMessageExternal.addListener(
 		return true;
 	}
 );
+
+// new version notify
+var manifestData = chrome.runtime.getManifest();
+var opt = {
+	type: 'basic',
+	title: 'TLmanaGer ' + manifestData.version + '!',
+	iconUrl: "../img/logo.svg",
+	message: 'Novetats en la nova versio de la extensió. Oh si!',
+	priority: 1,
+	buttons: [
+		{ title: 'Tancart' },
+		{ title: 'Veure canvis' }
+	]
+};
+
+chrome.notifications.create('newVersion-' + manifestData, opt, function() {
+
+});
+
+chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
+	if (notificationId == 'newVersion-' + manifestData && buttonIndex == 1) {
+		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
+	}
+});

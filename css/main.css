@@ -567,9 +567,13 @@ h1, h2, h3, h4, h5, h6 {
   overflow: auto;
 }
 
-.content-options .panel-options {
+.content-options .panel {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+}
+
+.content-options .option-feature {
+  width: 100%;
 }
 
 .content-options .option-block {
