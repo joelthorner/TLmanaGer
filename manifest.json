@@ -1,6 +1,6 @@
 {
 	"name": "TLmanaGer",
-	"version": "2.0.4",
+	"version": "2.1.0",
 	"manifest_version": 2,
 	"description": "Desarrollamiento tool",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -94,7 +94,9 @@
 		},
 		{
 			"matches": [
-				"*://*.logicommerce.net/*"
+				"*://*.logicommerce.net/*",
+				"*://*.igd.production/*",
+				"*://*.igd.pre.production/*"
 			],
 			"exclude_matches": [
 				"*://8x-hk.logicommerce.net/*",
@@ -103,6 +105,14 @@
 			],
 			"js": [
 				"js/inject/force-forceview.js"
+			]
+		},
+		{
+			"matches": [
+				"*://*.sandbox.logicommerce.net/*"
+			],
+			"js": [
+				"js/inject/auto-login-sandbox.js"
 			]
 		},
 		{

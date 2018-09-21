@@ -744,6 +744,11 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
 }
 
+.changelog .mdc-list-item__text {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
 .changelog .title-changelog {
   padding: 1.25rem;
 }

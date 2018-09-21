@@ -40,10 +40,10 @@ $(document).ready(function() {
 		$changelogList.append(`
 			<li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
 				<svg class="mdc-list-item__graphic icon"><use xlink:href="#icon-merge"></use></svg>
-				<span class="mdc-list-item__text">
+				<a class="mdc-list-item__text" href="https://github.com/joelthorner/TLmanaGer/releases/tag/v${item.version}" target="_blank">
 					<span class="mdc-list-item__primary-text">v${item.version}</span>
 					<span class="mdc-list-item__secondary-text">${item.date}</span>
-				</span>
+				</a>
 			</li>
 			<li class="sublist">
 				<ul>

@@ -38,6 +38,7 @@ $(document).ready(function() {
 		var radio2 = '<input id="creditCardSelect_1" type="radio" reference="9" name="paymentSystem" value="9" data-fluid-event="change" data-fluid-function="setPaymentSystemToken" data-fluid-data="{&quot;token&quot;:&quot;a4f0bb92023bca6fbffbc1855ae99964e93d98cc&quot;}">';
 		var check = '<input type="checkbox" autocomplete="off" value="1" checked="checked" class="validate-required-check" name="paymentTokenizable9">';
 
+		// old radio plugin
 		if ($('.jquery-radiobutton').length) {
 			radio1 = `
 				<div class="jquery-radiobutton-wrapper basketSelector paymentSystemSelector">
@@ -52,6 +53,7 @@ $(document).ready(function() {
 				<input class="sr-only" id="creditCardSelect_1" type="radio" reference="9" name="paymentSystem" value="9" data-fluid-event="change" data-fluid-function="setPaymentSystemToken" data-fluid-data="{&quot;token&quot;:&quot;a4f0bb92023bca6fbffbc1855ae99964e93d98cc&quot;}" style="position: absolute; top: -200px; left: -200px;">
 			`;
 		}
+		// my new radio plugin
 		if ($('.sbr-btn').length) {
 			radio1 = `
 				<input class="sbr-init" id="creditCardSelect_0" type="radio" reference="9" name="paymentSystem" value="9" data-fluid-event="change" data-fluid-function="setPaymentSystemToken" data-fluid-data="{&quot;token&quot;:&quot;&quot;}">
@@ -63,10 +65,18 @@ $(document).ready(function() {
 				<button id="creditCardSelect_1-sbr" class="sbr-btn sbr-default sbr-no-checked" data-sbr-name="paymentSystem" type="button"></button>
 			`;
 		}
+		// my old check plugin
 		if ($('.sbtc-btn').length) {
 			check = `
 				<input type="checkbox" autocomplete="off" value="1" checked="checked" class="sr-only validate-required-check" name="paymentTokenizable9">
 				<button id="sbtc-cf623e2a-5e9e-ff69-ea83" class="sbtc-btn form-control sbtc-bootstrap sbtc-default sbtc-checked" type="button"><span class="sbtc-icon "></span></button>
+			`;
+		}
+		// my new check plugin
+		if ($('.sbc-btn').length || $('.sbr-btn').length) {
+			check = `
+				<input type="checkbox" autocomplete="off" value="1" checked="checked" class="sr-only validate-required-check" name="paymentTokenizable9">
+				<button id="sbc-29fed8fa-40ac-26a5-1502" class="sbc-btn sbc-default sbc-checked" type="button"></button>
 			`;
 		}
 
