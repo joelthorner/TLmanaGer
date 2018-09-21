@@ -103,7 +103,8 @@ var CHANGELOG = [
 			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/48\" target=\"_blank\">#48</a>",
 			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/50\" target=\"_blank\">#50</a>",
 			"Improvements in the forceview",
-			"Big controls fixes"
+			"Big controls fixes",
+			"Added Features info into options page"
 		]
 	}, { 
 		version: "2.0.4",

@@ -4,6 +4,10 @@ window.mdc.autoInit();
 const snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
 
 $(document).ready(function() {
+	// set version
+	$('.aside-1 .mdc-drawer__header-content small')
+		.text('v' + chrome.runtime.getManifest().version);
+
 	new Tooltip($('#save-options')[0], {
 		placement: 'left',
 		title: 'Save options'
@@ -13,12 +17,21 @@ $(document).ready(function() {
 		title: 'Reset options'
 	});
 
+	if (location.hash.length) {
+		$('#options-menu [data-panel]').removeClass('active');
+		$('[data-panel="' + location.hash.replace('#', '') + '"]').addClass('active');
+
+		$('.panel').removeClass('active');
+		$('.' + location.hash.replace('#', '')).addClass('active');
+	}
+
 	$('#options-menu [data-panel]').click(function(event) {
 		$('#options-menu [data-panel]').removeClass('active');
 		$(this).addClass('active');
 
 		$('.panel').removeClass('active');
 		$('.' + $(this).data('panel')).addClass('active');
+		location.hash = '#' + $(this).data('panel');
 	});
 
 	// Set avatars
