@@ -506,7 +506,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .options .mdc-drawer--permanent {
   width: 18.75rem;
-  border-right: 0;
 }
 
 .options .changelog {
@@ -566,9 +565,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   position: relative;
   overflow: auto;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .content-options .panel-options {
@@ -578,62 +574,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-options .option-block {
   margin-bottom: 1.875rem;
-  background-color: transparent;
+  padding: 1.25rem;
+  background-color: #ececec;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #FFF;
-  position: relative;
-  overflow: hidden;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.content-options .option-block .bg-black {
-  border-radius: 0.3125rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: relative;
-  z-index: 100;
-  padding: 0 1.25rem 1.25rem;
-  height: 100%;
-}
-
-.content-options .option-block .bg-shadow {
-  border-radius: 0.3125rem;
-  display: block;
-  position: absolute;
-  -webkit-filter: blur(3px);
-  filter: blur(3px);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
-  color: #FFF;
-}
-
-.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
-  color: white;
-}
-
-.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
-  border-bottom-color: rgba(255, 255, 255, 0.42);
-}
-
-.content-options .option-block .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input:hover {
-  border-bottom-color: rgba(255, 255, 255, 0.87);
-}
-
-.content-options .option-block .mdc-text-field .mdc-line-ripple {
-  background-color: #FFF;
-}
-
-.content-options .option-block .mdc-text-field .mdc-text-field__input {
-  caret-color: #FFF;
 }
 
 .content-options .option-block-1 {
@@ -673,12 +617,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-options .h1-options {
   margin-top: 0;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  color: #FFF;
 }
 
 .content-options .h2-options {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .content-options .option-avatar {
@@ -702,11 +644,6 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #007aff;
 }
 
-.content-options .avatar.active label img {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0);
-}
-
 .content-options .avatar label {
   display: block;
   overflow: hidden;
@@ -721,8 +658,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: block;
   background-color: #FFF;
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
 }
 
 .content-options .panel {
@@ -800,13 +735,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .mdc-switch.mdc-switch--checked .mdc-switch__thumb, .content-options .mdc-switch.mdc-switch--checked .mdc-switch__track {
-  background-color: #FFF;
-  border-color: #FFF;
+  background-color: var(--mdc-theme-primary, #007aff);
+  border-color: var(--mdc-theme-primary, #007aff);
 }
 
 .content-options .mdc-switch.mdc-switch--checked ~ .option-conditioned {
   opacity: 1;
   visibility: visible;
+}
+
+.changelog .mdc-list-item__text {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .changelog .title-changelog {

@@ -7,9 +7,10 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 		$('html').addClass('dev-opensaas-bar');
 		$("#SML_osUtils").click();
 
-		setTimeout(function(){
+		var siOsBar = setInterval(function(){
 			var $wind = $('properties[data*="opensaasUtils"]').parents('.window');
 			if ($wind.length) {
+				clearInterval(siOsBar);
 				$(document).on('click', '.__cleanCacheCode__', function(event) {
 					$('body').addClass('hidden-tlg');
 					$('[ls="opensaas.utilCleanCacheCode"]').val(' ... ');
@@ -21,9 +22,9 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 							setTimeout(function() {
 								$('body').removeClass('hidden-tlg');
 								$('[ls="opensaas.utilCleanCacheCode"]').val('Flush redis');
-							}, 650)
-						}, 1000)
-					}, 300)
+							}, 650);
+						}, 1000);
+					}, 300);
 				});
 
 				$wind.addClass('opensaasWindow');
@@ -47,8 +48,14 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 				$('.__downloadProjectCode__').after(
 					'<button title="Banners" type="button" onclick="openBanners();" class="btn-os-xtra btn-os-xtra-ban"></button>'
 				);
+				$('.__downloadProjectCode__').after(
+					'<button title="Customtags" type="button" onclick="openCustomTagsGroups();" class="btn-os-xtra btn-os-xtra-tag"></button>'
+				);
+				$('.__downloadProjectCode__').after(
+					'<button title="Sections" type="button" onclick="openRelatedDefinitions();" class="btn-os-xtra btn-os-xtra-sec"></button>'
+				);
 			}
-		}, 975);
+		}, 50);
 	}
 
 });

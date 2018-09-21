@@ -3,19 +3,6 @@ window.mdc.autoInit();
 // messages
 const snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
 
-function saveBgOptions (){
-	// bg
-	chrome.storage.sync.get(['optLcBgValue'], function(result) {
-
-		if (typeof result.optLcBgValue == 'undefined') 
-			result.optLcBgValue = chrome.extension.getURL('img/background-default.jpg');
-		
-		$('.content-options, .bg-shadow')
-			.css('background-image', 'url(' + result.optLcBgValue + ')');
-
-	});
-}
-
 $(document).ready(function() {
 	new Tooltip($('#save-options')[0], {
 		placement: 'left',
@@ -53,10 +40,10 @@ $(document).ready(function() {
 		$changelogList.append(`
 			<li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
 				<svg class="mdc-list-item__graphic icon"><use xlink:href="#icon-merge"></use></svg>
-				<span class="mdc-list-item__text">
+				<a class="mdc-list-item__text" href="https://github.com/joelthorner/TLmanaGer/releases/tag/v${item.version}" target="_blank">
 					<span class="mdc-list-item__primary-text">v${item.version}</span>
 					<span class="mdc-list-item__secondary-text">${item.date}</span>
-				</span>
+				</a>
 			</li>
 			<li class="sublist">
 				<ul>
@@ -66,6 +53,4 @@ $(document).ready(function() {
 			<li class="mdc-list-divider" role="separator"></li>
 		`);
 	});
-
-	saveBgOptions();
 });

@@ -92,6 +92,20 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.0",
+		date: "21 Sep 2018",
+		lines: [
+			"Visual improvements",
+			"Scoped css inject by options",
+			"OS bar improvements",
+			"OS bar add shortcuts",
+			"Add sandbox auto login feature",
+			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/48\" target=\"_blank\">#48</a>",
+			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/50\" target=\"_blank\">#50</a>",
+			"Improvements in the forceview",
+			"Big controls fixes"
+		]
+	}, { 
 		version: "2.0.4",
 		date: "2 Sep 2018",
 		lines: [

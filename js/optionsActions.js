@@ -7,7 +7,8 @@ var defaults = {
 	optDevStealFa : true,
 	optProfileName: 'Booker DeWitt',
 	optProfileAvatar: 'img/logo.svg',
-	optLcBigControls: true
+	optLcBigControls: true,
+	optDevAutoSnbxLogin: true
 };
 
 // Saves options to chrome.storage
@@ -23,7 +24,8 @@ function saveOptions() {
 		optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
 		optProfileName: $('#opt-profile-name').val(),
 		optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
-		optLcBigControls: $('#opt-lc-big-controls').prop('checked')
+		optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
+		optDevAutoSnbxLogin: $('#opt-dev-auto-snbx-login').prop('checked')
 
 	}, function() {
 		// Update status to let user know options were saved.
@@ -115,6 +117,14 @@ function restoreOptions() {
 				if (items.optLcBigControls) $parent.addClass('mdc-switch--checked');
 				else $parent.removeClass('mdc-switch--checked');
 			})
+
+		$('#opt-dev-auto-snbx-login')
+			.prop('checked', items.optDevAutoSnbxLogin)
+			.filter(function(index) {
+				var $parent = $(this).parents('.mdc-switch');
+				if (items.optDevAutoSnbxLogin) $parent.addClass('mdc-switch--checked');
+				else $parent.removeClass('mdc-switch--checked');
+			})
 	});
 }
 
@@ -132,7 +142,6 @@ $(document).ready(function() {
 
 	$('#save-options').click(function(event) {
 		saveOptions();
-		saveBgOptions();
 	});
 
 	$('#reset-options').click(function(event) {
@@ -143,6 +152,5 @@ $(document).ready(function() {
 			actionText: 'Close'
 		};
 		snackbar.show(dataObj);
-		saveBgOptions();
 	});
 });
