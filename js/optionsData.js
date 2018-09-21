@@ -86,6 +86,9 @@ var AVATARS /* The legend of Aang */ = [
 	}, {
 		img: "img/avatar/doge.jpg",
 		title: "Doge meme"
+	}, {
+		img: "img/avatar/bongoCat.jpg",
+		title: "Bongo cat"
 	}
 ];
 
@@ -104,7 +107,8 @@ var CHANGELOG = [
 			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/50\" target=\"_blank\">#50</a>",
 			"Improvements in the forceview",
 			"Big controls fixes",
-			"Added Features info into options page"
+			"Added Features info into options page",
+			"Added bongo cat avatar :3"
 		]
 	}, { 
 		version: "2.0.4",
