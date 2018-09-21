@@ -574,6 +574,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-options .option-block {
   margin-bottom: 1.875rem;
+  padding: 1.25rem;
+  background-color: #ececec;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .content-options .option-block-1 {
@@ -616,7 +620,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .h2-options {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .content-options .option-avatar {
