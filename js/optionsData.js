@@ -102,7 +102,6 @@ var CHANGELOG = [
 			"Scoped css inject by options",
 			"OS bar improvements",
 			"OS bar add shortcuts",
-			"Add sandbox auto login feature",
 			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/48\" target=\"_blank\">#48</a>",
 			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/50\" target=\"_blank\">#50</a>",
 			"Improvements in the forceview",
