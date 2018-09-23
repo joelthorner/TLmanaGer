@@ -95,6 +95,12 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.1",
+		date: "23 Sep 2018",
+		lines: [
+			"Fix notify"
+		]
+	}, { 
 		version: "2.1.0",
 		date: "21 Sep 2018",
 		lines: [

@@ -93,12 +93,23 @@ var opt = {
 	]
 };
 
-chrome.notifications.create('newVersion-' + manifestData, opt, function() {
+chrome.storage.sync.get(['newVersionNotify'], function(result) {
 
-});
+	if (typeof result.newVersionNotify == 'undefined') {
+		result.newVersionNotify = false;
+	}
 
-chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
-	if (notificationId == 'newVersion-' + manifestData && buttonIndex == 1) {
-		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
+	if (manifestData.version != result.newVersionNotify) {
+		chrome.notifications.create('newVersion-' + manifestData.version, opt, function() {
+			chrome.storage.sync.set({
+				newVersionNotify: manifestData.version
+			});
+		});
+		
+		chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
+			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
+				chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
+			}
+		});
 	}
 });
