@@ -95,6 +95,12 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.2",
+		date: "25 Sep 2018",
+		lines: [
+			"Remove os autologin recursive xD"
+		]
+	}, { 
 		version: "2.1.1",
 		date: "23 Sep 2018",
 		lines: [

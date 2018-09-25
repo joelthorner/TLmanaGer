@@ -1,3 +1,5 @@
+var manifestData = chrome.runtime.getManifest();
+
 function executeScripts(tabId, injectDetailsArray) {
 	function createCallback(tabId, injectDetails, innerCallback) {
 		return function () {
@@ -71,7 +73,7 @@ chrome.runtime.onMessageExternal.addListener(
 		if (request) {
 			if (request.message) {
 				if (request.message == "version") {
-					sendResponse({ version: "2.x.x" });
+					sendResponse({ version: manifestData.version });
 				}
 			}
 		}
@@ -80,7 +82,6 @@ chrome.runtime.onMessageExternal.addListener(
 );
 
 // new version notify
-var manifestData = chrome.runtime.getManifest();
 var opt = {
 	type: 'basic',
 	title: 'TLmanaGer ' + manifestData.version + '!',
