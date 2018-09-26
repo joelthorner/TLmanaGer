@@ -89,12 +89,21 @@ var AVATARS /* The legend of Aang */ = [
 	}, {
 		img: "img/avatar/bongoCat.jpg",
 		title: "Bongo cat"
+	}, {
+		img: "img/avatar/shadowTR.jpg",
+		title: "Lara Croft - Shadow of the Tomb Raider"
 	}
 ];
 
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.3",
+		date: "-----------",
+		lines: [
+			"Add new avatar"
+		]
+	}, { 
 		version: "2.1.2",
 		date: "25 Sep 2018",
 		lines: [
