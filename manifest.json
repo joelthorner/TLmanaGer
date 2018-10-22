@@ -87,10 +87,12 @@
 			],
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
-				"js/inject/dev-lc-bar.js"
+				"js/inject/dev-lc-bar.js",
+				"js/inject/lc-holidays.js"
 			],
 			"css": [
-				"css/inject/dev-lc-bar.css"
+				"css/inject/dev-lc-bar.css",
+				"css/inject/lc-holidays.css"
 			]
 		},
 		{

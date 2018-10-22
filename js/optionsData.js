@@ -99,7 +99,7 @@ var CHANGELOG = [
 
 	{ 
 		version: "2.1.3",
-		date: "-----------",
+		date: "23 Oct 2018",
 		lines: [
 			"Add new avatar",
 			"Add FTP button <a href=\"https://github.com/joelthorner/TLmanaGer/issues/55\" target=\"_blank\">#55</a>",
@@ -107,7 +107,8 @@ var CHANGELOG = [
 			"Opensaas bar improvements",
 			"Search opensaas bar",
 			"Rename dev opensaas bar to dev lc bar",
-			"Add bar to real LC"
+			"Add bar to real LC",
+			"Holidays events"
 		]
 	}, { 
 		version: "2.1.2",

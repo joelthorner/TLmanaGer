@@ -2,7 +2,7 @@ chrome.storage.sync.get(['optLcDevBarActive'], function(result) {
 
 	if (typeof result.optLcDevBarActive == 'undefined') result.optLcDevBarActive = true;
 
-	if (result.optLcDevBarActive/* && $("#SML_osUtils").length*/) {
+	if (result.optLcDevBarActive) {
 
 		var real_environment = false; 
 		if (!$("#SML_osUtils").length) {
