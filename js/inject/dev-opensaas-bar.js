@@ -54,6 +54,9 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 				$('.__downloadProjectCode__').after(
 					'<button title="Sections" type="button" onclick="openRelatedDefinitions();" class="btn-os-xtra btn-os-xtra-sec"></button>'
 				);
+				$('.__downloadProjectCode__').after(
+					'<button title="FTP" type="button" onclick="openFileManager();" class="btn-os-xtra btn-os-xtra-ftp"></button>'
+				);
 			}
 		}, 50);
 	}
