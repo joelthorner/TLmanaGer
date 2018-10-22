@@ -30,7 +30,7 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 				$wind.addClass('opensaasWindow');
 
 				// fix close all not close bar
-				window.windows.windows = [];
+				$('body').append('<script>window.windows.windows = [];</script>')
 				
 				$('[ls="opensaas.utilCleanCacheCode"]').val('Flush redis');
 				$('[ls="opensaas.utilUpdateCacheProducts"]').val('Product update');
