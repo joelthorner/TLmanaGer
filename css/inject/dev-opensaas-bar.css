@@ -37,6 +37,7 @@ html.dev-opensaas-bar .opensaasWindow.window input.green {
 	padding-top: 7px;
 	letter-spacing: 0;
 	font-size: 12px;
+	border-left: 1px solid rgb(42, 42, 42);
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green:hover {
 	background-color: #444
@@ -60,7 +61,8 @@ html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadEvents__ {
 	left: 602px
 }
 html.dev-opensaas-bar .opensaasWindow.window input.green.__downloadProjectCode__ {
-	left: 741px
+	left: 742px;
+	border-right: 1px solid rgb(42, 42, 42);
 }
 html.dev-opensaas-bar .opensaasWindow div.windowContent {
 	height: 0
@@ -83,6 +85,8 @@ html.dev-opensaas-bar .opensaasWindow div div.windowTitle img.windowIcon {
 html.dev-opensaas-bar .opensaasWindow div:not(.activedWindow) div.windowTitle img.windowIcon,
 html.dev-opensaas-bar .opensaasWindow div.activedWindow div.windowTitle img.windowIcon {
 	background-position: 0px -24px;
+	margin-top: 1px;
+	margin-left: 8px;
 }
 @-webkit-keyframes woahDude {
 	from { filter: hue-rotate(0deg); }
