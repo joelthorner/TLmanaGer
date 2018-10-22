@@ -48,6 +48,10 @@ html.dev-lc-bar .opensaasWindow.window input.green:active {
 html.dev-lc-bar .opensaasWindow.window .windowResizer {
 	display: none;
 }
+html.dev-lc-bar .opensaasWindow.window input.green.__publish__ {
+	border-right: 1px solid rgb(42, 42, 42);
+}
+html.dev-lc-bar .opensaasWindow.window input.green.__publish__,
 html.dev-lc-bar .opensaasWindow.window input.green.__updateCacheProducts__ {
 	left: 182px
 }
@@ -179,6 +183,12 @@ html.dev-lc-bar .opensaasWindow div#searchMenu input:-moz-placeholder {
 	color: #666;
 	font-weight: normal;
 }
-html.dev-lc-bar .opensaasWindow-REAL.window input.green {
-	display: none;
+html.dev-lc-bar .opensaasWindow.window .autosize.row {
+	position: fixed;
+	top: 0;
+	height: 40px !important;
+	overflow: hidden !important;
+	background-color: #333333;
+	left: 42px;
+	width: 842px;
 }

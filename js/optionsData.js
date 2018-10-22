@@ -106,7 +106,8 @@ var CHANGELOG = [
 			"Fix when close all windows close opensaas bar",
 			"Opensaas bar improvements",
 			"Search opensaas bar",
-			"Transform opensaas bar to dev lc bar."
+			"Rename dev opensaas bar to dev lc bar",
+			"Add bar to real LC"
 		]
 	}, { 
 		version: "2.1.2",
