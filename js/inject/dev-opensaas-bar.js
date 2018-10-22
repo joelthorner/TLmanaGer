@@ -60,6 +60,9 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 				$('.__downloadProjectCode__').after(
 					'<button title="FTP" type="button" onclick="openFileManager();" class="btn-os-xtra btn-os-xtra-ftp"></button>'
 				);
+
+				// move search
+				$('#searchMenu').appendTo($wind);
 			}
 		}, 50);
 	}
