@@ -1,10 +1,10 @@
-chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
+chrome.storage.sync.get(['optLcDevBarActive'], function(result) {
 
-	if (typeof result.optLcOpBarActive == 'undefined') result.optLcOpBarActive = true;
+	if (typeof result.optLcDevBarActive == 'undefined') result.optLcDevBarActive = true;
 
-	if (result.optLcOpBarActive/* && $("#SML_osUtils").length*/) {
+	if (result.optLcDevBarActive/* && $("#SML_osUtils").length*/) {
 
-		console.log($("#SML_osUtils").length);
+		// console.log($("#SML_osUtils").length);
 		if (!$("#SML_osUtils").length) {
 			$('#windowContainer').after(`
 				<div class="window resizableWindow activedWindow opensaasWindow opensaasWindow-REAL" style="visibility: visible; zoom: 1; opacity: 1; top: 65px; left: 60px; z-index: 101;">
@@ -16,36 +16,12 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 							<properties data="opensaasUtils"></properties>
 							<div class="windowLayout" style="position: relative; width: 800px; height: 540px;">
 								<div class="autosize row" style="overflow: auto; height: 540px;">
-									<div class="opensaasUtilRow col-6">
-										<div class="pad">
-											<input type="button" class="green __cleanCacheCode__" ls="opensaas.utilCleanCacheCode" value="Flush redis">
-										</div>
-									</div>
-									<div class="opensaasUtilRow col-6">
-										<div class="pad">
-											<input type="button" class="green __downloadProjectCode__" ls="opensaas.utilDownloadProjectCode" value="Download code">
-										</div>
-									</div>
-									<div class="opensaasUtilRow col-6">
-										<div class="pad">
-											<input type="button" class="green __updateCacheProducts__" ls="opensaas.utilUpdateCacheProducts" value="Product update">
-										</div>
-									</div>
-									<div class="opensaasUtilRow col-6">
-										<div class="pad">
-											<input type="button" class="green __updateCacheCategories__" ls="opensaas.utilUpdateCacheCategories" value="Category update">
-										</div>
-									</div>
-									<div class="opensaasUtilRow col-6">
-										<div class="pad">
-											<input type="button" class="green __reloadApps__" ls="opensaas.utilReloadApps" value="App update">
-										</div>
-									</div>
-									<div class="opensaasUtilRow col-6">
-										<div class="pad">
-											<input type="button" class="green __reloadEvents__" ls="opensaas.utilReloadEvents" value="Event update">
-										</div>
-									</div>
+									<input type="button" class="green __cleanCacheCode__" ls="opensaas.utilCleanCacheCode" value="Flush redis">
+									<input type="button" class="green __downloadProjectCode__" ls="opensaas.utilDownloadProjectCode" value="Download code">
+									<input type="button" class="green __updateCacheProducts__" ls="opensaas.utilUpdateCacheProducts" value="Product update">
+									<input type="button" class="green __updateCacheCategories__" ls="opensaas.utilUpdateCacheCategories" value="Category update">
+									<input type="button" class="green __reloadApps__" ls="opensaas.utilReloadApps" value="App update">
+									<input type="button" class="green __reloadEvents__" ls="opensaas.utilReloadEvents" value="Event update">
 								</div>
 							</div>
 						</div>
@@ -55,7 +31,7 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 
 		// ----------------------
 
-		$('html').addClass('dev-opensaas-bar');
+		$('html').addClass('dev-lc-bar');
 		$("#SML_osUtils").click();
 
 		var siOsBar = setInterval(function(){

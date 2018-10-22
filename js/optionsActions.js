@@ -2,7 +2,7 @@ var defaults = {
 	optLcBgActive: true,
 	optLcBgValue: chrome.extension.getURL('img/background-default.jpg'),
 	optLcPagridActive: false,
-	optLcOpBarActive: true,
+	optLcDevBarActive: true,
 	optDevForceview: true,
 	optDevStealFa : true,
 	optProfileName: 'Booker DeWitt',
@@ -18,7 +18,7 @@ function saveOptions() {
 		optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
 		optLcBgValue: $('#opt-lc-bg-value').val(),
 		optLcPagridActive: $('#opt-lc-pagrid-active').prop('checked'),
-		optLcOpBarActive: $('#opt-lc-op-bar-active').prop('checked'),
+		optLcDevBarActive: $('#opt-lc-dev-bar-active').prop('checked'),
 		optDevForceview: $('#opt-dev-forceview').prop('checked'),
 		optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
 		optProfileName: $('#opt-profile-name').val(),
@@ -66,11 +66,11 @@ function restoreOptions() {
 				else $parent.removeClass('mdc-switch--checked');
 			})
 
-		$('#opt-lc-op-bar-active')
-			.prop('checked', items.optLcOpBarActive)
+		$('#opt-lc-dev-bar-active')
+			.prop('checked', items.optLcDevBarActive)
 			.filter(function(index) {
 				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcOpBarActive) $parent.addClass('mdc-switch--checked');
+				if (items.optLcDevBarActive) $parent.addClass('mdc-switch--checked');
 				else $parent.removeClass('mdc-switch--checked');
 			})
 

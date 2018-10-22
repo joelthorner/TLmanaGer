@@ -1,17 +1,17 @@
-html.dev-opensaas-bar body {
+html.dev-lc-bar body {
 	height: calc(100% - 40px);
 }
-html.dev-opensaas-bar #windowContainer {
+html.dev-lc-bar #windowContainer {
 	top: 40px;
 }
-html.dev-opensaas-bar body.hidden-tlg div.messageBox, html.dev-opensaas-bar body.hidden-tlg .overlay {
+html.dev-lc-bar body.hidden-tlg div.messageBox, html.dev-lc-bar body.hidden-tlg .overlay {
 	display: none !important;
 }
-html.dev-opensaas-bar .opensaasWindow .windowButtons,
-html.dev-opensaas-bar .opensaasWindow .windowTitle > span {
+html.dev-lc-bar .opensaasWindow .windowButtons,
+html.dev-lc-bar .opensaasWindow .windowTitle > span {
 	display: none
 }
-html.dev-opensaas-bar .opensaasWindow.window {
+html.dev-lc-bar .opensaasWindow.window {
 	position: fixed;
 	top: 0!important;
 	left: 0!important;
@@ -20,10 +20,10 @@ html.dev-opensaas-bar .opensaasWindow.window {
 	border: 0;
 	box-shadow: 0px 0px 7px -1px rgba(0,0,0,.75);
 }
-html.dev-opensaas-bar .opensaasWindow.window div.titleBar {
+html.dev-lc-bar .opensaasWindow.window div.titleBar {
 	background-color: rgb(40, 40, 40);
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green {
+html.dev-lc-bar .opensaasWindow.window input.green {
 	position: fixed;
 	top: 0;
 	height: 40px;
@@ -39,51 +39,51 @@ html.dev-opensaas-bar .opensaasWindow.window input.green {
 	font-size: 12px;
 	border-left: 1px solid rgb(42, 42, 42);
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green:hover {
+html.dev-lc-bar .opensaasWindow.window input.green:hover {
 	background-color: #444
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green:active {
+html.dev-lc-bar .opensaasWindow.window input.green:active {
 	background-color: rgb(39, 39, 39);
 }
-html.dev-opensaas-bar .opensaasWindow.window .windowResizer {
+html.dev-lc-bar .opensaasWindow.window .windowResizer {
 	display: none;
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green.__updateCacheProducts__ {
+html.dev-lc-bar .opensaasWindow.window input.green.__updateCacheProducts__ {
 	left: 182px
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green.__updateCacheCategories__ {
+html.dev-lc-bar .opensaasWindow.window input.green.__updateCacheCategories__ {
 	left: 322px
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadApps__ {
+html.dev-lc-bar .opensaasWindow.window input.green.__reloadApps__ {
 	left: 462px
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green.__reloadEvents__ {
+html.dev-lc-bar .opensaasWindow.window input.green.__reloadEvents__ {
 	left: 602px
 }
-html.dev-opensaas-bar .opensaasWindow.window input.green.__downloadProjectCode__ {
+html.dev-lc-bar .opensaasWindow.window input.green.__downloadProjectCode__ {
 	left: 742px;
 	border-right: 1px solid rgb(42, 42, 42);
 }
-html.dev-opensaas-bar .opensaasWindow div.windowContent {
+html.dev-lc-bar .opensaasWindow div.windowContent {
 	height: 0
 }
-html.dev-opensaas-bar .lastposts {
+html.dev-lc-bar .lastposts {
 	display: none !important;
 }
-html.dev-opensaas-bar body:not(.hidden-tlg-window) .window {
+html.dev-lc-bar body:not(.hidden-tlg-window) .window {
 	display: none !important;
 }
-html.dev-opensaas-bar .opensaasWindow img.windowIcon {
+html.dev-lc-bar .opensaasWindow img.windowIcon {
 	margin: 2px 5px 5px 9px;
 }
-html.dev-opensaas-bar .opensaasWindow div div.windowTitle img.windowIcon {
-	-webkit-animation: woahDude 5s ease infinite;
-	-o-animation: woahDude 5s ease infinite;
-	animation: woahDude 5s ease infinite;
+html.dev-lc-bar .opensaasWindow div div.windowTitle img.windowIcon {
+	-webkit-animation: woahDude 3500ms ease infinite;
+	-o-animation: woahDude 3500ms ease infinite;
+	animation: woahDude 3500ms ease infinite;
 	filter: saturate(100);
 }
-html.dev-opensaas-bar .opensaasWindow div:not(.activedWindow) div.windowTitle img.windowIcon,
-html.dev-opensaas-bar .opensaasWindow div.activedWindow div.windowTitle img.windowIcon {
+html.dev-lc-bar .opensaasWindow div:not(.activedWindow) div.windowTitle img.windowIcon,
+html.dev-lc-bar .opensaasWindow div.activedWindow div.windowTitle img.windowIcon {
 	background-position: 0px -24px;
 	margin-top: 1px;
 	margin-left: 8px;
@@ -133,7 +133,7 @@ html.dev-opensaas-bar .opensaasWindow div.activedWindow div.windowTitle img.wind
 .btn-os-xtra-ftp {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgba(255, 255, 255, 1)' aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3e%3cpath d='M96 336V128H48c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48v-48H176c-44.11 0-80-35.89-80-80zM592 64H400L336 0H176c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48z'%3e%3c/path%3e%3c/svg%3e");
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu {
+html.dev-lc-bar .opensaasWindow div#searchMenu {
 	position: fixed;
 	left: 881px;
 	top: 0;
@@ -142,7 +142,7 @@ html.dev-opensaas-bar .opensaasWindow div#searchMenu {
 	width: calc(100% - 1080px);
 	text-align: left;
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu input {
+html.dev-lc-bar .opensaasWindow div#searchMenu input {
 	border-radius: 0;
 	height: 100%;
 	width: 100%;
@@ -152,33 +152,33 @@ html.dev-opensaas-bar .opensaasWindow div#searchMenu input {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='#888' aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cpath d='M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z'%3e%3c/path%3e%3c/svg%3e");    
 	background-size: 15px;
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu span {
+html.dev-lc-bar .opensaasWindow div#searchMenu span {
 	display: none !important;
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu input::-webkit-input-placeholder { 
+html.dev-lc-bar .opensaasWindow div#searchMenu input::-webkit-input-placeholder { 
 	font-style: normal; 
 	font-size: 13px;
 	color: #666;
 	font-weight: normal;
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu input::-moz-placeholder { 
+html.dev-lc-bar .opensaasWindow div#searchMenu input::-moz-placeholder { 
 	font-style: normal; 
 	font-size: 13px;
 	color: #666;
 	font-weight: normal;
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu input:-ms-input-placeholder { 
+html.dev-lc-bar .opensaasWindow div#searchMenu input:-ms-input-placeholder { 
 	font-style: normal; 
 	font-size: 13px;
 	color: #666;
 	font-weight: normal;
 }
-html.dev-opensaas-bar .opensaasWindow div#searchMenu input:-moz-placeholder { 
+html.dev-lc-bar .opensaasWindow div#searchMenu input:-moz-placeholder { 
 	font-style: normal; 
 	font-size: 13px;
 	color: #666;
 	font-weight: normal;
 }
-html.dev-opensaas-bar .opensaasWindow-REAL.window input.green {
+html.dev-lc-bar .opensaasWindow-REAL.window input.green {
 	display: none;
 }
