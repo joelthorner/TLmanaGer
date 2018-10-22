@@ -89,12 +89,28 @@ var AVATARS /* The legend of Aang */ = [
 	}, {
 		img: "img/avatar/bongoCat.jpg",
 		title: "Bongo cat"
+	}, {
+		img: "img/avatar/shadowTR.jpg",
+		title: "Lara Croft - Shadow of the Tomb Raider"
 	}
 ];
 
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.3",
+		date: "23 Oct 2018",
+		lines: [
+			"Add new avatar",
+			"Add FTP button <a href=\"https://github.com/joelthorner/TLmanaGer/issues/55\" target=\"_blank\">#55</a>",
+			"Fix when close all windows close opensaas bar",
+			"Opensaas bar improvements",
+			"Search opensaas bar",
+			"Rename dev opensaas bar to dev lc bar",
+			"Add bar to real LC",
+			"Holidays events"
+		]
+	}, { 
 		version: "2.1.2",
 		date: "25 Sep 2018",
 		lines: [
