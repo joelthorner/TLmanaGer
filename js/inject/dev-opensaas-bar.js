@@ -2,7 +2,58 @@ chrome.storage.sync.get(['optLcOpBarActive'], function(result) {
 
 	if (typeof result.optLcOpBarActive == 'undefined') result.optLcOpBarActive = true;
 
-	if (result.optLcOpBarActive && $("#SML_osUtils").length) {
+	if (result.optLcOpBarActive/* && $("#SML_osUtils").length*/) {
+
+		console.log($("#SML_osUtils").length);
+		if (!$("#SML_osUtils").length) {
+			$('#windowContainer').after(`
+				<div class="window resizableWindow activedWindow opensaasWindow opensaasWindow-REAL" style="visibility: visible; zoom: 1; opacity: 1; top: 65px; left: 60px; z-index: 101;">
+					<div class="windowMask">
+						<div class="titleBar">
+							<div class="windowTitle"><img class="windowIcon" align="absmiddle" src="interface/img/pixel.gif" style="background-image: url(&quot;interface/css/main/img/icons/windows/opensaasUtils.png&quot;);"><span><ls ls="opensaas.utils">Utilidades</ls></span></div>
+						</div>
+						<div class="windowContent">
+							<properties data="opensaasUtils"></properties>
+							<div class="windowLayout" style="position: relative; width: 800px; height: 540px;">
+								<div class="autosize row" style="overflow: auto; height: 540px;">
+									<div class="opensaasUtilRow col-6">
+										<div class="pad">
+											<input type="button" class="green __cleanCacheCode__" ls="opensaas.utilCleanCacheCode" value="Flush redis">
+										</div>
+									</div>
+									<div class="opensaasUtilRow col-6">
+										<div class="pad">
+											<input type="button" class="green __downloadProjectCode__" ls="opensaas.utilDownloadProjectCode" value="Download code">
+										</div>
+									</div>
+									<div class="opensaasUtilRow col-6">
+										<div class="pad">
+											<input type="button" class="green __updateCacheProducts__" ls="opensaas.utilUpdateCacheProducts" value="Product update">
+										</div>
+									</div>
+									<div class="opensaasUtilRow col-6">
+										<div class="pad">
+											<input type="button" class="green __updateCacheCategories__" ls="opensaas.utilUpdateCacheCategories" value="Category update">
+										</div>
+									</div>
+									<div class="opensaasUtilRow col-6">
+										<div class="pad">
+											<input type="button" class="green __reloadApps__" ls="opensaas.utilReloadApps" value="App update">
+										</div>
+									</div>
+									<div class="opensaasUtilRow col-6">
+										<div class="pad">
+											<input type="button" class="green __reloadEvents__" ls="opensaas.utilReloadEvents" value="Event update">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			`);
+		}
+
+		// ----------------------
 
 		$('html').addClass('dev-opensaas-bar');
 		$("#SML_osUtils").click();

@@ -82,7 +82,8 @@
 		},
 		{
 			"matches": [
-				"*://8x-os.logicommerce.net/*"
+				"*://8x-os.logicommerce.net/*",
+				"*://8x.logicommerce.net/*"
 			],
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",

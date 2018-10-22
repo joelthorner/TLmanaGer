@@ -179,3 +179,6 @@ html.dev-opensaas-bar .opensaasWindow div#searchMenu input:-moz-placeholder {
 	color: #666;
 	font-weight: normal;
 }
+html.dev-opensaas-bar .opensaasWindow-REAL.window input.green {
+	display: none;
+}

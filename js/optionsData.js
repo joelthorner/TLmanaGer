@@ -101,7 +101,12 @@ var CHANGELOG = [
 		version: "2.1.3",
 		date: "-----------",
 		lines: [
-			"Add new avatar"
+			"Add new avatar",
+			"Add FTP button <a href=\"https://github.com/joelthorner/TLmanaGer/issues/55\" target=\"_blank\">#55</a>",
+			"Fix when close all windows close opensaas bar",
+			"Opensaas bar improvements",
+			"Search opensaas bar",
+			"Fake opensaas bar (to real) LC"
 		]
 	}, { 
 		version: "2.1.2",
