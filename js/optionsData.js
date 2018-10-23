@@ -102,6 +102,7 @@ var CHANGELOG = [
 		date: "-",
 		lines: [
 			"Big controls improvements",
+			"Add option for holidays"
 		]
 	}, { 
 		version: "2.1.3",
