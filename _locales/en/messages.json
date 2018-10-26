@@ -1,6 +1,8 @@
 {
-	"welcome": {
-		"message":"Welcome",
-		"description":"Hello world"
+	"appName": {
+		"message": "TLmanaGer"
+	},
+	"appDesc": {
+		"message": "Desarrollamiento tool"
 	}
 }
