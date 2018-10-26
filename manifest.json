@@ -1,8 +1,8 @@
 {
-	"name": "TLmanaGer",
-	"version": "2.1.3",
+	"name": "__MSG_appName__",
+	"version": "2.1.4",
 	"manifest_version": 2,
-	"description": "Desarrollamiento tool",
+	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
 	"icons": {
 		"16": "icons/icon16.png",
@@ -40,7 +40,8 @@
 	],
 	"web_accessible_resources": [
 		"js/*",
-		"img/*"
+		"img/*",
+		"fonts/*"
 	],
 	"externally_connectable": {
 		"matches": [ 
