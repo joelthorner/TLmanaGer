@@ -55,8 +55,13 @@ function restoreOptions() {
 			.prop('checked', items.optLcBgActive)
 			.filter(function(index) {
 				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcBgActive) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
+				if (items.optLcBgActive) {
+					$parent.addClass('mdc-switch--checked');
+					$('.option-bg-lc').removeClass('disabled');
+				} else {
+					$parent.removeClass('mdc-switch--checked');
+					$('.option-bg-lc').addClass('disabled');
+				}
 			})
 
 		$('.grid-backgrounds')
@@ -234,4 +239,13 @@ $(document).ready(function() {
 			}, 3000);
 		}
 	});
+
+	$('#opt-lc-bg-active')
+		.change(function(event) {
+			if ($(this).prop('checked')) {
+				$('.option-bg-lc').removeClass('disabled');
+			} else {
+				$('.option-bg-lc').addClass('disabled');
+			}
+		})
 });
