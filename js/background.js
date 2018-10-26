@@ -63,6 +63,12 @@ chrome.runtime.onMessage.addListener(
 					{ file: "js/actions/testing-notifys.js" }
 				])
 				break;
+			case 'secret-hack':
+				executeScripts(null, [ 
+					{ file: "js/libs/jquery-3.3.1.min.js" },
+					{ file: "js/actions/secret-hack.js" }
+				])
+				break;
 		}
 	}
 );
