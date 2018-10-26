@@ -3,15 +3,21 @@ window.mdc.autoInit();
 // messages
 const snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
 
+function execMasonry() {
+	$('.content-options .panel').each(function(index, el) {
+		$(this).masonry({
+			itemSelector: '.option-block',
+			columnWidth: '.option-block',
+			percentPosition: true
+		});
+	});
+}
+
 $(document).ready(function() {
 	// set version
 	$('.aside-1 .mdc-drawer__header-content small')
 		.text('v' + chrome.runtime.getManifest().version);
 
-	new Tooltip($('#save-options')[0], {
-		placement: 'left',
-		title: 'Save options'
-	});
 	new Tooltip($('#reset-options')[0], {
 		placement: 'left',
 		title: 'Reset options'
@@ -23,6 +29,8 @@ $(document).ready(function() {
 
 		$('.panel').removeClass('active');
 		$('.' + location.hash.replace('#', '')).addClass('active');
+
+		execMasonry();
 	}
 
 	$('#options-menu [data-panel]').click(function(event) {
@@ -32,6 +40,8 @@ $(document).ready(function() {
 		$('.panel').removeClass('active');
 		$('.' + $(this).data('panel')).addClass('active');
 		location.hash = '#' + $(this).data('panel');
+
+		execMasonry();
 	});
 
 	// Set avatars
@@ -66,4 +76,6 @@ $(document).ready(function() {
 			<li class="mdc-list-divider" role="separator"></li>
 		`);
 	});
+
+	execMasonry();
 });
