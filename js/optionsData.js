@@ -106,7 +106,8 @@ var CHANGELOG = [
 			"Visual options changes",
 			"Add background option with Unsplash API",
 			"Added autosave options",
-			"Improvements search lc dev bar"
+			"Improvements search lc dev bar",
+			"Secret Hack"
 		]
 	}, { 
 		version: "2.1.3",
@@ -277,6 +278,67 @@ var CHANGELOG = [
 		date: "4 May 2018",
 		lines: [
 			"Beta new feature (stable)"
+		]
+	}, { 
+		version: "1.0.7",
+		date: "4 May 2018",
+		lines: [
+			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/7\" target=\"_blank\">#7</a>",
+			"New beta feature"
+		]
+	}, { 
+		version: "1.0.6",
+		date: "2 May 2018",
+		lines: [
+			"Add feature <a href=\"https://github.com/joelthorner/TLmanaGer/issues/9\" target=\"_blank\">#9</a> Font awesome get svg"
+		]
+	}, { 
+		version: "1.0.5",
+		date: "2 May 2018",
+		lines: [
+			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/8\" target=\"_blank\">#8</a>",
+			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/5\" target=\"_blank\">#5</a>",
+			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/6\" target=\"_blank\">#6</a>"
+		]
+	}, { 
+		version: "1.0.4",
+		date: "1 May 2018",
+		lines: [
+			"Init bug fix options",
+			"Added more easter eggs"
+		]
+	}, { 
+		version: "1.0.3",
+		date: "30 Apr 2018",
+		lines: [
+			"Remove permissions",
+			"Update version",
+			"Add username option"
+		]
+	}, { 
+		version: "1.0.2",
+		date: "29 Apr 2018",
+		lines: [
+			"Options save error",
+			"Refactoring",
+			"Clean files"
+		]
+	}, { 
+		version: "1.0.1",
+		date: "28 Apr 2018",
+		lines: [
+			"Bug fix load option url bg",
+			"Add profile change image option",
+			"Add emilio generator link",
+			"Bug fix options page width"
+		]
+	}, { 
+		version: "1.0.0",
+		date: "28 Apr 2018",
+		lines: [
+			"Base injects js (LC os dev tools)",
+			"Base lines action",
+			"Bg option"
 		]
 	}
 
