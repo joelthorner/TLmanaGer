@@ -41,6 +41,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
+.mdc-snackbar {
+  background-color: #007aff;
+}
+
 .tooltip .tooltip-inner {
   background: rgba(0, 0, 0, 0.7);
   color: white;
@@ -508,9 +512,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 18.75rem;
 }
 
-.options .changelog {
+.options .aside-1 {
   border-right: 0;
-  border-left: 1px solid #e4e4e4;
 }
 
 .options .aside-1 .mdc-drawer__header-content {
@@ -559,9 +562,26 @@ h1, h2, h3, h4, h5, h6 {
   opacity: .05;
 }
 
+.grid-avatar::-webkit-scrollbar,
+.content-options::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+.grid-avatar::-webkit-scrollbar-track,
+.content-options::-webkit-scrollbar-track {
+  background: #4e545f;
+}
+
+.grid-avatar::-webkit-scrollbar-thumb,
+.content-options::-webkit-scrollbar-thumb {
+  background: #5a5f69;
+  border-radius: 0;
+}
+
 .content-options {
   padding: 1.875rem;
-  background-color: #f4f4f4;
+  background-color: #2c303c;
   width: 100%;
   position: relative;
   overflow: auto;
@@ -579,24 +599,31 @@ h1, h2, h3, h4, h5, h6 {
 .content-options .option-block {
   margin-bottom: 1.875rem;
   padding: 1.25rem;
-  background-color: #ececec;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #FFF;
+  width: calc(33.333% - 30px);
+  margin-right: 1.875rem;
 }
 
-.content-options .option-block-1 {
-  float: left;
-  width: calc(50% - 0.9375rem);
-  margin-right: 0.9375rem;
+.content-options .option-block .mdc-list {
+  margin: 0 -20px;
+  color: #FFF;
 }
 
-.content-options .option-block-2 {
-  float: left;
-  width: calc(50% - 0.9375rem);
-  margin-left: 0.9375rem;
+.content-options .option-block .mdc-list .mdc-list-item__secondary-text {
+  color: #9d9d9d;
 }
 
-.content-options .option-block-3, .content-options .h1-options {
+.content-options .option-block .mdc-list .mdc-list-item__secondary-text a {
+  color: #9d9d9d;
+  text-decoration: underline;
+}
+
+.content-options .option-block-4 {
+  width: calc(66.666% - 1.875rem);
+}
+
+.content-options .h1-options {
   width: 100%;
 }
 
@@ -606,16 +633,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .grid-avatar {
-  overflow: hidden;
+  margin-right: -0.5rem;
 }
 
 .content-options .option-avatar {
-  padding-left: 10px;
+  margin-top: 1.875rem;
 }
 
 .content-options .avatar {
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: calc(20% - 0.5rem);
   float: left;
 }
 
@@ -625,10 +653,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-options .h2-options {
   margin: 0;
-}
-
-.content-options .option-avatar {
-  margin-top: 1.875rem;
+  width: 100%;
 }
 
 .content-options .avatar input {
@@ -652,8 +677,6 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   overflow: hidden;
   border-radius: 0.5rem;
-  height: 5rem;
-  width: 5rem;
   border: 2px solid transparent;
 }
 
@@ -666,6 +689,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-options .panel {
   display: none;
+  margin-right: -1.875rem;
 }
 
 .content-options .panel.active {
@@ -675,14 +699,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .option {
-  padding-left: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: end;
   -ms-flex-align: end;
   align-items: flex-end;
-  min-height: 72px;
+  min-height: 3.4375rem;
 }
 
 .content-options .option .mdc-switch {
@@ -693,19 +716,18 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.875rem;
 }
 
-.content-options .option-conditioned {
-  opacity: 0;
-  visibility: hidden;
-  display: block;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  margin-left: 1.875rem;
+.content-options .option .mdc-text-field:not(.mdc-text-field--focused):not(.mdc-text-field--disabled) .mdc-floating-label,
+.content-options .option .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: #FFF;
+}
+
+.content-options .option .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input:hover,
+.content-options .option .mdc-text-field:not(.mdc-text-field--focused):not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
+  border-bottom-color: #FFF;
 }
 
 .content-options .mdc-text-field {
   width: 100%;
-  max-width: 40.625rem;
 }
 
 .content-options .mdc-text-field__input {
@@ -716,16 +738,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--mdc-theme-primary, #007aff);
 }
 
-.content-options .save-button-cont {
-  position: fixed;
-  bottom: 1.25rem;
-  right: 20rem;
-  z-index: 200;
-}
-
 .content-options .reset-button-cont {
   position: fixed;
-  bottom: 5.625rem;
+  bottom: 1.25rem;
   right: 20rem;
   z-index: 200;
 }
@@ -741,11 +756,6 @@ h1, h2, h3, h4, h5, h6 {
 .content-options .mdc-switch.mdc-switch--checked .mdc-switch__thumb, .content-options .mdc-switch.mdc-switch--checked .mdc-switch__track {
   background-color: var(--mdc-theme-primary, #007aff);
   border-color: var(--mdc-theme-primary, #007aff);
-}
-
-.content-options .mdc-switch.mdc-switch--checked ~ .option-conditioned {
-  opacity: 1;
-  visibility: visible;
 }
 
 .changelog .mdc-list-item__text {
@@ -784,6 +794,71 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 1.375rem;
   font-size: 0.75rem;
   margin-top: 0.3125rem;
+}
+
+#load-more-bg {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.grid-backgrounds {
+  margin-right: -8px;
+  margin-top: 1.875rem;
+}
+
+.grid-backgrounds:before, .grid-backgrounds:after {
+  content: "";
+  display: table;
+}
+
+.grid-backgrounds:after {
+  clear: both;
+}
+
+.grid-backgrounds .background-item {
+  overflow: hidden;
+  position: relative;
+  margin-right: 10px;
+  width: calc(25% - 10px);
+  margin-bottom: 10px;
+  float: left;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.grid-backgrounds .background-item.active {
+  border-color: #007aff;
+}
+
+.grid-backgrounds .aspect16by9 {
+  display: block;
+  padding-bottom: 56.25%;
+  background-size: cover;
+  background-position: center;
+}
+
+.grid-backgrounds input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.panel-features .mdc-list-item {
+  height: auto;
+  padding-bottom: 1.25rem;
+}
+
+.panel-features .mdc-list-item__secondary-text {
+  white-space: normal;
 }
 
 /*# sourceMappingURL=main.css.map */

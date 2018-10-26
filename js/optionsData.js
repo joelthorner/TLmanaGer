@@ -102,7 +102,11 @@ var CHANGELOG = [
 		date: "-",
 		lines: [
 			"Big controls improvements",
-			"Add option for holidays"
+			"Add option for holidays",
+			"Visual options changes",
+			"Add background option with Unsplash API",
+			"Added autosave options",
+			"Improvements search lc dev bar"
 		]
 	}, { 
 		version: "2.1.3",
