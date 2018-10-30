@@ -98,6 +98,13 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.5",
+		date: "30 Oct 2018",
+		lines: [
+			"Fix autosave timeout",
+			"Improvements unsplash photo API"
+		]
+	}, { 
 		version: "2.1.4",
 		date: "26 Oct 2018",
 		lines: [
