@@ -15,23 +15,23 @@ var defaults = {
 var sto_saveOptions = null;
 function saveOptions(deelay) {
 
-	chrome.storage.sync.set({
+	clearTimeout(sto_saveOptions);
+	sto_saveOptions = setTimeout(function() {
+		chrome.storage.sync.set({
 
-		optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
-		optLcBgValue: $('[name="opt-lc-bg"]:checked').val(),
-		optLcPagridActive: $('#opt-lc-pagrid-active').prop('checked'),
-		optLcDevBarActive: $('#opt-lc-dev-bar-active').prop('checked'),
-		optDevForceview: $('#opt-dev-forceview').prop('checked'),
-		optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
-		optProfileName: $('#opt-profile-name').val(),
-		optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
-		optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
-		optLcHolidays: $('#opt-lc-holidays').prop('checked')
+			optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
+			optLcBgValue: $('[name="opt-lc-bg"]:checked').val(),
+			optLcPagridActive: $('#opt-lc-pagrid-active').prop('checked'),
+			optLcDevBarActive: $('#opt-lc-dev-bar-active').prop('checked'),
+			optDevForceview: $('#opt-dev-forceview').prop('checked'),
+			optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
+			optProfileName: $('#opt-profile-name').val(),
+			optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
+			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
+			optLcHolidays: $('#opt-lc-holidays').prop('checked')
 
-	}, function() {
-		// Update status to let user know options were saved.
-		clearTimeout(sto_saveOptions);
-		sto_saveOptions = setTimeout(function() {
+		}, function() {
+			// Update status to let user know options were saved.
 			var dataObj = {
 				message: "Options saved",
 				actionText: 'Close',
