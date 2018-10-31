@@ -7,7 +7,7 @@ chrome.storage.sync.get(['optLcHolidays'], function(result) {
 		// Dates: YYYY-MM-DD
 
 		// HALLOWIN
-		var dateFrom = new Date((new Date()).getFullYear() + "-10-21");
+		var dateFrom = new Date((new Date()).getFullYear() + "-10-30");
 		var dateTo = new Date((new Date()).getFullYear() + "-11-05");
 
 		// TODAY
