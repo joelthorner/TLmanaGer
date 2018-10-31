@@ -98,6 +98,16 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.6",
+		date: "31 Oct 2018",
+		lines: [
+			"Minor improvements",
+			"Toggle Secret Hack Fix",
+			"Add credit Secret Hack",
+			"Autoforceview support .hk and .cn",
+			"Dev lc bar into all admins and refactor file"
+		]
+	}, { 
 		version: "2.1.5",
 		date: "30 Oct 2018",
 		lines: [
