@@ -178,7 +178,7 @@ function imagesPaginator(jsonResponse, actualPage) {
 		$('.option-backgrounds').append(`
 			<button data-load-page="${(actualPage + 1)}" id="load-more-bg" data-mdc-auto-init="MDCRipple" class="demo-button mdc-button mdc-button--unelevated demo-button-shaped mdc-ripple-upgraded">LOAD MOAR</button>
 		`);
-		window.mdc.autoInit();
+		mdc.ripple.MDCRipple.attachTo(document.getElementById('load-more-bg'));
 	}
 }
 
