@@ -75,10 +75,12 @@
 				"js/libs/jquery-3.3.1.min.js",
 				"js/inject/background-lc.js",
 				"js/inject/pages-grid-lc.js",
-				"js/inject/big-controls-lc.js"
+				"js/inject/big-controls-lc.js",
+				"js/inject/lc-holidays.js"
 			],
 			"css": [
-				"css/inject/big-controls-ls.css"
+				"css/inject/big-controls-ls.css",
+				"css/inject/lc-holidays.css"
 			]
 		},
 		{
@@ -88,12 +90,10 @@
 			],
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
-				"js/inject/dev-lc-bar.js",
-				"js/inject/lc-holidays.js"
+				"js/inject/dev-lc-bar.js"
 			],
 			"css": [
-				"css/inject/dev-lc-bar.css",
-				"css/inject/lc-holidays.css"
+				"css/inject/dev-lc-bar.css"
 			]
 		},
 		{
