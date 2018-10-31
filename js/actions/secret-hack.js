@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var font3 = chrome.extension.getURL('fonts/Deus-Antics.ttf');
 
 	if ($('#deus-antics-font').length) {
-		$('#deus-antics-font').remove();
+		$('#deus-antics-font, #deus-antics-font-credit').remove();
 	} else {
 		$('head').append(`
 			<style id="deus-antics-font">
@@ -17,7 +17,33 @@ $(document).ready(function() {
 				html > body * , html > body * *, html > body * * *{
 					font-family: "Deus Antics" !important;
 				}
+				#deus-antics-font-credit {
+					position: fixed !important;
+					bottom: 0 !important;
+					left: 0 !important;
+					display: block !important;
+					box-size: border-box !important;
+					background-color: #FFF !important;
+					border-top: 1px solid #DDD !important;
+					border-right: 1px solid #DDD !important;
+					font-family: inherit !important;
+					z-index: 999999 !important;
+				}
+				#deus-antics-font-credit > a{
+					font-family: inherit !important;
+					display: block !important;
+					padding: 10px !important;
+					line-height: 22px !important;
+					font-size: 14px !important;
+				}
 			</style>
+		`);
+		$('body').append(`
+			<div id="deus-antics-font-credit">
+				<a href="https://www.instagram.com/unoriginal_02/" target="_blank" rel="nofollow">
+					By @unoriginal_02
+				</a>
+			</div>
 		`);
 	}
 });
