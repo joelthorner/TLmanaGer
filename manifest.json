@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.1.5",
+	"version": "2.1.6",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -76,36 +76,28 @@
 				"js/inject/background-lc.js",
 				"js/inject/pages-grid-lc.js",
 				"js/inject/big-controls-lc.js",
-				"js/inject/lc-holidays.js"
-			],
-			"css": [
-				"css/inject/big-controls-ls.css",
-				"css/inject/lc-holidays.css"
-			]
-		},
-		{
-			"matches": [
-				"*://8x-os.logicommerce.net/*",
-				"*://8x.logicommerce.net/*"
-			],
-			"js": [
-				"js/libs/jquery-3.3.1.min.js",
+				"js/inject/lc-holidays.js",
 				"js/inject/dev-lc-bar.js"
 			],
 			"css": [
+				"css/inject/big-controls-ls.css",
+				"css/inject/lc-holidays.css",
 				"css/inject/dev-lc-bar.css"
 			]
 		},
 		{
 			"matches": [
 				"*://*.logicommerce.net/*",
+				"*://*.logicommerce.hk/*",
+				"*://*.logicommerce.cn/*",
 				"*://*.igd.production/*",
 				"*://*.igd.pre.production/*"
 			],
 			"exclude_matches": [
 				"*://8x-hk.logicommerce.net/*",
 				"*://8x-os.logicommerce.net/*",
-				"*://8x.logicommerce.net/*"
+				"*://8x.logicommerce.net/*",
+				"*://8x.logicommerce.cn/*"
 			],
 			"js": [
 				"js/inject/force-forceview.js"
