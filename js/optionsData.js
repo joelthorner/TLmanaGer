@@ -99,13 +99,14 @@ var CHANGELOG = [
 
 	{ 
 		version: "2.1.6",
-		date: "31 Oct 2018",
+		date: "1 Nov 2018",
 		lines: [
 			"Minor improvements",
 			"Toggle Secret Hack Fix",
 			"Add credit Secret Hack",
 			"Autoforceview support .hk and .cn",
-			"Dev lc bar into all admins and refactor file"
+			"Dev lc bar into all admins and refactor file",
+			"Add Unsplash utm links"
 		]
 	}, { 
 		version: "2.1.5",
