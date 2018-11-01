@@ -834,6 +834,29 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid transparent;
 }
 
+.background-item a, #opt-lc-bg-image a {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.background-item a:empty, #opt-lc-bg-image a:empty {
+  display: none;
+}
+
+.background-item:hover a, #opt-lc-bg-image:hover a {
+  opacity: 1;
+  visibility: visible;
+}
+
 .background-item.not-found, #opt-lc-bg-image.not-found {
   text-align: center;
   width: 100%;
@@ -849,6 +872,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .background-item .aspect16by9, #opt-lc-bg-image .aspect16by9 {
+  cursor: pointer;
   display: block;
   padding-bottom: 56.25%;
   background-size: cover;
@@ -890,33 +914,6 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-#opt-lc-bg-image .bg-dark {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: transparent;
-}
-
-#opt-lc-bg-image:hover .bg-dark {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#opt-lc-bg-image:hover .restore-bg {
-  display: block;
-  position: absolute;
-  z-index: 100;
-  height: 45px;
-  width: 45px;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  fill: #FFF;
-}
-
 .option-bg-lc .option {
   width: calc(100% - 140px);
 }
@@ -927,6 +924,17 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: .01786em;
   font-size: 13px;
   margin-top: 8px;
+}
+
+.bg-credit-title {
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.bg-credit-title a {
+  color: #888;
 }
 
 /*# sourceMappingURL=main.css.map */
