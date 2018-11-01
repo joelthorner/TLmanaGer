@@ -203,6 +203,7 @@ function imagesPaginator(jsonResponse, actualPage) {
 		`);
 		mdc.ripple.MDCRipple.attachTo(document.getElementById('load-more-bg'));
 	}
+	execMasonry();
 }
 
 function createImages(imagesList) {
@@ -223,6 +224,7 @@ function createImages(imagesList) {
 			</div>
 		`);
 	}
+	execMasonry();
 }
 
 $(document).ready(function() {
