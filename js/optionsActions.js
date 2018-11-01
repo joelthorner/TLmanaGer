@@ -18,8 +18,8 @@ var defaults = {
 	optLcBgActive: true,
 	optLcBgValue: {
 		image: chrome.extension.getURL('img/background-default.jpg'),
-		userName: 'Joel Thorner',
-		userLink: 'https://github.com/joelthorner'
+		userName: 'Matteo Fusco',
+		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral'
 	},
 	optLcPagridActive: false,
 	optLcDevBarActive: true,
