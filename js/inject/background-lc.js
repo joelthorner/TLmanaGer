@@ -1,7 +1,23 @@
+// support change format variable TEMP
+chrome.storage.sync.get('optLcBgValue', function(items) {
+	if (typeof items.optLcBgValue == 'string') {
+		var oldBg = items.optLcBgValue;
+
+		chrome.storage.sync.set({
+			optLcBgValue: {
+				image: oldBg,
+				userName: 'Joel Thorner',
+				userLink: 'https://github.com/joelthorner'
+			}
+		}, function() {});
+	}
+});
+// end support change format variable TEMP
+
 chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 
 	if (typeof result.optLcBgActive == 'undefined') result.optLcBgActive = true;
-	if (typeof result.optLcBgValue == 'undefined') result.optLcBgValue = chrome.extension.getURL('img/background-default.jpg');
+	if (typeof result.optLcBgValue.image == 'undefined') result.optLcBgValue.image = chrome.extension.getURL('img/background-default.jpg');
 
 	if (result.optLcBgActive && !$('#loginForm').length) {
 		$('html').addClass('dev-background-bar');
@@ -9,7 +25,7 @@ chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 			<style>
 				html.dev-background-bar body {
 					background-color: #FFF;
-					background-image: url('${result.optLcBgValue}');
+					background-image: url('${result.optLcBgValue.image}');
 					background-size: cover;
 					background-position: center;
 					background-repeat: no-repeat;
