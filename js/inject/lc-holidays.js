@@ -1,15 +1,11 @@
+// Dates: YYYY-MM-DD
+
 chrome.storage.sync.get(['optLcHolidays'], function(result) {
 
 	if (typeof result.optLcHolidays == 'undefined') result.optLcHolidays = true;
 
 	if (result.optLcHolidays) {
-
-		// Dates: YYYY-MM-DD
-
-		// HALLOWIN
-		var dateFrom = new Date((new Date()).getFullYear() + "-10-30");
-		var dateTo = new Date((new Date()).getFullYear() + "-11-05");
-
+		
 		// TODAY
 		var today = new Date();
 		var dd = today.getDate();
@@ -19,6 +15,10 @@ chrome.storage.sync.get(['optLcHolidays'], function(result) {
 		if (mm < 10) { mm = '0' + mm; } 
 		var today = new Date(yyyy + '-' + mm + '-' + dd);
 
+
+		// HALLOWIN
+		var dateFrom = new Date((new Date()).getFullYear() + "-10-30");
+		var dateTo = new Date((new Date()).getFullYear() + "-11-05");
 
 		if (today > dateFrom && today < dateTo) {
 			$('body')
@@ -44,6 +44,16 @@ chrome.storage.sync.get(['optLcHolidays'], function(result) {
 						</p>
 					</div>
 				`);
+		}
+
+		// CHRISTMAS
+		var dateFrom = new Date((new Date()).getFullYear() + "-12-01");
+		var dateTo = new Date((new Date()).getFullYear() + "-12-30");
+
+		if (today > dateFrom && today < dateTo) {
+			$('body')
+				.addClass('CHRISTMAS_HOLDIDAY')
+				.append(`<div class="chrstmaslc-container"><div class="chrstmaslc-artboard"><div class="chrstmaslc-deer"><div class="chrstmaslc-rocking"><div class="chrstmaslc-head"><div class="chrstmaslc-horns"><div class="chrstmaslc-horn chrstmaslc-horn-left"><div class="chrstmaslc-line chrstmaslc-line-one"></div><div class="chrstmaslc-line"></div><div class="chrstmaslc-line chrstmaslc-line-three"></div></div><div class="chrstmaslc-horn chrstmaslc-horn-right"><div class="chrstmaslc-line chrstmaslc-line-one"></div><div class="chrstmaslc-line"></div><div class="chrstmaslc-line chrstmaslc-line-three"></div></div></div><div class="chrstmaslc-ears"><div class="chrstmaslc-ear chrstmaslc-ear-left"></div><div class="chrstmaslc-ear chrstmaslc-ear-right"></div></div><div class="chrstmaslc-eyes"><div class="chrstmaslc-eye chrstmaslc-eye-left"></div><div class="chrstmaslc-eye chrstmaslc-eye-right"></div></div><div class="chrstmaslc-nose"></div></div><div class="chrstmaslc-body"><div class="chrstmaslc-shadow"></div><div class="chrstmaslc-hooves"><div class="chrstmaslc-hoof-one"><div class="chrstmaslc-line"></div><div class="chrstmaslc-anim-part"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle chrstmaslc-circle-last"></div></div></div></div></div></div></div><div class="chrstmaslc-hoof-two"><div class="chrstmaslc-line-one"></div><div class="chrstmaslc-line-two"></div></div></div></div><div class="chrstmaslc-tail"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"></div></div></div></div></div></div></div><div class="chrstmaslc-legs"><div class="chrstmaslc-leg-left"><div class="chrstmaslc-anim-part"><div class="chrstmaslc-line"></div></div></div><div class="chrstmaslc-leg-right"><div class="chrstmaslc-anim-part"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle"><div class="chrstmaslc-circle chrstmaslc-circle-last"></div></div></div></div></div></div></div></div></div></div></div></div></div><div class="chrstmaslc-presents"><div class="chrstmaslc-present chrstmaslc-present-one"></div><div class="chrstmaslc-present chrstmaslc-present-two"></div><div class="chrstmaslc-present chrstmaslc-present-two chrstmaslc-present-two-right"></div><div class="chrstmaslc-present chrstmaslc-present-three"></div></div><div class="chrstmaslc-snow"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div><div class="chrstmaslc-snowflake"></div></div></div>`);
 		}
 	}
 });

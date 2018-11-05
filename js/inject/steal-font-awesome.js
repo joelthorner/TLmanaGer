@@ -13,10 +13,10 @@ chrome.storage.sync.get(['optDevStealFa'], function(result) {
 				return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 			}
 
-			var ready = $('.showNavStyles');
+			var ready = $('[data-balloon*="size"]');
 
 			var si = setInterval(function() {
-				ready = $('.showNavStyles');
+				ready = $('[data-balloon*="size"]');
 
 				if (ready.length) {
 					clearInterval(si);
@@ -92,8 +92,8 @@ chrome.storage.sync.get(['optDevStealFa'], function(result) {
 						</div>
 					`);
 
-					var $svgP = $('.showNavStyles').find('span[data-balloon="size: 2x"] > svg[data-icon]').parent();
-					var name = $.trim($('.showNavStyles h1').text());
+					var $svgP = $('[data-balloon="size: 2x"] > svg[data-icon]').parent();
+					var name = $.trim($('h1 [data-balloon]').text());
 
 					var out_svg = $svgP.html();
 					out_svg = out_svg.replace(new RegExp('data-prefix="[a-z]{3}"\\s', "g"), '');

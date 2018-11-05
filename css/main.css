@@ -601,8 +601,20 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.25rem;
   background-color: rgba(255, 255, 255, 0.05);
   color: #FFF;
-  width: calc(33.333% - 30px);
+  width: calc(100% - 30px);
   margin-right: 1.875rem;
+}
+
+@media (min-width: 1300px) {
+  .content-options .option-block {
+    width: calc(50% - 30px);
+  }
+}
+
+@media (min-width: 1600px) {
+  .content-options .option-block {
+    width: calc(33.333% - 30px);
+  }
 }
 
 .content-options .option-block.disabled {
@@ -626,7 +638,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-options .option-block-4 {
-  width: calc(66.666% - 1.875rem);
+  width: calc(100% - 1.875rem);
+}
+
+@media (min-width: 1600px) {
+  .content-options .option-block-4 {
+    width: calc(66.666% - 30px);
+  }
 }
 
 .content-options .h1-options {
