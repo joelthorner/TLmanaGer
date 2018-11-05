@@ -6,6 +6,7 @@ chrome.storage.sync.get('optLcBgValue', function(items) {
 		chrome.storage.sync.set({
 			optLcBgValue: {
 				image: oldBg,
+				thumb: oldBg,
 				userName: 'Joel Thorner',
 				userLink: 'https://github.com/joelthorner'
 			}
@@ -18,6 +19,7 @@ var defaults = {
 	optLcBgActive: true,
 	optLcBgValue: {
 		image: chrome.extension.getURL('img/background-default.jpg'),
+		thumb: chrome.extension.getURL('img/background-default.jpg'),
 		userName: 'Matteo Fusco',
 		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral'
 	},
@@ -42,6 +44,7 @@ function saveOptions(deelay) {
 			optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
 			optLcBgValue: { 
 				image: $('[name="opt-lc-bg"]:checked').val(),
+				thumb: $('[name="opt-lc-bg"]:checked').parents('.background-item').find('label').css('background-image').replace('url("', '').replace('")', ''),
 				userName: $('[name="opt-lc-bg"]:checked').parents('.background-item').find('a').text(),
 				userLink: $('[name="opt-lc-bg"]:checked').parents('.background-item').find('a').attr('href')
 			},
@@ -90,9 +93,9 @@ function restoreOptions() {
 
 		$('#opt-lc-bg-image')
 			.find('label')
-				.css('background-image', 'url(' + items.optLcBgValue.image.replace('w=1920', 'w=200') + ')')
+				.css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
 				.prev('input')
-				.val(items.optLcBgValue.image.replace('w=1920', 'w=200'))
+				.val(items.optLcBgValue.thumb)
 				.parent().find('a').attr('href', items.optLcBgValue.userLink).text(items.optLcBgValue.userName);
 
 		$('#opt-lc-pagrid-active')
@@ -211,7 +214,7 @@ function createImages(imagesList) {
 		$.each(imagesList, function(index, obj) {
 			$('.grid-backgrounds').append(`
 				<div class="background-item">
-					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.urls.thumb.replace('w=200', 'w=1920')}">
+					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.links.download}">
 					<label class="aspect16by9" for="bg-radio-${obj.id}" style="background-image: url(${obj.urls.thumb});background-color: ${obj.color};"></label>
 					<a href="${obj.user.links.html}?utm_source=TLmanaGer&utm_medium=referral" target="_blank">${obj.user.name}</a>
 				</div>
@@ -240,15 +243,15 @@ $(document).ready(function() {
 		$('.background-item').removeClass('active');
 		$(this).parents('.background-item').addClass('active');
 
-		var $selct = $(this);
+		var $selected = $(this);
 		var link = $(this).parents('.background-item').find('a').attr('href');
 		var name = $(this).parents('.background-item').find('a').text();
 		
 		$('#opt-lc-bg-image')
 			.find('label')
-				.css('background-image', 'url(' + $selct.val().replace('w=1920', 'w=200') + ')')
+				.css('background-image', $selected.parent().find('label').css('background-image'))
 				.prev('input')
-				.val($selct.val().replace('w=1920', 'w=200'))
+				.val($selected.val())
 				.parent().find('a').attr('href', link).text(name);
 	});
 
