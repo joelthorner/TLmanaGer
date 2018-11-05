@@ -98,6 +98,16 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.7",
+		date: "05 Nov 2018",
+		lines: [
+			"Add responsive support options page",
+			"Update DEUS ANTICS font",
+			"Fix Unsplash API requirements",
+			"Fix steal FA",
+			"Update next holidays"
+		]
+	}, { 
 		version: "2.1.6",
 		date: "1 Nov 2018",
 		lines: [
