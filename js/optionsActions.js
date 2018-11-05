@@ -193,26 +193,37 @@ const endPoint = 'https://api.unsplash.com';
 var GLOBAL_RAND_DEFAULT;
 
 async function getImages(query, page, count) {
+	try {
 
-	if ($.trim(query).length) {
-		let response = await fetch(endPoint + '/search/photos?query=' + encodeURI($.trim(query)) + '&page=' + page + '&per_page=' + count + '&orientation=landscape&client_id=' + accesKey);
-		let jsonResponse = await response.json();
-		let imagesList = await jsonResponse.results;
-		
-		createImages(imagesList);
-		imagesPaginator(jsonResponse, page);
-	} else {
-		createImages(GLOBAL_RAND_DEFAULT);
-		$('#load-more-bg').remove();
+		if ($.trim(query).length) {
+			let response = await fetch(endPoint + '/search/photos?query=' + encodeURI($.trim(query)) + '&page=' + page + '&per_page=' + count + '&orientation=landscape&client_id=' + accesKey);
+			let jsonResponse = await response.json();
+			let imagesList = await jsonResponse.results;
+			
+			createImages(imagesList);
+			imagesPaginator(jsonResponse, page);
+		} else {
+			createImages(GLOBAL_RAND_DEFAULT);
+			$('#load-more-bg').remove();
+		}
+
+	} catch (e) {
+		emptyBgFound();
 	}
 }
 
 async function getRandom(count) {
 	let response = await fetch(endPoint + '/photos/random?query=wallpaper&count=' + count + '&orientation=landscape&client_id=' + accesKey);
 	
-	let jsonResponse = await response.json();
-	createImages(jsonResponse);
-	GLOBAL_RAND_DEFAULT = jsonResponse;
+	try {
+
+		let jsonResponse = await response.json();
+		createImages(jsonResponse);
+		GLOBAL_RAND_DEFAULT = jsonResponse;
+
+	} catch (e) {
+		emptyBgFound();
+	}
 }
 
 function imagesPaginator(jsonResponse, actualPage) {
@@ -239,13 +250,17 @@ function createImages(imagesList) {
 			`);
 		});
 	} else {
-		$('.grid-backgrounds').append(`
-			<div class="background-item not-found">
-				Not found images 😞
-			</div>
-		`);
+		emptyBgFound();
 	}
 	execMasonry();
+}
+
+function emptyBgFound() {
+	$('.grid-backgrounds').append(`
+		<div class="background-item not-found">
+			Not found images 😞
+		</div>
+	`);
 }
 
 $(document).ready(function() {
