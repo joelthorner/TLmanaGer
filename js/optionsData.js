@@ -98,6 +98,12 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.8",
+		date: "05 Nov 2018",
+		lines: [
+			"Fix Unsplash API download_location"
+		]
+	}, { 
 		version: "2.1.7",
 		date: "05 Nov 2018",
 		lines: [
