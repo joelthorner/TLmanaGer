@@ -22,7 +22,7 @@ chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 	if (typeof result.optLcBgValue.image == 'undefined') result.optLcBgValue.image = chrome.extension.getURL('img/background-default.jpg');
 
 	if (result.optLcBgActive && !$('#loginForm').length) {
-		console.log(result);
+
 		$('html').addClass('dev-background-bar');
 		var style = `
 			<style>
