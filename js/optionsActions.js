@@ -1,3 +1,11 @@
+/*
+	value="${obj.urls.full}"
+	data-thumb="${obj.urls.thumb}" 
+	data-download-location="${obj.links.download_location}?client_id=${accesKey}"
+	data-user-link="${obj.user.links.html}" 
+	data-user-name="${obj.user.name}"
+*/
+
 // support change format variable TEMP
 chrome.storage.sync.get('optLcBgValue', function(items) {
 	if (typeof items.optLcBgValue == 'string') {
@@ -8,7 +16,8 @@ chrome.storage.sync.get('optLcBgValue', function(items) {
 				image: oldBg,
 				thumb: oldBg,
 				userName: 'Joel Thorner',
-				userLink: 'https://github.com/joelthorner'
+				userLink: 'https://github.com/joelthorner',
+				downloadLocation: ''
 			}
 		}, function() {});
 	}
@@ -21,7 +30,8 @@ var defaults = {
 		image: chrome.extension.getURL('img/background-default.jpg'),
 		thumb: chrome.extension.getURL('img/background-default.jpg'),
 		userName: 'Matteo Fusco',
-		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral'
+		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral',
+		downloadLocation: ''
 	},
 	optLcPagridActive: false,
 	optLcDevBarActive: true,
@@ -44,9 +54,10 @@ function saveOptions(deelay) {
 			optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
 			optLcBgValue: { 
 				image: $('[name="opt-lc-bg"]:checked').val(),
-				thumb: $('[name="opt-lc-bg"]:checked').parents('.background-item').find('label').css('background-image').replace('url("', '').replace('")', ''),
-				userName: $('[name="opt-lc-bg"]:checked').parents('.background-item').find('a').text(),
-				userLink: $('[name="opt-lc-bg"]:checked').parents('.background-item').find('a').attr('href')
+				thumb: $('[name="opt-lc-bg"]:checked').data('thumb'),
+				userName: $('[name="opt-lc-bg"]:checked').data('user-name'),
+				userLink: $('[name="opt-lc-bg"]:checked').data('user-link'),
+				downloadLocation: $('[name="opt-lc-bg"]:checked').data('download-location') 
 			},
 			optLcPagridActive: $('#opt-lc-pagrid-active').prop('checked'),
 			optLcDevBarActive: $('#opt-lc-dev-bar-active').prop('checked'),
@@ -95,7 +106,13 @@ function restoreOptions() {
 			.find('label')
 				.css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
 				.prev('input')
-				.val(items.optLcBgValue.thumb)
+				.attr({
+					'data-thumb': items.optLcBgValue.thumb,
+					'data-download-location': items.optLcBgValue.downloadLocation,
+					'data-user-link': items.optLcBgValue.userLink,
+					'data-user-name': items.optLcBgValue.userName
+				})
+				.val(items.optLcBgValue.image)
 				.parent().find('a').attr('href', items.optLcBgValue.userLink).text(items.optLcBgValue.userName);
 
 		$('#opt-lc-pagrid-active')
@@ -176,26 +193,37 @@ const endPoint = 'https://api.unsplash.com';
 var GLOBAL_RAND_DEFAULT;
 
 async function getImages(query, page, count) {
+	try {
 
-	if ($.trim(query).length) {
-		let response = await fetch(endPoint + '/search/photos?query=' + encodeURI($.trim(query)) + '&page=' + page + '&per_page=' + count + '&orientation=landscape&client_id=' + accesKey);
-		let jsonResponse = await response.json();
-		let imagesList = await jsonResponse.results;
-		
-		createImages(imagesList);
-		imagesPaginator(jsonResponse, page);
-	} else {
-		createImages(GLOBAL_RAND_DEFAULT);
-		$('#load-more-bg').remove();
+		if ($.trim(query).length) {
+			let response = await fetch(endPoint + '/search/photos?query=' + encodeURI($.trim(query)) + '&page=' + page + '&per_page=' + count + '&orientation=landscape&client_id=' + accesKey);
+			let jsonResponse = await response.json();
+			let imagesList = await jsonResponse.results;
+			
+			createImages(imagesList);
+			imagesPaginator(jsonResponse, page);
+		} else {
+			createImages(GLOBAL_RAND_DEFAULT);
+			$('#load-more-bg').remove();
+		}
+
+	} catch (e) {
+		emptyBgFound();
 	}
 }
 
 async function getRandom(count) {
-	let response = await fetch(endPoint + '/photos/random?w=200&query=wallpaper&count=' + count + '&orientation=landscape&client_id=' + accesKey);
+	let response = await fetch(endPoint + '/photos/random?query=wallpaper&count=' + count + '&orientation=landscape&client_id=' + accesKey);
 	
-	let jsonResponse = await response.json();
-	createImages(jsonResponse);
-	GLOBAL_RAND_DEFAULT = jsonResponse;
+	try {
+
+		let jsonResponse = await response.json();
+		createImages(jsonResponse);
+		GLOBAL_RAND_DEFAULT = jsonResponse;
+
+	} catch (e) {
+		emptyBgFound();
+	}
 }
 
 function imagesPaginator(jsonResponse, actualPage) {
@@ -210,24 +238,29 @@ function imagesPaginator(jsonResponse, actualPage) {
 }
 
 function createImages(imagesList) {
+	// console.log(imagesList);
 	if (imagesList.length) {
 		$.each(imagesList, function(index, obj) {
 			$('.grid-backgrounds').append(`
 				<div class="background-item">
-					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.links.download}">
+					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.urls.full}" data-thumb="${obj.urls.thumb}" data-download-location="${obj.links.download_location}?client_id=${accesKey}" data-user-link="${obj.user.links.html}" data-user-name="${obj.user.name}">
 					<label class="aspect16by9" for="bg-radio-${obj.id}" style="background-image: url(${obj.urls.thumb});background-color: ${obj.color};"></label>
 					<a href="${obj.user.links.html}?utm_source=TLmanaGer&utm_medium=referral" target="_blank">${obj.user.name}</a>
 				</div>
 			`);
 		});
 	} else {
-		$('.grid-backgrounds').append(`
-			<div class="background-item not-found">
-				Not found images 😞
-			</div>
-		`);
+		emptyBgFound();
 	}
 	execMasonry();
+}
+
+function emptyBgFound() {
+	$('.grid-backgrounds').append(`
+		<div class="background-item not-found">
+			Not found images 😞
+		</div>
+	`);
 }
 
 $(document).ready(function() {
@@ -244,14 +277,21 @@ $(document).ready(function() {
 		$(this).parents('.background-item').addClass('active');
 
 		var $selected = $(this);
-		var link = $(this).parents('.background-item').find('a').attr('href');
-		var name = $(this).parents('.background-item').find('a').text();
-		
+		var link = $(this).data('user-link');
+		var name = $(this).data('user-name');
+		var thumb = $(this).data('thumb');
+
 		$('#opt-lc-bg-image')
 			.find('label')
-				.css('background-image', $selected.parent().find('label').css('background-image'))
+				.css('background-image', 'url("' + thumb + '")')
 				.prev('input')
 				.val($selected.val())
+				.attr({
+					'data-thumb': thumb,
+					'data-download-location': $selected.data('download-location'),
+					'data-user-link': $selected.data('user-link'),
+					'data-user-name': $selected.data('user-name')
+				})
 				.parent().find('a').attr('href', link).text(name);
 	});
 
