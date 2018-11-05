@@ -6,6 +6,7 @@ chrome.storage.sync.get('optLcBgValue', function(items) {
 		chrome.storage.sync.set({
 			optLcBgValue: {
 				image: oldBg,
+				thumb: oldBg,
 				userName: 'Joel Thorner',
 				userLink: 'https://github.com/joelthorner'
 			}
