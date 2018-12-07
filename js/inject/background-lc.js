@@ -19,7 +19,14 @@ chrome.storage.sync.get('optLcBgValue', function(items) {
 chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 
 	if (typeof result.optLcBgActive == 'undefined') result.optLcBgActive = true;
+	var forceInitBg = false;
 	if (typeof result.optLcBgValue == 'undefined') {
+		forceInitBg = true;
+	}
+	if (typeof result.optLcBgValue != 'undefined' && !result.optLcBgValue.hasOwnProperty('image')) {
+		forceInitBg = true;
+	}
+	if (forceInitBg) {
 		result.optLcBgValue = {
 			image: chrome.extension.getURL('img/background-default.jpg'),
 			thumb: chrome.extension.getURL('img/background-default.jpg'),
