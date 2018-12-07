@@ -103,7 +103,7 @@ body.HALLOWIN_HOLDIDAY .shadow ellipse {
 .chrstmaslc-leg-right .chrstmaslc-anim-part .chrstmaslc-circle-last{border-radius:20px 0 0 20px}
 .chrstmaslc-leg-right .chrstmaslc-anim-part .chrstmaslc-circle-last:before{content:"";display:block;border-bottom:20px solid #674a4a;border-right:2px solid transparent;height:0;left:15px;width:11px;position:relative;z-index:1}
 .chrstmaslc-presents{top:3px;height:45px;margin:0 auto;position:relative;width:110px}
-.chrstmaslc-presents:after{animation:shadow .4s ease-out infinite alternate-reverse;background-color:#e7eff7;bottom:0;border-radius:7px;content:"";display:block;height:7px;left:-22px;position:absolute;width:170px}
+.chrstmaslc-presents:after{animation:shadow .4s ease-out infinite alternate-reverse;background-color: rgba(231, 239, 247, 0.6);bottom:0;border-radius:7px;content:"";display:block;height:7px;left:-22px;position:absolute;width:170px}
 .chrstmaslc-present{border-radius:4px;bottom:3px;position:absolute;z-index:1}
 .chrstmaslc-present:before,.chrstmaslc-present:after{content:"";display:block;position:relative}
 .chrstmaslc-present:before{border-radius:4px 4px 2px 2px;box-shadow:0 2px 0 0 rgba(0,0,0,0.04);right:1px}
