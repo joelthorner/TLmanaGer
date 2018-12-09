@@ -19,7 +19,7 @@ html.big-controls div.interruptor.checked > div {
 	left: 23px;
 }
 html.big-controls div.editWindowLayoutHeader > div.interruptorContent {
-	bottom: 0;
+	bottom: 8px;
 }
 html.big-controls  form[action*="editUser"] div.editWindowLayoutHeader > div.interruptorContent {
 	bottom: 8px;
