@@ -98,6 +98,18 @@ var AVATARS /* The legend of Aang */ = [
 var CHANGELOG = [
 
 	{ 
+		version: "2.1.10",
+		date: "09 Des 2018",
+		lines: [
+			"Add lc page deep icon color",
+			"Add lc page inactive icon",
+			"Fix toggle grid lc pages custom",
+			"Remove useless space lc pages window",
+			"Add toggle button enable/disable grid lc custom pages",
+			"Fix bug first install bg background load fail",
+			"Minor fixes lc big controls"
+		]
+	}, { 
 		version: "2.1.9",
 		date: "25 Nov 2018",
 		lines: [
