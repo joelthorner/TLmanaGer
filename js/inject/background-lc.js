@@ -19,7 +19,22 @@ chrome.storage.sync.get('optLcBgValue', function(items) {
 chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 
 	if (typeof result.optLcBgActive == 'undefined') result.optLcBgActive = true;
-	if (typeof result.optLcBgValue.image == 'undefined') result.optLcBgValue.image = chrome.extension.getURL('img/background-default.jpg');
+	var forceInitBg = false;
+	if (typeof result.optLcBgValue == 'undefined') {
+		forceInitBg = true;
+	}
+	if (typeof result.optLcBgValue != 'undefined' && !result.optLcBgValue.hasOwnProperty('image')) {
+		forceInitBg = true;
+	}
+	if (forceInitBg) {
+		result.optLcBgValue = {
+			image: chrome.extension.getURL('img/background-default.jpg'),
+			thumb: chrome.extension.getURL('img/background-default.jpg'),
+			userName: 'Joel Thorner',
+			userLink: 'https://github.com/joelthorner',
+			downloadLocation: ''
+		}
+	}
 
 	if (result.optLcBgActive && !$('#loginForm').length) {
 
