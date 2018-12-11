@@ -21,28 +21,27 @@ function getBgImgs (doc) {
 	)
 }
 $.each(getBgImgs(document), function(index, obj) {
-	if (obj.img.includes('?')) refreshGetSymb = '&';
-	else refreshGetSymb = '?';
+	if (!obj.img.includes('base64') && !obj.img.includes('svg+xml')) {
+		if (obj.img.includes('?')) refreshGetSymb = '&';
+		else refreshGetSymb = '?';
 
-	$(obj.node).css('background-image', "url('" + obj.img + refreshGetSymb + refreshValue + "')");
+		$(obj.node).css('background-image', "url('" + obj.img + refreshGetSymb + refreshValue + "')");
+	}
 });
 
 // <img>
 $('img[src], img[srcset], source[srcset]').each(function(){
 
-	if($(this).attr('src')){
-		if ($(this).attr('src').includes('?')) refreshGetSymb = '&';
+	var attrParam = false;
+
+	if ($(this).attr('src')) attrParam = 'src';
+	if ($(this).attr('srcset')) attrParam = 'srcset';
+
+	if(attrParam){
+		if ($(this).attr(attrParam).includes('?')) refreshGetSymb = '&';
 		else refreshGetSymb = '?';
 
 		$(this)
-			.attr('src', $(this).attr('src') + refreshGetSymb + refreshValue);
-	}
-
-	if($(this).attr('srcset')){
-		if ($(this).attr('srcset').includes('?')) refreshGetSymb = '&';
-		else refreshGetSymb = '?';
-
-		$(this)
-			.attr('srcset', $(this).attr('srcset') + refreshGetSymb + refreshValue);
+			.attr(attrParam, $(this).attr(attrParam) + refreshGetSymb + refreshValue);
 	}
 });
