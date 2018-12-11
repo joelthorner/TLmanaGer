@@ -1,37 +1,13 @@
-// support change format variable TEMP
-chrome.storage.sync.get('optLcBgValue', function(items) {
-	if (typeof items.optLcBgValue == 'string') {
-		var oldBg = items.optLcBgValue;
-
-		chrome.storage.sync.set({
-			optLcBgValue: {
-				image: oldBg,
-				thumb: oldBg,
-				userName: 'Joel Thorner',
-				userLink: 'https://github.com/joelthorner',
-				downloadLocation: ''
-			}
-		}, function() {});
-	}
-});
-// end support change format variable TEMP
-
 chrome.storage.sync.get(['optLcBgActive', 'optLcBgValue'], function(result) {
 
 	if (typeof result.optLcBgActive == 'undefined') result.optLcBgActive = true;
-	var forceInitBg = false;
+
 	if (typeof result.optLcBgValue == 'undefined') {
-		forceInitBg = true;
-	}
-	if (typeof result.optLcBgValue != 'undefined' && !result.optLcBgValue.hasOwnProperty('image')) {
-		forceInitBg = true;
-	}
-	if (forceInitBg) {
 		result.optLcBgValue = {
 			image: chrome.extension.getURL('img/background-default.jpg'),
 			thumb: chrome.extension.getURL('img/background-default.jpg'),
-			userName: 'Joel Thorner',
-			userLink: 'https://github.com/joelthorner',
+			userName: 'Matteo Fusco',
+			userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral',
 			downloadLocation: ''
 		}
 	}

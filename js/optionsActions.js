@@ -1,29 +1,3 @@
-/*
-	value="${obj.urls.full}"
-	data-thumb="${obj.urls.thumb}" 
-	data-download-location="${obj.links.download_location}?client_id=${accesKey}"
-	data-user-link="${obj.user.links.html}" 
-	data-user-name="${obj.user.name}"
-*/
-
-// support change format variable TEMP
-chrome.storage.sync.get('optLcBgValue', function(items) {
-	if (typeof items.optLcBgValue == 'string') {
-		var oldBg = items.optLcBgValue;
-
-		chrome.storage.sync.set({
-			optLcBgValue: {
-				image: oldBg,
-				thumb: oldBg,
-				userName: 'Joel Thorner',
-				userLink: 'https://github.com/joelthorner',
-				downloadLocation: ''
-			}
-		}, function() {});
-	}
-});
-// end support change format variable TEMP
-
 var defaults = {
 	optLcBgActive: true,
 	optLcBgValue: {
