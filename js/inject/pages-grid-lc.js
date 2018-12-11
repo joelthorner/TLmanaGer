@@ -17,6 +17,7 @@ chrome.storage.sync.get(['optLcPagridActive'], function(result) {
 					`);
 
 					$(document).on('click', '.toggleLCGridPages', function(event) {
+						event.preventDefault();
 						$('html').toggleClass('dev-pages-grid');
 					});
 
