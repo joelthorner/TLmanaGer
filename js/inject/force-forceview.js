@@ -8,11 +8,8 @@ chrome.storage.sync.get(['optDevForceview'], function(result) {
 		if (location.href.match(rgx)) {
 			if (!document.cookie.toUpperCase().includes('FORCEVIEW=1')) {
 				if (!location.href.toUpperCase().includes('FORCEVIEW')) {
-					if (location.href.includes('?')) {
-						window.location = window.location.href + '&forceview=1'
-					} else {
-						window.location = window.location.href + '?forceview=1'
-					}
+					var param = location.href.includes('?') ? '&' : '?';
+					window.location = window.location.href + param + 'forceview=1';
 				}
 			}
 		}
