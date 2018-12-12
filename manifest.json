@@ -1,7 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.1.9",
-	"version": "2.1.10",
+	"version": "2.1.11",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -16,7 +15,7 @@
 		"scripts": [
 			"js/background.js"
 		],
-		"persistent": false
+		"persistent": true
 	},
 	"options_page": "src/options/index.html",
 	"browser_action": {
@@ -61,6 +60,15 @@
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
 				"js/inject/steal-font-awesome.js"
+			]
+		},
+		{
+			"matches": [
+				"*://*.igd.production/*"
+			],
+			"js": [
+				"js/libs/jquery-3.3.1.min.js",
+				"js/inject/dev-flush-cfm.js"
 			]
 		},
 		{
@@ -112,7 +120,9 @@
 				"js/libs/jquery-3.3.1.min.js",
 				"js/libs/js.cookie.js",
 				"js/actions/load-guide-lines.js"
-			]
+			],
+			"run_at": "document_start",
+			"all_frames": true
 		}
 	]
 }
