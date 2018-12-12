@@ -11,6 +11,7 @@ var defaults = {
 	optLcDevBarActive: true,
 	optDevForceview: true,
 	optDevStealFa : true,
+	optDevFlushCfm : true,
 	optProfileName: 'Booker DeWitt',
 	optProfileAvatar: 'img/logo.svg',
 	optLcBigControls: false,
@@ -37,6 +38,7 @@ function saveOptions(deelay) {
 			optLcDevBarActive: $('#opt-lc-dev-bar-active').prop('checked'),
 			optDevForceview: $('#opt-dev-forceview').prop('checked'),
 			optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
+			optDevFlushCfm: $('#opt-dev-flush-cfm').prop('checked'),
 			optProfileName: $('#opt-profile-name').val(),
 			optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
@@ -118,6 +120,14 @@ function restoreOptions() {
 			.filter(function(index) {
 				var $parent = $(this).parents('.mdc-switch');
 				if (items.optDevStealFa) $parent.addClass('mdc-switch--checked');
+				else $parent.removeClass('mdc-switch--checked');
+			})
+
+		$('#opt-dev-flush-cfm')
+			.prop('checked', items.optDevFlushCfm)
+			.filter(function(index) {
+				var $parent = $(this).parents('.mdc-switch');
+				if (items.optDevFlushCfm) $parent.addClass('mdc-switch--checked');
 				else $parent.removeClass('mdc-switch--checked');
 			})
 
