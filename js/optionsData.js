@@ -34,11 +34,12 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.1.11", date: "xx Des 2018",
+		version: "2.1.11", date: "13 Des 2018",
 		lines: [
 			"Refactoring and clean code",
 			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/66\" target=\"_blank\">#66</a>",
-			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/67\" target=\"_blank\">#67</a>"
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/67\" target=\"_blank\">#67</a>",
+			"Add flushredis cfm feature (with on/off opt)"
 		]
 	}, {
 		version: "2.1.10", date: "09 Des 2018",
