@@ -37,7 +37,8 @@ var CHANGELOG = [
 		version: "2.1.12", date: "09 Jan 2019",
 		lines: [
 			"Fix dev os lc bar extra buttons",
-			"Fix flushredis button wrong domains"
+			"Fix flushredis button wrong domains",
+			"Add popup swiper css generator"
 		]
 	}, {
 		version: "2.1.11", date: "13 Des 2018",
