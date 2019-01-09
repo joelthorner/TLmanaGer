@@ -78,6 +78,18 @@ function initSnbxOsBar() {
 	}, 50);
 }
 
+function initRealOsBar() {
+	$('.nav-dev-lc-bar .bar-dev-buttons').append(`
+		<input type="button" class="green btn-os-xtra-rep" value="Open repo">
+		<input type="button" class="green btn-os-xtra-pub" value="Publish">
+
+		<script>
+			jQuery('.btn-os-xtra-rep').click(function(event) { openOSRepo() });
+			jQuery('.btn-os-xtra-pub').click(function(event) { openOSPublish() });
+		</script>
+	`);
+}
+
 chrome.storage.sync.get({ 'optLcDevBarActive' : true }, function(result) {
 
 	if (result.optLcDevBarActive) {
@@ -92,6 +104,8 @@ chrome.storage.sync.get({ 'optLcDevBarActive' : true }, function(result) {
 
 
 		if (enviroment == 'real_os') {
+			initBasicBar();
+			initRealOsBar();
 		}
 
 		if (enviroment == 'snbx_os') {
@@ -100,7 +114,7 @@ chrome.storage.sync.get({ 'optLcDevBarActive' : true }, function(result) {
 		}
 
 		if (enviroment == 'others') {
-
+			initBasicBar();
 		}
 
 		$('body').addClass('hidden-tlg-window');
