@@ -11,7 +11,7 @@ chrome.storage.sync.get(['optLcPagridActive'], function(result) {
 			$('html').toggleClass('dev-pages-grid-columns');
 		});
 
-		$(document).on('click.tlg', '[onclick*="openPages"]', function(event) {
+		$(document).on('click.tlg', '[onclick*="openPages"], .btn-os-xtra-pag', function(event) {
 			setTimeout(function(){
 				
 				var $window = $('.pagesGroupContainer').parents('.window');
