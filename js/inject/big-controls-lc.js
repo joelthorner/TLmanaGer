@@ -1,7 +1,5 @@
-chrome.storage.sync.get(['optLcBigControls'], function(result) {
-
-	if (typeof result.optLcBigControls == 'undefined') result.optLcBigControls = true;
-
+chrome.storage.sync.get({ optLcBigControls: true }, function(result) {
+	
 	if (result.optLcBigControls && !$('#loginForm').length) {
 		
 		$('html').addClass('big-controls');

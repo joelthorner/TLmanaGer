@@ -110,9 +110,7 @@ var _SKELETON_ = `
 	</div>
 `;
 
-chrome.storage.sync.get(['optDevStealFa'], function(result) {
-
-	if (typeof result.optDevStealFa == 'undefined') result.optDevStealFa = true;
+chrome.storage.sync.get({ optDevStealFa: true }, function(result) {
 
 	if (result.optDevStealFa) {
 
