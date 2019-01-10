@@ -45,6 +45,7 @@ function initSnbxOsBar() {
 
 			// clear window openeds
 			$('body').append('<script>window.windows.windows = [];</script>');
+			$('#taskBar .taskMenuLink').remove();
 
 			// os utils window edits
 			$('[ls*="utilCleanCacheCode"]').val('Flush redis');
@@ -90,18 +91,20 @@ function initRealOsBar() {
 	`);
 }
 
+function setEnviroment() {
+	if ($("#SML_osUtils").length) return 'snbx_os';
+	else if ($('#SML_osRepo').length) return 'real_os';
+	else if (!location.href.contains('login')) return 'others';
+
+	return 'no_bar';
+}
+
 chrome.storage.sync.get({ 'optLcDevBarActive' : true }, function(result) {
 
 	if (result.optLcDevBarActive) {
 		$('html').addClass('dev-lc-bar');
 		
-		// get enviroment: snbx_os, real_os, others
-		var enviroment = 'others';
-
-		if ($("#SML_osUtils").length) enviroment = 'snbx_os';
-		else if ($('#SML_osRepo').length) enviroment = 'real_os';
-		// end get enviroment
-
+		var enviroment = setEnviroment();
 
 		if (enviroment == 'real_os') {
 			initBasicBar();
