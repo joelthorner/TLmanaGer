@@ -38,7 +38,8 @@ var CHANGELOG = [
 		lines: [
 			"Minor fixes dev os lc bar",
 			"Scripts optimization",
-			"Fix setting flushredis on/off"
+			"Fix setting flushredis on/off",
+			"Add feature 'show svg icons'"
 		]
 	}, {
 		version: "2.1.12", date: "09 Jan 2019",
