@@ -22,24 +22,27 @@ function initBasicBar() {
 			jQuery('.btn-os-xtra-ftp').click(function(event) { openFileManager() });
 		</script>
 	`);
-
+	
 	$('.bar-dev-search').append(
 		$('#searchMenu').detach()
 	);
 	
-	$('#bottomBar #startMenuUser')
-		.before(`<div class="search-custom"><input class="search-bar-custom menuEntry noClose" type="text" placeholder="Busqui vostè..." /></div>`);
+	$('#bottomBar #startMenuUser').before(`
+		<div class="search-custom">
+			<input class="search-bar-custom menuEntry noClose" type="text" placeholder="Busqui vostè...">
+		</div>
+	`);
 	
-	var customsearch = $('#bottomBar .search-bar-custom');
+	var $customSearch = $('#bottomBar .search-bar-custom');
 	
-	$(customsearch).on('input', function(event) {
+	$customSearch.on('input', function(event) {
 		$("#searchMenu input").val($(this).val());
 	});
 
-	$(customsearch).on('keypress', function(event) {
-		if(event.keyCode == 13){
+	$customSearch.on('keypress', function(event) {
+		if (event.keyCode == 13) {
 			$("#searchMenu input").focus();
-			$(customsearch).val('');
+			$customSearch.val('');
 		}
 	});
 	
