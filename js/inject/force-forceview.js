@@ -1,6 +1,4 @@
-chrome.storage.sync.get(['optDevForceview'], function(result) {
-
-	if (typeof result.optDevForceview == 'undefined') result.optDevForceview = true;
+chrome.storage.sync.get({ optDevForceview: true }, function(result) {
 
 	if (result.optDevForceview) {
 		var rgx = /https?:\/\/(www)?\.?[0-9]{2,5}(\.logicommerce(\.net|\.cn|\.hk)|\.igd\.(pre\.)?production)\/?/;

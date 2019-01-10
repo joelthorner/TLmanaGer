@@ -1,8 +1,6 @@
 // Dates: YYYY-MM-DD
 
-chrome.storage.sync.get(['optLcHolidays'], function(result) {
-
-	if (typeof result.optLcHolidays == 'undefined') result.optLcHolidays = true;
+chrome.storage.sync.get({ optLcHolidays: true }, function(result) {
 
 	if (result.optLcHolidays) {
 		
