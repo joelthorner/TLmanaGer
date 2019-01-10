@@ -99,7 +99,7 @@ function setEnviroment() {
 	return 'no_bar';
 }
 
-chrome.storage.sync.get({ 'optLcDevBarActive' : true }, function(result) {
+chrome.storage.sync.get({ optLcDevBarActive : true }, function(result) {
 
 	if (result.optLcDevBarActive) {
 		$('html').addClass('dev-lc-bar');

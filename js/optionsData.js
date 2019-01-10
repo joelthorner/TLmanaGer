@@ -36,7 +36,9 @@ var CHANGELOG = [
 	{
 		version: "2.1.13", date: "10 Jan 2019",
 		lines: [
-			"Minor fixes dev os lc bar"
+			"Minor fixes dev os lc bar",
+			"Scripts optimization",
+			"Fix setting flushredis on/off"
 		]
 	}, {
 		version: "2.1.12", date: "09 Jan 2019",
