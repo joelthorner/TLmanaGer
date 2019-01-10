@@ -217,16 +217,16 @@ html.dev-lc-bar .search-custom .search-bar-custom{
 	background-size: 15px;
 	background-repeat:no-repeat;
 	border-radius: 4px;
-    width: 100%;
+	width: 100%;
 }
 
 html.dev-lc-bar .search-custom{
-    line-height: 49px;
-    height: 38px;
-    padding: 10px;
-    padding-top: 0px;
-    width: calc(100% - 20px);
-    border-top: 1px solid #333;
+	line-height: 49px;
+	height: 38px;
+	padding: 10px;
+	padding-top: 0px;
+	width: calc(100% - 20px);
+	border-top: 1px solid #333;
 }
 
 
