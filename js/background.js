@@ -69,6 +69,12 @@ chrome.runtime.onMessage.addListener(
 					{ file: "js/actions/secret-hack.js" }
 				])
 				break;
+			case 'show-svg-icons':
+				executeScripts(null, [ 
+					{ file: "js/libs/jquery-3.3.1.min.js" },
+					{ file: "js/actions/show-svg-icons.js" }
+				])
+				break;
 		}
 	}
 );

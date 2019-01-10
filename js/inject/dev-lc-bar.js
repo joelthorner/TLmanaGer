@@ -94,7 +94,7 @@ function initRealOsBar() {
 function setEnviroment() {
 	if ($("#SML_osUtils").length) return 'snbx_os';
 	else if ($('#SML_osRepo').length) return 'real_os';
-	else if (!location.href.contains('login')) return 'others';
+	else if (!location.href.includes('login')) return 'others';
 
 	return 'no_bar';
 }
