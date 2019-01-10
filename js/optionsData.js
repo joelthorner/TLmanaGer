@@ -39,7 +39,8 @@ var CHANGELOG = [
 			"Minor fixes dev os lc bar",
 			"Scripts optimization",
 			"Fix setting flushredis on/off",
-			"Add feature 'show svg icons'"
+			"Add feature 'show svg icons'",
+			"Dev os lc bar duplicate search (Pol)"
 		]
 	}, {
 		version: "2.1.12", date: "09 Jan 2019",
