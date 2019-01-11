@@ -22,10 +22,30 @@ function initBasicBar() {
 			jQuery('.btn-os-xtra-ftp').click(function(event) { openFileManager() });
 		</script>
 	`);
-
+	
 	$('.bar-dev-search').append(
 		$('#searchMenu').detach()
 	);
+	
+	$('#bottomBar #startMenuUser').before(`
+		<div class="search-custom">
+			<input class="search-bar-custom menuEntry noClose" type="text" placeholder="Busqui vostè...">
+		</div>
+	`);
+	
+	var $customSearch = $('#bottomBar .search-bar-custom');
+	
+	$customSearch.on('input', function(event) {
+		$("#searchMenu input").val($(this).val());
+	});
+
+	$customSearch.on('keypress', function(event) {
+		if (event.keyCode == 13) {
+			$("#searchMenu input").focus();
+			$customSearch.val('');
+		}
+	});
+	
 }
 
 function initSnbxOsBar() {
