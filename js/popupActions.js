@@ -2,24 +2,26 @@ $(document).ready(function() {
 
 	// init [add-guide-lines]
 	chrome.tabs.query({ "status": "complete", "windowId": chrome.windows.WINDOW_ID_CURRENT, "active": true }, function(tab) {
-		if (!tab[0].url.includes('chrome://')) {	
-			chrome.cookies.get({ url: tab[0].url, name: 'add-guide-lines-active' }, function (cookie) {
-				if (cookie) {
-					var cookieVal = parseInt(cookie.value);
-					
-					if (cookieVal == 0) dataDirective = 'add-guide-lines';
-					else if (cookieVal == 1) dataDirective = 'remove-guide-lines';
-				} else {
-					dataDirective = 'add-guide-lines';
-				}
+		if (tab[0]) {	
+			if (!tab[0].url.includes('chrome://')) {	
+				chrome.cookies.get({ url: tab[0].url, name: 'add-guide-lines-active' }, function (cookie) {
+					if (cookie) {
+						var cookieVal = parseInt(cookie.value);
+						
+						if (cookieVal == 0) dataDirective = 'add-guide-lines';
+						else if (cookieVal == 1) dataDirective = 'remove-guide-lines';
+					} else {
+						dataDirective = 'add-guide-lines';
+					}
 
-				$('#guide-lines-btn')
-					.attr('data-directive', dataDirective)
-					.parents('.item-grid')
-					.addClass(function() { 
-						if (dataDirective == 'remove-guide-lines') return 'active';
-					})
-			});
+					$('#guide-lines-btn')
+						.attr('data-directive', dataDirective)
+						.parents('.item-grid')
+						.addClass(function() { 
+							if (dataDirective == 'remove-guide-lines') return 'active';
+						})
+				});
+			}
 		}
 	});
 
