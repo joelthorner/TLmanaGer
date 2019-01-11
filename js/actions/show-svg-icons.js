@@ -136,7 +136,6 @@ function insertIconsHtml($source) {
 				}
 				#TLmanaGer-icons .TLmanaGer-icons-body-title {
 					width: 100%;
-					margin-bottom: -10px;
 					color: #888;
 					text-align: center;
 				}
@@ -161,16 +160,27 @@ function insertIconsHtml($source) {
 	});
 }
 
+function getElAttributes($el) {
+	var el = $el[0];
+	for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++){
+		arr.push({ 
+			name: atts[i].nodeName, 
+			value: atts[i].nodeValue 
+		});
+	}
+	return arr;
+}
+
 var $iconsSprite = $('#TLmanaGer-icons');
 
 if ($iconsSprite.length) {
 	$iconsSprite.remove();
 } else {
 
-	var $spriteEl = searchIcons('body *:not(:visible) svg, body *.sr-only svg', 'svg');
+	var $spriteEl = searchIcons('body *:not(:visible):not(script):not(style) svg, body *.sr-only svg', 'svg');
 
 	if ($spriteEl == null) {
-		$spriteEl = searchIcons('body *:not(:visible) symbol, body *.sr-only symbol', 'symbol');
+		$spriteEl = searchIcons('body svg symbol', 'symbol');
 	}
 	if ($spriteEl != null) {
 
@@ -181,6 +191,20 @@ if ($iconsSprite.length) {
 			$(el).wrap('<div class="icon-wrap"></div>');
 			$(el).after('<div class="icon-name">' + $(el).attr('id') + '</div>');
 			$(el).after('<input type="text" class="input-name" value="' + $(el).attr('id') + '">');
+			
+			if ($(el).is('symbol')) {
+				var symbolAttrs = "";
+				$.each(getElAttributes($(el)), function(index, obj) {
+					symbolAttrs += obj.name + '="' + obj.value + '" ';
+				});
+
+				$(el).replaceWith(
+					'<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ' + symbolAttrs + '>' + 
+						$(el).html() + 
+					'</svg>'
+				);
+			}
+
 		});
 		insertIconsHtml($clone);
 	}
