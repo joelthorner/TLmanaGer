@@ -145,6 +145,7 @@ function restoreOptions() {
 			.val(items.optProfilePass)
 			.filter(function(index) {
 				if ($.trim(items.optProfilePass).length) return true;
+			})
 			.next()
 			.addClass('mdc-floating-label--float-above');
 
