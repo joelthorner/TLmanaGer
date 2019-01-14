@@ -12,7 +12,8 @@ var defaults = {
 	optDevForceview: true,
 	optDevStealFa : true,
 	optDevFlushCfm : true,
-	optProfileName: 'Booker DeWitt',
+	optProfileEmail: '',
+	optProfilePass: '',
 	optProfileAvatar: 'img/logo.svg',
 	optLcBigControls: false,
 	optLcHolidays: true
@@ -39,7 +40,8 @@ function saveOptions(deelay) {
 			optDevForceview: $('#opt-dev-forceview').prop('checked'),
 			optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
 			optDevFlushCfm: $('#opt-dev-flush-cfm').prop('checked'),
-			optProfileName: $('#opt-profile-name').val(),
+			optProfileEmail: $('#opt-profile-email').val(),
+			optProfilePass: $('#opt-profile-pass').val(),
 			optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
 			optLcHolidays: $('#opt-lc-holidays').prop('checked')
@@ -131,11 +133,18 @@ function restoreOptions() {
 				else $parent.removeClass('mdc-switch--checked');
 			})
 
-		$('#opt-profile-name')
-			.val(items.optProfileName)
+		$('#opt-profile-email')
+			.val(items.optProfileEmail)
 			.filter(function(index) {
-				if ($.trim(items.optProfileName).length) return true;
+				if ($.trim(items.optProfileEmail).length) return true;
 			})
+			.next()
+			.addClass('mdc-floating-label--float-above');
+
+		$('#opt-profile-pass')
+			.val(items.optProfilePass)
+			.filter(function(index) {
+				if ($.trim(items.optProfilePass).length) return true;
 			.next()
 			.addClass('mdc-floating-label--float-above');
 
@@ -289,7 +298,7 @@ $(document).ready(function() {
 			saveOptions(750);
 		});
 		
-	$('#opt-profile-name').keyup(function(event) {
+	$('#opt-profile-email, #opt-profile-pass').keyup(function(event) {
 		saveOptions(2000);
 	});
 	// end autosaves
