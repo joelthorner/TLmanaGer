@@ -75,6 +75,13 @@ chrome.runtime.onMessage.addListener(
 					{ file: "js/actions/show-svg-icons.js" }
 				])
 				break;
+			case 'testing-signup':
+				executeScripts(null, [ 
+					{ file: "js/libs/moment.js" },
+					{ file: "js/libs/jquery-3.3.1.min.js" },
+					{ file: "js/actions/testing-signup.js" }
+				])
+				break;
 		}
 	}
 );
