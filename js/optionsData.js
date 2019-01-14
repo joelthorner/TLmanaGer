@@ -34,13 +34,14 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.1.13", date: "10 Jan 2019",
+		version: "2.1.13", date: "14 Jan 2019",
 		lines: [
 			"Minor fixes dev os lc bar",
 			"Scripts optimization",
 			"Fix setting flushredis on/off",
-			"Add feature 'show svg icons'",
-			"Dev os lc bar duplicate search (Pol)"
+			"Add feature 'show svg icons' (popup -> utils)",
+			"Dev os lc bar duplicate search (Pol)",
+			"Add feature 'automatic signup' (Pol) (popup -> testing)"
 		]
 	}, {
 		version: "2.1.12", date: "09 Jan 2019",
