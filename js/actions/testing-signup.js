@@ -34,22 +34,24 @@ var defaults = {
 
 chrome.storage.sync.get(defaults, function(result) {
 	
-	if (result.optProfileEmail.length == 0 || result.optProfilePass.length == 0) {
+	if (!result.optProfileEmail.length || !result.optProfilePass.length) {
+		var url = chrome.extension.getURL('src/options/index.html');
+		var link = `<a href="${url}" target="_blank">Options</a>`
 		var str = `
-			<div id="signup-config-message" class="alert alert-danger signup-config-message"
-				style="top: 40px;position: fixed;z-index: 9999;padding: 18px;font-size: 18px;
-				left: 50%;width: 350px; margin-left: -175px; text-align: center;"
-			>Cal Configurar les opcions </div>
+			<script>
+				Fluid.notify('Per aquesta acció cal configurar un email i una password a les opcions de la extensió: ${link}', {
+					title: 'Error de configuració!',
+					type: 'danger',
+					sticky: false,
+					deelay: 5000
+				});
+			</script>
 		`;
 		
-		$("body").append(str); 
-		
-		timeouts(5000, function() { 
-			$("#signup-config-message").fadeOut(400, function() {
-				$(this).remove();
-			}); 
-		});	
+		$("body").append(str);
+
 	} else {
+
 		$("#userFormFieldsContainer > .userFormFields > div, #signInFormFieldsContainer > .userField").each(function() { 
 			switch ($(this).attr("Id")) {
 				case 'userFieldFirstNameContainer':
@@ -75,6 +77,7 @@ chrome.storage.sync.get(defaults, function(result) {
 						$(el).find('option:eq(1)').prop('selected', true);
 						simulateClickElement(el);
 					});
+
 					var configCS = { 
 						attributes: false, 
 						childList: true, 
@@ -87,12 +90,14 @@ chrome.storage.sync.get(defaults, function(result) {
 					var observerCS = new MutationObserver(function(mutations) {
 						mutations.forEach(function(mutation) {
 							if(mutation.addedNodes.length != 0){
+								
 								var $sel = $(mutation.target).find('select');
-								var $inputs = $(mutation.target).find('input');
 								if ($sel.length) {
 									$sel.find('option:eq(1)').prop('selected', true);
 									simulateClickElement($sel[0]);
 								}
+								
+								var $inputs = $(mutation.target).find('input');
 								if ($inputs.length) {
 									$inputs.val("testcity");
 								}
