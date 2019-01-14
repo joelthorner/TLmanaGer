@@ -11,14 +11,15 @@ $(function() {
 		$('.panel').removeClass('active');
 		$(id).addClass('active');
 	});
+	
+	var defaults = {
+		optProfileEmail: 'youremail@test.com', 
+		optProfileAvatar: 'img/logo.svg'
+	};
 
-	chrome.storage.sync.get(['optProfileName', 'optProfileAvatar'], function(result) {
-
-		if (typeof result.optProfileName == 'undefined') result.optProfileName = 'Booker DeWitt';
-		if (typeof result.optProfileAvatar == 'undefined') result.optProfileAvatar = 'img/logo.svg';
-		
+	chrome.storage.sync.get(defaults, function(result) {
 		$('.profile').attr('src', chrome.extension.getURL(result.optProfileAvatar));
-		$('.name-user').text(result.optProfileName);
+		$('.name-user').text(result.optProfileEmail);
 	});
 	
 });
