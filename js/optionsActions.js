@@ -12,7 +12,8 @@ var defaults = {
 	optDevForceview: true,
 	optDevStealFa : true,
 	optDevFlushCfm : true,
-	optProfileName: 'Booker DeWitt',
+	optProfileEmail: '',
+	optProfilePass: '',
 	optProfileAvatar: 'img/logo.svg',
 	optLcBigControls: false,
 	optLcHolidays: true
