@@ -69,7 +69,8 @@
 			],
 			"exclude_matches": [
 				"*://adm.igd.production/*",
-				"*://fluiddoc.igd.production/*"
+				"*://fluiddoc.igd.production/*",
+				"*://tlgcommerce-hk.igd.production/*"
 			],
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
