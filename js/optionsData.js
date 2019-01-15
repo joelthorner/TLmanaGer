@@ -34,6 +34,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: "2.1.14", date: "xx xxx 2019",
+		lines: [
+			"Better Show new templates 2018"
+		]
+	}, {
 		version: "2.1.13", date: "14 Jan 2019",
 		lines: [
 			"Minor fixes dev os lc bar",
