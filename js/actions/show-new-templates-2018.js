@@ -1,4 +1,4 @@
-console.log('TLmanaGer Action: "show-new-templates-2018";');
+console.log(chrome.i18n.getMessage("showNewTemplate2018_consoleLog"));
 
 $('[data-module]').each(function(index, el) {
 	

@@ -1,4 +1,4 @@
-console.log('TLmanaGer Action: "add-guide-lines";');
+console.log(chrome.i18n.getMessage("addGuideLines_consoleLog"));
 
 $(function() {
 	Cookies.set('add-guide-lines-active', '1');
