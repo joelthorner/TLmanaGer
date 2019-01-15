@@ -1,4 +1,4 @@
-console.log('TLmanaGer Action: "get-ftp-settings";');
+console.log(chrome.i18n.getMessage("getFtpSettings_consoleLog"));
 
 $(document).ready(function() {
 	

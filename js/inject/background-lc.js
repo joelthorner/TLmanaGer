@@ -58,16 +58,16 @@ chrome.storage.sync.get(defaults, function(result) {
 		if (result.optLcBgValue.downloadLocation.length) {
 
 			var jqxhr = $.get( result.optLcBgValue.downloadLocation, function() {
-				console.log( "API unsplash download_location send ok" );
+				console.log(chrome.i18n.getMessage("backgroundLc_apiSend"));
 			})
 			.done(function() {
-				console.log( "API unsplash download_location send ok after" );
+				console.log(chrome.i18n.getMessage("backgroundLc_apiDone"));
 			})
 			.fail(function() {
-				console.log( "API unsplash download_location error" );
+				console.log(chrome.i18n.getMessage("backgroundLc_apiFail"));
 			})
 			.always(function() {
-				console.log( "API unsplash download_location finish" );
+				console.log(chrome.i18n.getMessage("backgroundLc_apiAlways"));
 			});
 		}
 	}

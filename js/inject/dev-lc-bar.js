@@ -7,11 +7,11 @@ function initBasicBar() {
 			<div class="bar-dev-buttons"></div>
 			<div class="bar-dev-search"></div>
 			<div class="bar-dev-extra">
-				<button title="Pages" type="button" class="btn-os-xtra btn-os-xtra-pag"></button>
-				<button title="Banners" type="button" class="btn-os-xtra btn-os-xtra-ban"></button>
-				<button title="Customtags" type="button" class="btn-os-xtra btn-os-xtra-tag"></button>
-				<button title="Sections" type="button" class="btn-os-xtra btn-os-xtra-sec"></button>
-				<button title="FTP" type="button" class="btn-os-xtra btn-os-xtra-ftp"></button>
+				<button title="${chrome.i18n.getMessage("pages")}" type="button" class="btn-os-xtra btn-os-xtra-pag"></button>
+				<button title="${chrome.i18n.getMessage("banners")}" type="button" class="btn-os-xtra btn-os-xtra-ban"></button>
+				<button title="${chrome.i18n.getMessage("customtags")}" type="button" class="btn-os-xtra btn-os-xtra-tag"></button>
+				<button title="${chrome.i18n.getMessage("sections")}" type="button" class="btn-os-xtra btn-os-xtra-sec"></button>
+				<button title="${chrome.i18n.getMessage("ftp")}" type="button" class="btn-os-xtra btn-os-xtra-ftp"></button>
 			</div>
 		</nav>
 		<script>
