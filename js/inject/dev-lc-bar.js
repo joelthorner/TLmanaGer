@@ -1,27 +1,29 @@
+var _BASIC_STRUCT_ = `
+	<nav class="nav-dev-lc-bar">
+		<div class="bar-icon">
+			<div class="icon"></div>
+		</div>
+		<div class="bar-dev-buttons"></div>
+		<div class="bar-dev-search"></div>
+		<div class="bar-dev-extra">
+			<button title="${chrome.i18n.getMessage("pages")}" type="button" class="btn-os-xtra btn-os-xtra-pag"></button>
+			<button title="${chrome.i18n.getMessage("banners")}" type="button" class="btn-os-xtra btn-os-xtra-ban"></button>
+			<button title="${chrome.i18n.getMessage("customtags")}" type="button" class="btn-os-xtra btn-os-xtra-tag"></button>
+			<button title="${chrome.i18n.getMessage("sections")}" type="button" class="btn-os-xtra btn-os-xtra-sec"></button>
+			<button title="${chrome.i18n.getMessage("ftp")}" type="button" class="btn-os-xtra btn-os-xtra-ftp"></button>
+		</div>
+	</nav>
+	<script>
+		jQuery('.btn-os-xtra-pag').click(function(event) { openPages() });
+		jQuery('.btn-os-xtra-ban').click(function(event) { openBanners() });
+		jQuery('.btn-os-xtra-tag').click(function(event) { openCustomTagsGroups() });
+		jQuery('.btn-os-xtra-sec').click(function(event) { openRelatedDefinitions() });
+		jQuery('.btn-os-xtra-ftp').click(function(event) { openFileManager() });
+	</script>
+`;
+
 function initBasicBar() {
-	$('body').append(`
-		<nav class="nav-dev-lc-bar">
-			<div class="bar-icon">
-				<div class="icon"></div>
-			</div>
-			<div class="bar-dev-buttons"></div>
-			<div class="bar-dev-search"></div>
-			<div class="bar-dev-extra">
-				<button title="${chrome.i18n.getMessage("pages")}" type="button" class="btn-os-xtra btn-os-xtra-pag"></button>
-				<button title="${chrome.i18n.getMessage("banners")}" type="button" class="btn-os-xtra btn-os-xtra-ban"></button>
-				<button title="${chrome.i18n.getMessage("customtags")}" type="button" class="btn-os-xtra btn-os-xtra-tag"></button>
-				<button title="${chrome.i18n.getMessage("sections")}" type="button" class="btn-os-xtra btn-os-xtra-sec"></button>
-				<button title="${chrome.i18n.getMessage("ftp")}" type="button" class="btn-os-xtra btn-os-xtra-ftp"></button>
-			</div>
-		</nav>
-		<script>
-			jQuery('.btn-os-xtra-pag').click(function(event) { openPages() });
-			jQuery('.btn-os-xtra-ban').click(function(event) { openBanners() });
-			jQuery('.btn-os-xtra-tag').click(function(event) { openCustomTagsGroups() });
-			jQuery('.btn-os-xtra-sec').click(function(event) { openRelatedDefinitions() });
-			jQuery('.btn-os-xtra-ftp').click(function(event) { openFileManager() });
-		</script>
-	`);
+	$('body').append(_BASIC_STRUCT_);
 	
 	$('.bar-dev-search').append(
 		$('#searchMenu').detach()
@@ -45,7 +47,37 @@ function initBasicBar() {
 			$customSearch.val('');
 		}
 	});
-	
+}
+
+function flushSnbxOsBar() {
+	$(document).on('click', '.__cleanCacheCode__', function(event) {
+		$('body').addClass('hidden-tlg');
+		
+		var $utilCleanCacheCode = $('[ls="opensaas.utilCleanCacheCode"]').val(' ... ');
+		
+		setTimeout(function() {
+			$('.messageBox .rightButtons input').first().click();
+			
+			setTimeout(function() {
+				$('.messageBox .rightButtons input').first().click();
+				$utilCleanCacheCode.val(chrome.i18n.getMessage("devLcBar_done"));
+				
+				setTimeout(function() {
+					$('body').removeClass('hidden-tlg');
+					$utilCleanCacheCode.val(chrome.i18n.getMessage("devLcBar_utilCleanCacheCode"));
+				}, 650);
+			}, 1000);
+		}, 300);
+	});
+}
+
+function btnsSnbxOsBar() {
+	$('[ls*="utilCleanCacheCode"]').val(chrome.i18n.getMessage("devLcBar_utilCleanCacheCode"));
+	$('[ls*="utilUpdateCacheProducts"]').val(chrome.i18n.getMessage("devLcBar_utilUpdateCacheProducts"));
+	$('[ls*="utilUpdateCacheCategories"]').val(chrome.i18n.getMessage("devLcBar_utilUpdateCacheCategories"));
+	$('[ls*="utilReloadApps"]').val(chrome.i18n.getMessage("devLcBar_utilReloadApps"));
+	$('[ls*="utilReloadEvents"]').val(chrome.i18n.getMessage("devLcBar_utilReloadEvents"));
+	$('[ls*="utilDownloadProjectCode"]').val(chrome.i18n.getMessage("devLcBar_utilDownloadProjectCode"));
 }
 
 function initSnbxOsBar() {
@@ -67,34 +99,8 @@ function initSnbxOsBar() {
 			$('body').append('<script>window.windows.windows = [];</script>');
 			$('#taskBar .taskMenuLink').remove();
 
-			// os utils window edits
-			$('[ls*="utilCleanCacheCode"]').val(chrome.i18n.getMessage("devLcBar_utilCleanCacheCode"));
-			$('[ls*="utilUpdateCacheProducts"]').val(chrome.i18n.getMessage("devLcBar_utilUpdateCacheProducts"));
-			$('[ls*="utilUpdateCacheCategories"]').val(chrome.i18n.getMessage("devLcBar_utilUpdateCacheCategories"));
-			$('[ls*="utilReloadApps"]').val(chrome.i18n.getMessage("devLcBar_utilReloadApps"));
-			$('[ls*="utilReloadEvents"]').val(chrome.i18n.getMessage("devLcBar_utilReloadEvents"));
-			$('[ls*="utilDownloadProjectCode"]').val(chrome.i18n.getMessage("devLcBar_utilDownloadProjectCode"));
-
-			// click flush
-			$(document).on('click', '.__cleanCacheCode__', function(event) {
-				$('body').addClass('hidden-tlg');
-				
-				var $utilCleanCacheCode = $('[ls="opensaas.utilCleanCacheCode"]').val(' ... ');
-				
-				setTimeout(function() {
-					$('.messageBox .rightButtons input').first().click();
-					
-					setTimeout(function() {
-						$('.messageBox .rightButtons input').first().click();
-						$utilCleanCacheCode.val(chrome.i18n.getMessage("devLcBar_done"));
-						
-						setTimeout(function() {
-							$('body').removeClass('hidden-tlg');
-							$utilCleanCacheCode.val(chrome.i18n.getMessage("devLcBar_utilCleanCacheCode"));
-						}, 650);
-					}, 1000);
-				}, 300);
-			});
+			btnsSnbxOsBar();
+			flushSnbxOsBar();
 		}
 	}, 50);
 }
