@@ -36,7 +36,7 @@ html.big-controls .gitCommitMessage.__commitMessage__ {
 		width: 25px;
 	}
 	html.big-controls input[type=checkbox]:checked {
-		background-position: 0px -1px;
+		background-position: 0 -1px;
 		background-size: 25px;
 	}
 }
@@ -80,5 +80,5 @@ html.big-controls div.headerIcons.small > div.view1 div.interruptor.small {
 	}
 }
 html.big-controls div.footerControls {
-	padding: 0px 10px 6px;
+	padding: 0 10px 6px;
 }
