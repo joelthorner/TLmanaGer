@@ -6,7 +6,7 @@ $(function() {
 	cookie = parseInt(cookie);
 
 	if (cookie == 1) {
-		console.log('TLmanaGer Action: "load-guide-lines";');
+		console.log(chrome.i18n.getMessage("loadGuideLines_consoleLog"));
 
 		Cookies.set('add-guide-lines-active', '1');
 

@@ -3,6 +3,175 @@
 		"message": "TLmanaGer"
 	},
 	"appDesc": {
-		"message": "Desarrollamiento tool"
+		"message": "Developing tool"
+	},
+
+	"by": {
+		"message": "by"
+	},
+	"options": {
+		"message": "Options"
+	},
+	"delete": {
+		"message": "Eliminar"
+	},
+	"close": {
+		"message": "Close"
+	},
+	"creditCard": {
+		"message": "Tarjeta"
+	},
+	"expireDate": {
+		"message": "Fecha de caducidad"
+	},
+	"used": {
+		"message": "Utilizado"
+	},
+	"pages": {
+		"message": "Pages"
+	},
+	"banners": {
+		"message": "Banners"
+	},
+	"customtags": {
+		"message": "Customtags"
+	},
+	"sections": {
+		"message": "Sections"
+	},
+	"ftp": {
+		"message": "FTP"
+	},
+	"viewChanges": {
+		"message": "View changes"
+	},
+	"optionsSaved": {
+		"message": "Saved options"
+	},
+	"loadMore": {
+		"message": "Load more"
+	},
+	"noResults": {
+		"message": "No results 😞"
+	},
+	"optionsRestored": {
+		"message": "The options were set as default"
+	},
+	"restoreDefaults": {
+		"message": "Restore default options"
+	},
+
+	"newVersionNotify_title": {
+		"message": "New TLmanaGer %version% !"
+	},
+	"newVersionNotify_desc": {
+		"message": "Novetats en la nova versio de la extensió. Oh yeah!"
+	},
+
+	"addGuideLines_consoleLog": {
+		"message": "TLmanaGer Action: 'add-guide-lines';"
+	},
+	"loadGuideLines_consoleLog": {
+		"message": "TLmanaGer Action: 'load-guide-lines';"
+	},
+	"removeGuideLines_consoleLog": {
+		"message": "TLmanaGer Action: 'remove-guide-lines';"
+	},
+
+	"getFtpSettings_consoleLog": {
+		"message": "TLmanaGer Action: 'get-ftp-settings';"
+	},
+
+	"refreshGetImg_consoleLog": {
+		"message": "TLmanaGer Action: 'refresh-get-img';"
+	},
+
+	"showNewTemplate2018_consoleLog": {
+		"message": "TLmanaGer Action: 'show-new-templates-2018';"
+	},
+
+	"showSvgIcons_consoleLog": {
+		"message": "TLmanaGer Action: 'show-svg-icons';"
+	},
+	"showSvgIcons_click4Copy": {
+		"message": "Click icon for copy #id"
+	},
+
+	"testingSignUp_notifyTitle": {
+		"message": "Error de configuració!"
+	},
+	"testingSignUp_notifyText": {
+		"message": "Per aquesta acció cal configurar un email i una password a les opcions de la extensió:"
+	},
+	"testingSignUp_loremCity": {
+		"message": "Test city"
+	},
+	"testingSignUp_loremAddress1": {
+		"message": "Test address 1"
+	},
+	"testingSignUp_loremAddress2": {
+		"message": "Test address 2"
+	},
+	"testingSignUp_loremCompany": {
+		"message": "Test company"
+	},
+	"testingSignUp_loremRE": {
+		"message": "Test user RE"
+	},
+
+	"testingTokenizer_userCardsTitle": {
+		"message": "Tus tarjetas de crédito/débito"
+	},
+	"testingTokenizer_newCard": {
+		"message": "&nbsp;Nueva tarjeta "
+	},
+	"testingTokenizer_rememberCard": {
+		"message": "Recordar datos de mi tarjeta para usarlos en futuras compras"
+	},
+
+	"backgroundLc_apiSend": {
+		"message": "API unsplash download_location send ok"
+	},
+	"backgroundLc_apiDone": {
+		"message": "API unsplash download_location send ok after"
+	},
+	"backgroundLc_apiFail": {
+		"message": "API unsplash download_location error"
+	},
+	"backgroundLc_apiAlways": {
+		"message": "API unsplash download_location finish"
+	},
+
+	"devLcBar_customSearchPlaceholder": {
+		"message": "Busqui vostè..."
+	},
+	"devLcBar_utilCleanCacheCode": {
+		"message": "Flush redis"
+	},
+	"devLcBar_utilUpdateCacheProducts": {
+		"message": "Product update"
+	},
+	"devLcBar_utilUpdateCacheCategories": {
+		"message": "Category update"
+	},
+	"devLcBar_utilReloadApps": {
+		"message": "App update"
+	},
+	"devLcBar_utilReloadEvents": {
+		"message": "Event update"
+	},
+	"devLcBar_utilDownloadProjectCode": {
+		"message": "Download code"
+	},
+	"devLcBar_done": {
+		"message": "Done!"
+	},
+
+	"stealFontAwesome_bgImageSmall": {
+		"message": "(no base 64) :D (editable per css)"
+	},
+
+	"popupOptionEmailDefault": {
+		"message": "Configure your email option"
 	}
 }
