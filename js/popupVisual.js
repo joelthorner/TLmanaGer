@@ -13,7 +13,7 @@ $(function() {
 	});
 	
 	var defaults = {
-		optProfileEmail: 'youremail@test.com', 
+		optProfileEmail: chrome.i18n.getMessage("popupOptionEmailDefault"), 
 		optProfileAvatar: 'img/logo.svg'
 	};
 

@@ -29,7 +29,7 @@ function initBasicBar() {
 	
 	$('#bottomBar #startMenuUser').before(`
 		<div class="search-custom">
-			<input class="search-bar-custom menuEntry noClose" type="text" placeholder="Busqui vostè...">
+			<input class="search-bar-custom menuEntry noClose" type="text" placeholder="${chrome.i18n.getMessage("devLcBar_customSearchPlaceholder")}">
 		</div>
 	`);
 	
@@ -68,12 +68,12 @@ function initSnbxOsBar() {
 			$('#taskBar .taskMenuLink').remove();
 
 			// os utils window edits
-			$('[ls*="utilCleanCacheCode"]').val('Flush redis');
-			$('[ls*="utilUpdateCacheProducts"]').val('Product update');
-			$('[ls*="utilUpdateCacheCategories"]').val('Category update');
-			$('[ls*="utilReloadApps"]').val('App update');
-			$('[ls*="utilReloadEvents"]').val('Event update');
-			$('[ls*="utilDownloadProjectCode"]').val('Download code');
+			$('[ls*="utilCleanCacheCode"]').val(chrome.i18n.getMessage("devLcBar_utilCleanCacheCode"));
+			$('[ls*="utilUpdateCacheProducts"]').val(chrome.i18n.getMessage("devLcBar_utilUpdateCacheProducts"));
+			$('[ls*="utilUpdateCacheCategories"]').val(chrome.i18n.getMessage("devLcBar_utilUpdateCacheCategories"));
+			$('[ls*="utilReloadApps"]').val(chrome.i18n.getMessage("devLcBar_utilReloadApps"));
+			$('[ls*="utilReloadEvents"]').val(chrome.i18n.getMessage("devLcBar_utilReloadEvents"));
+			$('[ls*="utilDownloadProjectCode"]').val(chrome.i18n.getMessage("devLcBar_utilDownloadProjectCode"));
 
 			// click flush
 			$(document).on('click', '.__cleanCacheCode__', function(event) {
@@ -86,11 +86,11 @@ function initSnbxOsBar() {
 					
 					setTimeout(function() {
 						$('.messageBox .rightButtons input').first().click();
-						$utilCleanCacheCode.val('Done!');
+						$utilCleanCacheCode.val(chrome.i18n.getMessage("devLcBar_done"));
 						
 						setTimeout(function() {
 							$('body').removeClass('hidden-tlg');
-							$utilCleanCacheCode.val('Flush redis');
+							$utilCleanCacheCode.val(chrome.i18n.getMessage("devLcBar_utilCleanCacheCode"));
 						}, 650);
 					}, 1000);
 				}, 300);
