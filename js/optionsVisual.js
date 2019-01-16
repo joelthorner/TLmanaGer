@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	new Tooltip($('#reset-options')[0], {
 		placement: 'left',
-		title: 'Reset options'
+		title: chrome.i18n.getMessage("restoreDefaults")
 	});
 
 	if (location.hash.length) {

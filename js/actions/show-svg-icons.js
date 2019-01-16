@@ -1,4 +1,4 @@
-console.log('TLmanaGer Action: "show-svg-icons";');
+console.log(chrome.i18n.getMessage("showSvgIcons_consoleLog"));
 
 function copyToClipboard(elem) {
 	// create hidden text element, if it doesn't already exist
@@ -142,7 +142,7 @@ function insertIconsHtml($source) {
 			</style>
 			<div class="TLmanaGer-icons-body">
 				<div class="TLmanaGer-icons-body-title">
-					Click icon for copy #id
+					${chrome.i18n.getMessage("showSvgIcons_click4Copy")}
 				</div>
 				${$source.html()}
 			</div>

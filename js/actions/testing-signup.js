@@ -36,11 +36,11 @@ chrome.storage.sync.get(defaults, function(result) {
 	
 	if (!result.optProfileEmail.length || !result.optProfilePass.length) {
 		var url = chrome.extension.getURL('src/options/index.html');
-		var link = `<a href="${url}" target="_blank">Options</a>`
+		var link = `<a href="${url}" target="_blank">${chrome.i18n.getMessage("options")}</a>`
 		var str = `
 			<script>
-				Fluid.notify('Per aquesta acció cal configurar un email i una password a les opcions de la extensió: ${link}', {
-					title: 'Error de configuració!',
+				Fluid.notify('${chrome.i18n.getMessage("testingSignUp_notifyText")} ${link}', {
+					title: '${chrome.i18n.getMessage("testingSignUp_notifyTitle")}',
 					type: 'danger',
 					sticky: false,
 					deelay: 5000
@@ -99,7 +99,9 @@ chrome.storage.sync.get(defaults, function(result) {
 								
 								var $inputs = $(mutation.target).find('input');
 								if ($inputs.length) {
-									$inputs.val("testcity");
+									$inputs.val(
+										chrome.i18n.getMessage("testingSignUp_loremCity")
+									);
 								}
 							}
 						});	 
@@ -113,7 +115,7 @@ chrome.storage.sync.get(defaults, function(result) {
 					break;
 					
 				case 'userFieldAddress1Container':
-					insertname("testAdress", this);
+					insertname(chrome.i18n.getMessage("testingSignUp_loremAddress1"), this);
 						break;
 					
 				case 'userFieldBirthDateContainer':
@@ -137,11 +139,11 @@ chrome.storage.sync.get(defaults, function(result) {
 					break;
 					
 				case 'userFieldCompanyContainer':
-					insertname("Test Company", this);
+					insertname(chrome.i18n.getMessage("testingSignUp_loremCompany"), this);
 					break;
 					
 				case 'userFieldAddress2Container':
-					insertname("Test address 2", this);
+					insertname(chrome.i18n.getMessage("testingSignUp_loremAddress2"), this);
 					break;
 					
 				case 'userFieldNumberContainer':
@@ -153,7 +155,7 @@ chrome.storage.sync.get(defaults, function(result) {
 					break;
 					
 				case 'userFieldREContainer':
-					insertname("Test user RE Container", this);
+					insertname(chrome.i18n.getMessage("testingSignUp_loremRE"), this);
 					break;
 					
 				case 'userFieldFaxContainer':

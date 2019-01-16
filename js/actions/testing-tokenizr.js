@@ -6,10 +6,12 @@ $(document).ready(function() {
 	if ($user.length) {
 		$user.html($.trim(`
 			<div class="paymentCardHeader row">
-				<div class="header paymentCardHeader col-xs-3">Tarjeta</div>
-				<div class="header paymentCardExpireDateHeader col-xs-3">Fecha de caducidad</div>
-				<div class="header paymentCardUsedHeader col-xs-3">Utilizado</div>
-				<div class=" col-xs-3"></div>
+				<div class="header paymentCardHeader col-xs-3">
+					${chrome.i18n.getMessage("creditCard")}
+				</div>
+				<div class="header paymentCardExpireDateHeader col-xs-3">${chrome.i18n.getMessage("expireDate")}</div>
+				<div class="header paymentCardUsedHeader col-xs-3">${chrome.i18n.getMessage("used")}</div>
+				<div class="col-xs-3"></div>
 			</div>
 			<div class="paymentCard row">
 				<div class="field cardNumber col-xs-3">
@@ -23,9 +25,10 @@ $(document).ready(function() {
 				</div>
 				<div class="field used col-xs-3">1</div>
 				<div class="delete col-xs-3">
-					<form action="/user/paymentCards/delete" method="POST" data-fluid-form="DeletePaymentCardForm" class="has-validation-callback"><div class="form-message"></div>
+					<form action="/user/paymentCards/delete" method="POST" data-fluid-form="DeletePaymentCardForm" class="has-validation-callback">
+						<div class="form-message"></div>
 						<input type="hidden" name="id" value="1">
-						<button class="paymentCardDeleteButton btn btn-danger" type="submit">Eliminar</button>
+						<button class="paymentCardDeleteButton btn btn-danger" type="submit">${chrome.i18n.getMessage("delete")}</button>
 					</form>
 				</div>
 			</div>
@@ -90,13 +93,13 @@ $(document).ready(function() {
 				</label>
 				<input type="hidden" name="paymentSystemToken" id="paymentReference" value="">
 				<div class="paymentSystemsTokens">
-					<div class="paymentSystemsTokenInfo">Tus tarjetas de crédito/débito</div>
+					<div class="paymentSystemsTokenInfo">${chrome.i18n.getMessage("testingTokenizer_userCardsTitle")}</div>
 					<div class="paymentSystemToken">
 						<div class="check">
 							${radio1}
 						</div>
 						<div class="cardNumber">
-							<label for="creditCardSelect_0" class="title">&nbsp;Nueva tarjeta </label>
+							<label for="creditCardSelect_0" class="title">${chrome.i18n.getMessage("testingTokenizer_newCard")}</label>
 						</div>
 					</div>
 					<div class="paymentSystemToken">
@@ -107,18 +110,18 @@ $(document).ready(function() {
 							<div class="logo">
 								<img src="/common/images/paymentsystems/visa.png" border="0" alt="Visa">
 							</div>
-							<label for="creditCardSelect_1" class="title">Tarjeta: </label>
+							<label for="creditCardSelect_1" class="title">${chrome.i18n.getMessage("creditCard")}: </label>
 							<label for="creditCardSelect_1" class="text">454881******0004</label>
 						</div>
 						<div class="expiryDate">
-							<label for="creditCardSelect_1" class="title">Fecha de caducidad: </label>
+							<label for="creditCardSelect_1" class="title">${chrome.i18n.getMessage("expireDate")}: </label>
 							<label for="creditCardSelect_1" class="text">12/2020</label>
 						</div>
 					</div>
 				</div>
 				<div class="tokenize">
 					${check}
-					<span>Recordar datos de mi tarjeta para usarlos en futuras compras</span>
+					<span>${chrome.i18n.getMessage("testingTokenizer_rememberCard")}</span>
 				</div>
 			</div>
 		`));

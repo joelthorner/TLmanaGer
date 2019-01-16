@@ -41,7 +41,7 @@ $(document).ready(function() {
 		$('body').append(`
 			<div id="deus-antics-font-credit">
 				<a href="https://www.instagram.com/unoriginal_02/" target="_blank" rel="nofollow">
-					By @unoriginal_02
+					${chrome.i18n.getMessage("by")} @unoriginal_02
 				</a>
 			</div>
 		`);

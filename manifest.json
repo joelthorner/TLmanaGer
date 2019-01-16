@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.1.13",
+	"version": "2.1.14",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -69,7 +69,8 @@
 			],
 			"exclude_matches": [
 				"*://adm.igd.production/*",
-				"*://fluiddoc.igd.production/*"
+				"*://fluiddoc.igd.production/*",
+				"*://tlgcommerce-hk.igd.production/*"
 			],
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",

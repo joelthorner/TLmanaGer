@@ -1,4 +1,4 @@
-console.log('TLmanaGer Action: "refresh-get-img";');
+console.log(chrome.i18n.getMessage("refreshGetImg_consoleLog"));
 
 var refreshValue = 'refresh=' + new Date().getUTCMilliseconds();
 var refreshGetSymb;

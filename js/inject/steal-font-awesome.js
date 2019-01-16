@@ -104,7 +104,7 @@ var _SKELETON_ = `
 			<textarea name="__use" id="__use" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
 		</div>
 		<div class="_col">
-			<label for="__backgrund">BACKGROUND IMAGE <small>(no base 64) :D (editable per css)</small></label>
+			<label for="__backgrund">BACKGROUND IMAGE <small>${chrome.i18n.getMessage("stealFontAwesome_bgImageSmall")}</small></label>
 			<textarea name="__backgrund" id="__backgrund" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
 		</div>
 	</div>
