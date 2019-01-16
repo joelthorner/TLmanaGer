@@ -103,21 +103,17 @@ chrome.runtime.onMessageExternal.addListener(
 // new version notify
 var opt = {
 	type: 'basic',
-	title: 'TLmanaGer ' + manifestData.version + '!',
+	title: chrome.i18n.getMessage("newVersionNotify_title").replace('%version%', manifestData.version),
 	iconUrl: "../img/logo.svg",
-	message: 'Novetats en la nova versio de la extensió. Oh si!',
+	message: chrome.i18n.getMessage("newVersionNotify_desc"),
 	priority: 1,
 	buttons: [
-		{ title: 'Tancart' },
-		{ title: 'Veure canvis' }
+		{ title: chrome.i18n.getMessage("close") },
+		{ title: chrome.i18n.getMessage("viewChanges") }
 	]
 };
 
-chrome.storage.sync.get(['newVersionNotify'], function(result) {
-
-	if (typeof result.newVersionNotify == 'undefined') {
-		result.newVersionNotify = false;
-	}
+chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
 
 	if (manifestData.version != result.newVersionNotify) {
 		chrome.notifications.create('newVersion-' + manifestData.version, opt, function() {
@@ -128,7 +124,9 @@ chrome.storage.sync.get(['newVersionNotify'], function(result) {
 		
 		chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
 			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
-				chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
+				chrome.tabs.create({ 
+					url: chrome.extension.getURL("/src/options/index.html") 
+				});
 			}
 		});
 	}

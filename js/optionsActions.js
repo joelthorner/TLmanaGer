@@ -49,8 +49,8 @@ function saveOptions(deelay) {
 		}, function() {
 
 			var dataObj = {
-				message: "Options saved",
-				actionText: 'Close',
+				message: chrome.i18n.getMessage("optionsSaved"),
+				actionText: chrome.i18n.getMessage("close"),
 				actionHandler: function () {
 					console.log('Saved options');
 				}
@@ -224,7 +224,9 @@ function imagesPaginator(jsonResponse, actualPage) {
 	$('#load-more-bg').remove();
 	if ((actualPage + 1) <= jsonResponse.total_pages) {
 		$('.option-backgrounds').append(`
-			<button data-load-page="${(actualPage + 1)}" id="load-more-bg" data-mdc-auto-init="MDCRipple" class="demo-button mdc-button mdc-button--unelevated demo-button-shaped mdc-ripple-upgraded">LOAD MOAR</button>
+			<button data-load-page="${(actualPage + 1)}" id="load-more-bg" data-mdc-auto-init="MDCRipple" class="demo-button mdc-button mdc-button--unelevated demo-button-shaped mdc-ripple-upgraded">
+				${chrome.i18n.getMessage("loadMore")}
+			</button>
 		`);
 		mdc.ripple.MDCRipple.attachTo(document.getElementById('load-more-bg'));
 	}
@@ -252,7 +254,7 @@ function createImages(imagesList) {
 function emptyBgFound() {
 	$('.grid-backgrounds').append(`
 		<div class="background-item not-found">
-			Not found images 😞
+			${chrome.i18n.getMessage("noResults")}
 		</div>
 	`);
 }
@@ -308,8 +310,8 @@ $(document).ready(function() {
 		resetOptions();
 		restoreOptions();
 		var dataObj = {
-			message: "Restored defaults",
-			actionText: 'Close',
+			message: chrome.i18n.getMessage("close"),
+			actionText: chrome.i18n.getMessage("optionsRestored"),
 			actionHandler: function () {
 				console.log('Restored defaults');
 			}

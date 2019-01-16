@@ -15,6 +15,9 @@
 	"delete": {
 		"message": "Eliminar"
 	},
+	"close": {
+		"message": "Close"
+	},
 	"creditCard": {
 		"message": "Tarjeta"
 	},
@@ -38,6 +41,31 @@
 	},
 	"ftp": {
 		"message": "FTP"
+	},
+	"viewChanges": {
+		"message": "View changes"
+	},
+	"optionsSaved": {
+		"message": "Saved options"
+	},
+	"loadMore": {
+		"message": "Load more"
+	},
+	"noResults": {
+		"message": "No results 😞"
+	},
+	"optionsRestored": {
+		"message": "The options were set as default"
+	},
+	"restoreDefaults": {
+		"message": "Restore default options"
+	},
+
+	"newVersionNotify_title": {
+		"message": "New TLmanaGer %version% !"
+	},
+	"newVersionNotify_desc": {
+		"message": "Novetats en la nova versio de la extensió. Oh yeah!"
 	},
 
 	"addGuideLines_consoleLog": {
@@ -112,5 +140,38 @@
 	},
 	"backgroundLc_apiAlways": {
 		"message": "API unsplash download_location finish"
+	},
+
+	"devLcBar_customSearchPlaceholder": {
+		"message": "Busqui vostè..."
+	},
+	"devLcBar_utilCleanCacheCode": {
+		"message": "Flush redis"
+	},
+	"devLcBar_utilUpdateCacheProducts": {
+		"message": "Product update"
+	},
+	"devLcBar_utilUpdateCacheCategories": {
+		"message": "Category update"
+	},
+	"devLcBar_utilReloadApps": {
+		"message": "App update"
+	},
+	"devLcBar_utilReloadEvents": {
+		"message": "Event update"
+	},
+	"devLcBar_utilDownloadProjectCode": {
+		"message": "Download code"
+	},
+	"devLcBar_done": {
+		"message": "Done!"
+	},
+
+	"stealFontAwesome_bgImageSmall": {
+		"message": "(no base 64) :D (editable per css)"
+	},
+
+	"popupOptionEmailDefault": {
+		"message": "Configure your email option"
 	}
 }
