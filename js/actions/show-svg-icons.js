@@ -1,53 +1,10 @@
 console.log(chrome.i18n.getMessage("showSvgIcons_consoleLog"));
 
 function copyToClipboard(elem) {
-	// create hidden text element, if it doesn't already exist
-	var targetId = "_hiddenCopyText_";
-	var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
-	var origSelectionStart, origSelectionEnd;
-	if (isInput) {
-		// can just use the original source element for the selection and copy
-		target = elem;
-		origSelectionStart = elem.selectionStart;
-		origSelectionEnd = elem.selectionEnd;
-	} else {
-		// must use a temporary form element for the selection and copy
-		target = document.getElementById(targetId);
-		if (!target) {
-			var target = document.createElement("textarea");
-			target.style.position = "absolute";
-			target.style.left = "-9999px";
-			target.style.top = "0";
-			target.id = targetId;
-			document.body.appendChild(target);
-		}
-		target.textContent = elem.textContent;
+	if (elem) {
+		elem.select();
+		document.execCommand("copy");
 	}
-	// select the content
-	var currentFocus = document.activeElement;
-	target.focus();
-	target.setSelectionRange(0, target.value.length);
-	
-	// copy the selection
-	var succeed;
-	try {
-		succeed = document.execCommand("copy");
-	} catch(e) {
-		succeed = false;
-	}
-	// restore original focus
-	if (currentFocus && typeof currentFocus.focus === "function") {
-		currentFocus.focus();
-	}
-	
-	if (isInput) {
-		// restore prior selection
-		elem.setSelectionRange(origSelectionStart, origSelectionEnd);
-	} else {
-		// clear temporary content
-		target.textContent = "";
-	}
-	return succeed;
 }
 
 function searchIcons(selector, type) {
@@ -66,80 +23,84 @@ function searchIcons(selector, type) {
 	return $parent;
 }
 
+var _CSS_ = `
+<style>
+	#TLmanaGer-icons {
+		display: flex;
+		flex-wrap: wrap;
+		font-family: "Consolas", sans-serif;
+		font-size: 12px;
+		justify-content: center;
+		position: fixed;
+		z-index: 9999999999999;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.70);
+	}
+	.TLmanaGer-icons-body {
+		width: 70%;
+		height: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		background-color: #FFF;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+		border-radius: 7px;
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.70);
+		overflow: auto;
+	}
+	#TLmanaGer-icons .icon-wrap svg {
+		width: 50px;
+		height: 50px;
+		display: block;
+		margin: 0 auto 10px;
+	}
+	#TLmanaGer-icons .icon-wrap {
+		width: 120px;
+		float: left;
+		padding: 15px 5px;
+		text-align: center;
+		cursor: pointer;
+		border-radius: 3px;
+		background-color: #dfe2ea;
+		margin: 10px;
+	}
+	#TLmanaGer-icons .icon-wrap:hover {
+		fill: #FFF;
+		color: #FFF;
+		background-color: #0288d1;
+	}
+	#TLmanaGer-icons .input-name {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+	#TLmanaGer-icons .TLmanaGer-icons-body-title {
+		width: 100%;
+		color: #888;
+		text-align: center;
+	}
+</style>
+`;
+
 function insertIconsHtml($source) {
 	$('body').append(`
 		<div id="TLmanaGer-icons">
-			<style>
-				#TLmanaGer-icons {
-					display: flex;
-					flex-wrap: wrap;
-					font-family: "Consolas", sans-serif;
-					font-size: 12px;
-					justify-content: center;
-					position: fixed;
-					z-index: 9999999999999;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					background-color: rgba(0,0,0,0.70);
-				}
-				.TLmanaGer-icons-body {
-					width: 70%;
-					height: 50%;
-					position: absolute;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					margin: auto;
-					background-color: #FFF;
-					display: flex;
-					flex-wrap: wrap;
-					align-items: center;
-					justify-content: center;
-					padding: 10px;
-					border-radius: 7px;
-					box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.70);
-					overflow: auto;
-				}
-				#TLmanaGer-icons .icon-wrap svg {
-					width: 50px;
-					height: 50px;
-					display: block;
-					margin: 0 auto 10px;
-				}
-				#TLmanaGer-icons .icon-wrap {
-					width: 120px;
-					float: left;
-					padding: 15px 5px;
-					text-align: center;
-					cursor: pointer;
-					border-radius: 3px;
-					background-color: #dfe2ea;
-					margin: 10px;
-				}
-				#TLmanaGer-icons .icon-wrap:hover {
-					fill: #FFF;
-					color: #FFF;
-					background-color: #0288d1;
-				}
-				#TLmanaGer-icons .input-name {
-					position: absolute;
-					width: 1px;
-					height: 1px;
-					margin: -1px;
-					padding: 0;
-					overflow: hidden;
-					clip: rect(0, 0, 0, 0);
-					border: 0;
-				}
-				#TLmanaGer-icons .TLmanaGer-icons-body-title {
-					width: 100%;
-					color: #888;
-					text-align: center;
-				}
-			</style>
+			${_CSS_}
 			<div class="TLmanaGer-icons-body">
 				<div class="TLmanaGer-icons-body-title">
 					${chrome.i18n.getMessage("showSvgIcons_click4Copy")}
