@@ -70,6 +70,7 @@
 			"exclude_matches": [
 				"*://adm.igd.production/*",
 				"*://fluiddoc.igd.production/*",
+				"*://management.igd.production/*",
 				"*://tlgcommerce-hk.igd.production/*"
 			],
 			"js": [
