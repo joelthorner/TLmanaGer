@@ -19,13 +19,13 @@
 		"message": "Close"
 	},
 	"creditCard": {
-		"message": "Tarjeta"
+		"message": "Credit card"
 	},
 	"expireDate": {
-		"message": "Fecha de caducidad"
+		"message": "Date of Expiry"
 	},
 	"used": {
-		"message": "Utilizado"
+		"message": "Used"
 	},
 	"pages": {
 		"message": "Pages"
@@ -65,7 +65,7 @@
 		"message": "New TLmanaGer %version% !"
 	},
 	"newVersionNotify_desc": {
-		"message": "Novetats en la nova versio de la extensió. Oh yeah!"
+		"message": "New features in the new version of the extension. Oh yeah!"
 	},
 
 	"addGuideLines_consoleLog": {
@@ -98,10 +98,10 @@
 	},
 
 	"testingSignUp_notifyTitle": {
-		"message": "Error de configuració!"
+		"message": "configuration error!"
 	},
 	"testingSignUp_notifyText": {
-		"message": "Per aquesta acció cal configurar un email i una password a les opcions de la extensió:"
+		"message": "For this action you need to configure an email and a password in the options of the extension:"
 	},
 	"testingSignUp_loremCity": {
 		"message": "Test city"
@@ -120,13 +120,13 @@
 	},
 
 	"testingTokenizer_userCardsTitle": {
-		"message": "Tus tarjetas de crédito/débito"
+		"message": "Your credit / debit cards"
 	},
 	"testingTokenizer_newCard": {
-		"message": "&nbsp;Nueva tarjeta "
+		"message": "&nbsp;New card "
 	},
 	"testingTokenizer_rememberCard": {
-		"message": "Recordar datos de mi tarjeta para usarlos en futuras compras"
+		"message": "Remember my card data to use in future purchases"
 	},
 
 	"backgroundLc_apiSend": {
@@ -143,7 +143,7 @@
 	},
 
 	"devLcBar_customSearchPlaceholder": {
-		"message": "Busqui vostè..."
+		"message": "Search..."
 	},
 	"devLcBar_utilCleanCacheCode": {
 		"message": "Flush redis"
@@ -168,7 +168,7 @@
 	},
 
 	"stealFontAwesome_bgImageSmall": {
-		"message": "(no base 64) :D (editable per css)"
+		"message": "(no base 64) :D (editable in css)"
 	},
 
 	"popupOptionEmailDefault": {
