@@ -39,7 +39,9 @@ var CHANGELOG = [
 			"Better Show new templates 2018",
 			"Fix flushredis exlude domain",
 			"Fixes EN language",
-			"Add CA language"
+			"Add CA language",
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/102\" target=\"_blank\">#102</a>",
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/102\" target=\"_blank\">#93</a>"
 		]
 	}, {
 		version: "2.1.13", date: "14 Jan 2019",
