@@ -34,9 +34,14 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.1.14", date: "xx xxx 2019",
+		version: "2.1.14", date: "17 Jan 2019",
 		lines: [
-			"Better Show new templates 2018"
+			"Better Show new templates 2018",
+			"Fix flushredis exlude domain",
+			"Fixes EN language",
+			"Add CA language",
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/102\" target=\"_blank\">#102</a>",
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/102\" target=\"_blank\">#93</a>"
 		]
 	}, {
 		version: "2.1.13", date: "14 Jan 2019",
