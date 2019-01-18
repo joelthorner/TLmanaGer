@@ -34,6 +34,13 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: "2.2.0", date: "18 Jan 2019",
+		lines: [
+			"Hot fix - missing optionDefaults.js",
+			"Update scss & css",
+			"Css standards fixes"
+		]
+	}, {
 		version: "2.1.14", date: "18 Jan 2019",
 		lines: [
 			"Better Show new templates 2018",
