@@ -1,10 +1,10 @@
 @-webkit-keyframes woahDude {
-	from { filter: hue-rotate(0deg); }
-	to	  { filter: hue-rotate(365deg); }
+	from { -webkit-filter: hue-rotate(0deg); filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="0" /></filter></svg>#filter'); filter: hue-rotate(0deg); }
+	to	  { -webkit-filter: hue-rotate(365deg); filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="365" /></filter></svg>#filter'); filter: hue-rotate(365deg); }
 }
 @keyframes woahDude {
-	from { filter: hue-rotate(0deg); }
-	to   { filter: hue-rotate(365deg); }
+	from { -webkit-filter: hue-rotate(0deg); filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="0" /></filter></svg>#filter'); filter: hue-rotate(0deg); }
+	to   { -webkit-filter: hue-rotate(365deg); filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="365" /></filter></svg>#filter'); filter: hue-rotate(365deg); }
 }
 
 html.dev-lc-bar body {
@@ -24,6 +24,7 @@ html.dev-lc-bar body:not(.hidden-tlg-window) .window {
 }
 html.dev-lc-bar .os-utils-window {
 	border: 0;	
+	-webkit-box-shadow: none;	
 	box-shadow: none;
 	top: auto !important;
 	left: auto !important;
@@ -60,10 +61,9 @@ html.dev-lc-bar .nav-dev-lc-bar {
 	height: 40px;
 	border: 0;
 	background-color: #333;
-	box-shadow: 0 0 7px -1px rgba(0,0,0,.75);
+	-webkit-box-shadow: 0 0 7px -1px rgba(0, 0, 0, .75);
+	box-shadow: 0 0 7px -1px rgba(0, 0, 0, .75);
 	display: -webkit-box;
-	display: -webkit-flex;
-	display: -moz-box;
 	display: -ms-flexbox;
 	display: flex;
 }
@@ -90,6 +90,8 @@ html.dev-lc-bar .bar-icon .icon {
 	background-position: 0 bottom;
 	-webkit-animation: woahDude 2500ms ease infinite;
 	animation: woahDude 2500ms ease infinite;
+	-webkit-filter: saturate(100);
+	filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="78.913 -70.785 -7.127999999999999 0 0 -21.087 30.215 -7.127999999999999 0 0 -21.087 -70.785 92.87200000000001 0 0 0 0 0 1 0" /></filter></svg>#filter');
 	filter: saturate(100);
 }
 html.dev-lc-bar .nav-dev-lc-bar input.green {
@@ -98,6 +100,7 @@ html.dev-lc-bar .nav-dev-lc-bar input.green {
 	padding-left: 0;
 	padding-right: 0;
 	width: 140px;
+	-webkit-transition: all 150ms ease;
 	transition: all 150ms ease;
 	padding-top: 7px;
 	color: #FFF;
@@ -115,6 +118,8 @@ html.dev-lc-bar .nav-dev-lc-bar input.green:active {
 }
 html.dev-lc-bar .bar-dev-search {
 	width: auto;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 0 auto;
 	flex: 1 0 auto;
 }
 html.dev-lc-bar .bar-dev-extra {
@@ -172,9 +177,6 @@ html.dev-lc-bar .nav-dev-lc-bar div#searchMenu input {
 	background-position: calc(100% - 15px) center;
 	background-size: 15px;
 	-webkit-transition: background-color 350ms ease;
-	-moz-transition: background-color 350ms ease;
-	-ms-transition: background-color 350ms ease;
-	-o-transition: background-color 350ms ease;
 	transition: background-color 350ms ease;
 }
 html.dev-lc-bar .nav-dev-lc-bar div#searchMenu input:focus {
