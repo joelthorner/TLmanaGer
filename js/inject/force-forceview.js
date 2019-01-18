@@ -1,4 +1,4 @@
-chrome.storage.sync.get({ optDevForceview: true }, function(result) {
+chrome.storage.sync.get({ optDevForceview: defaults.optDevForceview }, function(result) {
 
 	if (result.optDevForceview) {
 		var rgx = /https?:\/\/(www)?\.?[0-9]{2,5}(\.logicommerce(\.net|\.cn|\.hk)|\.igd\.(pre\.)?production)\/?/;

@@ -1,4 +1,4 @@
-chrome.storage.sync.get({ optLcPagridActive: true }, function(result) {
+chrome.storage.sync.get({ optLcPagridActive: defaults.optLcPagridActive }, function(result) {
 
 	if (result.optLcPagridActive) {
 		

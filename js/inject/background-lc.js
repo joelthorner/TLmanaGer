@@ -1,15 +1,7 @@
-var defaults = {
-	optLcBgActive: true,
-	optLcBgValue: {
-		image: chrome.extension.getURL('img/background-default.jpg'),
-		thumb: chrome.extension.getURL('img/background-default.jpg'),
-		userName: 'Matteo Fusco',
-		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral',
-		downloadLocation: ''
-	}
-};
-
-chrome.storage.sync.get(defaults, function(result) {
+chrome.storage.sync.get({
+	optLcBgActive: defaults.optLcBgActive,
+	optLcBgValue: defaults.optLcBgValue
+}, function(result) {
 
 	if (result.optLcBgActive && !$('#loginForm').length) {
 

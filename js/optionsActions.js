@@ -1,24 +1,3 @@
-var defaults = {
-	optLcBgActive: true,
-	optLcBgValue: {
-		image: chrome.extension.getURL('img/background-default.jpg'),
-		thumb: chrome.extension.getURL('img/background-default.jpg'),
-		userName: 'Matteo Fusco',
-		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral',
-		downloadLocation: ''
-	},
-	optLcPagridActive: false,
-	optLcDevBarActive: true,
-	optDevForceview: true,
-	optDevStealFa : true,
-	optDevFlushCfm : true,
-	optProfileEmail: '',
-	optProfilePass: '',
-	optProfileAvatar: 'img/logo.svg',
-	optLcBigControls: false,
-	optLcHolidays: true
-};
-
 // Saves options to chrome.storage
 var sto_saveOptions = null;
 function saveOptions(deelay) {
@@ -46,18 +25,33 @@ function saveOptions(deelay) {
 			optLcHolidays: $('#opt-lc-holidays').prop('checked')
 
 		}, function() {
-
-			var dataObj = {
+			snackbar.show({
 				message: chrome.i18n.getMessage("optionsSaved"),
 				actionText: chrome.i18n.getMessage("close"),
 				actionHandler: function () {
 					console.log('Saved options');
 				}
-			};
-
-			snackbar.show(dataObj);
+			});
 		});
 	}, deelay);
+}
+
+function restoreOption($node, type, value) {
+	switch (type) {
+		case 'checkbox':
+			$node.prop('checked', value).filter(function(index) {
+				var $parent = $(this).parents('.mdc-switch');
+				if (value) $parent.addClass('mdc-switch--checked');
+				else $parent.removeClass('mdc-switch--checked');
+			});
+			break;
+
+		case 'textfield':
+			$node.val(value).filter(function(index) {
+				if ($.trim(value).length) return true;
+			}).next().addClass('mdc-floating-label--float-above');
+			break;
+	}
 }
 
 // Restores select box and checkbox state using the preferences
@@ -66,6 +60,7 @@ function restoreOptions() {
 	// Defaults
 	chrome.storage.sync.get(defaults, function(items) {
 		
+		// special save opt checkbox conditionated by opt bg image
 		$('#opt-lc-bg-active')
 			.prop('checked', items.optLcBgActive)
 			.filter(function(index) {
@@ -79,6 +74,7 @@ function restoreOptions() {
 				}
 			})
 
+		// special save opt bg image
 		$('#opt-lc-bg-image')
 			.find('label')
 				.css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
@@ -91,63 +87,23 @@ function restoreOptions() {
 				})
 				.val(items.optLcBgValue.image)
 				.parent().find('a').attr('href', items.optLcBgValue.userLink).text(items.optLcBgValue.userName);
+		
 
-		$('#opt-lc-pagrid-active')
-			.prop('checked', items.optLcPagridActive)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcPagridActive) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-lc-pagrid-active'), 'checkbox', items.optLcPagridActive);
 
-		$('#opt-lc-dev-bar-active')
-			.prop('checked', items.optLcDevBarActive)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcDevBarActive) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-lc-dev-bar-active'), 'checkbox', items.optLcDevBarActive);
 
-		$('#opt-dev-forceview')
-			.prop('checked', items.optDevForceview)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optDevForceview) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-dev-forceview'), 'checkbox', items.optDevForceview);
 
-		$('#opt-dev-steal-fa')
-			.prop('checked', items.optDevStealFa)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optDevStealFa) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-dev-steal-fa'), 'checkbox', items.optDevStealFa);
 
-		$('#opt-dev-flush-cfm')
-			.prop('checked', items.optDevFlushCfm)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optDevFlushCfm) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-dev-flush-cfm'), 'checkbox', items.optDevFlushCfm);
 
-		$('#opt-profile-email')
-			.val(items.optProfileEmail)
-			.filter(function(index) {
-				if ($.trim(items.optProfileEmail).length) return true;
-			})
-			.next()
-			.addClass('mdc-floating-label--float-above');
+		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
 
-		$('#opt-profile-pass')
-			.val(items.optProfilePass)
-			.filter(function(index) {
-				if ($.trim(items.optProfilePass).length) return true;
-			})
-			.next()
-			.addClass('mdc-floating-label--float-above');
+		restoreOption($('#opt-profile-pass'), 'textfield', items.optProfilePass);
 
+		// special save opt avatar
 		$('.avatar')
 			.removeClass('active')
 			.parents('.grid-avatar')
@@ -158,21 +114,9 @@ function restoreOptions() {
 			.prop('checked', true)
 			.parents('.avatar').addClass('active')
 
-		$('#opt-lc-big-controls')
-			.prop('checked', items.optLcBigControls)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcBigControls) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-lc-big-controls'), 'checkbox', items.optLcBigControls);
 
-		$('#opt-lc-holidays')
-			.prop('checked', items.optLcHolidays)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcHolidays) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			})
+		restoreOption($('#opt-lc-holidays'), 'checkbox', items.optLcHolidays);
 	});
 }
 
@@ -308,14 +252,13 @@ $(document).ready(function() {
 	$('#reset-options').click(function(event) {
 		resetOptions();
 		restoreOptions();
-		var dataObj = {
-			message: chrome.i18n.getMessage("close"),
-			actionText: chrome.i18n.getMessage("optionsRestored"),
+		snackbar.show({
+			message: chrome.i18n.getMessage("optionsRestored"),
+			actionText: chrome.i18n.getMessage("close"),
 			actionHandler: function () {
 				console.log('Restored defaults');
 			}
-		};
-		snackbar.show(dataObj);
+		});
 	});
 
 	// search keyup background
