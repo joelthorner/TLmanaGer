@@ -1,4 +1,4 @@
-chrome.storage.sync.get({ optLcBigControls: true }, function(result) {
+chrome.storage.sync.get({ optLcBigControls: defaults.optLcBigControls }, function(result) {
 	
 	if (result.optLcBigControls && !$('#loginForm').length) {
 		
