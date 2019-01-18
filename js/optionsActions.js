@@ -26,7 +26,6 @@ function saveOptions(deelay) {
 	clearTimeout(sto_saveOptions);
 	sto_saveOptions = setTimeout(function() {
 		chrome.storage.sync.set({
-
 			optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
 			optLcBgValue: { 
 				image: $('[name="opt-lc-bg"]:checked').val(),
@@ -83,7 +82,7 @@ function restoreOptions() {
 		$('#opt-lc-bg-image')
 			.find('label')
 				.css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
-				.prev('input')
+				.prev('input').prop('checked', true)
 				.attr({
 					'data-thumb': items.optLcBgValue.thumb,
 					'data-download-location': items.optLcBgValue.downloadLocation,
