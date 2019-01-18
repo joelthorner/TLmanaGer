@@ -1,4 +1,4 @@
-chrome.storage.sync.get({ optDevFlushCfm: true }, function(result) {
+chrome.storage.sync.get({ optDevFlushCfm: defaults.optDevFlushCfm }, function(result) {
 	
 	if (result.optDevFlushCfm) {
 
