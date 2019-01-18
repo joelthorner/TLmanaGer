@@ -126,6 +126,7 @@
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
 				"js/libs/js.cookie.js",
+				"js/optionsDefaults.js",
 				"js/actions/load-guide-lines.js"
 			],
 			"run_at": "document_start",
