@@ -645,6 +645,9 @@ $aside-width: 300px;
 		.mdc-text-field:not(.mdc-text-field--focused):not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
 			border-bottom-color: #FFF;
 		}
+		.mdc-text-field.mdc-text-field--invalid .mdc-text-field__input {
+			border-bottom-color: #b00020 !important;
+		}
 	}
 
 	.mdc-text-field{
@@ -664,6 +667,9 @@ $aside-width: 300px;
 	}
 	.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
 		color: var(--mdc-theme-primary, $blue-end);
+	}
+	.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+		color: #b00020;
 	}
 
 	.mdc-switch {
