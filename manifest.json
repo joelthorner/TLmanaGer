@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -59,7 +59,6 @@
 				"*://fontawesome.com/icons?d=gallery"
 			],
 			"js": [
-				"js/libs/jquery-3.3.1.min.js",
 				"js/inject/steal-font-awesome.js"
 			]
 		},
@@ -74,7 +73,6 @@
 				"*://tlgcommerce-hk.igd.production/*"
 			],
 			"js": [
-				"js/libs/jquery-3.3.1.min.js",
 				"js/inject/dev-flush-cfm.js"
 			]
 		},
@@ -88,7 +86,6 @@
 				"*://adm.igd.pre.production/*"
 			],
 			"js": [
-				"js/libs/jquery-3.3.1.min.js",
 				"js/inject/background-lc.js",
 				"js/inject/pages-grid-lc.js",
 				"js/inject/big-controls-lc.js",
@@ -99,6 +96,19 @@
 				"css/inject/big-controls-ls.css",
 				"css/inject/lc-holidays.css",
 				"css/inject/dev-lc-bar.css"
+			]
+		},
+		{
+			"matches": [
+				"*://8x-os.logicommerce.net/*",
+				"*://8x.logicommerce.net/*"
+			],
+			"js": [
+				"js/libs/magic-select.js",
+				"js/inject/os-branches-btn.js"
+			],
+			"css": [
+				"css/inject/os-branches-btn.css"
 			]
 		},
 		{
