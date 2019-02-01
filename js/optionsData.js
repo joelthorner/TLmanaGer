@@ -34,7 +34,7 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.2.1", date: "xx Jan 2019",
+		version: "2.2.1", date: "xx Feb 2019",
 		lines: [
 			"LC os login select branches to buttons"
 		]
