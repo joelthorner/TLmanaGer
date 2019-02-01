@@ -22,7 +22,8 @@ function saveOptions(deelay) {
 			optProfilePass: $('#opt-profile-pass').val(),
 			optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
-			optLcHolidays: $('#opt-lc-holidays').prop('checked')
+			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
+			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked')
 
 		}, function() {
 			snackbar.show({
@@ -117,6 +118,8 @@ function restoreOptions() {
 		restoreOption($('#opt-lc-big-controls'), 'checkbox', items.optLcBigControls);
 
 		restoreOption($('#opt-lc-holidays'), 'checkbox', items.optLcHolidays);
+
+		restoreOption($('#opt-os-branches-btn'), 'checkbox', items.optOsBranchesBtn);
 	});
 }
 

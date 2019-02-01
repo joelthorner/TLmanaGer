@@ -34,6 +34,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: "2.2.1", date: "xx Feb 2019",
+		lines: [
+			"LC os login select branches to buttons"
+		]
+	}, {
 		version: "2.2.0", date: "18 Jan 2019",
 		lines: [
 			"Hot fix - missing optionDefaults.js",
