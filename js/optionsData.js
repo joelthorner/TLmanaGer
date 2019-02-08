@@ -34,9 +34,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.2.1", date: "xx Feb 2019",
+		version: "2.2.1", date: "08 Feb 2019",
 		lines: [
-			"LC os login select branches to buttons"
+			"LC os login select branches to buttons",
+			"Next holiday event",
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/107\" target=\"_blank\">#107</a> (Lc pages grid toggle button in hk)",
 		]
 	}, {
 		version: "2.2.0", date: "18 Jan 2019",
