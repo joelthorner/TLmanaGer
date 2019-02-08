@@ -1139,3 +1139,10 @@ body.HALLOWIN_HOLDIDAY .shadow ellipse {
 	0%{-webkit-transform:rotate(0deg) translateX(0px);transform:rotate(0deg) translateX(0px)}
 	50%{-webkit-transform:rotate(5deg) translateX(3px);transform:rotate(5deg) translateX(3px)}
 }
+.CHRISTMAS_SANT_VALENTAIN .unicorn-tlg{
+	position: fixed;
+	bottom: 40px;
+	left: 0;
+	width: 200px;
+	z-index: 1;
+}
