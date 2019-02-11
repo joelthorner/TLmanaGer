@@ -226,3 +226,7 @@ var CHANGELOG = [
 		]
 	}
 ];
+
+var HELP_GIFTS = {
+	'lc-background' : 'img/help/lc-background.gif'
+};
