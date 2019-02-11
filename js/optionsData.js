@@ -34,6 +34,12 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: "2.2.2", date: "11 Feb 2019",
+		lines: [
+			"Fix next holiday event",
+			"Remove changelogs 1.x"
+		]
+	}, {
 		version: "2.2.1", date: "08 Feb 2019",
 		lines: [
 			"LC os login select branches to buttons",
@@ -218,130 +224,9 @@ var CHANGELOG = [
 			"New avatars",
 			"Add notify action"
 		]
-	}, {
-		version: "1.0.20", date: "23 Ago 2018",
-		lines: [
-			"Fix restricted access to Emilio Generator"
-		]
-	}, {
-		version: "1.0.19", date: "23 Ago 2018",
-		lines: [
-			"New restricted access to Emilio Generator"
-		]
-	}, {
-		version: "1.0.18", date: "15 Jun 2018",
-		lines: [
-			"Add emailGenerator access"
-		]
-	}, {
-		version: "1.0.17", date: "14 Jun 2018",
-		lines: [
-			"Add mapping beta"
-		]
-	}, {
-		version: "1.0.16", date: "1 Jun 2018",
-		lines: [
-			"Update icons"
-		]
-	}, {
-		version: "1.0.15", date: "24 May 2018",
-		lines: [
-			"Added feature pages os <a href=\"https://github.com/joelthorner/TLmanaGer/issues/21\" target=\"_blank\">#21</a>"
-		]
-	}, {
-		version: "1.0.14", date: "16 May 2018",
-		lines: [
-			"Forceview focus on correct host"
-		]
-	}, {
-		version: "1.0.13", date: "11 May 2018",
-		lines: [
-			"Bug fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/25\" target=\"_blank\">#25</a>",
-			"Fix init undefined options value",
-			"Remove console log",
-			"Add img refresh by get param <a href=\"https://github.com/joelthorner/TLmanaGer/issues/26\" target=\"_blank\">#26</a>"
-		]
-	}, {
-		version: "1.0.12", date: "10 May 2018",
-		lines: [
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/16\" target=\"_blank\">#16</a>",
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/18\" target=\"_blank\">#18</a>",
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/19\" target=\"_blank\">#19</a>",
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/20\" target=\"_blank\">#20</a>",
-			"Added new feature <a href=\"https://github.com/joelthorner/TLmanaGer/issues/23\" target=\"_blank\">#23</a> FA css bg",
-			"Added new feature <a href=\"https://github.com/joelthorner/TLmanaGer/issues/22\" target=\"_blank\">#22</a> Forceview cookie"
-		]
-	}, {
-		version: "1.0.11", date: "8 May 2018",
-		lines: [
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/16\" target=\"_blank\">#16</a>",
-			"Fix bug, body js add class"
-		]
-	}, {
-		version: "1.0.10", date: "7 May 2018",
-		lines: [
-			"Hidden dev feature",
-			"Add Lc Os option mode",
-			"Bg option now for all LCs",
-			"New script inject"
-		]
-	}, {
-		version: "1.0.8", date: "4 May 2018",
-		lines: [
-			"Beta new feature (stable)"
-		]
-	}, {
-		version: "1.0.7", date: "4 May 2018",
-		lines: [
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/7\" target=\"_blank\">#7</a>",
-			"New beta feature"
-		]
-	}, {
-		version: "1.0.6", date: "2 May 2018",
-		lines: [
-			"Add feature <a href=\"https://github.com/joelthorner/TLmanaGer/issues/9\" target=\"_blank\">#9</a> Font awesome get svg"
-		]
-	}, {
-		version: "1.0.5", date: "2 May 2018",
-		lines: [
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/8\" target=\"_blank\">#8</a>",
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/5\" target=\"_blank\">#5</a>",
-			"Fix bug <a href=\"https://github.com/joelthorner/TLmanaGer/issues/6\" target=\"_blank\">#6</a>"
-		]
-	}, {
-		version: "1.0.4", date: "1 May 2018",
-		lines: [
-			"Init bug fix options",
-			"Added more easter eggs"
-		]
-	}, {
-		version: "1.0.3", date: "30 Apr 2018",
-		lines: [
-			"Remove permissions",
-			"Update version",
-			"Add username option"
-		]
-	}, {
-		version: "1.0.2", date: "29 Apr 2018",
-		lines: [
-			"Options save error",
-			"Refactoring",
-			"Clean files"
-		]
-	}, {
-		version: "1.0.1", date: "28 Apr 2018",
-		lines: [
-			"Bug fix load option url bg",
-			"Add profile change image option",
-			"Add emilio generator link",
-			"Bug fix options page width"
-		]
-	}, {
-		version: "1.0.0", date: "28 Apr 2018",
-		lines: [
-			"Base injects js (LC os dev tools)",
-			"Base lines action",
-			"Bg option"
-		]
 	}
 ];
+
+var HELP_GIFTS = {
+	'lc-background' : 'img/help/lc-background.gif'
+};

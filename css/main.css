@@ -231,7 +231,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .items-grid {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 6.875rem;
   grid-gap: 1.25rem;
@@ -603,6 +605,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(255, 255, 255, 0.05);
   color: #FFF;
   width: calc(100% - 30px);
+  display: block;
   margin-right: 1.875rem;
 }
 
@@ -636,6 +639,18 @@ h1, h2, h3, h4, h5, h6 {
 .content-options .option-block .mdc-list .mdc-list-item__secondary-text a {
   color: #9d9d9d;
   text-decoration: underline;
+}
+
+.content-options .option-block-3 .option {
+  width: 66.6666%;
+  float: left;
+  padding-right: 5px;
+}
+
+.content-options .option-block-3 .option + .option {
+  width: 33.3333%;
+  padding-right: 0;
+  padding-left: 5px;
 }
 
 .content-options .option-block-4 {
@@ -951,6 +966,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: .01786em;
   font-size: 13px;
   margin-top: 8px;
+  display: block;
 }
 
 .bg-credit-title {
@@ -962,6 +978,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-credit-title a {
   color: #888;
+}
+
+.panel-features .mdc-list-item {
+  padding-right: 3.25rem;
+  cursor: pointer;
+}
+
+.panel-features .mdc-list-item .icon {
+  width: 24px;
+  height: 24px;
+  fill: #FFF;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 /*# sourceMappingURL=main.css.map */
