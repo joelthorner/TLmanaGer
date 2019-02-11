@@ -161,7 +161,6 @@ h1, h2, h3, h4, h5, h6 {
 	.options {
 		position: absolute;
 		top: -5px;
-		// transform: translateY(-50%);
 		right: 0;
 		cursor: pointer;
 		button {
@@ -530,6 +529,7 @@ $aside-width: 300px;
 		background-color: rgba(255, 255, 255, 0.05);
 		color: #FFF;
 		width: calc(100% - 30px);
+		display: block;
 		@media (min-width: 1300px) {	
 			width: calc(50% - 30px);
 		}
@@ -554,6 +554,18 @@ $aside-width: 300px;
 					color: #9d9d9d;
 					text-decoration: underline;
 				}
+			}
+		}
+	}
+	.option-block-3 {
+		.option {
+			width: 66.6666%;
+			float: left;
+			padding-right: 5px;
+			+ .option {
+				width: 33.3333%;
+				padding-right: 0;
+				padding-left: 5px;
 			}
 		}
 	}
@@ -833,6 +845,7 @@ $aside-width: 300px;
 	letter-spacing: .01786em;
 	font-size: 13px;
 	margin-top: 8px;
+ 	display: block;
 }
 .bg-credit-title {
 	color: #888;
@@ -841,5 +854,22 @@ $aside-width: 300px;
 	line-height: 1;
 	a {
 		color: #888;
+	}
+}
+
+.panel-features {
+	.mdc-list-item {
+		padding-right: 3.25rem;
+		cursor: pointer;
+
+		.icon {
+			width: 24px;
+			height: 24px;
+			fill: #FFF;
+			position: absolute;
+			right: 1rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
 	}
 }
