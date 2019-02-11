@@ -35,8 +35,8 @@ chrome.storage.sync.get({ optLcHolidays: defaults.optLcHolidays }, function(resu
 		}
 
 		// SANT VALENTAIN
-		var dateFrom = new Date((new Date()).getFullYear() + "-01-08");
-		var dateTo = new Date((new Date()).getFullYear() + "-03-08");
+		var dateFrom = new Date((new Date()).getFullYear() + "-02-13");
+		var dateTo = new Date((new Date()).getFullYear() + "-02-15");
 
 		if (today > dateFrom && today < dateTo) {
 			$('body')
