@@ -7,9 +7,9 @@ $(document).on('click.customTLGConfirmExtension', "[data-test-id='submit_button-
 
 	if ($closest.is(':visible') && $closest.find('.comment_input.is-public').length != 0) {
 		
-		var _confirm = confirm(confirmMessage);
+		var confirmSubmit = confirm(confirmMessage);
 		
-		if (_confirm) {
+		if (confirmSubmit) {
 			return true;
 		} else {
 			event.preventDefault();
@@ -21,14 +21,15 @@ $(document).on('click.customTLGConfirmExtension', "[data-test-id='submit_button-
 
 // Change ticket state menu
 $(document).on('click.customTLGConfirmExtension_menu', "[data-garden-id='menus.item']", function(event) {
+	
 	var idMenu = $(this).parent('ul').attr('id');
-	var $closest = $('.ember-view.workspace:visible').find("[aria-controls='" + idMenu + "']").closest('.ember-view.workspace');
+	var $view = $('.ember-view.workspace:visible').find("[aria-controls='" + idMenu + "']").closest('.ember-view.workspace');
 
-	if ($closest && $closest.find('.comment_input.is-public').length != 0) {
+	if ($view && $view.find('.comment_input.is-public').length != 0) {
 
-		var _confirm = confirm(confirmMessage);
+		var confirmMenu = confirm(confirmMessage);
 		
-		if (_confirm) {
+		if (confirmMenu) {
 			return true;
 		} else {
 			event.preventDefault();
