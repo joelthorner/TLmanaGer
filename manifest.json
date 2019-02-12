@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -127,6 +127,14 @@
 			],
 			"js": [
 				"js/inject/force-forceview.js"
+			]
+		},
+		{
+			"matches": [
+				"*://tlgcommercehelp.zendesk.com/*"
+			],
+			"js": [
+				"js/inject/zendesk/prevent-ticket-submit.js"
 			]
 		},
 		{
