@@ -34,6 +34,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: "2.2.3", date: "12 Feb 2019",
+		lines: [
+			"Zendesk confirm submit ticket"
+		]
+	}, {
 		version: "2.2.2", date: "11 Feb 2019",
 		lines: [
 			"Fix next holiday event",
