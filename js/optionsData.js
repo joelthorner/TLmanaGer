@@ -1,39 +1,59 @@
 var AVATARS = [
-	{ img: "img/logo.svg",						title: "Pastilla" }, 
-	{ img: "img/avatar/2b.jpg",				title: "2b - NieR Automata" }, 
-	{ img: "img/avatar/bananas.jpg",			title: "Si te gusta el fruto del amor" }, 
-	{ img: "img/avatar/bookerDeWitt.jpg",	title: "Booker DeWitt - Bioshock Infinite" }, 
-	{ img: "img/avatar/deadpool.jpg",		title: "Deadpool" }, 
-	{ img: "img/avatar/eleven.jpg",			title: "11 - Stranger Things" }, 
-	{ img: "img/avatar/elizabeth.jpg",		title: "Elizabeth - Bioshock Infinite" }, 
-	{ img: "img/avatar/homerSimpson.jpg",	title: "Homer Simpson" }, 
-	{ img: "img/avatar/isaac.jpg",			title: "Isaac" }, 
-	{ img: "img/avatar/kero.jpg",				title: "Kero - Sakura card captor" }, 
-	{ img: "img/avatar/miaWallace.jpg",		title: "Mia Wallace - Pulp fiction" }, 
-	{ img: "img/avatar/momo.jpg",				title: "Momo - The legend of Aang" }, 
-	{ img: "img/avatar/nedFlanders.jpg",	title: "Ned Flanders" }, 
-	{ img: "img/avatar/ori.jpg",				title: "Ori" }, 
-	{ img: "img/avatar/phasma.jpg",			title: "Phasma - Star Wars" }, 
-	{ img: "img/avatar/rey.jpg",				title: "Rey - Star Wars" }, 
-	{ img: "img/avatar/tothless.jpg",		title: "Tothless - Como entrenar a tu dragon" }, 
-	{ img: "img/avatar/vulpex.jpg",			title: "Vulpex - Star Wars" }, 
-	{ img: "img/avatar/chloe.jpg",			title: "Chloe - Life is Strange" }, 
-	{ img: "img/avatar/minecraft.jpg",		title: "Minecraft" }, 
-	{ img: "img/avatar/grumpy.jpg",			title: "Grumpy meme" }, 
-	{ img: "img/avatar/fsSociety.jpg",		title: "fsSociety - Mr Robot" }, 
-	{ img: "img/avatar/songoku.jpg",			title: "Songoku - Bola de drac" }, 
-	{ img: "img/avatar/chuchu.jpg",			title: "Chuchu - Utena" }, 
-	{ img: "img/avatar/sailorMoon.jpg",		title: "Sailormoon" }, 
-	{ img: "img/avatar/picachu.jpg",			title: "Picachu" }, 
-	{ img: "img/avatar/ranma.jpg",			title: "Ranma" }, 
-	{ img: "img/avatar/cawboyBeBop.jpg",	title: "Cawboy BeBop" }, 
-	{ img: "img/avatar/doge.jpg",				title: "Doge meme" }, 
-	{ img: "img/avatar/bongoCat.jpg",		title: "Bongo cat" }, 
-	{ img: "img/avatar/shadowTR.jpg",		title: "Lara Croft - Shadow of the Tomb Raider" }
+	{ img: "img/logo.svg",                  title: "Pastilla" }, 
+	{ img: "img/avatar/2b.jpg",             title: "2b - NieR Automata" }, 
+	{ img: "img/avatar/9s.jpg",             title: "9s - NieR Automata" }, 
+	{ img: "img/avatar/bananas.jpg",        title: "El unico fruto del amor" }, 
+	{ img: "img/avatar/bookerDeWitt.jpg",   title: "Booker DeWitt - Bioshock Infinite" }, 
+	{ img: "img/avatar/deadpool.jpg",       title: "Deadpool" }, 
+	{ img: "img/avatar/eleven.jpg",         title: "11 - Stranger Things" }, 
+	{ img: "img/avatar/elizabeth.jpg",      title: "Elizabeth - Bioshock Infinite" }, 
+	{ img: "img/avatar/homerSimpson.jpg",   title: "Homer Simpson" }, 
+	{ img: "img/avatar/isaac.jpg",          title: "Isaac" }, 
+	{ img: "img/avatar/kero.jpg",           title: "Kero - Sakura card captor" }, 
+	{ img: "img/avatar/miaWallace.jpg",     title: "Mia Wallace - Pulp fiction" }, 
+	{ img: "img/avatar/momo.jpg",           title: "Momo - The legend of Aang" }, 
+	{ img: "img/avatar/nedFlanders.jpg",    title: "Ned Flanders" }, 
+	{ img: "img/avatar/ori.jpg",            title: "Ori" }, 
+	{ img: "img/avatar/phasma.jpg",         title: "Phasma - Star Wars" }, 
+	{ img: "img/avatar/rey.jpg",            title: "Rey - Star Wars" }, 
+	{ img: "img/avatar/tothless.jpg",       title: "Tothless - Como entrenar a tu dragon" }, 
+	{ img: "img/avatar/vulpex.jpg",         title: "Vulpex - Star Wars" }, 
+	{ img: "img/avatar/chloe.jpg",          title: "Chloe - Life is Strange" }, 
+	{ img: "img/avatar/minecraft.jpg",      title: "Minecraft" }, 
+	{ img: "img/avatar/grumpy.jpg",         title: "Grumpy meme" }, 
+	{ img: "img/avatar/fsSociety.jpg",      title: "fsSociety - Mr Robot" }, 
+	{ img: "img/avatar/songoku.jpg",        title: "Songoku - Bola de drac" }, 
+	{ img: "img/avatar/chuchu.jpg",         title: "Chuchu - Utena" }, 
+	{ img: "img/avatar/sailorMoon.jpg",     title: "Sailormoon" }, 
+	{ img: "img/avatar/picachu.jpg",        title: "Picachu" }, 
+	{ img: "img/avatar/ranma.jpg",          title: "Ranma" }, 
+	{ img: "img/avatar/cawboyBeBop.jpg",    title: "Cawboy BeBop" }, 
+	{ img: "img/avatar/doge.jpg",           title: "Doge meme" }, 
+	{ img: "img/avatar/bongoCat.jpg",       title: "Bongo cat" }, 
+	{ img: "img/avatar/shadowTR.jpg",       title: "Lara Croft - Shadow of the Tomb Raider" },
+	{ img: "img/avatar/asuka.jpg",          title: "Asuka - Evangelion" },
+	{ img: "img/avatar/goku.jpg",           title: "Goku - Bola de drac" },
+	{ img: "img/avatar/pusheen.jpg",        title: "Pusheen" },
+	{ img: "img/avatar/link.jpg",        title: "Link - The legend of Zelda" }
 ];
 
 var CHANGELOG = [
 	{
+		version: "2.3.0", date: "xx Feb 2019",
+		lines: [
+			"FIX Fix OS sanbox branch buttons error when select not exists <a href=\"https://github.com/joelthorner/TLmanaGer/issues/114\" target=\"_blank\">#114</a>",
+			"NEW New options layout",
+			"NEW New changelog layout",
+			"NEW New profile layout and new option field username",
+			"NEW Added pagination to background image option",
+			"NEW Added Zendesk options block",
+			"NEW Added Zendesk option. Enable/disable ticket submit confirm popup",
+			"FIX Optimization save and restore options",
+			"FIX Renamed options names for better understanding",
+			"NEW Added better help, gifs and shortcuts",
+			"NEW Added new avatars: 9s, Asuka, Goku, Pusheen and Link"
+		]
+	}, {
 		version: "2.2.3", date: "12 Feb 2019",
 		lines: [
 			"Zendesk confirm submit ticket"
@@ -49,7 +69,7 @@ var CHANGELOG = [
 		lines: [
 			"LC os login select branches to buttons",
 			"Next holiday event",
-			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/107\" target=\"_blank\">#107</a> (Lc pages grid toggle button in hk)",
+			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/107\" target=\"_blank\">#107</a> (Lc pages grid toggle button in hk)"
 		]
 	}, {
 		version: "2.2.0", date: "18 Jan 2019",
@@ -87,7 +107,7 @@ var CHANGELOG = [
 			"Add popup swiper css generator"
 		]
 	}, {
-		version: "2.1.11", date: "13 Des 2018",
+		version: "2.1.11", date: "13 Dec 2018",
 		lines: [
 			"Refactoring and clean code",
 			"Fix <a href=\"https://github.com/joelthorner/TLmanaGer/issues/66\" target=\"_blank\">#66</a>",
@@ -95,7 +115,7 @@ var CHANGELOG = [
 			"Add flushredis cfm feature (with on/off opt)"
 		]
 	}, {
-		version: "2.1.10", date: "09 Des 2018",
+		version: "2.1.10", date: "09 Dec 2018",
 		lines: [
 			"Add lc page deep icon color",
 			"Add lc page inactive icon",
@@ -195,7 +215,7 @@ var CHANGELOG = [
 			"Refactor options data"
 		]
 	}, {
-		version: "2.0.3", date: "28 Ago 2018",
+		version: "2.0.3", date: "28 Aug 2018",
 		lines: [
 			"Fix wrong urls",
 			"Fix undefined options (v2.x)",
@@ -204,17 +224,17 @@ var CHANGELOG = [
 			"Add more avatars for the loles"
 		]
 	}, {
-		version: "2.0.2", date: "26 Ago 2018",
+		version: "2.0.2", date: "26 Aug 2018",
 		lines: [
 			"_locale language files"
 		]
 	}, {
-		version: "2.0.1", date: "26 Ago 2018",
+		version: "2.0.1", date: "26 Aug 2018",
 		lines: [
 			"Add default_locale to manifest"
 		]
 	}, {
-		version: "2.0.0", date: "26 Ago 2018",
+		version: "2.0.0", date: "26 Aug 2018",
 		lines: [
 			"New design",
 			"Popup actions improvements",

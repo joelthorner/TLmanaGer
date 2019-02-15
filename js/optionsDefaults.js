@@ -12,10 +12,14 @@ var defaults = {
 	optDevForceview: true,
 	optDevStealFa : true,
 	optDevFlushCfm : true,
-	optProfileEmail: '',
-	optProfilePass: '',
+	
+	optProfileUsername: 'John Doe',
+	optProfileEmail: 'configure@your-email.com',
+	optProfilePass: '123',
 	optProfileAvatar: 'img/logo.svg',
+
 	optLcBigControls: false,
 	optLcHolidays: true,
-	optOsBranchesBtn: true
+	optOsBranchesBtn: true,
+	optZenTicketConfirm: true
 };
