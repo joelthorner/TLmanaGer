@@ -35,7 +35,7 @@ var defaults = {
 chrome.storage.sync.get(defaults, function(result) {
 	
 	if (!result.optProfileEmail.length || !result.optProfilePass.length) {
-		var url = chrome.extension.getURL('src/options/index.html');
+		var url = chrome.extension.getURL('src/options/index.html') + '#profile';
 		var link = `<a href="${url}" target="_blank">${chrome.i18n.getMessage("options")}</a>`
 		var str = `
 			<script>

@@ -1,4 +1,11 @@
-$(document).ready(function() {
+$(function() {
+	// load options
+	chrome.storage.sync.get(defaults, function(result) {
+		$('.profile').attr('src', chrome.extension.getURL(result.optProfileAvatar));
+		$('.name-user').text(result.optProfileEmail);
+	});
+	
+	$('[data-toggle="tooltip"]').tooltip();
 
 	// init [add-guide-lines]
 	chrome.tabs.query({ "status": "complete", "windowId": chrome.windows.WINDOW_ID_CURRENT, "active": true }, function(tab) {
@@ -44,9 +51,7 @@ $(document).ready(function() {
 		chrome.tabs.create({ url: newURL });
 	});
 
-	$('#new-tab-options').click(function(event) {
+	$('#new-tab-options, .header-popup .profile').click(function(event) {
 		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
 	});
-
 });
-

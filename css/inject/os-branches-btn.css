@@ -8,9 +8,19 @@
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 }
+.os-branches-btn div.field {
+	overflow: visible;
+}
 .os-branches-btn .select-html-fluid {
-	overflow: hidden;
 	padding: 10px 0;
+}
+.os-branches-btn .select-html-fluid:before,
+.os-branches-btn .select-html-fluid:after{
+	content: "";
+	display: table;
+}
+.os-branches-btn .select-html-fluid:after{
+	clear: both;
 }
 .os-branches-btn .select-html-fluid .btn-option {
 	display: block;

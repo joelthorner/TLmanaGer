@@ -20,18 +20,20 @@ function saveOptions(deelay) {
 			optDevFlushCfm: $('#opt-dev-flush-cfm').prop('checked'),
 			optProfileEmail: $('#opt-profile-email').val(),
 			optProfilePass: $('#opt-profile-pass').val(),
+			optProfileUsername: $('#opt-profile-username').val(),
 			optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
 			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
-			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked')
+			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked'),
+			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked')
 
 		}, function() {
-			snackbar.show({
-				message: chrome.i18n.getMessage("optionsSaved"),
+			Snackbar.show({
+				text: chrome.i18n.getMessage("optionsSaved"),
 				actionText: chrome.i18n.getMessage("close"),
-				actionHandler: function () {
-					console.log('Saved options');
-				}
+				backgroundColor: '#007aff',
+				actionTextColor: '#00a8ff',
+				pos: 'bottom-center'
 			});
 		});
 	}, deelay);
@@ -40,17 +42,12 @@ function saveOptions(deelay) {
 function restoreOption($node, type, value) {
 	switch (type) {
 		case 'checkbox':
-			$node.prop('checked', value).filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (value) $parent.addClass('mdc-switch--checked');
-				else $parent.removeClass('mdc-switch--checked');
-			});
+			$node.prop('checked', value);
 			break;
 
 		case 'textfield':
-			$node.val(value).filter(function(index) {
-				if ($.trim(value).length) return true;
-			}).next().addClass('mdc-floating-label--float-above');
+			$node.val(value);
+			$('.' + $node.attr('id')).text(value)
 			break;
 	}
 }
@@ -61,65 +58,52 @@ function restoreOptions() {
 	// Defaults
 	chrome.storage.sync.get(defaults, function(items) {
 		
+		restoreOption($('#opt-lc-bg-active'), 'checkbox', items.optLcBgActive);
+
 		// special save opt checkbox conditionated by opt bg image
-		$('#opt-lc-bg-active')
-			.prop('checked', items.optLcBgActive)
-			.filter(function(index) {
-				var $parent = $(this).parents('.mdc-switch');
-				if (items.optLcBgActive) {
-					$parent.addClass('mdc-switch--checked');
-					$('.option-bg-lc').removeClass('disabled');
-				} else {
-					$parent.removeClass('mdc-switch--checked');
-					$('.option-bg-lc').addClass('disabled');
-				}
-			})
+		var $option = $('.card-background-option');
+		if (items.optLcBgActive) $option.removeClass('disabled');
+		else $option.addClass('disabled');
 
 		// special save opt bg image
 		$('#opt-lc-bg-image')
-			.find('label')
-				.css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
-				.prev('input').prop('checked', true)
-				.attr({
-					'data-thumb': items.optLcBgValue.thumb,
-					'data-download-location': items.optLcBgValue.downloadLocation,
-					'data-user-link': items.optLcBgValue.userLink,
-					'data-user-name': items.optLcBgValue.userName
-				})
-				.val(items.optLcBgValue.image)
-				.parent().find('a').attr('href', items.optLcBgValue.userLink).text(items.optLcBgValue.userName);
-		
+			.find('label').css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
+			.prev('input').prop('checked', true).attr({
+				'data-thumb': items.optLcBgValue.thumb,
+				'data-download-location': items.optLcBgValue.downloadLocation,
+				'data-user-link': items.optLcBgValue.userLink,
+				'data-user-name': items.optLcBgValue.userName
+			})
+			.val(items.optLcBgValue.image)
+			.parent().find('a').attr('href', items.optLcBgValue.userLink).text(items.optLcBgValue.userName);
 
 		restoreOption($('#opt-lc-pagrid-active'), 'checkbox', items.optLcPagridActive);
-
 		restoreOption($('#opt-lc-dev-bar-active'), 'checkbox', items.optLcDevBarActive);
-
 		restoreOption($('#opt-dev-forceview'), 'checkbox', items.optDevForceview);
-
 		restoreOption($('#opt-dev-steal-fa'), 'checkbox', items.optDevStealFa);
-
 		restoreOption($('#opt-dev-flush-cfm'), 'checkbox', items.optDevFlushCfm);
-
 		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
-
 		restoreOption($('#opt-profile-pass'), 'textfield', items.optProfilePass);
+		restoreOption($('#opt-profile-username'), 'textfield', items.optProfileUsername);
 
 		// special save opt avatar
 		$('.avatar')
 			.removeClass('active')
-			.parents('.grid-avatar')
+			.parents('.avatar-grid')
 			.find('input')
 			.filter(function(index) {
 				if ($(this).val() == items.optProfileAvatar) return true;
 			})
 			.prop('checked', true)
-			.parents('.avatar').addClass('active')
+			.parents('.avatar').addClass('active');
+			
+		$('.navbar-profile-img').attr('src', '../../' + items.optProfileAvatar);
+		// end special save opt avatar
 
 		restoreOption($('#opt-lc-big-controls'), 'checkbox', items.optLcBigControls);
-
 		restoreOption($('#opt-lc-holidays'), 'checkbox', items.optLcHolidays);
-
 		restoreOption($('#opt-os-branches-btn'), 'checkbox', items.optOsBranchesBtn);
+		restoreOption($('#opt-zen-ticket-confirm'), 'checkbox', items.optZenTicketConfirm);
 	});
 }
 
@@ -134,7 +118,6 @@ var GLOBAL_RAND_DEFAULT;
 
 async function getImages(query, page, count) {
 	try {
-
 		if ($.trim(query).length) {
 			let response = await fetch(endPoint + '/search/photos?query=' + encodeURI($.trim(query)) + '&page=' + page + '&per_page=' + count + '&orientation=landscape&client_id=' + accesKey);
 			let jsonResponse = await response.json();
@@ -144,9 +127,8 @@ async function getImages(query, page, count) {
 			imagesPaginator(jsonResponse, page);
 		} else {
 			createImages(GLOBAL_RAND_DEFAULT);
-			$('#load-more-bg').remove();
+			$('[data-page-action]').prop('disabled', true);
 		}
-
 	} catch (e) {
 		emptyBgFound();
 	}
@@ -154,39 +136,52 @@ async function getImages(query, page, count) {
 
 async function getRandom(count) {
 	let response = await fetch(endPoint + '/photos/random?query=wallpaper&count=' + count + '&orientation=landscape&client_id=' + accesKey);
-	
 	try {
-
 		let jsonResponse = await response.json();
 		createImages(jsonResponse);
 		GLOBAL_RAND_DEFAULT = jsonResponse;
+	} catch (e) {
+		emptyBgFound();
+	}
+}
 
+async function getCollectionPhotos(id, page, count) {
+	try {
+		let response = await fetch(endPoint + '/collections/' + id + '/photos?id=' + id + '&page=' + page + '&per_page=' + count + '&client_id=' + accesKey);
+		let jsonResponse = await response.json();
+		let imagesList = await jsonResponse;
+		
+		createImages(imagesList);
 	} catch (e) {
 		emptyBgFound();
 	}
 }
 
 function imagesPaginator(jsonResponse, actualPage) {
-	$('#load-more-bg').remove();
-	if ((actualPage + 1) <= jsonResponse.total_pages) {
-		$('.option-backgrounds').append(`
-			<button data-load-page="${(actualPage + 1)}" id="load-more-bg" data-mdc-auto-init="MDCRipple" class="demo-button mdc-button mdc-button--unelevated demo-button-shaped mdc-ripple-upgraded">
-				${chrome.i18n.getMessage("loadMore")}
-			</button>
-		`);
-		mdc.ripple.MDCRipple.attachTo(document.getElementById('load-more-bg'));
-	}
+
+	var $pagination = $('.pagination-bg');
+	$pagination.data('page-this', actualPage)
+
+	if ((actualPage + 1) <= jsonResponse.total_pages) $('[data-page-action="next"]').removeAttr('disabled');
+	else $('[data-page-action="next"]').prop('disabled', true);
+
+	if ((actualPage - 1) >= 1) $('[data-page-action="prev"]').removeAttr('disabled');
+	else $('[data-page-action="prev"]').prop('disabled', true);
+
+	if ($pagination.find('[disabled]').length == 2) $pagination.addClass('d-none').removeClass('d-flex');
+	else $pagination.removeClass('d-none').addClass('d-flex');
+
 	execMasonry();
 }
 
 function createImages(imagesList) {
-	// console.log(imagesList);
+	$('.backgrounds-grid').html('')
 	if (imagesList.length) {
 		$.each(imagesList, function(index, obj) {
-			$('.grid-backgrounds').append(`
+			$('.backgrounds-grid').append(`
 				<div class="background-item">
-					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.urls.full}" data-thumb="${obj.urls.thumb}" data-download-location="${obj.links.download_location}?client_id=${accesKey}" data-user-link="${obj.user.links.html}" data-user-name="${obj.user.name}">
-					<label class="aspect16by9" for="bg-radio-${obj.id}" style="background-image: url(${obj.urls.thumb});background-color: ${obj.color};"></label>
+					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.urls.full}" data-thumb="${obj.urls.small}" data-download-location="${obj.links.download_location}?client_id=${accesKey}" data-user-link="${obj.user.links.html}" data-user-name="${obj.user.name}">
+					<label class="aspect16by9" for="bg-radio-${obj.id}" style="background-image: url(${obj.urls.small});background-color: ${obj.color};"><div class="rippleJS"></div></label>
 					<a href="${obj.user.links.html}?utm_source=TLmanaGer&utm_medium=referral" target="_blank">${obj.user.name}</a>
 				</div>
 			`);
@@ -198,73 +193,49 @@ function createImages(imagesList) {
 }
 
 function emptyBgFound() {
-	$('.grid-backgrounds').append(`
-		<div class="background-item not-found">
+	$('.backgrounds-grid').append(`
+		<div class="background-item not-found d-flex justify-content-center align-items-center text-muted">
 			${chrome.i18n.getMessage("noResults")}
 		</div>
 	`);
 }
 
-$(document).ready(function() {
-	getRandom(16);
-	restoreOptions();
-
-	$('[name="opt-profile-avatar"]').change(function(event) {
-		$('.avatar').removeClass('active');
-		$(this).parents('.avatar').addClass('active');
-	});
-
+function backgroundOption() {
+	// Change background
 	$(document).on('change', '[name="opt-lc-bg"]', function(event) {
 		$('.background-item').removeClass('active');
 		$(this).parents('.background-item').addClass('active');
 
-		var $selected = $(this);
-		var link = $(this).data('user-link');
-		var name = $(this).data('user-name');
-		var thumb = $(this).data('thumb');
+		var $selected = $(this),
+		    link = $(this).data('user-link'),
+		    name = $(this).data('user-name'),
+		    thumb = $(this).data('thumb');
 
 		$('#opt-lc-bg-image')
-			.find('label')
-				.css('background-image', 'url("' + thumb + '")')
-				.prev('input')
-				.val($selected.val())
-				.attr({
-					'data-thumb': thumb,
-					'data-download-location': $selected.data('download-location'),
-					'data-user-link': $selected.data('user-link'),
-					'data-user-name': $selected.data('user-name')
-				})
-				.parent().find('a').attr('href', link).text(name);
+			.find('label').css('background-image', 'url("' + thumb + '")')
+			.prev('input').val($selected.val()).attr({
+				'data-thumb': thumb,
+				'data-download-location': $selected.data('download-location'),
+				'data-user-link': $selected.data('user-link'),
+				'data-user-name': $selected.data('user-name')
+			})
+			.parent().find('a').attr('href', link).text(name);
 	});
 
-	$(document).on('click', '#load-more-bg', function(event) {
-		getImages($('#search-background').val(), $('#load-more-bg').data('load-page'), 16);
+	// Pagination
+	$(document).on('click', '[data-page-action="next"]', function(event) {
+		getImages($('#search-background').val(), $('.pagination-bg').data('page-this') + 1, 20);
+	}).on('click', '[data-page-action="prev"]', function(event) {
+		getImages($('#search-background').val(), $('.pagination-bg').data('page-this') - 1, 20);
 	});
 
-	// autosaves
-	$(document)
-		.on('change', '.panel-options [type="checkbox"], .panel-options [type="radio"]', function(event) {
-			saveOptions(750);
-		});
-		
-	$('#opt-profile-email, #opt-profile-pass').keyup(function(event) {
-		saveOptions(2000);
-	});
-	// end autosaves
-
-	$('#reset-options').click(function(event) {
-		resetOptions();
-		restoreOptions();
-		snackbar.show({
-			message: chrome.i18n.getMessage("optionsRestored"),
-			actionText: chrome.i18n.getMessage("close"),
-			actionHandler: function () {
-				console.log('Restored defaults');
-			}
-		});
+	// Load collection
+	$('[data-collection]').click(function(event) {
+		event.preventDefault();
+		getCollectionPhotos($(this).data('collection'), 1, 20);
 	});
 
-	// search keyup background
+	// Search keyup background
 	var sto_searchBg = null;
 	$('#search-background').keyup(function(event) {
 		var val = $(this).val();
@@ -272,22 +243,56 @@ $(document).ready(function() {
 
 		if (event.keyCode == 13) {
 			$('.background-item').not('#opt-lc-bg-image').remove();
-			getImages(val, 1, 16)
+			getImages(val, 1, 20)
 		} else {
 			sto_searchBg = setTimeout(function() {
 				$('.background-item').not('#opt-lc-bg-image').remove();
-				getImages(val, 1, 16)
+				getImages(val, 1, 20)
 			}, 3000);
 		}
 	});
 
 	// conditioned background option by check
-	$('#opt-lc-bg-active')
-		.change(function(event) {
-			if ($(this).prop('checked')) {
-				$('.option-bg-lc').removeClass('disabled');
-			} else {
-				$('.option-bg-lc').addClass('disabled');
-			}
+	$('#opt-lc-bg-active').change(function(event) {
+		var $option = $('.card-background-option');
+		if ($(this).prop('checked')) $option.removeClass('disabled');
+		else $option.addClass('disabled');
+	});
+}
+
+// Init all
+$(document).ready(function() {
+	getRandom(20);
+	restoreOptions();
+	backgroundOption();
+
+	$('[name="opt-profile-avatar"]').change(function(event) {
+		$('.avatar').removeClass('active');
+		$(this).parents('.avatar').addClass('active');
+		$('.navbar-profile-img').attr('src', '../../' + $(this).val());
+	});
+
+	// autosaves
+	var clickOptions = '#options [type="checkbox"], #options [type="radio"], #profile [type="checkbox"], #profile [type="radio"]';
+	$(document).on('change', clickOptions, function(event) {
+		saveOptions(500);
+	});
+	$('#opt-profile-username, #opt-profile-email, #opt-profile-pass').keyup(function(event) {
+		saveOptions(2000);
+	});
+	// end autosaves
+
+	// Reset defaults
+	$(document).on('click', '#confirm-restore-options [data-confirm="true"]', function(event) {
+		event.preventDefault();
+		resetOptions();
+		restoreOptions();
+		Snackbar.show({
+			text: chrome.i18n.getMessage("optionsRestored"),
+			actionText: chrome.i18n.getMessage("close"),
+			backgroundColor: '#007aff',
+			actionTextColor: '#00a8ff',
+			pos: 'bottom-center'
 		});
+	});
 });

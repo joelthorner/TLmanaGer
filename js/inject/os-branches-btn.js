@@ -34,5 +34,9 @@ chrome.storage.sync.get({ optOsBranchesBtn: defaults.optOsBranchesBtn }, functio
 		});
 
 		observer.observe(target, config);
+
+		$(document).on('dblclick', '.select-html-fluid .btn-option', function(event) {
+			$('#loginButton').click();
+		});
 	}
 });
