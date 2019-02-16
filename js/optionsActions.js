@@ -47,7 +47,7 @@ function restoreOption($node, type, value) {
 
 		case 'textfield':
 			$node.val(value);
-			$('.' + $node.attr('id')).text(value)
+			if(value.length) $('.' + $node.attr('id')).text(value);
 			break;
 	}
 }
@@ -82,9 +82,10 @@ function restoreOptions() {
 		restoreOption($('#opt-dev-forceview'), 'checkbox', items.optDevForceview);
 		restoreOption($('#opt-dev-steal-fa'), 'checkbox', items.optDevStealFa);
 		restoreOption($('#opt-dev-flush-cfm'), 'checkbox', items.optDevFlushCfm);
-		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
+
 		restoreOption($('#opt-profile-pass'), 'textfield', items.optProfilePass);
 		restoreOption($('#opt-profile-username'), 'textfield', items.optProfileUsername);
+		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
 
 		// special save opt avatar
 		$('.avatar')
