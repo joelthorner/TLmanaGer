@@ -32,9 +32,6 @@ $(document).ready(function() {
 			$(this).find('label').click();
 		}
 	});
-	$('.btn-help').click(function(event) {
-		event.preventDefault();
-	});
 
 	// Set avatars
 	var $gridAvatars = $('.avatar-grid');

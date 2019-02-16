@@ -295,4 +295,20 @@ $(document).ready(function() {
 			pos: 'bottom-center'
 		});
 	});
+
+	$('.btn-help').click(function(event) {
+		event.preventDefault();
+		$('#help-tab').tab('show');
+		$($(this).attr('href')).click();
+	});
+
+	$('[data-target="#help-modal-video"]').click(function(event) {
+		$('#help-modal-video .modal-title span').text($(this).find('span').text());
+
+		$('#help-modal-video .modal-body').html('').append(`
+			<video controls class="video-mw">
+				<source src="${$(this).data('src')}" type='video/webm; codecs="vp8, vorbis"' />
+			<video>
+		`);
+	});
 });
