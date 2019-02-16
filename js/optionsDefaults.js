@@ -13,9 +13,9 @@ var defaults = {
 	optDevStealFa : true,
 	optDevFlushCfm : true,
 	
-	optProfileUsername: 'John Doe',
-	optProfileEmail: 'configure@your-email.com',
-	optProfilePass: '123',
+	optProfileUsername: '',
+	optProfileEmail: '',
+	optProfilePass: '',
 	optProfileAvatar: 'img/logo.svg',
 
 	optLcBigControls: false,
