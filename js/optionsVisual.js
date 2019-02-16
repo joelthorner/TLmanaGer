@@ -1,13 +1,9 @@
-window.mdc.autoInit();
-
-// messages
-const snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
-
 function execMasonry() {
-	$('.content-options .panel').each(function(index, el) {
+	$('.tab-pane').each(function(index, el) {
 		$(this).masonry({
-			itemSelector: '.option-block',
-			columnWidth: '.option-block',
+			itemSelector: '.card-option-col',
+			columnWidth: '.card-option-col',
+			stamp: '.stamp',
 			percentPosition: true
 		});
 	});
@@ -15,37 +11,30 @@ function execMasonry() {
 
 $(document).ready(function() {
 	// set version
-	$('.aside-1 .mdc-drawer__header-content small')
-		.text('v' + chrome.runtime.getManifest().version);
-
-	new Tooltip($('#reset-options')[0], {
-		placement: 'left',
-		title: chrome.i18n.getMessage("restoreDefaults")
-	});
+	$('.version').text(chrome.runtime.getManifest().version);
 
 	if (location.hash.length) {
-		$('#options-menu [data-panel]').removeClass('active');
-		$('[data-panel="' + location.hash.replace('#', '') + '"]').addClass('active');
-
-		$('.panel').removeClass('active');
-		$('.' + location.hash.replace('#', '')).addClass('active');
-
+		$('.navbar .navbar-nav [data-toggle="tab"][href="' + location.hash + '"]').click();
 		execMasonry();
 	}
 
-	$('#options-menu [data-panel]').click(function(event) {
-		$('#options-menu [data-panel]').removeClass('active');
-		$(this).addClass('active');
-
-		$('.panel').removeClass('active');
-		$('.' + $(this).data('panel')).addClass('active');
-		location.hash = '#' + $(this).data('panel');
-
+	$('.navbar .navbar-nav [data-toggle="tab"]').click(function(event) {
+		location.hash = $(this).attr('href');
 		execMasonry();
+
+		$('.navbar .navbar-nav [data-toggle="tab"]').removeClass('show');
+	});
+	$('html').addClass('init');
+
+	// switches
+	$('.list-group-item-option').click(function(event) {
+		if (!$(event.target).is('label, .btn-help')) {
+			$(this).find('label').click();
+		}
 	});
 
 	// Set avatars
-	var $gridAvatars = $('.grid-avatar');
+	var $gridAvatars = $('.avatar-grid');
 	$.each(AVATARS, function(index, avatar) {
 		$gridAvatars.append(`
 			<div class="avatar">
@@ -56,24 +45,44 @@ $(document).ready(function() {
 			</div>
 		`);
 	});
+	$('.avatar img').tooltip();
 
 	// Set changelog
-	var $changelogList = $('.changelog-list');
 	$.each(CHANGELOG, function(index, item) {
-		$changelogList.append(`
-			<li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
-				<svg class="mdc-list-item__graphic icon"><use xlink:href="#icon-merge"></use></svg>
-				<a class="mdc-list-item__text" href="https://github.com/joelthorner/TLmanaGer/releases/tag/v${item.version}" target="_blank">
-					<span class="mdc-list-item__primary-text">v${item.version}</span>
-					<span class="mdc-list-item__secondary-text">${item.date}</span>
-				</a>
+		var listNew = [], listFix = [], listElse = [];
+		$.each(item.lines, function(index, line) {
+			if (line.indexOf('NEW') == 0) listNew.push(line.replace('NEW ', ''));
+			else if (line.indexOf('FIX') == 0) listFix.push(line.replace('FIX ', ''));
+			else listElse.push(line);
+		});
+
+		var NEW = '<span class="mr-2 badge badge-success text-monospace">NEW</span>',
+		    FIX = '<span class="mr-2 badge badge-danger text-monospace">FIX</span>';
+
+		$('#changelog .list-group').append(`
+			<li class="list-group-item list-group-item-changelog py-4">
+				<div class="row">
+					<a class="col-3 col-left media text-decoration-none" href="https://github.com/joelthorner/TLmanaGer/releases/tag/v${item.version}" target="_blank">
+						<svg class="icon mr-3"><use xlink:href="#icon-merge"></use></svg>
+						<div class="media-body mb-3">
+							<div class="title mb-0 text-light">v${item.version}</div>
+							<small class="text-secondary">${moment(new Date(item.date)).fromNow()}</small>
+						</div>
+					</a>
+					
+					<div class="col-9">
+						<ul class="items-list mb-3 ${!listNew.length ? 'd-none' : ''}">
+							<li>${NEW}<span>${listNew.join('</span></li><li>' + NEW + '<span>')}</span></li>
+						</ul>
+						<ul class="items-list mb-3 ${!listFix.length ? 'd-none' : ''}">
+							<li>${FIX}<span>${listFix.join('</span></li><li>' + FIX + '<span>')}</span></li>
+						</ul>
+						<ul class="items-list mb-3 ${!listElse.length ? 'd-none' : ''}">
+							<li><span>${listElse.join('</span></li><li><span>')}</span></li>
+						</ul>
+					</div>
+				</div>
 			</li>
-			<li class="sublist">
-				<ul>
-					<li>${item.lines.join('</li><li>')}</li>
-				</ul>
-			</li>
-			<li class="mdc-list-divider" role="separator"></li>
 		`);
 	});
 

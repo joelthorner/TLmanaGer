@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="options-html">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,11 +14,420 @@
 			<stop offset="0%" stop-color="#00a8ff" />
 			<stop offset="100%" stop-color="#007aff" />
 		</linearGradient>
-
+		<symbol id="icon-add" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/></symbol>
 		<symbol id="icon-merge" viewBox="0 0 384 512"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 39.2 28.2 71.8 65.5 78.7-.8 17.2-5 30.4-12.7 40-17.5 21.8-53.1 25.2-90.7 28.7-28.2 2.6-57.4 5.4-80.4 16.9-3.4 1.7-6.7 3.6-9.7 5.7V158.4c36.5-7.4 64-39.7 64-78.4 0-44.2-35.8-80-80-80S0 35.8 0 80c0 38.7 27.5 71 64 78.4v195.2C27.5 361 0 393.3 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-36.9-24.9-67.9-58.9-77.2 5-9.6 12.3-14.6 19-18 17.5-8.8 42.5-11.2 68.9-13.7 42.6-4 86.7-8.1 112.7-40.5 12.4-15.5 19-35.5 19.8-60.7C357.3 214 384 182.1 384 144zM32 80c0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48-48-21.5-48-48zm96 352c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-26.4 21.4-47.9 47.8-48h.6c26.3.2 47.6 21.7 47.6 48zm187.8-241.5L304 192c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 22.4-15.4 41.2-36.2 46.5z"></path></symbol>
+		<symbol id="icon-help" viewBox="0 0 384 512"><path d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path></symbol>
 	</svg>
 
-	<div class="drawer-container-flex">
+	<nav class="navbar navbar-top navbar-expand-sm navbar-dark">
+		<a class="navbar-brand" href="/src/options/index.html">
+			<img src="../../img/logo-white.svg">
+			<div class="rippleJS"></div>
+		</a>
+		<a class="navbar-brand-name text-decoration-none" href="/src/options/index.html">
+			<span class="name">TLmanaGer</span> <span class="version text-secondary"></span>
+			<div class="rippleJS"></div>
+		</a>
+		<ul class="navbar-nav ml-auto nav" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="options-tab" data-toggle="tab" href="#options" role="tab" aria-controls="nav-options-tab" aria-selected="true">
+					<svg class="icon mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M482.696 299.276l-32.61-18.827a195.168 195.168 0 0 0 0-48.899l32.61-18.827c9.576-5.528 14.195-16.902 11.046-27.501-11.214-37.749-31.175-71.728-57.535-99.595-7.634-8.07-19.817-9.836-29.437-4.282l-32.562 18.798a194.125 194.125 0 0 0-42.339-24.48V38.049c0-11.13-7.652-20.804-18.484-23.367-37.644-8.909-77.118-8.91-114.77 0-10.831 2.563-18.484 12.236-18.484 23.367v37.614a194.101 194.101 0 0 0-42.339 24.48L105.23 81.345c-9.621-5.554-21.804-3.788-29.437 4.282-26.36 27.867-46.321 61.847-57.535 99.595-3.149 10.599 1.47 21.972 11.046 27.501l32.61 18.827a195.168 195.168 0 0 0 0 48.899l-32.61 18.827c-9.576 5.528-14.195 16.902-11.046 27.501 11.214 37.748 31.175 71.728 57.535 99.595 7.634 8.07 19.817 9.836 29.437 4.283l32.562-18.798a194.08 194.08 0 0 0 42.339 24.479v37.614c0 11.13 7.652 20.804 18.484 23.367 37.645 8.909 77.118 8.91 114.77 0 10.831-2.563 18.484-12.236 18.484-23.367v-37.614a194.138 194.138 0 0 0 42.339-24.479l32.562 18.798c9.62 5.554 21.803 3.788 29.437-4.283 26.36-27.867 46.321-61.847 57.535-99.595 3.149-10.599-1.47-21.972-11.046-27.501zm-65.479 100.461l-46.309-26.74c-26.988 23.071-36.559 28.876-71.039 41.059v53.479a217.145 217.145 0 0 1-87.738 0v-53.479c-33.621-11.879-43.355-17.395-71.039-41.059l-46.309 26.74c-19.71-22.09-34.689-47.989-43.929-75.958l46.329-26.74c-6.535-35.417-6.538-46.644 0-82.079l-46.329-26.74c9.24-27.969 24.22-53.869 43.929-75.969l46.309 26.76c27.377-23.434 37.063-29.065 71.039-41.069V44.464a216.79 216.79 0 0 1 87.738 0v53.479c33.978 12.005 43.665 17.637 71.039 41.069l46.309-26.76c19.709 22.099 34.689 47.999 43.929 75.969l-46.329 26.74c6.536 35.426 6.538 46.644 0 82.079l46.329 26.74c-9.24 27.968-24.219 53.868-43.929 75.957zM256 160c-52.935 0-96 43.065-96 96s43.065 96 96 96 96-43.065 96-96-43.065-96-96-96zm0 160c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path></svg>
+					Options
+					<div class="rippleJS"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="help-tab" data-toggle="tab" href="#help" role="tab" aria-controls="nav-help-tab" aria-selected="false">
+					<svg class="icon mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M228.5 511.8l-25-7.1c-3.2-.9-5-4.2-4.1-7.4L340.1 4.4c.9-3.2 4.2-5 7.4-4.1l25 7.1c3.2.9 5 4.2 4.1 7.4L235.9 507.6c-.9 3.2-4.3 5.1-7.4 4.2zm-75.6-125.3l18.5-20.9c1.9-2.1 1.6-5.3-.5-7.1L49.9 256l121-102.5c2.1-1.8 2.4-5 .5-7.1l-18.5-20.9c-1.8-2.1-5-2.3-7.1-.4L1.7 252.3c-2.3 2-2.3 5.5 0 7.5L145.8 387c2.1 1.8 5.3 1.6 7.1-.5zm277.3.4l144.1-127.2c2.3-2 2.3-5.5 0-7.5L430.2 125.1c-2.1-1.8-5.2-1.6-7.1.4l-18.5 20.9c-1.9 2.1-1.6 5.3.5 7.1l121 102.5-121 102.5c-2.1 1.8-2.4 5-.5 7.1l18.5 20.9c1.8 2.1 5 2.3 7.1.4z"></path></svg>
+					Help
+					<div class="rippleJS"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="changelog-tab" data-toggle="tab" href="#changelog" role="tab" aria-controls="nav-changelog-tab" aria-selected="false">
+					<svg class="icon mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 39.2 28.2 71.8 65.5 78.7-.8 17.2-5 30.4-12.7 40-17.5 21.8-53.1 25.2-90.7 28.7-28.2 2.6-57.4 5.4-80.4 16.9-3.4 1.7-6.7 3.6-9.7 5.7V158.4c36.5-7.4 64-39.7 64-78.4 0-44.2-35.8-80-80-80S0 35.8 0 80c0 38.7 27.5 71 64 78.4v195.2C27.5 361 0 393.3 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-36.9-24.9-67.9-58.9-77.2 5-9.6 12.3-14.6 19-18 17.5-8.8 42.5-11.2 68.9-13.7 42.6-4 86.7-8.1 112.7-40.5 12.4-15.5 19-35.5 19.8-60.7C357.3 214 384 182.1 384 144zM32 80c0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48-48-21.5-48-48zm96 352c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-26.4 21.4-47.9 47.8-48h.6c26.3.2 47.6 21.7 47.6 48zm187.8-241.5L304 192c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 22.4-15.4 41.2-36.2 46.5z"></path></svg>
+					Changelog
+					<div class="rippleJS"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://github.com/joelthorner/TLmanaGer" target="_blank">
+					<svg class="icon mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+					Github
+					<div class="rippleJS"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://github.com/joelthorner/TLmanaGer/issues" target="_blank">
+					<svg class="icon mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M544 272h-64V150.627l35.313-35.313c6.249-6.248 6.249-16.379 0-22.627-6.248-6.248-16.379-6.248-22.627 0L457.373 128H417C417 57.26 359.751 0 289 0c-70.74 0-128 57.249-128 128h-42.373L75.314 84.687c-6.249-6.248-16.379-6.248-22.628 0-6.248 6.248-6.248 16.379 0 22.627L96 150.627V272H32c-8.836 0-16 7.163-16 16s7.164 16 16 16h64v24c0 36.634 11.256 70.686 30.484 98.889l-57.797 57.797c-6.249 6.248-6.249 16.379 0 22.627 6.249 6.249 16.379 6.248 22.627 0l55.616-55.616C178.851 483.971 223.128 504 272 504h32c48.872 0 93.149-20.029 125.071-52.302l55.616 55.616c6.249 6.249 16.379 6.248 22.627 0 6.249-6.248 6.249-16.379 0-22.627l-57.797-57.797C468.744 398.686 480 364.634 480 328v-24h64c8.837 0 16-7.163 16-16s-7.163-16-16-16zM289 32c53.019 0 96 42.981 96 96H193c0-53.019 42.981-96 96-96zm15 440V236c0-6.627-5.373-12-12-12h-8c-6.627 0-12 5.373-12 12v236c-79.402 0-144-64.599-144-144V160h320v168c0 79.401-64.599 144-144 144z"></path></svg>
+					Issues
+					<div class="rippleJS"></div>
+				</a>
+			</li>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="media">
+						<img src="data:image/svg+xml;charset=UTF-8,%3csvg fill='none' aria-hidden='true' focusable='false' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cpath d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'%3e%3c/path%3e%3c/svg%3e" class="navbar-profile-img bg-white rounded-circle mr-3">
+						<div class="media-body mr-3">
+							<div class="mt-0"><span class="navbar-profile-name opt-profile-username">John Doe</span></div>
+							<div class="mt-0"><span class="navbar-profile-email text-secondary opt-profile-email">configure@your-email.com</span></div>
+						</div>
+					</div>
+					<div class="rippleJS"></div>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-primary" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="nav-profile-tab" aria-selected="false">
+						<svg class="icon mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M493.25 56.26l-37.51-37.51C443.25 6.25 426.87 0 410.49 0s-32.76 6.25-45.26 18.74L12.85 371.12.15 485.34C-1.45 499.72 9.88 512 23.95 512c.89 0 1.78-.05 2.69-.15l114.14-12.61 352.48-352.48c24.99-24.99 24.99-65.51-.01-90.5zM126.09 468.68l-93.03 10.31 10.36-93.17 263.89-263.89 82.77 82.77-263.99 263.98zm344.54-344.54l-57.93 57.93-82.77-82.77 57.93-57.93c6.04-6.04 14.08-9.37 22.63-9.37 8.55 0 16.58 3.33 22.63 9.37l37.51 37.51c12.47 12.48 12.47 32.78 0 45.26z"></path></svg>
+						Edit profile
+						<div class="rippleJS"></div>
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#confirm-restore-options">
+						<svg class="icon mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M464 0H144C82.14 0 32 85.96 32 192v172.07c0 41.12-9.8 62.77-31.17 126.87C-2.62 501.3 5.09 512 16.01 512h312.92c13.77 0 26-8.81 30.36-21.88 11.16-33.48 21.59-63.54 24.11-106.12H464c61.86 0 112-85.96 112-192S525.86 0 464 0zM352 192v172.07c0 46.83-9.67 75.79-21.9 112.45l-1.16 3.48H38.29c.54-1.61 1.08-3.18 1.61-4.72C55.44 429.55 64 404.37 64 364.07V192c0-94.29 42.16-160 80-160h258.14C371.93 66.39 352 125.18 352 192zm112 160c-37.84 0-80-65.71-80-160s42.16-160 80-160 80 65.71 80 160-42.16 160-80 160zm0-208c-13.25 0-24 21.49-24 48s10.75 48 24 48c13.26 0 24-21.49 24-48s-10.74-48-24-48z"></path></svg>
+						Restore default options
+						<div class="rippleJS"></div>
+					</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="options-view-content">
+		<div class="tab-content">
+			
+			<div class="tab-pane fade show active" id="options" role="tabpanel" aria-labelledby="nav-options-tab">
+				<div class="col card-option-col">
+					<div class="card text-white bg-dark">
+						<div class="card-header text-secondary">
+							<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528 0H48C21.5 0 0 21.5 0 48v288c0 26.5 21.5 48 48 48h192l-24 96h-72c-8.8 0-16 7.2-16 16s7.2 16 16 16h288c8.8 0 16-7.2 16-16s-7.2-16-16-16h-72l-24-96h192c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM249 480l16-64h46l16 64h-78zm295-144c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V48c0-8.8 7.2-16 16-16h480c8.8 0 16 7.2 16 16v288z"></path></svg>
+							Logicommerce customization
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-lc-pagrid-active" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-lc-pagrid-active">
+									<label class="custom-control-label" for="opt-lc-pagrid-active">Pages grid view</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-lc-dev-bar-active" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-lc-dev-bar-active">
+									<label class="custom-control-label" for="opt-lc-dev-bar-active">Developer bar</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-os-branches-btn" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-os-branches-btn">
+									<label class="custom-control-label" for="opt-os-branches-btn">Opensaas sanboxes buttons</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-lc-big-controls" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-lc-big-controls">
+									<label class="custom-control-label" for="opt-lc-big-controls">Big form controls <small class="text-muted">(beta)</small></label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-lc-holidays" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-lc-holidays">
+									<label class="custom-control-label" for="opt-lc-holidays">Celebrate the holidays!</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-lc-bg-active" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-lc-bg-active">
+									<label class="custom-control-label" for="opt-lc-bg-active">Background image</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col card-option-col">
+					<div class="card text-white bg-dark">
+						<div class="card-header text-secondary">
+							<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M208 32h-88a56 56 0 0 0-56 56v77.49a40 40 0 0 1-11.72 28.29L7 239a24 24 0 0 0 0 34l45.24 45.24A40 40 0 0 1 64 346.52V424a56 56 0 0 0 56 56h88a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16h-88a8 8 0 0 1-8-8v-77.48a88.06 88.06 0 0 0-25.78-62.24L57.93 256l28.29-28.28A88.06 88.06 0 0 0 112 165.48V88a8 8 0 0 1 8-8h88a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zm361 207l-45.25-45.24A40.07 40.07 0 0 1 512 165.48V88a56 56 0 0 0-56-56h-88a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h88a8 8 0 0 1 8 8v77.48a88 88 0 0 0 25.78 62.24L518.06 256l-28.28 28.28A88 88 0 0 0 464 346.52V424a8 8 0 0 1-8 8h-88a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h88a56 56 0 0 0 56-56v-77.49a40 40 0 0 1 11.72-28.29L569 273a24 24 0 0 0 0-34z"></path></svg>
+							Development tools
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-dev-forceview">
+									<label class="custom-control-label" for="opt-dev-forceview">Auto forceview=1</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-dev-steal-fa">
+									<label class="custom-control-label" for="opt-dev-steal-fa">Font awesome steal</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-dev-flush-cfm">
+									<label class="custom-control-label" for="opt-dev-flush-cfm">Flushredis shortcut <small class="text-muted">(igd.prod...)</small></label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col card-option-col card-option-col-double stamp">
+					<div class="card text-white bg-dark card-background-option">
+						<div class="card-header text-secondary">
+							<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"></path></svg>
+							Background image
+
+							<div class="pagination-bg align-items-center d-none" data-page-this="1">
+								<button type="button" class="btn btn-dark" disabled data-page-action="prev">
+									<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M231.293 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L70.393 256 251.092 74.87c4.686-4.686 4.686-12.284 0-16.971L231.293 38.1c-4.686-4.686-12.284-4.686-16.971 0L4.908 247.515c-4.686 4.686-4.686 12.284 0 16.971L214.322 473.9c4.687 4.686 12.285 4.686 16.971-.001z"></path></svg>
+								</button>
+								<button type="button" class="btn btn-dark" disabled data-page-action="next">
+									<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z"></path></svg>
+								</button>
+							</div>
+						</div>
+						
+						<div class="row no-gutters">
+							<div class="col-3 col-left d-flex flex-column">
+								<div class="card-body flex-grow-0">
+									<input id="search-background" class="form-control form-control-sm" type="search" placeholder="Search">
+								</div>
+								<div class="card-header card-header-collections text-secondary">
+									Collections
+								</div>
+								<div class="list-group list-group-flush">
+									<a class="list-group-item text-white" href="#" data-collection="223661">
+										Joel Favs
+										<div class="rippleJS"></div>
+									</a>
+									<a class="list-group-item text-white" href="#" data-collection="4297675">
+										Cyber neon
+										<div class="rippleJS"></div>
+									</a>
+									<a class="list-group-item text-white" href="#" data-collection="4297713">
+										Landscape
+										<div class="rippleJS"></div>
+									</a>
+								</div>
+								<div class="card-header card-header-selected text-secondary">
+									Selected
+								</div>
+								<div id="opt-lc-bg-image" class="background-item">
+									<input type="radio" id="bg-radio-saved" name="opt-lc-bg" checked="checked">
+									<label class="aspect16by9" for="bg-radio-saved"></label>
+									<a href="https://github.com/joelthorner" target="_blank">Joel Thorner</a>
+								</div>
+							</div>
+
+							<div class="col-9 col-right p-0">
+								<div class="backgrounds-grid">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col card-option-col">
+					<div class="card text-white bg-dark">
+						<div class="card-header text-secondary">
+							<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.745 18.745 49.137 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zm-22.627 45.255L271.196 475.314c-6.243 6.243-16.375 6.253-22.627 0L36.686 263.431A15.895 15.895 0 0 1 32 252.117V48c0-8.822 7.178-16 16-16h204.118c4.274 0 8.292 1.664 11.314 4.686l211.882 211.882c6.238 6.239 6.238 16.39 0 22.628zM144 124c11.028 0 20 8.972 20 20s-8.972 20-20 20-20-8.972-20-20 8.972-20 20-20m0-28c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>
+							Zendesk
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-zen-ticket-confirm">
+									<label class="custom-control-label" for="opt-zen-ticket-confirm">Send ticket confirm</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div><!-- end options -->
+
+			<div class="tab-pane fade" id="help" role="tabpanel" aria-labelledby="nav-help-tab">
+				<div class="row row-mn">
+					<div class="col col-xs-6 col-xl-4 card-help-col">
+						<div class="card card-hidden text-white bg-dark">
+							<div class="card-header text-secondary">
+								<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528 0H48C21.5 0 0 21.5 0 48v288c0 26.5 21.5 48 48 48h192l-24 96h-72c-8.8 0-16 7.2-16 16s7.2 16 16 16h288c8.8 0 16-7.2 16-16s-7.2-16-16-16h-72l-24-96h192c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM249 480l16-64h46l16 64h-78zm295-144c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V48c0-8.8 7.2-16 16-16h480c8.8 0 16 7.2 16 16v288z"></path></svg>
+								Logicommerce customization
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-lc-pagrid-active" class="my-2 d-block text-light text-decoration-none" href="#" data-toggle="modal" data-target="#help-modal-video" data-src="../../img/help/pages-grid.webm">
+										<span>Pages grid view</span>
+										<small class="text-muted d-block">Transforma la window de pages del LC en grid.</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-lc-dev-bar-active" class="my-2 d-block text-light text-decoration-none" href="#" data-toggle="modal" data-target="#help-modal-video" data-src="../../img/help/dev-bar.webm">
+										<span>Developer bar</span>
+										<small class="text-muted d-block">Afegeix una barra superior al LogiComers de opensaps amb els útils d'aquest.</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-os-branches-btn" class="my-2 d-block text-light text-decoration-none" href="#" data-toggle="modal" data-target="#help-modal-video" data-src="../../img/help/buttons-sandbox.webm">
+										<span>Opensaas sanboxes buttons</span>
+										<small class="text-muted d-block">Converteix el select de branches de os en buttons. Easy fast click!</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-lc-big-controls" class="my-2 d-block text-light text-decoration-none" href="#" data-toggle="modal" data-target="#help-modal-video" data-src="../../img/help/big-control.webm">
+										<span>Big form controls</span>
+										<small class="text-muted d-block">Augmenta els controls del LogiComers per evitar fer el sniper amb el ratolí.</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-lc-holidays" class="my-2 d-block text-light text-decoration-none" href="#" data-toggle="modal" data-target="#help-modal-video" data-src="../../img/help/holidays-lc.webm">
+										<span>Celebrate the holidays!</span>
+										<small class="text-muted d-block">Sorpresa :D</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-lc-bg-active" class="my-2 d-block text-light text-decoration-none" href="#" data-toggle="modal" data-target="#help-modal-video" data-src="../../img/help/background-image.webm">
+										<span>Background image</span>
+										<small class="text-muted d-block">Fica un background image a tots els admins de LogiComers.</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div><!-- end help -->
+
+			<div class="tab-pane fade" id="changelog" role="tabpanel" aria-labelledby="nav-changelog-tab">
+				<div class="col card-changelog-col">
+					<div class="card text-white bg-dark">
+						<div class="card-header text-secondary">
+							<svg class="card-icon"><use xlink:href="#icon-merge"></use></svg>
+							Changelog
+						</div>
+						<ul class="list-group list-group-flush">
+							
+						</ul>
+					</div>
+				</div>
+			</div><!-- end changelog -->
+
+			<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+				<div class="row row-mn">
+					<div class="col col-xs-6 col-xl-4 card-profile-col">
+						<div class="card card-hidden text-white bg-dark">
+							<div class="card-header text-secondary">
+								<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 224h13.5c24.7 56.5 80.9 96 146.5 96s121.8-39.5 146.5-96H384c8.8 0 16-7.2 16-16v-96c0-8.8-7.2-16-16-16h-13.5C345.8 39.5 289.6 0 224 0S102.2 39.5 77.5 96H64c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16zm40-88c0-22.1 21.5-40 48-40h144c26.5 0 48 17.9 48 40v24c0 53-43 96-96 96h-48c-53 0-96-43-96-96v-24zm72 72l12-36 36-12-36-12-12-36-12 36-36 12 36 12 12 36zm151.6 113.4C297.7 340.7 262.2 352 224 352s-73.7-11.3-103.6-30.6C52.9 328.5 0 385 0 454.4v9.6c0 26.5 21.5 48 48 48h80v-64c0-17.7 14.3-32 32-32h128c17.7 0 32 14.3 32 32v64h80c26.5 0 48-21.5 48-48v-9.6c0-69.4-52.9-125.9-120.4-133zM272 448c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16zm-96 0c-8.8 0-16 7.2-16 16v48h32v-48c0-8.8-7.2-16-16-16z"></path></svg>
+								Avatar
+							</div>
+							<div class="avatar-grid">
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="col col-xs-6 col-xl-8 card-profile-col card-profile-col-data">
+						<div class="card card-hidden text-white bg-dark">
+							<div class="card-header text-secondary">
+								<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 32c106 0 192 28.75 192 64v32c0 35.25-86 64-192 64S32 163.25 32 128V96c0-35.25 86-64 192-64m192 149.5V224c0 35.25-86 64-192 64S32 259.25 32 224v-42.5c41.25 29 116.75 42.5 192 42.5s150.749-13.5 192-42.5m0 96V320c0 35.25-86 64-192 64S32 355.25 32 320v-42.5c41.25 29 116.75 42.5 192 42.5s150.749-13.5 192-42.5m0 96V416c0 35.25-86 64-192 64S32 451.25 32 416v-42.5c41.25 29 116.75 42.5 192 42.5s150.749-13.5 192-42.5M224 0C145.858 0 0 18.801 0 96v320c0 77.338 146.096 96 224 96 78.142 0 224-18.801 224-96V96c0-77.338-146.096-96-224-96z"></path></svg>
+								User data
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col col-12 col-xl-4">
+										<div class="form-group form-group-max">
+											<label for="opt-profile-email">Email address</label>
+											<input type="email" class="form-control" id="opt-profile-email" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+											<small id="emailHelp" class="form-text text-muted">Email for shop testing accounts</small>
+										</div>
+									</div>
+									<div class="col col-12 col-xl-4">
+										<div class="form-group form-group-max">
+											<label for="opt-profile-username">Username</label>
+											<input type="text" class="form-control" id="opt-profile-username" aria-describedby="usernameHelp" placeholder="John Doe" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+											<small id="usernameHelp" class="form-text text-muted">Dummy nickname</small>
+										</div>
+									</div>
+									<div class="col col-12 col-xl-4">
+										<div class="form-group form-group-max">
+											<label for="opt-profile-pass">Password</label>
+											<input type="password" class="form-control" id="opt-profile-pass" aria-describedby="passwordHelp" placeholder="123456" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+											<small id="passwordHelp" class="form-text text-muted">Do not use a real password!</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- end profile -->
+		</div>
+	</div>
+
+	<div class="modal fade" id="confirm-restore-options" tabindex="-1" role="dialog" aria-labelledby="confirm-restore-options-title" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header d-flex align-items-center justify-content-center">
+					<div class="h5 modal-title" id="confirm-restore-options-title">Are you sure?</div>
+				</div>
+				<div class="modal-body text-center">
+					<div class="h1">🦄</div>
+				</div>
+				<div class="modal-footer d-flex align-items-center justify-content-center">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" data-confirm="false">Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" data-confirm="true">Confirm</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="help-modal-video" tabindex="-1" role="dialog" aria-labelledby="help-modal-video-title" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header d-flex align-items-center justify-content-center">
+					<div class="h5 modal-title" id="help-modal-video-title">
+						<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z"></path></svg>
+						<span></span>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body modal-xl text-center p-0">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="drawer-container-flex">
 		<aside class="aside-1 mdc-drawer mdc-drawer--permanent">
 			<nav class="mdc-drawer__drawer">
 				<header class="mdc-drawer__header">
@@ -53,8 +462,6 @@
 		</aside>
 		<div class="content-options">
 			<div class="panel panel-options active">
-				
-				<!-- <h1 class="h1-options">Options</h1> -->
 				
 				<div class="option-block option-block-1 mdc-card">
 					<h2 class="mdc-typography--headline6 h2-options">LC tunning</h2>
@@ -227,13 +634,12 @@
 			</div>
 
 			<div class="panel panel-features">
-				<!-- <h1 class="h1-options">Features info</h1> -->
 				
 				<div class="option-block option-feature mdc-card">
 					<h2 class="mdc-typography--headline6 h2-options">LC tunning</h2>
 
 					<ul class="mdc-list demo-list mdc-list--two-line">
-						<li class="mdc-list-item">
+						<li class="mdc-list-item" id="lc-background">
 							<span class="mdc-list-item__text">
 								<span class="mdc-list-item__primary-text">LC background</span>
 								<span class="mdc-list-item__secondary-text">Fica un background image a tots els admins de LogiComers.</span>
@@ -414,15 +820,38 @@
 		</div>
 	</div>
 
-	<script src="../../js/libs/material-components-web.min.js"></script>
+	<div class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="help-dialog-title" aria-describedby="help-dialog-content">
+		<div class="mdc-dialog__container">
+			<div class="mdc-dialog__surface">
+				<h2 class="mdc-dialog__title" id="help-dialog-title"></h2>
+				<div class="mdc-dialog__content" id="help-dialog-content">
+					
+				</div>
+				<footer class="mdc-dialog__actions">
+					<button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
+						<span class="mdc-button__label">Close</span>
+					</button>
+				</footer>
+			</div>
+		</div>
+		<div class="mdc-dialog__scrim"></div>
+	</div> -->
+
+	<nav class="navbar navbar-bottom navbar-dark">
+		<span>Developed by <a class="text-light" href="https://github.com/joelthorner" target="_blank">joelthorner</a> and <a class="text-light" href="https://github.com/pol-93" target="_blank">pol-93</a></span>
+	</nav>
+
 	<script src="../../js/libs/jquery-3.3.1.min.js"></script>
-	<script src="../../js/libs/js.cookie.js"></script>
 	<script src="../../js/libs/popper.min.js"></script>
-	<script src="../../js/libs/tooltip.min.js"></script>
+	<script src="../../js/libs/moment.js"></script>
+	<script src="../../js/libs/bootstrap.min.js"></script>
+	<script src="../../js/libs/ripple.min.js"></script>
 	<script src="../../js/libs/masonry.pkgd.min.js"></script>
+	<script src="../../js/libs/snackbar.min.js"></script>
+	
 	<script src="../../js/optionsData.js"></script>
-	<script src="../../js/optionsVisual.js"></script>
 	<script src="../../js/optionsDefaults.js"></script>
+	<script src="../../js/optionsVisual.js"></script>
 	<script src="../../js/optionsActions.js"></script>
 </body>
 </html>

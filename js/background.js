@@ -125,9 +125,10 @@ chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
 		chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
 			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
 				chrome.tabs.create({ 
-					url: chrome.extension.getURL("/src/options/index.html") 
+					url: chrome.extension.getURL("/src/options/index.html") + '#changelog'
 				});
 			}
 		});
+
 	}
 });

@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.2.3",
+	"version": "2.3.0",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -25,9 +25,9 @@
 	},
 	"permissions": [
 		"chrome://favicon/",
+		"contentSettings",
 		"clipboardRead",
 		"clipboardWrite",
-		"contentSettings",
 		"contextMenus",
 		"cookies",
 		"history",
@@ -100,8 +100,8 @@
 		},
 		{
 			"matches": [
-				"*://8x-os.logicommerce.net/*",
-				"*://8x.logicommerce.net/*"
+				"*://8x-os.logicommerce.net/login/*",
+				"*://8x.logicommerce.net/login/*"
 			],
 			"js": [
 				"js/libs/magic-select.js",
