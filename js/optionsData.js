@@ -39,7 +39,7 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.3.0", date: "xx Feb 2019",
+		version: "2.3.0", date: "17 Feb 2019",
 		lines: [
 			"FIX Fix OS sanbox branch buttons error when select not exists <a href=\"https://github.com/joelthorner/TLmanaGer/issues/114\" target=\"_blank\">#114</a>",
 			"NEW New options layout",
