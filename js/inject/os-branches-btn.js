@@ -1,9 +1,10 @@
 chrome.storage.sync.get({ optOsBranchesBtn: defaults.optOsBranchesBtn }, function(result) {
 
-	if (result.optOsBranchesBtn) {
+	var target = document.getElementById('sandboxFields');
+	if (result.optOsBranchesBtn && target) {
 
 		$('html').addClass('os-branches-btn');
-
+		
 		var config = { 
 			attributes: false, 
 			childList: true, 
@@ -12,8 +13,6 @@ chrome.storage.sync.get({ optOsBranchesBtn: defaults.optOsBranchesBtn }, functio
 			attributeOldValue : false,
 			characterDataOldValue : false
 		};
-
-		var target = document.getElementById('sandboxFields');
 
 		var observer = new MutationObserver(function(mutations) {
 			mutations.forEach(function(mutation) {
@@ -35,5 +34,9 @@ chrome.storage.sync.get({ optOsBranchesBtn: defaults.optOsBranchesBtn }, functio
 		});
 
 		observer.observe(target, config);
+
+		$(document).on('dblclick', '.select-html-fluid .btn-option', function(event) {
+			$('#loginButton').click();
+		});
 	}
 });

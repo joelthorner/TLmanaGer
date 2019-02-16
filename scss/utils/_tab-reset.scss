@@ -1,0 +1,18 @@
+.tab-reset {
+	&.nav-tabs {
+		border-bottom: none;
+		.nav-item {
+		   margin-bottom: 0;
+		}
+		.nav-link {
+			border: none;
+			border-top-left-radius: none;
+			border-top-right-radius: none;
+		}
+		.nav-link.active, .nav-item.show .nav-link {
+			color: inherit;
+			background-color: inherit;
+			border-color: inherit;
+		}
+	}
+}
