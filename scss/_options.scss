@@ -196,21 +196,21 @@ $height-nav: 80px;
 
 	.card-option-col {
 		float: left;
-		width: ((100% / 12) * 4);
+		width: ((100% / 12) * 6);
 		@media (min-width: 1300px) {
-			width: ((100% / 12) * 3);
+			width: ((100% / 12) * 4);
 		}
 		@media (min-width: 1600px) {
-			width: (100% / 5);
+			width: ((100% / 12) * 2.5);
 		}
 	}
 	.card-option-col-double {
-		width: ((100% / 12) * 8);
+		width: ((100% / 12) * 12);
 		@media (min-width: 1300px) {
-			width: ((100% / 12) * 9);
+			width: ((100% / 12) * 8);
 		}
 		@media (min-width: 1600px) {
-			width: ((100% / 5) * 3);
+			width: ((100% / 12) * 7);
 		}
 	}
 	.stamp {
@@ -404,8 +404,12 @@ $height-nav: 80px;
 		border-radius: 50%;
 		opacity: 0;
 		visibility: hidden;
-		transition: opacity 150ms ease, visibility 150ms ease; 
-
+		transition: opacity 150ms ease, visibility 150ms ease;
+		box-shadow: none;
+		
+		&:hover {
+			color: #FFF;
+		}
 		.icon {
 			height: 14px;
 			width: 14px;
@@ -472,6 +476,17 @@ $height-nav: 80px;
 	.modal-footer {
 		.btn {
 			width: 6rem;
+		}
+	}
+}
+
+#help-modal-video {
+	.modal-title {
+		svg {
+			width: 30px;
+			height: 30px;
+			fill: url(#svg-hover);
+			margin-right: .5rem;
 		}
 	}
 }

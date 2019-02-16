@@ -24,6 +24,8 @@
 		"default_popup": "src/popup/index.html"
 	},
 	"permissions": [
+		"chrome://favicon/",
+		"contentSettings",
 		"clipboardRead",
 		"clipboardWrite",
 		"contextMenus",

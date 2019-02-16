@@ -1,4 +1,5 @@
 $(function() {
+
 	// load options
 	chrome.storage.sync.get(defaults, function(result) {
 		$('.profile').attr('src', chrome.extension.getURL(result.optProfileAvatar));

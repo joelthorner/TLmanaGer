@@ -11034,34 +11034,34 @@ a.text-dark:hover, a.text-dark:focus {
 
 .options .card-option-col {
   float: left;
-  width: 33.33333%;
+  width: 50%;
 }
 
 @media (min-width: 1300px) {
   .options .card-option-col {
-    width: 25%;
+    width: 33.33333%;
   }
 }
 
 @media (min-width: 1600px) {
   .options .card-option-col {
-    width: 20%;
+    width: 20.83333%;
   }
 }
 
 .options .card-option-col-double {
-  width: 66.66667%;
+  width: 100%;
 }
 
 @media (min-width: 1300px) {
   .options .card-option-col-double {
-    width: 75%;
+    width: 66.66667%;
   }
 }
 
 @media (min-width: 1600px) {
   .options .card-option-col-double {
-    width: 60%;
+    width: 58.33333%;
   }
 }
 
@@ -11287,6 +11287,12 @@ a.text-dark:hover, a.text-dark:focus {
   -webkit-transition: opacity 150ms ease, visibility 150ms ease;
   -o-transition: opacity 150ms ease, visibility 150ms ease;
   transition: opacity 150ms ease, visibility 150ms ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.list-group-item-option .btn-help:hover {
+  color: #FFF;
 }
 
 .list-group-item-option .btn-help .icon {
@@ -11354,6 +11360,13 @@ a.text-dark:hover, a.text-dark:focus {
 
 #confirm-restore-options .modal-footer .btn {
   width: 6rem;
+}
+
+#help-modal-video .modal-title svg {
+  width: 30px;
+  height: 30px;
+  fill: url(#svg-hover);
+  margin-right: .5rem;
 }
 
 .avatar-grid {
@@ -11433,6 +11446,12 @@ body {
 .row.row-mn {
   margin-left: 0;
   margin-right: 0;
+}
+
+.video-mw {
+  max-width: 100%;
+  display: block;
+  height: auto;
 }
 
 /*# sourceMappingURL=main.css.map */
