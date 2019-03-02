@@ -21,7 +21,7 @@ chrome.storage.sync.get({ optZenTicketConfirm: defaults.optZenTicketConfirm }, f
 		});
 
 		// Change ticket state menu
-		$(document).on('click.customTLGConfirmExtension_menu', "[data-garden-id='menus.item']", function(event) {
+		$(document).on('click.customTLGConfirmExtension_menu', "[data-garden-id='menus.item'], .c-btn[class*='zse-status']", function(event) {
 			
 			var idMenu = $(this).parent('ul').attr('id');
 			var $view = $('.ember-view.workspace:visible').find("[aria-controls='" + idMenu + "']").closest('.ember-view.workspace');
