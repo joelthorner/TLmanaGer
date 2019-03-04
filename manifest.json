@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -144,7 +144,7 @@
 			"js": [
 				"js/libs/jquery-3.3.1.min.js",
 				"js/libs/js.cookie.js",
-				"js/optionsDefaults.js",
+				"js/defaults.js",
 				"js/actions/load-guide-lines.js"
 			],
 			"run_at": "document_start",

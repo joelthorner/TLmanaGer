@@ -3,7 +3,7 @@ $(function() {
 	// load options
 	chrome.storage.sync.get(defaults, function(result) {
 		$('.profile').attr('src', chrome.extension.getURL(result.optProfileAvatar));
-		$('.name-user').text(result.optProfileEmail);
+		if (result.optProfileUsername.length) $('.name-user').text(result.optProfileUsername);
 	});
 	
 	$('[data-toggle="tooltip"]').tooltip();
@@ -54,5 +54,9 @@ $(function() {
 
 	$('#new-tab-options, .header-popup .profile').click(function(event) {
 		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
+	});
+
+	$('.header-popup .profile').click(function(event) {
+		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") + '#profile' });
 	});
 });
