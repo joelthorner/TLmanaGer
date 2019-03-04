@@ -3,7 +3,7 @@ $(function() {
 	// load options
 	chrome.storage.sync.get(defaults, function(result) {
 		$('.profile').attr('src', chrome.extension.getURL(result.optProfileAvatar));
-		$('.name-user').text(result.optProfileEmail);
+		if (result.optProfileUsername.length) $('.name-user').text(result.optProfileUsername);
 	});
 	
 	$('[data-toggle="tooltip"]').tooltip();

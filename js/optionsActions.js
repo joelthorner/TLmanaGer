@@ -28,6 +28,9 @@ function saveOptions(deelay) {
 			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked')
 
 		}, function() {
+			restoreOption($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
+			restoreOption($('#opt-profile-email'), 'textfield', $('#opt-profile-email').val());
+
 			Snackbar.show({
 				text: chrome.i18n.getMessage("optionsSaved"),
 				actionText: chrome.i18n.getMessage("close"),
@@ -47,7 +50,7 @@ function restoreOption($node, type, value) {
 
 		case 'textfield':
 			$node.val(value);
-			if(value.length) $('.' + $node.attr('id')).text(value);
+			if (value.length) $('.' + $node.attr('id')).text(value);
 			break;
 	}
 }
