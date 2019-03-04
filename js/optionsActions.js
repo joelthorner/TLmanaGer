@@ -28,6 +28,9 @@ function saveOptions(deelay) {
 			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked')
 
 		}, function() {
+			restoreOption($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
+			restoreOption($('#opt-profile-email'), 'textfield', $('#opt-profile-email').val());
+
 			Snackbar.show({
 				text: chrome.i18n.getMessage("optionsSaved"),
 				actionText: chrome.i18n.getMessage("close"),
@@ -47,7 +50,7 @@ function restoreOption($node, type, value) {
 
 		case 'textfield':
 			$node.val(value);
-			if(value.length) $('.' + $node.attr('id')).text(value);
+			if (value.length) $('.' + $node.attr('id')).text(value);
 			break;
 	}
 }
@@ -201,8 +204,7 @@ function emptyBgFound() {
 	`);
 }
 
-function backgroundOption() {
-	// Change background
+function backgroundOption_change() {
 	$(document).on('change', '[name="opt-lc-bg"]', function(event) {
 		$('.background-item').removeClass('active');
 		$(this).parents('.background-item').addClass('active');
@@ -222,21 +224,23 @@ function backgroundOption() {
 			})
 			.parent().find('a').attr('href', link).text(name);
 	});
+}
 
-	// Pagination
+function backgroundOption_paginate() {
 	$(document).on('click', '[data-page-action="next"]', function(event) {
 		getImages($('#search-background').val(), $('.pagination-bg').data('page-this') + 1, 20);
 	}).on('click', '[data-page-action="prev"]', function(event) {
 		getImages($('#search-background').val(), $('.pagination-bg').data('page-this') - 1, 20);
 	});
+}
 
-	// Load collection
+function backgroundOption_collections() {
 	$('[data-collection]').click(function(event) {
 		event.preventDefault();
 		getCollectionPhotos($(this).data('collection'), 1, 20);
 	});
-
-	// Search keyup background
+}
+function backgroundOption_search() {
 	var sto_searchBg = null;
 	$('#search-background').keyup(function(event) {
 		var val = $(this).val();
@@ -252,6 +256,13 @@ function backgroundOption() {
 			}, 3000);
 		}
 	});
+}
+
+function backgroundOption() {
+	backgroundOption_change();
+	backgroundOption_paginate();
+	backgroundOption_collections();
+	backgroundOption_search();
 
 	// conditioned background option by check
 	$('#opt-lc-bg-active').change(function(event) {

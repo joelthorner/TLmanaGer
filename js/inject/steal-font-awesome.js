@@ -5,26 +5,32 @@ function replaceAll(str, find, replace) {
 	return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-function parseOutputSvg(code) {
+function parseOutputSvg(code, name) {
 	code = code.replace(new RegExp('data-prefix="[a-z]{3}"\\s', "g"), '');
 	code = code.replace(new RegExp('data-icon="[a-zA-Z\\-0-9]{1,}"', "g"), '');
 	code = code.replace(new RegExp('class="[a-zA-Z\\-\\s\\-0-9]{0,}"', "g"), '');
 	code = code.replace(new RegExp('fill="[a-zA-Z0-9\\#]{1,}"', "g"), '');
+	code = code.replace(new RegExp('aria-hidden="[a-zA-Z0-9\\#]{1,}"', "g"), '');
+	code = code.replace(new RegExp('focusable="[a-zA-Z0-9\\#]{1,}"', "g"), '');
+	code = code.replace(new RegExp('role="[a-zA-Z0-9\\#]{1,}"', "g"), '');
+	code = code.replace(new RegExp('<svg', "g"), '<svg id="icon-' + name + '" '); // set id
 	code = code.replace(new RegExp('\\s>', "g"), '>'); // clear
 	code = code.replace(new RegExp('\\s{2,}', "g"), ' '); // clear
 	return code;
 }
 function parseOutputSymbol(code) {
-	code = code.replace(new RegExp('aria-hidden="true"', "g"), 'id="icon-' + name + '"');
+	code = code.replace(new RegExp('aria-hidden="true"', "g"), '');
 	code = code.replace(new RegExp('<svg', "g"), '<symbol');
 	code = code.replace(new RegExp('/svg>', "g"), '/symbol>');
-	code = code.replace(new RegExp('role="img"', "g"), '');
 	code = code.replace(new RegExp('xmlns="http://www.w3.org/2000/svg"', "g"), '');
 	code = code.replace(new RegExp('\\s>', "g"), '>'); // clear
 	code = code.replace(new RegExp('\\s{2,}', "g"), ' '); // clear
 	return code;
 }
 function parseOutputBg(code) {
+	code = code.replace(new RegExp('id="[a-zA-Z0-9\\#\\-]{1,}"', "g"), '');
+	code = code.replace(new RegExp('\\s>', "g"), '>'); // clear
+	code = code.replace(new RegExp('\\s{2,}', "g"), ' '); // clear
 	code = replaceAll(code, "%", "%25"); 
 	code = replaceAll(code, "> <", "><"); // normalise spaces elements
 	code = replaceAll(code, "; }", ";}"); // normalise spaces css
@@ -100,7 +106,7 @@ var _SKELETON_ = `
 			<textarea name="__sym" id="__sym" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
 		</div>
 		<div class="_col">
-			<label for="__use">SYMBOL</label>
+			<label for="__use">USE</label>
 			<textarea name="__use" id="__use" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
 		</div>
 		<div class="_col">
@@ -134,7 +140,7 @@ chrome.storage.sync.get({ optDevStealFa: defaults.optDevStealFa }, function(resu
 					var name = $.trim($('h1 [data-balloon]').text());
 
 					var out_svg = $svgP.html();
-					out_svg = parseOutputSvg(out_svg);
+					out_svg = parseOutputSvg(out_svg, name);
 
 					var out_sym = out_svg;
 					out_sym = parseOutputSymbol(out_svg);

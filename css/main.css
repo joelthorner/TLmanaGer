@@ -10644,6 +10644,7 @@ a.text-dark:hover, a.text-dark:focus {
   width: 5rem;
   border-radius: 0.5rem;
   margin-right: 1.875rem;
+  cursor: pointer;
 }
 
 .header-popup .title, .header-drawer-options .title {
