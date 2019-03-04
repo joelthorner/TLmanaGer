@@ -34,11 +34,18 @@ var AVATARS = [
 	{ img: "img/avatar/asuka.jpg",          title: "Asuka - Evangelion" },
 	{ img: "img/avatar/goku.jpg",           title: "Goku - Bola de drac" },
 	{ img: "img/avatar/pusheen.jpg",        title: "Pusheen" },
-	{ img: "img/avatar/link.jpg",        title: "Link - The legend of Zelda" }
+	{ img: "img/avatar/link.jpg",           title: "Link - The legend of Zelda" }
 ];
 
 var CHANGELOG = [
 	{
+		version: "2.3.1", date: "xx Feb 2019",
+		lines: [
+			"NEW Popup edit profile shortcut",
+			"FIX Zendesk submit alert compatible with a other chome extension",
+			"FIX Removed jQuery from action js injects (optimization)"
+		]
+	}, {
 		version: "2.3.0", date: "17 Feb 2019",
 		lines: [
 			"FIX Fix OS sanbox branch buttons error when select not exists <a href=\"https://github.com/joelthorner/TLmanaGer/issues/114\" target=\"_blank\">#114</a>",
@@ -54,7 +61,7 @@ var CHANGELOG = [
 			"NEW Added new avatars: 9s, Asuka, Goku, Pusheen and Link",
 			"NEW Added restore default options confirm popup",
 			"NEW Added dev credits",
-			"FIX Removed '#' in code urls (Chrome fix)",
+			"FIX Removed '#' in code urls (Chrome fix)"
 		]
 	}, {
 		version: "2.2.3", date: "12 Feb 2019",

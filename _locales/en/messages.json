@@ -60,6 +60,9 @@
 	"restoreDefaults": {
 		"message": "Restore default options"
 	},
+	"viewProfile": {
+		"message": "View profile"
+	},
 
 	"newVersionNotify_title": {
 		"message": "New TLmanaGer %version% !"

@@ -119,6 +119,5 @@ chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
 				});
 			}
 		});
-
 	}
 });
