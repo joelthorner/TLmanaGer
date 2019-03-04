@@ -43,7 +43,8 @@ var CHANGELOG = [
 		lines: [
 			"NEW Popup edit profile shortcut",
 			"FIX Zendesk submit alert compatible with a other chome extension",
-			"FIX Removed jQuery from action js injects (optimization)"
+			"FIX Removed jQuery from action js injects (optimization)",
+			"FIX Rename optionsDefaults.js to defaults.js and optionsData.js to data.js"
 		]
 	}, {
 		version: "2.3.0", date: "17 Feb 2019",
