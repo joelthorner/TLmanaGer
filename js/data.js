@@ -39,12 +39,14 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.3.1", date: "xx Feb 2019",
+		version: "2.3.1", date: "04 Mar 2019",
 		lines: [
 			"NEW Popup edit profile shortcut",
 			"FIX Zendesk submit alert compatible with a other chome extension",
 			"FIX Removed jQuery from action js injects (optimization)",
-			"FIX Rename optionsDefaults.js to defaults.js and optionsData.js to data.js"
+			"FIX Rename optionsDefaults.js to defaults.js and optionsData.js to data.js",
+			"FIX Minor visual improvements",
+			"FIX Steal FontAwesome minor improvements",
 		]
 	}, {
 		version: "2.3.0", date: "17 Feb 2019",
