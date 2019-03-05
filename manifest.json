@@ -134,7 +134,8 @@
 				"*://tlgcommercehelp.zendesk.com/*"
 			],
 			"js": [
-				"js/inject/zendesk/prevent-ticket-submit.js"
+				"js/inject/zendesk/prevent-ticket-submit.js",
+				"js/inject/zendesk/priority-highlights.js"
 			]
 		},
 		{

@@ -21,5 +21,11 @@ var defaults = {
 	optLcBigControls: false,
 	optLcHolidays: true,
 	optOsBranchesBtn: true,
-	optZenTicketConfirm: true
+
+	optZenTicketConfirm: true,
+	optZenPriorHighs: true,
+	optZenPriorHighsColors : {
+		bg: { low: 'transparent', normal: '#ffd507', high: '#ff7e22', urgent: '#e11f32' },
+		colors: { low: '#2f3941', normal: '#2f3941', high: '#FFF', urgent: '#FFF' }
+	}
 };

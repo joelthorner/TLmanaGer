@@ -25,7 +25,8 @@ function saveOptions(deelay) {
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
 			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
 			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked'),
-			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked')
+			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked'),
+			optZenPriorHighs: $('#opt-zen-prior-highs').prop('checked')
 
 		}, function() {
 			restoreOption($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
@@ -108,6 +109,7 @@ function restoreOptions() {
 		restoreOption($('#opt-lc-holidays'), 'checkbox', items.optLcHolidays);
 		restoreOption($('#opt-os-branches-btn'), 'checkbox', items.optOsBranchesBtn);
 		restoreOption($('#opt-zen-ticket-confirm'), 'checkbox', items.optZenTicketConfirm);
+		restoreOption($('#opt-zen-prior-highs'), 'checkbox', items.optZenPriorHighs);
 	});
 }
 
