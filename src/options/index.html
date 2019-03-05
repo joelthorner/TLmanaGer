@@ -259,7 +259,15 @@
 								<a href="#help-opt-zen-ticket-confirm" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
 								<div class="custom-control custom-switch my-2 d-flex align-items-center">
 									<input type="checkbox" class="custom-control-input" id="opt-zen-ticket-confirm">
-									<label class="custom-control-label" for="opt-zen-ticket-confirm">Send ticket confirm</label>
+									<label class="custom-control-label" for="opt-zen-ticket-confirm">Send ticket confirm popup</label>
+								</div>
+								<div class="rippleJS"></div>
+							</li>
+							<li class="list-group-item list-group-item-option">
+								<a href="#help-opt-zen-prior-highs" class="btn btn-help"><svg class="icon"><use xlink:href="#icon-help"></use></svg></a>
+								<div class="custom-control custom-switch my-2 d-flex align-items-center">
+									<input type="checkbox" class="custom-control-input" id="opt-zen-prior-highs">
+									<label class="custom-control-label" for="opt-zen-prior-highs">Priority highlights</label>
 								</div>
 								<div class="rippleJS"></div>
 							</li>
@@ -362,8 +370,15 @@
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item list-group-item-help">
 									<a id="help-opt-zen-ticket-confirm" class="my-2 d-block text-light text-decoration-none">
-										<span>Send ticket confirm</span>
+										<span>Send ticket confirm popup</span>
 										<small class="text-muted d-block">Habilita una confirmació extra al respondre un ticket de cara al client.</small>
+										<div class="rippleJS"></div>
+									</a>
+								</li>
+								<li class="list-group-item list-group-item-help">
+									<a id="help-opt-zen-prior-highs" class="my-2 d-block text-light text-decoration-none">
+										<span>Priority highlights</span>
+										<small class="text-muted d-block">Marca amb colors els diferents nivells de priority dels tikets</small>
 										<div class="rippleJS"></div>
 									</a>
 								</li>
@@ -597,6 +612,7 @@
 	<script src="../../js/libs/ripple.min.js"></script>
 	<script src="../../js/libs/masonry.pkgd.min.js"></script>
 	<script src="../../js/libs/snackbar.min.js"></script>
+	<script src="../../js/libs/huebee.pkgd.min.js"></script>
 	
 	<script src="../../js/data.js"></script>
 	<script src="../../js/defaults.js"></script>
