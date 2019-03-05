@@ -78,8 +78,8 @@ var _CSS_ = `
 	}
 	#TLmanaGer-icons .icon-wrap:hover {
 		fill: #FFF;
-    	color: #FFF;
-    	background-color: #a3a9b9;
+		color: #FFF;
+		background-color: #a3a9b9;
 	}
 	#TLmanaGer-icons .input-name, #TLmanaGer-icons .input-code {
 		position: absolute;
@@ -115,20 +115,20 @@ var _CSS_ = `
 		line-height: 1.5;
 		border-radius: .25rem;
 		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	    color: #fff;
-	    background-color: #007bff;
-	    border-color: #007bff;
-	    white-space: nowrap;
+		color: #fff;
+		background-color: #007bff;
+		border-color: #007bff;
+		white-space: nowrap;
 	}
 	#TLmanaGer-icons .btn-copy-svg:hover{
-	    color: #fff;
-    	background-color: #0069d9;
-    	border-color: #0062cc;
+		color: #fff;
+		background-color: #0069d9;
+		border-color: #0062cc;
 	}
 	#TLmanaGer-icons .btn-copy-svg:active{
-	    color: #fff;
-    	background-color: #0062cc;
-    	border-color: #005cbf;
+		color: #fff;
+		background-color: #0062cc;
+		border-color: #005cbf;
 	}
 
 </style>
@@ -183,7 +183,6 @@ if ($iconsSprite.length) {
 	}
 	if ($spriteEl != null) {
 
-
 		var $iconsSprite = $('#TLmanaGer-icons');
 		var $clone = $spriteEl.clone(true, true);
 		$clone.children().each(function(index, el) {
@@ -217,16 +216,16 @@ if ($iconsSprite.length) {
 
 $(document).ready(function(){ 
 	$('.icon-wrap').each(function(){
-	  	$(this)[0].oncontextmenu = function() {return false;};
-	 });	
+		$(this)[0].oncontextmenu = function() { return false };
+	});	
 	$('.icon-wrap').mousedown(function(event) {
-	    if(event.which == 3){
-	    	$(this).find(".input-code").empty();
-	    	$(this).find(".input-code").val($(this).find(".svg-icon-wrap").html());
-    		var $str = $('<button class="btn-copy-svg" style="top:'+event.offsetY+'px;left:'+event.offsetX+'px">'+chrome.i18n.getMessage("showSvgIcons_clickLeft")+'</button>');
+		if (event.which == 3) {
+			$(this).find(".input-code").empty();
+			$(this).find(".input-code").val($(this).find(".svg-icon-wrap").html());
+			var $str = $('<button class="btn-copy-svg" style="top:' + event.offsetY + 'px;left:' + event.offsetX + 'px">' + chrome.i18n.getMessage("showSvgIcons_clickLeft") + '</button>');
 			$(".btn-copy-svg").not($str).remove();
-            $(this).append($str);
-	    }
+			$(this).append($str);
+		}
 	});
 	$(document).on('click','.btn-copy-svg',function(){
 		copyToClipboard($(this).parent().find(".input-code"));
@@ -239,5 +238,3 @@ $(document).ready(function(){
 		if (autoClose) $(".btn-copy-svg").remove();
 	});
 });
-
-
