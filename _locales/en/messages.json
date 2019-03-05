@@ -60,9 +60,6 @@
 	"restoreDefaults": {
 		"message": "Restore default options"
 	},
-	"viewProfile": {
-		"message": "View profile"
-	},
 
 	"newVersionNotify_title": {
 		"message": "New TLmanaGer %version% !"
@@ -97,9 +94,11 @@
 		"message": "TLmanaGer Action: 'show-svg-icons';"
 	},
 	"showSvgIcons_click4Copy": {
-		"message": "Click icon for copy #id"
+		"message": "Click icon for copy #id and left click for copy SVG code"
 	},
-
+	"showSvgIcons_clickLeft": {
+		"message": "Copy svg code"
+	},
 	"testingSignUp_notifyTitle": {
 		"message": "configuration error!"
 	},
