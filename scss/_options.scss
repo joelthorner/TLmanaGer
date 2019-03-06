@@ -526,6 +526,42 @@ $height-nav: 80px;
 	}
 }
 
+.z-hl-cont {
+	font-size: 12px;
+
+	.text-secondary {
+		margin-bottom: 2px;
+		display: block;
+	}
+
+	.set-text-elem {
+		font-size: 12px;
+		width: 55px;
+		height: 22px;
+		border-radius: 3px;
+		border: 0;
+		margin-left: 0;
+		position: relative;
+		z-index: 5;
+		cursor: pointer;
+		padding: 3px;
+	}
+	&.disabled {
+		opacity: .5;
+		cursor: not-allowed;
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+	}
+}
+
 #help {
 	.card-help-col {
 		.card {
