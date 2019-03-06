@@ -39,10 +39,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.3.2", date: "xx Mar 2019",
+		version: "2.3.2", date: "06 Mar 2019",
 		lines: [
-			"NEW Zendesk priority highlights with color customization!",
+			"NEW Zendesk priority highlights with color customization! 🎉",
 			"NEW Show svg icons - Copy svg code option (Pol)",
+			"FIX Refactoring options js"
 		]
 	}, {
 		version: "2.3.1", date: "04 Mar 2019",

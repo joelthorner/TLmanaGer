@@ -25,7 +25,17 @@ var defaults = {
 	optZenTicketConfirm: true,
 	optZenPriorHighs: true,
 	optZenPriorHighsColors : {
-		bg: { low: 'transparent', normal: '#ffd507', high: '#ff7e22', urgent: '#e11f32' },
-		colors: { low: '#2f3941', normal: '#2f3941', high: '#FFF', urgent: '#FFF' }
+		bg: {
+			low: '#fff',
+			normal: '#fff38a',
+			high: '#ff7e22',
+			urgent: '#e11f32'
+		},
+		colors: {
+			low: '#222',
+			normal: '#222',
+			high: '#222',
+			urgent: '#fff'
+		}
 	}
 };
