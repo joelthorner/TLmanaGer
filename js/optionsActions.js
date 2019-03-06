@@ -1,4 +1,3 @@
-// Saves options to chrome.storage
 var sto_saveOptions = null;
 function saveOptions(deelay) {
 
@@ -13,20 +12,37 @@ function saveOptions(deelay) {
 				userLink: $('[name="opt-lc-bg"]:checked').data('user-link'),
 				downloadLocation: $('[name="opt-lc-bg"]:checked').data('download-location') 
 			},
+
 			optLcPagridActive: $('#opt-lc-pagrid-active').prop('checked'),
 			optLcDevBarActive: $('#opt-lc-dev-bar-active').prop('checked'),
 			optDevForceview: $('#opt-dev-forceview').prop('checked'),
 			optDevStealFa: $('#opt-dev-steal-fa').prop('checked'),
 			optDevFlushCfm: $('#opt-dev-flush-cfm').prop('checked'),
+			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
+			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
+			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked'),
+			
 			optProfileEmail: $('#opt-profile-email').val(),
 			optProfilePass: $('#opt-profile-pass').val(),
 			optProfileUsername: $('#opt-profile-username').val(),
 			optProfileAvatar: $('[name="opt-profile-avatar"]:checked').val(),
-			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
-			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
-			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked'),
+			
 			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked'),
-			optZenPriorHighs: $('#opt-zen-prior-highs').prop('checked')
+			optZenPriorHighs: $('#opt-zen-prior-highs').prop('checked'),
+			optZenPriorHighsColors: {
+				bg: {
+					low: $('.set-text-elem.low').val(),
+					normal: $('.set-text-elem.normal').val(),
+					high: $('.set-text-elem.high').val(),
+					urgent: $('.set-text-elem.urgent').val()
+				},
+				colors: {
+					low: $('.set-text-elem.low').css('color'),
+					normal: $('.set-text-elem.normal').css('color'),
+					high: $('.set-text-elem.high').css('color'),
+					urgent: $('.set-text-elem.urgent').css('color')
+				}
+			}
 
 		}, function() {
 			restoreOption($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
@@ -53,63 +69,74 @@ function restoreOption($node, type, value) {
 			$node.val(value);
 			if (value.length) $('.' + $node.attr('id')).text(value);
 			break;
+
+		case 'background':
+			$node
+				.find('label').css('background-image', 'url(' + value.thumb + ')')
+				.prev('input').prop('checked', true).attr({
+					'data-thumb': value.thumb,
+					'data-download-location': value.downloadLocation,
+					'data-user-link': value.userLink,
+					'data-user-name': value.userName
+				})
+				.val(value.image)
+				.parent().find('a').attr('href', value.userLink).text(value.userName);
+			break;
+
+		case 'avatar':
+			$node
+				.removeClass('active')
+				.parents('.avatar-grid')
+				.find('input')
+				.filter(function(index) {
+					if ($(this).val() == value) return true;
+				})
+				.prop('checked', true)
+				.parents('.avatar').addClass('active');
+				
+			$('.navbar-profile-img').attr('src', '../../' + value);
+			break;
+			
+		case 'conditioned':
+			if (value) $node.removeClass('disabled');
+			else $node.addClass('disabled');
+			break;
+
+		case 'colorpicker':
+			$node.each( function(index, el) {
+				var hueb = $(el).data('hueb');
+				hueb.setColor(value.bg[$(el).data('type')]);
+			});
+			break;
 	}
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
 function restoreOptions() {
 	// Defaults
 	chrome.storage.sync.get(defaults, function(items) {
 		
 		restoreOption($('#opt-lc-bg-active'), 'checkbox', items.optLcBgActive);
-
-		// special save opt checkbox conditionated by opt bg image
-		var $option = $('.card-background-option');
-		if (items.optLcBgActive) $option.removeClass('disabled');
-		else $option.addClass('disabled');
-
-		// special save opt bg image
-		$('#opt-lc-bg-image')
-			.find('label').css('background-image', 'url(' + items.optLcBgValue.thumb + ')')
-			.prev('input').prop('checked', true).attr({
-				'data-thumb': items.optLcBgValue.thumb,
-				'data-download-location': items.optLcBgValue.downloadLocation,
-				'data-user-link': items.optLcBgValue.userLink,
-				'data-user-name': items.optLcBgValue.userName
-			})
-			.val(items.optLcBgValue.image)
-			.parent().find('a').attr('href', items.optLcBgValue.userLink).text(items.optLcBgValue.userName);
-
 		restoreOption($('#opt-lc-pagrid-active'), 'checkbox', items.optLcPagridActive);
 		restoreOption($('#opt-lc-dev-bar-active'), 'checkbox', items.optLcDevBarActive);
 		restoreOption($('#opt-dev-forceview'), 'checkbox', items.optDevForceview);
 		restoreOption($('#opt-dev-steal-fa'), 'checkbox', items.optDevStealFa);
 		restoreOption($('#opt-dev-flush-cfm'), 'checkbox', items.optDevFlushCfm);
-
-		restoreOption($('#opt-profile-pass'), 'textfield', items.optProfilePass);
-		restoreOption($('#opt-profile-username'), 'textfield', items.optProfileUsername);
-		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
-
-		// special save opt avatar
-		$('.avatar')
-			.removeClass('active')
-			.parents('.avatar-grid')
-			.find('input')
-			.filter(function(index) {
-				if ($(this).val() == items.optProfileAvatar) return true;
-			})
-			.prop('checked', true)
-			.parents('.avatar').addClass('active');
-			
-		$('.navbar-profile-img').attr('src', '../../' + items.optProfileAvatar);
-		// end special save opt avatar
-
 		restoreOption($('#opt-lc-big-controls'), 'checkbox', items.optLcBigControls);
 		restoreOption($('#opt-lc-holidays'), 'checkbox', items.optLcHolidays);
 		restoreOption($('#opt-os-branches-btn'), 'checkbox', items.optOsBranchesBtn);
 		restoreOption($('#opt-zen-ticket-confirm'), 'checkbox', items.optZenTicketConfirm);
 		restoreOption($('#opt-zen-prior-highs'), 'checkbox', items.optZenPriorHighs);
+
+		restoreOption($('#opt-profile-pass'), 'textfield', items.optProfilePass);
+		restoreOption($('#opt-profile-username'), 'textfield', items.optProfileUsername);
+		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
+
+		restoreOption($('#opt-lc-bg-image'), 'background', items.optLcBgValue);
+		restoreOption($('.avatar'), 'avatar', items.optProfileAvatar);
+		restoreOption($('.set-text-elem'), 'colorpicker', items.optZenPriorHighsColors);
+
+		restoreOption($('.card-background-option'), 'conditioned', items.optLcBgActive);
+		restoreOption($('.opt-zen-prior-highs-colors'), 'conditioned', items.optZenPriorHighs);
 	});
 }
 
@@ -242,6 +269,7 @@ function backgroundOption_collections() {
 		getCollectionPhotos($(this).data('collection'), 1, 20);
 	});
 }
+
 function backgroundOption_search() {
 	var sto_searchBg = null;
 	$('#search-background').keyup(function(event) {
@@ -274,11 +302,35 @@ function backgroundOption() {
 	});
 }
 
+function zendeskHighlightPriority() {
+	$('.set-text-elem').each( function(index, el) {
+		var hueb = new Huebee(el, {
+			shades: 10,
+			hues: 14,
+			hue0: 210,
+			saturations: 1
+		});
+		$(el).data('hueb', hueb);
+	});
+
+	$(document).on('click', '.huebee__canvas', function(event) {
+		saveOptions(500);
+	});
+
+	$('#opt-zen-prior-highs').change(function(event) {
+		var $option = $('.opt-zen-prior-highs-colors');
+		if ($(this).prop('checked')) $option.removeClass('disabled');
+		else $option.addClass('disabled');
+	});
+}
+
 // Init all
 $(document).ready(function() {
 	getRandom(20);
 	restoreOptions();
 	backgroundOption();
+
+	zendeskHighlightPriority();
 
 	$('[name="opt-profile-avatar"]').change(function(event) {
 		$('.avatar').removeClass('active');
