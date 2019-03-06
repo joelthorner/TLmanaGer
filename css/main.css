@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 @import url(libs/snackbar.min.css);
+@import url(libs/huebee.min.css);
 /** NOTE: When this is updated, refresh ripple.js' minified version. */
 /**
  * contains a ripple. Will normally grow to fixed size (200px/200px), not
@@ -11422,6 +11423,43 @@ a.text-dark:hover, a.text-dark:focus {
   width: 100%;
   display: block;
   background-color: #FFF;
+}
+
+.z-hl-cont {
+  font-size: 12px;
+}
+
+.z-hl-cont .text-secondary {
+  margin-bottom: 2px;
+  display: block;
+}
+
+.z-hl-cont .set-text-elem {
+  font-size: 12px;
+  width: 55px;
+  height: 22px;
+  border-radius: 3px;
+  border: 0;
+  margin-left: 0;
+  position: relative;
+  z-index: 5;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.z-hl-cont.disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.z-hl-cont.disabled:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 #help .card-help-col .card {

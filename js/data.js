@@ -39,6 +39,13 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: "2.3.2", date: "06 Mar 2019",
+		lines: [
+			"NEW Zendesk priority highlights with color customization! 🎉",
+			"NEW Show svg icons - Copy svg code option (Pol)",
+			"FIX Refactoring options js"
+		]
+	}, {
 		version: "2.3.1", date: "04 Mar 2019",
 		lines: [
 			"NEW Popup edit profile shortcut",
@@ -46,7 +53,7 @@ var CHANGELOG = [
 			"FIX Removed jQuery from action js injects (optimization)",
 			"FIX Rename optionsDefaults.js to defaults.js and optionsData.js to data.js",
 			"FIX Minor visual improvements",
-			"FIX Steal FontAwesome minor improvements",
+			"FIX Steal FontAwesome minor improvements"
 		]
 	}, {
 		version: "2.3.0", date: "17 Feb 2019",

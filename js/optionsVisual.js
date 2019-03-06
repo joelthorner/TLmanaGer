@@ -87,7 +87,7 @@ $(document).ready(function() {
 			$(this).find('label').click();
 		}
 	});
-
+	
 	setAvatars();
 	setChangelog();
 
