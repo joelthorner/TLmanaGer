@@ -133,8 +133,12 @@
 			"matches": [
 				"*://tlgcommercehelp.zendesk.com/*"
 			],
+			"css": [
+				"css/inject/zendesk-submit-expander/main.css"
+			],
 			"js": [
-				"js/inject/zendesk/prevent-ticket-submit.js",
+				"js/libs/sweetalert2.all.min.js",
+				"js/inject/zendesk-submit-expander/main.js",
 				"js/inject/zendesk/priority-highlights.js"
 			]
 		},
