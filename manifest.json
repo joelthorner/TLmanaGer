@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.2",
+	"version": "2.3.3",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
@@ -133,8 +133,12 @@
 			"matches": [
 				"*://tlgcommercehelp.zendesk.com/*"
 			],
+			"css": [
+				"css/inject/zendesk-submit-expander/main.css"
+			],
 			"js": [
-				"js/inject/zendesk/prevent-ticket-submit.js",
+				"js/libs/sweetalert2.all.min.js",
+				"js/inject/zendesk-submit-expander/main.js",
 				"js/inject/zendesk/priority-highlights.js"
 			]
 		},

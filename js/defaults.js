@@ -27,15 +27,15 @@ var defaults = {
 	optZenPriorHighsColors : {
 		bg: {
 			low: '#fff',
-			normal: '#fff38a',
-			high: '#ff7e22',
-			urgent: '#e11f32'
+			normal: '#ffd',
+			high: '#fb7',
+			urgent: '#f77'
 		},
 		colors: {
 			low: '#222',
 			normal: '#222',
 			high: '#222',
-			urgent: '#fff'
+			urgent: '#222'
 		}
 	}
 };
