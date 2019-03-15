@@ -1,0 +1,85 @@
+.zse-status-New { --color-background: #F5CA00; }
+
+.zse-status-Open { --color-background: #E82A2A; }
+
+.zse-status-Pending { --color-background: #259ECB; }
+
+.zse-status-On-hold { --color-background: #2F3941; }
+
+.zse-status-Solved { --color-background: #68737D; }
+
+.zse-group button {
+  height: 39px;
+  padding-left: 7px;
+  padding-right: 7px;
+  line-height: 18px;
+  font-size: 14px;
+  color: #2F3941;
+  max-width: 80px !important;
+  min-width: 80px !important;
+  width: 80px !important;
+}
+
+.zse-group button:hover {
+  background-color: #E9EBED;
+}
+
+.zse-group button span {
+  font-size: 99%;
+}
+
+.zse-group button span::before {
+  content: " ";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background-color: var(--color-background);
+  margin-right: 3px;
+}
+
+.zse-group button.is-selected {
+  background-color: #E9EBED;
+  font-weight: 550;
+}
+
+/* Hide the default button and menu */
+.workspace .ticket-resolution-footer div[data-garden-id='buttons.button_group_view'] {
+  display: none;
+}
+
+/* Make the macro selector taller and move it up to match the buttons */
+.ticket-resolution-footer .macro-selector {
+  margin-top: 5px;
+}
+
+.ticket-resolution-footer .macro-selector button,
+.ticket-resolution-footer .macro-selector input {
+  height: 39px;
+}
+
+.macro-selector .zd-combo-selectmenu.zd-state-open:before {
+  margin-top: 12px !important;
+}
+
+@media screen and (max-width: 1220px) {
+  .workspace.apps:not(.ticket_editor_app),
+  .workspace.zse-expanded .split_pane.ticket > .pane.right {
+    bottom: 100px !important;
+  }
+
+  .workspace.zse-expanded .ticket-resolution-footer,
+  .workspace.zse-expanded .ticket-resolution-footer-pane {
+    height: 98px !important;
+  }
+
+  .workspace.zse-expanded .ticket-resolution-footer .action_buttons {
+    width: 100% !important;
+  }
+
+  .workspace.zse-expanded .ticket-resolution-footer .macro-selector {
+    width: auto !important;
+    display: block !important;
+    margin: 7px 10px 7px 10px !important;
+  }
+}
