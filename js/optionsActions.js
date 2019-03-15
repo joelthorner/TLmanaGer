@@ -1,8 +1,14 @@
 var sto_saveOptions = null;
+// https://medium.com/@whiletruedothis/aprende-a-consumir-la-api-de-unsplash-%EF%B8%8F-c325c0bad53c
+const accesKey = 'c5f892b18c1cc3e5bc85943326ba93faacea502bf41e5f09d70fbe90e360c827';
+const endPoint = 'https://api.unsplash.com';
+var GLOBAL_RAND_DEFAULT;
+
 function saveOptions(deelay) {
 
 	clearTimeout(sto_saveOptions);
 	sto_saveOptions = setTimeout(function() {
+		
 		chrome.storage.sync.set({
 			optLcBgActive: $('#opt-lc-bg-active').prop('checked'),
 			optLcBgValue: { 
@@ -45,8 +51,8 @@ function saveOptions(deelay) {
 			}
 
 		}, function() {
-			restoreOption($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
-			restoreOption($('#opt-profile-email'), 'textfield', $('#opt-profile-email').val());
+			setOptionValue($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
+			setOptionValue($('#opt-profile-email'), 'textfield', $('#opt-profile-email').val());
 
 			Snackbar.show({
 				text: chrome.i18n.getMessage("optionsSaved"),
@@ -59,7 +65,7 @@ function saveOptions(deelay) {
 	}, deelay);
 }
 
-function restoreOption($node, type, value) {
+function setOptionValue($node, type, value) {
 	switch (type) {
 		case 'checkbox':
 			$node.prop('checked', value);
@@ -71,29 +77,22 @@ function restoreOption($node, type, value) {
 			break;
 
 		case 'background':
-			$node
-				.find('label').css('background-image', 'url(' + value.thumb + ')')
-				.prev('input').prop('checked', true).attr({
-					'data-thumb': value.thumb,
-					'data-download-location': value.downloadLocation,
-					'data-user-link': value.userLink,
-					'data-user-name': value.userName
-				})
-				.val(value.image)
-				.parent().find('a').attr('href', value.userLink).text(value.userName);
+			$node.find('label').css('background-image', 'url(' + value.thumb + ')')
+			$node.find('input[name="opt-lc-bg"]').attr({
+				'data-thumb': value.thumb,
+				'data-download-location': value.downloadLocation,
+				'data-user-link': value.userLink,
+				'data-user-name': value.userName
+			}).val(value.image);
+			$node.find('a').attr('href', value.userLink).text(value.userName);
 			break;
 
 		case 'avatar':
-			$node
-				.removeClass('active')
-				.parents('.avatar-grid')
-				.find('input')
-				.filter(function(index) {
-					if ($(this).val() == value) return true;
-				})
-				.prop('checked', true)
-				.parents('.avatar').addClass('active');
-				
+			$node.removeClass('active');
+			var $checked = $('input[name="opt-profile-avatar"]').filter(function (index) {
+				if ($(this).val() == value) return true;
+			}).prop('checked', true);
+			$checked.closest('.avatar').addClass('active');
 			$('.navbar-profile-img').attr('src', '../../' + value);
 			break;
 			
@@ -112,42 +111,37 @@ function restoreOption($node, type, value) {
 }
 
 function restoreOptions() {
-	// Defaults
 	chrome.storage.sync.get(defaults, function(items) {
-		
-		restoreOption($('#opt-lc-bg-active'), 'checkbox', items.optLcBgActive);
-		restoreOption($('#opt-lc-pagrid-active'), 'checkbox', items.optLcPagridActive);
-		restoreOption($('#opt-lc-dev-bar-active'), 'checkbox', items.optLcDevBarActive);
-		restoreOption($('#opt-dev-forceview'), 'checkbox', items.optDevForceview);
-		restoreOption($('#opt-dev-steal-fa'), 'checkbox', items.optDevStealFa);
-		restoreOption($('#opt-dev-flush-cfm'), 'checkbox', items.optDevFlushCfm);
-		restoreOption($('#opt-lc-big-controls'), 'checkbox', items.optLcBigControls);
-		restoreOption($('#opt-lc-holidays'), 'checkbox', items.optLcHolidays);
-		restoreOption($('#opt-os-branches-btn'), 'checkbox', items.optOsBranchesBtn);
-		restoreOption($('#opt-zen-ticket-confirm'), 'checkbox', items.optZenTicketConfirm);
-		restoreOption($('#opt-zen-prior-highs'), 'checkbox', items.optZenPriorHighs);
-
-		restoreOption($('#opt-profile-pass'), 'textfield', items.optProfilePass);
-		restoreOption($('#opt-profile-username'), 'textfield', items.optProfileUsername);
-		restoreOption($('#opt-profile-email'), 'textfield', items.optProfileEmail);
-
-		restoreOption($('#opt-lc-bg-image'), 'background', items.optLcBgValue);
-		restoreOption($('.avatar'), 'avatar', items.optProfileAvatar);
-		restoreOption($('.set-text-elem'), 'colorpicker', items.optZenPriorHighsColors);
-
-		restoreOption($('.card-background-option'), 'conditioned', items.optLcBgActive);
-		restoreOption($('.opt-zen-prior-highs-colors'), 'conditioned', items.optZenPriorHighs);
+		var arrOptions = [
+			{ node: $('#opt-lc-bg-active')            , type: 'checkbox',    value: items.optLcBgActive },
+			{ node: $('#opt-lc-pagrid-active')        , type: 'checkbox',    value: items.optLcPagridActive },
+			{ node: $('#opt-lc-dev-bar-active')       , type: 'checkbox',    value: items.optLcDevBarActive },
+			{ node: $('#opt-dev-forceview')           , type: 'checkbox',    value: items.optDevForceview },
+			{ node: $('#opt-dev-steal-fa')            , type: 'checkbox',    value: items.optDevStealFa },
+			{ node: $('#opt-dev-flush-cfm')           , type: 'checkbox',    value: items.optDevFlushCfm },
+			{ node: $('#opt-lc-big-controls')         , type: 'checkbox',    value: items.optLcBigControls },
+			{ node: $('#opt-lc-holidays')             , type: 'checkbox',    value: items.optLcHolidays },
+			{ node: $('#opt-os-branches-btn')         , type: 'checkbox',    value: items.optOsBranchesBtn },
+			{ node: $('#opt-zen-ticket-confirm')      , type: 'checkbox',    value: items.optZenTicketConfirm },
+			{ node: $('#opt-zen-prior-highs')         , type: 'checkbox',    value: items.optZenPriorHighs },
+			{ node: $('#opt-profile-pass')            , type: 'textfield',   value: items.optProfilePass },
+			{ node: $('#opt-profile-username')        , type: 'textfield',   value: items.optProfileUsername },
+			{ node: $('#opt-profile-email')           , type: 'textfield',   value: items.optProfileEmail },
+			{ node: $('#opt-lc-bg-image')             , type: 'background',  value: items.optLcBgValue },
+			{ node: $('.avatar')                      , type: 'avatar',      value: items.optProfileAvatar },
+			{ node: $('.set-text-elem')               , type: 'colorpicker', value: items.optZenPriorHighsColors },
+			{ node: $('.card-background-option')      , type: 'conditioned', value: items.optLcBgActive },
+			{ node: $('.opt-zen-prior-highs-colors')  , type: 'conditioned', value: items.optZenPriorHighs }
+		];
+		$.each(arrOptions, function (index, obj) {  
+			setOptionValue(obj.node, obj.type, obj.value);
+		});
 	});
 }
 
 function resetOptions() {
 	chrome.storage.sync.set(defaults, function() {});
 }
-
-// https://medium.com/@whiletruedothis/aprende-a-consumir-la-api-de-unsplash-%EF%B8%8F-c325c0bad53c
-const accesKey = 'c5f892b18c1cc3e5bc85943326ba93faacea502bf41e5f09d70fbe90e360c827';
-const endPoint = 'https://api.unsplash.com';
-var GLOBAL_RAND_DEFAULT;
 
 async function getImages(query, page, count) {
 	try {
@@ -237,21 +231,16 @@ function backgroundOption_change() {
 	$(document).on('change', '[name="opt-lc-bg"]', function(event) {
 		$('.background-item').removeClass('active');
 		$(this).parents('.background-item').addClass('active');
+		
+		var value = {
+			thumb: $(this).data('thumb'),
+			downloadLocation: $(this).data('download-location'),
+			userLink: $(this).data('user-link'),
+			userName: $(this).data('user-name'),
+			image: $(this).val()
+		};
 
-		var $selected = $(this),
-		    link = $(this).data('user-link'),
-		    name = $(this).data('user-name'),
-		    thumb = $(this).data('thumb');
-
-		$('#opt-lc-bg-image')
-			.find('label').css('background-image', 'url("' + thumb + '")')
-			.prev('input').val($selected.val()).attr({
-				'data-thumb': thumb,
-				'data-download-location': $selected.data('download-location'),
-				'data-user-link': $selected.data('user-link'),
-				'data-user-name': $selected.data('user-name')
-			})
-			.parent().find('a').attr('href', link).text(name);
+		setOptionValue($('#opt-lc-bg-image'), 'background', value);
 	});
 }
 
@@ -329,7 +318,6 @@ $(document).ready(function() {
 	getRandom(20);
 	restoreOptions();
 	backgroundOption();
-
 	zendeskHighlightPriority();
 
 	$('[name="opt-profile-avatar"]').change(function(event) {
