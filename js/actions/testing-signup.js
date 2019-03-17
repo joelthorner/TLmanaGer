@@ -1,4 +1,4 @@
-function assigncheckboxes(selector, bool) {
+function assignCheckboxes(selector, bool) {
 	if (bool && selector.prop('checked') == false) {
 		$(selector[0]).click();
 	}
@@ -7,8 +7,8 @@ function assigncheckboxes(selector, bool) {
 	}
 }
 
-function insertname(name, el) {
-	$(el).find("input").val(name);
+function insertName(name, el) {
+	$(el).find('input').val(name);
 }
 
 function simulateClickElement(element) {
@@ -17,8 +17,7 @@ function simulateClickElement(element) {
 		'bubbles': true,
 		'cancelable': true
 	});
-	var cb = element; 
-	cb.dispatchEvent(event);
+	element.dispatchEvent(event);
 }
 
 function timeouts(time, instruction){
@@ -29,18 +28,19 @@ function timeouts(time, instruction){
 
 var defaults = {
 	optProfileEmail: '',
-	optProfilePass: ''
+	optProfilePass: '',
+	optProfileUsername: ''
 };
 
 chrome.storage.sync.get(defaults, function(result) {
 	
 	if (!result.optProfileEmail.length || !result.optProfilePass.length) {
 		var url = chrome.extension.getURL('src/options/index.html') + '#profile';
-		var link = `<a href="${url}" target="_blank">${chrome.i18n.getMessage("options")}</a>`
+		var link = `<a href="${url}" target="_blank">${chrome.i18n.getMessage('options')}</a>`
 		var str = `
 			<script>
-				Fluid.notify('${chrome.i18n.getMessage("testingSignUp_notifyText")} ${link}', {
-					title: '${chrome.i18n.getMessage("testingSignUp_notifyTitle")}',
+				Fluid.notify('${chrome.i18n.getMessage('testingSignUp_notifyText')} ${link}', {
+					title: '${chrome.i18n.getMessage('testingSignUp_notifyTitle')}',
 					type: 'danger',
 					sticky: false,
 					deelay: 5000
@@ -48,32 +48,50 @@ chrome.storage.sync.get(defaults, function(result) {
 			</script>
 		`;
 		
-		$("body").append(str);
+		$('body').append(str);
 
 	} else {
 
-		$("#userFormFieldsContainer > .userFormFields > div, #signInFormFieldsContainer > .userField").each(function() { 
-			switch ($(this).attr("Id")) {
+		var firstName = 'John', lastName = 'Doe';
+
+		if (result.optProfileUsername.length) {
+			var userNameArr = result.optProfileUsername.split(' ');
+			if (userNameArr[0]) {
+				firstName = userNameArr[0];
+				
+				if (userNameArr[1]) {
+					lastName = userNameArr[1];
+				} else {
+					lastName = userNameArr[0];
+				}
+			} else {
+				firstName = result.optProfileUsername;
+				lastName = result.optProfileUsername;
+			}
+		}
+
+		$('#userFormFieldsContainer > .userFormFields > div, #signInFormFieldsContainer > .userField').each(function() { 
+			switch ($(this).attr('Id')) {
 				case 'userFieldFirstNameContainer':
-					insertname("John", this);
+					insertName(firstName, this);
 					break;
 					
 				case 'userFieldLastNameContainer':
-					insertname("Doe", this);
+					insertName(lastName, this);
 					break;
 					
 				case 'userFieldEmailContainer':
-					insertname(result.optProfileEmail, this);
+					insertName(result.optProfileEmail, this);
 					break;
 					
 				case 'userFieldMobileContainer':
-					insertname("6" + Math.floor(Math.random() * 100000000), this);
-						break;
+					insertName('6' + Math.floor(Math.random() * 100000000), this);
+					break;
 					
 				case 'userFieldCountryContainer':
 					$elem = $(this);
 					simulateClickElement($elem[0]); 
-					$elem.find("select").last().each(function(index,el) {	
+					$elem.find('select').last().each(function(index,el) {	
 						$(el).find('option:eq(1)').prop('selected', true);
 						simulateClickElement(el);
 					});
@@ -100,7 +118,7 @@ chrome.storage.sync.get(defaults, function(result) {
 								var $inputs = $(mutation.target).find('input');
 								if ($inputs.length) {
 									$inputs.val(
-										chrome.i18n.getMessage("testingSignUp_loremCity")
+										chrome.i18n.getMessage('testingSignUp_loremCity')
 									);
 								}
 							}
@@ -109,78 +127,76 @@ chrome.storage.sync.get(defaults, function(result) {
 					for (var i = targetCS.length - 1; i >= 0; i--) {
 						if (targetCS[i]) observerCS.observe(targetCS[i], configCS);
 					};
-					// setTimeout(function() {
-					// 	observerCS.disconnect();
-					// }, 500);
 					break;
 					
 				case 'userFieldAddress1Container':
-					insertname(chrome.i18n.getMessage("testingSignUp_loremAddress1"), this);
-						break;
+					insertName(chrome.i18n.getMessage('testingSignUp_loremAddress1'), this);
+					break;
 					
 				case 'userFieldBirthDateContainer':
-					insertname(moment().format($('.date[data-format]').data('format')), this);
-						break;
+					insertName(moment().format($('.date[data-format]').data('format')), this);
+					break;
 					
 				case 'userFieldSubscribedContainer':
-					$(this).find("input").removeAttr("data-validation");
-					assigncheckboxes($(this).find("input"), false);
+					$(this).find('input').removeAttr('data-validation');
+					assignCheckboxes($(this).find('input'), false);
 					break;
 					
 				case 'userFieldGenderContainer':
+					// TODO
 					break;
 					
 				case 'userFieldNifContainer':
-					insertname("37885984Q", this);
+					insertName('37885984Q', this);
 					break;
 					
 				case 'userFieldvatIdContainer':
-					insertname("57432844Z", this);
+					insertName('57432844Z', this);
 					break;
 					
 				case 'userFieldCompanyContainer':
-					insertname(chrome.i18n.getMessage("testingSignUp_loremCompany"), this);
+					insertName(chrome.i18n.getMessage('testingSignUp_loremCompany'), this);
 					break;
 					
 				case 'userFieldAddress2Container':
-					insertname(chrome.i18n.getMessage("testingSignUp_loremAddress2"), this);
+					insertName(chrome.i18n.getMessage('testingSignUp_loremAddress2'), this);
 					break;
 					
 				case 'userFieldNumberContainer':
-					insertname("6" + Math.floor(Math.random() * 100000000), this);
+					insertName('6' + Math.floor(Math.random() * 100000000), this);
 					break;
 					
 				case 'userFieldPhoneContainer':
-					insertname("6" + Math.floor(Math.random() * 100000000), this);
+					insertName('6' + Math.floor(Math.random() * 100000000), this);
 					break;
 					
 				case 'userFieldREContainer':
-					insertname(chrome.i18n.getMessage("testingSignUp_loremRE"), this);
+					insertName(chrome.i18n.getMessage('testingSignUp_loremRE'), this);
 					break;
 					
 				case 'userFieldFaxContainer':
-					insertname("6" + Math.floor(Math.random() * 100000000),	this);
+					insertName('6' + Math.floor(Math.random() * 100000000),	this);
 					break;
 					
 				case 'userFieldPasswordContainer':		
-					$("#userPasswordField").val(result.optProfilePass);
+					$('#userPasswordField').val(result.optProfilePass);
 					break;
 					
 				case 'userFieldRetypePasswordContainer':
-					$("#userRetypePasswordField").val(result.optProfilePass);
+					$('#userRetypePasswordField').val(result.optProfilePass);
 					break;
 			}
 		});
 
-		assigncheckboxes($(".legalTextLinks").find("input"), true);
+		assignCheckboxes($('.userForm .legalTextLinks input'), true);
 		
-		var si = setInterval(function() {
-			$("#saveUserButton").trigger('click');
-		}, 750);
-		
-		timeouts(4000, function() {
-			clearInterval(si);
-		});
-
+		if ($('#saveUserButton').length) {
+			var si = setInterval(function() {
+				$('#saveUserButton').trigger('click');
+			}, 750);
+			timeouts(4000, function() {
+				clearInterval(si);
+			});
+		}
 	}
 });
