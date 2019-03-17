@@ -39,9 +39,10 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.3.3", date: "xx Mar 2019",
+		version: "2.3.3", date: "17 Mar 2019",
 		lines: [
 			"NEW New confirm ticket submit with HTML modal 🙋",
+			"FIX Add userName into signup testing action <a href=\"https://github.com/joelthorner/TLmanaGer/issues/126\" target=\"_blank\">#126</a>",
 			"FIX More refactoring options js 😥",
 			"FIX Changed default ticket colors ✨",
 			"FIX Ultra wrong label, is Urgent! <a href=\"https://github.com/joelthorner/TLmanaGer/issues/128\" target=\"_blank\">#128</a>",
