@@ -71,6 +71,7 @@ function highlightAddCss(bg, colors) {
 		</style>
 	`);
 }
+
 function highlightRow(text, $row) {
 
 	switch (text) {
@@ -111,6 +112,8 @@ function removeClassRow($row) {
 }
 
 function parseTikets() {
+	console.log("Zendesk priority highlight parse.");
+	
 	$('.ember-view tbody tr').each(function(index, tr) {
 		var hasPriority = false, priority = '';
 
