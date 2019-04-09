@@ -39,7 +39,7 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: "2.3.4", date: "07 Apr 2019",
+		version: "2.3.4", date: "09 Apr 2019",
 		lines: [
 			"CHANGE Dropped 'Zendesk Submit Expander 2.0.1.0' dependency (and fix bugs) 🐛",
 			"CHANGE Minor visual improvements changelog",
