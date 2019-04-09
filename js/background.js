@@ -10,64 +10,22 @@ function executeScripts(tabId, injectDetailsArray) {
 	for (var i = injectDetailsArray.length - 1; i >= 0; --i)
 		callback = createCallback(tabId, injectDetailsArray[i], callback);
 
-	if (callback !== null)
-		callback(); // execute outermost function
+	if (callback !== null) callback(); // execute outermost function
 }
 
 // Popup actions
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-
 		switch (request.directive) {
-			case 'add-guide-lines':
-				executeScripts(null, [
-					{ file: "js/actions/add-guide-lines.js" }
-				])
-				break;
-			case 'remove-guide-lines':
-				executeScripts(null, [
-					{ file: "js/actions/remove-guide-lines.js" }
-				])
-				break;
-			case 'refresh-get-img':
-				executeScripts(null, [
-					{ file: "js/actions/refresh-get-img.js" }
-				])
-				break;
-			case 'show-new-templates-2018':
-				executeScripts(null, [
-					{ file: "js/actions/show-new-templates-2018.js" }
-				])
-				break;
-			case 'get-ftp-settings':
-				executeScripts(null, [
-					{ file: "js/actions/get-ftp-settings.js" }
-				])
-				break;
-			case 'testing-tokenizr':
-				executeScripts(null, [
-					{ file: "js/actions/testing-tokenizr.js" }
-				])
-				break;
-			case 'testing-notifys':
-				executeScripts(null, [
-					{ file: "js/actions/testing-notifys.js" }
-				])
-				break;
-			case 'secret-hack':
-				executeScripts(null, [
-					{ file: "js/actions/secret-hack.js" }
-				])
-				break;
-			case 'show-svg-icons':
-				executeScripts(null, [
-					{ file: "js/actions/show-svg-icons.js" }
-				])
-				break;
 			case 'testing-signup':
 				executeScripts(null, [
-					{ file: "js/libs/moment.js" },
-					{ file: "js/actions/testing-signup.js" }
+					{ file: 'js/libs/moment.js' },
+					{ file: 'js/actions/testing-signup.js' }
+				])
+				break;
+			default:
+				executeScripts(null, [
+					{ file: 'js/actions/' + request.directive + '.js' }
 				])
 				break;
 		}
@@ -75,34 +33,31 @@ chrome.runtime.onMessage.addListener(
 );
 
 // External actions
-chrome.runtime.onMessageExternal.addListener(
-	function(request, sender, sendResponse) {
-		if (request) {
-			if (request.message) {
-				if (request.message == "version") {
-					sendResponse({ version: manifestData.version });
-				}
+chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
+	if (request) {
+		if (request.message) {
+			if (request.message == 'version') {
+				sendResponse({ version: manifestData.version });
 			}
 		}
-		return true;
 	}
-);
+	return true;
+});
 
 // new version notify
 var opt = {
 	type: 'basic',
-	title: chrome.i18n.getMessage("newVersionNotify_title").replace('%version%', manifestData.version),
-	iconUrl: "../img/logo.svg",
-	message: chrome.i18n.getMessage("newVersionNotify_desc"),
+	title: chrome.i18n.getMessage('newVersionNotify_title').replace('%version%', manifestData.version),
+	iconUrl: '../img/logo.svg',
+	message: chrome.i18n.getMessage('newVersionNotify_desc'),
 	priority: 1,
 	buttons: [
-		{ title: chrome.i18n.getMessage("close") },
-		{ title: chrome.i18n.getMessage("viewChanges") }
+		{ title: chrome.i18n.getMessage('close') },
+		{ title: chrome.i18n.getMessage('viewChanges') }
 	]
 };
 
 chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
-
 	if (manifestData.version != result.newVersionNotify) {
 		chrome.notifications.create('newVersion-' + manifestData.version, opt, function() {
 			chrome.storage.sync.set({
@@ -113,7 +68,7 @@ chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
 		chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
 			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
 				chrome.tabs.create({ 
-					url: chrome.extension.getURL("/src/options/index.html") + '#changelog'
+					url: chrome.extension.getURL('/src/options/index.html') + '#changelog'
 				});
 			}
 		});
