@@ -1,3 +1,9 @@
 engines:
+  # ... CONFIG CONTENT ...
   csslint:
-    enabled: false
+    enabled: true
+    # ... CONFIG CONTENT ...
+    checks:
+      duplicate-properties:
+        enabled: false
+# ... CONFIG CONTENT ...
