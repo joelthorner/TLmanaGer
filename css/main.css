@@ -11349,6 +11349,22 @@ a.text-dark:hover, a.text-dark:focus {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  font-size: 13px;
+}
+
+#changelog .list-group-item-changelog .items-list li + li {
+  margin-top: 5px;
+}
+
+#changelog .list-group-item-changelog .items-list li a {
+  color: #00a8ff;
+}
+
+#changelog .list-group-item-changelog .items-list li .badge {
+  width: 55px;
+  font-size: 10px;
+  font-weight: 400;
+  padding: 0.31em 0.4em;
 }
 
 #profile .card-profile-col-data .card {

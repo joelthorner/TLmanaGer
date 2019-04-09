@@ -26,15 +26,16 @@ function setAvatars() {
 
 function setChangelog() {
 	$.each(CHANGELOG, function(index, item) {
-		var listNew = [], listFix = [], listElse = [];
+		var listNew = [], listFix = [], listChange = [];
 		$.each(item.lines, function(index, line) {
 			if (line.indexOf('NEW') == 0) listNew.push(line.replace('NEW ', ''));
 			else if (line.indexOf('FIX') == 0) listFix.push(line.replace('FIX ', ''));
-			else listElse.push(line);
+			else if (line.indexOf('CHANGE') == 0) listChange.push(line.replace('CHANGE ', ''));
 		});
 
-		var NEW = '<span class="mr-2 badge badge-success text-monospace">NEW</span>',
-		    FIX = '<span class="mr-2 badge badge-danger text-monospace">FIX</span>';
+		var NEW = '<span class="mr-2 badge badge-success">NEW</span>',
+			  FIX = '<span class="mr-2 badge badge-primary">FIX</span>',
+			  CHANGE = '<span class="mr-2 badge badge-primary">CHANGE</span>';
 
 		$('#changelog .list-group').append(`
 			<li class="list-group-item list-group-item-changelog py-4">
@@ -42,8 +43,9 @@ function setChangelog() {
 					<a class="col-3 col-left media text-decoration-none" href="https://github.com/joelthorner/TLmanaGer/releases/tag/v${item.version}" target="_blank">
 						<svg class="icon mr-3"><use xlink:href="#icon-merge"></use></svg>
 						<div class="media-body mb-3">
-							<div class="title mb-0 text-light">v${item.version}</div>
-							<small class="text-secondary">${moment(new Date(item.date)).fromNow()}</small>
+							<div class="title mb-0 text-light">${item.version}</div>
+							<!--<small class="text-secondary">${moment(new Date(item.date)).fromNow()}</small>-->
+							<small class="text-secondary">${moment(new Date(item.date)).format('MMMM Do YYYY')}</small>
 						</div>
 					</a>
 					
@@ -51,11 +53,11 @@ function setChangelog() {
 						<ul class="items-list mb-3 ${!listNew.length ? 'd-none' : ''}">
 							<li>${NEW}<span>${listNew.join('</span></li><li>' + NEW + '<span>')}</span></li>
 						</ul>
+						<ul class="items-list mb-3 ${!listChange.length ? 'd-none' : ''}">
+							<li>${CHANGE}<span>${listChange.join('</span></li><li>' + CHANGE + '<span>')}</span></li>
+						</ul>
 						<ul class="items-list mb-3 ${!listFix.length ? 'd-none' : ''}">
 							<li>${FIX}<span>${listFix.join('</span></li><li>' + FIX + '<span>')}</span></li>
-						</ul>
-						<ul class="items-list mb-3 ${!listElse.length ? 'd-none' : ''}">
-							<li><span>${listElse.join('</span></li><li><span>')}</span></li>
 						</ul>
 					</div>
 				</div>
