@@ -1,6 +1,4 @@
-engines:
-  # ... CONFIG CONTENT ...
+version: "2"
+plugins:
   csslint:
-    # ... CONFIG CONTENT ...
-    enabled: false
-# ... CONFIG CONTENT ...
+    enabled: true
