@@ -121,8 +121,8 @@ function createMenuExpanderItem($li, $btnGroup) {
 function executeSubmit($self) {
 	
 	Swal.fire({
-		title: 'Are you sure you want to continue?',
-		text: "The answer you entered will be sent to the customer and can not be changed.",
+		title: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_title'),
+		text: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_message'),
 		type: 'question',
 		showCancelButton: true,
 		confirmButtonColor: '#A6BD09',
