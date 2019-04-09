@@ -1,8 +1,8 @@
 chrome.storage.sync.get({ optDevFlushCfm: defaults.optDevFlushCfm }, function(result) {
 	
-	if (result.optDevFlushCfm) {
+	var bseUrl = window.location.origin;
 
-		var bseUrl = window.location.origin;
+	if (result.optDevFlushCfm && bseUrl.match(/[0-9]{2,6}\.igd\.production/g)) {
 
 		$('body').append(`
 			<style class="tlg-flush-shrtcut-style">
@@ -31,22 +31,20 @@ chrome.storage.sync.get({ optDevFlushCfm: defaults.optDevFlushCfm }, function(re
 			</div>
 		`);
 
-		setTimeout(function() {
-			
+		setTimeout(() => {
 			$('.tlg-flush-shrtcut iframe')
 				.contents()
 				.find('[type="submit"]')
-					.css({
-						'border-radius': 0,
-						'width': 116,
-						'height': 34
-					})
-					.on('click', function(){
-						window.location = window.location;
-					});
+				.css({
+					'border-radius': 0,
+					'width': 116,
+					'height': 34
+				})
+				.on('click', function () {
+					window.location = window.location;
+				});
 
 			$('.tlg-flush-shrtcut').addClass('init');
-			
 		}, 500);
 	}
 });
