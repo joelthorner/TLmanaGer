@@ -177,7 +177,14 @@
 		"message": "Configure your email option"
 	},
 
+	"zenDesk_preventTicketSubmit_title": {
+		"message": "Are you sure you want to continue?"
+	},
 	"zenDesk_preventTicketSubmit_message": {
-		"message": "The answer you entered will be sent to the customer and can not be changed. Are you sure you want to continue?"
+		"message": "The answer you entered will be sent to the customer and can not be changed."
+	},
+
+	"commandExecuted_message": {
+		"message": "TLmanaGer Command executed: '%command%'"
 	}
 }
