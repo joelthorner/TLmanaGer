@@ -455,6 +455,20 @@ $height-nav: 80px;
 			li {
 				display: flex;
 				align-items: center;
+				font-size: 13px;
+				
+				+ li {
+					margin-top: 5px;
+				}
+				a {
+					color: $blue-start;
+				}
+				.badge {
+					width: 55px;
+					font-size: 10px;
+					font-weight: 400;
+					padding: 0.31em 0.4em;
+				}
 			}
 		}
 	}
