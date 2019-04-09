@@ -48,7 +48,9 @@ var CHANGELOG = [
 			"NEW Zendesk command: Ctrl+Shift+Alt+T - Focus to type field (Zendesk ticket view)",
 			"NEW Zendesk command: Ctrl+Shift+Alt+P - Focus to priority field (Zendesk ticket view)",
 			"NEW Zendesk command: Ctrl+Shift+Alt+C - Toggle 'Comment with CC Team' check (Zendesk ticket view)",
-			"NEW Zendesk command: Ctrl+Shift+Alt+D - Toggle 'Doubts' check (Zendesk ticket view)"
+			"NEW Zendesk command: Ctrl+Shift+Alt+D - Toggle 'Doubts' check (Zendesk ticket view)",
+			"NEW Zendesk command: Ctrl+Alt+9 - Prev tab (Zendesk)",
+			"NEW Zendesk command: Ctrl+Alt+0 - Next tab (Zendesk)"
 		]
 	}, {
 		version: "2.3.3", date: "19 Mar 2019",
