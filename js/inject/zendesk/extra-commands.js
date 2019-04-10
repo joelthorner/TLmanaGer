@@ -105,7 +105,7 @@ hotkeys('ctrl+alt+9,command+alt+9,ctrl+alt+0,command+alt+0', function (event, ha
 		
 		clearTimeout(blur_o);
 		clearInterval(blur_i);
-		blur_i = setInterval(() => { $('*').blur(); }, 5);
+		blur_i = setInterval(() => { $('*').blur(); }, 1);
 		blur_o = setTimeout(() => { clearInterval(blur_i); }, 1000);
 	}
 });

@@ -1,4 +1,6 @@
-function ColorLuminance(hex, lum) {
+var priorityHighlightsCssAdded = false;
+
+function colorLuminance(hex, lum) {
 
 	// validate hex string
 	hex = String(hex).replace(/[^0-9a-f]/gi, '');
@@ -18,14 +20,14 @@ function ColorLuminance(hex, lum) {
 	return rgb;
 }
 
-function highlightAddCss(bg, colors) {
+function priorityHighlights_addCss(bg, colors) {
 	$('head').append(`
 		<style>
 			.tlg-highlight-low {
 				background-color: ${bg.low};
 			}
 			.tlg-highlight-low:not(:hover) td {
-				border-bottom-color: ${ColorLuminance(bg.low, -0.1)}
+				border-bottom-color: ${colorLuminance(bg.low, -0.1)}
 			}
 			.tlg-highlight-low:not(:hover) td, .tlg-highlight-low:not(:hover) td > *, .tlg-highlight-low:not(:hover) td a > * {
 				color: ${colors.low} !important;
@@ -35,7 +37,7 @@ function highlightAddCss(bg, colors) {
 				background-color: ${bg.normal};
 			}
 			.tlg-highlight-normal:not(:hover) td {
-				border-bottom-color: ${ColorLuminance(bg.normal, -0.1)}
+				border-bottom-color: ${colorLuminance(bg.normal, -0.1)}
 			}
 			.tlg-highlight-normal:not(:hover) td, .tlg-highlight-normal:not(:hover) td > *, .tlg-highlight-normal:not(:hover) td a > * {
 				color: ${colors.normal} !important;
@@ -45,7 +47,7 @@ function highlightAddCss(bg, colors) {
 				background-color: ${bg.high};
 			}
 			.tlg-highlight-high:not(:hover) td {
-				border-bottom-color: ${ColorLuminance(bg.high, -0.1)}
+				border-bottom-color: ${colorLuminance(bg.high, -0.1)}
 			}
 			.tlg-highlight-high:not(:hover) td, .tlg-highlight-high:not(:hover) td > *, .tlg-highlight-high:not(:hover) td a > * {
 				color: ${colors.high} !important;
@@ -55,7 +57,7 @@ function highlightAddCss(bg, colors) {
 				background-color: ${bg.urgent};
 			}
 			.tlg-highlight-urgent:not(:hover) td {
-				border-bottom-color: ${ColorLuminance(bg.urgent, -0.1)}
+				border-bottom-color: ${colorLuminance(bg.urgent, -0.1)}
 			}
 			.tlg-highlight-urgent:not(:hover) td, .tlg-highlight-urgent:not(:hover) td > *, .tlg-highlight-urgent:not(:hover) td a > * {
 				color: ${colors.urgent} !important;
@@ -70,31 +72,33 @@ function highlightAddCss(bg, colors) {
 			}
 		</style>
 	`);
+
+	return true;
 }
 
-function highlightRow(text, $row) {
+function priorityHighlights_parseRow(text, $row) {
 
 	switch (text) {
 		case 'low':
-			removeClassRow($row);
+			priorityHighlights_clearRow($row);
 			$row.addClass('tlg-highlight-' + text)
 			break;
 		case 'normal':
-			removeClassRow($row);
+			priorityHighlights_clearRow($row);
 			$row.addClass('tlg-highlight-' + text)
 			break;
 		case 'high':
-			removeClassRow($row);
+			priorityHighlights_clearRow($row);
 			$row.addClass('tlg-highlight-' + text)
 			break;
 		case 'urgent':
-			removeClassRow($row);
+			priorityHighlights_clearRow($row);
 			$row.addClass('tlg-highlight-' + text)
 			break;
 	}
 }
 
-function findPriority(text) {
+function priorityHighlights_findPriority(text) {
 	switch (text) {
 		case 'low':
 		case 'normal':
@@ -105,69 +109,35 @@ function findPriority(text) {
 	return false;
 }
 
-function removeClassRow($row) {
+function priorityHighlights_clearRow($row) {
 	$row.removeClass(function(index, className) {
 		return (className.match (/(^|\s)tlg-highlight-\S+/g) || []).join(' ');
 	});
 }
 
-function parseTikets() {
-	console.log("Zendesk priority highlight parse.");
-	
+function priorityHighlights_parseTikets() {
 	$('.ember-view tbody tr').each(function(index, tr) {
 		var hasPriority = false, priority = '';
 
 		$(tr).find('td').each(function(index, td) {
 			var text = $.trim($(td).text()).toLowerCase();
 			
-			if(findPriority(text)) {
+			if(priorityHighlights_findPriority(text)) {
 				hasPriority = true;
 				priority = text;
 			}
 		});
 
-		if (hasPriority) highlightRow(priority, $(tr));
-		else removeClassRow($(tr));
+		if (hasPriority) priorityHighlights_parseRow(priority, $(tr));
+		else priorityHighlights_clearRow($(tr));
 	});
 }
 
-chrome.storage.sync.get({
-	optZenPriorHighs: defaults.optZenPriorHighs,
-	optZenPriorHighsColors: defaults.optZenPriorHighsColors
-}, function(result) {
-
-	if (result.optZenPriorHighs) {
-		highlightAddCss(result.optZenPriorHighsColors.bg, result.optZenPriorHighsColors.colors);
-
-		var sto_changing = setTimeout(function() {
-			parseTikets();
-		}, 300);
-
-		var observer = new MutationObserver(function(mutations) {
-			mutations.forEach(function(mutation) {
-				clearTimeout(sto_changing);
-				sto_changing = setTimeout(function() {
-					parseTikets();
-				}, 300);
-			});    
-		});
-		
-		var config = { 
-			attributes: false,
-			childList: true,
-			characterData: false,
-			subtree: true 
-		};
-		
-		$('.ember-view').each(function(index, el) {
-			observer.observe(el, config);
-		});
-
-		$(document).on('click', function(event) {
-			clearTimeout(sto_changing);
-			sto_changing = setTimeout(function() {
-				parseTikets();
-			}, 300);
-		});
+function priorityHighlights_init(active, colors) {
+	if (active) {
+		if (!priorityHighlightsCssAdded) {	
+			priorityHighlightsCssAdded = priorityHighlights_addCss(colors.bg, colors.colors);
+		}
+		priorityHighlights_parseTikets();
 	}
-});
+}

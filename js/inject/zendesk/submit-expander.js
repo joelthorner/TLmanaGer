@@ -3,7 +3,19 @@ const EXPANDER_BUTTON_SELECTOR = '[data-garden-id="buttons.icon_button"]';
 const EXPANDED_MENU_SELECTOR = '[data-garden-id="menus.menu_view"]';
 const MAIN_BUTTON_SUBMIT = '[data-garden-id="buttons.button"]';
 
-const TYPES = {
+const swalConfig = {
+	title: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_title'),
+	text: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_message'),
+	type: 'question',
+	showCancelButton: true,
+	confirmButtonColor: '#A6BD09',
+	cancelButtonColor: '#979797',
+	confirmButtonText: 'Confirm',
+	reverseButtons: true,
+	width: '20rem'
+};
+
+const ZENDESKSATUSTYPES = {
 	new: '#ffb648',
 	open: '#e34f32',
 	pending: '#3091ec',
@@ -11,23 +23,25 @@ const TYPES = {
 	solved: '#87929d'
 };
 
-function updateSubmits() {
-	console.log('TLmanaGer Zendesk: submit expander update.');
+var submitExpanderPopup;
+
+function submitExpander_init(submitExpanderPopup_active) {
+	submitExpanderPopup = submitExpanderPopup_active;
 
 	$(BUTTON_GROUP_SELECTOR).each(function (index, el) {
 		// if button is visible
 		if ($(el).closest('.ember-view').is(':visible')) { 
 			// menu expander is not disabled
 			if (!$(el).find(EXPANDER_BUTTON_SELECTOR).prop('disabled')) { 
-				createMenuExpander('full', $(el));
+				submitExpander_createMenuExpander('full', $(el));
 			} else {
-				createMenuExpander('unique', $(el));
+				submitExpander_createMenuExpander('unique', $(el));
 			}
 		}
 	});
 }
 
-function createMenuExpander(type, $btnGroup) {
+function submitExpander_createMenuExpander(type, $btnGroup) {
 	var $newButtonGroup = $('<div/>', {
 		class: 'tlg-new-button-expander'
 	});
@@ -44,7 +58,7 @@ function createMenuExpander(type, $btnGroup) {
 					setTimeout(() => {
 						var $expandedMenu = $(EXPANDED_MENU_SELECTOR).find('li');
 						$expandedMenu.each(function (index, li) {
-							$newButtonGroup.append(createMenuExpanderItem($(li), $btnGroup));
+							$newButtonGroup.append(submitExpander_createMenuExpanderItem($(li), $btnGroup));
 						});
 						
 						$btnGroup
@@ -70,14 +84,14 @@ function createMenuExpander(type, $btnGroup) {
 						<div>
 							<div tabindex="0" style="width: 100%;">
 								<div class="flex">
-									<div style="background-color: ${TYPES[type]}"></div>
+									<div style="background-color: ${ZENDESKSATUSTYPES[type]}"></div>
 									<span class="space"> </span>
 									<span>Submit as <strong>${text}</strong></span>
 								</div>
 							</div>
 						</div>
 					</li>`;
-				$newButtonGroup.append(createMenuExpanderItem($(fakeLi), $btnGroup));
+				$newButtonGroup.append(submitExpander_createMenuExpanderItem($(fakeLi), $btnGroup));
 
 				$btnGroup
 					.append($newButtonGroup)
@@ -88,11 +102,10 @@ function createMenuExpander(type, $btnGroup) {
 	}
 }
 
-function createMenuExpanderItem($li, $btnGroup) {
+function submitExpander_createMenuExpanderItem($li, $btnGroup) {
 	var selectedItemText = $btnGroup.find(MAIN_BUTTON_SUBMIT).text().trim().toLowerCase();
 	var classes = '';
 
-	// edit menu HTML
 	var $liHtml = $($li.html());
 	$liHtml.find('span').prevAll('div').addClass('color-item');
 	
@@ -102,75 +115,41 @@ function createMenuExpanderItem($li, $btnGroup) {
 	$liHtml.find('span').each(function (index, el) {
 		$(el).html($(el).html().replace('Submit as', ''));
 	});
-	// end edit menu HTML
 
 	var $button = $('<button/>', {
 		type: 'button',
 		html: $liHtml,
 		class: classes
 	});
-
 	$button.data('target', '#' + $li.attr('id'));
 	$button.on('click', function (event) {
 		event.preventDefault();
-		executeSubmit($(this));
+		submitExpander_executeSubmit($(this));
 	});
 	return $button;
 }
 
-function executeSubmit($self) {
+function submitExpander_executeSubmit($self) {
+
+	function submitExpander_executeClick() {
+		var $thisExpanderBtn = $self.closest('.tlg-submit-expander').find(EXPANDER_BUTTON_SELECTOR);
+		if ($thisExpanderBtn.length) $thisExpanderBtn.click();
 	
-	Swal.fire({
-		title: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_title'),
-		text: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_message'),
-		type: 'question',
-		showCancelButton: true,
-		confirmButtonColor: '#A6BD09',
-		cancelButtonColor: '#979797',
-		confirmButtonText: 'Confirm',
-		reverseButtons: true,
-		width: '20rem'
-	}).then((result) => {
-		if (result.value) {
-			var $thisExpanderBtn = $self.closest('.tlg-submit-expander').find(EXPANDER_BUTTON_SELECTOR);
-			if ($thisExpanderBtn.length) $thisExpanderBtn.click();
-
-			setTimeout(() => {
-				var $clickTarget = $(EXPANDED_MENU_SELECTOR).find($self.data('target'));
-				if (!$clickTarget.length) {
-					$clickTarget = $self.closest('.tlg-submit-expander').find(MAIN_BUTTON_SUBMIT);
-				}
-				console.log('TLmanaGer Zendesk: submit:', $clickTarget);
-				$clickTarget.click();
-			}, 75);
-		}
-	})
-}
-
-chrome.storage.sync.get({ optZenTicketConfirm: defaults.optZenTicketConfirm }, function (result) {
-	if (result.optZenTicketConfirm) {
-		var sto_changing = setTimeout(function () {
-			updateSubmits();
-		}, 50);
-
-		var observer = new MutationObserver(function (mutations) {
-			mutations.forEach(function (mutation) {
-				clearTimeout(sto_changing);
-				sto_changing = setTimeout(function () {
-					updateSubmits();
-				}, 50);
-			});
-		});
-
-		var config = {
-			attributes: false,
-			childList: true,
-			characterData: false,
-			subtree: true
-		};
-
-		$('.ember-view').each(function (index, el) {
-			observer.observe(el, config);
-		});
+		setTimeout(() => {
+			var $clickTarget = $(EXPANDED_MENU_SELECTOR).find($self.data('target'));
+			if (!$clickTarget.length) {
+				$clickTarget = $self.closest('.tlg-submit-expander').find(MAIN_BUTTON_SUBMIT);
+			}
+			console.log('TLmanaGer Zendesk: submit:', $clickTarget);
+			$clickTarget.click();
+		}, 75);
 	}
-});
+
+	if (submitExpanderPopup) {
+		Swal.fire(swalConfig).then((result) => {
+			if (result.value) submitExpander_executeClick();
+		});
+	} else {
+		submitExpander_executeClick();
+	}
+}
