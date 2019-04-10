@@ -76,8 +76,8 @@
 .tlg-new-button-expander button strong {
 	display: block;
 }
+[data-garden-id="menus.menu_view"],
 .ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.icon_button"],
-.ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="menus.menu_view"],
 .ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.button"] {
 	position: absolute;
 	width: 1px;
@@ -87,6 +87,8 @@
 	clip: rect(0,0,0,0);
 	white-space: nowrap;
 	border: 0;
+	-webkit-transform: translate(-50000px,-50000px);
+	transform: translate(-50000px,-50000px);
 }
 
 body .swal2-question.swal2-animate-question-icon {
