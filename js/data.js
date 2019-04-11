@@ -43,6 +43,7 @@ var CHANGELOG = [
 		lines: [
 			"CHANGE Dropped 'Zendesk Submit Expander 2.0.1.0' - New zendeskt Submit Buttons",
 			"CHANGE Minor visual improvements changelog",
+			"FIX Centralize all zendesk options with a unique global observer",
 			"FIX Flush cfm utility scoped to /[0-9]{2,6}\.igd\.production/g",
 			"NEW Zendesk command: Ctrl+Shift+Alt+A - Focus to assignee field (Zendesk ticket view)",
 			"NEW Zendesk command: Ctrl+Shift+Alt+T - Focus to type field (Zendesk ticket view)",
