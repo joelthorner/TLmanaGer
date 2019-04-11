@@ -3,7 +3,7 @@ var sto_submitExpander, sto_priorityHighlights;
 function submitExpander_global(active) {
 	clearTimeout(sto_submitExpander);
 	sto_submitExpander = setTimeout(function () {
-		submitExpander_init(active);
+		SubmitExpander.init(active);
 	}, 100);
 }
 

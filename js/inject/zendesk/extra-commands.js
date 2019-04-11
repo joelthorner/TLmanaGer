@@ -93,11 +93,10 @@ $(document).on('click', function (event) {
 });
 
 hotkeys('ctrl+alt+9,command+alt+9,ctrl+alt+0,command+alt+0', function (event, handler) {
-	console.log(log.replace('%command%', 'zendesk-tab-' + type + ' ' + handler.key));
-	
 	var type = 'next';
-	if (handler.key == 'ctrl+alt+9' || handler.key == 'command+alt+9')
-		type = 'prev';
+	if (handler.key == 'ctrl+alt+9' || handler.key == 'command+alt+9') type = 'prev';
+	
+	console.log(log.replace('%command%', 'zendesk-tab-' + type + ' ' + handler.key));
 
 	var $temp = $selectedTab[type]();
 	if ($temp.length && !$temp.is('.add')) {
