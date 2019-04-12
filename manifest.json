@@ -143,7 +143,8 @@
 				"js/inject/zendesk/main.js",
 				"js/inject/zendesk/submit-expander.js",
 				"js/inject/zendesk/priority-highlights.js",
-				"js/inject/zendesk/extra-commands.js"
+				"js/inject/zendesk/extra-commands.js",
+				"js/inject/zendesk/disable-editor-autofocus.js"
 			]
 		},
 		{

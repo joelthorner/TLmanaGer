@@ -38,5 +38,6 @@ var defaults = {
 			high: '#222',
 			urgent: '#222'
 		}
-	}
+	},
+	optZenDisableAutofocus: false
 };
