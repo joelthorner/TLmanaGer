@@ -5,6 +5,7 @@ body #z-icon {
 	background-repeat: no-repeat;
 	opacity: 1;
 }
+
 body #z-icon svg {
 	display: none !important;
 }

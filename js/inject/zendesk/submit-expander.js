@@ -1,5 +1,6 @@
 SubmitExpander = {
 	submitPopupActive: false,
+	timeout: null,
 	types: {
 		new: '#ffb648',
 		open: '#e34f32',
@@ -8,31 +9,42 @@ SubmitExpander = {
 		solved: '#87929d'
 	},
 	swalConfig: {
-		title: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_title'),
+		title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-alert-warning-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"></path><circle cx="7.5" cy="12" r="1" fill="currentColor"></circle></svg>' + 
+			chrome.i18n.getMessage('zenDesk_preventTicketSubmit_title'),
 		text: chrome.i18n.getMessage('zenDesk_preventTicketSubmit_message'),
-		type: 'question',
 		showCancelButton: true,
 		confirmButtonColor: '#A6BD09',
 		cancelButtonColor: '#979797',
 		confirmButtonText: 'Confirm',
 		reverseButtons: true,
-		width: '20rem'
+		width: '22rem',
+		customClass: {
+			container: 'submit-expander-popup'
+		}
 	},
 	btnGroupSelector: '.ticket-resolution-footer div[data-garden-id="buttons.button_group_view"]',
 	expanderBtnSelector: '[data-garden-id="buttons.icon_button"]',
 	expandedMenuSelector: '[data-garden-id="menus.menu_view"]',
 	mainBtnSubmitSelector: '[data-garden-id="buttons.button"]',
 
-	init: function(submitPopup) {
+	init: function (submitPopup) {
+		clearTimeout(SubmitExpander.timeout);
+		SubmitExpander.timeout = setTimeout(() => {
+			SubmitExpander.run(submitPopup);
+		}, 100);
+	},
+
+	run: function(submitPopup) {
 		this.submitPopupActive = submitPopup;
 		
 		$(SubmitExpander.btnGroupSelector).each(function (index, el) {
 			// if submitButton is visible
 			if ($(el).closest('.ember-view').is(':visible')) {
+				var uniqueBtnString = $(el).find(SubmitExpander.mainBtnSubmitSelector).text().trim().toLowerCase();
 				// menu expander is not disabled
 				if (!$(el).find(SubmitExpander.expanderBtnSelector).prop('disabled')) {
 					SubmitExpander.createMenuExpander.full($(el));
-				} else {
+				} else if (uniqueBtnString.length && uniqueBtnString !== 'submit as') {
 					SubmitExpander.createMenuExpander.unique($(el));
 				}
 			}

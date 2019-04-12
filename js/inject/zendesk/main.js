@@ -1,11 +1,4 @@
-var sto_submitExpander, sto_priorityHighlights;
-
-function submitExpander_global(active) {
-	clearTimeout(sto_submitExpander);
-	sto_submitExpander = setTimeout(function () {
-		SubmitExpander.init(active);
-	}, 100);
-}
+var sto_priorityHighlights;
 
 function priorityHighlights_global(active, colors) {
 	clearTimeout(sto_priorityHighlights);
@@ -23,13 +16,13 @@ chrome.storage.sync.get({
 }, function (result) {
 	
 	// Global inits
-	submitExpander_global(result.optZenTicketConfirm);
+	SubmitExpander.init(result.optZenTicketConfirm);
 	priorityHighlights_global(result.optZenPriorHighs, result.optZenPriorHighsColors);
 	
 	// Global observer
 	var observer = new MutationObserver(function (mutations) {
 		mutations.forEach(function (mutation) {
-			submitExpander_global(result.optZenTicketConfirm);
+			SubmitExpander.init(result.optZenTicketConfirm);
 			priorityHighlights_global(result.optZenPriorHighs, result.optZenPriorHighsColors);
 		});
 	});
@@ -41,7 +34,7 @@ chrome.storage.sync.get({
 		subtree: true
 	};
 
-	$('.ember-view').each(function (index, el) {
+	$('body').each(function (index, el) {
 		observer.observe(el, config);
 	});
 });
