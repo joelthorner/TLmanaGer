@@ -49,7 +49,8 @@ function saveOptions(deelay) {
 					high: $('.set-text-elem.high').css('color'),
 					urgent: $('.set-text-elem.urgent').css('color')
 				}
-			}
+			},
+			optZenDisableAutofocus: $('#opt-zen-disable-autofocus').prop('checked')
 
 		}, function() {
 			setOptionValue($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
@@ -113,7 +114,7 @@ function setOptionValue($node, type, value) {
 
 function restoreOptions() {
 	chrome.storage.sync.get(defaults, function(items) {
-		var arrOptions = [
+		$.each([
 			{ node: $('#opt-lc-bg-active')            , type: 'checkbox',    value: items.optLcBgActive },
 			{ node: $('#opt-lc-pagrid-active')        , type: 'checkbox',    value: items.optLcPagridActive },
 			{ node: $('#opt-lc-dev-bar-active')       , type: 'checkbox',    value: items.optLcDevBarActive },
@@ -126,6 +127,7 @@ function restoreOptions() {
 			{ node: $('#opt-zen-ticket-confirm')      , type: 'checkbox',    value: items.optZenTicketConfirm },
 			{ node: $('#opt-zen-prior-highs')         , type: 'checkbox',    value: items.optZenPriorHighs },
 			{ node: $('#opt-zen-prior-highs-incident'), type: 'checkbox',    value: items.optZenPriorHighsIncident },
+			{ node: $('#opt-zen-disable-autofocus')   , type: 'checkbox',    value: items.optZenDisableAutofocus },
 			{ node: $('#opt-profile-pass')            , type: 'textfield',   value: items.optProfilePass },
 			{ node: $('#opt-profile-username')        , type: 'textfield',   value: items.optProfileUsername },
 			{ node: $('#opt-profile-email')           , type: 'textfield',   value: items.optProfileEmail },
@@ -133,9 +135,8 @@ function restoreOptions() {
 			{ node: $('.avatar')                      , type: 'avatar',      value: items.optProfileAvatar },
 			{ node: $('.set-text-elem')               , type: 'colorpicker', value: items.optZenPriorHighsColors },
 			{ node: $('.card-background-option')      , type: 'conditioned', value: items.optLcBgActive },
-			{ node: $('.opt-zen-prior-highs-colors')  , type: 'conditioned', value: items.optZenPriorHighs }
-		];
-		$.each(arrOptions, function (index, obj) {  
+			{ node: $('.z-hl-cont')                   , type: 'conditioned', value: items.optZenPriorHighs }
+		], function (index, obj) {  
 			setOptionValue(obj.node, obj.type, obj.value);
 		});
 	});
@@ -309,7 +310,7 @@ function zendeskHighlightPriority() {
 	});
 
 	$('#opt-zen-prior-highs').change(function(event) {
-		var $option = $('.opt-zen-prior-highs-colors');
+		var $option = $('.z-hl-cont');
 		if ($(this).prop('checked')) $option.removeClass('disabled');
 		else $option.addClass('disabled');
 	});

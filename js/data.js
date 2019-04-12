@@ -56,7 +56,8 @@ var CHANGELOG = [
 					<li><kbd>Ctrl+Alt+0</kbd> - Next tab (generic)</li>
 				</ul>
 			`,
-			'NEW Zendesk option "Priority highlights only incidents", Highlight only incident tickets'
+			'NEW Zendesk option "Priority highlights only incidents", Highlight only incident tickets',
+			'NEW Zendesk option "Disable editor autofocus"'
 		]
 	}, {
 		version: '2.3.3', date: '19 Mar 2019',
