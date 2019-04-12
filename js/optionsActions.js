@@ -35,6 +35,7 @@ function saveOptions(deelay) {
 			
 			optZenTicketConfirm: $('#opt-zen-ticket-confirm').prop('checked'),
 			optZenPriorHighs: $('#opt-zen-prior-highs').prop('checked'),
+			optZenPriorHighsIncident: $('#opt-zen-prior-highs-incident').prop('checked'),
 			optZenPriorHighsColors: {
 				bg: {
 					low: $('.set-text-elem.low').val(),
@@ -124,6 +125,7 @@ function restoreOptions() {
 			{ node: $('#opt-os-branches-btn')         , type: 'checkbox',    value: items.optOsBranchesBtn },
 			{ node: $('#opt-zen-ticket-confirm')      , type: 'checkbox',    value: items.optZenTicketConfirm },
 			{ node: $('#opt-zen-prior-highs')         , type: 'checkbox',    value: items.optZenPriorHighs },
+			{ node: $('#opt-zen-prior-highs-incident'), type: 'checkbox',    value: items.optZenPriorHighsIncident },
 			{ node: $('#opt-profile-pass')            , type: 'textfield',   value: items.optProfilePass },
 			{ node: $('#opt-profile-username')        , type: 'textfield',   value: items.optProfileUsername },
 			{ node: $('#opt-profile-email')           , type: 'textfield',   value: items.optProfileEmail },
