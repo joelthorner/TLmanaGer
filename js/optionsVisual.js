@@ -35,7 +35,7 @@ function setChangelog() {
 
 		var NEW = '<span class="mr-2 badge badge-success">NEW</span>',
 			  FIX = '<span class="mr-2 badge badge-primary">FIX</span>',
-			  CHANGE = '<span class="mr-2 badge badge-primary">CHANGE</span>';
+			  CHANGE = '<span class="mr-2 badge badge-change">CHANGE</span>';
 
 		$('#changelog .list-group').append(`
 			<li class="list-group-item list-group-item-changelog py-4">

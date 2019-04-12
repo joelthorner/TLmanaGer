@@ -451,23 +451,34 @@ $height-nav: 80px;
 			list-style: none;
 			padding-left: 1rem;
 			font-size: 14px;
-
-			li {
+			letter-spacing: 0.01em;
+			
+			a {
+				color: $blue-start;
+			}
+			> li {
 				display: flex;
-				align-items: center;
+				align-items: flex-start;
 				font-size: 13px;
 				
 				+ li {
-					margin-top: 5px;
+					margin-top: 7px;
 				}
-				a {
-					color: $blue-start;
+				ul {
+					list-style: none;
+					margin-top: 10px;
+					margin-bottom: 2px;
+					color: #888;
+					font-size: 12px;
+					padding-left: 0;
+					line-height: 1.6;
 				}
 				.badge {
 					width: 55px;
 					font-size: 10px;
 					font-weight: 400;
 					padding: 0.31em 0.4em;
+					margin-top: 1px;
 				}
 			}
 		}
@@ -540,7 +551,7 @@ $height-nav: 80px;
 	}
 }
 
-.z-hl-cont {
+.opt-zen-prior-highs-colors {
 	font-size: 12px;
 
 	.text-secondary {
@@ -560,10 +571,18 @@ $height-nav: 80px;
 		cursor: pointer;
 		padding: 3px;
 	}
+}
+
+.z-hl-cont {
 	&.disabled {
 		opacity: .5;
 		cursor: not-allowed;
 
+		.custom-control-label,
+		.custom-control-label::before,
+		.custom-control-label::after {
+			pointer-events: none;
+		}
 		&:after {
 			content: "";
 			position: absolute;
@@ -571,7 +590,9 @@ $height-nav: 80px;
 			right: 0;
 			top: 0;
 			bottom: 0;
-			z-index: 1;
+			z-index: 100;
+			pointer-events: none;
+			display: block;
 		}
 	}
 }
