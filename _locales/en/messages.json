@@ -184,6 +184,10 @@
 		"message": "The answer you entered will be sent to the customer and can not be changed."
 	},
 
+	"zenDesk_btnSettingsModal_title": {
+		"message": "TLmanaGer Zendesk Settings"
+	},
+
 	"commandExecuted_message": {
 		"message": "TLmanaGer Command executed: '%command%'"
 	}

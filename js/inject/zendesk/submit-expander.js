@@ -19,7 +19,7 @@ SubmitExpander = {
 		reverseButtons: true,
 		width: '22rem',
 		customClass: {
-			container: 'submit-expander-popup'
+			container: 'swal-zendesk-popup'
 		}
 	},
 	btnGroupSelector: '.ticket-resolution-footer div[data-garden-id="buttons.button_group_view"]',

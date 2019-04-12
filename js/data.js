@@ -41,7 +41,7 @@ var CHANGELOG = [
 	{
 		version: '2.3.4', date: '09 Apr 2019',
 		lines: [
-			'CHANGE Dropped "Zendesk Submit Expander 2.0.1.0" - New Zendes submit menu expander',
+			'CHANGE Dropped "Zendesk Submit Expander 2.0.1.0" - New Zendesk submit menu expander',
 			'CHANGE Changelog visual changes',
 			'FIX Centralize all zendesk options with a unique global observer',
 			'FIX Flush cfm utility scoped to <kbd>/[0-9]{2,6}\.igd\.production/g</kbd>',
