@@ -24,6 +24,7 @@ var defaults = {
 
 	optZenTicketConfirm: true,
 	optZenPriorHighs: true,
+	optZenPriorHighsIncident: true,
 	optZenPriorHighsColors : {
 		bg: {
 			low: '#fff',

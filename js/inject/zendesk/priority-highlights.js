@@ -2,16 +2,17 @@ PriorityHighlights = {
 	timeout: null,
 	cssAdded: false,
 
-	init: function (active, colors) {
+	init: function (active, colors, onlyIncidents) {
 		clearTimeout(PriorityHighlights.timeout);
 		PriorityHighlights.timeout = setTimeout(() => {
-			PriorityHighlights.run(active, colors);
+			PriorityHighlights.run(active, colors, onlyIncidents);
 		}, 100);
 	},
 
-	run: function (active, colors) {
+	run: function (active, colors, onlyIncidents) {
 		this.active = active;
 		this.colors = colors;
+		this.onlyIncidents = onlyIncidents;
 
 		if (this.active) {
 			if (!this.cssAdded) {
@@ -95,19 +96,26 @@ PriorityHighlights = {
 
 	parseTikets: function () {
 		$('.ember-view tbody tr').each(function (index, tr) {
-			var hasPriority = false, priority = '';
+			var hasPriority = false, priority = '', isIncident = false,
+				onlyIncidents = PriorityHighlights.onlyIncidents;
 
 			$(tr).find('td').each(function (index, td) {
-				var text = $.trim($(td).text()).toLowerCase();
+				var text = $(td).text().trim().toLowerCase();
 
 				if (PriorityHighlights.findPriority(text)) {
 					hasPriority = true;
 					priority = text;
 				}
+				if (PriorityHighlights.findType(text)) isIncident = true;
 			});
 
-			if (hasPriority) PriorityHighlights.parseRow(priority, $(tr));
-			else PriorityHighlights.clearRow($(tr));
+			if (hasPriority) {
+				if ((onlyIncidents && isIncident) || !onlyIncidents) {
+					PriorityHighlights.parseRow(priority, $(tr));
+				}
+			} else {
+				PriorityHighlights.clearRow($(tr));
+			}
 		});
 	},
 
@@ -132,6 +140,10 @@ PriorityHighlights = {
 				return true;
 		}
 		return false;
+	},
+
+	findType: function (text) {
+		return text == 'incident';
 	},
 
 	clearRow: function ($row) {
