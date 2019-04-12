@@ -15,67 +15,63 @@ PriorityHighlights = {
 
 		if (this.active) {
 			if (!this.cssAdded) {
-				this.cssAdded = this.addCss();
+				this.addCss();
+				this.cssAdded = true;
 			}
 			this.parseTikets();
 		}
 	},
 
 	addCss: function () {
-		var PH = this;
-		$('head').append(`
-			<style>
-				.tlg-highlight-low {
-					background-color: ${PH.colors.bg.low};
-				}
-				.tlg-highlight-low:not(:hover) td {
-					border-bottom-color: ${PH.colorLuminance(PH.colors.bg.low, -0.1)}
-				}
-				.tlg-highlight-low:not(:hover) td, .tlg-highlight-low:not(:hover) td > *, .tlg-highlight-low:not(:hover) td a > * {
-					color: ${PH.colors.colors.low} !important;
-				}
+		$('head').append(`<style>
+			.tlg-highlight-low {
+				background-color: ${PriorityHighlights.colors.bg.low};
+			}
+			.tlg-highlight-low:not(:hover) td {
+				border-bottom-color: ${PriorityHighlights.colorLuminance(PriorityHighlights.colors.bg.low, -0.1)}
+			}
+			.tlg-highlight-low:not(:hover) td, .tlg-highlight-low:not(:hover) td > *, .tlg-highlight-low:not(:hover) td a > * {
+				color: ${PriorityHighlights.colors.colors.low} !important;
+			}
 
-				.tlg-highlight-normal {
-					background-color: ${PH.colors.bg.normal};
-				}
-				.tlg-highlight-normal:not(:hover) td {
-					border-bottom-color: ${PH.colorLuminance(PH.colors.bg.normal, -0.1)}
-				}
-				.tlg-highlight-normal:not(:hover) td, .tlg-highlight-normal:not(:hover) td > *, .tlg-highlight-normal:not(:hover) td a > * {
-					color: ${PH.colors.colors.normal} !important;
-				}
+			.tlg-highlight-normal {
+				background-color: ${PriorityHighlights.colors.bg.normal};
+			}
+			.tlg-highlight-normal:not(:hover) td {
+				border-bottom-color: ${PriorityHighlights.colorLuminance(PriorityHighlights.colors.bg.normal, -0.1)}
+			}
+			.tlg-highlight-normal:not(:hover) td, .tlg-highlight-normal:not(:hover) td > *, .tlg-highlight-normal:not(:hover) td a > * {
+				color: ${PriorityHighlights.colors.colors.normal} !important;
+			}
 
-				.tlg-highlight-high {
-					background-color: ${PH.colors.bg.high};
-				}
-				.tlg-highlight-high:not(:hover) td {
-					border-bottom-color: ${PH.colorLuminance(PH.colors.bg.high, -0.1)}
-				}
-				.tlg-highlight-high:not(:hover) td, .tlg-highlight-high:not(:hover) td > *, .tlg-highlight-high:not(:hover) td a > * {
-					color: ${PH.colors.colors.high} !important;
-				}
+			.tlg-highlight-high {
+				background-color: ${PriorityHighlights.colors.bg.high};
+			}
+			.tlg-highlight-high:not(:hover) td {
+				border-bottom-color: ${PriorityHighlights.colorLuminance(PriorityHighlights.colors.bg.high, -0.1)}
+			}
+			.tlg-highlight-high:not(:hover) td, .tlg-highlight-high:not(:hover) td > *, .tlg-highlight-high:not(:hover) td a > * {
+				color: ${PriorityHighlights.colors.colors.high} !important;
+			}
 
-				.tlg-highlight-urgent {
-					background-color: ${PH.colors.bg.urgent};
-				}
-				.tlg-highlight-urgent:not(:hover) td {
-					border-bottom-color: ${PH.colorLuminance(PH.colors.bg.urgent, -0.1)}
-				}
-				.tlg-highlight-urgent:not(:hover) td, .tlg-highlight-urgent:not(:hover) td > *, .tlg-highlight-urgent:not(:hover) td a > * {
-					color: ${PH.colors.colors.urgent} !important;
-				}
+			.tlg-highlight-urgent {
+				background-color: ${PriorityHighlights.colors.bg.urgent};
+			}
+			.tlg-highlight-urgent:not(:hover) td {
+				border-bottom-color: ${PriorityHighlights.colorLuminance(PriorityHighlights.colors.bg.urgent, -0.1)}
+			}
+			.tlg-highlight-urgent:not(:hover) td, .tlg-highlight-urgent:not(:hover) td > *, .tlg-highlight-urgent:not(:hover) td a > * {
+				color: ${PriorityHighlights.colors.colors.urgent} !important;
+			}
 
-				.ember-view tbody tr td[style*="padding: 0px 0px 0px 3px;"] {
-					padding: 0px 1px 0px 2px !important;
-				}
-				.ember-view tbody tr td .pop > * {
-					margin-right: 1px;
-					box-shadow: 1px 1px 0px 0px #FFF, -1px -1px 0px 0px #FFF, -1px 1px 0px 0px #FFF, 1px -1px 0px 0px #FFF;
-				}
-			</style>
-		`);
-
-		return true;
+			.ember-view tbody tr td[style*="padding: 0px 0px 0px 3px;"] {
+				padding: 0px 1px 0px 2px !important;
+			}
+			.ember-view tbody tr td .pop > * {
+				margin-right: 1px;
+				box-shadow: 1px 1px 0px 0px #FFF, -1px -1px 0px 0px #FFF, -1px 1px 0px 0px #FFF, 1px -1px 0px 0px #FFF;
+			}
+		</style>`);
 	},
 
 	colorLuminance: function (hex, lum) {
