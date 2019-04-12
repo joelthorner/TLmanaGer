@@ -1,13 +1,3 @@
-var sto_priorityHighlights;
-
-function priorityHighlights_global(active, colors) {
-	clearTimeout(sto_priorityHighlights);
-	sto_priorityHighlights = setTimeout(function () {
-		priorityHighlights_init(active, colors);
-	}, 100);
-}
-
-
 chrome.storage.sync.get({
 	optZenPriorHighs: defaults.optZenPriorHighs,
 	optZenPriorHighsColors: defaults.optZenPriorHighsColors,
@@ -17,13 +7,13 @@ chrome.storage.sync.get({
 	
 	// Global inits
 	SubmitExpander.init(result.optZenTicketConfirm);
-	priorityHighlights_global(result.optZenPriorHighs, result.optZenPriorHighsColors);
+	PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors);
 	
 	// Global observer
 	var observer = new MutationObserver(function (mutations) {
 		mutations.forEach(function (mutation) {
 			SubmitExpander.init(result.optZenTicketConfirm);
-			priorityHighlights_global(result.optZenPriorHighs, result.optZenPriorHighsColors);
+			PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors);
 		});
 	});
 
