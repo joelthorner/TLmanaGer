@@ -11340,31 +11340,43 @@ a.text-dark:hover, a.text-dark:focus {
   list-style: none;
   padding-left: 1rem;
   font-size: 14px;
+  letter-spacing: 0.01em;
 }
 
-#changelog .list-group-item-changelog .items-list li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 13px;
-}
-
-#changelog .list-group-item-changelog .items-list li + li {
-  margin-top: 5px;
-}
-
-#changelog .list-group-item-changelog .items-list li a {
+#changelog .list-group-item-changelog .items-list a {
   color: #00a8ff;
 }
 
-#changelog .list-group-item-changelog .items-list li .badge {
+#changelog .list-group-item-changelog .items-list > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  font-size: 13px;
+}
+
+#changelog .list-group-item-changelog .items-list > li + li {
+  margin-top: 7px;
+}
+
+#changelog .list-group-item-changelog .items-list > li ul {
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  color: #888;
+  font-size: 12px;
+  padding-left: 0;
+  line-height: 1.6;
+}
+
+#changelog .list-group-item-changelog .items-list > li .badge {
   width: 55px;
   font-size: 10px;
   font-weight: 400;
   padding: 0.31em 0.4em;
+  margin-top: 1px;
 }
 
 #profile .card-profile-col-data .card {
@@ -11543,6 +11555,14 @@ body {
 
 button.close {
   outline: none;
+}
+
+.badge-change {
+  background-color: #6f42c1;
+}
+
+code {
+  color: #f22c87;
 }
 
 /*# sourceMappingURL=main.css.map */
