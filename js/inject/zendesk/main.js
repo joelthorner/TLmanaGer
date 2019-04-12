@@ -7,25 +7,34 @@ chrome.storage.sync.get({
 }, function (result) {
 	
 	// Global inits
+	ExtraCommands.init();
 	SubmitExpander.init(result.optZenTicketConfirm);
 	PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 	
-	// Global observer
-	var observer = new MutationObserver(function (mutations) {
+	var globalObserver = new MutationObserver(function (mutations) {
 		mutations.forEach(function (mutation) {
 			SubmitExpander.init(result.optZenTicketConfirm);
 			PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 		});
 	});
-
-	var config = {
+	
+	globalObserver.observe($('body')[0], {
 		attributes: false,
 		childList: true,
 		characterData: false,
 		subtree: true
-	};
+	});
+	
+	var navTabsObserver = new MutationObserver(function (mutations) {
+		mutations.forEach(function (mutation) {
+			ExtraCommands.onFindTabSelected(mutation);
+		});
+	});
 
-	$('body').each(function (index, el) {
-		observer.observe(el, config);
+	navTabsObserver.observe($('#tabs')[0], {
+		attributes: false,
+		childList: true,
+		characterData: false,
+		subtree: true
 	});
 });
