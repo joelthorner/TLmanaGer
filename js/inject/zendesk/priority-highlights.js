@@ -109,10 +109,8 @@ PriorityHighlights = {
 				if (PriorityHighlights.findType(text)) isIncident = true;
 			});
 
-			if (hasPriority) {
-				if ((onlyIncidents && isIncident) || !onlyIncidents) {
-					PriorityHighlights.parseRow(priority, $(tr));
-				}
+			if (hasPriority && ((onlyIncidents && isIncident) || !onlyIncidents)) {
+				PriorityHighlights.parseRow(priority, $(tr));
 			} else {
 				PriorityHighlights.clearRow($(tr));
 			}

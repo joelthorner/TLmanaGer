@@ -4,7 +4,6 @@ Chrome dev extension
 
 ![GitHub release](https://img.shields.io/github/release/joelthorner/TLmanaGer.svg?label=GitHub%20release)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/joelthorner/TLmanaGer.svg?label=Maintainability)
-![Code Climate maintainability (percentage)](https://img.shields.io/codeclimate/maintainability-percentage/joelthorner/TLmanaGer.svg?label=Maintainability)
 
 ![GitHub issues](https://img.shields.io/github/issues/joelthorner/TLmanaGer.svg?label=Issues)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/joelthorner/TLmanaGer.svg?label=Issues)
@@ -15,6 +14,5 @@ Chrome dev extension
 ---------------------------------
 
 ![Demo 1](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-1.jpg?v=2)
-
 
 ![Demo 2](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-2.jpg?v=2)
