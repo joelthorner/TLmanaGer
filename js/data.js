@@ -39,7 +39,12 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: '2.3.4', date: '09 Apr 2019',
+		version: '2.3.4', date: '13 Apr 2019',
+		lines: [
+			'FIX Fix "Coloreado de prioridades no se refresca" <a href="https://github.com/joelthorner/TLmanaGer/issues/141" target="_blank">#141</a>'
+		]
+	}, {
+		version: '2.3.4', date: '13 Apr 2019',
 		lines: [
 			'CHANGE Dropped "Zendesk Submit Expander 2.0.1.0" - New Zendesk submit menu expander',
 			'CHANGE Changelog visual changes',
