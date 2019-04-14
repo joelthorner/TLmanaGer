@@ -39,7 +39,7 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
-		version: '2.3.4', date: '13 Apr 2019',
+		version: '2.3.5', date: '14 Apr 2019',
 		lines: [
 			'FIX Fix "Coloreado de prioridades no se refresca" <a href="https://github.com/joelthorner/TLmanaGer/issues/141" target="_blank">#141</a>'
 		]
