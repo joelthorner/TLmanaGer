@@ -39,6 +39,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: '2.3.6', date: '20 Apr 2019',
+		lines: [
+			'NEW New feature "Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>'
+		]
+	}, {
 		version: '2.3.5', date: '14 Apr 2019',
 		lines: [
 			'FIX Fix "Coloreado de prioridades no se refresca" <a href="https://github.com/joelthorner/TLmanaGer/issues/141" target="_blank">#141</a>'
