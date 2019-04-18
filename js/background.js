@@ -72,5 +72,8 @@ chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
 				});
 			}
 		});
+
+		chrome.browserAction.setBadgeText({ text: '!' });
+		chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 	}
 });
