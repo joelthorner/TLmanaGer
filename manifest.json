@@ -113,6 +113,15 @@
 		},
 		{
 			"matches": [
+				"*://*.sandbox.logicommerce.net/*",
+				"*://*.igd.production/*"
+			],
+			"js": [
+				"js/inject/go-to-fluid-dump.js"
+			]
+		},
+		{
+			"matches": [
 				"*://*.logicommerce.net/*",
 				"*://*.logicommerce.hk/*",
 				"*://*.logicommerce.cn/*",
