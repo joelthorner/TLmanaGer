@@ -114,10 +114,10 @@
 		{
 			"matches": [
 				"*://*.sandbox.logicommerce.net/*",
-				"*://*.igd.production./*"
+				"*://*.igd.production/*"
 			],
 			"js": [
-				"js/inject/move-dump-to-modal.js"
+				"js/inject/go-to-fluid-dump.js"
 			]
 		},
 		{
