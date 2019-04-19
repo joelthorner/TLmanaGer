@@ -41,6 +41,7 @@ var CHANGELOG = [
 	{
 		version: '2.3.6', date: '20 Apr 2019',
 		lines: [
+			'CHANGE Update jQuery v3.3.1 -> v3.4.0',
 			'CHANGE Update Bootstrap v4.2.1 -> v4.3.1',
 			'NEW Add <kbd>[!]</kbd> new version badge icon',
 			'NEW New feature "Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>',
