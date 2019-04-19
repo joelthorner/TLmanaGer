@@ -101,6 +101,14 @@
 		},
 		{
 			"matches": [
+				"*://8x.logicommerce.net/*"
+			],
+			"js": [
+				"js/inject/os-release-version.js"
+			]
+		},
+		{
+			"matches": [
 				"*://8x-os.logicommerce.net/login/*",
 				"*://8x.logicommerce.net/login/*"
 			],
