@@ -49,7 +49,7 @@ var CHANGELOG = [
 			'FIX Fix zendesk issue  "No se abre el popup de "Side conversation" <a href="https://github.com/joelthorner/TLmanaGer/issues/148" target="_blank">#148</a>',
 			'FIX Minor big-controls-lc fix (visual issue)',
 			'NEW New feature "Auto increment version opensass publication"',
-			'NEW New install lading welcome'
+			'NEW New install landing welcome'
 		]
 	}, {
 		version: '2.3.5', date: '14 Apr 2019',
