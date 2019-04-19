@@ -43,12 +43,13 @@ var CHANGELOG = [
 		lines: [
 			'CHANGE Update jQuery v3.3.1 -> v3.4.0',
 			'CHANGE Update Bootstrap v4.2.1 -> v4.3.1',
-			'NEW Add <kbd>[!]</kbd> new version badge icon',
+			'CHANGE Modified new extension version notify',
 			'NEW New feature "Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>',
-			'FIX Fix "Custom Macros going funny" <a href="https://github.com/joelthorner/TLmanaGer/issues/145" target="_blank">#145</a>',
-			'FIX Fix "No se abre el popup de "Side conversation" <a href="https://github.com/joelthorner/TLmanaGer/issues/148" target="_blank">#148</a>',
-			'FIX Minor big-controls-lc fix',
-			'NEW New feature "Auto increment version opensass publication"'
+			'FIX Fix zendesk issue "Custom Macros going funny" <a href="https://github.com/joelthorner/TLmanaGer/issues/145" target="_blank">#145</a>',
+			'FIX Fix zendesk issue  "No se abre el popup de "Side conversation" <a href="https://github.com/joelthorner/TLmanaGer/issues/148" target="_blank">#148</a>',
+			'FIX Minor big-controls-lc fix (visual issue)',
+			'NEW New feature "Auto increment version opensass publication"',
+			'NEW New install lading welcome'
 		]
 	}, {
 		version: '2.3.5', date: '14 Apr 2019',
