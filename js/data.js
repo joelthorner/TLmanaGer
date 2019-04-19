@@ -46,7 +46,8 @@ var CHANGELOG = [
 			'NEW Add <kbd>[!]</kbd> new version badge icon',
 			'NEW New feature "Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>',
 			'FIX Fix "Custom Macros going funny" <a href="https://github.com/joelthorner/TLmanaGer/issues/145" target="_blank">#145</a>',
-			'FIX Fix "No se abre el popup de "Side conversation" <a href="https://github.com/joelthorner/TLmanaGer/issues/148" target="_blank">#148</a>'
+			'FIX Fix "No se abre el popup de "Side conversation" <a href="https://github.com/joelthorner/TLmanaGer/issues/148" target="_blank">#148</a>',
+			'FIX Minor big-controls-lc fix'
 		]
 	}, {
 		version: '2.3.5', date: '14 Apr 2019',
