@@ -77,6 +77,11 @@ html.big-controls div.headerIcons.small>div.view1 div.interruptor.small>div {
 	border-radius: 3px;
 }
 
+html.big-controls div.headerIcons.small>div.view1 div.interruptor.small.checked>div {
+	left: 10px;
+	background-color: #bfcc00;
+}
+
 html.big-controls div.headerIcons.small>div.view1 div.interruptor.checked {
 	border: 1px solid #bfcc00;
 }
