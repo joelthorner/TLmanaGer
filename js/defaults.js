@@ -10,8 +10,9 @@ var defaults = {
 	optLcPagridActive: false,
 	optLcDevBarActive: true,
 	optDevForceview: true,
-	optDevStealFa : true,
-	optDevFlushCfm : true,
+	optDevStealFa: true,
+	optDevFlushCfm: true,
+	optDevDumpScrollCfm: true,
 	
 	optProfileUsername: '',
 	optProfileEmail: '',
@@ -25,7 +26,7 @@ var defaults = {
 	optZenTicketConfirm: true,
 	optZenPriorHighs: true,
 	optZenPriorHighsIncident: true,
-	optZenPriorHighsColors : {
+	optZenPriorHighsColors: {
 		bg: {
 			low: '#fff',
 			normal: '#ffd',

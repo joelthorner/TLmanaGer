@@ -80,6 +80,7 @@ ExtraCommands = {
 	focusOnPanelCustomer: function(elements) {
 		var $panel = $('.ember-view.ticket-sidebar:visible');
 		$panel.find('[data-test-id="customer-context-tab-ticket"]').click();
+		$('*').blur();
 
 		setTimeout(() => {
 			$.each(elements, function (selector, obj) {

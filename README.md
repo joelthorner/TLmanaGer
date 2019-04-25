@@ -1,18 +1,36 @@
-# TLmanaGer
+<h1 align="center">TLmanaGer</h1>
 
-Chrome dev extension
+<p align="center">Chrome dev extension</p>
 
-![GitHub release](https://img.shields.io/github/release/joelthorner/TLmanaGer.svg?label=GitHub%20release)
-![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/joelthorner/TLmanaGer.svg?label=Maintainability)
+<p align="center">
 
-![GitHub issues](https://img.shields.io/github/issues/joelthorner/TLmanaGer.svg?label=Issues)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/joelthorner/TLmanaGer.svg?label=Issues)
+<a href="https://img.shields.io/github/release/joelthorner/TLmanaGer.svg?label=GitHub%20release" target="_blank">
+	<img src="https://img.shields.io/github/release/joelthorner/TLmanaGer.svg?label=GitHub%20release" alt="GitHub release">
+</a>
+<a href="https://img.shields.io/codeclimate/maintainability/joelthorner/TLmanaGer.svg?label=Maintainability" target="_blank">
+	<img src="https://img.shields.io/codeclimate/maintainability/joelthorner/TLmanaGer.svg?label=Maintainability" alt="Code Climate maintainability">
+</a>
+<a href="https://img.shields.io/github/issues/joelthorner/TLmanaGer.svg?label=Issues" target="_blank">
+	<img src="https://img.shields.io/github/issues/joelthorner/TLmanaGer.svg?label=Issues" alt="GitHub issues">
+</a>
+<a href="https://img.shields.io/github/issues-closed/joelthorner/TLmanaGer.svg?label=Issues" target="_blank">
+	<img src="https://img.shields.io/github/issues-closed/joelthorner/TLmanaGer.svg?label=Issues" alt="GitHub closed issues">
+</a>
+<a href="https://img.shields.io/chrome-web-store/v/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Chrome%20Web%20Store" target="_blank">
+	<img src="https://img.shields.io/chrome-web-store/v/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Chrome%20Web%20Store" alt="Chrome Web Store">
+</a>
+<a href="https://img.shields.io/chrome-web-store/stars/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Rating" target="_blank">
+	<img src="https://img.shields.io/chrome-web-store/stars/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Rating" alt="Chrome Web Store">
+</a>
 
-![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Chrome%20Web%20Store)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Rating)
+</p>
 
----------------------------------
+<p align="center">
 
-![Demo 1](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-1.jpg?v=2)
+<img src="https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/cover.jpg">
 
-![Demo 2](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-2.jpg?v=2)
+<img src="https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/demo-2.jpg?v=2">
+
+</p>
+
+<hr>

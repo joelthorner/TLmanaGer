@@ -2,3 +2,20 @@ version: "2"
 plugins:
   csslint:
     enabled: false
+
+exclude_patterns:
+- "js/libs/*.js"
+- "css/libs/*.css"
+- "config/"
+- "db/"
+- "dist/"
+- "features/"
+- "**/node_modules/"
+- "script/"
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- "Tests/"
+- "**/vendor/"
+- "**/*_test.go"
+- "**/*.d.ts"
