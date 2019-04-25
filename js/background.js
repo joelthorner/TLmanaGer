@@ -57,20 +57,27 @@ var opt = {
 	]
 };
 
-chrome.storage.sync.get({ newVersionNotify: false }, function(result) {
-	if (manifestData.version != result.newVersionNotify) {
-		chrome.notifications.create('newVersion-' + manifestData.version, opt, function() {
+chrome.runtime.onInstalled.addListener(function (details) {
+	if (details.reason == 'install') {
+		chrome.tabs.create({
+			url: chrome.extension.getURL('/src/install/index.html')
+		});
+	} else if (details.reason == 'update') {
+		chrome.notifications.create('newVersion-' + manifestData.version, opt, function () {
 			chrome.storage.sync.set({
 				newVersionNotify: manifestData.version
 			});
 		});
-		
-		chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
+
+		chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
 			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
-				chrome.tabs.create({ 
+				chrome.tabs.create({
 					url: chrome.extension.getURL('/src/options/index.html') + '#changelog'
 				});
 			}
 		});
+
+		chrome.browserAction.setBadgeText({ text: '!' });
+		chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 	}
 });

@@ -135,7 +135,7 @@
 	display: block;
 }
 
-[data-garden-id="menus.menu_view"], .ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.icon_button"], .ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.button"] {
+#garden-0--container[data-garden-id="menus.menu_view"], .ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.icon_button"], .ticket-resolution-footer div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.button"] {
 	position: absolute;
 	width: 1px;
 	height: 1px;

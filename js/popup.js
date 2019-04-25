@@ -59,4 +59,14 @@ $(function() {
 	$('.header-popup .profile').click(function(event) {
 		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") + '#profile' });
 	});
+
+	chrome.browserAction.getBadgeText({}, function (result) {
+		if (result == '!') {
+			chrome.browserAction.setBadgeText({ text: '' });
+			chrome.tabs.create({
+				url: chrome.extension.getURL('/src/options/index.html') + '#changelog'
+			});
+		}
+	});
+	
 });
