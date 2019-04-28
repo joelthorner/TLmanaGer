@@ -4,6 +4,6 @@ if ($('.-lucee-dump').length) {
     window.scrollTo(0, $('.-lucee-dump').first().offset().top);
   }, 20);
   setTimeout(() => {
-    clearInterval(gotodump)
+    clearInterval(goToDump)
   }, 1500);
 }
