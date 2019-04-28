@@ -39,6 +39,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: '2.3.7', date: '28 Apr 2019',
+		lines: [
+			'FIX Syntax error ("Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>)'
+		]
+	}, {
 		version: '2.3.6', date: '20 Apr 2019',
 		lines: [
 			'CHANGE Update jQuery v3.3.1 -> v3.4.0',
