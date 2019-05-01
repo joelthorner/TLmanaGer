@@ -39,6 +39,12 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: '2.3.8', date: '6 May 2019',
+		lines: [
+			'FIX Fix "To much blur" <a href="https://github.com/joelthorner/TLmanaGer/issues/155" target="_blank">#155</a>',
+			'FIX developmenttool=true ("Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>)'
+		]
+	}, {
 		version: '2.3.7', date: '28 Apr 2019',
 		lines: [
 			'FIX Syntax error ("Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>)'
