@@ -11,9 +11,9 @@ DisableEditorAutofocus = {
 			if (mutation.addedNodes.length) {
 				var $editor = $(mutation.target).find('.editor');
 				
-				if ($editor.length) {
+				if ($editor.length && $editor.is(':visible')) {
 					var $scrollable = $editor.closest('.section.ticket');
-					if ($scrollable.length) {
+					if ($scrollable.length && $scrollable.is(':visible')) {
 						$scrollable.attr('tabindex', 10);
 						$scrollable.focus();
 					}
