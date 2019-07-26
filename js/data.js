@@ -39,6 +39,11 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: '2.3.9', date: '26 Jul 2019',
+		lines: [
+			'CHANGE Remove unused chrome permissions',
+		]
+	}, {
 		version: '2.3.8', date: '6 May 2019',
 		lines: [
 			'FIX Fix "To much blur" <a href="https://github.com/joelthorner/TLmanaGer/issues/155" target="_blank">#155</a>',
