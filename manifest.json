@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.8",
+	"version": "2.3.9",
 	"manifest_version": 2,
 	"author": "joelthorner",
 	"description": "__MSG_appDesc__",
@@ -25,15 +25,11 @@
 		"default_popup": "src/popup/index.html"
 	},
 	"permissions": [
-		"chrome://favicon/",
 		"contentSettings",
 		"clipboardRead",
 		"clipboardWrite",
 		"contextMenus",
 		"cookies",
-		"history",
-		"bookmarks",
-		"management",
 		"notifications",
 		"tabs",
 		"storage",
