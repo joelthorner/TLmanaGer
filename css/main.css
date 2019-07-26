@@ -11053,6 +11053,14 @@ a.text-dark:hover, a.text-dark:focus {
   font-size: 0.9375rem;
 }
 
+.options .navbar-toggler {
+  border: 0;
+  height: 80px;
+  padding: 20px 22px;
+  outline: none;
+  position: relative;
+}
+
 .options .navbar-top {
   padding: 0;
   background-color: #24262d;
@@ -11128,6 +11136,7 @@ a.text-dark:hover, a.text-dark:focus {
   font-weight: 500;
   font-size: 20px;
   position: relative;
+  margin-right: auto;
 }
 
 .options .navbar-top .navbar-brand-name .version {
@@ -11160,6 +11169,16 @@ a.text-dark:hover, a.text-dark:focus {
   fill: currentColor;
 }
 
+.options .navbar-top .navbar-nav .nav-link#navbarDropdown .media-body {
+  display: none;
+}
+
+@media (min-width: 1100px), (max-width: 991px) {
+  .options .navbar-top .navbar-nav .nav-link#navbarDropdown .media-body {
+    display: block;
+  }
+}
+
 .options .navbar-top .navbar-nav .nav-link:hover {
   background-color: #30333c;
 }
@@ -11170,7 +11189,7 @@ a.text-dark:hover, a.text-dark:focus {
   display: none;
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1300px), (max-width: 991px) {
   .options .navbar-top .navbar-nav .nav-link .icon {
     display: block;
   }
@@ -11674,6 +11693,36 @@ a.text-dark:hover, a.text-dark:focus {
   z-index: 100;
   pointer-events: none;
   display: block;
+}
+
+@media (min-width: 768px) {
+  #help .row-jelp {
+    -webkit-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+    -webkit-column-count: 2;
+    column-count: 2;
+    orphans: 1;
+    widows: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  #help .row-jelp {
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1300px) {
+  #help .row-jelp {
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+}
+
+#help .card-help-col {
+  display: inline-block;
+  width: 100%;
 }
 
 #help .card-help-col .card {

@@ -39,6 +39,17 @@ var AVATARS = [
 
 var CHANGELOG = [
 	{
+		version: '2.3.9', date: '26 Jul 2019',
+		lines: [
+			'CHANGE Remove unused chrome permissions',
+			'FIX Mobile-Tablet responsive header (options page)',
+			'NEW Container guides (action): Added container widths and lateral paddings info, (on resize and px, rem, em, % values support)',
+			'FIX Show SVG icons right click menu position',
+			'FIX Fix branch sandboxes buttons margin-top',
+			'NEW New copy &lt;use&gt; and &lt;svg&gt; icons code in "Show svg icons" action',
+			'NEW Added <a href="https://github.com/joelthorner/TLmanaGer/blob/master/PRIVACY_POLICY.md" target="_blank">privacy policy</a> (ES)',
+		]
+	}, {
 		version: '2.3.8', date: '6 May 2019',
 		lines: [
 			'FIX Fix "To much blur" <a href="https://github.com/joelthorner/TLmanaGer/issues/155" target="_blank">#155</a>',
