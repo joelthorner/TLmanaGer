@@ -43,7 +43,9 @@ var CHANGELOG = [
 		lines: [
 			'CHANGE Remove unused chrome permissions',
 			'FIX Mobile-Tablet responsive header (options page)',
-			'NEW Container guides (action): Added container widths and lateral paddings info, (on resize and px, rem, em, % values support)'
+			'NEW Container guides (action): Added container widths and lateral paddings info, (on resize and px, rem, em, % values support)',
+			'FIX Show SVG icons right click menu position',
+			'NEW New copy <use> and <svg> icons code in "Show svg icons" action'
 		]
 	}, {
 		version: '2.3.8', date: '6 May 2019',
