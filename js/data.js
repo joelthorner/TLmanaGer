@@ -42,6 +42,7 @@ var CHANGELOG = [
 		version: '2.3.9', date: '26 Jul 2019',
 		lines: [
 			'CHANGE Remove unused chrome permissions',
+			'FIX Add responsive header (options page)'
 		]
 	}, {
 		version: '2.3.8', date: '6 May 2019',

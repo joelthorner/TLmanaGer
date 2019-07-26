@@ -65,6 +65,14 @@ $height-nav: 80px;
 	padding-top: $height-nav;
 	height: 100%;
 	font-size: rem(15px);
+
+	.navbar-toggler {
+		border: 0;
+		height: $height-nav;
+		padding: 20px 22px;
+		outline: none;
+		position: relative;
+	}
 	
 	.navbar-top {
 		padding: 0;
@@ -124,6 +132,7 @@ $height-nav: 80px;
 			font-weight: 500;
 			font-size: 20px;
 			position: relative;
+			margin-right: auto;
 
 			.version {
 				margin-left: 10px;
@@ -147,6 +156,13 @@ $height-nav: 80px;
 				position: relative;
 				fill: currentColor;
 
+				&#navbarDropdown .media-body {
+					display: none;
+					@media (min-width: 1100px), (max-width:991px) {
+						display: block;
+					}	
+				}
+
 				&:hover {
 					background-color: #30333c;
 				}
@@ -154,7 +170,7 @@ $height-nav: 80px;
 					width: 24px;
 					height: 24px;
 					display: none;
-					@media (min-width: 1300px) {
+					@media (min-width: 1300px), (max-width:991px) {
 						display: block;
 					}
 				}
@@ -598,7 +614,23 @@ $height-nav: 80px;
 }
 
 #help {
+	.row-jelp {
+		@media (min-width: 768px) {
+			column-gap: 1.25rem;
+			column-count: 2;
+			orphans: 1;
+			widows: 1;
+		}
+		@media (min-width: 992px) {
+			column-count: 3;
+		}
+		@media (min-width: 1300px) {
+			column-count: 4;
+		}
+	}
 	.card-help-col {
+		display: inline-block;
+    width: 100%;
 		.card {
 			height: auto;
 
