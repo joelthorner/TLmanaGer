@@ -46,5 +46,9 @@ Esta extension por defecto lee y cambia en todos los sitios web para poder ejecu
 Se puede limitar el acceso a ningún a algunos o a todos los sitios web iendo a la url chrome://extensions/?id=jaimlomiojjmdhipacahmpnfefpbbeig
 
 
-## 4. Contacto
+## 4. Ayuda
+Todas las funcionalidades de la extensión son tantas que estan descritas a la página de ayuda: chrome-extension://hbmadmdlklpeadnmmakhldphoghfkond/src/options/index.html#help
+
+
+## 5. Contacto
 Cualquier pregunta sobre esta política, contace con joeltorner@gmail.com
