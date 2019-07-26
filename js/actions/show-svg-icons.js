@@ -24,6 +24,10 @@ function searchIcons(selector, type) {
 	return $parent;
 }
 
+function htmlencode(str) {
+	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 var _CSS_ = `
 <style>
 	#TLmanaGer-icons {
@@ -41,8 +45,8 @@ var _CSS_ = `
 		background-color: rgba(0,0,0,0.70);
 	}
 	.TLmanaGer-icons-body {
-		width: 70%;
-		height: 50%;
+		width: 80%;
+		height: 75%;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -50,38 +54,36 @@ var _CSS_ = `
 		bottom: 0;
 		margin: auto;
 		background-color: #FFF;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
 		padding: 10px;
 		border-radius: 7px;
 		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.70);
 		overflow: auto;
 	}
+	.TLmanaGer-icons-inner {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 200px);
+		grid-gap: 15px;
+		justify-content: center;
+	}
 	#TLmanaGer-icons .icon-wrap svg {
-		width: 50px;
-		height: 50px;
-		display: block;
-		margin: 0 auto 10px;
+    width: 80%;
+    height: 100px;
+    display: block;
+    margin: 0 auto 15px;
 	}
 	#TLmanaGer-icons .icon-wrap {
-		width: 120px;
+		width: 100%;
 		float: left;
 		padding: 15px 5px;
 		text-align: center;
-		cursor: pointer;
 		border-radius: 3px;
 		background-color: #dfe2ea;
-		margin: 10px;
-		position:relative;
+		position: relative;
 	}
-	#TLmanaGer-icons .icon-wrap:hover {
-		fill: #FFF;
-		color: #FFF;
-		background-color: #a3a9b9;
+	#TLmanaGer-icons .icon-wrap > *:not(.tlg-hover-layer) {
+		pointer-events: none;
 	}
-	#TLmanaGer-icons .input-name, #TLmanaGer-icons .input-code {
+	#TLmanaGer-icons .input-use, #TLmanaGer-icons .input-code {
 		position: absolute;
 		width: 1px;
 		height: 1px;
@@ -96,9 +98,8 @@ var _CSS_ = `
 		color: #888;
 		text-align: center;
 	}
-	#TLmanaGer-icons .btn-copy-svg{
-		position:absolute;
-		z-index:1000;
+	#TLmanaGer-icons button {
+		z-index: 1000;
 		display: inline-block;
 		font-weight: 400;
 		color: #212529;
@@ -111,7 +112,7 @@ var _CSS_ = `
 		background-color: transparent;
 		border: 1px solid transparent;
 		padding: .375rem .75rem;
-		font-size: 1rem;
+		font-size: 12px;
 		line-height: 1.5;
 		border-radius: .25rem;
 		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -120,17 +121,37 @@ var _CSS_ = `
 		border-color: #007bff;
 		white-space: nowrap;
 	}
-	#TLmanaGer-icons .btn-copy-svg:hover{
-		color: #fff;
-		background-color: #0069d9;
-		border-color: #0062cc;
+	#TLmanaGer-icons button + button {
+		margin-top: 15px;
 	}
-	#TLmanaGer-icons .btn-copy-svg:active{
+	#TLmanaGer-icons .tlg-hover-layer {
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+		background-color: rgba(163, 169, 185, 0.9);
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		z-index: 10;
+	}
+	#TLmanaGer-icons .icon-wrap:hover .tlg-hover-layer {
+		opacity: 1;
+		visibility: visible;
+	}
+	#TLmanaGer-icons button:hover {
 		color: #fff;
 		background-color: #0062cc;
 		border-color: #005cbf;
 	}
-
+	#TLmanaGer-icons button:active {
+		background-color: #004fa5;
+		border-color: #004fa5;
+	}
 </style>
 `;
 
@@ -139,18 +160,18 @@ function insertIconsHtml($source) {
 		<div id="TLmanaGer-icons">
 			${_CSS_}
 			<div class="TLmanaGer-icons-body">
-				<div class="TLmanaGer-icons-body-title">
-					${chrome.i18n.getMessage("showSvgIcons_click4Copy")}
+				<div class="TLmanaGer-icons-inner">
+					${$source.html()}
 				</div>
-				${$source.html()}
 			</div>
 		</div>
 	`);
 
-	$('.icon-wrap').on('click', function(event) {
-		event.preventDefault();
-		copyToClipboard($(this).find('.input-name')[0]);
-	});
+	$('#TLmanaGer-icons .icon-wrap').each(function(index, el) {
+		var svgValue = $(el).find('.svg-icon-wrap').html();
+		$(el).find('.input-code').val(svgValue);
+	})
+
 	$('#TLmanaGer-icons').on('click', function(event) {
 		if (!$(event.target).parents('.TLmanaGer-icons-body').length && !$(event.target).is('.TLmanaGer-icons-body')) {
 			$('#TLmanaGer-icons').remove();
@@ -160,7 +181,7 @@ function insertIconsHtml($source) {
 
 function getElAttributes($el) {
 	var el = $el[0];
-	for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++){
+	for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++) {
 		arr.push({ 
 			name: atts[i].nodeName, 
 			value: atts[i].nodeValue 
@@ -168,7 +189,6 @@ function getElAttributes($el) {
 	}
 	return arr;
 }
-
 
 var $iconsSprite = $('#TLmanaGer-icons');
 
@@ -185,12 +205,11 @@ if ($iconsSprite.length) {
 
 		var $iconsSprite = $('#TLmanaGer-icons');
 		var $clone = $spriteEl.clone(true, true);
+
 		$clone.children().each(function(index, el) {
 			$(el).wrap('<div class="icon-wrap"></div>');
 			$(el).after('<div class="icon-name">' + $(el).attr('id') + '</div>');
-			$(el).after('<input type="text" class="input-name" value="' + $(el).attr('id') + '">');
-			$(el).after('<input type="text" class="input-code">');
-			
+
 			if ($(el).is('symbol')) {
 				var symbolAttrs = "";
 				$.each(getElAttributes($(el)), function(index, obj) {
@@ -204,33 +223,34 @@ if ($iconsSprite.length) {
 				);
 			}
 
+			var useValue = htmlencode('<svg class="icon"><use xlink:href=\"#' + $(el).attr('id') + '\"></use></svg>');
+			$(el).after('<input type="text" class="input-use" value="' + useValue + '">');
+
+			$(el).after('<input type="text" class="input-code" value="">');
+			$(el).after(`
+				<div class="tlg-hover-layer">
+					<button class="tlg-button-copy-use" type="button">Copy &lt;use&gt;</button>
+					<button class="tlg-button-copy-svg" type="button">Copy &lt;svg&gt;</button>
+				</div>
+			`);
 		});
 
-		$clone.find('svg').each(function(index, el) {
-			$(el).wrap('<div class="svg-icon-wrap"></div>')
+		$clone.find('svg').each(function (index, el) {
+			$(el).wrap('<div class="svg-icon-wrap"></div>');
 		});
-
 		insertIconsHtml($clone);
 	}
 }
 
-$(document).ready(function(){ 
-	$('.icon-wrap').each(function(){
-		$(this)[0].oncontextmenu = function() { return false };
-	});	
-	$('.icon-wrap').mousedown(function(event) {
-		if (event.which == 3) {
-			$(this).find(".input-code").empty();
-			$(this).find(".input-code").val($(this).find(".svg-icon-wrap").html());
-			var $str = $('<button class="btn-copy-svg" style="top:' + event.offsetY + 'px;left:' + event.offsetX + 'px">' + chrome.i18n.getMessage("showSvgIcons_clickLeft") + '</button>');
-			$(".btn-copy-svg").not($str).remove();
-			$(this).append($str);
-		}
+$(document).ready(function() { 
+
+	$(document).on('click','.tlg-button-copy-use',function() {
+		copyToClipboard($(this).closest('.icon-wrap').find('.input-use'));
 	});
-	$(document).on('click','.btn-copy-svg',function(){
-		copyToClipboard($(this).parent().find(".input-code"));
-		$(".btn-copy-svg").remove();
+	$(document).on('click','.tlg-button-copy-svg',function() {
+		copyToClipboard($(this).closest('.icon-wrap').find('.input-code'));
 	});
+
 	$(document).on('click', function(event) {
 		var autoClose = true;
 		if ($(event.target).parents('.btn-copy-svg').length) autoClose = false;
