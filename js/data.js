@@ -45,6 +45,7 @@ var CHANGELOG = [
 			'FIX Mobile-Tablet responsive header (options page)',
 			'NEW Container guides (action): Added container widths and lateral paddings info, (on resize and px, rem, em, % values support)',
 			'FIX Show SVG icons right click menu position',
+			'FIX Fix branch sandboxes buttons margin-top',
 			'NEW New copy &lt;use&gt; and &lt;svg&gt; icons code in "Show svg icons" action',
 			'NEW Added <a href="https://github.com/joelthorner/TLmanaGer/blob/master/PRIVACY_POLICY.md" target="_blank">privacy policy</a> (ES)',
 		]
