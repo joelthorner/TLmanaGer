@@ -1,8 +1,7 @@
-console.log(chrome.i18n.getMessage("getFtpSettings_consoleLog"));
+log(chrome.i18n.getMessage("getFtpSettings_consoleLog"));
 
 $(document).ready(function() {
 	
-
 	$('body').append(`
 		<script>
 			openFTPSetup();
