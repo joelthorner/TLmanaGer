@@ -4,7 +4,6 @@
  * Print a extension formatted log.
  *
  * @since      05.08.19
- * @access     private
  *
  * @global
  * @param {String}	text          Text to console log.
@@ -39,6 +38,60 @@ function log(text, type = 'info') {
 }
 
 /**
+ * copyToClipboard.
+ *
+ * Copy input text value.
+ *
+ * @since      05.08.19
+ *
+ * @global
+ * @param {HTMLElement}	input		Input text element.
+ */
+function copyToClipboard(input) {
+	if (input) {
+		input.select();
+		document.execCommand('copy');
+	}
+}
+
+/**
+ * htmlencode.
+ *
+ * Parse html string for print or outputs.
+ *
+ * @since      05.08.19
+ *
+ * @global
+ * @param {String}	html		Html in string.
+ * @return {String} Return parsed html.
+ */
+function htmlencode(html) {
+	return String(html).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+/**
+ * getElAttributes.
+ *
+ * Util for get all html attributes from jQuery node.
+ *
+ * @since      05.08.19
+ *
+ * @global
+ * @param {HTMLElement}	$node		jQuery node.
+ * @return {Array} Array of objects { name: '', value: '' }.
+ */
+function getElAttributes($node) {
+	var node = $node[0];
+	for (var i = 0, atts = node.attributes, n = atts.length, arr = []; i < n; i++) {
+		arr.push({
+			name: atts[i].nodeName,
+			value: atts[i].nodeValue
+		});
+	}
+	return arr;
+}
+
+/**
  * guideLines_add.
  *
  * Add html and css guide lines to document, used in:
@@ -47,7 +100,6 @@ function log(text, type = 'info') {
  * .
  *
  * @since      05.08.19
- * @access     private
  *
  * @memberof guideLines
  *
@@ -152,7 +204,6 @@ function guideLines_add() {
  * .
  *
  * @since      05.08.19
- * @access     private
  *
  * @memberof guideLines
  *
@@ -172,7 +223,6 @@ function guideLines_del() {
  * .
  *
  * @since      05.08.19
- * @access     private
  *
  * @memberof guideLines
  *
