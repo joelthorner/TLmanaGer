@@ -170,7 +170,7 @@
 				"js/libs/js.cookie.js",
 				"js/defaults.js",
 				"js/globalFunctions.js",
-				"js/actions/load-guide-lines.js"
+				"js/actions/guideLines/load.js"
 			],
 			"run_at": "document_start",
 			"all_frames": true

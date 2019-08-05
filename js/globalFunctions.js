@@ -42,8 +42,8 @@ function log(text, type = 'info') {
  * guideLines_add.
  *
  * Add html and css guide lines to document, used in:
- *  - js/actions/add-guide-lines.js
- *  - js/actions/load-guide-lines.js
+ *  - js/actions/guideLines/add.js
+ *  - js/actions/guideLines/load.js
  * .
  *
  * @since      05.08.19
@@ -56,37 +56,37 @@ function log(text, type = 'info') {
 function guideLines_add() {
 	$('body')
 		.prepend(`
-			<div id="g-container" class="container g-container-utility-tlg"></div>
-			<div id="g-container-2" class="container g-container-utility-tlg"></div>
-			<div id="g-container-middle" class="container g-container-utility-tlg"></div>
-			<div id="g-container-data" class="container g-container-utility-tlg">
-				<span>Inner width: <span class="g-width-val"></span></span>
-				<span>Outer Width: <span class="g-width-val-2"></span></span>
-				<span class="g-p-i">Lateral paddings: <span class="g-paddings-val"></span></span>
+			<div id="guideLines-container" class="container guideLines-container-utility-tlg"></div>
+			<div id="guideLines-container-2" class="container guideLines-container-utility-tlg"></div>
+			<div id="guideLines-container-middle" class="container guideLines-container-utility-tlg"></div>
+			<div id="guideLines-container-data" class="container guideLines-container-utility-tlg">
+				<span>Inner width: <span class="guideLines-width-val"></span></span>
+				<span>Outer Width: <span class="guideLines-width-val-2"></span></span>
+				<span class="guideLines-p-i">Lateral paddings: <span class="guideLines-paddings-val"></span></span>
 			</div>
 		`);
 	
-	var containerPadding = $('#g-container').css('padding-left');
-	var containerWidth = $('#g-container').width() + '' + $('#g-container').css('width').replace(/[0-9]{1,}/, '');
-	var containerOWidth = $('#g-container').outerWidth() + containerWidth.replace(/[0-9]{1,}/, '');
+	var containerPadding = $('#guideLines-container').css('padding-left');
+	var containerWidth = $('#guideLines-container').width() + '' + $('#guideLines-container').css('width').replace(/[0-9]{1,}/, '');
+	var containerOWidth = $('#guideLines-container').outerWidth() + containerWidth.replace(/[0-9]{1,}/, '');
 
 	$('head')
 		.append(`
-			<style id="g-style" class="g-container-utility-tlg">
-				#g-container, #g-container-2, #g-container-middle, #g-container-data {
+			<style id="guideLines-style" class="guideLines-container-utility-tlg">
+				#guideLines-container, #guideLines-container-2, #guideLines-container-middle, #guideLines-container-data {
 					position: fixed;
 					z-index: 9999999;
 					left: 0;
 					right: 0;
 				}
-				#g-container-data {
+				#guideLines-container-data {
 					bottom: 0;
 					background-color: rgba(255, 255, 255, 0.6);
 					z-index: 9999998;
 				}
-				#g-container:after, #g-container-2:after,
-				#g-container:before, #g-container-2:before,
-				#g-container-middle:before {
+				#guideLines-container:after, #guideLines-container-2:after,
+				#guideLines-container:before, #guideLines-container-2:before,
+				#guideLines-container-middle:before {
 					content: "";
 					position: absolute;
 					height: 100000px;
@@ -95,24 +95,24 @@ function guideLines_add() {
 					top: -5000px;
 					z-index: 9999999;
 				}
-				#g-container:before, #g-container-2:before {
+				#guideLines-container:before, #guideLines-container-2:before {
 					left: 0;
 				}
-				#g-container-2:before {
+				#guideLines-container-2:before {
 					left: ${containerPadding};
 				}
-				#g-container:after, #g-container-2:after {
+				#guideLines-container:after, #guideLines-container-2:after {
 					right: 0;
 				}
-				#g-container-2:after {
+				#guideLines-container-2:after {
 					right: ${containerPadding};
 				}
-				#g-container-middle:before {
+				#guideLines-container-middle:before {
 					left: 50%;
 					transform: translateX(-50%);
 					background-color: blue;
 				}
-				#g-container-data > span {
+				#guideLines-container-data > span {
 					font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 					font-size: 12px;
 					line-height: 1;
@@ -122,33 +122,33 @@ function guideLines_add() {
 					display: block;
 					text-align: center;
 				}
-				#g-container-data > span:nth-child(1) {
+				#guideLines-container-data > span:nth-child(1) {
 					color: blueviolet;
 					border-bottom: 1px solid blueviolet;
 				}
-				#g-container-data > span:nth-child(2) {
+				#guideLines-container-data > span:nth-child(2) {
 					color: blue;
 					border-bottom: 1px solid blue;
 					width: calc(100% + ${containerPadding} + ${containerPadding});
 					margin-left: -${containerPadding};
 					margin-right: -${containerPadding};
 				}
-				#g-container-data > span.g-p-i {
+				#guideLines-container-data > span.g-p-i {
 					color: red;
 				}
 			</style>
 		`);
 
-	$('#g-container-data .g-width-val').text(containerWidth);
-	$('#g-container-data .g-paddings-val').text(containerPadding);
-	$('#g-container-data .g-width-val-2').text(containerOWidth);
+	$('#guideLines-container-data .guideLines-width-val').text(containerWidth);
+	$('#guideLines-container-data .guideLines-paddings-val').text(containerPadding);
+	$('#guideLines-container-data .guideLines-width-val-2').text(containerOWidth);
 }
 
 /**
  * guideLines_del.
  *
  * Remove html, css and events of guide lines from document, used in:
- *  - js/actions/remove-guide-lines.js
+ *  - js/actions/guideLines/del.js
  * .
  *
  * @since      05.08.19
@@ -159,7 +159,7 @@ function guideLines_add() {
  * @global
  */
 function guideLines_del() {
-	$('.g-container-utility-tlg').remove();
+	$('.guideLines-container-utility-tlg').remove();
 	$(window).off('resize.guideLines_resize');
 }
 
@@ -167,8 +167,8 @@ function guideLines_del() {
  * guideLines_resize.
  *
  * Reset guide lines on window resize, use guideLines_del() and guideLines_add()
- *  - js/actions/add-guide-lines.js
- *  - js/actions/load-guide-lines.js
+ *  - js/actions/guideLines/add.js
+ *  - js/actions/guideLines/load.js
  * .
  *
  * @since      05.08.19
