@@ -1,11 +1,11 @@
 var defaults = {
 	optLcBgActive: true,
 	optLcBgValue: {
-		image: chrome.extension.getURL('img/background-default.jpg'),
-		thumb: chrome.extension.getURL('img/background-default.jpg'),
-		userName: 'Matteo Fusco',
-		userLink: 'https://unsplash.com/@matteofusco?utm_source=TLmanaGer&utm_medium=referral',
-		downloadLocation: ''
+		image: 'https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjM0NjEwfQ',
+		thumb: 'https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjM0NjEwfQ',
+		userName: 'Brandon Lam',
+		userLink: 'https://unsplash.com/@brandon_lam',
+		downloadLocation: 'https://api.unsplash.com/photos/Dd_7xDCuuUo/download?client_id=***REMOVED***'
 	},
 	optLcPagridActive: false,
 	optLcDevBarActive: true,

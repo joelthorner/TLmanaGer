@@ -132,16 +132,16 @@
 	},
 
 	"backgroundLc_apiSend": {
-		"message": "API unsplash download_location send ok"
+		"message": "API unsplash download_location send"
 	},
 	"backgroundLc_apiDone": {
-		"message": "API unsplash download_location send ok after"
+		"message": "API unsplash download_location done"
 	},
 	"backgroundLc_apiFail": {
 		"message": "API unsplash download_location error"
 	},
 	"backgroundLc_apiAlways": {
-		"message": "API unsplash download_location finish"
+		"message": "API unsplash download_location end"
 	},
 
 	"devLcBar_customSearchPlaceholder": {
