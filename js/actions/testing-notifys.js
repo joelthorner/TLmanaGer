@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	$('body').append(`
 		<script>
 			Fluid.notify('Lorem ispum dolor sit amet', {
