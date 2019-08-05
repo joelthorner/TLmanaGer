@@ -50,16 +50,16 @@ chrome.storage.sync.get({
 		if (result.optLcBgValue.downloadLocation.length) {
 
 			var jqxhr = $.get( result.optLcBgValue.downloadLocation, function() {
-				console.log(chrome.i18n.getMessage("backgroundLc_apiSend"));
+				log(chrome.i18n.getMessage("backgroundLc_apiSend"));
 			})
 			.done(function() {
-				console.log(chrome.i18n.getMessage("backgroundLc_apiDone"));
+				log(chrome.i18n.getMessage("backgroundLc_apiDone"));
 			})
 			.fail(function() {
-				console.log(chrome.i18n.getMessage("backgroundLc_apiFail"));
+				log(chrome.i18n.getMessage("backgroundLc_apiFail"), 'danger');
 			})
 			.always(function() {
-				console.log(chrome.i18n.getMessage("backgroundLc_apiAlways"));
+				log(chrome.i18n.getMessage("backgroundLc_apiAlways"));
 			});
 		}
 	}
