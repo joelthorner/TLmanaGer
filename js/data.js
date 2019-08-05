@@ -42,7 +42,7 @@ const CHANGELOG = [
 		version: '2.3.10', date: '05 Ago 2019',
 		lines: [
 			'CHANGE Internal Container guides (action) refactoring',
-			'NEW Code internal documentation (dev)',
+			'CHANGE Documentation global internal functions (dev)',
 			'CHANGE Change default lc-background data',
 		]
 	}, {
