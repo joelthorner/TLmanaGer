@@ -69,13 +69,13 @@
 	},
 
 	"addGuideLines_consoleLog": {
-		"message": "TLmanaGer Action: 'add-guide-lines';"
+		"message": "Add container guides"
 	},
 	"loadGuideLines_consoleLog": {
-		"message": "TLmanaGer Action: 'load-guide-lines';"
+		"message": "Load container guides"
 	},
 	"removeGuideLines_consoleLog": {
-		"message": "TLmanaGer Action: 'remove-guide-lines';"
+		"message": "Remove container guides"
 	},
 
 	"getFtpSettings_consoleLog": {

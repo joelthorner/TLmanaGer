@@ -169,6 +169,7 @@
 				"js/libs/jquery-3.4.0.min.js",
 				"js/libs/js.cookie.js",
 				"js/defaults.js",
+				"js/globalFunctions.js",
 				"js/actions/load-guide-lines.js"
 			],
 			"run_at": "document_start",
