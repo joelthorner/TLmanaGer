@@ -1,3 +1,4 @@
+// This code sucks but works
 $(function() {
 	
 	var $user = $('#paymentCardsContainer');
