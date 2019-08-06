@@ -231,8 +231,8 @@ if ($iconsSprite.length) {
 			$(el).after('<input type="text" class="showSvgIcons-input-code">');
 			$(el).after(`
 				<div class="showSvgIcons-hover-layer">
-					<button class="showSvgIcons-button-copy-use" type="button">Copy &lt;use&gt;</button>
-					<button class="showSvgIcons-button-copy-svg" type="button">Copy &lt;svg&gt;</button>
+					<button class="showSvgIcons-button-copy-use" data-type="use" type="button">Copy &lt;use&gt;</button>
+					<button class="showSvgIcons-button-copy-svg" data-type="svg" type="button">Copy &lt;svg&gt;</button>
 				</div>
 			`);
 		});
@@ -245,11 +245,10 @@ if ($iconsSprite.length) {
 }
 
 // events 4 copy
-$(document).ready(function() { 
-	$(document).on('click','.showSvgIcons-button-copy-use',function() {
-		copyToClipboard($(this).closest('.showSvgIcons-icon-wrap').find('.showSvgIcons-input-use'));
-	});
-	$(document).on('click','.showSvgIcons-button-copy-svg',function() {
-		copyToClipboard($(this).closest('.showSvgIcons-icon-wrap').find('.showSvgIcons-input-code'));
+$(function() { 
+	$(document).on('click','.showSvgIcons-hover-layer button',function() {
+		copyToClipboard(
+			$(this).closest('.showSvgIcons-icon-wrap').find('.showSvgIcons-input-' + $(this).data('type'))
+		);
 	});
 });

@@ -1,6 +1,6 @@
 log(chrome.i18n.getMessage("getFtpSettings_consoleLog"));
 
-$(document).ready(function() {
+$(function() {
 	
 	$('body').append(`
 		<script>

@@ -39,11 +39,14 @@ const AVATARS = [
 
 const CHANGELOG = [
 	{
-		version: '2.3.10', date: '05 Ago 2019',
+		version: '2.3.10', date: '06 Aug 2019',
 		lines: [
-			'CHANGE Internal Container guides (action) refactoring',
+			'FIX Internal Container guides (action) refactoring',
 			'CHANGE Documentation global internal functions (dev)',
-			'CHANGE Change default lc-background data',
+			'FIX Change default LC background data',
+			'FIX Refactoring duplicated code',
+			'FIX Remove unused folders',
+			'CHANGE Add more safe actions namespaces'
 		]
 	}, {
 		version: '2.3.9', date: '26 Jul 2019',
