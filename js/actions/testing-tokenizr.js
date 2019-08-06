@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	
 	var $user = $('#paymentCardsContainer');
 	var $checkout = $('div.paymentSystemSelector').first();
