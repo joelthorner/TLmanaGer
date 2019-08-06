@@ -1,4 +1,12 @@
 /**
+ *  _____   _                                            ____               
+ * |_   _| | |      _ __ ___     __ _   _ __     __ _   / ___|   ___   _ __
+ *   | |   | |     | '_ ` _ \   / _` | | '_ \   / _` | | |  _   / _ \ | '__|
+ *   | |   | |___  | | | | | | | (_| | | | | | | (_| | | |_| | |  __/ | |
+ *   |_|   |_____| |_| |_| |_|  \__,_| |_| |_|  \__,_|  \____|  \___| |_|
+ */
+
+/**
  * guideLines_add.
  *
  * Print a extension formatted log.
@@ -106,24 +114,9 @@ function getElAttributes($node) {
  * @global
  */
 function guideLines_add() {
-	$('body')
-		.prepend(`
-			<div id="guideLines-container" class="container guideLines-container-utility-tlg"></div>
-			<div id="guideLines-container-2" class="container guideLines-container-utility-tlg"></div>
-			<div id="guideLines-container-middle" class="container guideLines-container-utility-tlg"></div>
-			<div id="guideLines-container-data" class="container guideLines-container-utility-tlg">
-				<span>Inner width: <span class="guideLines-width-val"></span></span>
-				<span>Outer Width: <span class="guideLines-width-val-2"></span></span>
-				<span class="guideLines-p-i">Lateral paddings: <span class="guideLines-paddings-val"></span></span>
-			</div>
-		`);
-	
-	var containerPadding = $('#guideLines-container').css('padding-left');
-	var containerWidth = $('#guideLines-container').width() + '' + $('#guideLines-container').css('width').replace(/[0-9]{1,}/, '');
-	var containerOWidth = $('#guideLines-container').outerWidth() + containerWidth.replace(/[0-9]{1,}/, '');
 
-	$('head')
-		.append(`
+	function guideLines_add_styles(containerPadding) {
+		$('head').append(`
 			<style id="guideLines-style" class="guideLines-container-utility-tlg">
 				#guideLines-container, #guideLines-container-2, #guideLines-container-middle, #guideLines-container-data {
 					position: fixed;
@@ -190,6 +183,24 @@ function guideLines_add() {
 				}
 			</style>
 		`);
+	}
+	
+	$('body').prepend(`
+		<div id="guideLines-container" class="container guideLines-container-utility-tlg"></div>
+		<div id="guideLines-container-2" class="container guideLines-container-utility-tlg"></div>
+		<div id="guideLines-container-middle" class="container guideLines-container-utility-tlg"></div>
+		<div id="guideLines-container-data" class="container guideLines-container-utility-tlg">
+			<span>Inner width: <span class="guideLines-width-val"></span></span>
+			<span>Outer Width: <span class="guideLines-width-val-2"></span></span>
+			<span class="guideLines-p-i">Lateral paddings: <span class="guideLines-paddings-val"></span></span>
+		</div>
+	`);
+	
+	var containerPadding = $('#guideLines-container').css('padding-left');
+	var containerWidth = $('#guideLines-container').width() + '' + $('#guideLines-container').css('width').replace(/[0-9]{1,}/, '');
+	var containerOWidth = $('#guideLines-container').outerWidth() + containerWidth.replace(/[0-9]{1,}/, '');
+
+	guideLines_add_styles(containerPadding);
 
 	$('#guideLines-container-data .guideLines-width-val').text(containerWidth);
 	$('#guideLines-container-data .guideLines-paddings-val').text(containerPadding);
