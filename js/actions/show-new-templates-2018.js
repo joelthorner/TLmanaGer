@@ -1,44 +1,44 @@
-console.log(chrome.i18n.getMessage("showNewTemplate2018_consoleLog"));
+log(chrome.i18n.getMessage("showNewTemplate2018_consoleLog"));
 
 $('[data-module]').each(function(index, el) {
 	
-	var newClass = 'module_' + Math.floor(Math.random() * 100000000);
+  let newClass = 'showNewTemplate2018-module_' + Math.floor(Math.random() * 100000000);
 	
 	$(el)
 		.addClass(newClass)
 		.append(`
-			<span class="snt-line snt-line-1"></span>
-			<span class="snt-line snt-line-2"></span>
-			<span class="snt-line snt-line-3"></span>
-			<span class="snt-line snt-line-4"></span>
+			<span class="showNewTemplate2018-line showNewTemplate2018-line-1"></span>
+			<span class="showNewTemplate2018-line showNewTemplate2018-line-2"></span>
+			<span class="showNewTemplate2018-line showNewTemplate2018-line-3"></span>
+			<span class="showNewTemplate2018-line showNewTemplate2018-line-4"></span>
 			
-			<span class="snt-name snt-name-1">${$(el).data('module')}</span>
-			<span class="snt-name snt-name-2">${$(el).data('module')}</span>
+			<span class="showNewTemplate2018-name showNewTemplate2018-name-1">${$(el).data('module')}</span>
+			<span class="showNewTemplate2018-name showNewTemplate2018-name-2">${$(el).data('module')}</span>
 		`);
 
-	var mt = parseInt($(el).css('margin-top')),
-		 ml = parseInt($(el).css('margin-left')),
-		 mb = parseInt($(el).css('margin-bottom')),
-		 mr = parseInt($(el).css('margin-right'));
+	let mt = parseInt($(el).css('margin-top')),
+		  ml = parseInt($(el).css('margin-left')),
+		  mb = parseInt($(el).css('margin-bottom')),
+      mr = parseInt($(el).css('margin-right')),
+      
+      top = mt < 0 ? mt * -1 : 0,
+		  left = ml < 0 ? ml * -1 : 0,
+		  bottom = mb < 0 ? mb * -1 : 0,
+      right = mr < 0 ? mr * -1 : 0,
 
-	var top = mt < 0 ? mt * -1 : 0,
-		 left = ml < 0 ? ml * -1 : 0,
-		 bottom = mb < 0 ? mb * -1 : 0,
-		 right = mr < 0 ? mr * -1 : 0;
-
-	var weight = '1px';
+      weight = '1px';
 
 	$('body').append(`
 		<style>
 			.${newClass} {
 				position: relative;
 			}
-			.${newClass} .snt-line, .${newClass} .snt-name {
+			.${newClass} .showNewTemplate2018-line, .${newClass} .showNewTemplate2018-name {
 				position: absolute;
 				z-index: 100000;
 				background-color: rgb(255, 0, 46);
 			}
-			.${newClass} .snt-name {
+			.${newClass} .showNewTemplate2018-name {
 				font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 				font-size: 12px;
 				line-height: 1;
@@ -48,52 +48,42 @@ $('[data-module]').each(function(index, el) {
 			}
 
 			/* top */
-			.${newClass} .snt-line-1 {
+			.${newClass} .showNewTemplate2018-line-1 {
 				top: ${top}px;
 				left: ${left}px;
 				right: ${right}px;
 				height: ${weight};
 			}
 			/* left */
-			.${newClass} .snt-line-2 {
+			.${newClass} .showNewTemplate2018-line-2 {
 				left: ${left}px;
 				top: ${top}px;
 				bottom: ${bottom}px;
 				width: ${weight};
 			}
 			/* bottom */
-			.${newClass} .snt-line-3 {
+			.${newClass} .showNewTemplate2018-line-3 {
 				bottom: ${bottom}px;
 				left: ${left}px;
 				right: ${right}px;
 				height: ${weight};
 			}
 			/* right */
-			.${newClass} .snt-line-4 {
+			.${newClass} .showNewTemplate2018-line-4 {
 				right: ${right}px;
 				top: ${top}px;
 				bottom: ${bottom}px;
 				width: ${weight};
 			}
 
-			.${newClass} .snt-name-1 {
+			.${newClass} .showNewTemplate2018-name-1 {
 				top: ${top}px;
 				left: ${left}px;
 			}
-			.${newClass} .snt-name-2 {
+			.${newClass} .showNewTemplate2018-name-2 {
 				top: ${top}px;
 				right: ${right}px;
 			}
-			/*
-			.${newClass} .snt-name-3 {
-				bottom: ${bottom}px;
-				left: ${left}px;
-			}
-			.${newClass} .snt-name-4 {
-				bottom: ${bottom}px;
-				right: ${right}px;
-			}
-			*/
 		</style>
 
 	`);

@@ -69,36 +69,31 @@
 	},
 
 	"addGuideLines_consoleLog": {
-		"message": "TLmanaGer Action: 'add-guide-lines';"
+		"message": "Add container guides"
 	},
 	"loadGuideLines_consoleLog": {
-		"message": "TLmanaGer Action: 'load-guide-lines';"
+		"message": "Load container guides"
 	},
 	"removeGuideLines_consoleLog": {
-		"message": "TLmanaGer Action: 'remove-guide-lines';"
+		"message": "Remove container guides"
 	},
 
 	"getFtpSettings_consoleLog": {
-		"message": "TLmanaGer Action: 'get-ftp-settings';"
+		"message": "Ftp password"
 	},
 
 	"refreshGetImg_consoleLog": {
-		"message": "TLmanaGer Action: 'refresh-get-img';"
+		"message": "Get refresh images"
 	},
 
 	"showNewTemplate2018_consoleLog": {
-		"message": "TLmanaGer Action: 'show-new-templates-2018';"
+		"message": "Show new templates 2018 modules"
 	},
 
 	"showSvgIcons_consoleLog": {
-		"message": "TLmanaGer Action: 'show-svg-icons';"
+		"message": "Show svg assets icons"
 	},
-	"showSvgIcons_click4Copy": {
-		"message": "Click icon for copy #id and left click for copy SVG code"
-	},
-	"showSvgIcons_clickLeft": {
-		"message": "Copy svg code"
-	},
+
 	"testingSignUp_notifyTitle": {
 		"message": "configuration error!"
 	},
@@ -132,16 +127,16 @@
 	},
 
 	"backgroundLc_apiSend": {
-		"message": "API unsplash download_location send ok"
+		"message": "API unsplash download_location send"
 	},
 	"backgroundLc_apiDone": {
-		"message": "API unsplash download_location send ok after"
+		"message": "API unsplash download_location done"
 	},
 	"backgroundLc_apiFail": {
 		"message": "API unsplash download_location error"
 	},
 	"backgroundLc_apiAlways": {
-		"message": "API unsplash download_location finish"
+		"message": "API unsplash download_location end"
 	},
 
 	"devLcBar_customSearchPlaceholder": {
@@ -185,10 +180,10 @@
 	},
 
 	"zenDesk_btnSettingsModal_title": {
-		"message": "TLmanaGer Zendesk Settings"
+		"message": "Zendesk Settings"
 	},
 
 	"commandExecuted_message": {
-		"message": "TLmanaGer Command executed: '%command%'"
+		"message": "Command executed: '%command%'"
 	}
 }

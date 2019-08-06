@@ -8,25 +8,25 @@ $(function() {
 	
 	$('[data-toggle="tooltip"]').tooltip();
 
-	// init [add-guide-lines]
+	// init [container guides]
 	chrome.tabs.query({ "status": "complete", "windowId": chrome.windows.WINDOW_ID_CURRENT, "active": true }, function(tab) {
 		if (tab[0]) {	
 			if (!tab[0].url.includes('chrome://')) {	
-				chrome.cookies.get({ url: tab[0].url, name: 'add-guide-lines-active' }, function (cookie) {
+				chrome.cookies.get({ url: tab[0].url, name: 'guideLines-active' }, function (cookie) {
 					if (cookie) {
 						var cookieVal = parseInt(cookie.value);
 						
-						if (cookieVal == 0) dataDirective = 'add-guide-lines';
-						else if (cookieVal == 1) dataDirective = 'remove-guide-lines';
+						if (cookieVal == 0) dataDirective = 'guideLines/add';
+						else if (cookieVal == 1) dataDirective = 'guideLines/del';
 					} else {
-						dataDirective = 'add-guide-lines';
+						dataDirective = 'guideLines/add';
 					}
 
 					$('#guide-lines-btn')
 						.attr('data-directive', dataDirective)
 						.parents('.item-grid')
 						.addClass(function() { 
-							if (dataDirective == 'remove-guide-lines') return 'active';
+							if (dataDirective == 'guideLines/del') return 'active';
 						})
 				});
 			}
