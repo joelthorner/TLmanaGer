@@ -197,8 +197,6 @@ function guideLines_add() {
 		</style>
 	`);
 
-	guideLines_add_styles();
-
 	$('#guideLines-container-data .guideLines-width-val').text(containerWidth);
 	$('#guideLines-container-data .guideLines-paddings-val').text(containerPadding);
 	$('#guideLines-container-data .guideLines-width-val-2').text(containerOWidth);
