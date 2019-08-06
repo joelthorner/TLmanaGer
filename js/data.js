@@ -1,4 +1,4 @@
-var AVATARS = [
+const AVATARS = [
 	{ img: 'img/logo.svg',                  title: 'Pastilla' }, 
 	{ img: 'img/avatar/2b.jpg',             title: '2b - NieR Automata' }, 
 	{ img: 'img/avatar/9s.jpg',             title: '9s - NieR Automata' }, 
@@ -37,8 +37,15 @@ var AVATARS = [
 	{ img: 'img/avatar/link.jpg',           title: 'Link - The legend of Zelda' }
 ];
 
-var CHANGELOG = [
+const CHANGELOG = [
 	{
+		version: '2.3.10', date: '05 Ago 2019',
+		lines: [
+			'CHANGE Internal Container guides (action) refactoring',
+			'CHANGE Documentation global internal functions (dev)',
+			'CHANGE Change default lc-background data',
+		]
+	}, {
 		version: '2.3.9', date: '26 Jul 2019',
 		lines: [
 			'CHANGE Remove unused chrome permissions',

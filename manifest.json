@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.9",
+	"version": "2.3.10",
 	"manifest_version": 2,
 	"author": "joelthorner",
 	"description": "__MSG_appDesc__",
@@ -169,7 +169,8 @@
 				"js/libs/jquery-3.4.0.min.js",
 				"js/libs/js.cookie.js",
 				"js/defaults.js",
-				"js/actions/load-guide-lines.js"
+				"js/globalFunctions.js",
+				"js/actions/guideLines/load.js"
 			],
 			"run_at": "document_start",
 			"all_frames": true
