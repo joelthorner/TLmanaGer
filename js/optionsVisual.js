@@ -66,7 +66,7 @@ function setChangelog() {
 	}); 	
 }
 
-$(document).ready(function() {
+$(function() {
 	// set version
 	$('.version').text(chrome.runtime.getManifest().version);
 

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	var font1 = chrome.extension.getURL('fonts/Deus-Antics.woff2');
 	var font2 = chrome.extension.getURL('fonts/Deus-Antics.woff');
 	var font3 = chrome.extension.getURL('fonts/Deus-Antics.ttf');
