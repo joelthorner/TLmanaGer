@@ -319,7 +319,7 @@ function zendeskHighlightPriority() {
 }
 
 // Init all
-$(document).ready(function() {
+$(function() {
 	getRandom(20);
 	restoreOptions();
 	backgroundOption();

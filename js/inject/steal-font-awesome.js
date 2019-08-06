@@ -120,8 +120,7 @@ chrome.storage.sync.get({ optDevStealFa: defaults.optDevStealFa }, function(resu
 
 	if (result.optDevStealFa) {
 
-		$(document).ready(function() {
-
+		$(function() {
 			var ready = $('[data-balloon*="size"]');
 
 			var si = setInterval(function() {
