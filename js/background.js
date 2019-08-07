@@ -81,3 +81,9 @@ chrome.runtime.onInstalled.addListener(function (details) {
 		chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 	}
 });
+
+chrome.runtime.onMessage.addListener(function (message, sender) {
+	if (message.sendBack) {
+		chrome.tabs.sendMessage(sender.tab.id, message.data);
+	}
+});

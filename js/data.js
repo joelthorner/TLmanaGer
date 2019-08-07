@@ -46,7 +46,8 @@ const CHANGELOG = [
 			'FIX Change default LC background data',
 			'FIX Refactoring duplicated code',
 			'FIX Remove unused folders',
-			'CHANGE Add more safe actions namespaces'
+			'CHANGE Add more safe actions namespaces',
+			'NEW Zendesk - Automatic ticket consumption alert (by customer SLA)'
 		]
 	}, {
 		version: '2.3.9', date: '26 Jul 2019',
