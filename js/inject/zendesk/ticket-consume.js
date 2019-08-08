@@ -41,16 +41,18 @@ TicketConsume = {
 	init: function (active) {
 		if (active) {
 			var ticketConsume_isTop = true; // no remove
-			
 			chrome.runtime.onMessage.addListener(function (details) {
-				log('Message from frame: ' + details);
-				
+				log('TicketConsume: ' + details);
+
 				var data = JSON.parse(details);
-				TicketConsume.evalCloseClosedMenu();
-				var badge = TicketConsume.getBadge(data);
-				TicketConsume.appendBadge(badge, data);
+				if (data.sla.length) {
+					TicketConsume.evalCloseClosedMenu();
+					var badge = TicketConsume.getBadge(data);
+					TicketConsume.appendBadge(badge, data);
+				} else {
+					log('TicketConsume invalid data', 'danger');
+				}
 			});
-			
 			TicketConsume.initIntervals();
 		}
 	},
