@@ -196,6 +196,9 @@ $height-nav: 80px;
 
 			.list-group-item {
 				background-color: transparent;
+				.highlight {
+					animation: highlight_help 500ms ease infinite;
+				}
 			}
 		}
 		.card-header {
@@ -462,6 +465,14 @@ $height-nav: 80px;
 			padding-left: 1rem;
 			font-size: 14px;
 			letter-spacing: 0.01em;
+
+			img {
+				border-radius: 4px;
+				display: block;
+				max-width: 100%;
+				height: auto;
+				margin-top: 10px;
+			}
 			
 			a {
 				color: $blue-start;

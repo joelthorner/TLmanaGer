@@ -54,3 +54,15 @@ button.close {
 code {
 	color: #f22c87;
 }
+
+@keyframes highlight_help {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(.9);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

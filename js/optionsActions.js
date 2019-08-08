@@ -358,7 +358,14 @@ $(function() {
 	$('.btn-help').click(function(event) {
 		event.preventDefault();
 		$('#help-tab').tab('show');
-		$($(this).attr('href')).click();
+		var $a = $($(this).attr('href'));
+		$a.click();
+		if (!$a.is('[data-src]')) {
+			$a.addClass('highlight');
+			setTimeout(() => {
+				$a.removeClass('highlight');
+			}, 2500);
+		}
 	});
 
 	$('[data-target="#help-modal-video"]').click(function(event) {
