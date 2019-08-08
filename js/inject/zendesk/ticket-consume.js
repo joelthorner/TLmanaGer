@@ -1,3 +1,11 @@
+/**
+ * TicketConsume.
+ *
+ * Object for count client opened tickets in a month
+ * More information: https://github.com/joelthorner/TLmanaGer/wiki/Ticket-consume-(Zendesk) .
+ *
+ * @since      08.08.19
+ */
 TicketConsume = {
 
 	slas: {
@@ -28,20 +36,23 @@ TicketConsume = {
 	},
 
 	siChecker: null,
-
-	init: function () {
-		var ticketConsume_isTop = true; // no remove
-
-		chrome.runtime.onMessage.addListener(function (details) {
-			log('Message from frame: ' + details);
-
-			var data = JSON.parse(details);
-			TicketConsume.evalCloseClosedMenu();
-			var badge = TicketConsume.getBadge(data);
-			TicketConsume.appendBadge(badge, data);
-		});
-		
-		TicketConsume.initIntervals();
+	stoChecker: null,
+	
+	init: function (active) {
+		if (active) {
+			var ticketConsume_isTop = true; // no remove
+			
+			chrome.runtime.onMessage.addListener(function (details) {
+				log('Message from frame: ' + details);
+				
+				var data = JSON.parse(details);
+				TicketConsume.evalCloseClosedMenu();
+				var badge = TicketConsume.getBadge(data);
+				TicketConsume.appendBadge(badge, data);
+			});
+			
+			TicketConsume.initIntervals();
+		}
 	},
 	
 	appendBadge : function (badge, data) {
@@ -71,7 +82,6 @@ TicketConsume = {
 			$('iframe[src*="https://6536.apps.zdusercontent.com"]').attr('src', function () {
 				if ($(this).attr('src').includes('?')) refreshGetSymb = '&';
 				else refreshGetSymb = '?';
-
 				return $(this).attr('src') + refreshGetSymb + 'refresh=' + new Date().getUTCMilliseconds();
 			});
 			TicketConsume.refreshTimeAgo();
@@ -99,22 +109,23 @@ TicketConsume = {
 		`;
 	},
 
-	observer: function (mutation) {
-		if (mutation.addedNodes.length) {
-			var $appsBtn = $(mutation.target).find('.apps-button');
-			// has apps menu
-			if ($appsBtn.length) {
-				// already apps opened menu
-				if ($appsBtn.hasClass('active')) {
-					// do nothing 4 moment
-			
-					
-				// apps menu is closed, open get iframe and close
-				} else {
-					if ($appsBtn.data('before-closed') !== true) {	
-						$appsBtn.data('before-closed', true);
-						TicketConsume.toggleAppsMenu($appsBtn, 'hide');
-						$appsBtn.click();
+	observer: function (active, mutation) {
+		if (active) {
+			if (mutation.addedNodes.length) {
+				var $appsBtn = $(mutation.target).find('.apps-button');
+				// has apps menu
+				if ($appsBtn.length) {
+					// already apps opened menu
+					if ($appsBtn.hasClass('active')) {
+						// do nothing 4 moment
+						
+					// apps menu is closed, open get iframe and close
+					} else {
+						if ($appsBtn.data('before-closed') !== true) {	
+							$appsBtn.data('before-closed', true);
+							TicketConsume.toggleAppsMenu($appsBtn, 'hide');
+							$appsBtn.click();
+						}
 					}
 				}
 			}

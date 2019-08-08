@@ -50,7 +50,8 @@ chrome.storage.sync.get({
 	optZenPriorHighsColors: defaults.optZenPriorHighsColors,
 
 	optZenTicketConfirm: defaults.optZenTicketConfirm,
-	optZenDisableAutofocus: defaults.optZenDisableAutofocus
+	optZenDisableAutofocus: defaults.optZenDisableAutofocus,
+	optZenTicketConsume: defaults.optZenTicketConsume
 }, function (result) {
 	
 	// Global inits
@@ -58,7 +59,7 @@ chrome.storage.sync.get({
 	SubmitExpander.init(result.optZenTicketConfirm);
 	PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 	DisableEditorAutofocus.init();
-	TicketConsume.init();
+	TicketConsume.init(result.optZenTicketConsume);
 	ZendeskGeneral.init();
 
 	var globalObserver = new MutationObserver(function (mutations) {
@@ -66,8 +67,8 @@ chrome.storage.sync.get({
 			SubmitExpander.init(result.optZenTicketConfirm);
 			PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 			DisableEditorAutofocus.observer(result.optZenDisableAutofocus, mutation);
+			TicketConsume.observer(result.optZenTicketConsume, mutation);
 			ZendeskGeneral.observer(mutation);
-			TicketConsume.observer(mutation);
 		});
 	});
 	globalObserver.observe($('body')[0], {
