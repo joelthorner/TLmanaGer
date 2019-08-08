@@ -27,36 +27,63 @@ TicketConsume = {
 		}
 	},
 
+	siChecker: null,
+
 	init: function () {
 		var ticketConsume_isTop = true; // no remove
 
 		chrome.runtime.onMessage.addListener(function (details) {
 			log('Message from frame: ' + details);
+
 			var data = JSON.parse(details);
 			TicketConsume.evalCloseClosedMenu();
 			var badge = TicketConsume.getBadge(data);
-			$('[data-tracking-id="tabs-nav-item-organizations"]').each(function() {
-				if ($(this).text().toLowerCase().trim() == data.client) {
-					var $nav = $(this).closest('nav.btn-group');
-					$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
-					$nav.append(badge);
-				}
-			});
+			TicketConsume.appendBadge(badge, data);
 		});
+		
+		TicketConsume.initIntervals();
+	},
+	
+	appendBadge : function (badge, data) {
+		$('[data-tracking-id="tabs-nav-item-organizations"]').each(function () {
+			if ($(this).text().toLowerCase().trim() == data.client) {
+				var $nav = $(this).closest('nav.btn-group');
+				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
+				$nav.append(badge);
+			}
+		});
+	},
+
+	refreshTimeAgo : function () {
+		$('.TLmanaGer_ticketConsume_checkedAgo_text').each(function () {
+			$(this).text(moment($(this).data('time')).fromNow())
+		});
+	},
+
+	initIntervals : function() {
+		clearInterval(TicketConsume.siChecker);
+		TicketConsume.siChecker = setInterval(() => {
+			TicketConsume.refreshTimeAgo();
+		}, 60 * 1000); // 1'
+
+		clearTimeout(TicketConsume.stoChecker);
+		TicketConsume.stoChecker = setInterval(() => {
+			$('iframe[src*="https://6536.apps.zdusercontent.com"]').attr('src', function () {
+				if ($(this).attr('src').includes('?')) refreshGetSymb = '&';
+				else refreshGetSymb = '?';
+
+				return $(this).attr('src') + refreshGetSymb + 'refresh=' + new Date().getUTCMilliseconds();
+			});
+			TicketConsume.refreshTimeAgo();
+		}, 300 * 1000); // 5'
 	},
 
 	getBadge: function (data) {
 		var levels = TicketConsume.slas[data.sla].levels,
 				color = '';
-
-		data.nTiquets = 0;
 		
 		$.each(levels, function(index, this_color) {
-			console.log(data.nTiquets, index, this_color);
-			
-			if (data.nTiquets >= index) {
-				color = this_color;
-			}
+			if (data.nTiquets >= index) color = this_color;
 		});
 		
 		return `
@@ -66,7 +93,7 @@ TicketConsume = {
 				</span>
 				<span class="TLmanaGer_ticketConsume_checkedAgo">
 					<span class="TLmanaGer_ticketConsume_checkedAgo_lbl">Last check</span>
-					<span class="TLmanaGer_ticketConsume_checkedAgo_text">${moment(data.check).fromNow()}</span>
+					<span class="TLmanaGer_ticketConsume_checkedAgo_text" data-time="${data.check}">${moment(data.check).fromNow()}</span>
 				</span>
 			</span>
 		`;
