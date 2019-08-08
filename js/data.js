@@ -39,15 +39,28 @@ const AVATARS = [
 
 const CHANGELOG = [
 	{
-		version: '2.3.10', date: '06 Aug 2019',
+		version: '2.3.10', date: '08 Aug 2019',
 		lines: [
 			'FIX Internal Container guides (action) refactoring',
 			'CHANGE Documentation global internal functions (dev)',
-			'FIX Change default LC background data',
+			'FIX Change default LC background bad data',
 			'FIX Refactoring duplicated code',
-			'FIX Remove unused folders',
-			'CHANGE Add more safe actions namespaces',
-			'NEW Zendesk - Automatic ticket consumption alert (by customer SLA)'
+			'FIX Remove unused folders/files',
+			'FIX Internal error when extension call undefined action',
+			'FIX Minor fixes help ids',
+			'CHANGE Code maintainability (del duplicated code and optimized some functions)',
+			'FIX Change injection scripts and css with a safe functions/classes/ids namespaces',
+			'CHANGE Better option help button highlight when hasn\'t video',
+			'CHANGE Add privacy policy into options page footer',
+			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
+				<img src="${chrome.extension.getURL('img/data/zd-tikt-consume.gif')}">
+				<ul>
+					<li>- Auto refresh every 5'</li>
+					<li>- Refresh time ago every 1'</li>
+					<li>- Option enable/disable this feature</li>
+					<li>- Depends by: sla, limittickets tag, tickets this month app data</li>
+				</ul>
+			`
 		]
 	}, {
 		version: '2.3.9', date: '26 Jul 2019',
