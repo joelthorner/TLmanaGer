@@ -1,15 +1,3 @@
-/* body #z-icon {
-	background-image: url('chrome-extension://__MSG_@@extension_id__/img/settings-zendesk.svg');
-	background-size: 26px;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: .3;
-}
-
-body #z-icon svg {
-	display: none !important;
-} */
-
 #main_navigation .toolbar_link_extension_settings.toolbar_link svg {
 	width: 20px;
 	height: 20px;
@@ -99,4 +87,44 @@ body #z-icon svg {
 	line-height: 38px;
 	min-width: 102px;
 	border-radius: 4px;
+}
+
+.TLmanaGer_ticketConsume_badge_cont {
+	margin-left: 10px;
+	float: left;
+}
+
+.TLmanaGer_ticketConsume_badge {
+	background-color: #E9EBED;
+	color: #2F3941;
+	padding: 7px 12px;
+	line-height: 1.1;
+	font-size: 11px;
+	font-weight: 600;
+	display: block;
+	border-radius: 4px;
+	float: left;
+}
+
+.TLmanaGer_ticketConsume_badge.TLmanaGer_ticketConsume_badge_green {
+	background-color: #1da462;
+	color: #FFF;
+}
+
+.TLmanaGer_ticketConsume_badge.TLmanaGer_ticketConsume_badge_yellow {
+	background-color: #ffcd46;
+	color: #2F3941;
+}
+
+.TLmanaGer_ticketConsume_badge.TLmanaGer_ticketConsume_badge_red {
+	background-color: #dd5144;
+	color: #FFF;
+}
+
+.TLmanaGer_ticketConsume_checkedAgo {
+	font-size: 10px;
+	color: #888;
+	line-height: 26px;
+	float: left;
+	margin-left: 10px;
 }

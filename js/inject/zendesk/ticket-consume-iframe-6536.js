@@ -13,12 +13,16 @@ if (!window.ticketConsume_isTop) { // true  or  undefined
 			clearInterval(si);
 
 			let sla = doc.querySelectorAll('[key="sla"] > p');
+			let client = doc.querySelectorAll('.organization a');
 
 			for (let index = 0; index < nTiquets.length; index++) {
 				data += '"nTiquets":' + nTiquets[index].innerHTML + ',';
 			}
 			for (let index = 0; index < sla.length; index++) {
-				data += '"sla":"' + sla[index].innerHTML.toLowerCase() + '",';
+				data += '"sla":"' + sla[index].innerHTML.toLowerCase().trim() + '",';
+			}
+			for (let index = 0; index < client.length; index++) {
+				data += '"client":"' + client[index].innerHTML.toLowerCase().trim() + '",';
 			}
 			data += '"check": "' + moment().format() + '"'
 			data += '}';
