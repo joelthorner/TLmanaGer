@@ -1,7 +1,13 @@
-// inject JS for Zendesk App menu iframe,
-// with match url *://6536.apps.zdusercontent.com/*
-// in manifest defined
-
+/**
+ * TicketConsume.
+ *
+ * Inject JS for Zendesk App menu iframe, with match url *://6536.apps.zdusercontent.com/*
+ * in manifest defined
+ * 
+ * More information: https://github.com/joelthorner/TLmanaGer/wiki/Ticket-consume-(Zendesk) .
+ *
+ * @since      08.08.19
+ */
 if (!window.ticketConsume_isTop) { // true  or  undefined
 	let data = '{';
 

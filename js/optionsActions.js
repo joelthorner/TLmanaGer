@@ -51,7 +51,8 @@ function saveOptions(deelay) {
 					urgent: $('.set-text-elem.urgent').css('color')
 				}
 			},
-			optZenDisableAutofocus: $('#opt-zen-disable-autofocus').prop('checked')
+			optZenDisableAutofocus: $('#opt-zen-disable-autofocus').prop('checked'),
+			optZenTicketConsume: $('#opt-zen-ticket-consume').prop('checked')
 
 		}, function() {
 			setOptionValue($('#opt-profile-username'), 'textfield', $('#opt-profile-username').val());
@@ -130,6 +131,7 @@ function restoreOptions() {
 			{ node: $('#opt-zen-prior-highs')         , type: 'checkbox',    value: items.optZenPriorHighs },
 			{ node: $('#opt-zen-prior-highs-incident'), type: 'checkbox',    value: items.optZenPriorHighsIncident },
 			{ node: $('#opt-zen-disable-autofocus')   , type: 'checkbox',    value: items.optZenDisableAutofocus },
+			{ node: $('#opt-zen-ticket-consume')      , type: 'checkbox',    value: items.optZenTicketConsume },
 			{ node: $('#opt-profile-pass')            , type: 'textfield',   value: items.optProfilePass },
 			{ node: $('#opt-profile-username')        , type: 'textfield',   value: items.optProfileUsername },
 			{ node: $('#opt-profile-email')           , type: 'textfield',   value: items.optProfileEmail },
@@ -138,9 +140,7 @@ function restoreOptions() {
 			{ node: $('.set-text-elem')               , type: 'colorpicker', value: items.optZenPriorHighsColors },
 			{ node: $('.card-background-option')      , type: 'conditioned', value: items.optLcBgActive },
 			{ node: $('.z-hl-cont')                   , type: 'conditioned', value: items.optZenPriorHighs }
-		], function (index, obj) {  
-			setOptionValue(obj.node, obj.type, obj.value);
-		});
+		], function (index, obj) { setOptionValue(obj.node, obj.type, obj.value) });
 	});
 }
 

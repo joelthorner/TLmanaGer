@@ -40,5 +40,6 @@ var defaults = {
 			urgent: '#222'
 		}
 	},
-	optZenDisableAutofocus: false
+	optZenDisableAutofocus: false,
+	optZenTicketConsume: true
 };
