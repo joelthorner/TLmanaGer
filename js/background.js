@@ -16,18 +16,20 @@ function executeScripts(tabId, injectDetailsArray) {
 // Popup actions
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		switch (request.directive) {
-			case 'testing-signup':
-				executeScripts(null, [
-					{ file: 'js/libs/moment.js' },
-					{ file: 'js/actions/testing-signup.js' }
-				])
-				break;
-			default:
-				executeScripts(null, [
-					{ file: 'js/actions/' + request.directive + '.js' }
-				])
-				break;
+		if (typeof request.directive !== 'undefined') {
+			switch (request.directive) {
+				case 'testing-signup':
+					executeScripts(null, [
+						{ file: 'js/libs/moment.js' },
+						{ file: 'js/actions/testing-signup.js' }
+					])
+					break;
+				default:
+					executeScripts(null, [
+						{ file: 'js/actions/' + request.directive + '.js' }
+					])
+					break;
+			}
 		}
 	}
 );
