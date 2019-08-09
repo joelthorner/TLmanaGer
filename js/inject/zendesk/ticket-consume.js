@@ -25,7 +25,7 @@ TicketConsume = {
 				7: 'red'
 			}
 		},
-		platinum: {
+		platinium: {
 			tiquets: 10,
 			levels: {
 				9: 'green',
@@ -37,121 +37,139 @@ TicketConsume = {
 
 	siChecker: null,
 	stoChecker: null,
+	data: {},
+	secondsUpdate: 1,
 	
 	init: function (active) {
 		if (active) {
 			var ticketConsume_isTop = true; // no remove
+			TicketConsume.insertIframe();
+			TicketConsume.globalEvents();
 			chrome.runtime.onMessage.addListener(function (details) {
 				log('TicketConsume: ' + details);
-
-				var data = JSON.parse(details);
-				if (data.sla.length) {
-					TicketConsume.evalCloseClosedMenu();
-					var badge = TicketConsume.getBadge(data);
-					TicketConsume.appendBadge(badge, data);
-				} else {
+				try {
+					var data = JSON.parse(details);
+					TicketConsume.data = data;
+				} catch (error) {
 					log('TicketConsume invalid data', 'danger');
 				}
 			});
-			TicketConsume.initIntervals();
 		}
 	},
-	
-	appendBadge : function (badge, data) {
-		$('[data-tracking-id="tabs-nav-item-organizations"]').each(function () {
-			if ($(this).text().toLowerCase().trim() == data.client) {
-				var $nav = $(this).closest('nav.btn-group');
-				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
-				$nav.append(badge);
-			}
+
+	globalEvents : function() {
+		$(document).on('click', '.TLmanaGer_ticketConsume_edit', function(event) {
+			Swal.fire({
+				title: '<strong>HTML <u>example</u></strong>',
+				type: 'info',
+				html:
+					'You can use <b>bold text</b>, ' +
+					'<a href="//sweetalert2.github.io">links</a> ' +
+					'and other HTML tags',
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+					'<i class="fa fa-thumbs-up"></i> Great!',
+				confirmButtonAriaLabel: 'Thumbs up, great!',
+				cancelButtonText:
+					'<i class="fa fa-thumbs-down"></i>',
+				cancelButtonAriaLabel: 'Thumbs down'
+			})
 		});
+	},
+
+	insertIframe : function() {
+		$('body')
+			.append(
+				'<iframe src="https://joelthorner.github.io/temp/?refresh=1" class="TlmanaGer_consumeIframe"></iframe>'
+			);
+	},
+	
+	appendBadge : function (badge, $navbar) {
+		$navbar.find('.TLmanaGer_ticketConsume_badge_cont').remove();
+		$navbar.append(badge);
+	},
+
+	getSecondsAgo : function(rawData) {
+		return TicketConsume.secondsUpdate + ' seconds ago';
 	},
 
 	refreshTimeAgo : function () {
 		$('.TLmanaGer_ticketConsume_checkedAgo_text').each(function () {
-			$(this).text(moment($(this).data('time')).fromNow())
+			var secondsAgo = TicketConsume.getSecondsAgo();
+			$(this).text(secondsAgo);
 		});
 	},
 
 	initIntervals : function() {
 		clearInterval(TicketConsume.siChecker);
 		TicketConsume.siChecker = setInterval(() => {
+			TicketConsume.secondsUpdate++;
 			TicketConsume.refreshTimeAgo();
-		}, 60 * 1000); // 1'
+		}, 1000); // 1"
 
 		clearTimeout(TicketConsume.stoChecker);
 		TicketConsume.stoChecker = setInterval(() => {
-			$('iframe[src*="https://6536.apps.zdusercontent.com"]').attr('src', function () {
+			$('.TlmanaGer_consumeIframe').attr('src', function () {
 				if ($(this).attr('src').includes('?')) refreshGetSymb = '&';
 				else refreshGetSymb = '?';
 				return $(this).attr('src') + refreshGetSymb + 'refresh=' + new Date().getUTCMilliseconds();
 			});
-			TicketConsume.refreshTimeAgo();
-		}, 300 * 1000); // 5'
+			TicketConsume.secondsUpdate = 1;
+			TicketConsume.updateAllBadges();
+		}, 10000); // 10"
 	},
 
 	getBadge: function (data) {
-		var levels = TicketConsume.slas[data.sla].levels,
-				color = '';
-		
+		var levels = TicketConsume.slas[data.sla].levels, color = '';
+	
 		$.each(levels, function(index, this_color) {
-			if (data.nTiquets >= index) color = this_color;
+			if (data.tickets >= index) color = this_color;
 		});
 		
 		return `
 			<span class="TLmanaGer_ticketConsume_badge_cont">
+				<button type="button" class="TLmanaGer_ticketConsume_edit"></button>
 				<span class="TLmanaGer_ticketConsume_badge TLmanaGer_ticketConsume_badge_${color}">
-					SLA ${data.sla.toUpperCase()} - ${data.nTiquets}/${TicketConsume.slas[data.sla].tiquets} TICKETS
+					SLA ${data.sla} - ${data.tickets}/${TicketConsume.slas[data.sla].tiquets} TICKETS
 				</span>
 				<span class="TLmanaGer_ticketConsume_checkedAgo">
 					<span class="TLmanaGer_ticketConsume_checkedAgo_lbl">Last check</span>
-					<span class="TLmanaGer_ticketConsume_checkedAgo_text" data-time="${data.check}">${moment(data.check).fromNow()}</span>
+					<span class="TLmanaGer_ticketConsume_checkedAgo_text" data-time="0">${TicketConsume.getSecondsAgo()}</span>
 				</span>
-			</span>
-		`;
+			</span>`;
 	},
 
 	observer: function (active, mutation) {
-		if (active) {
-			if (mutation.addedNodes.length) {
-				var $appsBtn = $(mutation.target).find('.apps-button');
-				// has apps menu
-				if ($appsBtn.length) {
-					// already apps opened menu
-					if ($appsBtn.hasClass('active')) {
-						// do nothing 4 moment
-						
-					// apps menu is closed, open get iframe and close
-					} else {
-						if ($appsBtn.data('before-closed') !== true) {	
-							$appsBtn.data('before-closed', true);
-							TicketConsume.toggleAppsMenu($appsBtn, 'hide');
-							$appsBtn.click();
-						}
+		if (active && mutation.addedNodes.length) {
+			
+			var $orgNavbarTicket = $(mutation.target).find('[data-tracking-id="tabs-nav-item-organizations"]');
+			if ($orgNavbarTicket.length) {
+				
+				var $badge = $orgNavbarTicket.closest('nav.btn-group').find('.TLmanaGer_ticketConsume_badge_cont');
+				if (!$badge.length) {
+					
+					var orgName = $orgNavbarTicket.text().toLowerCase().trim();
+					if (TicketConsume.data.hasOwnProperty(orgName)) {
+						log('TicketConsume append badge ' + orgName + ' ' + JSON.stringify(TicketConsume.data[orgName]));
+						var badge = TicketConsume.getBadge(TicketConsume.data[orgName]);
+						TicketConsume.appendBadge(badge, $orgNavbarTicket.closest('nav.btn-group'));
+						// TicketConsume.initIntervals();
 					}
 				}
 			}
 		}
 	},
 
-	// mode is 'hide' or 'reset'
-	toggleAppsMenu: function ($appsBtn, mode) {
-		let $appsMenu = $appsBtn.closest('.ember-view.workspace').find('.ember-view.apps');
-		let $pane = $appsBtn.closest('.ember-view.workspace').find('.pane.right.section');
-		
-		if (mode == 'hide') {
-			$appsMenu.css({ left: -400 });
-			$pane.css({ right: 0 });
-		} else {
-			$pane.css({ right: '' });
-		}
-	},
-
-	evalCloseClosedMenu: function () {
-		$('.apps-button').each(function(index, el) {
-			if ($(el).data('before-closed') === true && $(el).hasClass('active')) {
-				$(el).click();
-				TicketConsume.toggleAppsMenu($(el), 'reset');
+	updateAllBadges : function () {
+		$('[data-tracking-id="tabs-nav-item-organizations"]').each(function () {
+			var orgName = $(this).text().toLowerCase().trim();
+			if (TicketConsume.data.hasOwnProperty(orgName)) {
+				var $nav = $(this).closest('nav.btn-group');
+				var badge = TicketConsume.getBadge(TicketConsume.data[orgName]);
+				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
+				TicketConsume.appendBadge(badge, $nav);
 			}
 		});
 	}

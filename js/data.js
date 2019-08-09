@@ -55,8 +55,8 @@ const CHANGELOG = [
 			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
 				<img src="${chrome.extension.getURL('img/data/zd-tikt-consume.gif')}">
 				<ul>
-					<li>- Auto refresh every 5'</li>
-					<li>- Refresh time ago every 1'</li>
+					<li>- Auto refresh every 10"</li>
+					<li>- Refresh time ago every 1"</li>
 					<li>- Option enable/disable this feature</li>
 					<li>- Depends by: sla, limittickets tag, tickets this month app data</li>
 				</ul>
