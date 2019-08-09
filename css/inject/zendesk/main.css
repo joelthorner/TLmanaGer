@@ -97,12 +97,15 @@
 .TLmanaGer_ticketConsume_badge {
 	background-color: #E9EBED;
 	color: #2F3941;
-	padding: 7px 12px;
+	padding: 8px 12px;
 	line-height: 1.1;
 	font-size: 11px;
 	font-weight: 600;
 	display: block;
-	border-radius: 4px;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
 	float: left;
 }
 
@@ -124,7 +127,27 @@
 .TLmanaGer_ticketConsume_checkedAgo {
 	font-size: 10px;
 	color: #888;
-	line-height: 26px;
+	line-height: 28px;
 	float: left;
 	margin-left: 10px;
+}
+
+.TLmanaGer_ticketConsume_edit {
+	float: left;
+	height: 28px;
+	width: 28px;
+	background-color: transparent;
+	border: 1px solid #d8dcde;
+	border-radius: 4px 0 0 4px;
+	background-size: 12px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='rgb(47, 57, 65)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cpath d='M493.25 56.26l-37.51-37.51C443.25 6.25 426.87 0 410.49 0s-32.76 6.25-45.26 18.74L12.85 371.12.15 485.34C-1.45 499.72 9.88 512 23.95 512c.89 0 1.78-.05 2.69-.15l114.14-12.61 352.48-352.48c24.99-24.99 24.99-65.51-.01-90.5zM126.09 468.68l-93.03 10.31 10.36-93.17 263.89-263.89 82.77 82.77-263.99 263.98zm344.54-344.54l-57.93 57.93-82.77-82.77 57.93-57.93c6.04-6.04 14.08-9.37 22.63-9.37 8.55 0 16.58 3.33 22.63 9.37l37.51 37.51c12.47 12.48 12.47 32.78 0 45.26z'%3e%3c/path%3e%3c/svg%3e");
+}
+
+.TLmanaGer_ticketConsume_edit:focus {
+	outline: none;
+}
+.TLmanaGer_ticketConsume_edit:hover {
+	background-color: rgb(233, 235, 237);
 }

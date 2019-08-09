@@ -152,7 +152,6 @@
 				"css/inject/zendesk/submit-expander.css"
 			],
 			"js": [
-				"js/libs/moment.js",
 				"js/libs/hotkeys.min.js",
 				"js/libs/sweetalert2.all.min.js",
 				"js/inject/zendesk/main.js",
@@ -165,11 +164,10 @@
 		},
 		{
 			"matches": [
-				"*://6536.apps.zdusercontent.com/*"
+				"*://joelthorner.github.io/temp/*"
 			],
 			"js": [
-				"js/libs/moment.js",
-				"js/inject/zendesk/ticket-consume-iframe-6536.js"
+				"js/inject/zendesk/ticket-consume-iframe.js"
 			],
 			"all_frames": true
 		},
