@@ -58,11 +58,18 @@ TicketConsume = {
 
 	globalEvents : function() {
 		$(document).on('click', '.TLmanaGer_ticketConsume_edit', function(event) {
+			console.log(event);
+			
+			var title = chrome.i18n.getMessage('zenDesk_tiketConsume_title')
+				.replace('%organization%', $(event.target).data('org').toUpperCase())
+				.replace('%month%', moment().format('MMMM YYYY'));
+			var message = chrome.i18n.getMessage('zenDesk_tiketConsume_message');
+			
 			Swal.fire({
 				// title: '<strong>HTML <u>example</u></strong>',
 				// type: 'info',
 				html: `
-					<div id="swal2-content" style="display: block;">${chrome.i18n.getMessage('zenDesk_tiketConsume_message')}</div>
+					<div id="swal2-content" style="display: block;">${message}</div>
 					<table class="TLmanaGer_ticketConsume_table table">
 						<thead>
 							<tr>
@@ -124,7 +131,7 @@ TicketConsume = {
 				// <svg id="zd-svg-icon-16-clipboard-check-stroke"><use xlink:href="../index.svg#zd-svg-icon-16-clipboard-check-stroke"></use></svg>
 				// title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-clipboard-check-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"></path><circle cx="7.5" cy="12" r="1" fill="currentColor"></circle></svg>' +
 				title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-clipboard-check-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5H2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h12c.28 0 .5-.22.5-.5V3c0-.28-.22-.5-.5-.5h-2.5m-6.5 8l2 2L11.5 8m-.05-3.5c.02-.16.05-.33.05-.5C11.5 2.07 9.93.5 8 .5S4.5 2.07 4.5 4c0 .17.03.34.05.5h6.9z"></path></svg>' +
-					chrome.i18n.getMessage('zenDesk_tiketConsume_title'),
+					title,
 				// text: chrome.i18n.getMessage('zenDesk_tiketConsume_message'),
 				showCancelButton: false,
 				confirmButtonColor: '#A6BD09',
@@ -183,7 +190,7 @@ TicketConsume = {
 		}, 10000); // 10"
 	},
 
-	getBadge: function (data) {
+	getBadge: function (data, orgName) {
 		var levels = TicketConsume.slas[data.sla].levels, color = '';
 	
 		$.each(levels, function(index, this_color) {
@@ -192,7 +199,7 @@ TicketConsume = {
 		
 		return `
 			<span class="TLmanaGer_ticketConsume_badge_cont">
-				<button type="button" class="TLmanaGer_ticketConsume_edit"></button>
+				<button type="button" class="TLmanaGer_ticketConsume_edit" data-org="${orgName}"></button>
 				<span class="TLmanaGer_ticketConsume_badge TLmanaGer_ticketConsume_badge_${color}">
 					SLA ${data.sla} - ${data.tickets}/${TicketConsume.slas[data.sla].tiquets} TICKETS
 				</span>
@@ -215,7 +222,7 @@ TicketConsume = {
 					var orgName = $orgNavbarTicket.text().toLowerCase().trim();
 					if (TicketConsume.data.hasOwnProperty(orgName)) {
 						log('TicketConsume append badge ' + orgName + ' ' + JSON.stringify(TicketConsume.data[orgName]));
-						var badge = TicketConsume.getBadge(TicketConsume.data[orgName]);
+						var badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 						TicketConsume.appendBadge(badge, $orgNavbarTicket.closest('nav.btn-group'));
 						if (!TicketConsume.debug) TicketConsume.initIntervals();
 					}
@@ -229,7 +236,7 @@ TicketConsume = {
 			var orgName = $(this).text().toLowerCase().trim();
 			if (TicketConsume.data.hasOwnProperty(orgName)) {
 				var $nav = $(this).closest('nav.btn-group');
-				var badge = TicketConsume.getBadge(TicketConsume.data[orgName]);
+				var badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
 				TicketConsume.appendBadge(badge, $nav);
 			}
