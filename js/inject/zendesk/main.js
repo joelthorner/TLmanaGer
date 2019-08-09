@@ -1,6 +1,7 @@
 ZendeskGeneral = {
 	init: function () {
 		this.createMenuSettings();
+		this.saveSessionUser();
 	},
 
 	createMenuSettings: function () {
@@ -41,6 +42,10 @@ ZendeskGeneral = {
 			var text = $textNode.text().trim().toLowerCase(); $textNode
 			if (text == 'madrid') $textNode.text('Catalunya');
 		}
+	},
+
+	saveSessionUser: function () {
+		
 	}
 };
 

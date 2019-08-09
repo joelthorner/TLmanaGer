@@ -185,5 +185,12 @@
 
 	"commandExecuted_message": {
 		"message": "Command executed: '%command%'"
+	},
+
+	"zenDesk_tiketConsume_title": {
+		"message": "Edit %organization% consume"
+	},
+	"zenDesk_tiketConsume_message": {
+		"message": "This data is saved to the zendesk agent itself and is visible to all users. Data is deleted every month."
 	}
 }
