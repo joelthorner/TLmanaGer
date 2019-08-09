@@ -238,7 +238,7 @@ function guideLines_resize() {
 	let to = null;
 	$(window).on('resize.guideLines_resize', function () {
 		clearTimeout(to);
-		setTimeout(() => {
+		to = setTimeout(() => {
 			guideLines_del();
 			guideLines_add();
 		}, 50);

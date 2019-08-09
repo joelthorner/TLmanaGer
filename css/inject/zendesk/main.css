@@ -148,6 +148,82 @@
 .TLmanaGer_ticketConsume_edit:focus {
 	outline: none;
 }
+
 .TLmanaGer_ticketConsume_edit:hover {
 	background-color: rgb(233, 235, 237);
+}
+
+.TLmanaGer_ticketConsume_table input {
+	transition: border-color .25s ease-in-out, box-shadow .1s ease-in-out, background-color .25s ease-in-out, color .25s ease-in-out, -webkit-box-shadow .1s ease-in-out;
+	outline: 0;
+	border: 1px solid #d8dcde;
+	border-radius: 4px;
+	background-color: #fff;
+	padding: .71429em 1.14286em;
+	width: 100%;
+	min-height: 40px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	vertical-align: middle;
+	line-height: 1.28571;
+	color: #2f3941;
+	font-family: inherit;
+	font-size: 14px;
+}
+
+.TLmanaGer_ticketConsume_table input:focus {
+	border-color: #1f73b7;
+	-webkit-box-shadow: 0 0 0 3px rgba(31, 115, 183, .35);
+	box-shadow: 0 0 0 3px rgba(31, 115, 183, .35);
+}
+
+.TLmanaGer_ticketConsume_table {
+	margin-top: 30px;
+}
+
+.TLmanaGer_ticketConsume_table button {
+	height: 40px;
+	width: 40px;
+	position: relative;
+	float: left;
+	display: flex;
+	align-items: center;
+	line-height: 1.1;
+	color: rgb(47, 57, 65);
+	margin-top: 0;
+	background: rgb(255, 255, 255);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(216, 220, 222);
+	border-image: initial;
+	padding: 0px;
+	border-radius: 4px;
+	transition: all 350ms ease 0s;
+}
+
+.TLmanaGer_ticketConsume_table button svg {
+	height: 16px;
+	width: 16px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.TLmanaGer_ticketConsume_table button:focus {
+	outline: none;
+}
+
+.TLmanaGer_ticketConsume_table button:hover {
+	border-color: #a0acb4;
+	background-color: #e7ebee;
+	color: rgb(27, 31, 34);
+}
+
+.TLmanaGer_ticketConsume_table button:active {
+	border-color: #8f9aa1;
+	background-color: #d9dde0;
+	color: rgb(23, 26, 29);
 }

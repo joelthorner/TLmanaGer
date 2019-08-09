@@ -7,7 +7,7 @@
  * @since      08.08.19
  */
 TicketConsume = {
-
+	debug: false,
 	slas: {
 		silver: {
 			tiquets: 4,
@@ -34,7 +34,6 @@ TicketConsume = {
 			}
 		}
 	},
-
 	siChecker: null,
 	stoChecker: null,
 	data: {},
@@ -60,21 +59,84 @@ TicketConsume = {
 	globalEvents : function() {
 		$(document).on('click', '.TLmanaGer_ticketConsume_edit', function(event) {
 			Swal.fire({
-				title: '<strong>HTML <u>example</u></strong>',
-				type: 'info',
-				html:
-					'You can use <b>bold text</b>, ' +
-					'<a href="//sweetalert2.github.io">links</a> ' +
-					'and other HTML tags',
-				showCloseButton: true,
-				showCancelButton: true,
-				focusConfirm: false,
-				confirmButtonText:
-					'<i class="fa fa-thumbs-up"></i> Great!',
-				confirmButtonAriaLabel: 'Thumbs up, great!',
-				cancelButtonText:
-					'<i class="fa fa-thumbs-down"></i>',
-				cancelButtonAriaLabel: 'Thumbs down'
+				// title: '<strong>HTML <u>example</u></strong>',
+				// type: 'info',
+				html: `
+					<div id="swal2-content" style="display: block;">${chrome.i18n.getMessage('zenDesk_tiketConsume_message')}</div>
+					<table class="TLmanaGer_ticketConsume_table table">
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Modification</th>
+								<th>Date</th>
+								<th>Reason</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td data-user="new">
+									<input type="text" class="form-control TLmanaGer_ticketConsume_user" placeholder="John doe">
+								</td>
+								<td data-num="new">
+									<input type="number" class="form-control TLmanaGer_ticketConsume_num" placeholder="0">
+								</td>
+								<td data-date="new">
+									<input type="date" class="form-control TLmanaGer_ticketConsume_num">
+								</td>
+								<td data-reason="new">
+									<input type="text" class="form-control TLmanaGer_ticketConsume_reason" placeholder="Lorem ipsum">
+								</td>
+								<td data-action="new">
+									<button type="button" data-action-btn="new"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-plus-circle-stroke"><circle cx="7.5" cy="8.5" r="7" fill="none" stroke="currentColor"></circle><path fill="none" stroke="currentColor" stroke-linecap="round" d="M7.5 4.5v8m4-4h-8"></path></svg></button>
+								</td>
+							</tr>
+							<tr>
+								<td data-user>John doe</td>
+								<td data-num>-1</td>
+								<td data-date>09/08/2019</td>
+								<td data-reason>Lorem ipsum dolor sit amet estractum golum mi tesoro.</td>
+								<td data-action="delete">
+									<button type="button" data-action-btn="delete"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg></button>
+								</td>
+							</tr>
+							<tr>
+								<td data-user>John doe</td>
+								<td data-num>-1</td>
+								<td data-date>09/08/2019</td>
+								<td data-reason>Lorem ipsum dolor sit amet estractum golum mi tesoro.</td>
+								<td data-action="delete">
+									<button type="button" data-action-btn="ndeleteew"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				`,
+				// showCloseButton: true,
+				// showCancelButton: true,
+				// focusConfirm: false,
+				// confirmButtonText:
+				// 	'<i class="fa fa-thumbs-up"></i> Great!',
+				// confirmButtonAriaLabel: 'Thumbs up, great!',
+				// cancelButtonText:
+				// 	'<i class="fa fa-thumbs-down"></i>',
+				// cancelButtonAriaLabel: 'Thumbs down'
+				// <svg id="zd-svg-icon-16-clipboard-check-stroke"><use xlink:href="../index.svg#zd-svg-icon-16-clipboard-check-stroke"></use></svg>
+				// title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-clipboard-check-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"></path><circle cx="7.5" cy="12" r="1" fill="currentColor"></circle></svg>' +
+				title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-clipboard-check-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5H2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h12c.28 0 .5-.22.5-.5V3c0-.28-.22-.5-.5-.5h-2.5m-6.5 8l2 2L11.5 8m-.05-3.5c.02-.16.05-.33.05-.5C11.5 2.07 9.93.5 8 .5S4.5 2.07 4.5 4c0 .17.03.34.05.5h6.9z"></path></svg>' +
+					chrome.i18n.getMessage('zenDesk_tiketConsume_title'),
+				// text: chrome.i18n.getMessage('zenDesk_tiketConsume_message'),
+				showCancelButton: false,
+				confirmButtonColor: '#A6BD09',
+				confirmButtonText: 'Confirm',
+				// confirmButtonColor: '#A6BD09',
+				// cancelButtonColor: '#979797',
+				// confirmButtonText: 'Confirm',
+				// reverseButtons: true,
+				width: '65rem',
+				customClass: {
+					container: 'swal-zendesk-popup swal-zendesk-ticket-consume'
+				}
 			})
 		});
 	},
@@ -155,7 +217,7 @@ TicketConsume = {
 						log('TicketConsume append badge ' + orgName + ' ' + JSON.stringify(TicketConsume.data[orgName]));
 						var badge = TicketConsume.getBadge(TicketConsume.data[orgName]);
 						TicketConsume.appendBadge(badge, $orgNavbarTicket.closest('nav.btn-group'));
-						// TicketConsume.initIntervals();
+						if (!TicketConsume.debug) TicketConsume.initIntervals();
 					}
 				}
 			}
