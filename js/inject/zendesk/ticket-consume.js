@@ -7,7 +7,7 @@
  * @since      08.08.19
  */
 TicketConsume = {
-	debug: false,
+	debug: true,
 	slas: {
 		silver: {
 			tiquets: 4,
@@ -38,6 +38,7 @@ TicketConsume = {
 	stoChecker: null,
 	data: {},
 	secondsUpdate: 1,
+	clientsCsutomData: {},
 	
 	init: function (active) {
 		if (active) {
@@ -58,12 +59,26 @@ TicketConsume = {
 
 	globalEvents : function() {
 		$(document).on('click', '.TLmanaGer_ticketConsume_edit', function(event) {
-			console.log(event);
-			
+			var orgName = $(event.target).data('org');
 			var title = chrome.i18n.getMessage('zenDesk_tiketConsume_title')
-				.replace('%organization%', $(event.target).data('org').toUpperCase())
+				.replace('%organization%', orgName.toUpperCase())
 				.replace('%month%', moment().format('MMMM YYYY'));
 			var message = chrome.i18n.getMessage('zenDesk_tiketConsume_message');
+			var customData = TicketConsume.clientsCsutomData[orgName];
+			var existingRows = '';
+
+			$.each(customData, function (index, obj) {
+				existingRows+= `
+					<tr>
+						<td data-user>${obj.user}</td>
+						<td data-num>${obj.mod}</td>
+						<td data-date>${obj.date}</td>
+						<td data-reason>${obj.reas}</td>
+						<td data-action="delete">
+							<button type="button" data-action-btn="delete"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg></button>
+						</td>
+					</tr>`;
+			});
 			
 			Swal.fire({
 				// title: '<strong>HTML <u>example</u></strong>',
@@ -98,24 +113,7 @@ TicketConsume = {
 									<button type="button" data-action-btn="new"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-plus-circle-stroke"><circle cx="7.5" cy="8.5" r="7" fill="none" stroke="currentColor"></circle><path fill="none" stroke="currentColor" stroke-linecap="round" d="M7.5 4.5v8m4-4h-8"></path></svg></button>
 								</td>
 							</tr>
-							<tr>
-								<td data-user>John doe</td>
-								<td data-num>-1</td>
-								<td data-date>09/08/2019</td>
-								<td data-reason>Lorem ipsum dolor sit amet estractum golum mi tesoro.</td>
-								<td data-action="delete">
-									<button type="button" data-action-btn="delete"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg></button>
-								</td>
-							</tr>
-							<tr>
-								<td data-user>John doe</td>
-								<td data-num>-1</td>
-								<td data-date>09/08/2019</td>
-								<td data-reason>Lorem ipsum dolor sit amet estractum golum mi tesoro.</td>
-								<td data-action="delete">
-									<button type="button" data-action-btn="ndeleteew"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg></button>
-								</td>
-							</tr>
+							${existingRows}
 						</tbody>
 					</table>
 				`,
@@ -192,11 +190,10 @@ TicketConsume = {
 
 	getBadge: function (data, orgName) {
 		var levels = TicketConsume.slas[data.sla].levels, color = '';
-	
 		$.each(levels, function(index, this_color) {
 			if (data.tickets >= index) color = this_color;
 		});
-		
+
 		return `
 			<span class="TLmanaGer_ticketConsume_badge_cont">
 				<button type="button" class="TLmanaGer_ticketConsume_edit" data-org="${orgName}"></button>
@@ -208,6 +205,38 @@ TicketConsume = {
 					<span class="TLmanaGer_ticketConsume_checkedAgo_text" data-time="0">${TicketConsume.getSecondsAgo()}</span>
 				</span>
 			</span>`;
+	},
+
+	// get info from org notes and save org data to variable
+	getCustomData: function ($btn, orgName) {
+		var $workspace = $btn.closest('.ember-view.workspace');
+		var $orgPaneDetails = $workspace.find('.split_pane.organization .property_box.details');
+		var $oldActive = undefined;
+
+		if (!$btn.hasClass('active')) {
+			$oldActive = $btn.closest('.ember-view.btn-group').children('.active');
+			$btn.click();
+		} else {
+			TicketConsume.getCustomDataJson($orgPaneDetails, $oldActive, orgName);
+		}
+		$orgPaneDetails.on('DOMSubtreeModified', function () {
+			TicketConsume.getCustomDataJson($(this), $oldActive, orgName);
+		});
+	},
+
+	getCustomDataJson: function ($el, $oldActive, orgName) {
+		
+		$el.children('.ember-view').each(function () {
+			if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
+				var value = $(this).find('.value').html(), json = {};
+				value = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+				if (value[1]) {
+					json = JSON.parse(value[1]);
+					TicketConsume.clientsCsutomData[orgName] = json;
+				}
+				if (typeof $oldActive !== 'undefined') $oldActive.click();
+			}
+		});
 	},
 
 	observer: function (active, mutation) {
@@ -224,6 +253,7 @@ TicketConsume = {
 						log('TicketConsume append badge ' + orgName + ' ' + JSON.stringify(TicketConsume.data[orgName]));
 						var badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 						TicketConsume.appendBadge(badge, $orgNavbarTicket.closest('nav.btn-group'));
+						TicketConsume.getCustomData($orgNavbarTicket, orgName);
 						if (!TicketConsume.debug) TicketConsume.initIntervals();
 					}
 				}
@@ -239,6 +269,7 @@ TicketConsume = {
 				var badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
 				TicketConsume.appendBadge(badge, $nav);
+				TicketConsume.getCustomData($(this), orgName);
 			}
 		});
 	}
