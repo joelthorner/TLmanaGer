@@ -38,7 +38,7 @@ TicketConsume = {
 	stoChecker: null,
 	data: {},
 	secondsUpdate: 1,
-	clientsCsutomData: {},
+	clientsCustomData: {},
 	
 	init: function (active) {
 		if (active) {
@@ -58,13 +58,95 @@ TicketConsume = {
 	},
 
 	globalEvents : function() {
+		$(document).on('click', '.TLmanaGer_ticketConsume_table [data-action-btn="new"]', function(event) {
+			var orgName = $(this).data('org');
+			var customData = TicketConsume.clientsCustomData[orgName];
+			var validRow = true, $tr = $(this).closest('tr');
+			$tr.find('input').each(function (index, el) {
+				if (!el.checkValidity()) {
+					validRow = false;
+				}
+			});
+			if (validRow) {
+				customData.push({
+					date: $tr.find('input.TLmanaGer_ticketConsume_date').val(),
+					mod: parseInt($tr.find('input.TLmanaGer_ticketConsume_num').val()),
+					reas: $tr.find('input.TLmanaGer_ticketConsume_reason').val(),
+					user: $tr.find('input.TLmanaGer_ticketConsume_user').val()
+				});
+				var newData = 'TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS\n';
+				newData += JSON.stringify(customData);
+				
+				$('[data-tracking-id="tabs-nav-item-organizations"]').each(function () {
+					var thisOrgName = $(this).text().toLowerCase().trim();
+					if (orgName == thisOrgName) {
+						var $workspace = $(this).closest('.ember-view.workspace');
+						var $orgPaneDetails = $workspace.find('.split_pane.organization .property_box.details');
+						
+						$orgPaneDetails.children('.ember-view').each(function () {
+							if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
+								var value = $(this).find('.value').html(), newValue = newData;
+								var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+								if (valueSplitted[1]) {
+									newValue = valueSplitted[0] + newData;
+								}
+								$(this).find('.value').html(newValue);
+								
+								setTimeout(() => {
+									$(this).find('.value').click();
+									setTimeout(() => {
+										$(this).find('.value').focus()
+										setTimeout(() => {
+											$(this).find('.value').change();
+											$(this).find('.value').blur();
+										}, 500);
+									}, 500);
+								}, 500);
+							}
+						});
+					}
+				});
+				
+				/* 
+				$el.children('.ember-view').each(function () {
+			if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
+				var value = $(this).find('.value').html(), json = {};
+				var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+				if (valueSplitted[1]) {
+					var regexp = /<\s*div[^>]*>|<\s*\/\s*div>/g;
+					var cleanValue = valueSplitted[1].replace(regexp, '');
+					try {
+						json = JSON.parse(valueSplitted[1]);
+						TicketConsume.clientsCustomData[orgName] = json;
+					} catch (error) {
+						log('TicketConsume fail parse json org data')
+					}
+				}
+				if (typeof $oldActive !== 'undefined') $oldActive.click();
+			}
+		});
+				var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+				if (valueSplitted[1]) {
+					var regexp = /<\s*div[^>]*>|<\s*\/\s*div>/g;
+					var cleanValue = valueSplitted[1].replace(regexp, '');
+					try {
+						json = JSON.parse(valueSplitted[1]);
+						TicketConsume.clientsCustomData[orgName] = json;
+					} catch (error) {
+						log('TicketConsume fail parse json org data')
+					}
+				}
+				*/
+			}
+		});
+
 		$(document).on('click', '.TLmanaGer_ticketConsume_edit', function(event) {
 			var orgName = $(event.target).data('org');
 			var title = chrome.i18n.getMessage('zenDesk_tiketConsume_title')
 				.replace('%organization%', orgName.toUpperCase())
 				.replace('%month%', moment().format('MMMM YYYY'));
 			var message = chrome.i18n.getMessage('zenDesk_tiketConsume_message');
-			var customData = TicketConsume.clientsCsutomData[orgName];
+			var customData = TicketConsume.clientsCustomData[orgName];
 			var existingRows = '';
 
 			$.each(customData, function (index, obj) {
@@ -75,14 +157,14 @@ TicketConsume = {
 						<td data-date>${obj.date}</td>
 						<td data-reason>${obj.reas}</td>
 						<td data-action="delete">
-							<button type="button" data-action-btn="delete"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg></button>
+							<button type="button" data-action-btn="delete">
+								<svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg>
+							</button>
 						</td>
 					</tr>`;
 			});
 			
 			Swal.fire({
-				// title: '<strong>HTML <u>example</u></strong>',
-				// type: 'info',
 				html: `
 					<div id="swal2-content" style="display: block;">${message}</div>
 					<table class="TLmanaGer_ticketConsume_table table">
@@ -98,19 +180,21 @@ TicketConsume = {
 						<tbody>
 							<tr>
 								<td data-user="new">
-									<input type="text" class="form-control TLmanaGer_ticketConsume_user" placeholder="John doe">
+									<input type="text" class="form-control TLmanaGer_ticketConsume_user" placeholder="John doe" required maxlength="16">
 								</td>
 								<td data-num="new">
-									<input type="number" class="form-control TLmanaGer_ticketConsume_num" placeholder="0">
+									<input type="number" class="form-control TLmanaGer_ticketConsume_num" placeholder="0" required min="-1" max="1">
 								</td>
 								<td data-date="new">
-									<input type="date" class="form-control TLmanaGer_ticketConsume_num">
+									<input type="date" class="form-control TLmanaGer_ticketConsume_date" required>
 								</td>
 								<td data-reason="new">
-									<input type="text" class="form-control TLmanaGer_ticketConsume_reason" placeholder="Lorem ipsum">
+									<input type="text" class="form-control TLmanaGer_ticketConsume_reason" placeholder="Lorem ipsum" required maxlength="30">
 								</td>
 								<td data-action="new">
-									<button type="button" data-action-btn="new"><svg viewBox="0 0 16 16" id="zd-svg-icon-16-plus-circle-stroke"><circle cx="7.5" cy="8.5" r="7" fill="none" stroke="currentColor"></circle><path fill="none" stroke="currentColor" stroke-linecap="round" d="M7.5 4.5v8m4-4h-8"></path></svg></button>
+									<button type="button" data-action-btn="new" data-org="${orgName}">
+										<svg viewBox="0 0 16 16" id="zd-svg-icon-16-plus-circle-stroke"><circle cx="7.5" cy="8.5" r="7" fill="none" stroke="currentColor"></circle><path fill="none" stroke="currentColor" stroke-linecap="round" d="M7.5 4.5v8m4-4h-8"></path></svg>
+									</button>
 								</td>
 							</tr>
 							${existingRows}
@@ -238,7 +322,7 @@ TicketConsume = {
 					var cleanValue = valueSplitted[1].replace(regexp, '');
 					try {
 						json = JSON.parse(valueSplitted[1]);
-						TicketConsume.clientsCsutomData[orgName] = json;
+						TicketConsume.clientsCustomData[orgName] = json;
 					} catch (error) {
 						log('TicketConsume fail parse json org data')
 					}
