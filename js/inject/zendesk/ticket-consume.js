@@ -219,6 +219,9 @@ TicketConsume = {
 		} else {
 			TicketConsume.getCustomDataJson($orgPaneDetails, $oldActive, orgName);
 		}
+		$orgPaneDetails.on('click', function () {
+			$oldActive = undefined;
+		});
 		$orgPaneDetails.on('DOMSubtreeModified', function () {
 			TicketConsume.getCustomDataJson($(this), $oldActive, orgName);
 		});
@@ -229,10 +232,16 @@ TicketConsume = {
 		$el.children('.ember-view').each(function () {
 			if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
 				var value = $(this).find('.value').html(), json = {};
-				value = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
-				if (value[1]) {
-					json = JSON.parse(value[1]);
-					TicketConsume.clientsCsutomData[orgName] = json;
+				var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+				if (valueSplitted[1]) {
+					var regexp = /<\s*div[^>]*>|<\s*\/\s*div>/g;
+					var cleanValue = valueSplitted[1].replace(regexp, '');
+					try {
+						json = JSON.parse(valueSplitted[1]);
+						TicketConsume.clientsCsutomData[orgName] = json;
+					} catch (error) {
+						log('TicketConsume fail parse json org data')
+					}
 				}
 				if (typeof $oldActive !== 'undefined') $oldActive.click();
 			}
