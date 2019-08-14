@@ -7,6 +7,24 @@
  */
 
 /**
+ * objectSize.
+ *
+ * Return object length
+ *
+ * @since      15.08.19
+ *
+ * @global
+ * @param {Object}	object
+ */
+function objectSize(object) {
+	let size = 0, key;
+	for (key in object) {
+		if (object.hasOwnProperty(key)) size++;
+	}
+	return size;
+};
+
+/**
  * guideLines_add.
  *
  * Print a extension formatted log.
