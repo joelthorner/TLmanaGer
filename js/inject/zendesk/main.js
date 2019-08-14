@@ -2,6 +2,7 @@ ZendeskGeneral = {
 	init: function () {
 		this.createMenuSettings();
 		this.saveSessionUser();
+		this.apiToken = $('[name="csrf-token"]').attr('content');
 	},
 
 	createMenuSettings: function () {
