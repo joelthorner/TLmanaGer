@@ -53,12 +53,12 @@ const CHANGELOG = [
 			'CHANGE Better option help button highlight when hasn\'t video',
 			'CHANGE Add privacy policy into options page footer',
 			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
-				<img src="${chrome.extension.getURL('img/data/zd-tikt-consume.gif')}">
 				<ul>
-					<li>- Auto refresh every 10"</li>
-					<li>- Refresh time ago every 1"</li>
+					<li>- Only agents</li>
+					<li>- Auto refresh every 5'</li>
+					<li>- Refresh time ago every 1'</li>
 					<li>- Option enable/disable this feature</li>
-					<li>- Depends by: sla, limittickets tag, tickets this month app data</li>
+					<li>- Depends by: sla, limittickets tag, tickets this month ("intranet") data</li>
 				</ul>
 			`
 		]
@@ -168,200 +168,201 @@ const CHANGELOG = [
 			'NEW Added dev credits',
 			'FIX Removed "#" in code urls (Chrome fix)'
 		]
-	}, {
-		version: '2.2.3', date: '12 Feb 2019',
-		lines: [
-			'NEW Zendesk confirm submit ticket'
-		]
-	}, {
-		version: '2.2.2', date: '11 Feb 2019',
-		lines: [
-			'FIX Fix next holiday event',
-			'FIX Remove changelogs 1.x'
-		]
-	}, {
-		version: '2.2.1', date: '08 Feb 2019',
-		lines: [
-			'NEW LC os login select branches to buttons',
-			'NEW Next holiday event',
-			'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/107" target="_blank">#107</a> (Lc pages grid toggle button in hk)'
-		]
-	}, {
-		version: '2.2.0', date: '18 Jan 2019',
-		lines: [
-			'FIX Hot fix - missing optionDefaults.js',
-			'FIX Update scss & css',
-			'FIX Css standards fixes'
-		]
-	}, {
-		version: '2.1.14', date: '18 Jan 2019',
-		lines: [
-			'FIX Better Show new templates 2018',
-			'FIX Fix flushredis exlude domain',
-			'FIX Fixes EN language',
-			'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/102" target="_blank">#102</a>',
-			'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/102" target="_blank">#93</a>',
-			'FIX Refactoring issues'
-		]
-	}, {
-		version: '2.1.13', date: '14 Jan 2019',
-		lines: [
-			'FIX Minor fixes dev os lc bar',
-			'FIX Scripts optimization',
-			'FIX Fix setting flushredis on/off',
-			'NEW Add feature "show svg icons" (popup -> utils)',
-			'FIX Dev os lc bar duplicate search (Pol)',
-			'NEW Add feature "automatic signup" (Pol) (popup -> testing)'
-		]
-	}, {
-		version: '2.1.12', date: '09 Jan 2019',
-		lines: [
-			'FIX Fix dev os lc bar extra buttons',
-			'FIX Fix flushredis button wrong domains',
-			'NEW Add popup swiper css generator'
-		]
-	}, {
-		version: '2.1.11', date: '13 Dec 2018',
-		lines: [
-			'FIX Refactoring and clean code',
-			'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/66" target="_blank">#66</a>',
-			'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/67" target="_blank">#67</a>',
-			'NEW Add flushredis cfm feature (with on/off opt)'
-		]
-	}, {
-		version: '2.1.10', date: '09 Dec 2018',
-		lines: [
-			'NEW Add lc page deep icon color',
-			'NEW Add lc page inactive icon',
-			'FIX Fix toggle grid lc pages custom',
-			'FIX Remove useless space lc pages window',
-			'NEW Add toggle button enable/disable grid lc custom pages',
-			'FIX Fix bug first install bg background load fail',
-			'FIX Minor fixes lc big controls'
-		]
-	}, {
-		version: '2.1.9', date: '25 Nov 2018',
-		lines: [
-			'FIX Update DEUS ANTICS font',
-			'NEW Update dropdown icons'
-		]
-	}, {
-		version: '2.1.8', date: '05 Nov 2018',
-		lines: [
-			'FIX Fix Unsplash API download_location'
-		]
-	}, {
-		version: '2.1.7', date: '05 Nov 2018',
-		lines: [
-			'FIX Add responsive support options page',
-			'FIX Update DEUS ANTICS font',
-			'FIX Fix Unsplash API requirements',
-			'FIX Fix steal FA',
-			'NEW Update next holidays'
-		]
-	}, {
-		version: '2.1.6', date: '1 Nov 2018',
-		lines: [
-			'FIX Minor improvements',
-			'FIX Toggle Secret Hack Fix',
-			'FIX Add credit Secret Hack',
-			'FIX Autoforceview support .hk and .cn',
-			'FIX Dev lc bar into all admins and refactor file',
-			'FIX Add Unsplash utm links'
-		]
-	}, {
-		version: '2.1.5', date: '30 Oct 2018',
-		lines: [
-			'FIX Fix autosave timeout',
-			'FIX Improvements unsplash photo API'
-		]
-	}, {
-		version: '2.1.4', date: '26 Oct 2018',
-		lines: [
-			'FIX Big controls improvements',
-			'NEW Add option for holidays',
-			'NEW Visual options changes',
-			'NEW Add background option with Unsplash API',
-			'NEW Added autosave options',
-			'FIX Improvements search lc dev bar',
-			'NEW Secret Hack'
-		]
-	}, {
-		version: '2.1.3', date: '23 Oct 2018',
-		lines: [
-			'NEW Add new avatar',
-			'NEW Add FTP button <a href="https://github.com/joelthorner/TLmanaGer/issues/55" target="_blank">#55</a>',
-			'FIX Fix when close all windows close opensaas bar',
-			'FIX Opensaas bar improvements',
-			'NEW Search opensaas bar',
-			'FIX Rename dev opensaas bar to dev lc bar',
-			'NEW Add bar to real LC',
-			'NEW Holidays events'
-		]
-	}, {
-		version: '2.1.2', date: '25 Sep 2018',
-		lines: [
-			'FIX Remove os autologin recursive xD'
-		]
-	}, {
-		version: '2.1.1', date: '23 Sep 2018',
-		lines: [
-			'FIX Fix notify'
-		]
-	}, {
-		version: '2.1.0', date: '21 Sep 2018',
-		lines: [
-			'FIX Visual improvements',
-			'FIX Scoped css inject by options',
-			'FIX OS bar improvements',
-			'NEW OS bar add shortcuts',
-			'FIX Fix bug <a href="https://github.com/joelthorner/TLmanaGer/issues/48" target="_blank">#48</a>',
-			'FIX Fix bug <a href="https://github.com/joelthorner/TLmanaGer/issues/50" target="_blank">#50</a>',
-			'FIX Improvements in the forceview',
-			'FIX Big controls fixes',
-			'NEW Added Features info into options page',
-			'NEW Added bongo cat avatar :3'
-		]
-	}, {
-		version: '2.0.4', date: '2 Sep 2018',
-		lines: [
-			'FIX Visual improvements',
-			'FIX Refactor options data'
-		]
-	}, {
-		version: '2.0.3', date: '28 Aug 2018',
-		lines: [
-			'FIX Fix wrong urls',
-			'FIX Fix undefined options (v2.x)',
-			'FIX Visual fixes',
-			'NEW Add "LC big controls" background option',
-			'NEW Add more avatars for the loles'
-		]
-	}, {
-		version: '2.0.2', date: '26 Aug 2018',
-		lines: [
-			'FIX _locale language files'
-		]
-	}, {
-		version: '2.0.1', date: '26 Aug 2018',
-		lines: [
-			'FIX Add default_locale to manifest'
-		]
-	}, {
-		version: '2.0.0', date: '26 Aug 2018',
-		lines: [
-			'NEW New design',
-			'FIX Popup actions improvements',
-			'FIX Injection scripts improvements',
-			'NEW Add options layout',
-			'NEW New option background on/off',
-			'NEW Add changelog',
-			'NEW Font Awesome moved to default option',
-			'NEW Guide lines load in session',
-			'NEW New action show Template 2018 modules',
-			'NEW Add confirm account testing action',
-			'NEW New avatars',
-			'NEW Add notify action'
-		]
 	}
+	// {
+	// 	version: '2.2.3', date: '12 Feb 2019',
+	// 	lines: [
+	// 		'NEW Zendesk confirm submit ticket'
+	// 	]
+	// }, {
+	// 	version: '2.2.2', date: '11 Feb 2019',
+	// 	lines: [
+	// 		'FIX Fix next holiday event',
+	// 		'FIX Remove changelogs 1.x'
+	// 	]
+	// }, {
+	// 	version: '2.2.1', date: '08 Feb 2019',
+	// 	lines: [
+	// 		'NEW LC os login select branches to buttons',
+	// 		'NEW Next holiday event',
+	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/107" target="_blank">#107</a> (Lc pages grid toggle button in hk)'
+	// 	]
+	// }, {
+	// 	version: '2.2.0', date: '18 Jan 2019',
+	// 	lines: [
+	// 		'FIX Hot fix - missing optionDefaults.js',
+	// 		'FIX Update scss & css',
+	// 		'FIX Css standards fixes'
+	// 	]
+	// }, {
+	// 	version: '2.1.14', date: '18 Jan 2019',
+	// 	lines: [
+	// 		'FIX Better Show new templates 2018',
+	// 		'FIX Fix flushredis exlude domain',
+	// 		'FIX Fixes EN language',
+	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/102" target="_blank">#102</a>',
+	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/102" target="_blank">#93</a>',
+	// 		'FIX Refactoring issues'
+	// 	]
+	// }, {
+	// 	version: '2.1.13', date: '14 Jan 2019',
+	// 	lines: [
+	// 		'FIX Minor fixes dev os lc bar',
+	// 		'FIX Scripts optimization',
+	// 		'FIX Fix setting flushredis on/off',
+	// 		'NEW Add feature "show svg icons" (popup -> utils)',
+	// 		'FIX Dev os lc bar duplicate search (Pol)',
+	// 		'NEW Add feature "automatic signup" (Pol) (popup -> testing)'
+	// 	]
+	// }, {
+	// 	version: '2.1.12', date: '09 Jan 2019',
+	// 	lines: [
+	// 		'FIX Fix dev os lc bar extra buttons',
+	// 		'FIX Fix flushredis button wrong domains',
+	// 		'NEW Add popup swiper css generator'
+	// 	]
+	// }, {
+	// 	version: '2.1.11', date: '13 Dec 2018',
+	// 	lines: [
+	// 		'FIX Refactoring and clean code',
+	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/66" target="_blank">#66</a>',
+	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/67" target="_blank">#67</a>',
+	// 		'NEW Add flushredis cfm feature (with on/off opt)'
+	// 	]
+	// }, {
+	// 	version: '2.1.10', date: '09 Dec 2018',
+	// 	lines: [
+	// 		'NEW Add lc page deep icon color',
+	// 		'NEW Add lc page inactive icon',
+	// 		'FIX Fix toggle grid lc pages custom',
+	// 		'FIX Remove useless space lc pages window',
+	// 		'NEW Add toggle button enable/disable grid lc custom pages',
+	// 		'FIX Fix bug first install bg background load fail',
+	// 		'FIX Minor fixes lc big controls'
+	// 	]
+	// }, {
+	// 	version: '2.1.9', date: '25 Nov 2018',
+	// 	lines: [
+	// 		'FIX Update DEUS ANTICS font',
+	// 		'NEW Update dropdown icons'
+	// 	]
+	// }, {
+	// 	version: '2.1.8', date: '05 Nov 2018',
+	// 	lines: [
+	// 		'FIX Fix Unsplash API download_location'
+	// 	]
+	// }, {
+	// 	version: '2.1.7', date: '05 Nov 2018',
+	// 	lines: [
+	// 		'FIX Add responsive support options page',
+	// 		'FIX Update DEUS ANTICS font',
+	// 		'FIX Fix Unsplash API requirements',
+	// 		'FIX Fix steal FA',
+	// 		'NEW Update next holidays'
+	// 	]
+	// }, {
+	// 	version: '2.1.6', date: '1 Nov 2018',
+	// 	lines: [
+	// 		'FIX Minor improvements',
+	// 		'FIX Toggle Secret Hack Fix',
+	// 		'FIX Add credit Secret Hack',
+	// 		'FIX Autoforceview support .hk and .cn',
+	// 		'FIX Dev lc bar into all admins and refactor file',
+	// 		'FIX Add Unsplash utm links'
+	// 	]
+	// }, {
+	// 	version: '2.1.5', date: '30 Oct 2018',
+	// 	lines: [
+	// 		'FIX Fix autosave timeout',
+	// 		'FIX Improvements unsplash photo API'
+	// 	]
+	// }, {
+	// 	version: '2.1.4', date: '26 Oct 2018',
+	// 	lines: [
+	// 		'FIX Big controls improvements',
+	// 		'NEW Add option for holidays',
+	// 		'NEW Visual options changes',
+	// 		'NEW Add background option with Unsplash API',
+	// 		'NEW Added autosave options',
+	// 		'FIX Improvements search lc dev bar',
+	// 		'NEW Secret Hack'
+	// 	]
+	// }, {
+	// 	version: '2.1.3', date: '23 Oct 2018',
+	// 	lines: [
+	// 		'NEW Add new avatar',
+	// 		'NEW Add FTP button <a href="https://github.com/joelthorner/TLmanaGer/issues/55" target="_blank">#55</a>',
+	// 		'FIX Fix when close all windows close opensaas bar',
+	// 		'FIX Opensaas bar improvements',
+	// 		'NEW Search opensaas bar',
+	// 		'FIX Rename dev opensaas bar to dev lc bar',
+	// 		'NEW Add bar to real LC',
+	// 		'NEW Holidays events'
+	// 	]
+	// }, {
+	// 	version: '2.1.2', date: '25 Sep 2018',
+	// 	lines: [
+	// 		'FIX Remove os autologin recursive xD'
+	// 	]
+	// }, {
+	// 	version: '2.1.1', date: '23 Sep 2018',
+	// 	lines: [
+	// 		'FIX Fix notify'
+	// 	]
+	// }, {
+	// 	version: '2.1.0', date: '21 Sep 2018',
+	// 	lines: [
+	// 		'FIX Visual improvements',
+	// 		'FIX Scoped css inject by options',
+	// 		'FIX OS bar improvements',
+	// 		'NEW OS bar add shortcuts',
+	// 		'FIX Fix bug <a href="https://github.com/joelthorner/TLmanaGer/issues/48" target="_blank">#48</a>',
+	// 		'FIX Fix bug <a href="https://github.com/joelthorner/TLmanaGer/issues/50" target="_blank">#50</a>',
+	// 		'FIX Improvements in the forceview',
+	// 		'FIX Big controls fixes',
+	// 		'NEW Added Features info into options page',
+	// 		'NEW Added bongo cat avatar :3'
+	// 	]
+	// }, {
+	// 	version: '2.0.4', date: '2 Sep 2018',
+	// 	lines: [
+	// 		'FIX Visual improvements',
+	// 		'FIX Refactor options data'
+	// 	]
+	// }, {
+	// 	version: '2.0.3', date: '28 Aug 2018',
+	// 	lines: [
+	// 		'FIX Fix wrong urls',
+	// 		'FIX Fix undefined options (v2.x)',
+	// 		'FIX Visual fixes',
+	// 		'NEW Add "LC big controls" background option',
+	// 		'NEW Add more avatars for the loles'
+	// 	]
+	// }, {
+	// 	version: '2.0.2', date: '26 Aug 2018',
+	// 	lines: [
+	// 		'FIX _locale language files'
+	// 	]
+	// }, {
+	// 	version: '2.0.1', date: '26 Aug 2018',
+	// 	lines: [
+	// 		'FIX Add default_locale to manifest'
+	// 	]
+	// }, {
+	// 	version: '2.0.0', date: '26 Aug 2018',
+	// 	lines: [
+	// 		'NEW New design',
+	// 		'FIX Popup actions improvements',
+	// 		'FIX Injection scripts improvements',
+	// 		'NEW Add options layout',
+	// 		'NEW New option background on/off',
+	// 		'NEW Add changelog',
+	// 		'NEW Font Awesome moved to default option',
+	// 		'NEW Guide lines load in session',
+	// 		'NEW New action show Template 2018 modules',
+	// 		'NEW Add confirm account testing action',
+	// 		'NEW New avatars',
+	// 		'NEW Add notify action'
+	// 	]
+	// }
 ];
