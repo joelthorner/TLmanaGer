@@ -1,6 +1,6 @@
 if (!$("#development-tool").length) {
   if ($('.-lucee-dump').length) {
-    $('head style, body script').remove();
+    $('head, body script').remove();
     
     var goToDump = setInterval(function() {
       window.scrollTo(0, $('.-lucee-dump').first().offset().top);
@@ -9,6 +9,7 @@ if (!$("#development-tool").length) {
     		clearInterval(goToDump)
     	}
     }, 20);
+    
     setTimeout(() => {
       clearInterval(goToDump)
     }, 1500);
