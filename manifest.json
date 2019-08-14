@@ -149,7 +149,8 @@
 			],
 			"css": [
 				"css/inject/zendesk/main.css",
-				"css/inject/zendesk/submit-expander.css"
+				"css/inject/zendesk/submit-expander.css",
+				"css/inject/zendesk/ticket-consume.css"
 			],
 			"js": [
 				"js/libs/hotkeys.min.js",
