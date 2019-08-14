@@ -11,6 +11,19 @@ async function TicketConsume_showOrganization(id) {
 	return data;
 };
 
+async function TicketConsume_showManyOrganizations(idList) {
+	// https://developer.zendesk.com/rest_api/docs/support/organizations#show-many-organizations
+	const rawResponse = await fetch(`/api/v2/organizations/show_many?ids=${idList}`, {
+		method: 'GET',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		}
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
 async function TicketConsume_updateOrganization(id, obj) {
 	// https://developer.zendesk.com/rest_api/docs/support/organizations#update-organization
 	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
@@ -333,19 +346,29 @@ TicketConsume = {
 	},
 
 	// updated
+	// Update api org datas and badges
 	updateAll : function () {
+		let idList = '';
+		$.each(TicketConsume.data, function (index, val) {
+			if (val.id) idList += val.id + ',';
+		});
+		
+		if (idList.length) idList = idList.substring(0, idList.length - 1);
+
+		TicketConsume_showManyOrganizations(idList).then((responseData) => {
+			$.each(responseData.organization, function (index, org) {
+				let customData = TicketConsume.parseOrganizationNotes(responseData.org);
+				TicketConsume.data[org.name].customData = customData;
+			});
+		});
+
 		$('.TLmanaGer_ticketConsume_badge_cont').each(function () {
 			let orgName = $(this).find('[data-org]').data('org'),
-				orgId = TicketConsume.data[orgName].id,
-				$nav = $(this).closest('nav.btn-group');
+				$nav = $(this).closest('nav.btn-group'),
+				badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 
-			TicketConsume_showOrganization(orgId).then((responseData) => {
-				let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
-				TicketConsume.data[orgName].customData = customData;
-				let badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
-				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
-				TicketConsume.appendBadge(badge, $nav);
-			});
+			$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
+			TicketConsume.appendBadge(badge, $nav);
 		});
 	}
 };
