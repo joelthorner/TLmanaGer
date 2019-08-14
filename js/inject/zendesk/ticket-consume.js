@@ -1,3 +1,31 @@
+async function TicketConsume_showOrganization(id) {
+	// https://developer.zendesk.com/rest_api/docs/support/organizations#show-organization
+	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
+		method: 'GET',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		}
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
+async function TicketConsume_updateOrganization(id, obj) {
+	// https://developer.zendesk.com/rest_api/docs/support/organizations#update-organization
+	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
+		method: 'PUT',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(obj)
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
+
 /**
  * TicketConsume.
  *
@@ -38,7 +66,6 @@ TicketConsume = {
 	stoChecker: null,
 	data: {},
 	secondsUpdate: 1,
-	clientsCustomData: {},
 	
 	init: function (active) {
 		if (active) {
@@ -58,105 +85,69 @@ TicketConsume = {
 	},
 
 	globalEvents : function() {
+		// this need to be updated
 		$(document).on('click', '.TLmanaGer_ticketConsume_table [data-action-btn="new"]', function(event) {
-			var orgName = $(this).data('org');
-			var customData = TicketConsume.clientsCustomData[orgName];
-			var validRow = true, $tr = $(this).closest('tr');
-			$tr.find('input').each(function (index, el) {
-				if (!el.checkValidity()) {
-					validRow = false;
-				}
+			let orgName = $(this).data('org'),
+				validRow = true,
+				$row = $(this).closest('tr');
+
+			$row.find('input').each(function (index, el) {
+				if (!el.checkValidity()) validRow = false;
 			});
+
 			if (validRow) {
-				customData.push({
-					date: $tr.find('input.TLmanaGer_ticketConsume_date').val(),
-					mod: parseInt($tr.find('input.TLmanaGer_ticketConsume_num').val()),
-					reas: $tr.find('input.TLmanaGer_ticketConsume_reason').val(),
-					user: $tr.find('input.TLmanaGer_ticketConsume_user').val()
+				let newObj = {
+					date: $row.find('input.TLmanaGer_ticketConsume_date').val(),
+					mod: parseInt($row.find('input.TLmanaGer_ticketConsume_num').val()),
+					reas: $row.find('input.TLmanaGer_ticketConsume_reason').val(),
+					user: $row.find('input.TLmanaGer_ticketConsume_user').val()
+				};
+				TicketConsume.data[orgName].customData.push(newObj);
+	
+				TicketConsume_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
+					let newData = TicketConsume.getNotesText(responseData.organization.notes);
+					newData += 'TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS\n';
+					newData += JSON.stringify(TicketConsume.data[orgName].customData);
+
+					TicketConsume_updateOrganization(TicketConsume.data[orgName].id, { 
+						"organization": { "notes": newData } 
+					}).then((responseData) => {
+						$('.TLmanaGer_ticketConsume_table tbody tr[data-tr="new"]').after(`
+							<tr class="TLmanaGer_ticketConsume_table__row">
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-user>${newObj.user}</td>
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-num>${newObj.mod}</td>
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-date>${newObj.date}</td>
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-reason>${newObj.reas}</td>
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-action="delete">
+									<button type="button" data-action-btn="delete">
+										<svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg>
+									</button>
+								</td>
+							</tr>`);
+					});
 				});
-				var newData = 'TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS\n';
-				newData += JSON.stringify(customData);
-				
-				$('[data-tracking-id="tabs-nav-item-organizations"]').each(function () {
-					var thisOrgName = $(this).text().toLowerCase().trim();
-					if (orgName == thisOrgName) {
-						var $workspace = $(this).closest('.ember-view.workspace');
-						var $orgPaneDetails = $workspace.find('.split_pane.organization .property_box.details');
-						
-						$orgPaneDetails.children('.ember-view').each(function () {
-							if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
-								var value = $(this).find('.value').html(), newValue = newData;
-								var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
-								if (valueSplitted[1]) {
-									newValue = valueSplitted[0] + newData;
-								}
-								$(this).find('.value').html(newValue);
-								
-								setTimeout(() => {
-									$(this).find('.value').click();
-									setTimeout(() => {
-										$(this).find('.value').focus()
-										setTimeout(() => {
-											$(this).find('.value').change();
-											$(this).find('.value').blur();
-										}, 500);
-									}, 500);
-								}, 500);
-							}
-						});
-					}
-				});
-				
-				/* 
-				$el.children('.ember-view').each(function () {
-			if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
-				var value = $(this).find('.value').html(), json = {};
-				var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
-				if (valueSplitted[1]) {
-					var regexp = /<\s*div[^>]*>|<\s*\/\s*div>/g;
-					var cleanValue = valueSplitted[1].replace(regexp, '');
-					try {
-						json = JSON.parse(valueSplitted[1]);
-						TicketConsume.clientsCustomData[orgName] = json;
-					} catch (error) {
-						log('TicketConsume fail parse json org data')
-					}
-				}
-				if (typeof $oldActive !== 'undefined') $oldActive.click();
-			}
-		});
-				var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
-				if (valueSplitted[1]) {
-					var regexp = /<\s*div[^>]*>|<\s*\/\s*div>/g;
-					var cleanValue = valueSplitted[1].replace(regexp, '');
-					try {
-						json = JSON.parse(valueSplitted[1]);
-						TicketConsume.clientsCustomData[orgName] = json;
-					} catch (error) {
-						log('TicketConsume fail parse json org data')
-					}
-				}
-				*/
 			}
 		});
 
+		// this is fine but refactoring is needed
 		$(document).on('click', '.TLmanaGer_ticketConsume_edit', function(event) {
-			var orgName = $(event.target).data('org');
-			var title = chrome.i18n.getMessage('zenDesk_tiketConsume_title')
-				.replace('%organization%', orgName.toUpperCase())
-				.replace('%month%', moment().format('MMMM YYYY'));
-			var message = chrome.i18n.getMessage('zenDesk_tiketConsume_message');
-			var customData = TicketConsume.clientsCustomData[orgName];
-			var existingRows = '';
+			let orgName = $(event.target).data('org'),
+				modalIcon = '<svg viewBox="0 0 16 16" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5H2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h12c.28 0 .5-.22.5-.5V3c0-.28-.22-.5-.5-.5h-2.5m-6.5 8l2 2L11.5 8m-.05-3.5c.02-.16.05-.33.05-.5C11.5 2.07 9.93.5 8 .5S4.5 2.07 4.5 4c0 .17.03.34.05.5h6.9z"></path></svg>',
+				modalTitle = chrome.i18n.getMessage('zenDesk_tiketConsume_title')
+					.replace('%organization%', orgName.charAt(0).toUpperCase() + orgName.slice(1))
+					.replace('%month%', moment().format('MMMM YYYY')),
+				modalMessage = chrome.i18n.getMessage('zenDesk_tiketConsume_message'),
+				data = TicketConsume.data[orgName],
+				existingRows = '';
 
-			$.each(customData, function (index, obj) {
-				existingRows+= `
-					<tr>
-						<td data-user>${obj.user}</td>
-						<td data-num>${obj.mod}</td>
-						<td data-date>${obj.date}</td>
-						<td data-reason>${obj.reas}</td>
-						<td data-action="delete">
+			$.each(data.customData, function (index, obj) {
+				existingRows += `
+					<tr class="TLmanaGer_ticketConsume_table__row">
+						<td class="TLmanaGer_ticketConsume_table__row__cell" data-user>${obj.user}</td>
+						<td class="TLmanaGer_ticketConsume_table__row__cell" data-num>${obj.mod}</td>
+						<td class="TLmanaGer_ticketConsume_table__row__cell" data-date>${obj.date}</td>
+						<td class="TLmanaGer_ticketConsume_table__row__cell" data-reason>${obj.reas}</td>
+						<td class="TLmanaGer_ticketConsume_table__row__cell" data-action="delete">
 							<button type="button" data-action-btn="delete">
 								<svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg>
 							</button>
@@ -166,32 +157,32 @@ TicketConsume = {
 			
 			Swal.fire({
 				html: `
-					<div id="swal2-content" style="display: block;">${message}</div>
-					<table class="TLmanaGer_ticketConsume_table table">
+					<div id="swal2-content" style="display: block;">${modalMessage}</div>
+					<table class="TLmanaGer_ticketConsume_table TLmanaGer_ticketConsume_table">
 						<thead>
-							<tr>
-								<th>User</th>
-								<th>Modification</th>
-								<th>Date</th>
-								<th>Reason</th>
-								<th>Action</th>
+							<tr class="TLmanaGer_ticketConsume_table__row TLmanaGer_ticketConsume_table__row--header">
+								<th class="TLmanaGer_ticketConsume_table__row__cell">User</th>
+								<th class="TLmanaGer_ticketConsume_table__row__cell">Modification</th>
+								<th class="TLmanaGer_ticketConsume_table__row__cell">Date</th>
+								<th class="TLmanaGer_ticketConsume_table__row__cell">Reason</th>
+								<th class="TLmanaGer_ticketConsume_table__row__cell">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td data-user="new">
-									<input type="text" class="form-control TLmanaGer_ticketConsume_user" placeholder="John doe" required maxlength="16">
+							<tr class="TLmanaGer_ticketConsume_table__row" data-tr="new">
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-user="new">
+									<input type="text" class="c-txt__input TLmanaGer_ticketConsume_user" placeholder="John doe" required maxlength="16">
 								</td>
-								<td data-num="new">
-									<input type="number" class="form-control TLmanaGer_ticketConsume_num" placeholder="0" required min="-1" max="1">
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-num="new">
+									<input type="number" class="c-txt__input TLmanaGer_ticketConsume_num" placeholder="0" required min="-1" max="1">
 								</td>
-								<td data-date="new">
-									<input type="date" class="form-control TLmanaGer_ticketConsume_date" required>
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-date="new">
+									<input type="date" class="c-txt__input c-txt__input--select TLmanaGer_ticketConsume_date" required>
 								</td>
-								<td data-reason="new">
-									<input type="text" class="form-control TLmanaGer_ticketConsume_reason" placeholder="Lorem ipsum" required maxlength="30">
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-reason="new">
+									<input type="text" class="c-txt__input TLmanaGer_ticketConsume_reason" placeholder="Lorem ipsum" required maxlength="30">
 								</td>
-								<td data-action="new">
+								<td class="TLmanaGer_ticketConsume_table__row__cell" data-action="new">
 									<button type="button" data-action-btn="new" data-org="${orgName}">
 										<svg viewBox="0 0 16 16" id="zd-svg-icon-16-plus-circle-stroke"><circle cx="7.5" cy="8.5" r="7" fill="none" stroke="currentColor"></circle><path fill="none" stroke="currentColor" stroke-linecap="round" d="M7.5 4.5v8m4-4h-8"></path></svg>
 									</button>
@@ -201,40 +192,26 @@ TicketConsume = {
 						</tbody>
 					</table>
 				`,
-				// showCloseButton: true,
-				// showCancelButton: true,
-				// focusConfirm: false,
-				// confirmButtonText:
-				// 	'<i class="fa fa-thumbs-up"></i> Great!',
-				// confirmButtonAriaLabel: 'Thumbs up, great!',
-				// cancelButtonText:
-				// 	'<i class="fa fa-thumbs-down"></i>',
-				// cancelButtonAriaLabel: 'Thumbs down'
-				// <svg id="zd-svg-icon-16-clipboard-check-stroke"><use xlink:href="../index.svg#zd-svg-icon-16-clipboard-check-stroke"></use></svg>
-				// title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-clipboard-check-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"></path><circle cx="7.5" cy="12" r="1" fill="currentColor"></circle></svg>' +
-				title: '<svg viewBox="0 0 16 16" id="zd-svg-icon-16-clipboard-check-stroke" width="100%" height="100%"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5H2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h12c.28 0 .5-.22.5-.5V3c0-.28-.22-.5-.5-.5h-2.5m-6.5 8l2 2L11.5 8m-.05-3.5c.02-.16.05-.33.05-.5C11.5 2.07 9.93.5 8 .5S4.5 2.07 4.5 4c0 .17.03.34.05.5h6.9z"></path></svg>' +
-					title,
-				// text: chrome.i18n.getMessage('zenDesk_tiketConsume_message'),
+				title: modalIcon + modalTitle,
 				showCancelButton: false,
 				confirmButtonColor: '#A6BD09',
-				confirmButtonText: 'Confirm',
-				// confirmButtonColor: '#A6BD09',
-				// cancelButtonColor: '#979797',
-				// confirmButtonText: 'Confirm',
-				// reverseButtons: true,
+				confirmButtonText: 'Save',
 				width: '65rem',
 				customClass: {
 					container: 'swal-zendesk-popup swal-zendesk-ticket-consume'
+				},
+				onClose: () => {
+					TicketConsume.updateAll();
 				}
 			})
 		});
 	},
 
+	// this need a good url
 	insertIframe : function() {
-		$('body')
-			.append(
-				'<iframe src="https://joelthorner.github.io/temp/?refresh=1" class="TlmanaGer_consumeIframe"></iframe>'
-			);
+		$('body').append(
+			'<iframe src="https://joelthorner.github.io/temp/?refresh=1" class="TlmanaGer_consumeIframe"></iframe>'
+		);
 	},
 	
 	appendBadge : function (badge, $navbar) {
@@ -272,17 +249,25 @@ TicketConsume = {
 		}, 10000); // 10"
 	},
 
+	// updated
 	getBadge: function (data, orgName) {
-		var levels = TicketConsume.slas[data.sla].levels, color = '';
+		let totalTiquets = data.tickets,
+			levels = TicketConsume.slas[data.sla].levels, 
+			color = '';
+
+		$.each(data.customData, function(index, val) {
+			totalTiquets += val.mod;
+		});
+		
 		$.each(levels, function(index, this_color) {
-			if (data.tickets >= index) color = this_color;
+			if (totalTiquets >= index) color = this_color;
 		});
 
 		return `
 			<span class="TLmanaGer_ticketConsume_badge_cont">
 				<button type="button" class="TLmanaGer_ticketConsume_edit" data-org="${orgName}"></button>
 				<span class="TLmanaGer_ticketConsume_badge TLmanaGer_ticketConsume_badge_${color}">
-					SLA ${data.sla} - ${data.tickets}/${TicketConsume.slas[data.sla].tiquets} TICKETS
+					SLA ${data.sla} - ${totalTiquets}/${TicketConsume.slas[data.sla].tiquets} TICKETS
 				</span>
 				<span class="TLmanaGer_ticketConsume_checkedAgo">
 					<span class="TLmanaGer_ticketConsume_checkedAgo_lbl">Last check</span>
@@ -291,79 +276,76 @@ TicketConsume = {
 			</span>`;
 	},
 
-	// get info from org notes and save org data to variable
-	getCustomData: function ($btn, orgName) {
-		var $workspace = $btn.closest('.ember-view.workspace');
-		var $orgPaneDetails = $workspace.find('.split_pane.organization .property_box.details');
-		var $oldActive = undefined;
+	// updated
+	parseOrganizationNotes: function(value) {
+		let json = {},
+			valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
 
-		if (!$btn.hasClass('active')) {
-			$oldActive = $btn.closest('.ember-view.btn-group').children('.active');
-			$btn.click();
-		} else {
-			TicketConsume.getCustomDataJson($orgPaneDetails, $oldActive, orgName);
-		}
-		$orgPaneDetails.on('click', function () {
-			$oldActive = undefined;
-		});
-		$orgPaneDetails.on('DOMSubtreeModified', function () {
-			TicketConsume.getCustomDataJson($(this), $oldActive, orgName);
-		});
-	},
-
-	getCustomDataJson: function ($el, $oldActive, orgName) {
-		
-		$el.children('.ember-view').each(function () {
-			if ($(this).find('label').text().trim().toLowerCase() == 'notes') {
-				var value = $(this).find('.value').html(), json = {};
-				var valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
-				if (valueSplitted[1]) {
-					var regexp = /<\s*div[^>]*>|<\s*\/\s*div>/g;
-					var cleanValue = valueSplitted[1].replace(regexp, '');
-					try {
-						json = JSON.parse(valueSplitted[1]);
-						TicketConsume.clientsCustomData[orgName] = json;
-					} catch (error) {
-						log('TicketConsume fail parse json org data')
-					}
-				}
-				if (typeof $oldActive !== 'undefined') $oldActive.click();
+		if (valueSplitted) {
+			json = valueSplitted[valueSplitted.length - 1];
+			try {
+				json = JSON.parse(json);
+			} catch (error) {
+				log(error.message, 'danger')
 			}
-		});
+		}
+		return json;
 	},
 
+	// updated
+	getNotesText : function(value) {
+		let text = '',
+			hasRecountValue = value.match(/TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS/),
+			valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+
+		if (hasRecountValue && valueSplitted) {
+			text += valueSplitted[0] + '\n';
+		} else {
+			text += value;
+		}
+		return text;
+	},
+
+	// updated
 	observer: function (active, mutation) {
 		if (active && mutation.addedNodes.length) {
+			let $ticketOrg = $(mutation.target).find('[data-test-id="customercontext-userinfo-organization"] [href*="organizations"]');
 			
-			var $orgNavbarTicket = $(mutation.target).find('[data-tracking-id="tabs-nav-item-organizations"]');
-			if ($orgNavbarTicket.length) {
+			if ($ticketOrg.length && typeof $ticketOrg.data('ovserved-org') === 'undefined') {
 				
-				var $badge = $orgNavbarTicket.closest('nav.btn-group').find('.TLmanaGer_ticketConsume_badge_cont');
-				if (!$badge.length) {
-					
-					var orgName = $orgNavbarTicket.text().toLowerCase().trim();
-					if (TicketConsume.data.hasOwnProperty(orgName)) {
-						log('TicketConsume append badge ' + orgName + ' ' + JSON.stringify(TicketConsume.data[orgName]));
-						var badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
-						TicketConsume.appendBadge(badge, $orgNavbarTicket.closest('nav.btn-group'));
-						TicketConsume.getCustomData($orgNavbarTicket, orgName);
-						if (!TicketConsume.debug) TicketConsume.initIntervals();
-					}
+				$ticketOrg.data('ovserved-org', true);
+				let findOrgId = $ticketOrg.attr('href').match(/\d{1,}/);
+				
+				if (findOrgId) {
+					let orgId = findOrgId[0],
+						orgName = $ticketOrg.text().trim().toLowerCase();
+
+					TicketConsume_showOrganization(orgId).then((responseData) => {
+						let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
+						TicketConsume.data[orgName].id = orgId;
+						TicketConsume.data[orgName].customData = customData;
+						let badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
+						TicketConsume.appendBadge(badge, $ticketOrg.closest('.ember-view.workspace').find('nav.btn-group'));
+					});
 				}
 			}
 		}
 	},
 
-	updateAllBadges : function () {
-		$('[data-tracking-id="tabs-nav-item-organizations"]').each(function () {
-			var orgName = $(this).text().toLowerCase().trim();
-			if (TicketConsume.data.hasOwnProperty(orgName)) {
-				var $nav = $(this).closest('nav.btn-group');
-				var badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
+	// updated
+	updateAll : function () {
+		$('.TLmanaGer_ticketConsume_badge_cont').each(function () {
+			let orgName = $(this).find('[data-org]').data('org'),
+				orgId = TicketConsume.data[orgName].id,
+				$nav = $(this).closest('nav.btn-group');
+
+			TicketConsume_showOrganization(orgId).then((responseData) => {
+				let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
+				TicketConsume.data[orgName].customData = customData;
+				let badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 				$nav.find('.TLmanaGer_ticketConsume_badge_cont').remove();
 				TicketConsume.appendBadge(badge, $nav);
-				TicketConsume.getCustomData($(this), orgName);
-			}
+			});
 		});
 	}
 };
