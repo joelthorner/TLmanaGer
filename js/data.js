@@ -50,6 +50,7 @@ const CHANGELOG = [
 			'FIX Minor fixes help ids',
 			'CHANGE Code maintainability (del duplicated code and optimized some functions)',
 			'FIX Change injection scripts and css with a safe functions/classes/ids namespaces',
+			'FIX Go to fluid dump fix',
 			'CHANGE Better option help button highlight when hasn\'t video',
 			'CHANGE Add privacy policy into options page footer',
 			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
