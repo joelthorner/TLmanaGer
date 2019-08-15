@@ -139,6 +139,7 @@ TicketConsume = {
 								</td>
 							</tr>`);
 						TicketConsume.updateNotesHtmlNode(responseData.organization);
+						TicketConsume.updateAll();
 					});
 				});
 			}
@@ -150,7 +151,10 @@ TicketConsume = {
 				$row = $(this).closest('tr');
 
 			$.each(TicketConsume.data[orgName].customData, function (index, val) {
-				if (val.id == id) TicketConsume.data[orgName].customData.splice(index, 1);
+				if (val.id == id) {
+					TicketConsume.data[orgName].customData.splice(index, 1);
+					return false;
+				}
 			});
 
 			TicketConsume_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
@@ -166,6 +170,7 @@ TicketConsume = {
 				}).then((responseData) => {
 					$row.remove();
 					TicketConsume.updateNotesHtmlNode(responseData.organization);
+					TicketConsume.updateAll();
 				});
 			});
 		});
@@ -239,9 +244,6 @@ TicketConsume = {
 				width: '65rem',
 				customClass: {
 					container: 'swal-zendesk-popup swal-zendesk-ticket-consume'
-				},
-				onClose: () => {
-					TicketConsume.updateAll();
 				}
 			})
 		});
@@ -250,7 +252,7 @@ TicketConsume = {
 	updateNotesHtmlNode: function (organization) {
 		var orgName = organization.name.trim().toLowerCase();
 		$('[data-org="' + orgName + '"]').closest('.workspace').find('.property_box.details label').each(function (index, el) {
-			if ($(el).text().trim().toLowerCase() == orgName) {
+			if ($(el).text().trim().toLowerCase() == 'notes') {
 				$(el).next('.editable').html(organization.notes);
 			}
 		});
