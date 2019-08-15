@@ -98,7 +98,7 @@ TicketConsume = {
 	},
 
 	globalEvents : function() {
-		// this need to be updated
+
 		$(document).on('click', '.TLmanaGer_ticketConsume_table [data-action-btn="new"]', function(event) {
 			let orgName = $(this).data('org'),
 				validRow = true,
@@ -110,6 +110,7 @@ TicketConsume = {
 
 			if (validRow) {
 				let newObj = {
+					id: new Date().getTime(),
 					date: $row.find('input.TLmanaGer_ticketConsume_date').val(),
 					mod: parseInt($row.find('input.TLmanaGer_ticketConsume_num').val()),
 					reas: $row.find('input.TLmanaGer_ticketConsume_reason').val(),
@@ -132,14 +133,41 @@ TicketConsume = {
 								<td class="TLmanaGer_ticketConsume_table__row__cell" data-date>${newObj.date}</td>
 								<td class="TLmanaGer_ticketConsume_table__row__cell" data-reason>${newObj.reas}</td>
 								<td class="TLmanaGer_ticketConsume_table__row__cell" data-action="delete">
-									<button type="button" data-action-btn="delete">
+									<button type="button" data-action-btn="delete" data-id="${newObj.id}" data-org="${orgName}">
 										<svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg>
 									</button>
 								</td>
 							</tr>`);
+						TicketConsume.updateNotesHtmlNode(responseData.organization);
 					});
 				});
 			}
+		});
+
+		$(document).on('click', '.TLmanaGer_ticketConsume_table [data-action-btn="delete"]', function (event) {
+			let orgName = $(this).data('org'),
+				id = $(this).data('id'),
+				$row = $(this).closest('tr');
+
+			$.each(TicketConsume.data[orgName].customData, function (index, val) {
+				if (val.id == id) TicketConsume.data[orgName].customData.splice(index, 1);
+			});
+
+			TicketConsume_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
+				let newData = TicketConsume.getNotesText(responseData.organization.notes);
+				
+				if (TicketConsume.data[orgName].customData.length) {
+					newData += 'TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS\n';
+					newData += JSON.stringify(TicketConsume.data[orgName].customData);
+				}
+
+				TicketConsume_updateOrganization(TicketConsume.data[orgName].id, {
+					"organization": { "notes": newData }
+				}).then((responseData) => {
+					$row.remove();
+					TicketConsume.updateNotesHtmlNode(responseData.organization);
+				});
+			});
 		});
 
 		// this is fine but refactoring is needed
@@ -161,7 +189,7 @@ TicketConsume = {
 						<td class="TLmanaGer_ticketConsume_table__row__cell" data-date>${obj.date}</td>
 						<td class="TLmanaGer_ticketConsume_table__row__cell" data-reason>${obj.reas}</td>
 						<td class="TLmanaGer_ticketConsume_table__row__cell" data-action="delete">
-							<button type="button" data-action-btn="delete">
+							<button type="button" data-action-btn="delete" data-id="${obj.id}" data-org="${orgName}">
 								<svg viewBox="0 0 16 16" id="zd-svg-icon-16-x-circle-stroke"><g fill="none" stroke="currentColor"><circle cx="7.5" cy="8.5" r="7" stroke-linejoin="round"></circle><path stroke-linecap="round" d="M4.5 11.5l6-6m0 6l-6-6"></path></g></svg>
 							</button>
 						</td>
@@ -207,8 +235,7 @@ TicketConsume = {
 				`,
 				title: modalIcon + modalTitle,
 				showCancelButton: false,
-				confirmButtonColor: '#A6BD09',
-				confirmButtonText: 'Save',
+				showConfirmButton: false,
 				width: '65rem',
 				customClass: {
 					container: 'swal-zendesk-popup swal-zendesk-ticket-consume'
@@ -217,6 +244,15 @@ TicketConsume = {
 					TicketConsume.updateAll();
 				}
 			})
+		});
+	},
+
+	updateNotesHtmlNode: function (organization) {
+		var orgName = organization.name.trim().toLowerCase();
+		$('[data-org="' + orgName + '"]').closest('.workspace').find('.property_box.details label').each(function (index, el) {
+			if ($(el).text().trim().toLowerCase() == orgName) {
+				$(el).next('.editable').html(organization.notes);
+			}
 		});
 	},
 
@@ -291,15 +327,15 @@ TicketConsume = {
 
 	// updated
 	parseOrganizationNotes: function(value) {
-		let json = {},
-			valueSplitted = value.split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
+		let json = [],
+			valueSplitted = value.trim().split('TICKET_RECOUNT_NOT_MODIFY_UNDER_THIS');
 
-		if (valueSplitted) {
+		if (value.trim().length && valueSplitted) {
 			json = valueSplitted[valueSplitted.length - 1];
 			try {
 				json = JSON.parse(json);
 			} catch (error) {
-				log(error.message, 'danger')
+				log(error.message, 'warning')
 			}
 		}
 		return json;
