@@ -1,6 +1,8 @@
 ZendeskGeneral = {
 	init: function () {
 		this.createMenuSettings();
+		this.saveSessionUser();
+		this.apiToken = $('[name="csrf-token"]').attr('content');
 	},
 
 	createMenuSettings: function () {
@@ -41,6 +43,10 @@ ZendeskGeneral = {
 			var text = $textNode.text().trim().toLowerCase(); $textNode
 			if (text == 'madrid') $textNode.text('Catalunya');
 		}
+	},
+
+	saveSessionUser: function () {
+		
 	}
 };
 
@@ -50,7 +56,8 @@ chrome.storage.sync.get({
 	optZenPriorHighsColors: defaults.optZenPriorHighsColors,
 
 	optZenTicketConfirm: defaults.optZenTicketConfirm,
-	optZenDisableAutofocus: defaults.optZenDisableAutofocus
+	optZenDisableAutofocus: defaults.optZenDisableAutofocus,
+	optZenTicketConsume: defaults.optZenTicketConsume
 }, function (result) {
 	
 	// Global inits
@@ -58,6 +65,7 @@ chrome.storage.sync.get({
 	SubmitExpander.init(result.optZenTicketConfirm);
 	PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 	DisableEditorAutofocus.init();
+	TicketConsume.init(result.optZenTicketConsume);
 	ZendeskGeneral.init();
 
 	var globalObserver = new MutationObserver(function (mutations) {
@@ -65,6 +73,7 @@ chrome.storage.sync.get({
 			SubmitExpander.init(result.optZenTicketConfirm);
 			PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 			DisableEditorAutofocus.observer(result.optZenDisableAutofocus, mutation);
+			TicketConsume.observer(result.optZenTicketConsume, mutation);
 			ZendeskGeneral.observer(mutation);
 		});
 	});

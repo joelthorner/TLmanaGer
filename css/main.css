@@ -11220,6 +11220,11 @@ a.text-dark:hover, a.text-dark:focus {
   background-color: transparent;
 }
 
+.options .card.bg-dark .list-group-item .highlight {
+  -webkit-animation: highlight_help 500ms ease infinite;
+  animation: highlight_help 500ms ease infinite;
+}
+
 .options .card .card-header {
   position: relative;
 }
@@ -11538,6 +11543,14 @@ a.text-dark:hover, a.text-dark:focus {
   padding-left: 1rem;
   font-size: 14px;
   letter-spacing: 0.01em;
+}
+
+#changelog .list-group-item-changelog .items-list img {
+  border-radius: 4px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
 }
 
 #changelog .list-group-item-changelog .items-list a {
@@ -11876,6 +11889,36 @@ button.close {
 
 code {
   color: #f22c87;
+}
+
+@-webkit-keyframes highlight_help {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes highlight_help {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

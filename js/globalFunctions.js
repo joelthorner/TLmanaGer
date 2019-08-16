@@ -7,6 +7,24 @@
  */
 
 /**
+ * objectSize.
+ *
+ * Return object length
+ *
+ * @since      15.08.19
+ *
+ * @global
+ * @param {Object}	object
+ */
+function objectSize(object) {
+	let size = 0, key;
+	for (key in object) {
+		if (object.hasOwnProperty(key)) size++;
+	}
+	return size;
+};
+
+/**
  * guideLines_add.
  *
  * Print a extension formatted log.
@@ -238,7 +256,7 @@ function guideLines_resize() {
 	let to = null;
 	$(window).on('resize.guideLines_resize', function () {
 		clearTimeout(to);
-		setTimeout(() => {
+		to = setTimeout(() => {
 			guideLines_del();
 			guideLines_add();
 		}, 50);
