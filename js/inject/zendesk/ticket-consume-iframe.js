@@ -32,4 +32,9 @@ if (!window.ticketConsume_isTop) { // true  or  undefined
 			chrome.runtime.sendMessage({ sendBack: true, data: data.replace(/(\r\n|\n|\r|\s)/gm, '') });
 		}
 	}, 1000);
+
+	// After 10 seconds clear
+	let sto = setTimeout(() => {
+		clearInterval(si);
+	}, 10000);
 }
