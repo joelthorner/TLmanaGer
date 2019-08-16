@@ -1,7 +1,7 @@
-chrome.storage.sync.get({ optOsBranchesBtn: defaults.optOsBranchesBtn }, function(result) {
+chrome.storage.sync.get({ optLcOsBranchesBtn: defaults.optLcOsBranchesBtn }, function(result) {
 
 	var target = document.getElementById('sandboxFields');
-	if (result.optOsBranchesBtn && target) {
+	if (result.optLcOsBranchesBtn && target) {
 
 		$('html').addClass('os-branches-btn');
 		

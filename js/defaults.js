@@ -21,7 +21,7 @@ var defaults = {
 
 	optLcBigControls: false,
 	optLcHolidays: true,
-	optOsBranchesBtn: true,
+	optLcOsBranchesBtn: true,
 
 	optZenTicketConfirm: true,
 	optZenPriorHighs: true,
