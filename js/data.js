@@ -55,6 +55,7 @@ const CHANGELOG = [
 			'CHANGE Better way to view help info of option (highlight help item when hasn\'t video)',
 			'CHANGE Add privacy policy into options and install pages footer',
 			'CHANGE Rename "optOsBranchesBtn" to "optLcOsBranchesBtn"',
+			'CHANGE Moved js options files to /js/options',
 			'NEW New Welcome install page with pre-configuration extension options',
 			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
 				<ul>
