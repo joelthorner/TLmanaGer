@@ -11037,7 +11037,7 @@ a.text-dark:hover, a.text-dark:focus {
   bottom: 0;
   right: 0;
   left: 0;
-  color: #FFF;
+  color: #fff;
   overflow: auto;
   padding: 30px 15px;
 }
@@ -11051,6 +11051,15 @@ a.text-dark:hover, a.text-dark:focus {
   padding-top: 80px;
   height: 100%;
   font-size: 0.9375rem;
+}
+
+.options.body-tab-changelog {
+  background-image: url(../img/star-bg.svg), -webkit-gradient(linear, left top, left bottom, from(#212228), color-stop(15%, #212228));
+  background-image: url(../img/star-bg.svg), -webkit-linear-gradient(#212228, #212228 15%);
+  background-image: url(../img/star-bg.svg), -o-linear-gradient(#212228, #212228 15%);
+  background-image: url(../img/star-bg.svg), linear-gradient(#212228, #212228 15%);
+  background-repeat: repeat-x;
+  background-position: center 0, 0 0, 0 0;
 }
 
 .options .navbar-toggler {
@@ -11123,7 +11132,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .options .navbar-top .navbar-brand-name {
-  color: #FFF;
+  color: #fff;
   padding: 25px 20px;
   height: 80px;
   height: 80px;
@@ -11150,7 +11159,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .options .navbar-top .navbar-nav .nav-item.show .nav-link {
   background-color: #30333c;
-  color: #FFF;
+  color: #fff;
 }
 
 .options .navbar-top .navbar-nav .nav-link {
@@ -11301,7 +11310,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .card-background-option.disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -11319,7 +11328,8 @@ a.text-dark:hover, a.text-dark:focus {
   border-right: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-background-option .col-left .card-header-collections, .card-background-option .col-left .card-header-selected {
+.card-background-option .col-left .card-header-collections,
+.card-background-option .col-left .card-header-selected {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -11354,7 +11364,7 @@ a.text-dark:hover, a.text-dark:focus {
   right: 0;
   padding: 6px 10px;
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.6);
   font-size: 12px;
   opacity: 0;
@@ -11461,7 +11471,7 @@ a.text-dark:hover, a.text-dark:focus {
 .pagination-bg .btn .icon {
   height: 18px;
   width: 18px;
-  fill: #FFF;
+  fill: #fff;
   position: absolute;
   left: 0;
   right: 0;
@@ -11496,7 +11506,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .list-group-item-option .btn-help:hover {
-  color: #FFF;
+  color: #fff;
 }
 
 .list-group-item-option .btn-help .icon {
@@ -11509,6 +11519,46 @@ a.text-dark:hover, a.text-dark:focus {
   bottom: 0;
   margin: auto;
   pointer-events: none;
+}
+
+#changelog .card-changelog-col {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+#changelog .card {
+  background-color: rgba(40, 42, 49, 0.75) !important;
+}
+
+#changelog .list-group-item-changelog .col-9 {
+  padding-left: 0;
+}
+
+#changelog .list-group-item-changelog:first-child:after {
+  display: none;
+}
+
+#changelog .list-group-item-changelog:last-child:before {
+  background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(#383b45));
+  background: -webkit-linear-gradient(bottom, transparent, #383b45);
+  background: -o-linear-gradient(bottom, transparent, #383b45);
+  background: linear-gradient(0deg, transparent, #383b45);
+}
+
+#changelog .list-group-item-changelog:after, #changelog .list-group-item-changelog:before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  bottom: 0;
+  background: #383b45;
+  top: 74px;
+  left: 30px;
+}
+
+#changelog .list-group-item-changelog:after {
+  top: 0;
+  bottom: auto;
+  height: 36px;
 }
 
 #changelog .list-group-item-changelog .col-left {
@@ -11529,10 +11579,14 @@ a.text-dark:hover, a.text-dark:focus {
 
 #changelog .list-group-item-changelog .media {
   position: relative;
+  height: 64px;
+  padding: 12px 0 12px 22px;
+  border-radius: 0 5px 5px 0;
+  margin-left: -0.375rem;
 }
 
 #changelog .list-group-item-changelog .media .icon {
-  fill: #FFF;
+  fill: #fff;
   width: 40px;
   height: 40px;
   display: block;
@@ -11540,9 +11594,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 #changelog .list-group-item-changelog .items-list {
   list-style: none;
-  padding-left: 1rem;
+  padding-left: 57px;
   font-size: 14px;
-  letter-spacing: 0.01em;
 }
 
 #changelog .list-group-item-changelog .items-list img {
@@ -11568,25 +11621,22 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 #changelog .list-group-item-changelog .items-list > li + li {
-  margin-top: 7px;
-}
-
-#changelog .list-group-item-changelog .items-list > li ul {
-  list-style: none;
-  margin-top: 10px;
-  margin-bottom: 2px;
-  color: #888;
-  font-size: 12px;
-  padding-left: 0;
-  line-height: 1.6;
+  margin-top: 8px;
 }
 
 #changelog .list-group-item-changelog .items-list > li .badge {
-  width: 55px;
+  width: 65px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 65px;
+  flex: 0 0 65px;
   font-size: 10px;
   font-weight: 400;
-  padding: 0.31em 0.4em;
+  padding: 0.35em 0.4em;
   margin-top: 1px;
+}
+
+#changelog .list-group-item-changelog .items-list > li .badge + span {
+  color: #9f9f9f;
 }
 
 #profile .card-profile-col-data .card {
@@ -11606,7 +11656,7 @@ a.text-dark:hover, a.text-dark:focus {
   width: 30px;
   height: 30px;
   fill: url(#svg-hover);
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .avatar-grid {
@@ -11660,7 +11710,7 @@ a.text-dark:hover, a.text-dark:focus {
   height: 100%;
   width: 100%;
   display: block;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .opt-zen-prior-highs-colors {
@@ -11686,7 +11736,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .z-hl-cont.disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -11940,8 +11990,20 @@ button.close {
   outline: none;
 }
 
-.badge-change {
+.badge-new {
+  background-color: #28a745;
+}
+
+.badge-fixed, .badge-improved {
+  background-color: #0366d6;
+}
+
+.badge-changed {
   background-color: #6f42c1;
+}
+
+.badge-removed {
+  background-color: #d73a49;
 }
 
 code {
