@@ -39,327 +39,309 @@ const AVATARS = [
 
 const CHANGELOG = [
 	{
-		version: '2.3.10', date: '16 Aug 2019',
+		version: 'v2.3.10', date: '16 Aug 2019',
 		lines: [
-			'CHANGE Internal Container guides (popup action) code refactoring',
-			'CHANGE Added global functions documentation',
-			'CHANGE Change default LC background bad data',
-			'FIX Refactoring duplicated code (maintainability code)',
-			'FIX Remove unused or old folders and files',
-			'FIX Fix internal error when extension call undefined action',
-			'FIX Fixed wrong help page ids',
-			'CHANGE Code maintainability (delete duplicated code blocks and optimized complexity functions)',
-			'CHANGE Change injection scripts and css with safe functions/classes/ids namespaces',
-			'FIX Go to fluid dump fix (no remove &lt;head&gt;)',
-			'FIX Fix center align save snackbar',
-			'CHANGE Better way to view help info of option (highlight help item when hasn\'t video)',
-			'CHANGE Add privacy policy into options and install pages footer',
-			'CHANGE Rename "optOsBranchesBtn" to "optLcOsBranchesBtn"',
-			'CHANGE Moved js options files to /js/options',
-			'NEW New Welcome install page with pre-configuration extension options',
-			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
-				<ul>
-					<li>- Only agents</li>
-					<li>- Auto refresh every 5'</li>
-					<li>- Option enable/disable this feature</li>
-					<li>- Depends by: sla, limittickets tag, tickets this month ("intranet") data</li>
-					<li>- Custom add/delete ticket total</li>
-					<li>- Clean custom data once time per month</li>
-				</ul>
-			`
+			'FIXED Fix internal error when extension call undefined action',
+			'FIXED Fixed wrong help page ids',
+			'FIXED Go to fluid dump fix (no remove &lt;head&gt;)',
+			'FIXED Fix center align save snackbar',
+			'FIXED Fix guide lines on resize #159',
+			'IMPROVED Internal Container guides (popup action) code refactoring',
+			'IMPROVED Added global functions documentation',
+			'IMPROVED Code maintainability (delete duplicated code blocks and optimized complexity functions)',
+			'IMPROVED Change injection scripts and css with safe functions/classes/ids namespaces',
+			'CHANGED Change default LC background bad data',
+			'CHANGED Better way to view help info of option (highlight help item when hasn\'t video)',
+			'CHANGED Add privacy policy into options and install pages footer',
+			'CHANGED Rename "optOsBranchesBtn" to "optLcOsBranchesBtn"',
+			'CHANGED Moved js options files to /js/options',
+			'CHANGED Changelog visual changes and add more complete info',
+			'NEW Zendesk - Automatic ticket consumption alert (by organization SLA) #163',
+			'NEW New welcome page with pre-configuration extension options #167'
 		]
 	}, {
-		version: '2.3.9', date: '26 Jul 2019',
+		version: 'v2.3.9', date: '26 Jul 2019',
 		lines: [
-			'CHANGE Remove unused chrome permissions',
-			'FIX Mobile-Tablet responsive header (options page)',
+			'CHANGED Remove unused chrome permissions',
+			'FIXED Mobile-Tablet responsive header (options page)',
 			'NEW Container guides (action): Added container widths and lateral paddings info, (on resize and px, rem, em, % values support)',
-			'FIX Show SVG icons right click menu position',
-			'FIX Fix branch sandboxes buttons margin-top',
+			'FIXED Show SVG icons right click menu position',
+			'FIXED Fix branch sandboxes buttons margin-top',
 			'NEW New copy &lt;use&gt; and &lt;svg&gt; icons code in "Show svg icons" action',
-			'NEW Added <a href="https://github.com/joelthorner/TLmanaGer/blob/master/PRIVACY_POLICY.md" target="_blank">privacy policy</a> (ES)',
+			'NEW Added privacy policy (ES)',
 		]
 	}, {
-		version: '2.3.8', date: '6 May 2019',
+		version: 'v2.3.8', date: '6 May 2019',
 		lines: [
-			'FIX Fix "To much blur" <a href="https://github.com/joelthorner/TLmanaGer/issues/155" target="_blank">#155</a>',
-			'FIX developmenttool=true ("Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>)'
+			'FIXED Fix "To much blur" #155',
+			'FIXED developmenttool=true ("Auto scroll to first dump (cfm dump)" - developing tool @pol-93)'
 		]
 	}, {
-		version: '2.3.7', date: '28 Apr 2019',
+		version: 'v2.3.7', date: '28 Apr 2019',
 		lines: [
-			'FIX Syntax error ("Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>)'
+			'FIXED Syntax error ("Auto scroll to first dump (cfm dump)" - developing tool @pol-93)'
 		]
 	}, {
-		version: '2.3.6', date: '20 Apr 2019',
+		version: 'v2.3.6', date: '20 Apr 2019',
 		lines: [
-			'CHANGE Update jQuery v3.3.1 -> v3.4.0',
-			'CHANGE Update Bootstrap v4.2.1 -> v4.3.1',
-			'CHANGE Modified new extension version notify',
-			'NEW New feature "Auto scroll to first dump (cfm dump)" - developing tool <a href="https://github.com/pol-93" target="_blank">@pol-93</a>',
-			'FIX Fix zendesk issue "Custom Macros going funny" <a href="https://github.com/joelthorner/TLmanaGer/issues/145" target="_blank">#145</a>',
-			'FIX Fix zendesk issue  "No se abre el popup de "Side conversation" <a href="https://github.com/joelthorner/TLmanaGer/issues/148" target="_blank">#148</a>',
-			'FIX Minor big-controls-lc fix (visual issue)',
-			'NEW New feature "Auto increment version opensass publication"',
+			'CHANGED Update jQuery v3.3.1 -> v3.4.0',
+			'CHANGED Update Bootstrap v4.2.1 -> v4.3.1',
+			'CHANGED Modified new extension version notify',
+			'NEW New feature "Auto scroll to first dump (cfm dump)" - developing tool @pol-93',
+			'FIXED Fix zendesk issue "Custom Macros going funny" #145',
+			'FIXED Fix zendesk issue  "No se abre el popup de "Side conversation" #148',
+			'FIXED Minor big-controls-lc fix (visual issue)',
+			'FIXED Zendesk Unfocus comment box #147',
+			'NEW New feature "Auto increment version opensass publication" #139',
 			'NEW New install landing welcome'
 		]
 	}, {
-		version: '2.3.5', date: '14 Apr 2019',
+		version: 'v2.3.5', date: '14 Apr 2019',
 		lines: [
-			'FIX Fix "Coloreado de prioridades no se refresca" <a href="https://github.com/joelthorner/TLmanaGer/issues/141" target="_blank">#141</a>'
+			'FIXED Fix "Coloreado de prioridades no se refresca" #141'
 		]
 	}, {
-		version: '2.3.4', date: '13 Apr 2019',
+		version: 'v2.3.4', date: '13 Apr 2019',
 		lines: [
-			'CHANGE Dropped "Zendesk Submit Expander 2.0.1.0" - New Zendesk submit menu expander',
-			'CHANGE Changelog visual changes',
-			'FIX Centralize all zendesk options with a unique global observer',
-			'FIX Flush cfm utility scoped to <kbd>/[0-9]{2,6}\.igd\.production/g</kbd>',
-			`NEW Zendesk commands:
-				<ul>
-					<li><kbd>Ctrl+Shift+Alt+A</kbd> - Focus to assignee field (Zendesk ticket view)</li>
-					<li><kbd>Ctrl+Shift+Alt+T</kbd> - Focus to type field (Zendesk ticket view)</li>
-					<li><kbd>Ctrl+Shift+Alt+P</kbd> - Focus to priority field (Zendesk ticket view)</li>
-					<li><kbd>Ctrl+Shift+Alt+C</kbd> - Toggle 'Comment with CC Team' check (Zendesk ticket view)</li>
-					<li><kbd>Ctrl+Shift+Alt+D</kbd> - Toggle 'Doubts' check (Zendesk ticket view)</li>
-					<li><kbd>Ctrl+Alt+9</kbd> - Prev tab (generic)</li>
-					<li><kbd>Ctrl+Alt+0</kbd> - Next tab (generic)</li>
-				</ul>
-			`,
-			'NEW Zendesk option "Priority highlights only incidents", Highlight only incident tickets',
-			'NEW Zendesk option "Disable editor autofocus"'
+			'CHANGED Dropped "Zendesk Submit Expander 2.0.1.0" - New Zendesk submit menu expander',
+			'CHANGED Changelog visual changes',
+			'FIXED Centralize all zendesk options with a unique global observer',
+			'FIXED Flush cfm utility scoped to "/[0-9]{2,6}\.igd\.production/g"',
+			'NEW Custom Zendesk commands #133',
+			'NEW Zendesk option "Priority highlights only incidents", Highlight only incident tickets #132',
+			'NEW Zendesk option "Disable editor autofocus" #137'
 		]
 	}, {
-		version: '2.3.3', date: '19 Mar 2019',
+		version: 'v2.3.3', date: '19 Mar 2019',
 		lines: [
-			'NEW New confirm ticket submit with HTML modal 🙋',
-			'FIX Add userName into signup testing action <a href="https://github.com/joelthorner/TLmanaGer/issues/126" target="_blank">#126</a>',
-			'FIX More refactoring options js 😥',
-			'FIX Better forceview match',
-			'FIX Changed default ticket colors ✨',
-			'FIX Ultra wrong label, is Urgent! <a href="https://github.com/joelthorner/TLmanaGer/issues/128" target="_blank">#128</a>'
+			'NEW New confirm ticket submit with HTML modal',
+			'FIXED Add userName into signup testing action #126',
+			'FIXED More refactoring options js #126',
+			'FIXED Better forceview match',
+			'FIXED Changed default ticket colors',
+			'FIXED Ultra wrong label, is Urgent! #128'
 		]
 	}, {
-		version: '2.3.2', date: '06 Mar 2019',
+		version: 'v2.3.2', date: '06 Mar 2019',
 		lines: [
-			'NEW Zendesk priority highlights with color customization! 🎉',
-			'NEW Show svg icons - Copy svg code option (Pol)',
-			'FIX Refactoring options js'
+			'NEW Zendesk priority highlights with color customization! #124',
+			'NEW Show svg icons - Copy svg code option (@pol-93)',
+			'FIXED Refactoring options js'
 		]
 	}, {
-		version: '2.3.1', date: '04 Mar 2019',
+		version: 'v2.3.1', date: '04 Mar 2019',
 		lines: [
 			'NEW Popup edit profile shortcut',
-			'FIX Zendesk submit alert compatible with a other chome extension',
-			'FIX Removed jQuery from action js injects (optimization)',
-			'FIX Rename optionsDefaults.js to defaults.js and optionsData.js to data.js',
-			'FIX Minor visual improvements',
-			'FIX Steal FontAwesome minor improvements'
+			'FIXED Zendesk submit alert compatible with a other chome extension',
+			'FIXED Removed jQuery from action js injects (optimization)',
+			'FIXED Rename optionsDefaults.js to defaults.js and optionsData.js to data.js',
+			'FIXED Minor visual improvements',
+			'FIXED Steal FontAwesome minor improvements'
 		]
 	}, {
-		version: '2.3.0', date: '17 Feb 2019',
+		version: 'v2.3.0', date: '17 Feb 2019',
 		lines: [
-			'FIX Fix OS sanbox branch buttons error when select not exists <a href="https://github.com/joelthorner/TLmanaGer/issues/114" target="_blank">#114</a>',
+			'FIXED Fix OS sanbox branch buttons error when select not exists #114',
 			'NEW New options layout',
 			'NEW New changelog layout',
 			'NEW New profile layout and new option field username',
 			'NEW Added pagination and collections to background image option',
 			'NEW Added Zendesk options block',
 			'NEW Added Zendesk option. Enable/disable ticket submit confirm popup',
-			'FIX Optimization save and restore options',
-			'FIX Renamed options names for better understanding',
+			'FIXED Optimization save and restore options',
+			'FIXED Renamed options names for better understanding',
 			'NEW Added better help, gifs and shortcuts',
 			'NEW Added new avatars: 9s, Asuka, Goku, Pusheen and Link',
 			'NEW Added restore default options confirm popup',
 			'NEW Added dev credits',
-			'FIX Removed "#" in code urls (Chrome fix)'
+			'FIXED Removed "#" in code urls (Chrome fix)'
 		]
 	}
 	// {
-	// 	version: '2.2.3', date: '12 Feb 2019',
+	// 	version: 'v2.2.3', date: '12 Feb 2019',
 	// 	lines: [
 	// 		'NEW Zendesk confirm submit ticket'
 	// 	]
 	// }, {
-	// 	version: '2.2.2', date: '11 Feb 2019',
+	// 	version: 'v2.2.2', date: '11 Feb 2019',
 	// 	lines: [
-	// 		'FIX Fix next holiday event',
-	// 		'FIX Remove changelogs 1.x'
+	// 		'FIXED Fix next holiday event',
+	// 		'FIXED Remove changelogs 1.x'
 	// 	]
 	// }, {
-	// 	version: '2.2.1', date: '08 Feb 2019',
+	// 	version: 'v2.2.1', date: '08 Feb 2019',
 	// 	lines: [
 	// 		'NEW LC os login select branches to buttons',
 	// 		'NEW Next holiday event',
-	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/107" target="_blank">#107</a> (Lc pages grid toggle button in hk)'
+	// 		'FIXED Fix #107 (Lc pages grid toggle button in hk)'
 	// 	]
 	// }, {
-	// 	version: '2.2.0', date: '18 Jan 2019',
+	// 	version: 'v2.2.0', date: '18 Jan 2019',
 	// 	lines: [
-	// 		'FIX Hot fix - missing optionDefaults.js',
-	// 		'FIX Update scss & css',
-	// 		'FIX Css standards fixes'
+	// 		'FIXED Hot fix - missing optionDefaults.js',
+	// 		'FIXED Update scss & css',
+	// 		'FIXED Css standards fixes'
 	// 	]
 	// }, {
-	// 	version: '2.1.14', date: '18 Jan 2019',
+	// 	version: 'v2.1.14', date: '18 Jan 2019',
 	// 	lines: [
-	// 		'FIX Better Show new templates 2018',
-	// 		'FIX Fix flushredis exlude domain',
-	// 		'FIX Fixes EN language',
-	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/102" target="_blank">#102</a>',
-	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/102" target="_blank">#93</a>',
-	// 		'FIX Refactoring issues'
+	// 		'FIXED Better Show new templates 2018',
+	// 		'FIXED Fix flushredis exlude domain',
+	// 		'FIXED Fixes EN language',
+	// 		'FIXED Fix #102',
+	// 		'FIXED Fix #93',
+	// 		'FIXED Refactoring issues'
 	// 	]
 	// }, {
-	// 	version: '2.1.13', date: '14 Jan 2019',
+	// 	version: 'v2.1.13', date: '14 Jan 2019',
 	// 	lines: [
-	// 		'FIX Minor fixes dev os lc bar',
-	// 		'FIX Scripts optimization',
-	// 		'FIX Fix setting flushredis on/off',
+	// 		'FIXED Minor fixes dev os lc bar',
+	// 		'FIXED Scripts optimization',
+	// 		'FIXED Fix setting flushredis on/off',
 	// 		'NEW Add feature "show svg icons" (popup -> utils)',
-	// 		'FIX Dev os lc bar duplicate search (Pol)',
+	// 		'FIXED Dev os lc bar duplicate search (Pol)',
 	// 		'NEW Add feature "automatic signup" (Pol) (popup -> testing)'
 	// 	]
 	// }, {
-	// 	version: '2.1.12', date: '09 Jan 2019',
+	// 	version: 'v2.1.12', date: '09 Jan 2019',
 	// 	lines: [
-	// 		'FIX Fix dev os lc bar extra buttons',
-	// 		'FIX Fix flushredis button wrong domains',
+	// 		'FIXED Fix dev os lc bar extra buttons',
+	// 		'FIXED Fix flushredis button wrong domains',
 	// 		'NEW Add popup swiper css generator'
 	// 	]
 	// }, {
-	// 	version: '2.1.11', date: '13 Dec 2018',
+	// 	version: 'v2.1.11', date: '13 Dec 2018',
 	// 	lines: [
-	// 		'FIX Refactoring and clean code',
-	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/66" target="_blank">#66</a>',
-	// 		'FIX Fix <a href="https://github.com/joelthorner/TLmanaGer/issues/67" target="_blank">#67</a>',
+	// 		'FIXED Refactoring and clean code',
+	// 		'FIXED Fix #66',
+	// 		'FIXED Fix #67',
 	// 		'NEW Add flushredis cfm feature (with on/off opt)'
 	// 	]
 	// }, {
-	// 	version: '2.1.10', date: '09 Dec 2018',
+	// 	version: 'v2.1.10', date: '09 Dec 2018',
 	// 	lines: [
 	// 		'NEW Add lc page deep icon color',
 	// 		'NEW Add lc page inactive icon',
-	// 		'FIX Fix toggle grid lc pages custom',
-	// 		'FIX Remove useless space lc pages window',
+	// 		'FIXED Fix toggle grid lc pages custom',
+	// 		'FIXED Remove useless space lc pages window',
 	// 		'NEW Add toggle button enable/disable grid lc custom pages',
-	// 		'FIX Fix bug first install bg background load fail',
-	// 		'FIX Minor fixes lc big controls'
+	// 		'FIXED Fix bug first install bg background load fail',
+	// 		'FIXED Minor fixes lc big controls'
 	// 	]
 	// }, {
-	// 	version: '2.1.9', date: '25 Nov 2018',
+	// 	version: 'v2.1.9', date: '25 Nov 2018',
 	// 	lines: [
-	// 		'FIX Update DEUS ANTICS font',
+	// 		'FIXED Update DEUS ANTICS font',
 	// 		'NEW Update dropdown icons'
 	// 	]
 	// }, {
-	// 	version: '2.1.8', date: '05 Nov 2018',
+	// 	version: 'v2.1.8', date: '05 Nov 2018',
 	// 	lines: [
-	// 		'FIX Fix Unsplash API download_location'
+	// 		'FIXED Fix Unsplash API download_location'
 	// 	]
 	// }, {
-	// 	version: '2.1.7', date: '05 Nov 2018',
+	// 	version: 'v2.1.7', date: '05 Nov 2018',
 	// 	lines: [
-	// 		'FIX Add responsive support options page',
-	// 		'FIX Update DEUS ANTICS font',
-	// 		'FIX Fix Unsplash API requirements',
-	// 		'FIX Fix steal FA',
+	// 		'FIXED Add responsive support options page',
+	// 		'FIXED Update DEUS ANTICS font',
+	// 		'FIXED Fix Unsplash API requirements',
+	// 		'FIXED Fix steal FA',
 	// 		'NEW Update next holidays'
 	// 	]
 	// }, {
-	// 	version: '2.1.6', date: '1 Nov 2018',
+	// 	version: 'v2.1.6', date: '1 Nov 2018',
 	// 	lines: [
-	// 		'FIX Minor improvements',
-	// 		'FIX Toggle Secret Hack Fix',
-	// 		'FIX Add credit Secret Hack',
-	// 		'FIX Autoforceview support .hk and .cn',
-	// 		'FIX Dev lc bar into all admins and refactor file',
-	// 		'FIX Add Unsplash utm links'
+	// 		'FIXED Minor improvements',
+	// 		'FIXED Toggle Secret Hack Fix',
+	// 		'FIXED Add credit Secret Hack',
+	// 		'FIXED Autoforceview support .hk and .cn',
+	// 		'FIXED Dev lc bar into all admins and refactor file',
+	// 		'FIXED Add Unsplash utm links'
 	// 	]
 	// }, {
-	// 	version: '2.1.5', date: '30 Oct 2018',
+	// 	version: 'v2.1.5', date: '30 Oct 2018',
 	// 	lines: [
-	// 		'FIX Fix autosave timeout',
-	// 		'FIX Improvements unsplash photo API'
+	// 		'FIXED Fix autosave timeout',
+	// 		'FIXED Improvements unsplash photo API'
 	// 	]
 	// }, {
-	// 	version: '2.1.4', date: '26 Oct 2018',
+	// 	version: 'v2.1.4', date: '26 Oct 2018',
 	// 	lines: [
-	// 		'FIX Big controls improvements',
+	// 		'FIXED Big controls improvements',
 	// 		'NEW Add option for holidays',
 	// 		'NEW Visual options changes',
 	// 		'NEW Add background option with Unsplash API',
 	// 		'NEW Added autosave options',
-	// 		'FIX Improvements search lc dev bar',
+	// 		'FIXED Improvements search lc dev bar',
 	// 		'NEW Secret Hack'
 	// 	]
 	// }, {
-	// 	version: '2.1.3', date: '23 Oct 2018',
+	// 	version: 'v2.1.3', date: '23 Oct 2018',
 	// 	lines: [
 	// 		'NEW Add new avatar',
-	// 		'NEW Add FTP button <a href="https://github.com/joelthorner/TLmanaGer/issues/55" target="_blank">#55</a>',
-	// 		'FIX Fix when close all windows close opensaas bar',
-	// 		'FIX Opensaas bar improvements',
+	// 		'NEW Add FTP button #55',
+	// 		'FIXED Fix when close all windows close opensaas bar',
+	// 		'FIXED Opensaas bar improvements',
 	// 		'NEW Search opensaas bar',
-	// 		'FIX Rename dev opensaas bar to dev lc bar',
+	// 		'FIXED Rename dev opensaas bar to dev lc bar',
 	// 		'NEW Add bar to real LC',
 	// 		'NEW Holidays events'
 	// 	]
 	// }, {
-	// 	version: '2.1.2', date: '25 Sep 2018',
+	// 	version: 'v2.1.2', date: '25 Sep 2018',
 	// 	lines: [
-	// 		'FIX Remove os autologin recursive xD'
+	// 		'FIXED Remove os autologin recursive xD'
 	// 	]
 	// }, {
-	// 	version: '2.1.1', date: '23 Sep 2018',
+	// 	version: 'v2.1.1', date: '23 Sep 2018',
 	// 	lines: [
-	// 		'FIX Fix notify'
+	// 		'FIXED Fix notify'
 	// 	]
 	// }, {
-	// 	version: '2.1.0', date: '21 Sep 2018',
+	// 	version: 'v2.1.0', date: '21 Sep 2018',
 	// 	lines: [
-	// 		'FIX Visual improvements',
-	// 		'FIX Scoped css inject by options',
-	// 		'FIX OS bar improvements',
+	// 		'FIXED Visual improvements',
+	// 		'FIXED Scoped css inject by options',
+	// 		'FIXED OS bar improvements',
 	// 		'NEW OS bar add shortcuts',
-	// 		'FIX Fix bug <a href="https://github.com/joelthorner/TLmanaGer/issues/48" target="_blank">#48</a>',
-	// 		'FIX Fix bug <a href="https://github.com/joelthorner/TLmanaGer/issues/50" target="_blank">#50</a>',
-	// 		'FIX Improvements in the forceview',
-	// 		'FIX Big controls fixes',
+	// 		'FIXED Fix bug #48',
+	// 		'FIXED Fix bug #50',
+	// 		'FIXED Improvements in the forceview',
+	// 		'FIXED Big controls fixes',
 	// 		'NEW Added Features info into options page',
 	// 		'NEW Added bongo cat avatar :3'
 	// 	]
 	// }, {
-	// 	version: '2.0.4', date: '2 Sep 2018',
+	// 	version: 'v2.0.4', date: '2 Sep 2018',
 	// 	lines: [
-	// 		'FIX Visual improvements',
-	// 		'FIX Refactor options data'
+	// 		'FIXED Visual improvements',
+	// 		'FIXED Refactor options data'
 	// 	]
 	// }, {
-	// 	version: '2.0.3', date: '28 Aug 2018',
+	// 	version: 'v2.0.3', date: '28 Aug 2018',
 	// 	lines: [
-	// 		'FIX Fix wrong urls',
-	// 		'FIX Fix undefined options (v2.x)',
-	// 		'FIX Visual fixes',
+	// 		'FIXED Fix wrong urls',
+	// 		'FIXED Fix undefined options (v2.x)',
+	// 		'FIXED Visual fixes',
 	// 		'NEW Add "LC big controls" background option',
 	// 		'NEW Add more avatars for the loles'
 	// 	]
 	// }, {
-	// 	version: '2.0.2', date: '26 Aug 2018',
+	// 	version: 'v2.0.2', date: '26 Aug 2018',
 	// 	lines: [
-	// 		'FIX _locale language files'
+	// 		'FIXED _locale language files'
 	// 	]
 	// }, {
-	// 	version: '2.0.1', date: '26 Aug 2018',
+	// 	version: 'v2.0.1', date: '26 Aug 2018',
 	// 	lines: [
-	// 		'FIX Add default_locale to manifest'
+	// 		'FIXED Add default_locale to manifest'
 	// 	]
 	// }, {
-	// 	version: '2.0.0', date: '26 Aug 2018',
+	// 	version: 'v2.0.0', date: '26 Aug 2018',
 	// 	lines: [
 	// 		'NEW New design',
-	// 		'FIX Popup actions improvements',
-	// 		'FIX Injection scripts improvements',
+	// 		'FIXED Popup actions improvements',
+	// 		'FIXED Injection scripts improvements',
 	// 		'NEW Add options layout',
 	// 		'NEW New option background on/off',
 	// 		'NEW Add changelog',
