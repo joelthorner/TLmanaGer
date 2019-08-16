@@ -30,9 +30,7 @@ function setChangelog() {
 			htmlLists = '', issueUrl = 'https://github.com/joelthorner/TLmanaGer/issues/';
 		
 		$.each(item.lines, function (index, line) {
-			let type = line.match(/^[A-Z]+/)[0];
-			let issue = line.match(/#\d{1,4}/);
-			let thisLine = line.replace(type + ' ', '');
+			let type = line.match(/^[A-Z]+/)[0], issue = line.match(/#\d{1,4}/), thisLine = line.replace(type + ' ', '');
 			if (issue) {
 				thisLine = thisLine.replace(issue[0], `<a href="${issueUrl}${issue[0].replace('#', '')}" target="_blank">${issue[0]}</a>`);
 			}
