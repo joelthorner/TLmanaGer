@@ -27,7 +27,7 @@ function saveOptions(deelay) {
 			optDevDumpScrollCfm: $('#opt-dev-dump-scroll-cfm').prop('checked'),
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
 			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
-			optOsBranchesBtn: $('#opt-os-branches-btn').prop('checked'),
+			optLcOsBranchesBtn: $('#opt-lc-os-branches-btn').prop('checked'),
 			
 			optProfileEmail: $('#opt-profile-email').val(),
 			optProfilePass: $('#opt-profile-pass').val(),
@@ -126,7 +126,7 @@ function restoreOptions() {
 			{ node: $('#opt-dev-dump-scroll-cfm')     , type: 'checkbox',    value: items.optDevDumpScrollCfm },
 			{ node: $('#opt-lc-big-controls')         , type: 'checkbox',    value: items.optLcBigControls },
 			{ node: $('#opt-lc-holidays')             , type: 'checkbox',    value: items.optLcHolidays },
-			{ node: $('#opt-os-branches-btn')         , type: 'checkbox',    value: items.optOsBranchesBtn },
+			{ node: $('#opt-lc-os-branches-btn')      , type: 'checkbox',    value: items.optLcOsBranchesBtn },
 			{ node: $('#opt-zen-ticket-confirm')      , type: 'checkbox',    value: items.optZenTicketConfirm },
 			{ node: $('#opt-zen-prior-highs')         , type: 'checkbox',    value: items.optZenPriorHighs },
 			{ node: $('#opt-zen-prior-highs-incident'), type: 'checkbox',    value: items.optZenPriorHighsIncident },

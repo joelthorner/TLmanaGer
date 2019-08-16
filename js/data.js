@@ -41,18 +41,21 @@ const CHANGELOG = [
 	{
 		version: '2.3.10', date: '16 Aug 2019',
 		lines: [
-			'FIX Internal Container guides (action) refactoring',
-			'CHANGE Documentation global internal functions (dev)',
-			'FIX Change default LC background bad data',
-			'FIX Refactoring duplicated code',
-			'FIX Remove unused folders/files',
-			'FIX Internal error when extension call undefined action',
-			'FIX Minor fixes help ids',
-			'CHANGE Code maintainability (del duplicated code and optimized some functions)',
-			'FIX Change injection scripts and css with a safe functions/classes/ids namespaces',
-			'FIX Go to fluid dump fix',
-			'CHANGE Better option help button highlight when hasn\'t video',
-			'CHANGE Add privacy policy into options and install pages',
+			'CHANGE Internal Container guides (popup action) code refactoring',
+			'CHANGE Added global functions documentation',
+			'CHANGE Change default LC background bad data',
+			'FIX Refactoring duplicated code (maintainability code)',
+			'FIX Remove unused or old folders and files',
+			'FIX Fix internal error when extension call undefined action',
+			'FIX Fixed wrong help page ids',
+			'CHANGE Code maintainability (delete duplicated code blocks and optimized complexity functions)',
+			'CHANGE Change injection scripts and css with safe functions/classes/ids namespaces',
+			'FIX Go to fluid dump fix (no remove &lt;head&gt;)',
+			'FIX Fix center align save snackbar',
+			'CHANGE Better way to view help info of option (highlight help item when hasn\'t video)',
+			'CHANGE Add privacy policy into options and install pages footer',
+			'CHANGE Rename "optOsBranchesBtn" to "optLcOsBranchesBtn"',
+			'NEW New Welcome install page with pre-configuration extension options',
 			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
 				<ul>
 					<li>- Only agents</li>
