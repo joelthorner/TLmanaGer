@@ -180,7 +180,7 @@
 				"js/libs/moment.js",
 				"js/libs/jquery-3.4.0.min.js",
 				"js/libs/js.cookie.js",
-				"js/defaults.js",
+				"js/options/defaults.js",
 				"js/globalFunctions.js",
 				"js/actions/guideLines/load.js"
 			],
