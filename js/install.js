@@ -33,6 +33,6 @@ $('.custom-control-input').on('change', function(event) {
 $('#lets-go').click(function (event) {
 	chrome.tabs.getCurrent(function (tab) {
 		chrome.tabs.create({ url: chrome.extension.getURL("/src/options/index.html") });
-		chrome.tabs.remove(tab.id, function () {});
+		chrome.tabs.remove(tab.id);
 	});
 });
