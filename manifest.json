@@ -149,7 +149,8 @@
 			],
 			"css": [
 				"css/inject/zendesk/main.css",
-				"css/inject/zendesk/submit-expander.css"
+				"css/inject/zendesk/submit-expander.css",
+				"css/inject/zendesk/ticket-consume.css"
 			],
 			"js": [
 				"js/libs/hotkeys.min.js",
@@ -158,14 +159,25 @@
 				"js/inject/zendesk/submit-expander.js",
 				"js/inject/zendesk/priority-highlights.js",
 				"js/inject/zendesk/extra-commands.js",
-				"js/inject/zendesk/disable-editor-autofocus.js"
+				"js/inject/zendesk/disable-editor-autofocus.js",
+				"js/inject/zendesk/ticket-consume.js"
 			]
+		},
+		{
+			"matches": [
+				"*://*/zdreports/rtm.cfm/*"
+			],
+			"js": [
+				"js/inject/zendesk/ticket-consume-iframe.js"
+			],
+			"all_frames": true
 		},
 		{
 			"matches": [
 				"<all_urls>"
 			],
 			"js": [
+				"js/libs/moment.js",
 				"js/libs/jquery-3.4.0.min.js",
 				"js/libs/js.cookie.js",
 				"js/defaults.js",
