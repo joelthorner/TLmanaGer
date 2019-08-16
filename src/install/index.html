@@ -10,6 +10,7 @@
 </head>
 
 <body class="text-center">
+	<div class="bg"></div>
 	<div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		<header class="masthead mb-auto">
 			<div class="inner">
@@ -28,14 +29,33 @@
 
 		<footer class="mastfoot mt-auto">
 			<div class="inner">
-				<p class="install">Tnks 4 install!</p>
-				<p><small>Developed by <a class="text-light" href="https://github.com/joelthorner" target="_blank">joelthorner</a> and <a
-					class="text-light" href="https://github.com/pol-93" target="_blank">pol-93</a></small></p>
+				<p class="install display-4">Thanks 4 install!</p>
+				<div class="select-configuration">
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" id="installOpt1" data-type="casual">
+						<label class="custom-control-label" for="installOpt1">Casual <small>Mainly LC Customization</small></label>
+					</div>
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" id="installOpt2" data-type="dev">
+						<label class="custom-control-label" for="installOpt2">Developer <small>All dev features</small></label>
+					</div>
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" id="installOpt3" data-type="zendesk">
+						<label class="custom-control-label" for="installOpt3">Zendesk user <small>You're an agent?</small></label>
+					</div>
+
+					<button id="lets-go" type="button" class="btn btn-primary">Let's gooo!</button>
+				</div>
+				<p>
+					<small>Developed by <a class="text-light" href="https://github.com/joelthorner" target="_blank">joelthorner</a> and <a
+					class="text-light" href="https://github.com/pol-93" target="_blank">pol-93</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a class="text-light" target="_blank" href="https://github.com/joelthorner/TLmanaGer/blob/master/PRIVACY_POLICY.md">Política Privacidad</a></small>
+				</p>
 			</div>
 		</footer>
 	</div>
 
 	<script src="../../js/libs/jquery-3.4.0.min.js"></script>
+	<script src="../../js/defaults.js"></script>
 	<script src="../../js/install.js"></script>
 </body>
 </html>

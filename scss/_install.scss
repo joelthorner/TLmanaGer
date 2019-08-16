@@ -2,11 +2,26 @@ html.install-html {
   &,
   body {
     height: 100%;
+    background-color: black;
+  }
+
+  .bg {
     background-image: url("../cover.jpg");
     background-position: center;
     background-size: contain;
-    background-color: black;
     background-repeat: no-repeat;
+
+    position: absolute;
+    top: -7%;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+    z-index: 0;
+  }
+
+  .container {
+    z-index: 1;
+    position: relative;
   }
 
   body {
@@ -20,30 +35,30 @@ html.install-html {
   a:focus,
   a:hover {
     color: #fff;
-	}
+  }
 
-	.version {
-		margin-left: 10px;
+  .version {
+    margin-left: 10px;
     font-size: 15px;
-	}
-	
+  }
+
   .masthead {
     margin-bottom: 2rem;
   }
 
   .masthead-brand {
-		margin-bottom: 0;
-		font-size: 20px;
-		padding: 8px 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    padding: 8px 0;
   }
 
   .nav-masthead .nav-link {
-		font-size: 15px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.5);
     background-color: transparent;
-	}
-	
-	.nav-masthead .nav-link:hover,
+  }
+
+  .nav-masthead .nav-link:hover,
   .nav-masthead .nav-link:focus {
     color: rgba(255, 255, 255, 0.75);
   }
@@ -67,10 +82,49 @@ html.install-html {
 
   .mastfoot {
     color: rgba(255, 255, 255, 0.5);
-	}
-	
-	.install {
-		font-size: 20px;
-    color: #FFF;
-	}
+  }
+
+  .install {
+    color: #fff;
+  }
+
+  .select-configuration {
+    margin: 2rem 0 3.5rem;
+    .btn {
+      width: 150px;
+      margin-top: 2rem;
+      border-radius: 2rem;
+    }
+    .custom-control {
+      margin-top: 1rem;
+      text-align: left;
+      max-width: 260px;
+      margin-left: auto;
+      margin-right: auto;
+      .custom-control-label {
+        color: #fff;
+        small {
+          opacity: 0.6;
+        }
+      }
+      .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+          color: #fff;
+          background-color: #007aff;
+        }
+        &::after {
+          background-color: #fff;
+        }
+      }
+      .custom-control-label {
+        &::before {
+          background-color: rgba(255, 255, 255, 0.15);
+          border: 0;
+        }
+        &::after {
+          background-color: #fff;
+        }
+      }
+    }
+  }
 }
