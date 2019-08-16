@@ -18,6 +18,13 @@
 	float: left;
 }
 
+.TlmanaGer_consumeIframe {
+	position: absolute;
+	z-index: -1;
+	left: -9000px;
+	top: -9000px;
+}
+
 .TLmanaGer_ticketConsume_badge.TLmanaGer_ticketConsume_badge_green {
 	background-color: #1da462;
 	color: #FFF;

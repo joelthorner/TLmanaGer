@@ -39,7 +39,7 @@ const AVATARS = [
 
 const CHANGELOG = [
 	{
-		version: '2.3.10', date: '08 Aug 2019',
+		version: '2.3.10', date: '16 Aug 2019',
 		lines: [
 			'FIX Internal Container guides (action) refactoring',
 			'CHANGE Documentation global internal functions (dev)',
@@ -52,14 +52,15 @@ const CHANGELOG = [
 			'FIX Change injection scripts and css with a safe functions/classes/ids namespaces',
 			'FIX Go to fluid dump fix',
 			'CHANGE Better option help button highlight when hasn\'t video',
-			'CHANGE Add privacy policy into options page footer',
+			'CHANGE Add privacy policy into options and install pages',
 			`NEW Zendesk - Automatic ticket consumption alert (by customer SLA)
 				<ul>
 					<li>- Only agents</li>
 					<li>- Auto refresh every 5'</li>
-					<li>- Refresh time ago every 1'</li>
 					<li>- Option enable/disable this feature</li>
 					<li>- Depends by: sla, limittickets tag, tickets this month ("intranet") data</li>
+					<li>- Custom add/delete ticket total</li>
+					<li>- Clean custom data once time per month</li>
 				</ul>
 			`
 		]
