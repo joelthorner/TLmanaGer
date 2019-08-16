@@ -11773,11 +11773,25 @@ a.text-dark:hover, a.text-dark:focus {
 html.install-html,
 html.install-html body {
   height: 100%;
+  background-color: black;
+}
+
+html.install-html .bg {
   background-image: url("../cover.jpg");
   background-position: center;
   background-size: contain;
-  background-color: black;
   background-repeat: no-repeat;
+  position: absolute;
+  top: -7%;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  z-index: 0;
+}
+
+html.install-html .container {
+  z-index: 1;
+  position: relative;
 }
 
 html.install-html body {
@@ -11844,8 +11858,51 @@ html.install-html .mastfoot {
 }
 
 html.install-html .install {
-  font-size: 20px;
-  color: #FFF;
+  color: #fff;
+}
+
+html.install-html .select-configuration {
+  margin: 2rem 0 3.5rem;
+}
+
+html.install-html .select-configuration .btn {
+  width: 150px;
+  margin-top: 2rem;
+  border-radius: 2rem;
+}
+
+html.install-html .select-configuration .custom-control {
+  margin-top: 1rem;
+  text-align: left;
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html.install-html .select-configuration .custom-control .custom-control-label {
+  color: #fff;
+}
+
+html.install-html .select-configuration .custom-control .custom-control-label small {
+  opacity: 0.6;
+}
+
+html.install-html .select-configuration .custom-control .custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  background-color: #007aff;
+}
+
+html.install-html .select-configuration .custom-control .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #fff;
+}
+
+html.install-html .select-configuration .custom-control .custom-control-label::before {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 0;
+}
+
+html.install-html .select-configuration .custom-control .custom-control-label::after {
+  background-color: #fff;
 }
 
 body {
