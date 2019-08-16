@@ -47,8 +47,20 @@ button.close {
 	outline: none;
 }
 
-.badge-change {
-	background-color: #6f42c1;
+.badge {
+	&-new {
+		background-color: #28a745;
+	}
+	&-fixed,
+	&-improved {
+		background-color: #0366d6;
+	}
+	&-changed {
+		background-color: #6f42c1;
+	}
+	&-removed {
+		background-color: #d73a49;
+	}
 }
 
 code {
