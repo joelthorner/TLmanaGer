@@ -221,30 +221,50 @@ $height-nav: 80px;
     }
   }
 
-  .card-option-col {
-    float: left;
-    width: ((100% / 12) * 6);
-    @media (min-width: 1300px) {
-      width: ((100% / 12) * 4);
-    }
-    @media (min-width: 1600px) {
-      width: ((100% / 12) * 2.5);
-    }
+  .card-option-col:last-child {
+		@media (max-width: 1199px) {
+			grid-column-start: 1;
+			grid-column-end: 2;
+			grid-row-start: 3;
+		}
+		@media (max-width: 729px) {
+			grid-column-start: 1;
+			grid-column-end: 1;
+			grid-row-start: 3;
+		}
   }
   .card-option-col-double {
-    width: ((100% / 12) * 12);
-    @media (min-width: 1300px) {
-      width: ((100% / 12) * 8);
-    }
-    @media (min-width: 1600px) {
-      width: ((100% / 12) * 7);
-    }
-  }
-  .stamp {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+		grid-column-start: 3;
+    grid-column-end: 5;
+		@media (max-width: 1599px) {
+			grid-column-start: 2;
+			grid-column-end: 4;
+			grid-row-start: 1;
+		}
+		@media (max-width: 1199px) {
+			grid-column-start: 1;
+			grid-column-end: 4;
+			grid-row-start: 1;
+		}
+		@media (max-width: 729px) {
+			grid-column-start: 1;
+			grid-column-end: 1;
+			grid-row-start: 1;
+		}
+	}
+	.grid-options {
+		display: grid;
+		grid-template-columns: 375px 375px 1fr 1fr;
+		@media (max-width: 1599px) {
+			grid-template-columns: 375px 375px 1fr;
+		}
+		@media (max-width: 1199px) {
+			grid-template-columns: 50% 50%;
+		}
+		@media (max-width: 729px) {
+			grid-template-columns: 100%;
+		}
+	}
 }
 
 .navbar-profile-img {

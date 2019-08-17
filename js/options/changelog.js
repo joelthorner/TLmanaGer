@@ -13,6 +13,7 @@ const CHANGELOG = [
 			'IMPROVED Added global functions documentation',
 			'IMPROVED Code maintainability (delete duplicated code blocks and optimized complexity functions)',
 			'IMPROVED Change injection scripts and css with safe functions/classes/ids namespaces',
+			'IMPROVED Options HTML split and ajax loads #165',
 			'CHANGED Change default LC background bad data',
 			'CHANGED Better way to view help info of option (highlight help item when hasn\'t video)',
 			'CHANGED Add privacy policy into options and install pages footer',
