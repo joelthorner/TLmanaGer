@@ -1,14 +1,3 @@
-function execMasonry() {
-	$('.tab-pane').each(function(index, el) {
-		$(this).masonry({
-			itemSelector: '.card-option-col',
-			columnWidth: '.card-option-col',
-			stamp: '.stamp',
-			percentPosition: true
-		});
-	});
-}
-
 function setAvatars() {
 	var $gridAvatars = $('.avatar-grid');
 	$.each(AVATARS, function(index, avatar) {
@@ -83,26 +72,20 @@ $(function() {
 	if (location.hash.length) {
 		var $tab = $('.navbar .navbar-nav [data-toggle="tab"][href="' + location.hash + '"]').click();
 		tabBodyClass($tab);
-		execMasonry();
 	}
 
-	$('.navbar .navbar-nav [data-toggle="tab"]').click(function(event) {
+	$(document).on('click', '.navbar .navbar-nav [data-toggle="tab"]', function(event) {
 		location.hash = $(this).attr('href');
 		tabBodyClass($(this));
-		execMasonry();
 
 		$('.navbar .navbar-nav [data-toggle="tab"]').removeClass('show');
 	});
 	$('html').addClass('init');
 
 	// switches
-	$('.list-group-item-option').click(function(event) {
+	$(document).on('click', '.list-group-item-option', function(event) {
 		if (!$(event.target).is('label, .btn-help')) {
 			$(this).find('label').click();
 		}
 	});
-	
-	setAvatars();
-	setChangelog();
-	execMasonry();
 });
