@@ -57,26 +57,16 @@ function appendChangelog(item, htmlLists) {
 		</li>`);
 }
 
-function tabBodyClass($tab) {
-	$('body')
-		.removeClass(function (index, className) {
-			return (className.match(/body-tab-[a-zA-Z]+/g) || []).join(' ');
-		})
-		.addClass('body-tab-' + $tab.attr('href').replace('#', ''));
-}
-
 $(function() {
 	// set version
 	$('.version').text(chrome.runtime.getManifest().version);
 
 	if (location.hash.length) {
 		var $tab = $('.navbar .navbar-nav [data-toggle="tab"][href="' + location.hash + '"]').click();
-		tabBodyClass($tab);
 	}
 
 	$(document).on('click', '.navbar .navbar-nav [data-toggle="tab"]', function(event) {
 		location.hash = $(this).attr('href');
-		tabBodyClass($(this));
 
 		$('.navbar .navbar-nav [data-toggle="tab"]').removeClass('show');
 	});
