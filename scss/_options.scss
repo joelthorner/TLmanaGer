@@ -61,16 +61,14 @@ $height-nav: 80px;
 }
 
 .options {
-  background-color: #212228;
+  background-color: #22242c;
   padding-top: $height-nav;
   height: 100%;
   font-size: rem(15px);
 
-  &.body-tab-changelog {
-    background-image: url(../img/star-bg.svg), linear-gradient(#212228, #212228 15%);
-    background-repeat: repeat-x;
-    background-position: center 0, 0 0, 0 0;
-  }
+	background-image: url(../img/star-bg.svg), linear-gradient(#212228, #212228 15%);
+	background-repeat: repeat-x;
+	background-position: center 0, 0 0, 0 0;
 
   .navbar-toggler {
     border: 0;
@@ -198,7 +196,8 @@ $height-nav: 80px;
     margin-bottom: 30px;
 
     &.bg-dark {
-      background-color: #282a31 !important;
+			// background-color: #282a31 !important;
+			background-color: rgba(40, 42, 49, 0.75) !important;
       box-shadow: 0 3px 15px 0px rgba(0, 0, 0, 0.25);
 
       .list-group-item {
