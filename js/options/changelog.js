@@ -4,6 +4,7 @@ const CHANGELOG = [
 		lines: [
 			'REMOVED Unused old folders, files and assets #170',
 			'REMOVED Holidays LC feature #171',
+			'REMOVED Dropped Masonry dependecy #165',
 			'FIXED Fix internal error when extension call undefined action',
 			'FIXED Fixed wrong help page ids',
 			'FIXED Go to fluid dump fix (no remove &lt;head&gt;)',
