@@ -1,42 +1,3 @@
-const AVATARS = [
-	{ img: 'img/logo.svg',                  title: 'Pastilla' }, 
-	{ img: 'img/avatar/2b.jpg',             title: '2b - NieR Automata' }, 
-	{ img: 'img/avatar/9s.jpg',             title: '9s - NieR Automata' }, 
-	{ img: 'img/avatar/bananas.jpg',        title: 'El unico fruto del amor' }, 
-	{ img: 'img/avatar/bookerDeWitt.jpg',   title: 'Booker DeWitt - Bioshock Infinite' }, 
-	{ img: 'img/avatar/deadpool.jpg',       title: 'Deadpool' }, 
-	{ img: 'img/avatar/eleven.jpg',         title: '11 - Stranger Things' }, 
-	{ img: 'img/avatar/elizabeth.jpg',      title: 'Elizabeth - Bioshock Infinite' }, 
-	{ img: 'img/avatar/homerSimpson.jpg',   title: 'Homer Simpson' }, 
-	{ img: 'img/avatar/isaac.jpg',          title: 'Isaac' }, 
-	{ img: 'img/avatar/kero.jpg',           title: 'Kero - Sakura card captor' }, 
-	{ img: 'img/avatar/miaWallace.jpg',     title: 'Mia Wallace - Pulp fiction' }, 
-	{ img: 'img/avatar/momo.jpg',           title: 'Momo - The legend of Aang' }, 
-	{ img: 'img/avatar/nedFlanders.jpg',    title: 'Ned Flanders' }, 
-	{ img: 'img/avatar/ori.jpg',            title: 'Ori' }, 
-	{ img: 'img/avatar/phasma.jpg',         title: 'Phasma - Star Wars' }, 
-	{ img: 'img/avatar/rey.jpg',            title: 'Rey - Star Wars' }, 
-	{ img: 'img/avatar/tothless.jpg',       title: 'Tothless - Como entrenar a tu dragon' }, 
-	{ img: 'img/avatar/vulpex.jpg',         title: 'Vulpex - Star Wars' }, 
-	{ img: 'img/avatar/chloe.jpg',          title: 'Chloe - Life is Strange' }, 
-	{ img: 'img/avatar/minecraft.jpg',      title: 'Minecraft' }, 
-	{ img: 'img/avatar/grumpy.jpg',         title: 'Grumpy meme' }, 
-	{ img: 'img/avatar/fsSociety.jpg',      title: 'fsSociety - Mr Robot' }, 
-	{ img: 'img/avatar/songoku.jpg',        title: 'Songoku - Bola de drac' }, 
-	{ img: 'img/avatar/chuchu.jpg',         title: 'Chuchu - Utena' }, 
-	{ img: 'img/avatar/sailorMoon.jpg',     title: 'Sailormoon' }, 
-	{ img: 'img/avatar/picachu.jpg',        title: 'Picachu' }, 
-	{ img: 'img/avatar/ranma.jpg',          title: 'Ranma' }, 
-	{ img: 'img/avatar/cawboyBeBop.jpg',    title: 'Cawboy BeBop' }, 
-	{ img: 'img/avatar/doge.jpg',           title: 'Doge meme' }, 
-	{ img: 'img/avatar/bongoCat.jpg',       title: 'Bongo cat' }, 
-	{ img: 'img/avatar/shadowTR.jpg',       title: 'Lara Croft - Shadow of the Tomb Raider' },
-	{ img: 'img/avatar/asuka.jpg',          title: 'Asuka - Evangelion' },
-	{ img: 'img/avatar/goku.jpg',           title: 'Goku - Bola de drac' },
-	{ img: 'img/avatar/pusheen.jpg',        title: 'Pusheen' },
-	{ img: 'img/avatar/link.jpg',           title: 'Link - The legend of Zelda' }
-];
-
 const CHANGELOG = [
 	{
 		version: 'v2.3.10', date: '16 Aug 2019',
@@ -58,6 +19,7 @@ const CHANGELOG = [
 			'CHANGED Rename "optOsBranchesBtn" to "optLcOsBranchesBtn"',
 			'CHANGED Moved js options files to /js/options',
 			'CHANGED Changelog visual changes and add more complete info',
+			'CHANGED Reorganize data.js #172',
 			'NEW Zendesk - Automatic ticket consumption alert (by organization SLA) #163',
 			'NEW New welcome page with pre-configuration extension options #167'
 		]
