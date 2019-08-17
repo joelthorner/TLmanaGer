@@ -41,7 +41,8 @@ const CHANGELOG = [
 	{
 		version: 'v2.3.10', date: '16 Aug 2019',
 		lines: [
-			'REMOVED Unused old folders, files and assets',
+			'REMOVED Unused old folders, files and assets #170',
+			'REMOVED Holidays LC feature #171',
 			'FIXED Fix internal error when extension call undefined action',
 			'FIXED Fixed wrong help page ids',
 			'FIXED Go to fluid dump fix (no remove &lt;head&gt;)',
