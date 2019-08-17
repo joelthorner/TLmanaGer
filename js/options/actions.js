@@ -26,7 +26,6 @@ function saveOptions(deelay) {
 			optDevFlushCfm: $('#opt-dev-flush-cfm').prop('checked'),
 			optDevDumpScrollCfm: $('#opt-dev-dump-scroll-cfm').prop('checked'),
 			optLcBigControls: $('#opt-lc-big-controls').prop('checked'),
-			optLcHolidays: $('#opt-lc-holidays').prop('checked'),
 			optLcOsBranchesBtn: $('#opt-lc-os-branches-btn').prop('checked'),
 			
 			optProfileEmail: $('#opt-profile-email').val(),
@@ -125,7 +124,6 @@ function restoreOptions() {
 			{ node: $('#opt-dev-flush-cfm')           , type: 'checkbox',    value: items.optDevFlushCfm },
 			{ node: $('#opt-dev-dump-scroll-cfm')     , type: 'checkbox',    value: items.optDevDumpScrollCfm },
 			{ node: $('#opt-lc-big-controls')         , type: 'checkbox',    value: items.optLcBigControls },
-			{ node: $('#opt-lc-holidays')             , type: 'checkbox',    value: items.optLcHolidays },
 			{ node: $('#opt-lc-os-branches-btn')      , type: 'checkbox',    value: items.optLcOsBranchesBtn },
 			{ node: $('#opt-zen-ticket-confirm')      , type: 'checkbox',    value: items.optZenTicketConfirm },
 			{ node: $('#opt-zen-prior-highs')         , type: 'checkbox',    value: items.optZenPriorHighs },
@@ -202,8 +200,6 @@ function imagesPaginator(jsonResponse, actualPage) {
 
 	if ($pagination.find('[disabled]').length == 2) $pagination.addClass('d-none').removeClass('d-flex');
 	else $pagination.removeClass('d-none').addClass('d-flex');
-
-	execMasonry();
 }
 
 function createImages(imagesList) {
@@ -221,7 +217,6 @@ function createImages(imagesList) {
 	} else {
 		emptyBgFound();
 	}
-	execMasonry();
 }
 
 function emptyBgFound() {
@@ -318,25 +313,71 @@ function zendeskHighlightPriority() {
 	});
 }
 
-// Init all
-$(function() {
-	getRandom(20);
-	restoreOptions();
-	backgroundOption();
-	zendeskHighlightPriority();
-
-	$('[name="opt-profile-avatar"]').change(function(event) {
+function avatarOption() {
+	$(document).on('change', '[name="opt-profile-avatar"]', function (event) {
 		$('.avatar').removeClass('active');
 		$(this).parents('.avatar').addClass('active');
 		$('.navbar-profile-img').attr('src', '../../' + $(this).val());
 	});
+}
+
+function optionHelp() {
+	$('.btn-help').click(function (event) {
+		event.preventDefault();
+		$('#help-tab').tab('show');
+		var $a = $($(this).attr('href'));
+		$a.click();
+		if (!$a.is('[data-src]')) {
+			$a.addClass('highlight');
+			setTimeout(() => {
+				$a.removeClass('highlight');
+			}, 2500);
+		}
+	});
+}
+
+function helpInit() {
+	$(document).on('click', '[data-target="#help-modal-video"]', function (event) {
+		$('#help-modal-video .modal-title span').text($(this).find('span').text());
+
+		$('#help-modal-video .modal-body').html('').append(`
+			<video controls class="video-mw">
+				<source src="${$(this).data('src')}" type='video/webm; codecs="vp8, vorbis"' />
+			<video>
+		`);
+	});
+}
+
+function loadLayout() {
+	$("#options").load('_options.html', function () {
+		getRandom(20);
+		restoreOptions();
+		backgroundOption();
+		zendeskHighlightPriority();
+		optionHelp();
+	});
+	$("#help").load('_help.html', function () {
+		helpInit();
+	});
+	$("#changelog").load('_changelog.html', function () {
+		setChangelog();
+	});
+	$("#profile").load('_profile.html', function () {
+		setAvatars();
+		avatarOption();
+	});
+}
+
+// Init all
+$(function() {
+	loadLayout();
 
 	// autosaves
 	var clickOptions = '#options [type="checkbox"], #options [type="radio"], #profile [type="checkbox"], #profile [type="radio"]';
 	$(document).on('change', clickOptions, function(event) {
 		saveOptions(500);
 	});
-	$('#opt-profile-username, #opt-profile-email, #opt-profile-pass').keyup(function(event) {
+	$(document).on('keyup', '#opt-profile-username, #opt-profile-email, #opt-profile-pass', function(event) {
 		saveOptions(2000);
 	});
 	// end autosaves
@@ -353,28 +394,5 @@ $(function() {
 			actionTextColor: '#00a8ff',
 			pos: 'bottom-center'
 		});
-	});
-
-	$('.btn-help').click(function(event) {
-		event.preventDefault();
-		$('#help-tab').tab('show');
-		var $a = $($(this).attr('href'));
-		$a.click();
-		if (!$a.is('[data-src]')) {
-			$a.addClass('highlight');
-			setTimeout(() => {
-				$a.removeClass('highlight');
-			}, 2500);
-		}
-	});
-
-	$('[data-target="#help-modal-video"]').click(function(event) {
-		$('#help-modal-video .modal-title span').text($(this).find('span').text());
-
-		$('#help-modal-video .modal-body').html('').append(`
-			<video controls class="video-mw">
-				<source src="${$(this).data('src')}" type='video/webm; codecs="vp8, vorbis"' />
-			<video>
-		`);
 	});
 });
