@@ -16,7 +16,7 @@ const CHANGELOG = [
 			'CHANGED Change default LC background bad data',
 			'CHANGED Better way to view help info of option (highlight help item when hasn\'t video)',
 			'CHANGED Add privacy policy into options and install pages footer',
-			'CHANGED Rename "optOsBranchesBtn" to "optLcOsBranchesBtn"',
+			'CHANGED Rename "optOsBranchesBtn" to "optLcOsBranchesBtn" #167',
 			'CHANGED Moved js options files to /js/options',
 			'CHANGED Changelog visual changes and add more complete info',
 			'CHANGED Reorganize data.js #172',
@@ -26,7 +26,7 @@ const CHANGELOG = [
 	}, {
 		version: 'v2.3.9', date: '26 Jul 2019',
 		lines: [
-			'CHANGED Remove unused chrome permissions',
+			'REMOVED Unused chrome permissions',
 			'FIXED Mobile-Tablet responsive header (options page)',
 			'NEW Container guides (action): Added container widths and lateral paddings info, (on resize and px, rem, em, % values support)',
 			'FIXED Show SVG icons right click menu position',
