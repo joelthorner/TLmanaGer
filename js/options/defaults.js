@@ -20,7 +20,6 @@ var defaults = {
 	optProfileAvatar: 'img/logo.svg',
 
 	optLcBigControls: false,
-	optLcHolidays: true,
 	optLcOsBranchesBtn: true,
 
 	optZenTicketConfirm: true,
@@ -41,5 +40,5 @@ var defaults = {
 		}
 	},
 	optZenDisableAutofocus: false,
-	optZenTicketConsume: true
+	optZenTicketConsume: false
 };
