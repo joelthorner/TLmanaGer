@@ -40,5 +40,5 @@ var defaults = {
 		}
 	},
 	optZenDisableAutofocus: false,
-	optZenTicketConsume: true
+	optZenTicketConsume: false
 };
