@@ -54,8 +54,16 @@ TicketConsume = {
 	
 	init: function (active) {
 		if (active) {
+			let userId = parseInt(localStorage.getItem('ajs_user_id').replace(/"/g, ''));
+			if (userId) {
+				ZendeskApi_showUser(userId).then((responseData) => {
+					TicketConsume.user = responseData.user;
+					if (TicketConsume.user.role == 'agent') {
+						TicketConsume.insertIframe();
+					}
+				});
+			}
 			var ticketConsume_isTop = true; // no remove
-			TicketConsume.insertIframe();
 			TicketConsume.globalEvents();
 			chrome.runtime.onMessage.addListener(function (details) {
 				try {
@@ -363,13 +371,17 @@ TicketConsume = {
 	},
 
 	observerInit: function (orgId, orgName, $ticketOrg) {
-			let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
-			TicketConsume.data[orgName].id = orgId;
-			TicketConsume.data[orgName].customData = customData;
-			let badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
-			TicketConsume.appendBadge(badge, $ticketOrg.closest('.ember-view.workspace').find('nav.btn-group'));
-		});
+		if (typeof TicketConsume.user !== 'undefined' && TicketConsume.user.role == 'agent') {
 			ZendeskApi_showOrganization(orgId).then((responseData) => {
+				let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
+				if (TicketConsume.data[orgName]) {
+					TicketConsume.data[orgName].id = orgId;
+					TicketConsume.data[orgName].customData = customData;
+					let badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
+					TicketConsume.appendBadge(badge, $ticketOrg.closest('.ember-view.workspace').find('nav.btn-group'));
+				}
+			});
+		}
 	},
 
 	updateAll : function () {
