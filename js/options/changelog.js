@@ -22,7 +22,7 @@ const CHANGELOG = [
 			'CHANGED Moved js options files to /js/options',
 			'CHANGED Changelog visual changes and add more complete info',
 			'CHANGED Reorganize data.js #172',
-			'NEW Zendesk - Automatic ticket consumption alert (by organization SLA) #163',
+			'NEW Zendesk - Automatic ticket consumption alert (by organization SLA), beta, only for agents #163',
 			'NEW New welcome page with pre-configuration extension options #167'
 		]
 	}, {
