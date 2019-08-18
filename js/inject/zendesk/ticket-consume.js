@@ -1,44 +1,3 @@
-async function TicketConsume_showOrganization(id) {
-	// https://developer.zendesk.com/rest_api/docs/support/organizations#show-organization
-	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
-		method: 'GET',
-		headers: {
-			'x-csrf-token': ZendeskGeneral.apiToken,
-			'Content-Type': 'application/json'
-		}
-	});
-	let data = await rawResponse.json();
-	return data;
-};
-
-async function TicketConsume_showManyOrganizations(idList) {
-	// https://developer.zendesk.com/rest_api/docs/support/organizations#show-many-organizations
-	const rawResponse = await fetch(`/api/v2/organizations/show_many?ids=${idList}`, {
-		method: 'GET',
-		headers: {
-			'x-csrf-token': ZendeskGeneral.apiToken,
-			'Content-Type': 'application/json'
-		}
-	});
-	let data = await rawResponse.json();
-	return data;
-};
-
-async function TicketConsume_updateOrganization(id, obj) {
-	// https://developer.zendesk.com/rest_api/docs/support/organizations#update-organization
-	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
-		method: 'PUT',
-		headers: {
-			'x-csrf-token': ZendeskGeneral.apiToken,
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(obj)
-	});
-	let data = await rawResponse.json();
-	return data;
-};
-
-
 /**
  * TicketConsume.
  *
@@ -144,11 +103,11 @@ TicketConsume = {
 			};
 			TicketConsume.data[orgName].customData.push(newObj);
 
-			TicketConsume_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
+			ZendeskApi_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
 				let newData = TicketConsume.getNotesText(responseData.organization.notes);
 				newData += TicketConsume.splitVal + '\n' + JSON.stringify(TicketConsume.data[orgName].customData);
 
-				TicketConsume_updateOrganization(TicketConsume.data[orgName].id, {
+				ZendeskApi_updateOrganization(TicketConsume.data[orgName].id, {
 					"organization": { "notes": newData }
 				}).then((responseData) => {
 					TicketConsume.appendNewTableRow(newObj, orgName);
@@ -169,13 +128,13 @@ TicketConsume = {
 			}
 		});
 
-		TicketConsume_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
+		ZendeskApi_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
 			let newData = TicketConsume.getNotesText(responseData.organization.notes);
 
 			if (TicketConsume.data[orgName].customData.length) {
 				newData += TicketConsume.splitVal + '\n' + JSON.stringify(TicketConsume.data[orgName].customData);
 			}
-			TicketConsume_updateOrganization(TicketConsume.data[orgName].id, {
+			ZendeskApi_updateOrganization(TicketConsume.data[orgName].id, {
 				"organization": { "notes": newData }
 			}).then((responseData) => {
 				$row.remove();
@@ -404,13 +363,13 @@ TicketConsume = {
 	},
 
 	observerInit: function (orgId, orgName, $ticketOrg) {
-		TicketConsume_showOrganization(orgId).then((responseData) => {
 			let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
 			TicketConsume.data[orgName].id = orgId;
 			TicketConsume.data[orgName].customData = customData;
 			let badge = TicketConsume.getBadge(TicketConsume.data[orgName], orgName);
 			TicketConsume.appendBadge(badge, $ticketOrg.closest('.ember-view.workspace').find('nav.btn-group'));
 		});
+			ZendeskApi_showOrganization(orgId).then((responseData) => {
 	},
 
 	updateAll : function () {
@@ -435,7 +394,7 @@ TicketConsume = {
 
 	updateViaApi: function (idList) {
 		if (idList.length) {
-			TicketConsume_showManyOrganizations(idList).then((responseData) => {
+			ZendeskApi_showManyOrganizations(idList).then((responseData) => {
 				$.each(responseData.organization, function (index, org) {
 					let customData = TicketConsume.parseOrganizationNotes(responseData.org);
 					TicketConsume.data[org.name].customData = customData;

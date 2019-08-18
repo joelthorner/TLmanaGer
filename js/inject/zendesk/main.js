@@ -1,8 +1,68 @@
+async function ZendeskApi_showOrganization(id) {
+	// https://developer.zendesk.com/rest_api/docs/support/organizations#show-organization
+	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
+		method: 'GET',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		}
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
+async function ZendeskApi_showManyOrganizations(idList) {
+	// https://developer.zendesk.com/rest_api/docs/support/organizations#show-many-organizations
+	const rawResponse = await fetch(`/api/v2/organizations/show_many?ids=${idList}`, {
+		method: 'GET',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		}
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
+async function ZendeskApi_updateOrganization(id, obj) {
+	// https://developer.zendesk.com/rest_api/docs/support/organizations#update-organization
+	const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
+		method: 'PUT',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(obj)
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
+async function ZendeskApi_showUser(id) {
+	// https://developer.zendesk.com/rest_api/docs/support/users#show-user
+	const rawResponse = await fetch(`/api/v2/users/${id}`, {
+		method: 'GET',
+		headers: {
+			'x-csrf-token': ZendeskGeneral.apiToken,
+			'Content-Type': 'application/json'
+		}
+	});
+	let data = await rawResponse.json();
+	return data;
+};
+
+/**
+ * ZendeskGeneral.
+ *
+ * General Zendesk manager union of all zendesk objects.
+ *
+ * @since      18.08.19
+ */
 ZendeskGeneral = {
 	init: function () {
-		this.createMenuSettings();
-		this.saveSessionUser();
+		this.user = undefined;
 		this.apiToken = $('[name="csrf-token"]').attr('content');
+		this.createMenuSettings();
 	},
 
 	createMenuSettings: function () {
@@ -43,10 +103,6 @@ ZendeskGeneral = {
 			var text = $textNode.text().trim().toLowerCase(); $textNode
 			if (text == 'madrid') $textNode.text('Catalunya');
 		}
-	},
-
-	saveSessionUser: function () {
-		
 	}
 };
 
@@ -61,12 +117,12 @@ chrome.storage.sync.get({
 }, function (result) {
 	
 	// Global inits
+	ZendeskGeneral.init();
 	ExtraCommands.init();
 	SubmitExpander.init(result.optZenTicketConfirm);
 	PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 	DisableEditorAutofocus.init();
 	TicketConsume.init(result.optZenTicketConsume);
-	ZendeskGeneral.init();
 
 	var globalObserver = new MutationObserver(function (mutations) {
 		mutations.forEach(function (mutation) {
