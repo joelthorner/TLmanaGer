@@ -254,7 +254,7 @@ TicketConsume = {
 
 	insertIframe : function() {
 		$('body').append(
-			'<iframe src="http://192.168.110.109:12853/zdreports/rtm.cfm/?refresh=1" class="TlmanaGer_consumeIframe"></iframe>'
+			'<iframe src="//192.168.110.109:12853/zdreports/rtm.cfm/?refresh=1" class="TlmanaGer_consumeIframe"></iframe>'
 		);
 	},
 	
