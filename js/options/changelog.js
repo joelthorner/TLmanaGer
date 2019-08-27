@@ -1,5 +1,10 @@
 const CHANGELOG = [
 	{
+		version: 'v2.3.11', date: 'xx Aug 2019',
+		lines: [
+			'CHANGED Changelog issue code adaptation #175'
+		]
+	}, {
 		version: 'v2.3.10', date: '16 Aug 2019',
 		lines: [
 			'REMOVED Unused old folders, files and assets #170',
