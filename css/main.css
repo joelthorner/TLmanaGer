@@ -11580,6 +11580,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 #changelog .list-group-item-changelog .col-9 {
   padding-left: 0;
+  padding-top: 12px;
 }
 
 #changelog .list-group-item-changelog:first-child:after {
