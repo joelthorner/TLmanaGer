@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.10",
+	"version": "2.3.11",
 	"manifest_version": 2,
 	"author": "joelthorner",
 	"description": "__MSG_appDesc__",
@@ -163,10 +163,11 @@
 		},
 		{
 			"matches": [
-				"*://*/zdreports/rtm.cfm/*"
+				"*://*/zdreports/rtm.cfm/?TicketConsume=true",
+				"*://joelthorner.github.io/temp/?TicketConsume=true"
 			],
 			"js": [
-				"js/inject/zendesk/ticket-consume-iframe.js"
+				"js/inject/zendesk/ticket-consume-source-tab.js"
 			],
 			"all_frames": true
 		},

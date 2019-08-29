@@ -58,19 +58,33 @@ TicketConsume = {
 			if (userId) {
 				ZendeskApi_showUser(userId).then((responseData) => {
 					TicketConsume.user = responseData.user;
-					if (TicketConsume.user.role == 'agent') {
-						TicketConsume.insertIframe();
-					}
+					if (TicketConsume.user.role == 'agent') 
+						chrome.runtime.sendMessage({ name: 'openTicketConsumeTab' });
 				});
 			}
-			var ticketConsume_isTop = true; // no remove
 			TicketConsume.globalEvents();
-			chrome.runtime.onMessage.addListener(function (details) {
+			chrome.runtime.onMessage.addListener(function (message, sender) {
 				try {
-					var data = JSON.parse(details);
+					var data = JSON.parse(message.data);
 					log('TicketConsume intranet', 'success');
 					console.log(data);
 					$.extend(true,TicketConsume.data, data)
+
+					$('[data-test-id="customercontext-userinfo-organization"] [href*="organizations"]').each(function (index, ticketOrg) {
+						let $ticketOrg = $(ticketOrg);
+						if (typeof $ticketOrg.data('ovserved-org') === 'undefined') {
+	
+							$ticketOrg.data('ovserved-org', true);
+							let findOrgId = $ticketOrg.attr('href').match(/\d{1,}/);
+	
+							if (findOrgId) {
+								let orgId = findOrgId[0],
+									orgName = $ticketOrg.text().trim().toLowerCase();
+	
+								TicketConsume.observerInit(orgId, orgName, $ticketOrg);
+							}
+						}
+					})
 					TicketConsume.initIntervals();
 				} catch (error) {
 					log('TicketConsume invalid data', 'danger');
@@ -259,12 +273,6 @@ TicketConsume = {
 			}
 		});
 	},
-
-	insertIframe : function() {
-		$('body').append(
-			'<iframe src="//192.168.110.109:12853/zdreports/rtm.cfm/?refresh=1" class="TlmanaGer_consumeIframe"></iframe>'
-		);
-	},
 	
 	appendBadge : function (badge, $navbar) {
 		$navbar.find('.TLmanaGer_ticketConsume_badge_cont').remove();
@@ -292,7 +300,10 @@ TicketConsume = {
 
 		clearTimeout(TicketConsume.stoChecker);
 		TicketConsume.stoChecker = setInterval(() => {
-			TicketConsume.updateAll();
+			chrome.runtime.sendMessage({ name: 'openTicketConsumeTab' });
+			setTimeout(() => {
+				TicketConsume.updateAll();
+			}, 1000);
 			TicketConsume.secondsUpdate = 1;
 		}, (60 * 1000) * 5); // 5'
 	},
@@ -349,25 +360,6 @@ TicketConsume = {
 			text += value;
 		}
 		return text;
-	},
-
-	observer: function (active, mutation) {
-		if (active && mutation.addedNodes.length) {
-			let $ticketOrg = $(mutation.target).find('[data-test-id="customercontext-userinfo-organization"] [href*="organizations"]');
-			
-			if ($ticketOrg.length && typeof $ticketOrg.data('ovserved-org') === 'undefined') {
-				
-				$ticketOrg.data('ovserved-org', true);
-				let findOrgId = $ticketOrg.attr('href').match(/\d{1,}/);
-				
-				if (findOrgId) {
-					let orgId = findOrgId[0],
-						orgName = $ticketOrg.text().trim().toLowerCase();
-
-					TicketConsume.observerInit(orgId, orgName, $ticketOrg);
-				}
-			}
-		}
 	},
 
 	observerInit: function (orgId, orgName, $ticketOrg) {
