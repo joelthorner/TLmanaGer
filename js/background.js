@@ -87,8 +87,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
 // TicketConsume system
 function openTicketConsumeTab() {
 	chrome.tabs.create({
-		// url: 'http://zdreports/rtm.cfm/?TicketConsume=true',
-		url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
+		url: 'http://zdreports/rtm.cfm/?TicketConsume=true',
+		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
 		active: false,
 		// index: 0,
 		pinned: true
@@ -103,8 +103,8 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 			tabs.forEach(tab => {
 				chrome.tabs.sendMessage(tab.id, { data: message.data });
 				chrome.tabs.query({ 
-					// url: '*://zdreports/rtm.cfm/?TicketConsume=true'
-					url: '*://joelthorner.github.io/temp/?TicketConsume=true'
+					url: '*://zdreports/rtm.cfm/?TicketConsume=true'
+					// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
 				}, function (tabs) {
 					tabs.forEach(tab => { chrome.tabs.remove(tab.id) });
 				});
