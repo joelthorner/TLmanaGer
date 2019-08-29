@@ -129,7 +129,7 @@ chrome.storage.sync.get({
 			SubmitExpander.init(result.optZenTicketConfirm);
 			PriorityHighlights.init(result.optZenPriorHighs, result.optZenPriorHighsColors, result.optZenPriorHighsIncident);
 			DisableEditorAutofocus.observer(result.optZenDisableAutofocus, mutation);
-			TicketConsume.observer(result.optZenTicketConsume, mutation);
+			// TicketConsume.observer(result.optZenTicketConsume, mutation);
 			ZendeskGeneral.observer(mutation);
 		});
 	});
