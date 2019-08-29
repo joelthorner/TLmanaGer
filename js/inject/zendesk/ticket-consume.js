@@ -58,8 +58,11 @@ TicketConsume = {
 			if (userId) {
 				ZendeskApi_showUser(userId).then((responseData) => {
 					TicketConsume.user = responseData.user;
-					if (TicketConsume.user.role == 'agent') 
-						chrome.runtime.sendMessage({ name: 'openTicketConsumeTab' });
+					if (TicketConsume.user.role == 'agent') {
+						try {
+							chrome.runtime.sendMessage({ name: 'openTicketConsumeTab' });
+						} catch (error) {}
+					}
 				});
 			}
 			TicketConsume.globalEvents();
