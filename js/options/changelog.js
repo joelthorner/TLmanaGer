@@ -1,5 +1,11 @@
 const CHANGELOG = [
 	{
+		version: 'v2.3.11', date: '30 Aug 2019',
+		lines: [
+			'FIXED Zendesk ticket consumption alert - http iframe into https tab not work #163#issuecomment-525411887',
+			'CHANGED Changelog issue code adaptation #175'
+		]
+	}, {
 		version: 'v2.3.10', date: '16 Aug 2019',
 		lines: [
 			'REMOVED Unused old folders, files and assets #170',

@@ -84,8 +84,39 @@ chrome.runtime.onInstalled.addListener(function (details) {
 	}
 });
 
+// TicketConsume system
+function openTicketConsumeTab() {
+	chrome.tabs.create({
+		url: 'http://zdreports/rtm.cfm/?TicketConsume=true',
+		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
+		active: false,
+		// index: 0,
+		pinned: true
+	});
+}
 chrome.runtime.onMessage.addListener(function (message, sender) {
-	if (message.sendBack) {
-		chrome.tabs.sendMessage(sender.tab.id, message.data);
+	if (message.name == 'openTicketConsumeTab') {
+		openTicketConsumeTab()
 	}
+	if (message.name == 'dataTicketConsumeTab') {
+		chrome.tabs.query({ url: '*://tlgcommercehelp.zendesk.com/*' }, function (tabs) {
+			tabs.forEach(tab => {
+				chrome.tabs.sendMessage(tab.id, { data: message.data });
+				chrome.tabs.query({ 
+					url: '*://zdreports/rtm.cfm/?TicketConsume=true'
+					// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
+				}, function (tabs) {
+					tabs.forEach(tab => { chrome.tabs.remove(tab.id) });
+				});
+			});
+		});
+	}
+});
+chrome.tabs.onActivated.addListener(function (activeInfo) {
+	chrome.tabs.get(activeInfo.tabId, function (tab){
+		if (tab.url.includes("tlgcommercehelp.zendesk.com")) {
+			openTicketConsumeTab()
+		}
+	})
+});
 });

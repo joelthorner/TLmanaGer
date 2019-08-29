@@ -198,7 +198,7 @@ $height-nav: 80px;
     &.bg-dark {
 			// background-color: #282a31 !important;
 			background-color: rgba(40, 42, 49, 0.75) !important;
-      box-shadow: 0 3px 15px 0px rgba(0, 0, 0, 0.25);
+			box-shadow: 0 3px 15px 0px rgba(0, 0, 0, 0.25);
 
       .list-group-item {
         background-color: transparent;
@@ -476,7 +476,8 @@ $height-nav: 80px;
   }
   .list-group-item-changelog {
     .col-9 {
-      padding-left: 0;
+			padding-left: 0;
+			padding-top: 12px;
     }
     &:first-child:after {
       display: none;
