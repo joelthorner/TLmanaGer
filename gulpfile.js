@@ -18,4 +18,6 @@ gulp.task('default', function () {
 	});
 });
 
-// execute for update dependencies --> gulp
+// execute for update dependencies:
+// $ npm update
+// $ gulp
