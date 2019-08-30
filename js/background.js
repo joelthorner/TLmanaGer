@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(
 			switch (request.directive) {
 				case 'testing-signup':
 					executeScripts(null, [
-						{ file: 'js/libs/moment.js' },
+						{ file: 'js/libs/moment.min.js' },
 						{ file: 'js/actions/testing-signup.js' }
 					])
 					break;

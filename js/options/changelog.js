@@ -1,5 +1,10 @@
 const CHANGELOG = [
 	{
+		version: 'v2.3.13', date: 'xx Aug 2019',
+		lines: [
+			'CHANGED Update dependencies #182'
+		]
+	}, {
 		version: 'v2.3.12', date: '30 Aug 2019',
 		lines: [
 			'FIXED Fail background syntax error #177',
