@@ -6,8 +6,7 @@ const libsJs = [
 ]
 
 const libsCss = [
-	'node_modules/jquery/dist/jquery.min.js',
-	'node_modules/moment/min/moment.min.js'
+	'node_modules/jquery/dist/jquery.min.js'
 ]
 
 gulp.task('default', function () {
