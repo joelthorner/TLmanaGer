@@ -176,8 +176,8 @@
 				"<all_urls>"
 			],
 			"js": [
-				"js/libs/moment.js",
-				"js/libs/jquery-3.4.1.min.js",
+				"js/libs/moment.min.js",
+				"js/libs/jquery.min.js",
 				"js/libs/js.cookie.js",
 				"js/options/defaults.js",
 				"js/globalFunctions.js",
