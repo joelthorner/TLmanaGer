@@ -87,7 +87,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 // TicketConsume system
 function openTicketConsumeTab() {
 	chrome.tabs.create({
-		url: 'http://zdreports/rtm.cfm/?TicketConsume=true',
+		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm/?TicketConsume=true',
 		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
 		active: false,
 		// index: 0,
@@ -118,5 +118,4 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
 			openTicketConsumeTab()
 		}
 	})
-});
 });

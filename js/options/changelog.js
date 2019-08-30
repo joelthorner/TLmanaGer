@@ -1,5 +1,13 @@
 const CHANGELOG = [
 	{
+		version: 'v2.3.12', date: '30 Aug 2019',
+		lines: [
+			'FIXED Fail background syntax error #177',
+			'FIXED Bad ticket consume source url #163#issuecomment-526475838',
+			'IMPROVED Fix "method_lines" issue in js/inject/zendesk/ticket-consume.js #179',
+			'IMPROVED Fix "method_complexity" issue in js/inject/zendesk/ticket-consume-source-tab.js #180'
+		]
+	}, {
 		version: 'v2.3.11', date: '30 Aug 2019',
 		lines: [
 			'FIXED Zendesk ticket consumption alert - http iframe into https tab not work #163#issuecomment-525411887',

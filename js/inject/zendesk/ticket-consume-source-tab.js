@@ -4,6 +4,22 @@
  * @since      29.08.19
  */
 
+function TicketConsumeTab_getDataTrs(trs) {
+	let data = ''
+	for (let index = 0; index < trs.length; index++) {
+		let organization = $(trs[index]).find('td:first-child').text().toLowerCase().trim(),
+			tickets = parseInt($(trs[index]).find('td:last-child').text()),
+			sla = $(trs[index]).closest('table').attr('id').replace('table', '').toLowerCase();
+
+		data += `
+			"${organization}": {
+				"tickets": ${tickets},
+				"sla": "${sla}"
+			}${index < trs.length - 1 ? ',' : ''}`;
+	}
+	return data;
+}
+
 let data = '{';
 
 let si = setInterval(() => {
@@ -12,17 +28,7 @@ let si = setInterval(() => {
 	
 	if (trs.length) {
 		clearInterval(si);
-		for (let index = 0; index < trs.length; index++) {
-			let organization = $(trs[index]).find('td:first-child').text().toLowerCase().trim(),
-				tickets = parseInt($(trs[index]).find('td:last-child').text()),
-				sla = $(trs[index]).closest('table').attr('id').replace('table', '').toLowerCase();
-			
-				data += `
-					"${organization}": {
-						"tickets": ${tickets},
-						"sla": "${sla}"
-					}${index < trs.length - 1 ? ',' : ''}`;
-		}
+		data += TicketConsumeTab_getDataTrs(trs);
 		data += '}';
 		chrome.runtime.sendMessage({ name: 'dataTicketConsumeTab', data: data.replace(/(\r\n|\n|\r|\s)/gm, '') });
 	}
