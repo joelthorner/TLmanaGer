@@ -3,6 +3,7 @@ const CHANGELOG = [
 		version: 'v2.3.12', date: '30 Aug 2019',
 		lines: [
 			'FIXED Fail background syntax error #177',
+			'FIXED Bad ticket consume source url #163#issuecomment-526475838'
 		]
 	}, {
 		version: 'v2.3.11', date: '30 Aug 2019',
