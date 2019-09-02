@@ -7,7 +7,7 @@ const libsJs = [
 	'node_modules/hotkeys-js/dist/hotkeys.min.js',
 	'node_modules/js-cookie/src/js.cookie.js',
 	'node_modules/huebee/dist/huebee.pkgd.min.js',
-	'node_modules/popper.js/dist/popper.min.js',
+	'node_modules/popper.js/dist/umd/popper.min.js',
 	'node_modules/node-snackbar/dist/snackbar.min.js',
 ]
 
