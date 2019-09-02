@@ -2,19 +2,20 @@ var gulp = require('gulp');
 
 const libsJs = [
 	'node_modules/jquery/dist/jquery.min.js',
-	'node_modules/moment/min/moment.min.js'
+	'node_modules/moment/min/moment.min.js',
+	'node_modules/bootstrap/dist/js/bootstrap.min.js',
 ]
 
-const libsCss = [
-	'node_modules/jquery/dist/jquery.min.js'
+const scssBootstrap = [
+	'node_modules/bootstrap/scss/**/*.scss'
 ]
 
 gulp.task('default', function () {
 	libsJs.forEach(libJs => {
 		gulp.src(libJs).pipe(gulp.dest('js/libs'));
 	});
-	libsCss.forEach(libCss => {
-		gulp.src(libCss).pipe(gulp.dest('css/libs'));
+	scssBootstrap.forEach(libScss => {
+		gulp.src(libScss).pipe(gulp.dest('scss/bootstrap'));
 	});
 });
 
