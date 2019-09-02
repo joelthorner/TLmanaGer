@@ -12089,4 +12089,24 @@ code {
   }
 }
 
+.snackbar-container {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.snackbar-container .action {
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .snackbar-container {
+    margin: 35px 0;
+  }
+}
+
+.snackbar-container > p {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.12",
+	"version": "2.3.13",
 	"manifest_version": 2,
 	"author": "joelthorner",
 	"description": "__MSG_appDesc__",
@@ -163,7 +163,7 @@
 		},
 		{
 			"matches": [
-				"*://*/zdreports/rtm.cfm/?TicketConsume=true",
+				"*://*/zdreports/rtm.cfm?TicketConsume=true",
 				"*://joelthorner.github.io/temp/?TicketConsume=true"
 			],
 			"js": [
@@ -176,8 +176,8 @@
 				"<all_urls>"
 			],
 			"js": [
-				"js/libs/moment.js",
-				"js/libs/jquery-3.4.0.min.js",
+				"js/libs/moment.min.js",
+				"js/libs/jquery.min.js",
 				"js/libs/js.cookie.js",
 				"js/options/defaults.js",
 				"js/globalFunctions.js",
