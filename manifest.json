@@ -163,7 +163,7 @@
 		},
 		{
 			"matches": [
-				"*://*/zdreports/rtm.cfm/?TicketConsume=true",
+				"*://*/zdreports/rtm.cfm?TicketConsume=true",
 				"*://joelthorner.github.io/temp/?TicketConsume=true"
 			],
 			"js": [
