@@ -8,6 +8,7 @@ const libsJs = [
 	'node_modules/js-cookie/src/js.cookie.js',
 	'node_modules/huebee/dist/huebee.pkgd.min.js',
 	'node_modules/popper.js/dist/popper.min.js',
+	'node_modules/node-snackbar/dist/snackbar.min.js',
 ]
 
 const scssBootstrap = [
@@ -15,7 +16,8 @@ const scssBootstrap = [
 ]
 
 const libsCss = [
-	'node_modules/huebee/dist/huebee.min.css'
+	'node_modules/huebee/dist/huebee.min.css',
+	'node_modules/node-snackbar/dist/snackbar.min.css',
 ]
 
 gulp.task('default', function () {
