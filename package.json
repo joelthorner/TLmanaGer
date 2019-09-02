@@ -23,7 +23,8 @@
     "js-cookie": "^2.2.1",
     "moment": "^2.24.0",
     "node-snackbar": "^0.1.15",
-    "popper.js": "^1.15.0"
+    "popper.js": "^1.15.0",
+    "sweetalert2": "^8.17.1"
   },
   "devDependencies": {
     "gulp": "^4.0.2"

@@ -9,6 +9,7 @@ const libsJs = [
 	'node_modules/huebee/dist/huebee.pkgd.min.js',
 	'node_modules/popper.js/dist/umd/popper.min.js',
 	'node_modules/node-snackbar/dist/snackbar.min.js',
+	'node_modules/sweetalert2/dist/sweetalert2.all.min.js',
 ]
 
 const scssBootstrap = [
