@@ -4,6 +4,7 @@ const libsJs = [
 	'node_modules/jquery/dist/jquery.min.js',
 	'node_modules/moment/min/moment.min.js',
 	'node_modules/bootstrap/dist/js/bootstrap.min.js',
+	'node_modules/hotkeys-js/dist/hotkeys.min.js',
 ]
 
 const scssBootstrap = [
@@ -22,3 +23,4 @@ gulp.task('default', function () {
 // execute for update dependencies:
 // $ npm update
 // $ gulp
+// Execute any scss compiler (pending to do in gulp)

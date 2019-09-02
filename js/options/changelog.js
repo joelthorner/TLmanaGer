@@ -3,7 +3,7 @@ const CHANGELOG = [
 		version: 'v2.3.13', date: '02 Sep 2019',
 		lines: [
 			'CHANGED Update dependencies #182',
-			'CHANGED Added npm and gulpjs for dependencies #182',
+			'CHANGED Added npm and gulpjs for dependencies #182#issuecomment-527204236',
 			'FIXED Ticket consume feature wrong url (again) #163#issuecomment-527041819',
 			'FIXED Ticket consume no use enable/disable option (background) #163#issuecomment-527132379'
 		]
