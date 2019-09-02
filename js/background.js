@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(
 			switch (request.directive) {
 				case 'testing-signup':
 					executeScripts(null, [
-						{ file: 'js/libs/moment.js' },
+						{ file: 'js/libs/moment.min.js' },
 						{ file: 'js/actions/testing-signup.js' }
 					])
 					break;
@@ -87,7 +87,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 // TicketConsume system
 function openTicketConsumeTab() {
 	chrome.tabs.create({
-		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm/?TicketConsume=true',
+		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
 		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
 		active: false,
 		// index: 0,
@@ -103,7 +103,7 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 			tabs.forEach(tab => {
 				chrome.tabs.sendMessage(tab.id, { data: message.data });
 				chrome.tabs.query({ 
-					url: '*://zdreports/rtm.cfm/?TicketConsume=true'
+					url: '*://zdreports/rtm.cfm?TicketConsume=true'
 					// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
 				}, function (tabs) {
 					tabs.forEach(tab => { chrome.tabs.remove(tab.id) });
@@ -115,7 +115,11 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 chrome.tabs.onActivated.addListener(function (activeInfo) {
 	chrome.tabs.get(activeInfo.tabId, function (tab){
 		if (tab.url.includes("tlgcommercehelp.zendesk.com")) {
-			openTicketConsumeTab()
+			chrome.storage.sync.get({ optZenTicketConsume: false }, function (result) {
+				if (result.optZenTicketConsume) {
+					openTicketConsumeTab()
+				}
+			});
 		}
-	})
+	});
 });
