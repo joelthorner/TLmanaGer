@@ -86,12 +86,22 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 // TicketConsume system
 function openTicketConsumeTab() {
-	chrome.tabs.create({
+	chrome.windows.create({
 		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
 		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
-		active: false,
-		// index: 0,
-		pinned: true
+		state: 'minimized',
+		// focused: true
+	}, function (window) {
+		// console.log(window);
+		
+		// chrome.tabs.create({
+		// 	// url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
+		// 	url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
+		// 	active: false,
+		// 	index: 0,
+		// 	pinned: true,
+		// 	windowId: window.id
+		// });
 	});
 }
 chrome.runtime.onMessage.addListener(function (message, sender) {
