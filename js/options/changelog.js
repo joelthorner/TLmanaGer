@@ -1,5 +1,11 @@
 const CHANGELOG = [
 	{
+		version: 'v2.3.14', date: '04 Sep 2019',
+		lines: [
+			'FIXED Ticket consume get wrong data #184',
+			'IMPROVED Ticket consume better open window minimized instead of sticky tab #184#issuecomment-528098098'
+		]
+	}, {
 		version: 'v2.3.13', date: '02 Sep 2019',
 		lines: [
 			'CHANGED Update dependencies #182',

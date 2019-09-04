@@ -61,7 +61,10 @@ TicketConsume = {
 					if (TicketConsume.user.role == 'agent') {
 						try {
 							chrome.runtime.sendMessage({ name: 'openTicketConsumeTab' });
-						} catch (error) {}
+						} catch (error) {
+							console.log(error);
+							
+						}
 					}
 				});
 			}
@@ -78,23 +81,28 @@ TicketConsume = {
 				console.log(data);
 				$.extend(true,TicketConsume.data, data)
 	
-				$('[data-test-id="customercontext-userinfo-organization"] [href*="organizations"]').each(function (index, ticketOrg) {
-					let $ticketOrg = $(ticketOrg);
-					if (typeof $ticketOrg.data('ovserved-org') === 'undefined') {
-	
-						$ticketOrg.data('ovserved-org', true);
-						let findOrgId = $ticketOrg.attr('href').match(/\d{1,}/);
-	
-						if (findOrgId) {
-							let orgId = findOrgId[0], orgName = $ticketOrg.text().trim().toLowerCase();
-	
-							TicketConsume.observerInit(orgId, orgName, $ticketOrg);
-						}
+				$(document).off('DOMSubtreeModified').on('DOMSubtreeModified', function (event) {
+					if ($(event.target).find('[href*="organizations"]').length) {
+						$('[data-test-id="customercontext-userinfo-organization"] [href*="organizations"]').each(function (index, ticketOrg) {
+							let $ticketOrg = $(ticketOrg);
+							if (typeof $ticketOrg.data('ovserved-org') === 'undefined') {
+			
+								$ticketOrg.data('ovserved-org', true);
+								let findOrgId = $ticketOrg.attr('href').match(/\d{1,}/);
+			
+								if (findOrgId) {
+									let orgId = findOrgId[0], orgName = $ticketOrg.text().trim().toLowerCase();
+			
+									TicketConsume.observerInit(orgId, orgName, $ticketOrg);
+								}
+							}
+						})
+						TicketConsume.initIntervals();
 					}
-				})
-				TicketConsume.initIntervals();
+				});
 			} catch (error) {
 				log('TicketConsume invalid data', 'danger');
+				console.log(message.data);
 			}
 		});
 	},
@@ -133,7 +141,7 @@ TicketConsume = {
 
 			ZendeskApi_showOrganization(TicketConsume.data[orgName].id).then((responseData) => {
 				let newData = TicketConsume.getNotesText(responseData.organization.notes);
-				newData += TicketConsume.splitVal + '\n' + JSON.stringify(TicketConsume.data[orgName].customData);
+				newData += `\n\n${TicketConsume.splitVal}\n${JSON.stringify(TicketConsume.data[orgName].customData)}`;
 
 				ZendeskApi_updateOrganization(TicketConsume.data[orgName].id, {
 					"organization": { "notes": newData }
@@ -344,7 +352,7 @@ TicketConsume = {
 		let json = [],
 			valueSplitted = value.trim().split(TicketConsume.splitVal);
 
-		if (value.trim().length && valueSplitted) {
+		if (value.trim().length && valueSplitted && value.trim().match(TicketConsume.splitVal)) {
 			json = valueSplitted[valueSplitted.length - 1];
 			try {
 				json = JSON.parse(json);
@@ -372,6 +380,7 @@ TicketConsume = {
 		if (typeof TicketConsume.user !== 'undefined' && TicketConsume.user.role == 'agent') {
 			ZendeskApi_showOrganization(orgId).then((responseData) => {
 				let customData = TicketConsume.parseOrganizationNotes(responseData.organization.notes);
+				
 				if (TicketConsume.data[orgName]) {
 					TicketConsume.data[orgName].id = orgId;
 					TicketConsume.data[orgName].customData = customData;
