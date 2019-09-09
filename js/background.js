@@ -86,23 +86,24 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 // TicketConsume system
 function openTicketConsumeTab() {
-	chrome.windows.create({
-		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
-		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
-		state: 'minimized',
-		// focused: true
-	}, function (window) {
-		// console.log(window);
-		
-		// chrome.tabs.create({
-		// 	// url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
-		// 	url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
-		// 	active: false,
-		// 	index: 0,
-		// 	pinned: true,
-		// 	windowId: window.id
-		// });
+	chrome.tabs.query({ 
+		url: '*://zdreports/rtm.cfm?TicketConsume=true'
+		// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
+	}, function (tabs) {
+		if (!tabs.length) {		
+			chrome.tabs.create({
+				url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
+				// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
+				active: false,
+				pinned: true,
+			});
+		} else {
+			tabs.forEach(tab => {
+				chrome.tabs.reload(tab.id);
+			});
+		}
 	});
+
 }
 chrome.runtime.onMessage.addListener(function (message, sender) {
 	if (message.name == 'openTicketConsumeTab') {
@@ -112,12 +113,6 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 		chrome.tabs.query({ url: '*://tlgcommercehelp.zendesk.com/*' }, function (tabs) {
 			tabs.forEach(tab => {
 				chrome.tabs.sendMessage(tab.id, { data: message.data });
-				chrome.tabs.query({ 
-					url: '*://zdreports/rtm.cfm?TicketConsume=true'
-					// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
-				}, function (tabs) {
-					tabs.forEach(tab => { chrome.tabs.remove(tab.id) });
-				});
 			});
 		});
 	}
