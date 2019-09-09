@@ -1,4 +1,7 @@
+const VERSION = "2.3.15";
+
 var gulp = require('gulp');
+var replace = require('gulp-replace');
 
 const libsJs = [
 	'node_modules/jquery/dist/jquery.min.js',
@@ -21,7 +24,7 @@ const libsCss = [
 	'node_modules/node-snackbar/dist/snackbar.min.css',
 ]
 
-gulp.task('default', function () {
+gulp.task('update-libs', function () {
 	libsJs.forEach(libJs => {
 		gulp.src(libJs).pipe(gulp.dest('js/libs'));
 	});
@@ -33,7 +36,18 @@ gulp.task('default', function () {
 	});
 });
 
+ 
+gulp.task('version', function(){
+  gulp.src(['package.json', 'package-lock.json'])
+    .pipe(replace(/"version":\s"\d{1,3}.\d{1,3}.\d{1,3}"/, `"version": "${VERSION}"`))
+		.pipe(gulp.dest('.'));
+
+	gulp.src(['manifest.json'])
+    .pipe(replace(/"version":\s"\d{1,3}.\d{1,3}.\d{1,3}"/, `"version": "${VERSION}"`))
+		.pipe(gulp.dest('.'));
+});
+
 // execute for update dependencies:
 // $ npm update
-// $ gulp
+// $ gulp update-libs
 // Execute any scss compiler (pending to do in gulp)
