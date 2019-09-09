@@ -1,5 +1,11 @@
 const CHANGELOG = [
 	{
+		version: 'v2.3.15', date: '10 Sep 2019',
+		lines: [
+			'FIXED Fix multiple open windows by TicketConsume (Zendesk) #188',
+			'IMPROVED Gulp automatic version replace (dev) #189'
+		]
+	}, {
 		version: 'v2.3.14', date: '04 Sep 2019',
 		lines: [
 			'FIXED Ticket consume get wrong data #184',

@@ -63,7 +63,6 @@ TicketConsume = {
 							chrome.runtime.sendMessage({ name: 'openTicketConsumeTab' });
 						} catch (error) {
 							console.log(error);
-							
 						}
 					}
 				});
