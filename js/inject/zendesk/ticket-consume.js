@@ -76,8 +76,7 @@ TicketConsume = {
 		chrome.runtime.onMessage.addListener(function (message, sender) {
 			try {
 				var data = JSON.parse(message.data);
-				log('TicketConsume intranet', 'success');
-				console.log(data);
+				log('TicketConsume intranet', 'success'); console.log(data);
 				$.extend(true,TicketConsume.data, data)
 	
 				$(document).off('DOMSubtreeModified').on('DOMSubtreeModified', function (event) {
@@ -85,23 +84,20 @@ TicketConsume = {
 						$('[data-test-id="customercontext-userinfo-organization"] [href*="organizations"]').each(function (index, ticketOrg) {
 							let $ticketOrg = $(ticketOrg);
 							if (typeof $ticketOrg.data('ovserved-org') === 'undefined') {
-			
+		
 								$ticketOrg.data('ovserved-org', true);
 								let findOrgId = $ticketOrg.attr('href').match(/\d{1,}/);
-			
 								if (findOrgId) {
 									let orgId = findOrgId[0], orgName = $ticketOrg.text().trim().toLowerCase();
-			
 									TicketConsume.observerInit(orgId, orgName, $ticketOrg);
 								}
 							}
-						})
+						});
 						TicketConsume.initIntervals();
 					}
 				});
 			} catch (error) {
-				log('TicketConsume invalid data', 'danger');
-				console.log(message.data);
+				log('TicketConsume invalid data', 'danger'); console.log(message.data);
 			}
 		});
 	},
