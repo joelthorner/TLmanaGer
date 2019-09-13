@@ -91,24 +91,11 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 // TicketConsume system
 function openTicketConsumeTab() {
-	chrome.tabs.query({ 
-		url: '*://zdreports/rtm.cfm?TicketConsume=true'
-		// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
-	}, function (tabs) {
-		if (!tabs.length) {		
-			chrome.tabs.create({
-				url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
-				// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
-				active: false,
-				pinned: true,
-			});
-		} else {
-			tabs.forEach(tab => {
-				chrome.tabs.reload(tab.id);
-			});
-		}
+	chrome.windows.create({
+		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
+		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
+		state: 'minimized'
 	});
-
 }
 chrome.runtime.onMessage.addListener(function (message, sender) {
 	if (message.name == 'openTicketConsumeTab') {
@@ -118,12 +105,18 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 		chrome.tabs.query({ url: '*://tlgcommercehelp.zendesk.com/*' }, function (tabs) {
 			tabs.forEach(tab => {
 				chrome.tabs.sendMessage(tab.id, { data: message.data });
+				chrome.tabs.query({
+					url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true'
+					// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
+				}, function (tabs) {
+					tabs.forEach(tab => { chrome.tabs.remove(tab.id) });
+				});
 			});
 		});
 	}
 });
 chrome.tabs.onActivated.addListener(function (activeInfo) {
-	chrome.tabs.get(activeInfo.tabId, function (tab){
+	chrome.tabs.get(activeInfo.tabId, function (tab) {
 		if (tab.url.includes("tlgcommercehelp.zendesk.com")) {
 			chrome.storage.sync.get({ optZenTicketConsume: false }, function (result) {
 				if (result.optZenTicketConsume) {
