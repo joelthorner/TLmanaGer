@@ -66,12 +66,14 @@ chrome.runtime.onInstalled.addListener(function (details) {
 		});
 	} else if (details.reason == 'update') {
 		chrome.storage.sync.get({ newVersionNotify: manifestData.version }, function (result) {
+			console.log(result);
+			
 			var oldVersionArr = result.newVersionNotify.split('.'),
 				newVersionArr = manifestData.version.split('.'),
-				oldMainVersion = parseFloat(oldVersionArr[0] + '.' + oldVersionArr[1]),
-				newMainVersion = parseFloat(newVersionArr[0] + '.' + newVersionArr[1]);
+				oldMainVersion = oldVersionArr[0] + '.' + oldVersionArr[1],
+				newMainVersion = newVersionArr[0] + '.' + newVersionArr[1];
 			
-			if (newMainVersion > oldMainVersion) {
+if (parseFloat(newMainVersion) > parseFloat(oldMainVersion)) {
 				chrome.notifications.create('newVersion-' + manifestData.version, opt, function () {
 					chrome.storage.sync.set({ newVersionNotify: oldMainVersion });
 				});
