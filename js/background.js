@@ -65,18 +65,16 @@ chrome.runtime.onInstalled.addListener(function (details) {
 			url: chrome.extension.getURL('/src/install/index.html')
 		});
 	} else if (details.reason == 'update') {
-		chrome.storage.sync.get({ newVersionNotify: manifestData.version }, function (result) {
-			console.log(result);
-			
+		var newVersionArr = manifestData.version.split('.'),
+			newMainVersion = newVersionArr[0] + '.' + newVersionArr[1];
+
+		chrome.storage.sync.get({ newVersionNotify: newMainVersion }, function (result) {
 			var oldVersionArr = result.newVersionNotify.split('.'),
-				newVersionArr = manifestData.version.split('.'),
-				oldMainVersion = oldVersionArr[0] + '.' + oldVersionArr[1],
-				newMainVersion = newVersionArr[0] + '.' + newVersionArr[1];
-			
-if (parseFloat(newMainVersion) > parseFloat(oldMainVersion)) {
-				chrome.notifications.create('newVersion-' + manifestData.version, opt, function () {
-					chrome.storage.sync.set({ newVersionNotify: oldMainVersion });
-				});
+				oldMainVersion = oldVersionArr[0] + '.' + oldVersionArr[1];
+	
+			console.log(parseFloat(newMainVersion), parseFloat(oldMainVersion));
+			if (parseFloat(newMainVersion) > parseFloat(oldMainVersion)) {
+				chrome.notifications.create('newVersion-' + manifestData.version, opt);
 
 				chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
 					if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
@@ -87,6 +85,7 @@ if (parseFloat(newMainVersion) > parseFloat(oldMainVersion)) {
 				chrome.browserAction.setBadgeText({ text: '!' });
 				chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 			}
+			chrome.storage.sync.set({ newVersionNotify: newMainVersion });
 		});
 	}
 });
