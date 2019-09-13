@@ -65,22 +65,27 @@ chrome.runtime.onInstalled.addListener(function (details) {
 			url: chrome.extension.getURL('/src/install/index.html')
 		});
 	} else if (details.reason == 'update') {
-		chrome.notifications.create('newVersion-' + manifestData.version, opt, function () {
-			chrome.storage.sync.set({
-				newVersionNotify: manifestData.version
-			});
-		});
-
-		chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
-			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
-				chrome.tabs.create({
-					url: chrome.extension.getURL('/src/options/index.html') + '#changelog'
+		chrome.storage.sync.get({ newVersionNotify: manifestData.version }, function (result) {
+			var oldVersionArr = result.newVersionNotify.split('.'),
+				newVersionArr = manifestData.version.split('.'),
+				oldMainVersion = parseFloat(oldVersionArr[0] + '.' + oldVersionArr[1]),
+				newMainVersion = parseFloat(newVersionArr[0] + '.' + newVersionArr[1]);
+			
+			if (newMainVersion > oldMainVersion) {
+				chrome.notifications.create('newVersion-' + manifestData.version, opt, function () {
+					chrome.storage.sync.set({ newVersionNotify: oldMainVersion });
 				});
+
+				chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
+					if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
+						chrome.tabs.create({ url: chrome.extension.getURL('/src/options/index.html') + '#changelog' });
+					}
+				});
+				
+				chrome.browserAction.setBadgeText({ text: '!' });
+				chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 			}
 		});
-
-		chrome.browserAction.setBadgeText({ text: '!' });
-		chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 	}
 });
 

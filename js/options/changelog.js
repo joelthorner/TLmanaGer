@@ -2,6 +2,7 @@ const CHANGELOG = [
 	{
 		version: 'v2.3.16', date: '13 Sep 2019',
 		lines: [
+			'CHANGED Limitation of new version notify, only major and medium version change #194'
 		]
 	}, {
 		version: 'v2.3.15', date: '10 Sep 2019',
