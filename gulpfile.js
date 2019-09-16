@@ -1,4 +1,4 @@
-const VERSION = "2.3.15";
+const VERSION = "2.3.16";
 
 var gulp = require('gulp');
 var replace = require('gulp-replace');
