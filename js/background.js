@@ -65,45 +65,38 @@ chrome.runtime.onInstalled.addListener(function (details) {
 			url: chrome.extension.getURL('/src/install/index.html')
 		});
 	} else if (details.reason == 'update') {
-		chrome.notifications.create('newVersion-' + manifestData.version, opt, function () {
-			chrome.storage.sync.set({
-				newVersionNotify: manifestData.version
-			});
-		});
+		var newVersionArr = manifestData.version.split('.'),
+			newMainVersion = newVersionArr[0] + '.' + newVersionArr[1];
 
-		chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
-			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
-				chrome.tabs.create({
-					url: chrome.extension.getURL('/src/options/index.html') + '#changelog'
+		chrome.storage.sync.get({ newVersionNotify: newMainVersion }, function (result) {
+			var oldVersionArr = result.newVersionNotify.split('.'),
+				oldMainVersion = oldVersionArr[0] + '.' + oldVersionArr[1];
+	
+			console.log(parseFloat(newMainVersion), parseFloat(oldMainVersion));
+			if (parseFloat(newMainVersion) > parseFloat(oldMainVersion)) {
+				chrome.notifications.create('newVersion-' + manifestData.version, opt);
+
+				chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
+					if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
+						chrome.tabs.create({ url: chrome.extension.getURL('/src/options/index.html') + '#changelog' });
+					}
 				});
+				
+				chrome.browserAction.setBadgeText({ text: '!' });
+				chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 			}
+			chrome.storage.sync.set({ newVersionNotify: newMainVersion });
 		});
-
-		chrome.browserAction.setBadgeText({ text: '!' });
-		chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
 	}
 });
 
 // TicketConsume system
 function openTicketConsumeTab() {
-	chrome.tabs.query({ 
-		url: '*://zdreports/rtm.cfm?TicketConsume=true'
-		// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
-	}, function (tabs) {
-		if (!tabs.length) {		
-			chrome.tabs.create({
-				url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
-				// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
-				active: false,
-				pinned: true,
-			});
-		} else {
-			tabs.forEach(tab => {
-				chrome.tabs.reload(tab.id);
-			});
-		}
+	chrome.windows.create({
+		url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true',
+		// url: 'https://joelthorner.github.io/temp/?TicketConsume=true',
+		state: 'minimized'
 	});
-
 }
 chrome.runtime.onMessage.addListener(function (message, sender) {
 	if (message.name == 'openTicketConsumeTab') {
@@ -113,12 +106,18 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 		chrome.tabs.query({ url: '*://tlgcommercehelp.zendesk.com/*' }, function (tabs) {
 			tabs.forEach(tab => {
 				chrome.tabs.sendMessage(tab.id, { data: message.data });
+				chrome.tabs.query({
+					url: 'http://192.168.110.109:12853/zdreports/rtm.cfm?TicketConsume=true'
+					// url: '*://joelthorner.github.io/temp/?TicketConsume=true'
+				}, function (tabs) {
+					tabs.forEach(tab => { chrome.tabs.remove(tab.id) });
+				});
 			});
 		});
 	}
 });
 chrome.tabs.onActivated.addListener(function (activeInfo) {
-	chrome.tabs.get(activeInfo.tabId, function (tab){
+	chrome.tabs.get(activeInfo.tabId, function (tab) {
 		if (tab.url.includes("tlgcommercehelp.zendesk.com")) {
 			chrome.storage.sync.get({ optZenTicketConsume: false }, function (result) {
 				if (result.optZenTicketConsume) {
