@@ -1,5 +1,19 @@
 const CHANGELOG = [
 	{
+		version: 'v2.4.0', date: '-',
+		lines: [
+			'CHANGED Update dependencies sweetalert2 and hotkeys-js',
+			'FIXED Copy svg code action doesn\'t work #198',
+			'FIXED Zendesk submit buttons no "EN" lang fails #199',
+			'FIXED Zendesk submit buttons error wrong status in "unique mode" (no agents view) #201',
+			'FIXED Zendesk Incident ticket highlight fails in not "EN" langs #202',
+			'IMPROVED Get osom font icons, improved unsafe namespaces',
+			'IMPROVED Zendesk support in ES, EN and DE langs',
+			'FIXED Osom font, get duotone icons fails #200',
+			'FIXED Osom font, on change style icon doesn\'t refresh code #203',
+			'NEW New LC background zoom preview before choose #195'
+		]
+	}, {
 		version: 'v2.3.16', date: '13 Sep 2019',
 		lines: [
 			'CHANGED Limitation of new version notify, only major and medium version change #194',

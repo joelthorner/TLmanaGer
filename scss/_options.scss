@@ -328,8 +328,32 @@ $height-nav: 80px;
 
   .background-item {
     overflow: hidden;
-    position: relative;
-
+		position: relative;
+		&:hover .zoom-plus {
+			transform: scale(1);
+		}
+		.zoom-plus {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			z-index: 5;
+			width: 30px;
+			height: 30px;
+			background-color: rgba(0, 0, 0, 0.5);
+			transform: scale(0);
+			transition: all 350ms ease;
+			svg {
+				width: 16px;
+				height: 16px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				fill: #FFF;
+			}
+		}
     a {
       position: absolute;
       bottom: 0;
@@ -371,7 +395,7 @@ $height-nav: 80px;
       display: block;
       background-size: cover;
       background-position: center;
-      margin-bottom: 0;
+			margin-bottom: 0;
     }
     input[type="radio"] {
       position: absolute;
@@ -572,6 +596,28 @@ $height-nav: 80px;
   .card-profile-col-data {
     .card {
       height: auto;
+    }
+  }
+}
+
+#modal-preview-bg {
+	img {
+		max-width: 100%;
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.modal-xl {
+		@media (min-width: 1200px) {
+			max-width: 1080px;
+		}
+	}
+	.modal-title {
+    svg {
+			width: 25px;
+			height: 25px;
+      fill: url(#svg-hover);
+      margin-right: 0.5rem;
     }
   }
 }
