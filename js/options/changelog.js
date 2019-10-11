@@ -2,7 +2,8 @@ const CHANGELOG = [
 	{
 		version: 'v2.4.0', date: '-',
 		lines: [
-			'CHANGED Update dependencies sweetalert2 and hotkeys-js'
+			'CHANGED Update dependencies sweetalert2 and hotkeys-js',
+			'FIXED Copy svg code action doesn\'t work #198'
 		]
 	}, {
 		version: 'v2.3.16', date: '13 Sep 2019',

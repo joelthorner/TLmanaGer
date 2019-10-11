@@ -1,4 +1,4 @@
-log(chrome.i18n.getMessage("showSvgIcons_consoleLog"));
+log(chrome.i18n.getMessage('showSvgIcons_consoleLog'));
 
 /**
  * searchIcons.
@@ -12,10 +12,10 @@ log(chrome.i18n.getMessage("showSvgIcons_consoleLog"));
  * @return {String} Return finded parent of icons.
  */
 function searchIcons(selector, type) {
-	var $parent = null,
-		 $selector = $(selector);
+	
+	var $parent = null, $selector = $(selector);
 
-	$selector.each(function(index, el) {
+	$selector.each(function (index, el) {
 		
 		var iconLen = $(el).parent().find(type).length;
 
@@ -52,7 +52,7 @@ function insertIconsHtml($source) {
 	// set input <svg> code value for copy
 	$('#showSvgIcons-container .showSvgIcons-icon-wrap').each(function (index, el) {
 		const svgValue = $(el).find('.showSvgIcons-svg-icon-wrap').html();
-		$(el).find('.showSvgIcons-input-code').val(svgValue);
+		$(el).find('.showSvgIcons-input-svg').val(svgValue);
 	})
 
 	// Remove all system elements
@@ -77,7 +77,7 @@ var cssNode = `
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background-color: rgba(0,0,0,0.70);
+			background-color: rgba(0, 0, 0, 0.70);
 		}
 		.showSvgIcons-body {
 			width: 80%;
@@ -118,7 +118,7 @@ var cssNode = `
 		#showSvgIcons-container .showSvgIcons-icon-wrap > *:not(.showSvgIcons-hover-layer) {
 			pointer-events: none;
 		}
-		#showSvgIcons-container .showSvgIcons-input-use, #showSvgIcons-container .showSvgIcons-input-code {
+		#showSvgIcons-container .showSvgIcons-input-use, #showSvgIcons-container .showSvgIcons-input-svg {
 			position: absolute;
 			width: 1px;
 			height: 1px;
@@ -141,8 +141,6 @@ var cssNode = `
 			text-align: center;
 			vertical-align: middle;
 			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
 			user-select: none;
 			background-color: transparent;
 			border: 1px solid transparent;
@@ -228,7 +226,7 @@ if ($iconsSprite.length) {
 			var useValue = htmlencode('<svg class="icon"><use xlink:href=\"#' + $(el).attr('id') + '\"></use></svg>');
 			$(el).after('<input type="text" class="showSvgIcons-input-use" value="' + useValue + '">');
 
-			$(el).after('<input type="text" class="showSvgIcons-input-code">');
+			$(el).after('<input type="text" class="showSvgIcons-input-svg">');
 			$(el).after(`
 				<div class="showSvgIcons-hover-layer">
 					<button class="showSvgIcons-button-copy-use" data-type="use" type="button">Copy &lt;use&gt;</button>
@@ -245,8 +243,10 @@ if ($iconsSprite.length) {
 }
 
 // events 4 copy
-$(function() { 
-	$(document).on('click','.showSvgIcons-hover-layer button',function() {
+$(function () { 
+	$(document).on('click','.showSvgIcons-hover-layer button', function () {
+		console.log($(this).closest('.showSvgIcons-icon-wrap').find('.showSvgIcons-input-' + $(this).data('type')));
+		
 		copyToClipboard(
 			$(this).closest('.showSvgIcons-icon-wrap').find('.showSvgIcons-input-' + $(this).data('type'))
 		);
