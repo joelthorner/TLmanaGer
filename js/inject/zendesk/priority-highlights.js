@@ -2,6 +2,12 @@ PriorityHighlights = {
 	timeout: null,
 	cssAdded: false,
 
+	incidentValues: [
+		'incident', // en
+		'incidente', // es
+		'vorfall', // de
+	],
+
 	init: function (active, colors, onlyIncidents) {
 		clearTimeout(PriorityHighlights.timeout);
 		PriorityHighlights.timeout = setTimeout(() => {
@@ -141,7 +147,7 @@ PriorityHighlights = {
 	},
 
 	findType: function (text) {
-		return text == 'incident';
+		return PriorityHighlights.incidentValues.includes(text);
 	},
 
 	clearRow: function ($row) {
