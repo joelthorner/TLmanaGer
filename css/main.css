@@ -11414,11 +11414,11 @@ a.text-dark:hover, a.text-dark:focus {
 .card-background-option .background-item .zoom-plus {
   position: absolute;
   top: 5px;
-  right: 5px;
+  left: 5px;
   z-index: 5;
   width: 30px;
   height: 30px;
-  background-color: rgba(255, 255, 255, 0.35);
+  background-color: rgba(0, 0, 0, 0.5);
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
