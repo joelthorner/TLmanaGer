@@ -6,6 +6,7 @@ SubmitExpander = {
 		open: '#e34f32',
 		pending: '#3091ec',
 		on_hold: '#2f3941',
+		hold: '#2f3941', // same hold, duplicated performance
 		solved: '#87929d'
 	},
 	swalConfig: {
@@ -38,8 +39,13 @@ SubmitExpander = {
 		this.submitPopupActive = submitPopup;
 		
 		$(SubmitExpander.btnGroupSelector).each(function (index, el) {
+			if ($(el).find('.tlg-new-button-expander button').text().replace('Submit as', '').trim() == 0) {
+				var $workspace = $(el).closest('.ember-view.workspace');
+				SubmitExpander.createMenuExpander.destroy($workspace);
+			}
+
 			// if submitButton is visible
-			if ($(el).closest('.ember-view').is(':visible')) {
+			if ($(el).closest('.ember-view.workspace').is(':visible')) {
 				var uniqueBtnString = $(el).find(SubmitExpander.mainBtnSubmitSelector).text().trim().toLowerCase();
 				// menu expander is not disabled
 				if (!$(el).find(SubmitExpander.expanderBtnSelector).prop('disabled')) {
@@ -47,23 +53,40 @@ SubmitExpander = {
 				} else if (uniqueBtnString.length && uniqueBtnString !== 'submit as') {
 					SubmitExpander.createMenuExpander.unique($(el));
 				}
+			} else {
+				// destroy inactive workspaces
+				var $inactiveWorkSpace = $(el).closest('.ember-view.workspace');
+				SubmitExpander.createMenuExpander.destroy($inactiveWorkSpace);
 			}
 		});
 	},
 
 	createMenuExpander: {
+		destroy : function($workspace) {
+			$workspace
+				.find('.tlg-new-button-expander')
+				.remove();
+			
+			$workspace
+				.find(SubmitExpander.btnGroupSelector)
+				.removeClass('tlg-submit-expander')
+				.removeData('tlg-submit-expander');
+		},
+
 		valid: function ($btnGroup) {
 			// if already processed group
 			return $btnGroup.data('tlg-submit-expander') === undefined;
 		},
-		createNewBtnExpander: function ($btnGroup) {
+
+		createNewBtnExpander: function () {
 			return $('<div/>', {
 				class: 'tlg-new-button-expander'
 			});
 		},
+
 		full: function ($btnGroup) {
 			if (this.valid($btnGroup)) {
-				var $newBtnGroup = this.createNewBtnExpander($btnGroup);
+				var $newBtnGroup = this.createNewBtnExpander();
 				var $expanderBtn = $btnGroup.find(SubmitExpander.expanderBtnSelector);
 				
 				// if already open
@@ -89,13 +112,15 @@ SubmitExpander = {
 				}
 			}
 		},
+
 		unique: function ($btnGroup) {
 			if (this.valid($btnGroup)) {
-				var $newBtnGroup = this.createNewBtnExpander($btnGroup),
-					$submitBtn = $btnGroup.find(SubmitExpander.mainBtnSubmitSelector),
-					text = $submitBtn.find('strong').text().trim(),
-					type = text.toLowerCase().replace('-', '_'),
-					fakeLi = `
+				var $newBtnGroup = this.createNewBtnExpander();
+				var $label = $btnGroup.closest('.ember-view.workspace:visible').find('.ticket_status_label');
+				if ($label.length) {
+					var text = $label.text().toLowerCase().trim().replace('-', ' ');
+					var type = $label.attr('class').split(' ')[0];
+					var fakeLi = `
 						<li>
 							<div>
 								<div tabindex="0" style="width: 100%;">
@@ -108,14 +133,9 @@ SubmitExpander = {
 							</div>
 						</li>`;
 
-				$newBtnGroup.append(
-					SubmitExpander.createMenuExpanderItem($(fakeLi), $btnGroup)
-				);
-
-				$btnGroup
-					.append($newBtnGroup)
-					.addClass('tlg-submit-expander')
-					.data('tlg-submit-expander', true);
+					$newBtnGroup.append(SubmitExpander.createMenuExpanderItem($(fakeLi), $btnGroup));
+					$btnGroup.append($newBtnGroup).addClass('tlg-submit-expander').data('tlg-submit-expander', true);
+				}
 			}
 		}
 	},
@@ -124,7 +144,7 @@ SubmitExpander = {
 		var selectedItemText = $btnGroup.find(SubmitExpander.mainBtnSubmitSelector).text().trim().toLowerCase(),
 			classes = '',
 			$liHtml = $($li.html());
-		
+
 		$liHtml.find('span').prevAll('div').addClass('color-item');
 		$liHtml.append('<span class="tooltip-text">Submit as ' + $liHtml.text() + '</span>');
 

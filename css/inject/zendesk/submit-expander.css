@@ -132,6 +132,7 @@
 }
 
 .tlg-new-button-expander button strong {
+	text-transform: capitalize;
 	display: block;
 }
 

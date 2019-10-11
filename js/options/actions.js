@@ -208,7 +208,8 @@ function createImages(imagesList) {
 		$.each(imagesList, function(index, obj) {
 			$('.backgrounds-grid').append(`
 				<div class="background-item">
-					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.urls.full}" data-thumb="${obj.urls.small}" data-download-location="${obj.links.download_location}?client_id=${accesKey}" data-user-link="${obj.user.links.html}" data-user-name="${obj.user.name}">
+					<button class="btn zoom-plus" type="button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-plus"></use></svg></button>
+					<input type="radio" id="bg-radio-${obj.id}" name="opt-lc-bg" value="${obj.urls.full}" data-thumb="${obj.urls.regular}" data-regular="${obj.urls.regular}" data-download-location="${obj.links.download_location}?client_id=${accesKey}" data-user-link="${obj.user.links.html}" data-user-name="${obj.user.name}">
 					<label class="aspect16by9" for="bg-radio-${obj.id}" style="background-image: url(${obj.urls.small});background-color: ${obj.color};"><div class="rippleJS"></div></label>
 					<a href="${obj.user.links.html}?utm_source=TLmanaGer&utm_medium=referral" target="_blank">${obj.user.name}</a>
 				</div>
@@ -241,6 +242,16 @@ function backgroundOption_change() {
 		};
 
 		setOptionValue($('#opt-lc-bg-image'), 'background', value);
+	});
+
+	$(document).on('click', '.background-item .zoom-plus', function (event) {
+		var $bgItem = $(this).closest('.background-item');
+		$('#modal-preview-bg .modal-title span').text($bgItem.children('a').text());
+
+		$('#modal-preview-bg .modal-body').html('').append(`
+			<img src="${$bgItem.find('[name="opt-lc-bg"]').data('regular')}">
+		`);
+		$('#modal-preview-bg').modal('show');
 	});
 }
 
