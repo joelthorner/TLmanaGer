@@ -1,5 +1,10 @@
 const CHANGELOG = [
 	{
+		version: 'v2.4.0', date: '-',
+		lines: [
+			'CHANGED Update dependencies sweetalert2 and hotkeys-js'
+		]
+	}, {
 		version: 'v2.3.16', date: '13 Sep 2019',
 		lines: [
 			'CHANGED Limitation of new version notify, only major and medium version change #194',
