@@ -116,31 +116,25 @@ SubmitExpander = {
 		unique: function ($btnGroup) {
 			if (this.valid($btnGroup)) {
 				var $newBtnGroup = this.createNewBtnExpander();
-				// var $submitBtn = $btnGroup.find(SubmitExpander.mainBtnSubmitSelector);
 				var $label = $btnGroup.closest('.ember-view.workspace:visible').find('.ticket_status_label');
 				if ($label.length) {
 					var text = $label.text().toLowerCase().trim().replace('-', ' ');
 					var type = $label.attr('class').split(' ')[0];
 					var fakeLi = `
-							<li>
-								<div>
-									<div tabindex="0" style="width: 100%;">
-										<div class="flex">
-											<div style="background-color: ${SubmitExpander.types[type]}"></div>
-											<span class="space"> </span>
-											<span>Submit as <strong>${text}</strong></span>
-										</div>
+						<li>
+							<div>
+								<div tabindex="0" style="width: 100%;">
+									<div class="flex">
+										<div style="background-color: ${SubmitExpander.types[type]}"></div>
+										<span class="space"> </span>
+										<span>Submit as <strong>${text}</strong></span>
 									</div>
 								</div>
-							</li>`;
+							</div>
+						</li>`;
 
-					$newBtnGroup.append(
-						SubmitExpander.createMenuExpanderItem($(fakeLi), $btnGroup)
-					);
-					$btnGroup
-						.append($newBtnGroup)
-						.addClass('tlg-submit-expander')
-						.data('tlg-submit-expander', true);
+					$newBtnGroup.append(SubmitExpander.createMenuExpanderItem($(fakeLi), $btnGroup));
+					$btnGroup.append($newBtnGroup).addClass('tlg-submit-expander').data('tlg-submit-expander', true);
 				}
 			}
 		}
