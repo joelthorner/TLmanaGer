@@ -3,7 +3,9 @@ const CHANGELOG = [
 		version: 'v2.4.0', date: '-',
 		lines: [
 			'CHANGED Update dependencies sweetalert2 and hotkeys-js',
-			'FIXED Copy svg code action doesn\'t work #198'
+			'FIXED Copy svg code action doesn\'t work #198',
+			'FIXED Zendesk submit buttons no "EN" lang fails #199',
+			'FIXED Zendesk submit buttons error wrong status in "unique mode" (no agents view) #201'
 		]
 	}, {
 		version: 'v2.3.16', date: '13 Sep 2019',
