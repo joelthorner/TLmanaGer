@@ -9,7 +9,8 @@ const CHANGELOG = [
 			'FIXED Zendesk Incident ticket highlight fails in not "EN" langs #202',
 			'IMPROVED Get osom font icons, improved unsafe namespaces',
 			'FIXED Osom font, get duotone icons fails #200',
-			'FIXED Osom font, on change style icon doesn\'t refresh code #203'
+			'FIXED Osom font, on change style icon doesn\'t refresh code #203',
+			'NEW New LC background zoom preview before choose #195'
 		]
 	}, {
 		version: 'v2.3.16', date: '13 Sep 2019',
