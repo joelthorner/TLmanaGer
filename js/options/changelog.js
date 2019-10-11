@@ -7,6 +7,9 @@ const CHANGELOG = [
 			'FIXED Zendesk submit buttons no "EN" lang fails #199',
 			'FIXED Zendesk submit buttons error wrong status in "unique mode" (no agents view) #201',
 			'FIXED Zendesk Incident ticket highlight fails in not "EN" langs #202',
+			'IMPROVED Get osom font icons, improved unsafe namespaces',
+			'FIXED Osom font, get duotone icons fails #200',
+			'FIXED Osom font, on change style icon doesn\'t refresh code #203'
 		]
 	}, {
 		version: 'v2.3.16', date: '13 Sep 2019',
