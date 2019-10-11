@@ -120,6 +120,13 @@ var _SKELETON_ = `
 	</div>
 `;
 
+function TLMstealFA_setValues(out_svg, out_sym, out_use, out_bg) {
+	$('#TLMstealFA__svg').val(out_svg);
+	$('#TLMstealFA__sym').val(out_sym);
+	$('#TLMstealFA__use').val(out_use);
+	$('#TLMstealFA__backgrund').val(out_bg);
+}
+
 function TLMstealFA_start() {
 	$('body').append(`
 		<div id="TLMstealFA__layout">
@@ -145,10 +152,7 @@ function TLMstealFA_start() {
 	out_bg_svg = 'url("data:image/svg+xml;charset=UTF-8,' + encoded + '")'
 	var out_bg = `background-image: ${out_bg_svg}`;
 
-	$('#TLMstealFA__svg').val(out_svg);
-	$('#TLMstealFA__sym').val(out_sym);
-	$('#TLMstealFA__use').val(out_use);
-	$('#TLMstealFA__backgrund').val(out_bg);
+	TLMstealFA_setValues(out_svg, out_sym, out_use, out_bg);
 
 	$('#TLMstealFA__closert').click(function (event) {
 		$('#TLMstealFA__layout').remove();
@@ -161,7 +165,6 @@ function TLMstealFA_start() {
 
 function TLMstealFA_destroy() {
 	$('#TLMstealFA__layout').remove();
-	
 }
 
 chrome.storage.sync.get({ optDevStealFa: defaults.optDevStealFa }, function(result) {
