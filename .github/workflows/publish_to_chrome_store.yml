@@ -4,11 +4,13 @@ on:
   release:
     # Only use the types keyword to narrow down the activity types that will trigger your workflow.
     types: [published]
+    branches:
+      - master
 
 jobs:
   build:
     # Job name is Greeting
-    name: Nose
+    name: Fer el zip i publicar-lo
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +18,7 @@ jobs:
         with:
           # extension is only necessary when updating an existing addon,
           # omitting it will create a new addon
-          extension: TLmanaGer
+          extension: jaimlomiojjmdhipacahmpnfefpbbeig
           zip: build/TLmanaGer.zip
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
