@@ -11,7 +11,10 @@ jobs:
     name: Fer el zip i publicar-lo
     # This job runs on Linux
     runs-on: ubuntu-latest
+  
     steps:
+      - uses: actions/checkout@v1
+      - run: sed -i -e 's/UNSPLASH_APIKEY_HERE/${{ secrets.UNSPLASH_APIKEY }}/g' /js/options/actions.js
       - uses: trmcnvn/chrome-addon@v1
         with:
           # extension is only necessary when updating an existing addon,
