@@ -1,8 +1,9 @@
 workflow "New workflow" {
   on = "release"
-  resolves = ["create_zip"]
+  resolves = ["publish_chrome_store"]
 }
 
-action "create_zip" {
+action "publish_chrome_store" {
   uses = "create_zip"
+  secrets = ["CHROME_CLIENT_ID", "CHROME_CLIENT_SECRET", "CHROME_REFRESH_TOKEN"]
 }
