@@ -4,6 +4,6 @@ workflow "New workflow" {
 }
 
 action "publish_chrome_store" {
-  uses = "create_zip"
+  uses = "publish_chrome_store"
   secrets = ["CHROME_CLIENT_ID", "CHROME_CLIENT_SECRET", "CHROME_REFRESH_TOKEN"]
 }
