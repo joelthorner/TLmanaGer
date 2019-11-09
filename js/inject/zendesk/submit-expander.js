@@ -25,7 +25,7 @@ SubmitExpander = {
 	},
 	btnGroupSelector: '.ticket-resolution-footer div[data-garden-id="buttons.button_group_view"]',
 	expanderBtnSelector: '[data-garden-id="buttons.icon_button"]',
-	expandedMenuSelector: '[data-garden-id="menus.menu_view"]',
+	expandedMenuSelector: '[data-garden-id="dropdowns.menu"]',
 	mainBtnSubmitSelector: '[data-garden-id="buttons.button"]',
 
 	init: function (submitPopup) {
@@ -40,8 +40,10 @@ SubmitExpander = {
 		
 		$(SubmitExpander.btnGroupSelector).each(function (index, el) {
 			if ($(el).find('.tlg-new-button-expander button').text().replace('Submit as', '').trim() == 0) {
-				var $workspace = $(el).closest('.ember-view.workspace');
-				SubmitExpander.createMenuExpander.destroy($workspace);
+				if (!$(el).closest('.ember-view.workspace').is(':visible')) {	
+					var $workspace = $(el).closest('.ember-view.workspace').not(':visible');
+					SubmitExpander.createMenuExpander.destroy($workspace);
+				}
 			}
 
 			// if submitButton is visible
@@ -94,7 +96,8 @@ SubmitExpander = {
 					$expanderBtn.click();
 
 					setTimeout(() => {
-						var $expandedMenu = $(SubmitExpander.expandedMenuSelector).find('li');
+						var $expandedMenu = $btnGroup.closest('.workspace').find('.ticket-resolution-footer ' + SubmitExpander.expandedMenuSelector).find('li');
+					
 						$expandedMenu.each(function (index, li) {
 							$newBtnGroup.append(
 								SubmitExpander.createMenuExpanderItem($(li), $btnGroup)
