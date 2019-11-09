@@ -1,4 +1,4 @@
-const VERSION = "2.4.0";
+const VERSION = "2.5.0";
 
 var gulp = require('gulp');
 var replace = require('gulp-replace');
@@ -50,4 +50,5 @@ gulp.task('version', function(){
 // execute for update dependencies:
 // $ npm update
 // $ gulp update-libs
+// $ gulp version
 // Execute any scss compiler (pending to do in gulp)

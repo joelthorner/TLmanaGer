@@ -1,5 +1,11 @@
 const CHANGELOG = [
 	{
+		version: 'v2.5.0', date: '09 Nov 2019',
+		lines: [
+			'CHANGED Update dependencies sweetalert2, popper js and node snackbar',
+			'FIXED Hot fix - Zendesk submit button expander prevent input focus #208',
+		]
+	}, {
 		version: 'v2.4.0', date: '12 Oct 2019',
 		lines: [
 			'CHANGED Update dependencies sweetalert2 and hotkeys-js',
