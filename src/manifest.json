@@ -1,0 +1,16 @@
+{
+	"name": "__MSG_appName__",
+	"version": "2.5.0",
+	"manifest_version": 2,
+	"author": "joelthorner",
+	"description": "__MSG_appDesc__",
+	"homepage_url": "https://github.com/joelthorner/TLmanaGer",
+	"icons": {
+		"16": "assets/icons/icon16.png",
+		"48": "assets/icons/icon48.png",
+		"128": "assets/icons/icon128.png"
+	},
+  "browser_action": {
+    "default_popup": "index.html"
+  }
+}
