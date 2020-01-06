@@ -1,21 +1,36 @@
 {
-  "name": "Great Extension",
-  "version": "1.0",
-  "description": "Build an Extension with Angular",
+  "name": "TLmanaGer",
+  "version": "3.0.0",
+  "description": "Development tool",
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
   "permissions": [
-    "activeTab",
-    "webNavigation"
+    "contentSettings",
+    "clipboardRead",
+    "clipboardWrite",
+    "contextMenus",
+    "cookies",
+    "notifications",
+    "tabs",
+    "storage",
+    "<all_urls>"
   ],
   "options_page": "index.html#/options",
   "background": {
     "scripts": [
       "background.js",
       "runtime.js"
-    ]
+    ],
+    "persistent": true
   },
   "browser_action": {
+    "default_icon": "assets/icons/icon48.png",
+    "default_title": "TLmanaGer",
     "default_popup": "index.html"
   }
 }
