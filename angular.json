@@ -31,7 +31,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "cf",
+      "prefix": "tl",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -51,7 +51,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
             "scripts": []
           },
@@ -121,7 +121,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
             "scripts": []
           }

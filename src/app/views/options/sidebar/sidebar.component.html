@@ -1,0 +1,15 @@
+<aside>
+  <ul class="list-unstyled">
+    <li *ngFor="let itemList of itemList" routerLinkActive="active">
+      <a routerLink="{{ itemList.link }}">
+
+        <span class="name">{{ itemList.name }}</span>
+
+        <svg class="icon">
+          <use [attr.xlink:href]="itemList.icon"></use>
+        </svg>
+
+      </a>
+    </li>
+  </ul>
+</aside>
