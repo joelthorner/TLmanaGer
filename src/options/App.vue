@@ -1,17 +1,19 @@
 <template>
-  <div>
-    <p>Hello world!</p>
-  </div>
+  <app-sidebar></app-sidebar>
 </template>
 
 <script>
+import AppSidebar from "./components/AppSidebar.vue";
+
 export default {
   name: "App",
+  components: {
+		AppSidebar
+	}
 };
 </script>
 
-<style scoped>
-p {
-  font-size: 20px;
-}
+<style lang="scss">
+@import "~bootstrap";
+@import "~bootstrap-vue";
 </style>
