@@ -3,8 +3,10 @@
     <li v-for="(item, index) in menu" :key="index">{{ item.text }}</li>
   </ul>-->
 
-  <aside>
-    <b-nav>
+  <aside class="aside-left">
+		<app-logo></app-logo>
+
+    <b-nav vertical>
       <b-nav-item active>Active</b-nav-item>
       <b-nav-item>Link</b-nav-item>
       <b-nav-item>Another Link</b-nav-item>
@@ -35,8 +37,7 @@
 </template>
 
 <script>
-import { NavPlugin } from 'bootstrap-vue'
-
+import AppLogo from "./AppLogo.vue";
 
 export default {
   name: "AppSiderbar",
@@ -59,7 +60,10 @@ export default {
         },
       ],
     };
-  },
+	},
+	components: {
+		AppLogo
+	}
   // methods: {
   //   moveSlider(n) {
   //     //n = n === 1 ? 0 : n;
@@ -70,11 +74,9 @@ export default {
   //     })
   //   }
   // }
-  use: {
-    NavPlugin,
-  },
 };
 </script>
 
 <style lang="scss" scoped>
+
 </style>
