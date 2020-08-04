@@ -1,16 +1,12 @@
 <template>
-  <div id="top-bar">
-		top barsssssssssssssssssss
-	</div>
+  <div id="top-bar"></div>
 </template>
 
 <script>
-
 export default {
-  name: "AppTopBar"
+  name: "AppTopBar",
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>
