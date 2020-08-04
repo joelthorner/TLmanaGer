@@ -9,14 +9,12 @@
 <script>
 import AppSidebar from "./components/sidebar-left/AppSidebar.vue";
 import AppMainContent from "./components/main/AppMainContent.vue";
-import AppSidebarRight from "./components/sidebar-right/AppSidebarRight.vue";
 
 export default {
   name: "App",
   components: {
     AppSidebar,
     AppMainContent,
-    AppSidebarRight,
   },
 };
 </script>
@@ -57,21 +55,23 @@ body,
 }
 
 main {
-  width: calc(100% - #{$aside-left-width} - #{$aside-right-width});
+  width: calc(100% - #{$aside-left-width});
   float: left;
   background-color: $background;
 
   #top-bar {
     height: $top-bar-h;
     background-color: #fff;
-		position: relative;
-		z-index: 10;
-		width: calc(100% + #{$aside-right-width});
   }
+}
+
+#home-content {
+	width: calc(100% - #{$aside-right-width});
+	float: left;
 }
 
 .aside-right {
   width: $aside-right-width;
-	padding-top: $top-bar-h;
+	float: left;
 }
 </style>
