@@ -6,12 +6,8 @@
   <aside class="aside-left">
 		<app-logo></app-logo>
 
-    <b-nav vertical>
-      <b-nav-item active>Active</b-nav-item>
-      <b-nav-item>Link</b-nav-item>
-      <b-nav-item>Another Link</b-nav-item>
-      <b-nav-item disabled>Disabled</b-nav-item>
-    </b-nav>
+    <router-link to="/">Home</router-link>
+		<router-link to="/settings">Settings</router-link>
   </aside>
 
   <!-- <div class="slider" ref="slider">
