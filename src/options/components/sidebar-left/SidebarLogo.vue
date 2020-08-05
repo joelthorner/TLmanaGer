@@ -11,9 +11,6 @@
 
 <script>
 export default {
-  name: "AppLogo",
+  name: "SidebarLogo",
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
