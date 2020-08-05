@@ -1,78 +1,53 @@
 <template>
-  <!-- <ul>
-    <li v-for="(item, index) in menu" :key="index">{{ item.text }}</li>
-  </ul>-->
-
   <aside class="aside-left">
-		<app-logo></app-logo>
-
-    <router-link to="/">Home</router-link>
-		<router-link to="/settings">Settings</router-link>
+    <sidebar-logo></sidebar-logo>
+    <sidebar-menu></sidebar-menu>
+    <sidebar-footer-block
+      v-for="(footerBlock, index) in footerBlocks"
+      v-bind:key="index"
+      v-bind:title="footerBlock.title"
+      v-bind:items="footerBlock.items"
+    ></sidebar-footer-block>
+		<sidebar-copy></sidebar-copy>
   </aside>
-
-  <!-- <div class="slider" ref="slider">
-    <div class="slider__controls">
-      <a
-        @click="moveSlider(n)"
-        href="#"
-        v-for="n in slides.length"
-        :key="n"
-        class="slider__controls__link"
-        >{{ n }}</a
-      >
-    </div>
-    <div
-      v-for="(slide, index) in slides"
-      :key="index"
-      :style="`background-image:url(${slide.image})`"
-      class="slider__content"
-    >
-    {{ slide.text }}
-    </div>
-  </div>-->
 </template>
 
 <script>
-import AppLogo from "./AppLogo.vue";
+import SidebarLogo from "./SidebarLogo.vue";
+import SidebarMenu from "./SidebarMenu.vue";
+import SidebarFooterBlock from "./SidebarFooterBlock.vue";
+import SidebarCopy from "./SidebarCopy.vue";
+
+import { icons } from "./../../../data.js";
 
 export default {
   name: "AppSiderbar",
-  // mounted() {
-  //   this.slider = this.$refs.slider;
-  //   this.height = this.slider.offsetHeight;
-  // },
-  // props: {
-  //   slides: {
-  //     type: Array,
-  //     required: true,
-  //   }
-  // },
-  data() {
+  components: {
+    SidebarLogo,
+    SidebarMenu,
+    SidebarFooterBlock,
+    SidebarCopy,
+  },
+  data: () => {
     return {
-      menu: [
+      footerBlocks: [
         {
-          icon: "",
-          text: "Home",
+          title: "GITHUB",
+          items: [
+            {
+              title: "Project",
+              icon: icons.github,
+              route: "https://github.com/joelthorner/TLmanaGer",
+						},
+						{
+              title: "Issues",
+              icon: icons.bug,
+              route: "https://github.com/joelthorner/TLmanaGer/issues",
+            },
+          ],
         },
       ],
     };
-	},
-	components: {
-		AppLogo
-	}
-  // methods: {
-  //   moveSlider(n) {
-  //     //n = n === 1 ? 0 : n;
-  //     n = n-1;
-  //     this.slider.scrollTo({
-  //       top: this.height * n,
-  //       behavior: 'smooth'
-  //     })
-  //   }
-  // }
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
