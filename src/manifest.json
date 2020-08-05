@@ -18,5 +18,8 @@
       "background.js"
     ]
   },
-  "options_page": "options/options.html"
+	"options_page": "options/options.html",
+	"permissions": [
+		"storage"
+	]
 }
