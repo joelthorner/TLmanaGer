@@ -58,6 +58,7 @@ body {
 	width: $aside-left-width;
 	background-color: $blue-1;
 	overflow: auto;
+
 	&,
 	a {
 		color: #fff;
@@ -88,6 +89,8 @@ body {
 		background: linear-gradient(0deg, rgba($blue-3, 0.9) 0%, rgba($blue-2, 0.9) 100%);
 		flex: 1 0 $menu-height;
 		max-height: $menu-height;
+		position: relative;
+		z-index: 2;
 
 		a {
 			height: rem(48px);
@@ -233,4 +236,24 @@ main {
 .aside-right {
 	width: $aside-right-width;
 	float: left;
+
+	.resume {
+		position: relative;
+		height: $menu-height;
+		background: linear-gradient(0deg, rgba($logo-blue-end, 0.75) 0%, rgba($logo-blue-start, 0.75) 100%);
+		z-index: 2;
+		position: relative;
+	}
+}
+
+.background-widget {
+	.image {
+		height: $menu-height;
+		background-size: cover;
+		background-position: center;
+		margin-left: -$aside-left-width;
+		margin-right: -$aside-right-width;
+		z-index: 1;
+		position: relative;
+	}
 }
