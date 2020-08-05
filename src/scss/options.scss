@@ -48,9 +48,16 @@ body {
 	font-family: "Raleway", sans-serif;
 }
 
+#layout {
+	overflow: auto;
+}
+
 .aside-left {
+	display: flex;
+	flex-direction: column;
 	width: $aside-left-width;
 	background-color: $blue-1;
+	overflow: auto;
 	&,
 	a {
 		color: #fff;
@@ -60,6 +67,8 @@ body {
 	#logo-container {
 		background-color: $blue-2;
 		height: $top-bar-h;
+		flex: 1 0 $top-bar-h;
+		max-height: $top-bar-h;
 		display: flex;
 		align-items: center;
 		padding-left: rem(22px);
@@ -77,6 +86,8 @@ body {
 	.menu {
 		height: $menu-height;
 		background: linear-gradient(0deg, rgba($blue-3, 0.9) 0%, rgba($blue-2, 0.9) 100%);
+		flex: 1 0 $menu-height;
+		max-height: $menu-height;
 
 		a {
 			height: rem(48px);
@@ -135,6 +146,9 @@ body {
 		background-color: $blue-2;
 		border-top: 1px solid $blue-1;
 
+		ul {
+			margin-bottom: 0;
+		}
 		.title {
 			font-weight: bold;
 			text-transform: uppercase;
@@ -156,7 +170,8 @@ body {
 			border-top: 1px solid $blue-1;
 
 			&:hover {
-				.icon, .text {
+				.icon,
+				.text {
 					opacity: 0.75;
 				}
 				text-decoration: none;
@@ -172,6 +187,28 @@ body {
 				height: rem(18px);
 				width: rem(18px);
 			}
+		}
+	}
+
+	.copy-container {
+		margin-top: auto;
+		padding-bottom: rem(28px);
+		font-size: 12px;
+		text-align: center;
+
+		a {
+			color: #5e6581;
+			text-decoration: none;
+			padding: rem(22px) rem(15px);
+			display: block;
+
+			&:hover {
+				color: #8d95b2;
+			}
+		}
+
+		.copy-text {
+			color: #8d95b2;
 		}
 	}
 }
