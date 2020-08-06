@@ -110,5 +110,24 @@ export const chromeData = {
 		clickedResetData: false,
 		clickOnExtensionCount: 0,
 		openPopupCounter: 0,
+	},
+	archivements: {
+		changeBgManyTimes_earned: false,
+		activeAllZenOpts_earned: false,
+	},
+};
+
+export const archivements = {
+	changeBgManyTimes: {
+		name: 'Reroll!',
+		condition: function (timesBgChanged) {
+			return timesBgChanged >= 500
+		}
+	},
+	activeAllZenOpts: {
+		name: 'Zendesk master!',
+		condition: function (zendeskActiveOptsCount, totalZendeskOpts) {
+			return zendeskActiveOptsCount == totalZendeskOpts;
+		}
 	}
 };

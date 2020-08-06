@@ -6,6 +6,7 @@
 				<a :href="item.route" target="_blank" rel="noopener noreferrer">
 					<span class="icon" v-html="item.icon"></span>
 					<span class="text">{{ item.title }}</span>
+					<div class="rippleJS"></div>
 				</a>
 			</li>
 		</ul>

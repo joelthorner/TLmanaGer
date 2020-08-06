@@ -5,6 +5,7 @@
       	<router-link :to="menuItem.route">
 					<span class="icon" v-html="menuItem.icon"></span>
 					<span class="text">{{ menuItem.title }}</span>
+					<div class="rippleJS"></div>
 				</router-link>
 			</li>
     </ul>

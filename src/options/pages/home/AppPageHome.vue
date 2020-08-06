@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="page-content">
+
     <div id="home-content">
       <div class="background-widget">
         <div class="image" v-bind:style="{ backgroundImage: 'url(' + background.thumb + ')' }"></div>
       </div>
     </div>
     <sidebar-right></sidebar-right>
+
   </div>
 </template>
 

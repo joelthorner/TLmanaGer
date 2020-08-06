@@ -1,10 +1,7 @@
 <template>
   <main>
     <app-top-bar></app-top-bar>
-
-    <div id="content">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </main>
 </template>
 
