@@ -1,5 +1,5 @@
 <template>
-  <div class="resume">
+  <div class="resume-item">
 		<slot></slot>
 	</div>
 </template>
@@ -7,6 +7,6 @@
 <script>
 
 export default {
-	name: "SidebarRightResume"
+	name: "SidebarRightResumeItem"
 };
 </script>

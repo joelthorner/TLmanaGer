@@ -12,10 +12,10 @@ $main-font-size: 14px;
 	font-size: rem($size);
 }
 
-$aside-left-width: 212px;
-$aside-right-width: 250px;
-$top-bar-h: 48px;
-$menu-height: 430px;
+$aside-left-width: rem(212px);
+$aside-right-width: rem(250px);
+$top-bar-h: rem(48px);
+$menu-height: rem(430px);
 
 $blue-1: #2d3144;
 $blue-2: #333a56;
@@ -76,6 +76,8 @@ body {
 		padding-right: rem(22px);
 		@include fontSize(16px);
 		font-weight: bold;
+		position: relative;
+		text-decoration: none;
 
 		svg {
 			width: 30px;
@@ -91,6 +93,7 @@ body {
 		max-height: $menu-height;
 		position: relative;
 		z-index: 2;
+		backdrop-filter: blur(4px);
 
 		a {
 			height: rem(48px);
@@ -162,6 +165,7 @@ body {
 		.title,
 		a {
 			height: rem(53px);
+			position: relative;
 		}
 
 		a {
@@ -204,6 +208,7 @@ body {
 			text-decoration: none;
 			padding: rem(22px) rem(15px);
 			display: block;
+			position: relative;
 
 			&:hover {
 				color: #8d95b2;
@@ -220,10 +225,17 @@ main {
 	width: calc(100% - #{$aside-left-width});
 	float: left;
 	background-color: $background;
+	display: flex;
+	flex-direction: column;
 
 	#top-bar {
 		height: $top-bar-h;
 		background-color: #fff;
+	}
+
+	.page-content {
+		min-height: calc(100% - #{$top-bar-h});
+		display: flex;
 	}
 }
 
@@ -242,7 +254,50 @@ main {
 		height: $menu-height;
 		background: linear-gradient(0deg, rgba($logo-blue-end, 0.75) 0%, rgba($logo-blue-start, 0.75) 100%);
 		z-index: 2;
-		position: relative;
+		backdrop-filter: blur(4px);
+
+		.resume-item {
+			position: relative;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+			height: rem(96px);
+
+			&,
+			a {
+				color: #fff;
+				fill: currentColor;
+				text-decoration: none;
+			}
+			a:hover {
+				background-color: rgba(255, 255, 255, 0.1);
+			}
+			> * {
+				height: 100%;
+				padding: rem(15px);
+				display: flex;
+				flex-direction: column;
+			}
+			.title {
+				font-weight: bold;
+				font-size: rem(12px);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			.content {
+				font-size: rem(36px);
+				font-family: "Roboto", sans-serif;
+				font-weight: 100;
+				line-height: 1;
+				margin-top: auto;
+			}
+			svg {
+				position: absolute;
+				width: rem(9px);
+				height: rem(16px);
+				top: 50%;
+				margin-top: rem(-8px);
+				right: rem(30px);
+			}
+		}
 	}
 }
 

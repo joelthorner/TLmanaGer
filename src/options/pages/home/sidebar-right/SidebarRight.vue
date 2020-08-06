@@ -1,32 +1,49 @@
 <template>
   <aside class="aside-right">
-    <sidebar-right-resume>
-			<a :href="releaseLink" target="_blank" rel="noopener noreferrer">
-				<span class="title">VERSION</span>
-				<span class="content">{{ getVersion }}</span>
-				<span class="icon" v-html="caret"></span>
-			</a>
-    </sidebar-right-resume>
+    <div class="resume">
+    	<sidebar-right-resume-item>
+				<a :href="releaseLink" target="_blank" rel="noopener noreferrer">
+					<span class="title">VERSION</span>
+					<span class="content">{{ getVersion }}</span>
+					<span class="icon" v-html="caret"></span>
+					<div class="rippleJS"></div>
+				</a>
+			</sidebar-right-resume-item>
+			<sidebar-right-resume-item>
+				<router-link to="/achievements">
+					<span class="title">ACHIEVEMENTS</span>
+					<span class="content">{{ currentAchievements }}/{{ totalAchievements }}</span>
+					<span class="icon" v-html="caret"></span>
+					<div class="rippleJS"></div>
+				</router-link>
+			</sidebar-right-resume-item>
+    </div>
   </aside>
 </template>
 
 <script>
 import axios from "axios";
 
-import SidebarRightResume from "./SidebarRightResume";
-import { icons } from "./../../../../data.js";
+import SidebarRightResumeItem from "./SidebarRightResumeItem";
+import { icons, archivements, chromeData } from "./../../../../data.js";
 
 export default {
   name: "SidebarRight",
   data: () => {
     return {
 			version: "1.0.0",
-			caret: icons.caretRight
+			caret: icons.caretRight,
+			currentAchievements: 0,
+			totalAchievements: 0,
     };
   },
   components: {
-    SidebarRightResume,
+    SidebarRightResumeItem,
 	},
+	created() {
+    this.getCurrentAchievements();
+    this.getTotalAchievements();
+  },
 	computed: {
 		getVersion() {
 			return chrome.runtime.getManifest().version;
@@ -34,7 +51,22 @@ export default {
 		releaseLink() {
 			return `https://github.com/joelthorner/TLmanaGer/releases/tag/v${this.getVersion}`;
 		},
-	}
+	},
+	methods: {
+		getCurrentAchievements() {
+			chrome.storage.sync.get(chromeData.archivements, (result) => {
+				Object.keys(result).forEach(key => {
+					if (result[key]) this.currentAchievements++;
+				});
+			});
+		},
+		getTotalAchievements() {
+			let key;
+			for (key in archivements) {
+				if (archivements.hasOwnProperty(key)) this.totalAchievements++;
+			}
+		}
+	},
   // created() {
   //   this.listReleases();
   // },
