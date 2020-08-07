@@ -4,6 +4,10 @@
     <div id="home-content">
       <div class="background-widget">
         <div class="image" v-bind:style="{ backgroundImage: 'url(' + background.thumb + ')' }"></div>
+				<div class="credits">
+					<span class="lbl">Photo by</span>
+					<a :href="background.userLink" target="_blank" rel="noopener noreferrer">{{ background.userName }}</a>
+				</div>
       </div>
     </div>
     <sidebar-right></sidebar-right>

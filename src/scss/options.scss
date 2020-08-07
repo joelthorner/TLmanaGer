@@ -12,10 +12,10 @@ $main-font-size: 14px;
 	font-size: rem($size);
 }
 
-$aside-left-width: rem(212px);
-$aside-right-width: rem(250px);
-$top-bar-h: rem(48px);
-$menu-height: rem(430px);
+$aside-left-width: 212px;
+$aside-right-width: 250px;
+$top-bar-h: 48px;
+$menu-height: 430px;
 
 $blue-1: #2d3144;
 $blue-2: #333a56;
@@ -96,7 +96,7 @@ body {
 		backdrop-filter: blur(4px);
 
 		a {
-			height: rem(48px);
+			height: 48px;
 			display: flex;
 			align-items: center;
 			padding-left: rem(22px);
@@ -150,21 +150,25 @@ body {
 
 	.footer-block {
 		background-color: $blue-2;
-		border-top: 1px solid $blue-1;
-
+		
 		ul {
 			margin-bottom: 0;
 		}
 		.title {
+			background-color: $blue-2;
+			border-top: 1px solid $blue-1;
 			font-weight: bold;
 			text-transform: uppercase;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			letter-spacing: 0.05em;
+			z-index: 3;
+			position: relative;
 		}
 		.title,
 		a {
-			height: rem(53px);
+			height: 53px;
 			position: relative;
 		}
 
@@ -248,6 +252,13 @@ main {
 .aside-right {
 	width: $aside-right-width;
 	float: left;
+	background-color: $background-gray-1;
+	display: flex;
+	flex-direction: column;
+
+	> *:not(.resume) {
+		z-index: 3;
+	}
 
 	.resume {
 		position: relative;
@@ -259,7 +270,7 @@ main {
 		.resume-item {
 			position: relative;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-			height: rem(96px);
+			height: 96px;
 
 			&,
 			a {
@@ -299,16 +310,95 @@ main {
 			}
 		}
 	}
+
+	.contributors {
+		background-color: $background-gray-1;
+		position: relative;
+		flex: 1;
+		
+		.title {
+			height: 53px;
+			border-bottom: 1px solid #e7e7e7;
+			font-weight: bold;
+			font-size: rem(14px);
+			color: $title-3;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			letter-spacing: 0.05em;
+			border-left: 1px solid rgba(0,0,0,.1);
+		}
+
+		ul {
+			padding-top: rem(18px);
+			margin-bottom: 0;
+			height: calc(100% - 53px);
+			border-left: 1px solid rgba(0,0,0,.05);
+		}
+		
+		a {
+			padding-left: rem(45px);
+			padding-top: rem(10px);
+			padding-bottom: rem(10px);
+			display: flex;
+			gap: rem(15px);
+			color: $title-3;
+			text-decoration: none;
+			position: relative;
+
+			.content {
+				display: flex;
+				flex-direction: column;
+				.name {
+					font-weight: bold;
+				}
+				.role {
+					opacity: 0.75;
+				}
+			}
+
+			img {
+				height: 43px;
+				width: 43px;
+				border-radius: 50%;
+			}
+		}
+	}
 }
 
 .background-widget {
+	position: relative;
+
 	.image {
-		height: $menu-height;
+		height: calc(#{$menu-height} + 53px);
 		background-size: cover;
 		background-position: center;
 		margin-left: -$aside-left-width;
 		margin-right: -$aside-right-width;
 		z-index: 1;
 		position: relative;
+	}
+	.credits {
+    position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 53px;
+		background-color: rgba(255,255,255,.7);
+		z-index: 2;
+		display: flex;
+		gap: rem(6px);
+		align-items: center;
+		padding-left: rem(20px);
+		backdrop-filter: blur(4px);
+		font-size: rem(12px);
+		font-weight: 500;
+
+		.lbl {
+			color: $blue-2;
+		}
+		a {
+			color: $blue-3;
+		}
 	}
 }

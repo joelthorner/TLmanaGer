@@ -8,8 +8,8 @@
 
 En las opciones de la extensión se pueden rellenar ciertos campos de información personal.
 
-Esa información es totalemte para propositos de desarrollo web. Esos datos se almacenan únicamente en el almacenamiento de su navegador.
-No se envian a terceros ni se hace ningun uso fuera de las acciones de la extensión.
+Esa información es totalmente para propositos de desarrollo web. Esos datos se almacenan únicamente en la extensión del navegador.
+Nunca se envian, ni a terceros. No se hace ningun uso fuera de las acciones de la extensión.
 
 ### 1.2. Uso de los datos personales
 

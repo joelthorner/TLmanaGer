@@ -18,6 +18,8 @@
 				</router-link>
 			</sidebar-right-resume-item>
     </div>
+
+		<sidebar-right-contributors></sidebar-right-contributors>
   </aside>
 </template>
 
@@ -25,6 +27,7 @@
 import axios from "axios";
 
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
+import SidebarRightContributors from "./SidebarRightContributors";
 import { icons, archivements, chromeData } from "./../../../../data.js";
 
 export default {
@@ -39,6 +42,7 @@ export default {
   },
   components: {
     SidebarRightResumeItem,
+    SidebarRightContributors,
 	},
 	created() {
     this.getCurrentAchievements();
