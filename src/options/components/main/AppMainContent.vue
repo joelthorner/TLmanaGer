@@ -1,7 +1,7 @@
 <template>
   <main>
     <app-top-bar></app-top-bar>
-    <router-view></router-view>
+    <router-view :chromeData="chromeData"></router-view>
   </main>
 </template>
 
@@ -12,7 +12,8 @@ export default {
   name: "AppMainContent",
   components: {
     AppTopBar,
-  },
+	},
+	props: ['chromeData'],
 };
 </script>
 
