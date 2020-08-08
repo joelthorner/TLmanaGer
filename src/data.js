@@ -100,7 +100,7 @@ export const chromeData = {
 		zendeskActiveOptsCount: 0,
 		totalActiveOptsCount: 0,
 		openChangelogCount: 0,
-		syncGoogleAccount: false,
+		// syncGoogleAccount: false,
 		clickedIssuesAnchor: false,
 		clickedGithubAnchor: false,
 		clickedLegalsAnchor: false,
@@ -114,6 +114,10 @@ export const chromeData = {
 	archivements: {
 		changeBgManyTimes_earned: false,
 		activeAllZenOpts_earned: false,
+		activeAllOpts_earned: false,
+		lookChangelog50Times_earned: false,
+		googleAccountSync_earned: false,
+		clickedIssuesLink_earned: false,
 	},
 };
 
@@ -125,9 +129,33 @@ export const archivements = {
 		}
 	},
 	activeAllZenOpts: {
-		name: 'Zendesk master!',
+		name: 'Zendesk master',
 		condition: function (zendeskActiveOptsCount, totalZendeskOpts) {
-			return zendeskActiveOptsCount == totalZendeskOpts;
+			return zendeskActiveOptsCount === totalZendeskOpts
+		}
+	},
+	activeAllOpts: {
+		name: 'Full equip',
+		condition: function (totalActiveOptsCount, activeOptsCount) {
+			return totalActiveOptsCount === activeOptsCount
+		}
+	},
+	lookChangelog50Times: {
+		name: 'Eat sleep code repeat',
+		condition: function (openChangelogCount) {
+			return openChangelogCount >= 50
+		}
+	},
+	googleAccountSync: {
+		name: 'G, o, o, g, l, e, glu glu!',
+		condition: function () {
+			return chrome.sync.aboutInfo.type_status.length > 0
+		}
+	},
+	clickedIssuesLink: {
+		name: 'Houston we have a problem',
+		condition: function (clickedIssuesAnchor) {
+			return clickedIssuesAnchor === true
 		}
 	}
 };
