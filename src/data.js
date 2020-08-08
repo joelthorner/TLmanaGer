@@ -159,3 +159,27 @@ export const archivements = {
 		}
 	}
 };
+
+export const posts = [
+	{
+		id: 1,
+		name: 'New TLmanaGer',
+		content: 'Lorem ipsum dolor sit amet agurum tratum ilus, ender tristum s delen a turmen.',
+		date: '08/07/2020',
+		photo: chrome.extension.getURL('img/posts/vue.png'),
+	},
+	{
+		id: 2,
+		name: 'New TLmanaGer',
+		content: 'Lorem ipsum dolor sit amet agurum tratum ilus, ender tristum s delen a turmen.',
+		date: '08/07/2020',
+		photo: chrome.extension.getURL('img/posts/vue.png'),
+	},
+	{
+		id: 3,
+		name: 'New TLmanaGer',
+		content: 'Lorem ipsum dolor sit amet agurum tratum ilus, ender tristum s delen a turmen.',
+		date: '08/07/2020',
+		photo: chrome.extension.getURL('img/posts/vue.png'),
+	},
+];

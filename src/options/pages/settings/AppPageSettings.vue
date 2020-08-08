@@ -11,7 +11,9 @@
 <script>
 export default {
   name: "AppPageSettings",
-	props: ["chromeData"],
+	props: {
+		chromeData: Object
+	},
 	methods: {
     greet: function (event) {
       this.chromeData.logicommerce.background.thumb = 'https://vuejs.org/images/logo.png'

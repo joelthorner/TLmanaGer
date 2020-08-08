@@ -150,7 +150,7 @@ body {
 
 	.footer-block {
 		background-color: $blue-2;
-		
+
 		ul {
 			margin-bottom: 0;
 		}
@@ -243,6 +243,20 @@ main {
 	}
 }
 
+// components ----------------------------------------------------
+.content-title {
+	background-color: $background-title;
+	font-weight: bold;
+	font-size: rem(16px);
+	color: $title-1;
+	fill: currentColor;
+	padding: rem(25px) rem(60px);
+}
+
+.content-block {
+	padding: rem(30px) rem(60px);
+}
+
 // home page ----------------------------------------------------
 #home-content {
 	width: calc(100% - #{$aside-right-width});
@@ -315,7 +329,7 @@ main {
 		background-color: $background-gray-1;
 		position: relative;
 		flex: 1;
-		
+
 		.title {
 			height: 53px;
 			border-bottom: 1px solid #e7e7e7;
@@ -326,16 +340,16 @@ main {
 			align-items: center;
 			justify-content: center;
 			letter-spacing: 0.05em;
-			border-left: 1px solid rgba(0,0,0,.1);
+			border-left: 1px solid rgba(0, 0, 0, 0.1);
 		}
 
 		ul {
 			padding-top: rem(18px);
 			margin-bottom: 0;
 			height: calc(100% - 53px);
-			border-left: 1px solid rgba(0,0,0,.05);
+			border-left: 1px solid rgba(0, 0, 0, 0.05);
 		}
-		
+
 		a {
 			padding-left: rem(45px);
 			padding-top: rem(10px);
@@ -379,12 +393,12 @@ main {
 		position: relative;
 	}
 	.credits {
-    position: absolute;
+		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		height: 53px;
-		background-color: rgba(255,255,255,.7);
+		background-color: rgba(255, 255, 255, 0.7);
 		z-index: 2;
 		display: flex;
 		gap: rem(6px);

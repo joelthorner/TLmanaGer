@@ -28,11 +28,13 @@ import axios from "axios";
 
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
 import SidebarRightContributors from "./SidebarRightContributors";
-import { icons, archivements, chromeData } from "./../../../../data.js";
+import { icons, archivements } from "./../../../../data.js";
 
 export default {
   name: "SidebarRight",
-  props: ["chromeData"],
+  props: {
+    chromeData: Object,
+  },
   data: () => {
     return {
       version: "1.0.0",
