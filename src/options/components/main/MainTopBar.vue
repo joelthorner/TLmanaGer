@@ -7,6 +7,3 @@ export default {
   name: "AppTopBar",
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
