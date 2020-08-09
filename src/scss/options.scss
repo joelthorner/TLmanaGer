@@ -15,7 +15,7 @@ $main-font-size: 14px;
 $aside-left-width: 212px;
 $aside-right-width: 250px;
 $top-bar-h: 48px;
-$menu-height: 430px;
+$menu-height: 350px;
 
 $blue-1: #2d3144;
 $blue-2: #333a56;
@@ -48,10 +48,6 @@ body {
 	font-family: "Raleway", sans-serif;
 }
 
-#layout {
-	overflow: auto;
-}
-
 .aside-left {
 	display: flex;
 	flex-direction: column;
@@ -78,6 +74,7 @@ body {
 		font-weight: bold;
 		position: relative;
 		text-decoration: none;
+		letter-spacing: 0.05em;
 
 		svg {
 			width: 30px;
@@ -231,6 +228,7 @@ main {
 	background-color: $background;
 	display: flex;
 	flex-direction: column;
+	overflow: auto;
 
 	#top-bar {
 		height: $top-bar-h;
@@ -240,10 +238,36 @@ main {
 	.page-content {
 		min-height: calc(100% - #{$top-bar-h});
 		display: flex;
+		
 	}
 }
 
 // components ----------------------------------------------------
+.card {
+	margin-bottom: rem(30px);
+	border-color: #e9edf0;
+	position: relative;
+	color: $title-2;
+	&:hover {
+		color: $title-2;
+		text-decoration: none;
+	}
+
+	.card-body {
+		padding: rem(20px);
+	
+		.card-title {
+			font-size: rem(16px);
+			font-weight: 500;
+			color: $title-2;
+		}
+		.card-text {
+			color: $text-1;
+			font-size: rem(13px);
+			font-weight: 500;
+		}
+	}
+}
 .content-title {
 	background-color: $background-title;
 	font-weight: bold;
@@ -407,6 +431,7 @@ main {
 		backdrop-filter: blur(4px);
 		font-size: rem(12px);
 		font-weight: 500;
+		border-bottom: 1px solid rgba(0,0,0,.1);
 
 		.lbl {
 			color: $blue-2;
