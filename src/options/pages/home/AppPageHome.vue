@@ -16,20 +16,19 @@
       <main-title title="LAST BLOG POSTS"></main-title>
 
       <main-content containerClass="home-last-posts">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col" v-for="post in posts" v-bind:key="post.id">
-              <div class="card">
-                <img :src="post.img" class="card-img-top" :alt="post.name" />
-                <div class="card-body">
-                  <div class="card-title">{{ post.name }}</div>
-                  <p class="card-text" v-html="post.content"></p>
-                  <p class="card-text">
-                    <small class="text-muted">{{ getPostDate(post.date) }}</small>
-                  </p>
-                </div>
+        <div class="row">
+          <div class="col col-md-12 col-lg-6 col-xl-4" v-for="post in last3Posts" v-bind:key="post.id">
+            <router-link class="card" :to="getPostRoute(post.id)">
+              <img :src="post.img" class="card-img-top" :alt="post.name" />
+              <div class="card-body">
+                <div class="card-title">{{ post.name }}</div>
+                <p class="card-text" v-html="post.content"></p>
+                <p class="card-text">
+                  <small class="text-muted">{{ getPostDate(post.date) }}</small>
+                </p>
               </div>
-            </div>
+              <div class="rippleJS"></div>
+            </router-link>
           </div>
         </div>
       </main-content>
@@ -41,6 +40,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import MainTitle from "./../../components/main/MainTitle.vue";
@@ -56,25 +56,33 @@ export default {
   },
   props: {
     chromeData: Object,
+	},
+	data: () => {
+    return {
+      // background: {},
+			posts,
+			maxLastPosts: 3,
+    };
   },
   computed: {
+		last3Posts() {
+			return this.posts.slice(Math.max(this.posts.length - this.maxLastPosts, 0)).reverse();
+		},
     backgroundWindowSize() {
       return this.chromeData.logicommerce.background.thumb.replace(
         "w=400",
         "w=" + window.innerWidth
       );
     },
-	},
-	methods: {
-		getPostDate(date) {
-			return moment(date).duration()
-		}
-	},
-  data: () => {
-    return {
-      // background: {},
-      posts,
-    };
+  },
+  methods: {
+    getPostRoute(id) {
+      return "/post/" + id;
+    },
+    getPostDate(date) {
+      let mdate = moment(date);
+      return moment.duration(moment().diff(mdate)).humanize();
+    },
   },
   // created() {
   //   this.getBackground();

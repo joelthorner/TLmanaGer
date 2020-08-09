@@ -12,6 +12,7 @@ import AppPageAchievements from './pages/achievements/AppPageAchievements.vue'
 import AppPageUser from './pages/user/AppPageUser.vue'
 import AppPageChangelog from './pages/changelog/AppPageChangelog.vue'
 import AppPageBlog from './pages/blog/AppPageBlog.vue'
+import AppPagePost from './pages/blog/AppPagePost.vue'
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
@@ -48,6 +49,19 @@ const router = new VueRouter({
 			name: "blog",
 			component: AppPageBlog
 		},
+		{ 
+			path: '/post/:id', 
+			name: "post",
+			component: AppPagePost,
+			props: true,
+			props: (route) => {
+				const id = Number.parseInt(route.params.id, 10)
+				if (Number.isNaN(id)) {
+					return 0
+				}
+				return { id }
+			}
+		}
 	]
 });
 
