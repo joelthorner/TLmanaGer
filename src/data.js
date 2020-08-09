@@ -106,58 +106,128 @@ export const chromeData = {
 		clickedLegalsAnchor: false,
 		clickedActionCount: 0,
 		changedAvatarOpt: false,
-		extensionInstalled: false,
+		extensionInstalled: true,
 		clickedResetData: false,
 		clickOnExtensionCount: 0,
 		openPopupCounter: 0,
 	},
 	archivements: {
-		changeBgManyTimes_earned: false,
+		changeBg500Times_earned: false,
 		activeAllZenOpts_earned: false,
 		activeAllOpts_earned: false,
 		lookChangelog50Times_earned: false,
 		googleAccountSync_earned: false,
-		clickedIssuesLink_earned: false,
+		clickIssuesLink_earned: false,
+		clickGithubLink_earned: false,
+		clickLegalsLink_earned: false,
+		clickAction500Times_earned: false,
+		changeAvatar_earned: false,
+		intallExtension_earned: true,
+		resetSyncData_earned: false,
+		click500TimesAnything_earned: false,
+		openPopup100Times_earned: false,
 	},
 };
 
 export const archivements = {
-	changeBgManyTimes: {
+	changeBg500Times: {
 		name: 'Reroll!',
+		desc: 'Change background option 500 times',
 		condition: function (timesBgChanged) {
 			return timesBgChanged >= 500
 		}
 	},
 	activeAllZenOpts: {
 		name: 'Zendesk master',
+		desc: 'Activate all zendesk options',
 		condition: function (zendeskActiveOptsCount, totalZendeskOpts) {
 			return zendeskActiveOptsCount === totalZendeskOpts
 		}
 	},
 	activeAllOpts: {
 		name: 'Full equip',
+		desc: 'Activate all options',
 		condition: function (totalActiveOptsCount, activeOptsCount) {
 			return totalActiveOptsCount === activeOptsCount
 		}
 	},
 	lookChangelog50Times: {
 		name: 'Eat sleep code repeat',
+		desc: 'Watch the changelog 50 times',
 		condition: function (openChangelogCount) {
 			return openChangelogCount >= 50
 		}
 	},
 	googleAccountSync: {
 		name: 'G, o, o, g, l, e, glu glu!',
+		desc: 'Activate chrome extensions synchronization, from your google account',
 		condition: function () {
 			return chrome.sync.aboutInfo.type_status.length > 0
 		}
 	},
-	clickedIssuesLink: {
+	clickIssuesLink: {
 		name: 'Houston we have a problem',
+		desc: 'Click issues link',
 		condition: function (clickedIssuesAnchor) {
 			return clickedIssuesAnchor === true
 		}
-	}
+	},
+	clickGithubLink: {
+		name: 'Trust me, I\'m a developer',
+		desc: 'Click github page link',
+		condition: function (clickedGithubAnchor) {
+			return clickedGithubAnchor === true
+		}
+	},
+	clickLegalsLink: {
+		name: '@policy(a)',
+		desc: 'Read the privacy policy',
+		condition: function (clickedLegalsAnchor) {
+			return clickedLegalsAnchor === true
+		}
+	},
+	clickAction500Times: {
+		name: 'Doneclick',
+		desc: 'Click a popup action 500 times',
+		condition: function (clickedActionCount) {
+			return clickedActionCount >= 500
+		}
+	},
+	changeAvatar: {
+		name: 'Ese soy yo!',
+		desc: 'Change profile avatar',
+		condition: function (changedAvatarOpt) {
+			return changedAvatarOpt === true
+		}
+	},
+	intallExtension: {
+		name: 'Easy peasy',
+		desc: 'Install TLmanaGer extension',
+		condition: function () {
+			return true
+		}
+	},
+	resetSyncData: {
+		name: 'Press \'F\'',
+		desc: 'Reset to default options',
+		condition: function (clickedResetData) {
+			return clickedResetData === true
+		}
+	},
+	click500TimesAnything: {
+		name: 'Sick',
+		desc: 'Click 5000 times on extension pages/popup',
+		condition: function (clickOnExtensionCount) {
+			return clickOnExtensionCount >= 5000
+		}
+	},
+	openPopup100Times: {
+		name: 'Once you pop you can\'t stop',
+		desc: 'Open popup 100 times',
+		condition: function (openPopupCounter) {
+			return openPopupCounter >= 100
+		}
+	},
 };
 
 export const posts = [
@@ -170,16 +240,16 @@ export const posts = [
 	},
 	{
 		id: 2,
-		name: 'New TLmanaGer 2',
-		content: 'Lorem ipsum dolor sit amet agurum tratum ilus, ender tristum s delen a turmen.',
+		name: 'Achievements!!',
+		content: 'Arriben els "logros" totalment inútils però si ets un "completista", a gaudir!',
 		date: '08/06/2020',
 		img: chrome.extension.getURL('img/posts/vue.png'),
 	},
 	{
 		id: 3,
 		name: 'TLmanaGer 3 is out!',
-		content: 'La nova versió s’ha fet de nou i està mamadissima. Tota la extensió ha sigut redissenyada, es guay.',
+		content: 'Aquesta nova versió s\'ha redissenyat des de 0 amb Vue.js. Nova estructura de dades que tot i trencar amb la versió 2x i 1x permet escalar de cara al futur.',
 		date: '08/07/2020',
-		img: chrome.extension.getURL('img/posts/vue.png'),
+		img: chrome.extension.getURL('img/posts/new3x.png'),
 	},
 ];
