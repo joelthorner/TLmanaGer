@@ -244,17 +244,26 @@ main {
 
 // components ----------------------------------------------------
 .card {
-	margin-bottom: rem(30px);
+	// margin-bottom: rem(30px);
 	border-color: #e9edf0;
 	position: relative;
-	color: $title-2;
+
+	a {
+		position: relative;
+	}
+
 	&:hover {
-		color: $title-2;
 		text-decoration: none;
 	}
 
 	.card-body {
 		padding: rem(20px);
+		display: flex;
+		flex-direction: column;
+
+		.card-text-foot {
+			margin-top: auto;
+		}
 	
 		.card-title {
 			font-size: rem(16px);
@@ -266,6 +275,9 @@ main {
 			font-size: rem(13px);
 			font-weight: 500;
 		}
+	}
+	.read-more {
+		color: $logo-blue-end;	
 	}
 }
 .content-title {
@@ -279,6 +291,10 @@ main {
 
 .content-block {
 	padding: rem(30px) rem(60px);
+	
+	.card {
+		height: 100%;
+	}
 }
 
 // home page ----------------------------------------------------
@@ -422,7 +438,7 @@ main {
 		left: 0;
 		right: 0;
 		height: 53px;
-		background-color: rgba(255, 255, 255, 0.7);
+		background-color: rgba(255, 255, 255, 0.6);
 		z-index: 2;
 		display: flex;
 		gap: rem(6px);
@@ -431,7 +447,7 @@ main {
 		backdrop-filter: blur(4px);
 		font-size: rem(12px);
 		font-weight: 500;
-		border-bottom: 1px solid rgba(0,0,0,.1);
+		border-bottom: 1px solid rgba(0,0,0,.05);
 
 		.lbl {
 			color: $blue-2;

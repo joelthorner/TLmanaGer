@@ -17,18 +17,30 @@
 
       <main-content containerClass="home-last-posts">
         <div class="row">
-          <div class="col col-md-12 col-lg-6 col-xl-4" v-for="post in last3Posts" v-bind:key="post.id">
-            <router-link class="card" :to="getPostRoute(post.id)">
-              <img :src="post.img" class="card-img-top" :alt="post.name" />
+          <div
+            class="col col-md-12 col-lg-6 col-xl-4"
+            v-for="post in last3Posts"
+            v-bind:key="post.id"
+          >
+            <div class="card">
+              <router-link :to="getPostRoute(post.id)">
+                <img :src="post.img" class="card-img-top" :alt="post.name" />
+                <div class="rippleJS"></div>
+              </router-link>
               <div class="card-body">
-                <div class="card-title">{{ post.name }}</div>
-                <p class="card-text" v-html="post.content"></p>
+                <router-link :to="getPostRoute(post.id)">
+                  <div class="card-title">{{ post.name }}</div>
+                  <div class="rippleJS"></div>
+                </router-link>
                 <p class="card-text">
+                  {{ getSplittedPostContent(post.content) }}
+                  <router-link v-if="hasReadMore(post.content)" :to="getPostRoute(post.id)">Read more</router-link>
+                </p>
+                <p class="card-text card-text-foot">
                   <small class="text-muted">{{ getPostDate(post.date) }}</small>
                 </p>
               </div>
-              <div class="rippleJS"></div>
-            </router-link>
+            </div>
           </div>
         </div>
       </main-content>
@@ -56,18 +68,20 @@ export default {
   },
   props: {
     chromeData: Object,
-	},
-	data: () => {
+  },
+  data: () => {
     return {
       // background: {},
-			posts,
-			maxLastPosts: 3,
+      posts,
+      maxLastPosts: 3,
     };
   },
   computed: {
-		last3Posts() {
-			return this.posts.slice(Math.max(this.posts.length - this.maxLastPosts, 0)).reverse();
-		},
+    last3Posts() {
+      return this.posts
+        .slice(Math.max(this.posts.length - this.maxLastPosts, 0))
+        .reverse();
+    },
     backgroundWindowSize() {
       return this.chromeData.logicommerce.background.thumb.replace(
         "w=400",
@@ -83,6 +97,21 @@ export default {
       let mdate = moment(date);
       return moment.duration(moment().diff(mdate)).humanize();
     },
+    getPLainPostTextContent(content) {
+      let span = document.createElement("span");
+      span.innerHTML = content;
+			let text = span.textContent || span.innerText;
+			return text;
+    },
+    getSplittedPostContent(content) {
+			let text = this.getPLainPostTextContent(content);
+      if (text.length > 100) text = text.substring(0, 100).trim() + "...";
+      return text;
+    },
+    hasReadMore(content) {
+			const text = this.getPLainPostTextContent(content);
+			return text.length > 100;
+		},
   },
   // created() {
   //   this.getBackground();
