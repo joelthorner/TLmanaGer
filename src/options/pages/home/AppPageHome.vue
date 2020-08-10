@@ -22,25 +22,7 @@
             v-for="post in last3Posts"
             v-bind:key="post.id"
           >
-            <div class="card">
-              <router-link :to="getPostRoute(post.id)">
-                <img :src="post.img" class="card-img-top" :alt="post.name" />
-                <div class="rippleJS"></div>
-              </router-link>
-              <div class="card-body">
-                <router-link :to="getPostRoute(post.id)">
-                  <div class="card-title">{{ post.name }}</div>
-                  <div class="rippleJS"></div>
-                </router-link>
-                <p class="card-text">
-                  {{ getSplittedPostContent(post.content) }}
-                  <router-link v-if="hasReadMore(post.content)" :to="getPostRoute(post.id)">Read more</router-link>
-                </p>
-                <p class="card-text card-text-foot">
-                  <small class="text-muted">{{ getPostDate(post.date) }}</small>
-                </p>
-              </div>
-            </div>
+						<post-card :post="post"></post-card>
           </div>
         </div>
       </main-content>
@@ -52,11 +34,11 @@
 
 <script>
 import axios from "axios";
-import moment from "moment";
 
 import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
+import PostCard from "./../../components/PostCard.vue";
 import { posts } from "./../../../data.js";
 
 export default {
@@ -65,6 +47,7 @@ export default {
     SidebarRight,
     MainTitle,
     MainContent,
+    PostCard,
   },
   props: {
     chromeData: Object,
@@ -89,51 +72,5 @@ export default {
       );
     },
   },
-  methods: {
-    getPostRoute(id) {
-      return "/post/" + id;
-    },
-    getPostDate(date) {
-      let mdate = moment(date);
-      return moment.duration(moment().diff(mdate)).humanize();
-    },
-    getPLainPostTextContent(content) {
-      let span = document.createElement("span");
-      span.innerHTML = content;
-			let text = span.textContent || span.innerText;
-			return text;
-    },
-    getSplittedPostContent(content) {
-			let text = this.getPLainPostTextContent(content);
-      if (text.length > 100) text = text.substring(0, 100).trim() + "...";
-      return text;
-    },
-    hasReadMore(content) {
-			const text = this.getPLainPostTextContent(content);
-			return text.length > 100;
-		},
-  },
-  // created() {
-  //   this.getBackground();
-  // },
-  // methods: {
-  //   getBackground: function () {
-  //     chrome.storage.sync.get(chromeData.logicommerce.background, (result) => {
-  // 			this.background = result;
-  // 			this.background.thumb = this.background.thumb.replace("w=400", "w=" + window.innerWidth);
-
-  //       axios
-  //         .get(this.background.downloadLocation)
-
-  //         .then((response) => {
-  //           // console.log(response);
-  //         })
-
-  //         .catch((err) => {
-  //           // console.log(err);
-  //         });
-  //     });
-  //   },
-  // },
 };
 </script>

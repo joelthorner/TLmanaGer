@@ -5,6 +5,7 @@ import App from './App'
 import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import rippleJS from 'vanilla-ripplejs' // no remove, works
+// import vanillaTilt from "vanilla-tilt"
 
 import AppPageHome from './pages/home/AppPageHome.vue'
 import AppPageSettings from './pages/settings/AppPageSettings.vue'
