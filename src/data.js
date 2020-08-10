@@ -111,7 +111,7 @@ export const chromeData = {
 		clickOnExtensionCount: 0,
 		openPopupCounter: 0,
 	},
-	archivements: {
+	achievements: {
 		intallExtension: {
 			earned: true,
 		},
@@ -157,7 +157,7 @@ export const chromeData = {
 	},
 };
 
-export const archivements = {
+export const achievements = {
 	intallExtension: {
 		name: 'Easy peasy',
 		desc: 'Install TLmanaGer extension',

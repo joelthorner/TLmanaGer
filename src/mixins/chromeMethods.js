@@ -1,8 +1,8 @@
-import { archivements } from "../data";
+import { achievements } from "../data";
 
 export default {
 	methods: {
-		createArchivementNotify(archvievement) {
+		createAchievementNotify(archvievement) {
 			// console.log(archvievement);
 			const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 			const uniqid = randLetter + Date.now();

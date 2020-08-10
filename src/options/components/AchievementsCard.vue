@@ -2,12 +2,12 @@
   <div v-bind:class="[earned ? 'active' : '', 'card']" data-tilt data-tilt-reverse="true" data-tilt-max="15">
     <div class="content card-body">
       <div class="hexagon">
-        <img class="img-fluid" :src="archivement.img" :alt="archivement.name" />
+        <img class="img-fluid" :src="achievement.img" :alt="achievement.name" />
       </div>
 
-      <div class="card-title name">{{ archivement.name }}</div>
+      <div class="card-title name">{{ achievement.name }}</div>
       <p class="card-text desc">
-        <small class="text-muted">{{ archivement.desc }}</small>
+        <small class="text-muted">{{ achievement.desc }}</small>
       </p>
 			<!-- <div class="rippleJS"></div> -->
     </div>
@@ -21,7 +21,7 @@ export default {
   name: "AchievementsCard",
   props: {
     earned: Boolean,
-    archivement: Object,
+    achievement: Object,
   },
   data() {
     return {};

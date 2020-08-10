@@ -10,9 +10,9 @@
         </div>
         <div class="grid d-flex">
           <achievements-card
-            v-for="(archivementItem, key) in archivementsData"
+            v-for="(achievementItem, key) in achievementsData"
             v-bind:key="key"
-            :archivement="archivementItem"
+            :achievement="achievementItem"
             :earned="isEarned(key)"
           ></achievements-card>
           <div class="card empty" v-for="index in 10" :key="index"></div>
@@ -26,7 +26,7 @@
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import AchievementsCard from "./../../components/AchievementsCard.vue";
-import { archivements } from "./../../../data.js";
+import { achievements } from "./../../../data.js";
 import getArchievementsMixin from "../../../mixins/getArchievements.js";
 
 import round from "vue-round-filter";
@@ -41,7 +41,7 @@ export default {
 	mixins: [getArchievementsMixin],
   data() {
     return {
-      archivementsData: archivements,
+      achievementsData: achievements,
     };
   },
   filters: {
@@ -52,10 +52,10 @@ export default {
   },
   methods: {
     isEarned(key) {
-			return this.chromeData.archivements[key].earned;
+			return this.chromeData.achievements[key].earned;
 		},
-    // getArchivementData: function(archivementName) {
-    // 	return this.archivements[archivementName];
+    // getAchievementData: function(achievementName) {
+    // 	return this.achievements[achievementName];
     // }
   },
 };
