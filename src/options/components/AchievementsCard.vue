@@ -32,6 +32,5 @@ export default {
       // speed: 400
     });
   },
-  methods: {},
 };
 </script>
