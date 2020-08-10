@@ -20,6 +20,7 @@
 
 <script>
 import { archivements } from "./../../../data.js";
+import chromeMethodsMixin from "../../../mixins/chromeMethods.js";
 
 export default {
   name: "SidebarFooterBlock",
@@ -28,30 +29,44 @@ export default {
 		items: Array,
 		chromeData: Object,
 	},
+	mixins: [chromeMethodsMixin],
 	data() {
 		return {
 			archivementsData: archivements,
 		}
 	},
+	created() {
+		/* DEBUG LINE */
+		// this.chromeData.archivements['intallExtension'].earned = true;
+		// this.chromeData.archivements['clickGithubLink'].earned = false;
+		// chrome.storage.sync.set(this.chromeData, () => {
+		// });
+		/* END DEBUG LINE */
+	},
 	methods: {
     setArchivement: function (id) {
       if (id === 'project') {
-				// agafo data de archivement
+				// Earn archivement block -----------------------------------------------------
+				// Update metric first
+				this.chromeData.metrics.clickedGithubAnchor = true;
+				// Get data of archivement
 				const archvData = this.archivementsData['clickGithubLink'];
-				// agafo metrics de chrome data
-				let clicked = this.chromeData.metrics.clickedGithubAnchor;
-				// miro si metric que vull + condicio de data
-				let result = archvData.condition(clicked);
-				// actualitzo la variable chromedata global tambe
-				this.chromeData.archivements['clickGithubLink'].earned = true;
-				// guardo chrome archivement.earned
-				chrome.storage.sync.set(this.chromeData, function() {
-          console.log('Value is set to ' + value);
-				});
-
-
+				// Get confition() parameters
+				const clickedGithubAnchor = this.chromeData.metrics.clickedGithubAnchor;
+				// Execute condition()
+				const result = archvData.condition(clickedGithubAnchor);
+				// Get result before update archivement
+				const beforeResult = this.chromeData.archivements['clickGithubLink'].earned;
 				
-				// this.chromeData.archivements['clickGithubLink']
+				if (beforeResult === false && result === true) {
+					// Update archivement chrome data
+					this.chromeData.archivements['clickGithubLink'].earned = result;
+					// Save sync and launch system notify
+					chrome.storage.sync.set(this.chromeData, () => {
+						this.createArchivementNotify(archvData);
+					});
+				}
+				// End earn archivement block ---------------------------------------------------
 			} else if (id === 'issues') {
 				
 			}

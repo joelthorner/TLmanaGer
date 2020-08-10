@@ -29,12 +29,14 @@ import axios from "axios";
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
 import SidebarRightContributors from "./SidebarRightContributors";
 import { icons, archivements } from "./../../../../data.js";
+import getArchievementsMixin from "../../../../mixins/getArchievements.js";
 
 export default {
   name: "SidebarRight",
   props: {
     chromeData: Object,
-  },
+	},
+	mixins: [getArchievementsMixin],
   data: () => {
     return {
       version: "1.0.0",
@@ -56,37 +58,7 @@ export default {
     releaseLink() {
       return `https://github.com/joelthorner/TLmanaGer/releases/tag/v${this.getVersion}`;
     },
-    currentAchievements() {
-      let t = 0;
-      Object.keys(this.chromeData.archivements).forEach((key) => {
-        if (this.chromeData.archivements[key].earned) t++;
-      });
-      return t;
-    },
-    totalAchievements() {
-      let key,
-        t = 0;
-      for (key in this.chromeData.archivements) {
-        if (this.chromeData.archivements.hasOwnProperty(key)) t++;
-      }
-      return t;
-    },
   },
-  // methods: {
-  // 	getCurrentAchievements() {
-  // 		chrome.storage.sync.get(chromeData.archivements, (result) => {
-  // 			Object.keys(result).forEach(key => {
-  // 				if (result[key]) this.currentAchievements++;
-  // 			});
-  // 		});
-  // 	},
-  // 	getTotalAchievements() {
-  // 		let key;
-  // 		for (key in archivements) {
-  // 			if (archivements.hasOwnProperty(key)) this.totalAchievements++;
-  // 		}
-  // 	}
-  // },
   // created() {
   //   this.listReleases();
   // },

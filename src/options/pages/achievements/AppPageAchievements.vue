@@ -27,6 +27,7 @@ import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import AchievementsCard from "./../../components/AchievementsCard.vue";
 import { archivements } from "./../../../data.js";
+import getArchievementsMixin from "../../../mixins/getArchievements.js";
 
 import round from "vue-round-filter";
 
@@ -36,7 +37,8 @@ export default {
     MainTitle,
     MainContent,
     AchievementsCard,
-  },
+	},
+	mixins: [getArchievementsMixin],
   data() {
     return {
       archivementsData: archivements,
@@ -47,26 +49,6 @@ export default {
   },
   props: {
     chromeData: Object,
-  },
-  computed: {
-    currentAchievements() {
-      let t = 0;
-      Object.keys(this.chromeData.archivements).forEach((key) => {
-        if (this.chromeData.archivements[key].earned) t++;
-      });
-      return t;
-    },
-    totalAchievements() {
-      let key,
-        t = 0;
-      for (key in this.chromeData.archivements) {
-        if (this.chromeData.archivements.hasOwnProperty(key)) t++;
-      }
-      return t;
-    },
-    earnedPercent() {
-      return (this.currentAchievements * 100) / this.totalAchievements;
-    },
   },
   methods: {
     isEarned(key) {
