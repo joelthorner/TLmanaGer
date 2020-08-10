@@ -133,7 +133,7 @@ export const chromeData = {
 		clickIssuesLink: {
 			earned: false,
 		},
-		clickGithubLink: {
+		clickGithubLink: { // programed
 			earned: false,
 		},
 		clickLegalsLink: {
