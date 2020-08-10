@@ -67,10 +67,32 @@ export default {
 						this.createAchievementNotify(archvData);
 					});
 				}
-				
+
 				// END EARN ACHIEVEMENT BLOCK ---------------------------------------------------
 			} else if (id === 'issues') {
+				// EARN ACHIEVEMENT BLOCK -----------------------------------------------------
+
+				// Update metric first
+				this.chromeData.metrics.clickedIssuesAnchor = true;
+				// Get data of achievement
+				const archvData = this.achievementsData['clickIssuesLink'];
+				// Get confition() parameters
+				const clickedIssuesAnchor = this.chromeData.metrics.clickedIssuesAnchor;
+				// Execute condition()
+				const result = archvData.condition(clickedIssuesAnchor);
+				// Get result before update achievement
+				const beforeResult = this.chromeData.achievements['clickIssuesLink'].earned;
 				
+				if (beforeResult === false && result === true) {
+					// Update achievement chrome data
+					this.chromeData.achievements['clickIssuesLink'].earned = result;
+					// Save sync and launch system notify
+					chrome.storage.sync.set(this.chromeData, () => {
+						this.createAchievementNotify(archvData);
+					});
+				}
+				
+				// END EARN ACHIEVEMENT BLOCK ---------------------------------------------------
 			}
     }
   }
