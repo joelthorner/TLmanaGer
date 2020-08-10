@@ -112,24 +112,60 @@ export const chromeData = {
 		openPopupCounter: 0,
 	},
 	archivements: {
-		changeBg500Times_earned: false,
-		activeAllZenOpts_earned: false,
-		activeAllOpts_earned: false,
-		lookChangelog50Times_earned: false,
-		googleAccountSync_earned: false,
-		clickIssuesLink_earned: false,
-		clickGithubLink_earned: false,
-		clickLegalsLink_earned: false,
-		clickAction500Times_earned: false,
-		changeAvatar_earned: false,
-		intallExtension_earned: true,
-		resetSyncData_earned: false,
-		click500TimesAnything_earned: false,
-		openPopup100Times_earned: false,
+		intallExtension: {
+			earned: true,
+		},
+		changeBg500Times: {
+			earned: false,
+		},
+		activeAllZenOpts: {
+			earned: false,
+		},
+		activeAllOpts: {
+			earned: false,
+		},
+		lookChangelog50Times: {
+			earned: false,
+		},
+		googleAccountSync: {
+			earned: false,
+		},
+		clickIssuesLink: {
+			earned: false,
+		},
+		clickGithubLink: {
+			earned: false,
+		},
+		clickLegalsLink: {
+			earned: false,
+		},
+		clickAction500Times: {
+			earned: false,
+		},
+		changeAvatar: {
+			earned: false,
+		},
+		resetSyncData: {
+			earned: false,
+		},
+		click500TimesAnything: {
+			earned: false,
+		},
+		openPopup100Times: {
+			earned: false,
+		},
 	},
 };
 
 export const archivements = {
+	intallExtension: {
+		name: 'Easy peasy',
+		desc: 'Install TLmanaGer extension',
+		img: chrome.extension.getURL('img/archv/intallExtension.png'),
+		condition: function () {
+			return true
+		}
+	},
 	changeBg500Times: {
 		name: 'Reroll!',
 		desc: 'Change background option 500 times',
@@ -208,14 +244,6 @@ export const archivements = {
 		img: chrome.extension.getURL('img/archv/changeAvatar.png'),
 		condition: function (changedAvatarOpt) {
 			return changedAvatarOpt === true
-		}
-	},
-	intallExtension: {
-		name: 'Easy peasy',
-		desc: 'Install TLmanaGer extension',
-		img: chrome.extension.getURL('img/archv/intallExtension.png'),
-		condition: function () {
-			return true
 		}
 	},
 	resetSyncData: {
