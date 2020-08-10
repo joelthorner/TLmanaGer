@@ -28,7 +28,7 @@ import axios from "axios";
 
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
 import SidebarRightContributors from "./SidebarRightContributors";
-import { icons, archivements } from "./../../../../data.js";
+import { icons, achievements } from "./../../../../data.js";
 import getArchievementsMixin from "../../../../mixins/getArchievements.js";
 
 export default {
