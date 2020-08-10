@@ -1,5 +1,5 @@
 <template>
-  <div class="card" data-tilt data-tilt-reverse="true" data-tilt-max-glare="0.9" data-tilt-scale="1.05">
+  <div class="card" data-tilt data-tilt-reverse="true" data-tilt-max="10">
     <router-link :to="getPostRoute(post.id)" class="link-img">
       <img :src="post.img" class="card-img-top" :alt="post.name" />
       <div class="rippleJS"></div>
@@ -7,7 +7,7 @@
     <div class="card-body">
       <router-link :to="getPostRoute(post.id)">
         <div class="card-title">{{ post.name }}</div>
-        <div class="rippleJS"></div>
+        <!-- <div class="rippleJS"></div> -->
       </router-link>
       <p class="card-text">
         {{ getSplittedPostContent(post.content) }}

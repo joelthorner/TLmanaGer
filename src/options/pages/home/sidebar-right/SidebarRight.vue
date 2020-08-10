@@ -59,7 +59,7 @@ export default {
     currentAchievements() {
       let t = 0;
       Object.keys(this.chromeData.archivements).forEach((key) => {
-        if (this.chromeData.archivements[key]) t++;
+        if (this.chromeData.archivements[key].earned) t++;
       });
       return t;
     },

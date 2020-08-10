@@ -8,12 +8,14 @@
           You have unlocked
           <span>{{ currentAchievements }}/{{ totalAchievements }} ({{ earnedPercent | round }}%)</span>
         </div>
-        <div class="grid">
+        <div class="grid d-flex">
           <achievements-card
-            v-for="archivement in chromeData.archivements"
-            v-bind:key="archivement.name"
-            :archivement="archivement"
+            v-for="(archivementItem, key) in archivementsData"
+            v-bind:key="key"
+            :archivement="archivementItem"
+            :earned="isEarned(key)"
           ></achievements-card>
+          <div class="card empty" v-for="index in 10" :key="index"></div>
         </div>
       </main-content>
     </div>
@@ -24,6 +26,7 @@
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import AchievementsCard from "./../../components/AchievementsCard.vue";
+import { archivements } from "./../../../data.js";
 
 import round from "vue-round-filter";
 
@@ -33,6 +36,11 @@ export default {
     MainTitle,
     MainContent,
     AchievementsCard,
+  },
+  data() {
+    return {
+      archivementsData: archivements,
+    };
   },
   filters: {
     round,
@@ -44,7 +52,7 @@ export default {
     currentAchievements() {
       let t = 0;
       Object.keys(this.chromeData.archivements).forEach((key) => {
-        if (this.chromeData.archivements[key]) t++;
+        if (this.chromeData.archivements[key].earned) t++;
       });
       return t;
     },
@@ -59,6 +67,14 @@ export default {
     earnedPercent() {
       return (this.currentAchievements * 100) / this.totalAchievements;
     },
+  },
+  methods: {
+    isEarned(key) {
+			return this.chromeData.archivements[key].earned;
+		},
+    // getArchivementData: function(archivementName) {
+    // 	return this.archivements[archivementName];
+    // }
   },
 };
 </script>

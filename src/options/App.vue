@@ -1,6 +1,6 @@
 <template>
   <div id="layout" class="d-flex">
-    <app-sidebar></app-sidebar>
+    <app-sidebar :chromeData="chromeData"></app-sidebar>
     <app-main-content :chromeData="chromeData"></app-main-content>
   </div>
 </template>
