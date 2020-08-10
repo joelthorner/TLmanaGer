@@ -226,8 +226,8 @@ main {
 	width: calc(100% - #{$aside-left-width});
 	float: left;
 	background-color: $background;
-	display: flex;
-	flex-direction: column;
+	// display: flex;
+	// flex-direction: column;
 	overflow: auto;
 
 	#top-bar {
@@ -236,23 +236,37 @@ main {
 	}
 
 	.page-content {
-		min-height: calc(100% - #{$top-bar-h});
+		// min-height: calc(100% - #{$top-bar-h});
 		display: flex;
-		
 	}
 }
 
 // components ----------------------------------------------------
 .card {
 	// margin-bottom: rem(30px);
-	border-color: #e9edf0;
+	border-color: rgba(0, 0, 0, 0.1);
+	border: 0;
 	position: relative;
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.11), 0 3px 6px rgba(0, 0, 0, 0.18);
+
+	.link-img {
+		display: block;
+		overflow: hidden;
+		img {
+			transform: scale(1);
+			transition: all 300ms ease;
+		}
+	}
+	&:hover {
+		.link-img img {
+			transform: scale(1.05);
+		}
+	}
 
 	a {
 		position: relative;
-	}
-
-	&:hover {
 		text-decoration: none;
 	}
 
@@ -260,11 +274,12 @@ main {
 		padding: rem(20px);
 		display: flex;
 		flex-direction: column;
+		transform: translateZ(20px);
 
 		.card-text-foot {
 			margin-top: auto;
 		}
-	
+
 		.card-title {
 			font-size: rem(16px);
 			font-weight: 500;
@@ -277,7 +292,7 @@ main {
 		}
 	}
 	.read-more {
-		color: $logo-blue-end;	
+		color: $logo-blue-end;
 	}
 }
 .content-title {
@@ -291,9 +306,14 @@ main {
 
 .content-block {
 	padding: rem(30px) rem(60px);
-	
+
 	.card {
 		height: 100%;
+	}
+	.inner-text {
+		font-size: rem(14px);
+		color: $title-1;
+		margin-bottom: rem(30px);
 	}
 }
 
@@ -447,7 +467,7 @@ main {
 		backdrop-filter: blur(4px);
 		font-size: rem(12px);
 		font-weight: 500;
-		border-bottom: 1px solid rgba(0,0,0,.05);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
 		.lbl {
 			color: $blue-2;
@@ -456,4 +476,9 @@ main {
 			color: $blue-3;
 		}
 	}
+}
+
+// achievements page ----------------------------------------------------
+#achievements-content {
+	width: 100%;
 }

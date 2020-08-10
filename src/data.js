@@ -133,6 +133,7 @@ export const archivements = {
 	changeBg500Times: {
 		name: 'Reroll!',
 		desc: 'Change background option 500 times',
+		img: chrome.extension.getURL('img/archv/changeBg500Times.png'),
 		condition: function (timesBgChanged) {
 			return timesBgChanged >= 500
 		}
@@ -140,6 +141,7 @@ export const archivements = {
 	activeAllZenOpts: {
 		name: 'Zendesk master',
 		desc: 'Activate all zendesk options',
+		img: chrome.extension.getURL('img/archv/activeAllZenOpts.png'),
 		condition: function (zendeskActiveOptsCount, totalZendeskOpts) {
 			return zendeskActiveOptsCount === totalZendeskOpts
 		}
@@ -147,6 +149,7 @@ export const archivements = {
 	activeAllOpts: {
 		name: 'Full equip',
 		desc: 'Activate all options',
+		img: chrome.extension.getURL('img/archv/activeAllOpts.png'),
 		condition: function (totalActiveOptsCount, activeOptsCount) {
 			return totalActiveOptsCount === activeOptsCount
 		}
@@ -154,6 +157,7 @@ export const archivements = {
 	lookChangelog50Times: {
 		name: 'Eat sleep code repeat',
 		desc: 'Watch the changelog 50 times',
+		img: chrome.extension.getURL('img/archv/lookChangelog50Times.png'),
 		condition: function (openChangelogCount) {
 			return openChangelogCount >= 50
 		}
@@ -161,6 +165,7 @@ export const archivements = {
 	googleAccountSync: {
 		name: 'G, o, o, g, l, e, glu glu!',
 		desc: 'Activate chrome extensions synchronization, from your google account',
+		img: chrome.extension.getURL('img/archv/googleAccountSync.png'),
 		condition: function () {
 			return chrome.sync.aboutInfo.type_status.length > 0
 		}
@@ -168,6 +173,7 @@ export const archivements = {
 	clickIssuesLink: {
 		name: 'Houston we have a problem',
 		desc: 'Click issues link',
+		img: chrome.extension.getURL('img/archv/clickIssuesLink.png'),
 		condition: function (clickedIssuesAnchor) {
 			return clickedIssuesAnchor === true
 		}
@@ -175,6 +181,7 @@ export const archivements = {
 	clickGithubLink: {
 		name: 'Trust me, I\'m a developer',
 		desc: 'Click github page link',
+		img: chrome.extension.getURL('img/archv/clickGithubLink.png'),
 		condition: function (clickedGithubAnchor) {
 			return clickedGithubAnchor === true
 		}
@@ -182,6 +189,7 @@ export const archivements = {
 	clickLegalsLink: {
 		name: '@policy(a)',
 		desc: 'Read the privacy policy',
+		img: chrome.extension.getURL('img/archv/clickLegalsLink.png'),
 		condition: function (clickedLegalsAnchor) {
 			return clickedLegalsAnchor === true
 		}
@@ -189,6 +197,7 @@ export const archivements = {
 	clickAction500Times: {
 		name: 'Doneclick',
 		desc: 'Click a popup action 500 times',
+		img: chrome.extension.getURL('img/archv/clickAction500Times.png'),
 		condition: function (clickedActionCount) {
 			return clickedActionCount >= 500
 		}
@@ -196,6 +205,7 @@ export const archivements = {
 	changeAvatar: {
 		name: 'Ese soy yo!',
 		desc: 'Change profile avatar',
+		img: chrome.extension.getURL('img/archv/changeAvatar.png'),
 		condition: function (changedAvatarOpt) {
 			return changedAvatarOpt === true
 		}
@@ -203,6 +213,7 @@ export const archivements = {
 	intallExtension: {
 		name: 'Easy peasy',
 		desc: 'Install TLmanaGer extension',
+		img: chrome.extension.getURL('img/archv/intallExtension.png'),
 		condition: function () {
 			return true
 		}
@@ -210,6 +221,7 @@ export const archivements = {
 	resetSyncData: {
 		name: 'Press \'F\'',
 		desc: 'Reset to default options',
+		img: chrome.extension.getURL('img/archv/resetSyncData.png'),
 		condition: function (clickedResetData) {
 			return clickedResetData === true
 		}
@@ -217,6 +229,7 @@ export const archivements = {
 	click500TimesAnything: {
 		name: 'Sick',
 		desc: 'Click 5000 times on extension pages/popup',
+		img: chrome.extension.getURL('img/archv/click500TimesAnything.png'),
 		condition: function (clickOnExtensionCount) {
 			return clickOnExtensionCount >= 5000
 		}
@@ -224,6 +237,7 @@ export const archivements = {
 	openPopup100Times: {
 		name: 'Once you pop you can\'t stop',
 		desc: 'Open popup 100 times',
+		img: chrome.extension.getURL('img/archv/openPopup100Times.png'),
 		condition: function (openPopupCounter) {
 			return openPopupCounter >= 100
 		}
