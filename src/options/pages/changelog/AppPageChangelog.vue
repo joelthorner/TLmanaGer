@@ -48,7 +48,6 @@ const cache = setupCache({
   maxAge: 15 * 60 * 1000,
 });
 
-// Create `axios` instance passing the newly created `cache.adapter`
 const api = axios.create({
   adapter: cache.adapter,
 });
@@ -78,27 +77,38 @@ export default {
   },
   methods: {
     getReleases() {
-      // return axios
-      //   .get(`https://api.github.com/repos/joelthorner/TLmanaGer/releases`)
-
-      //   .then((response) => {
-      //     console.log(response.data);
-      //     this.releases = response.data;
-      //   })
-
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
       api({
         url: `https://api.github.com/repos/joelthorner/TLmanaGer/releases`,
         method: "get",
       }).then(async (response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.releases = response.data;
       });
     },
     getReleaseLines(content) {
-      return content.split("\n").sort();
+      return content.split("\n").sort(function compare(a, b) {
+        if (
+          a.match(/NEW/) ||
+          (a.match(/FIXED/) && b.match(/IMPROVED/)) ||
+          (a.match(/FIXED/) && b.match(/CHANGED/)) ||
+          (a.match(/FIXED/) && b.match(/REMOVED/)) ||
+          (a.match(/IMPROVED/) && b.match(/CHANGED/)) ||
+          (a.match(/IMPROVED/) && b.match(/REMOVED/)) ||
+          (a.match(/CHANGED/) && b.match(/REMOVED/))
+        )
+          return -1;
+
+        if (
+          b.match(/NEW/) ||
+          (a.match(/IMPROVED/) && b.match(/FIXED/)) ||
+          (a.match(/CHANGED/) && b.match(/FIXED/)) ||
+          (a.match(/CHANGED/) && b.match(/IMPROVED/)) ||
+          (a.match(/REMOVED/) && b.match(/FIXED/)) ||
+          (a.match(/REMOVED/) && b.match(/IMPROVED/)) ||
+          (a.match(/REMOVED/) && b.match(/CHANGED/))
+        )
+          return 1;
+      });
     },
     getReleaseDate(date) {
       return moment(date).format("MMMM Do YYYY");
