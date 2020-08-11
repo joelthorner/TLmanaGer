@@ -27,8 +27,8 @@ export default {
   methods: {
     getPostData: function () {
       this.post = {};
-			this.finded = false;
-			
+      this.finded = false;
+
       posts.forEach((post) => {
         if (post.id === this.id) {
           this.post = post;

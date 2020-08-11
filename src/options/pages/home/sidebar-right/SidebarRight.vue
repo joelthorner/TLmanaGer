@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
 import SidebarRightContributors from "./SidebarRightContributors";
 import { icons, achievements } from "./../../../../data.js";
@@ -35,8 +33,8 @@ export default {
   name: "SidebarRight",
   props: {
     chromeData: Object,
-	},
-	mixins: [getArchievementsMixin],
+  },
+  mixins: [getArchievementsMixin],
   data: () => {
     return {
       version: "1.0.0",

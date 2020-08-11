@@ -4,10 +4,9 @@
 
 <script>
 export default {
-	name: "AppPageBlog",
+  name: "AppPageBlog",
 };
 </script>
 
 <style lang="scss">
-
 </style>

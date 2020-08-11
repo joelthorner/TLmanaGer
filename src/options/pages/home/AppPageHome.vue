@@ -22,7 +22,7 @@
             v-for="post in last3Posts"
             v-bind:key="post.id"
           >
-						<post-card :post="post"></post-card>
+            <post-card :post="post"></post-card>
           </div>
         </div>
       </main-content>
@@ -33,8 +33,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";

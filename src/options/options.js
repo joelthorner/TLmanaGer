@@ -49,8 +49,8 @@ const router = new VueRouter({
 			name: "blog",
 			component: AppPageBlog
 		},
-		{ 
-			path: '/post/:id', 
+		{
+			path: '/post/:id',
 			name: "post",
 			component: AppPagePost,
 			props: true,

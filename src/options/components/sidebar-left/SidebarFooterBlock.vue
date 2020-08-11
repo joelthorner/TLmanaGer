@@ -25,24 +25,24 @@ import watchArchievements from "../../../mixins/watchArchievements.js";
 export default {
   name: "SidebarFooterBlock",
   props: {
-		title: String,
-		items: Array,
-		chromeData: Object,
-	},
-	mixins: [watchArchievements],
-	data() {
-		return {
-			achievementsData: achievements,
-		}
-	},
-	methods: {
+    title: String,
+    items: Array,
+    chromeData: Object,
+  },
+  mixins: [watchArchievements],
+  data() {
+    return {
+      achievementsData: achievements,
+    };
+  },
+  methods: {
     setAchievement(id) {
-      if (id === 'project') {
-				this.clickGithubLink();
-			} else if (id === 'issues') {
-				this.clickIssuesLink();
-			}
-    }
-  }
+      if (id === "project") {
+        this.clickGithubLink();
+      } else if (id === "issues") {
+        this.clickIssuesLink();
+      }
+    },
+  },
 };
 </script>
