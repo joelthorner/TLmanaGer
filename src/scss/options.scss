@@ -241,6 +241,13 @@ main {
 	}
 }
 
+.page-enter-active, .page-leave-active {
+  transition: opacity 150ms ease-in-out;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
 // components ----------------------------------------------------
 .card {
 	border-color: rgba(0, 0, 0, 0.1);
