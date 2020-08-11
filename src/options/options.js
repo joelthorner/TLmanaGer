@@ -49,8 +49,8 @@ const router = new VueRouter({
 			name: "blog",
 			component: AppPageBlog
 		},
-		{ 
-			path: '/post/:id', 
+		{
+			path: '/post/:id',
 			name: "post",
 			component: AppPagePost,
 			props: true,
@@ -69,5 +69,10 @@ const router = new VueRouter({
 new Vue({
 	el: '#app',
 	router,
-	render: h => h(App)
+	render: h => h(App),
+	// watch: {
+	// 	'$route'(to, from) {
+	// 	  console.log(to, from);
+	// 	}
+	// },
 })

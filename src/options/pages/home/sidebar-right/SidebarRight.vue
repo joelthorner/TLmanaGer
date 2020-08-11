@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
 import SidebarRightContributors from "./SidebarRightContributors";
 import { icons, achievements } from "./../../../../data.js";
@@ -35,8 +33,8 @@ export default {
   name: "SidebarRight",
   props: {
     chromeData: Object,
-	},
-	mixins: [getArchievementsMixin],
+  },
+  mixins: [getArchievementsMixin],
   data: () => {
     return {
       version: "1.0.0",
@@ -47,10 +45,6 @@ export default {
     SidebarRightResumeItem,
     SidebarRightContributors,
   },
-  // created() {
-  //   this.getCurrentAchievements();
-  //   this.getTotalAchievements();
-  // },
   computed: {
     getVersion() {
       return chrome.runtime.getManifest().version;
@@ -59,23 +53,5 @@ export default {
       return `https://github.com/joelthorner/TLmanaGer/releases/tag/v${this.getVersion}`;
     },
   },
-  // created() {
-  //   this.listReleases();
-  // },
-  // methods: {
-  //   listReleases() {
-  //     return axios
-  //       .get(`https://api.github.com/repos/joelthorner/TLmanaGer/releases`)
-
-  //       .then((response) => {
-  //         console.log(response.data[0]);
-  //         this.version = response.data[0].tag_name;
-  //       })
-
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   },
-  // },
 };
 </script>

@@ -1,7 +1,7 @@
 
 chrome.runtime.onInstalled.addListener(function (details) {
 	if (details.reason == 'install') {
-		
+
 		// TODO page install
 
 		// chrome.tabs.create({

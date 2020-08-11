@@ -1,12 +1,11 @@
 <template>
   <div class="resume-item">
-		<slot></slot>
-	</div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-
 export default {
-	name: "SidebarRightResumeItem"
+  name: "SidebarRightResumeItem",
 };
 </script>

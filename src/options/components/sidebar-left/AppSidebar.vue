@@ -7,9 +7,9 @@
       v-bind:key="index"
       :title="footerBlock.title"
       :items="footerBlock.items"
-			:chromeData="chromeData"
+      :chromeData="chromeData"
     ></sidebar-footer-block>
-		<sidebar-copy></sidebar-copy>
+    <sidebar-copy></sidebar-copy>
   </aside>
 </template>
 
@@ -28,8 +28,8 @@ export default {
     SidebarMenu,
     SidebarFooterBlock,
     SidebarCopy,
-	},
-	props: {
+  },
+  props: {
     chromeData: Object,
   },
   data: () => {
@@ -39,13 +39,13 @@ export default {
           title: "GITHUB",
           items: [
             {
-							id: 'project',
+              id: "project",
               title: "Project",
               icon: icons.github,
               route: "https://github.com/joelthorner/TLmanaGer",
-						},
-						{
-							id: 'issues',
+            },
+            {
+              id: "issues",
               title: "Issues",
               icon: icons.bug,
               route: "https://github.com/joelthorner/TLmanaGer/issues",
