@@ -37,8 +37,8 @@ export default {
     MainTitle,
     MainContent,
     AchievementsCard,
-	},
-	mixins: [getArchievementsMixin],
+  },
+  mixins: [getArchievementsMixin],
   data() {
     return {
       achievementsData: achievements,
@@ -52,8 +52,8 @@ export default {
   },
   methods: {
     isEarned(key) {
-			return this.chromeData.achievements[key].earned;
-		},
+      return this.chromeData.achievements[key].earned;
+    },
     // getAchievementData: function(achievementName) {
     // 	return this.achievements[achievementName];
     // }

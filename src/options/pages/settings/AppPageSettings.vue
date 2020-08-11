@@ -11,13 +11,14 @@
 <script>
 export default {
   name: "AppPageSettings",
-	props: {
-		chromeData: Object
-	},
-	methods: {
+  props: {
+    chromeData: Object,
+  },
+  methods: {
     greet: function (event) {
-      this.chromeData.logicommerce.background.thumb = 'https://vuejs.org/images/logo.png'
-    }
-  }
+      this.chromeData.logicommerce.background.thumb =
+        "https://vuejs.org/images/logo.png";
+    },
+  },
 };
 </script>

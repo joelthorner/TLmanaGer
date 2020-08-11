@@ -1,35 +1,39 @@
 <template>
-  <div class="debug">
-		
-		<button class="btn btn-secondary" v-on:click="reset">clear storage</button>
-
-	</div>
+  <div class="debug" v-if="debug">
+    <button class="btn btn-secondary" v-on:click="reset">clear storage</button>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: "AppDebug",
   props: {
     chromeData: Object,
+    loadedChromeData: Boolean,
   },
   created() {
-    
+    this.isDebug();
   },
   data() {
     return {
-     
+      debug: false,
     };
   },
   methods: {
-    reset: function() {
-      chrome.storage.sync.clear(function() {
-				var error = chrome.runtime.lastError;
-				if (error) {
-						console.error(error);
-				}
-				console.log('reset');
-			});
+    isDebug: function () {
+      const queryString = window.location.href;
+      if (queryString.includes("debug=1")) {
+        this.debug = true;
+      }
+    },
+    reset: function () {
+      chrome.storage.sync.clear(function () {
+        var error = chrome.runtime.lastError;
+        if (error) {
+          console.error(error);
+        }
+        console.log("reset");
+      });
     },
   },
 };

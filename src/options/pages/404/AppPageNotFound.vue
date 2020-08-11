@@ -4,10 +4,9 @@
 
 <script>
 export default {
-	name: "AppPageNotFound",
+  name: "AppPageNotFound",
 };
 </script>
 
 <style lang="scss">
-
 </style>

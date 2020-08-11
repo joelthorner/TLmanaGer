@@ -62,7 +62,7 @@ body {
 	}
 
 	#logo-container {
-		background-color: $blue-2;
+		background-color: $blue-1;
 		height: $top-bar-h;
 		flex: 1 0 $top-bar-h;
 		max-height: $top-bar-h;
@@ -241,11 +241,13 @@ main {
 	}
 }
 
-.page-enter-active, .page-leave-active {
-  transition: opacity 150ms ease-in-out;
+.page-enter-active,
+.page-leave-active {
+	transition: opacity 150ms ease-in-out;
 }
-.page-enter, .page-leave-to {
-  opacity: 0;
+.page-enter,
+.page-leave-to {
+	opacity: 0;
 }
 
 // components ----------------------------------------------------
