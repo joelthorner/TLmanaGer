@@ -30,14 +30,13 @@ export default {
     post: Object,
   },
   data() {
-    return {
-    };
+    return {};
   },
-	mounted () {
-		VanillaTilt.init(this.$el, {
-			// max: 25,
-			// speed: 400
-		});
+  mounted() {
+    VanillaTilt.init(this.$el, {
+      // max: 25,
+      // speed: 400
+    });
   },
   methods: {
     getPostRoute(id) {

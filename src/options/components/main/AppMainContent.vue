@@ -1,7 +1,9 @@
 <template>
   <main>
     <main-top-bar></main-top-bar>
-    <router-view :chromeData="chromeData"></router-view>
+    <transition name="page" mode="out-in">
+      <router-view :chromeData="chromeData"></router-view>
+    </transition>
   </main>
 </template>
 

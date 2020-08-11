@@ -112,7 +112,7 @@ export const chromeData = {
 		openPopupCounter: 0,
 	},
 	achievements: {
-		intallExtension: {
+		intallExtension: { // programed
 			earned: true,
 		},
 		changeBg500Times: {
@@ -124,13 +124,13 @@ export const chromeData = {
 		activeAllOpts: {
 			earned: false,
 		},
-		lookChangelog50Times: {
+		lookChangelog50Times: { // programed
 			earned: false,
 		},
 		googleAccountSync: {
 			earned: false,
 		},
-		clickIssuesLink: {
+		clickIssuesLink: { // programed
 			earned: false,
 		},
 		clickGithubLink: { // programed

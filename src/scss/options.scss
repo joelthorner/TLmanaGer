@@ -21,11 +21,11 @@ $blue-1: #2d3144;
 $blue-2: #333a56;
 $blue-3: #2d4065;
 
-$title-1: #a9b7c3; // header titles content
+$title-1: #939faa; // header titles content
 $title-2: #686b73; // card dark title
 $title-3: #c2c2c2; // aside right title part white
 
-$text-1: #9ea0a6;
+$text-1: #8e9199;
 
 $background: #f0f6fb; // global
 $background-title: #e1e9f0; // header title content bg
@@ -62,7 +62,7 @@ body {
 	}
 
 	#logo-container {
-		background-color: $blue-2;
+		background-color: $blue-1;
 		height: $top-bar-h;
 		flex: 1 0 $top-bar-h;
 		max-height: $top-bar-h;
@@ -241,6 +241,15 @@ main {
 	}
 }
 
+.page-enter-active,
+.page-leave-active {
+	transition: opacity 150ms ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+	opacity: 0;
+}
+
 // components ----------------------------------------------------
 .card {
 	border-color: rgba(0, 0, 0, 0.1);
@@ -250,7 +259,7 @@ main {
 	transform: perspective(1000px);
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.14);
 
-	&:hover {
+	&[data-tilt]:hover {
 		.card-body {
 			transform: translateZ(20px);
 		}
@@ -518,6 +527,90 @@ main {
 		}
 		a {
 			color: $blue-3;
+		}
+	}
+}
+
+// changelog page ----------------------------------------------------
+#changelog-content {
+	width: 100%;
+	.release-block:first-child svg {
+		fill: $logo-blue-end;
+	}
+	.release-block {
+		margin-bottom: 30px;
+		position: relative;
+		&:not(:last-child)::after {
+			content: "";
+			display: block;
+			height: 100px;
+			width: 2px;
+			background-color: rgba(0, 0, 0, 0.1);
+			position: absolute;
+			left: 22px;
+			top: 100%;
+			z-index: 1;
+		}
+		.card-body {
+			display: flex;
+			flex-direction: row;
+			position: relative;
+			z-index: 2;
+		}
+		header {
+			margin-bottom: 16px;
+			float: left;
+			width: 180px;
+			.version {
+				width: 136px;
+				font-size: 20px;
+				padding-left: 15px;
+				font-weight: bold;
+				line-height: 26px;
+				font-family: "Roboto", sans-serif;
+
+			}
+			.date {
+				margin-top: 5px;
+			}
+		}
+	}
+	ul {
+		float: left;
+		width: calc(100% - 180px);
+		li {
+			color: $text-1;
+			font-size: rem(14px);
+			font-weight: 500;
+			margin-top: 6px;
+		}
+	}
+	.badge {
+		width: 68px;
+		font-size: 10px;
+		padding: 0.35em 0.4em;
+		color: #fff;
+		margin-right: 10px;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+	}
+	.badge-new {
+		background-color: #28a745;
+	}
+	.badge-fixed,
+	.badge-improved {
+		background-color: #007bff;
+	}
+	.badge-changed {
+		background-color: #6f42c1;
+	}
+	.badge-removed {
+		background-color: #d73a49;
+	}
+	.icon {
+		width: 20px;
+		svg {
+			fill: $title-2;
 		}
 	}
 }
