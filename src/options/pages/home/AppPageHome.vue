@@ -37,7 +37,7 @@ import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import PostCard from "./../../components/PostCard.vue";
-import { posts } from "./../../../data.js";
+import posts from "./../../../posts.js";
 
 export default {
   name: "AppPageHome",

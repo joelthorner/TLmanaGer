@@ -7,12 +7,13 @@
     <div class="card-body">
       <router-link :to="getPostRoute(post.id)">
         <div class="card-title">{{ post.name }}</div>
-        <!-- <div class="rippleJS"></div> -->
       </router-link>
+
       <p class="card-text">
         {{ getSplittedPostContent(post.content) }}
-        <router-link v-if="hasReadMore(post.content)" :to="getPostRoute(post.id)">Read more</router-link>
+        <router-link :to="getPostRoute(post.id)">Read more</router-link>
       </p>
+
       <p class="card-text card-text-foot">
         <small class="text-muted">{{ getPostDate(post.date) }}</small>
       </p>
@@ -29,14 +30,8 @@ export default {
   props: {
     post: Object,
   },
-  data() {
-    return {};
-  },
   mounted() {
-    VanillaTilt.init(this.$el, {
-      // max: 25,
-      // speed: 400
-    });
+    VanillaTilt.init(this.$el);
   },
   methods: {
     getPostRoute(id) {
