@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { icons } from "./../../../data.js";
+import icons from "./../../../icons.js";
 
 export default {
   name: "SidebarMenu",

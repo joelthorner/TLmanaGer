@@ -19,7 +19,7 @@ import SidebarMenu from "./SidebarMenu.vue";
 import SidebarFooterBlock from "./SidebarFooterBlock.vue";
 import SidebarCopy from "./SidebarCopy.vue";
 
-import { icons } from "./../../../data.js";
+import icons from "./../../../icons.js";
 
 export default {
   name: "AppSiderbar",

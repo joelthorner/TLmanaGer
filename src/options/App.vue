@@ -10,7 +10,10 @@
 import AppSidebar from "./components/sidebar-left/AppSidebar.vue";
 import AppMainContent from "./components/main/AppMainContent.vue";
 import AppDebug from "./debug/AppDebug.vue";
-import { chromeData } from "./../data.js";
+
+import { chromeData, achievements } from "./../data.js";
+import watchArchievements from "./../mixins/watchArchievements.js";
+
 import "../scss/options.scss";
 
 export default {
@@ -19,14 +22,17 @@ export default {
     AppDebug,
     AppSidebar,
     AppMainContent,
-  },
+	},
+	mixins: [watchArchievements],
   data() {
     return {
-      chromeData: chromeData,
+			chromeData: chromeData,
+			achievementsData: achievements,
     };
   },
   created() {
-    this.getSyncChromeData();
+		this.getSyncChromeData();
+		this.googleAccountSync(); // achievement
   },
   methods: {
     getSyncChromeData: function () {

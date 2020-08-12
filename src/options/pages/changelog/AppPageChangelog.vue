@@ -38,7 +38,8 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import { achievements, icons } from "./../../../data.js";
+import { achievements } from "./../../../data.js";
+import icons from "./../../../icons.js";
 import watchArchievements from "../../../mixins/watchArchievements.js";
 
 import MainTitle from "./../../components/main/MainTitle.vue";
@@ -65,7 +66,7 @@ export default {
     this.getReleases();
   },
   mounted() {
-    setTimeout(() => this.lookChangelog50Times(), 1000);
+    this.lookChangelog50Times();
   },
   mixins: [watchArchievements],
   data() {
