@@ -545,7 +545,7 @@ main {
 			display: block;
 			height: 100px;
 			width: 2px;
-			background-color: rgba(0, 0, 0, 0.1);
+			background-color: $background-title;
 			position: absolute;
 			left: 22px;
 			top: 100%;
@@ -568,7 +568,6 @@ main {
 				font-weight: bold;
 				line-height: 26px;
 				font-family: "Roboto", sans-serif;
-
 			}
 			.date {
 				margin-top: 5px;
@@ -659,5 +658,162 @@ main {
 	.hexagon {
 		width: rem(110px);
 		margin-bottom: rem(15px);
+	}
+}
+
+// blog page ---------------------------------------------------------
+#blog-content {
+	width: 100%;
+}
+#cd-timeline {
+	position: relative;
+}
+.blog-container .col-content #cd-timeline {
+	max-width: 1000px;
+}
+.blog-container .col-column {
+	display: none;
+}
+@media (min-width: 1200px) {
+	.blog-container .col-content {
+		flex: 0 0 calc(100% - 350px);
+		max-width: calc(100% - 350px);
+	}
+	.blog-container .col-column {
+		flex: 0 0 350px;
+		max-width: 350px;
+		display: block;
+	}
+}
+#cd-timeline::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 25px;
+	height: 100%;
+	width: 4px;
+	background: $background-title;
+}
+@media only screen and (min-width: 1400px) {
+	#cd-timeline::before {
+		left: 50%;
+		margin-left: -2px;
+		top: 185px;
+	}
+}
+
+.cd-timeline-block {
+	position: relative;
+	margin: rem(45px) 0;
+}
+.cd-timeline-block:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.cd-timeline-block:first-child {
+	margin-top: 0;
+}
+.cd-timeline-block:last-child {
+	margin-bottom: 0;
+}
+@media only screen and (min-width: 1400px) {
+	.cd-timeline-block {
+		margin: 40px 0;
+	}
+	.cd-timeline-block:first-child {
+		margin-top: 0;
+	}
+	.cd-timeline-block:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.cd-timeline-img {
+	position: absolute;
+	top: 8px;
+	left: 12px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+.cd-timeline-img {
+	background: $title-1;
+}
+@media only screen and (min-width: 1400px) {
+	.cd-timeline-img {
+		width: 30px;
+		height: 30px;
+		left: 50%;
+		margin-left: -15px;
+		margin-top: 8px;
+		// Force Hardware Acceleration in WebKit
+		-webkit-transform: translateZ(0);
+		-webkit-backface-visibility: hidden;
+	}
+}
+.cd-timeline-content {
+	position: relative;
+	margin-left: 80px;
+}
+.cd-timeline-content .cd-date {
+	display: inline-block;
+	padding: 0 20px;
+	font-size: 16px;
+	color: $title-2;
+	margin-top: 20px;
+
+	span {
+		display: block;
+		color: $title-1;
+		font-size: 13px;
+	}
+}
+.cd-timeline-content .card::before {
+	content: "";
+	position: absolute;
+	top: 16px;
+	right: 100%;
+	height: 14px;
+	width: 14px;
+}
+@media only screen and (min-width: 1400px) {
+	.cd-timeline-content {
+		margin-left: 0;
+		width: calc(50% - 70px);
+	}
+	.cd-timeline-content .card::before {
+		top: 186px;
+    left: 100%;
+    clip-path: polygon(0% 100%, 0% 0%, 60% 50%);
+	}
+	.cd-timeline-content .cd-date {
+		position: absolute;
+		width: 100%;
+		left: calc(100% + 120px);
+		top: 18px;
+		margin-top: 0;
+	}
+	.cd-timeline-block {
+		&:not(:first-child) {
+			margin-top: -8%;
+		}
+		.cd-date,
+		.cd-timeline-img {
+			top: 44%;
+		}
+	}
+	.cd-timeline-block:nth-child(even) .cd-timeline-content {
+		float: right;
+	}
+	.cd-timeline-block:nth-child(even) .cd-timeline-content .card::before {
+		left: auto;
+		right: 100%;
+		clip-path: polygon(100% 0%, 40% 50%, 100% 100%);
+	}
+	.cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
+		left: auto;
+		right: calc(100% + 120px);
+		text-align: right;
 	}
 }
