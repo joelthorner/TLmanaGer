@@ -1,5 +1,5 @@
 <template>
-  <div class="contributors">
+  <div class="white-block contributors">
     <div class="title">CONTRIBUTORS</div>
     <ul class="list-unstyled">
       <li v-for="(contributor, index) in contributors" v-bind:key="index">

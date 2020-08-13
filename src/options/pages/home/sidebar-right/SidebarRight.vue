@@ -26,7 +26,8 @@
 <script>
 import SidebarRightResumeItem from "./SidebarRightResumeItem";
 import SidebarRightContributors from "./SidebarRightContributors";
-import { icons, achievements } from "./../../../../data.js";
+import { achievements } from "./../../../../data.js";
+import icons from "./../../../../icons.js";
 import getArchievementsMixin from "../../../../mixins/getArchievements.js";
 
 export default {
