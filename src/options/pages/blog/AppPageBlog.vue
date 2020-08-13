@@ -4,8 +4,8 @@
       <main-title title="BLOG"></main-title>
 
       <main-content containerClass="blog-container">
-        <section id="timeline" :class="timeLineContainerClass">
-          <div class="timeline-block" v-for="post in pagePosts" v-bind:key="post.id">
+        <section id="timeline" :class="timelinePageClass">
+          <div class="timeline-block" v-for="post in perPagePosts" v-bind:key="post.id">
             <div class="timeline-img"></div>
 
             <div class="timeline-content">
@@ -18,11 +18,25 @@
           </div>
         </section>
 
-        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" @change="toTop"></b-pagination>
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="paginationRows"
+          :per-page="perPage"
+          @change="toTop"
+        ></b-pagination>
       </main-content>
     </div>
 
-    <sidebar-right :items="posts"></sidebar-right>
+    <sidebar-right>
+      <sidebar-right-block title="YEAR FILTER">
+        <ul class="list-unstyled">
+          <li v-for="year in postsUniqueYearsFilter" v-bind:key="year.value">
+            <input type="checkbox" v-model="checkedYears" v-bind:value="year.value" />
+            {{ year.name }}
+          </li>
+        </ul>
+      </sidebar-right-block>
+    </sidebar-right>
   </div>
 </template>
 
@@ -33,6 +47,7 @@ import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import PostCard from "./../../components/PostCard.vue";
 import SidebarRight from "./sidebar-right/SidebarRight.vue";
+import SidebarRightBlock from "./sidebar-right/SidebarRightBlock.vue";
 
 import posts from "./../../../posts.js";
 
@@ -41,42 +56,82 @@ export default {
   components: {
     MainTitle,
     MainContent,
-		PostCard,
-		SidebarRight,
+    PostCard,
+    SidebarRight,
+    SidebarRightBlock,
   },
   data: () => {
     return {
       perPage: 9,
       currentPage: 1,
       posts,
+      checkedYears: [],
     };
   },
   computed: {
-    rows() {
-      return this.posts.length;
+    paginationRows() {
+      return this.filteredPosts.length;
     },
-    lastPage() {
-      return Math.ceil(this.posts.length / this.perPage);
+    totalPagesPagination() {
+      return Math.ceil(this.filteredPosts.length / this.perPage);
     },
-    pagePosts() {
+    perPagePosts() {
       let from = this.perPage * (this.currentPage - 1),
         to = from + this.perPage;
-      if (to > this.posts.length) to = this.posts.length;
+      if (to > this.filteredPosts.length) to = this.filteredPosts.length;
 
-      return this.posts.slice(from, to);
+      return this.filteredPosts.slice(from, to);
     },
-    timeLineContainerClass() {
+    timelinePageClass() {
       let result = "page-" + this.currentPage;
 
       if (
-        (this.currentPage == this.lastPage && this.currentPage == 1) ||
-        this.currentPage == this.lastPage
+        (this.currentPage == this.totalPagesPagination &&
+          this.currentPage == 1) ||
+        this.currentPage == this.totalPagesPagination
       ) {
         result += " page-last";
       }
       return result;
     },
+    postsUniqueYearsFilter() {
+      let years = this.posts.map(function (obj) {
+        let year = moment(obj.date).year();
+        return {
+          name: year,
+          value: year,
+          checked: false,
+        };
+      });
+
+      return years.filter((thing, index) => {
+        const _thing = JSON.stringify(thing);
+        return (
+          index ===
+          years.findIndex((obj) => {
+            return JSON.stringify(obj) === _thing;
+          })
+        );
+      });
+    },
+
+    filteredPosts() {
+      return this.posts.filter((post) => {
+        if (this.checkedYears.length) {
+          let bool = false;
+          this.checkedYears.forEach((year) => {
+            if (post.date.includes(year)) bool = true;
+          });
+          return bool;
+        }
+        return true;
+      });
+      // .filter((post) => {
+      // 	// other filter
+      // });
+    },
   },
+
   methods: {
     date(date) {
       return moment(date).format("MMMM Do YYYY");

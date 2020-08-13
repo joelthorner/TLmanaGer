@@ -101,7 +101,6 @@ export default {
           const result = response.length ? true : false;
           // Get result before update achievement
           const beforeResult = this.chromeData.achievements['googleAccountSync'].earned;
-          console.log(beforeResult, result);
 
           if (beforeResult === false && result === true) {
             // Update achievement chrome data
