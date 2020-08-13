@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { posts } from "./../../../data.js";
+import posts from "./../../../posts.js";
 
 export default {
   name: "AppPagePost",

@@ -37,7 +37,7 @@ import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import PostCard from "./../../components/PostCard.vue";
-import { posts } from "./../../../data.js";
+import posts from "./../../../posts.js";
 
 export default {
   name: "AppPageHome",
@@ -52,16 +52,13 @@ export default {
   },
   data: () => {
     return {
-      // background: {},
       posts,
       maxLastPosts: 3,
     };
   },
   computed: {
     last3Posts() {
-      return this.posts
-        .slice(Math.max(this.posts.length - this.maxLastPosts, 0))
-        .reverse();
+      return this.posts.slice(0, 3);
     },
     backgroundWindowSize() {
       return this.chromeData.logicommerce.background.thumb.replace(
