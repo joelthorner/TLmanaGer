@@ -308,6 +308,7 @@ main {
 	color: $title-1;
 	fill: currentColor;
 	padding: rem(25px) rem(60px);
+	letter-spacing: 0.05em;
 }
 
 .content-block {
@@ -442,6 +443,10 @@ main {
 		background-color: $background-gray-1;
 		position: relative;
 		flex: 1;
+
+		+ .white-block {
+			border-top: 1px solid #e7e7e7;
+		}
 
 		.title {
 			height: 53px;
@@ -665,6 +670,7 @@ main {
 #blog-content {
 	width: calc(100% - #{$aside-right-width});
 	float: left;
+	overflow: hidden;
 
 	.pagination {
 		padding-top: 60px;
@@ -676,8 +682,13 @@ main {
 		border-left: 1px solid rgba(0, 0, 0, 0.1);
 		.white-block.blog-widget {
 			flex: 0;
-			font-size: 16px;
-			color: $title-2;
+			color: $text-1;
+			// font-weight: 500;
+
+			.custom-radio.b-custom-control-lg,
+			.input-group-lg .custom-radio {
+				font-size: 16px;
+			}
 
 			.title,
 			ul {
@@ -685,7 +696,7 @@ main {
 			}
 		}
 		.form-group {
-			padding: 15px 15px 0;
+			padding: 30px 30px 15px;
 		}
 	}
 }
@@ -694,7 +705,8 @@ main {
 	position: relative;
 	max-width: 1000px;
 	padding-bottom: 60px;
-	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
 
 	&::before {
 		content: "";
@@ -713,6 +725,7 @@ main {
 		}
 		&.page-1::before {
 			top: 185px;
+			height: calc(100% - 185px);
 		}
 	}
 }
@@ -770,6 +783,8 @@ main {
 	.timeline-content {
 		position: relative;
 		margin-left: 80px;
+		z-index: 2;
+
 		@media only screen and (min-width: 1400px) {
 			margin-left: 0;
 			width: calc(50% - 70px);
@@ -805,6 +820,7 @@ main {
 		right: 100%;
 		height: 14px;
 		width: 14px;
+		clip-path: polygon(100% 0%, 40% 50%, 100% 100%);
 
 		@media only screen and (min-width: 1400px) {
 			top: 49%;
@@ -838,8 +854,44 @@ main {
 }
 
 .blog-container {
+	.inner-text {
+		max-width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 	.filtering-lbl {
-		margin-right: 6px;
+		margin-left: 6px;
+		.lbl {
+			color: $title-2;
+		}
+	}
+	.badge {
+		font-family: "Roboto", sans-serif;
+		font-weight: 400;
+		font-size: 12px;
+		position: relative;
+		padding-right: calc(18px + 0.4em);
+
+		.btn {
+			border: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 18px;
+			svg {
+				width: 12px;
+				height: 12px;
+				fill: #fff;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		}
 	}
 	.badge + .badge {
 		margin-left: 4px;

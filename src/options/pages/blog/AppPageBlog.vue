@@ -10,14 +10,22 @@
             <span class="lbl">Year</span>
             <span class="badge badge-primary" v-for="year in checkedYears" v-bind:key="year">
               {{ year }}
-              <button @click="removeYearFilterItem(year)">x</button>
+              <button
+                class="btn btn-link"
+                @click="removeYearFilterItem(year)"
+                v-html="iconClose"
+              ></button>
             </span>
           </span>
-          <span v-if="checkedTag.length">
+          <span v-if="checkedTag.length" class="filtering-lbl">
             <span class="lbl">Tag</span>
             <span class="badge badge-primary">
-              {{ checkedTag }}
-              <button @click="checkedTag = ''">x</button>
+              {{ checkedTag | capitalize }}
+              <button
+                class="btn btn-link"
+                @click="checkedTag = ''"
+                v-html="iconClose"
+              ></button>
             </span>
           </span>
         </div>
@@ -41,40 +49,38 @@
           :total-rows="paginationRows"
           :per-page="perPage"
           @change="toTop"
+          prev-text="Older"
+          next-text="Newer"
+          hide-goto-end-buttons="true"
+          pills
+          v-if="posts.length > perPage"
         ></b-pagination>
       </main-content>
     </div>
 
     <sidebar-right>
       <sidebar-right-block title="ARCHIVE" classContainer="blog-widget">
-        <!-- <ul class="list-unstyled">
-          <li v-for="year in postsUniqueYearsFilter" v-bind:key="year.value">
-            <label>
-              <input type="checkbox" v-model="checkedYears" v-bind:value="year.value" />
-              {{ year.name }}
-            </label>
-          </li>
-        </ul>-->
         <b-form-group>
           <b-form-checkbox-group
             id="checkbox-group-years"
             v-model="checkedYears"
             :options="postsUniqueYearsFilter"
-						stacked
-						size="lg"
+            stacked
+            size="lg"
           ></b-form-checkbox-group>
         </b-form-group>
       </sidebar-right-block>
 
       <sidebar-right-block title="TAGS" classContainer="blog-widget">
-        <ul class="list-unstyled">
-          <li v-for="(tag, index) in postsUniqueTagsFilter" v-bind:key="index">
-            <label>
-              <input type="radio" v-model="checkedTag" v-bind:value="tag" name="postTag" />
-              {{ tag }}
-            </label>
-          </li>
-        </ul>
+        <b-form-group>
+          <b-form-radio-group
+            id="radio-group-labels"
+            v-model="checkedTag"
+            :options="postsUniqueTagsFilter"
+            stacked
+            size="lg"
+          ></b-form-radio-group>
+        </b-form-group>
       </sidebar-right-block>
     </sidebar-right>
   </div>
@@ -90,6 +96,7 @@ import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import SidebarRightBlock from "./sidebar-right/SidebarRightBlock.vue";
 
 import posts from "./../../../posts.js";
+import icons from "./../../../icons.js";
 
 export default {
   name: "AppPageBlog",
@@ -107,6 +114,7 @@ export default {
       posts,
       checkedYears: [],
       checkedTag: "",
+      iconClose: icons.times,
     };
   },
   computed: {
@@ -158,10 +166,22 @@ export default {
       let tags = [];
       this.posts.map(function (obj) {
         for (var i = 0; i < obj.tags.length; i++) {
-          tags.push(obj.tags[i]);
+          tags.push({
+            text: obj.tags[i].charAt(0).toUpperCase() + obj.tags[i].slice(1),
+            value: obj.tags[i],
+          });
         }
       });
-      return tags.filter((v, i, a) => a.indexOf(v) === i);
+
+      return tags.filter((thing, index) => {
+        const _thing = JSON.stringify(thing);
+        return (
+          index ===
+          tags.findIndex((obj) => {
+            return JSON.stringify(obj) === _thing;
+          })
+        );
+      });
     },
 
     filteredPosts() {
@@ -201,6 +221,13 @@ export default {
     removeYearFilterItem(year) {
       let index = this.checkedYears.indexOf(year);
       this.checkedYears.splice(index, 1);
+    },
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
     },
   },
 };
