@@ -4,6 +4,24 @@
       <main-title title="BLOG"></main-title>
 
       <main-content containerClass="blog-container">
+        <div class="inner-text" v-if="anyFilter">
+          Filtering by
+          <span v-if="checkedYears.length" class="filtering-lbl">
+            <span class="lbl">Year</span>
+            <span class="badge badge-primary" v-for="year in checkedYears" v-bind:key="year">
+              {{ year }}
+              <button @click="removeYearFilterItem(year)">x</button>
+            </span>
+          </span>
+          <span v-if="checkedTag.length">
+            <span class="lbl">Tag</span>
+            <span class="badge badge-primary">
+              {{ checkedTag }}
+              <button @click="checkedTag = ''">x</button>
+            </span>
+          </span>
+        </div>
+
         <section id="timeline" :class="timelinePageClass">
           <div class="timeline-block" v-for="post in perPagePosts" v-bind:key="post.id">
             <div class="timeline-img"></div>
@@ -28,11 +46,20 @@
     </div>
 
     <sidebar-right>
-      <sidebar-right-block title="YEAR FILTER">
+      <sidebar-right-block title="YEAR FILTER" classContainer="blog-widget">
         <ul class="list-unstyled">
           <li v-for="year in postsUniqueYearsFilter" v-bind:key="year.value">
             <input type="checkbox" v-model="checkedYears" v-bind:value="year.value" />
             {{ year.name }}
+          </li>
+        </ul>
+      </sidebar-right-block>
+
+      <sidebar-right-block title="TAGS" classContainer="blog-widget">
+        <ul class="list-unstyled">
+          <li v-for="(tag, index) in postsUniqueTagsFilter" v-bind:key="index">
+            <input type="radio" v-model="checkedTag" v-bind:value="tag" name="postTag" />
+            {{ tag }}
           </li>
         </ul>
       </sidebar-right-block>
@@ -66,6 +93,7 @@ export default {
       currentPage: 1,
       posts,
       checkedYears: [],
+      checkedTag: "",
     };
   },
   computed: {
@@ -114,21 +142,37 @@ export default {
         );
       });
     },
+    postsUniqueTagsFilter() {
+      let tags = [];
+      this.posts.map(function (obj) {
+        for (var i = 0; i < obj.tags.length; i++) {
+          tags.push(obj.tags[i]);
+        }
+      });
+      return tags.filter((v, i, a) => a.indexOf(v) === i);
+    },
 
     filteredPosts() {
-      return this.posts.filter((post) => {
-        if (this.checkedYears.length) {
-          let bool = false;
-          this.checkedYears.forEach((year) => {
-            if (post.date.includes(year)) bool = true;
-          });
-          return bool;
-        }
-        return true;
-      });
-      // .filter((post) => {
-      // 	// other filter
-      // });
+      return this.posts
+        .filter((post) => {
+          if (this.checkedYears.length) {
+            let bool = false;
+            this.checkedYears.forEach((year) => {
+              if (post.date.includes(year)) bool = true;
+            });
+            return bool;
+          }
+          return true;
+        })
+        .filter((post) => {
+          if (this.checkedTag.length) {
+            return post.tags.includes(this.checkedTag);
+          }
+          return true;
+        });
+    },
+    anyFilter() {
+      return this.checkedYears.length || this.checkedTag.length;
     },
   },
 
@@ -141,6 +185,10 @@ export default {
     },
     toTop(event) {
       document.getElementsByTagName("main")[0].scrollTo(0, 0);
+    },
+    removeYearFilterItem(year) {
+      let index = this.checkedYears.indexOf(year);
+      this.checkedYears.splice(index, 1);
     },
   },
 };
