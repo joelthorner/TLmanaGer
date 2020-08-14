@@ -1,5 +1,5 @@
 <template>
-  <div class="white-block contributors">
+  <div :class="'white-block ' + classContainer">
     <div class="title">{{ title }}</div>
     <slot></slot>
   </div>
@@ -10,6 +10,7 @@ export default {
   name: "SidebarRightBlock",
   props: {
     title: String,
+    classContainer: String,
   },
 };
 </script>

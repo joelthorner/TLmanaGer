@@ -819,3 +819,16 @@ main {
     }
   }
 }
+
+.blog-container {
+	.filtering-lbl {
+		margin-right: 6px;
+	}
+	.badge + .badge {
+		margin-left: 4px;
+	}
+}
+
+.aside-right .white-block.blog-widget {
+	flex: 0;
+}
