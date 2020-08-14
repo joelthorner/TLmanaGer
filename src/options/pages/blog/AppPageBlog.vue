@@ -46,20 +46,33 @@
     </div>
 
     <sidebar-right>
-      <sidebar-right-block title="YEAR FILTER" classContainer="blog-widget">
-        <ul class="list-unstyled">
+      <sidebar-right-block title="ARCHIVE" classContainer="blog-widget">
+        <!-- <ul class="list-unstyled">
           <li v-for="year in postsUniqueYearsFilter" v-bind:key="year.value">
-            <input type="checkbox" v-model="checkedYears" v-bind:value="year.value" />
-            {{ year.name }}
+            <label>
+              <input type="checkbox" v-model="checkedYears" v-bind:value="year.value" />
+              {{ year.name }}
+            </label>
           </li>
-        </ul>
+        </ul>-->
+        <b-form-group>
+          <b-form-checkbox-group
+            id="checkbox-group-years"
+            v-model="checkedYears"
+            :options="postsUniqueYearsFilter"
+						stacked
+						size="lg"
+          ></b-form-checkbox-group>
+        </b-form-group>
       </sidebar-right-block>
 
       <sidebar-right-block title="TAGS" classContainer="blog-widget">
         <ul class="list-unstyled">
           <li v-for="(tag, index) in postsUniqueTagsFilter" v-bind:key="index">
-            <input type="radio" v-model="checkedTag" v-bind:value="tag" name="postTag" />
-            {{ tag }}
+            <label>
+              <input type="radio" v-model="checkedTag" v-bind:value="tag" name="postTag" />
+              {{ tag }}
+            </label>
           </li>
         </ul>
       </sidebar-right-block>
@@ -126,9 +139,8 @@ export default {
       let years = this.posts.map(function (obj) {
         let year = moment(obj.date).year();
         return {
-          name: year,
+          text: year,
           value: year,
-          checked: false,
         };
       });
 
