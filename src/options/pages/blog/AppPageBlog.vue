@@ -1,8 +1,6 @@
 <template>
   <div class="page-content">
     <div id="blog-content">
-      <main-title title="BLOG"></main-title>
-
       <main-content containerClass="blog-container">
         <div class="inner-text" v-if="anyFilter">
           Filtering by
@@ -89,7 +87,6 @@
 <script>
 import moment from "moment";
 
-import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import PostCard from "./../../components/PostCard.vue";
 import SidebarRight from "./sidebar-right/SidebarRight.vue";
@@ -101,7 +98,6 @@ import icons from "./../../../icons.js";
 export default {
   name: "AppPageBlog",
   components: {
-    MainTitle,
     MainContent,
     PostCard,
     SidebarRight,

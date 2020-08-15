@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     getPostRoute(id) {
-      return "/post/" + id;
+      return "/blog/" + id;
     },
     getPostDate(date) {
       return moment(date).fromNow();
