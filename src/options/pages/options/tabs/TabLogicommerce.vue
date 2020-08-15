@@ -4,69 +4,41 @@
 
     <div class="row">
       <div class="col col-xs-12 col-lg-4">
-        <div class="card card-option">
-          <div class="card-header">
-            <div class="card-title">
-              Developer bar
-              <b-button
-                v-b-popover.hover.rightbottom="'Lorem ipsum'"
-                title="Popover Title"
-                variant="link"
-                v-html="iconInfo"
-              ></b-button>
-            </div>
-            <b-form-checkbox
-              v-model="chromeData.logicommerce.developerBar.actived"
-              name="switch-logicommerce-developerBar"
-              switch
-              v-on:change="debouncedOptionChangeActived($event,'logicommerce', 'developerBar')"
-            ></b-form-checkbox>
-          </div>
-        </div>
+        <default-card
+          :chromeData="chromeData"
+          title="Developer bar"
+          :popover="help.developerBar"
+          scope="logicommerce"
+          itemKey="developerBar"
+        ></default-card>
 
-        <div class="card card-option">
-          <div class="card-header">
-            <div class="card-title">
-              Sandbox login buttons
-              <b-button
-                v-b-popover.hover.rightbottom="'Lorem ipsum'"
-                title="Popover Title"
-                variant="link"
-                v-html="iconInfo"
-              ></b-button>
-            </div>
-            <b-form-checkbox
-              v-model="chromeData.logicommerce.sandboxLoginButtons.actived"
-              name="switch-logicommerce-sandboxLoginButtons"
-              switch
-              v-on:change="debouncedOptionChangeActived($event,'logicommerce', 'sandboxLoginButtons')"
-            ></b-form-checkbox>
-          </div>
-        </div>
+				<default-card
+          :chromeData="chromeData"
+          title="Sandbox login buttons"
+          :popover="help.sandboxLoginButtons"
+          scope="logicommerce"
+          itemKey="sandboxLoginButtons"
+        ></default-card>
 
-				<div class="card card-option">
-          <div class="card-header">
-            <div class="card-title">
-              Pages grid view
-              <b-button
-                v-b-popover.hover.rightbottom="'Lorem ipsum'"
-                title="Popover Title"
-                variant="link"
-                v-html="iconInfo"
-              ></b-button>
-            </div>
-            <b-form-checkbox
-              v-model="chromeData.logicommerce.pagesGridView.actived"
-              name="switch-logicommerce-pagesGridView"
-              switch
-              v-on:change="debouncedOptionChangeActived($event,'logicommerce', 'pagesGridView')"
-            ></b-form-checkbox>
-          </div>
-        </div>
+				<default-card
+          :chromeData="chromeData"
+          title="Pages grid view"
+          :popover="help.pagesGridView"
+          scope="logicommerce"
+          itemKey="pagesGridView"
+        ></default-card>
+
+				<default-card
+          :chromeData="chromeData"
+          title="Beyond LC theme"
+          :popover="help.beyondTheme"
+          scope="logicommerce"
+          itemKey="beyondTheme"
+        ></default-card>
       </div>
 
       <div class="col col-xs-12 col-lg-8">
-        <div class="card card-option card-option-bg">
+        <!-- <div class="card card-option card-option-bg">
           <div class="card-header">
             <div class="card-title">
               LC Background
@@ -85,12 +57,11 @@
             ></b-form-checkbox>
           </div>
           <div class="card-body">body</div>
-        </div>
+        </div> -->
       </div>
     </div>
 
-    <b-toast
-      id="saved-toast"
+		<b-toast
       title="Saved options"
       no-auto-hide
       toaster="b-toaster-bottom-center"
@@ -101,39 +72,39 @@
 </template>
 
 <script>
-import _ from "lodash";
+import DefaultCard from "./../cards/DefaultCard.vue";	
 import icons from "./../../../../icons.js";
 
 export default {
   name: "TabLogicommerce",
+  components: {
+    DefaultCard,
+	},
   props: {
     chromeData: Object,
   },
   data() {
     return {
-      iconInfo: icons.info,
-      showSavedOptions: false,
+			showSavedOptions: false,
+      help: {
+        developerBar: {
+          title: "lorem",
+          content: "lorem ipsum",
+        },
+        sandboxLoginButtons: {
+          title: "lorem",
+          content: "lorem ipsum",
+        },
+        pagesGridView: {
+          title: "lorem",
+          content: "lorem ipsum",
+        },
+        beyondTheme: {
+          title: "lorem",
+          content: "lorem ipsum",
+        },
+      },
     };
-  },
-  created: function () {
-    this.debouncedOptionChangeActived = _.debounce(
-      this.optionChangeActived,
-      500
-    );
-  },
-  methods: {
-    optionChangeActived(checked, scope, option) {
-      this.chromeData[scope][option].active = checked;
-      this.saveChromeData();
-    },
-    saveChromeData() {
-      chrome.storage.sync.set(this.chromeData, () => {
-        this.showSavedOptions = true;
-        setTimeout(() => {
-          this.showSavedOptions = false;
-        }, 2000);
-      });
-    },
   },
 };
 </script>
