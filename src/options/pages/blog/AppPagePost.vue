@@ -14,12 +14,11 @@
     <div id="post-content">
       <main-content containerClass="post-container">
         <div class="card">
-          <!-- <img :src="post.img" class="card-img-top" :alt="post.name" /> -->
           <div class="card-body">
             <h5 class="card-title">{{ post.name }}</h5>
             <p class="card-text" v-html="post.content"></p>
             <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <small class="text-muted">{{ date }}</small>
             </p>
           </div>
         </div>
@@ -29,6 +28,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 import MainContent from "./../../components/main/MainContent.vue";
 import StyleTag from "./../../components/StyleTag.vue";
 
@@ -55,7 +56,12 @@ export default {
       this.id = parseInt(to.params.id);
       this.getPostData();
     },
-  },
+	},
+	computed: {
+		date() {
+      return moment(this.post.date).format("MMMM Do YYYY");
+    },
+	},
   methods: {
     getPostData() {
       this.post = {};

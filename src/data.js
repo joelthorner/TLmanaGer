@@ -67,20 +67,20 @@ export const chromeData = {
   },
   profile: {
     avatar: {
-      actived: true,
+      actived: false,
       value: 'img/logo.svg',
     },
     shopTestingEmail: {
-      actived: true,
-      value: 'john.doe@example.com',
+      actived: false,
+      value: '',
     },
     shopTestingUsername: {
-      actived: true,
-      value: 'John Doe',
+      actived: false,
+      value: '',
     },
     shopTestingPassword: {
-      actived: true,
-      value: '123132',
+      actived: false,
+      value: '',
     }
   },
   metrics: {
