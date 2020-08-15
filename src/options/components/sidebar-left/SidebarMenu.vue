@@ -2,7 +2,7 @@
   <div class="menu">
     <ul class="list-unstyled">
       <li v-for="menuItem in menuItems" :key="menuItem.title">
-        <router-link :to="menuItem.route">
+        <router-link :to="menuItem.route" :exact="menuItem.exact">
           <span class="icon" v-html="menuItem.icon"></span>
           <span class="text">{{ menuItem.title }}</span>
           <div class="rippleJS"></div>
@@ -23,32 +23,38 @@ export default {
         {
           title: "Home",
           icon: icons.home,
-          route: "/",
+					route: "/",
+					exact: true,
         },
         {
-          title: "Settings",
+          title: "Options",
           icon: icons.settings,
-          route: "/settings",
+					route: "/options",
+					exact: false,
         },
         {
           title: "Achievements",
           icon: icons.achievements,
-          route: "/achievements",
+					route: "/achievements",
+					exact: false,
         },
         {
           title: "User",
           icon: icons.user,
-          route: "/user",
+					route: "/user",
+					exact: false,
         },
         {
           title: "Changelog",
           icon: icons.changelog,
-          route: "/changelog",
+					route: "/changelog",
+					exact: false,
         },
         {
           title: "Blog",
           icon: icons.archive,
-          route: "/blog",
+					route: "/blog",
+					exact: false,
         },
       ],
     };
