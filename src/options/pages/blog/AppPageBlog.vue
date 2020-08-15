@@ -5,7 +5,7 @@
         <div class="inner-text" v-if="anyFilter">
           Filtering by
           <span v-if="checkedYears.length" class="filtering-lbl">
-            <span class="lbl">Year</span>
+            <span class="lbl">Year:</span>
             <span class="badge badge-primary" v-for="year in checkedYears" v-bind:key="year">
               {{ year }}
               <button
@@ -16,7 +16,7 @@
             </span>
           </span>
           <span v-if="checkedTag.length" class="filtering-lbl">
-            <span class="lbl">Tag</span>
+            <span class="lbl">Tag:</span>
             <span class="badge badge-primary">
               {{ checkedTag | capitalize }}
               <button

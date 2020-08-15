@@ -23,6 +23,9 @@ Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
 const router = new VueRouter({
+	scrollBehavior: (to, from, savedPosition) => {
+		return { x: 0, y: 0 }
+	},
   routes: [
     {
       path: "/",
@@ -80,14 +83,6 @@ const router = new VueRouter({
       path: '/blog/:id',
 			name: "blog",
       component: AppPagePost,
-      props: true,
-      props: (route) => {
-        const id = Number.parseInt(route.params.id, 10)
-        if (Number.isNaN(id)) {
-          return 0
-        }
-        return { id }
-      }
     }
   ]
 });
@@ -97,9 +92,4 @@ new Vue({
   el: '#app',
   router,
   render: h => h(App),
-  // watch: {
-  // 	'$route'(to, from) {
-  // 	  console.log(to, from);
-  // 	}
-  // },
 })

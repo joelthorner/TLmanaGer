@@ -31,7 +31,7 @@
 			</ul>
 
       <main-content containerClass="options-container">
-        <router-view></router-view>
+        <router-view :chromeData="chromeData"></router-view>
       </main-content>
     </div>
   </div>
@@ -49,12 +49,6 @@ export default {
   components: {
     MainTitle,
     MainContent,
-  },
-  methods: {
-    // greet: function (event) {
-    //   this.chromeData.logicommerce.background.thumb =
-    //     "https://vuejs.org/images/logo.png";
-    // },
   },
 };
 </script>
