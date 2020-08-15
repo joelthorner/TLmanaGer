@@ -1,24 +1,44 @@
 <template>
   <div class="page-content" v-if="finded">
+    <style-tag>
+      main {
+      background-image: url({{ this.post.img }});
+      background-position: center;
+      background-size: cover;
+      }
+      .page-content {
+      backdrop-filter: blur(10px);
+      height: 100%;
+      }
+    </style-tag>
     <div id="post-content">
-      <main-title :title="post.name"></main-title>
-
-      <main-content containerClass="post-container"></main-content>
+      <main-content containerClass="post-container">
+        <div class="card">
+          <!-- <img :src="post.img" class="card-img-top" :alt="post.name" /> -->
+          <div class="card-body">
+            <h5 class="card-title">{{ post.name }}</h5>
+            <p class="card-text" v-html="post.content"></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+      </main-content>
     </div>
   </div>
 </template>
 
 <script>
-import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
+import StyleTag from "./../../components/StyleTag.vue";
 
 import posts from "./../../../posts.js";
 
 export default {
   name: "AppPagePost",
   components: {
-    MainTitle,
     MainContent,
+    StyleTag,
   },
   created() {
     this.getPostData();
