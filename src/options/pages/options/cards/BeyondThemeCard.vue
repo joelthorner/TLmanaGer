@@ -11,7 +11,7 @@
         ></b-button>
       </div>
       <b-form-checkbox
-        v-model="chromeData[scope][itemKey].actived"
+        v-model="chromeSync[scope][itemKey].actived"
         :name="checkboxName"
         switch
         v-on:change="debouncedOptionChangeActived($event, scope, itemKey)"
@@ -45,7 +45,7 @@ export default {
     };
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
     title: String,
     popover: Object,
     scope: String,
@@ -64,11 +64,11 @@ export default {
   },
   methods: {
     optionChangeActived(checked, scope, option) {
-      this.chromeData[scope][option].active = checked;
-      this.saveChromeData();
+      this.chromeSync[scope][option].active = checked;
+      this.savechromeSync();
     },
-    saveChromeData() {
-      chrome.storage.sync.set(this.chromeData, () => {
+    savechromeSync() {
+      chrome.storage.sync.set(this.chromeSync, () => {
         this.$parent.showSavedOptions = true;
         setTimeout(() => {
           this.$parent.showSavedOptions = false;

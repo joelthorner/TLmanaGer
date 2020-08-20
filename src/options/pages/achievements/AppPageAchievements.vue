@@ -48,11 +48,11 @@ export default {
     round,
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   methods: {
     isEarned(key) {
-      return this.chromeData.achievements[key].earned;
+      return this.chromeSync.achievements[key].earned;
     },
     // getAchievementData: function(achievementName) {
     // 	return this.achievements[achievementName];

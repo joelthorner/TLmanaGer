@@ -31,7 +31,7 @@
 			</ul>
 
       <main-content containerClass="options-container">
-        <router-view :chromeData="chromeData"></router-view>
+        <router-view :chromeSync="chromeSync"></router-view>
       </main-content>
     </div>
   </div>
@@ -44,7 +44,7 @@ import MainContent from "@options/components/main/MainContent";
 export default {
   name: "AppPageOptions",
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   components: {
     MainTitle,

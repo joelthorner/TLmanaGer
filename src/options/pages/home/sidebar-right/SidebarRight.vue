@@ -33,7 +33,7 @@ import getArchievementsMixin from "@options/mixins/getArchievements";
 export default {
   name: "SidebarRight",
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   mixins: [getArchievementsMixin],
   data: () => {

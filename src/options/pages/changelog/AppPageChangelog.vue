@@ -56,7 +56,7 @@ const api = axios.create({
 export default {
   name: "AppPageChangelog",
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   components: {
     MainTitle,

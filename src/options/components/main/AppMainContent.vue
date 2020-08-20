@@ -2,7 +2,7 @@
   <main>
     <!-- <main-top-bar></main-top-bar> -->
     <transition name="page" mode="out-in">
-      <router-view :chromeData="chromeData"></router-view>
+      <router-view :chromeSync="chromeSync"></router-view>
     </transition>
   </main>
 </template>
@@ -16,7 +16,7 @@ export default {
     // MainTopBar,
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
 };
 </script>
