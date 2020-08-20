@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import SidebarRightResumeItem from "./SidebarRightResumeItem";
-import SidebarRightContributors from "./SidebarRightContributors";
+import SidebarRightResumeItem from "@options/pages/home/sidebar-right/SidebarRightResumeItem";
+import SidebarRightContributors from "@options/pages/home/sidebar-right/SidebarRightContributors";
 import { achievements } from "@/data.js";
 import icons from "@/icons.js";
-import getArchievementsMixin from "../../../../mixins/getArchievements.js";
+import getArchievementsMixin from "@options/mixins/getArchievements.js";
 
 export default {
   name: "SidebarRight",

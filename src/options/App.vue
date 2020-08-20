@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import AppSidebar from "./components/sidebar-left/AppSidebar.vue";
-import AppMainContent from "./components/main/AppMainContent.vue";
-import AppDebug from "./debug/AppDebug.vue";
+import AppSidebar from "@options/components/sidebar-left/AppSidebar";
+import AppMainContent from "@options/components/main/AppMainContent";
+import AppDebug from "@options/debug/AppDebug";
 
-import { chromeData, achievements } from "@/data.js";
-import watchArchievements from "./../mixins/watchArchievements.js";
+import { chromeData, achievements } from "@/data";
+import watchArchievements from "@options/mixins/watchArchievements";
 
 import "../scss/options.scss";
 

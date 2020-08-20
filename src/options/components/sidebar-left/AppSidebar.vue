@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import SidebarLogo from "./SidebarLogo.vue";
-import SidebarMenu from "./SidebarMenu.vue";
-import SidebarFooterBlock from "./SidebarFooterBlock.vue";
-import SidebarCopy from "./SidebarCopy.vue";
+import SidebarLogo from "@options/components/sidebar-left/SidebarLogo.vue";
+import SidebarMenu from "@options/components/sidebar-left/SidebarMenu.vue";
+import SidebarFooterBlock from "@options/components/sidebar-left/SidebarFooterBlock.vue";
+import SidebarCopy from "@options/components/sidebar-left/SidebarCopy.vue";
 
 import icons from "@/icons.js";
 

@@ -23,6 +23,8 @@ const config = {
 		extensions: ['.js', '.vue'],
 		alias: {
 			'@': path.resolve('src'),
+			'@options': path.resolve('src/options'),
+			'@popup': path.resolve('src/popup'),
 		},
 	},
 	module: {

@@ -87,10 +87,10 @@
 <script>
 import moment from "moment";
 
-import MainContent from "./../../components/main/MainContent.vue";
-import PostCard from "./../../components/PostCard.vue";
-import SidebarRight from "./sidebar-right/SidebarRight.vue";
-import SidebarRightBlock from "./sidebar-right/SidebarRightBlock.vue";
+import MainContent from "@options/components/main/MainContent.vue";
+import PostCard from "@options/components/PostCard.vue";
+import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight.vue";
+import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock.vue";
 
 import posts from "@/posts.js";
 import icons from "@/icons.js";

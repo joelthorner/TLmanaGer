@@ -30,8 +30,8 @@
 <script>
 import moment from "moment";
 
-import MainContent from "./../../components/main/MainContent.vue";
-import StyleTag from "./../../components/StyleTag.vue";
+import MainContent from "@options/components/main/MainContent.vue";
+import StyleTag from "@options/components/StyleTag.vue";
 
 import posts from "@/posts.js";
 

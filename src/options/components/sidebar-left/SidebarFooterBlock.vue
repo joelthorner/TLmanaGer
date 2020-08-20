@@ -20,7 +20,7 @@
 
 <script>
 import { achievements } from "@/data.js";
-import watchArchievements from "../../../mixins/watchArchievements.js";
+import watchArchievements from "@options/mixins/watchArchievements.js";
 
 export default {
   name: "SidebarFooterBlock",
