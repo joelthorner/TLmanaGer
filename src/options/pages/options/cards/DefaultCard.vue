@@ -57,15 +57,7 @@ export default {
   methods: {
     optionChangeActived(checked, scope, option) {
       this.chromeSync[scope][option].active = checked;
-      this.savechromeSync();
-    },
-    savechromeSync() {
-      chrome.storage.sync.set(this.chromeSync, () => {
-        this.$parent.showSavedOptions = true;
-        setTimeout(() => {
-          this.$parent.showSavedOptions = false;
-        }, 2000);
-      });
+			this.$emit('savedOptions', true);
     },
   },
 };

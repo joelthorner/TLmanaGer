@@ -2,37 +2,45 @@
   <div class="page-content">
     <div id="options-content">
       <main-title title="OPTIONS"></main-title>
-			
-			<ul class="nav">
-				<li class="nav-item">
-					<router-link to="/options" class="nav-link">
-						Logicommerce
-						<div class="rippleJS"></div>
-					</router-link>
-				</li>
-				<li class="nav-item">
-					<router-link to="/options/fluid-tools" class="nav-link">
-						Fluid tools
-						<div class="rippleJS"></div>
-					</router-link>
-				</li>
-				<li class="nav-item">
-					<router-link to="/options/zendesk" class="nav-link">
-						Zendesk
-						<div class="rippleJS"></div>
-					</router-link>
-				</li>
-				<li class="nav-item">
-					<router-link to="/options/others" class="nav-link">
-						Others
-						<div class="rippleJS"></div>
-					</router-link>
-				</li>
-			</ul>
+
+      <ul class="nav">
+        <li class="nav-item">
+          <router-link to="/options" class="nav-link">
+            Logicommerce
+            <div class="rippleJS"></div>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/options/fluid-tools" class="nav-link">
+            Fluid tools
+            <div class="rippleJS"></div>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/options/zendesk" class="nav-link">
+            Zendesk
+            <div class="rippleJS"></div>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/options/others" class="nav-link">
+            Others
+            <div class="rippleJS"></div>
+          </router-link>
+        </li>
+      </ul>
 
       <main-content containerClass="options-container">
-        <router-view :chromeSync="chromeSync"></router-view>
+        <router-view :chromeSync="chromeSync" @savedOptionsParent="savechromeSync"></router-view>
       </main-content>
+
+      <b-toast
+        title="Saved options"
+        no-auto-hide
+        toaster="b-toaster-bottom-center"
+        :visible="showSavedOptions"
+        no-close-button
+      ></b-toast>
     </div>
   </div>
 </template>
@@ -49,6 +57,21 @@ export default {
   components: {
     MainTitle,
     MainContent,
+  },
+  data() {
+    return {
+      showSavedOptions: false,
+    };
+  },
+  methods: {
+    savechromeSync(value) {
+      chrome.storage.sync.set(this.chromeSync, () => {
+        this.showSavedOptions = value;
+        setTimeout(() => {
+          this.showSavedOptions = false;
+        }, 2000);
+      });
+    },
   },
 };
 </script>
