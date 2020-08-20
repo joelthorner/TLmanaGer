@@ -11,7 +11,8 @@ import AppSidebar from "@options/components/sidebar-left/AppSidebar";
 import AppMainContent from "@options/components/main/AppMainContent";
 import AppDebug from "@options/debug/AppDebug";
 
-import { chromeSync, achievements } from "@/data";
+import achievements from "@/data/achievements";
+import chromeSync from "@/data/chromeSync";
 import watchArchievements from "@options/mixins/watchArchievements";
 
 import "../scss/options.scss";

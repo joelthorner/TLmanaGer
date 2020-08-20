@@ -38,8 +38,8 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import { achievements } from "@/data";
-import icons from "@/icons";
+import achievements from "@/data/achievements";
+import icons from "@/data/icons";
 import watchArchievements from "@options/mixins/watchArchievements";
 
 import MainTitle from "@options/components/main/MainTitle";
