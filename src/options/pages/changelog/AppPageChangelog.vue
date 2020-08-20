@@ -38,8 +38,8 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import { achievements } from "./../../../data.js";
-import icons from "./../../../icons.js";
+import { achievements } from "@/data.js";
+import icons from "@/icons.js";
 import watchArchievements from "../../../mixins/watchArchievements.js";
 
 import MainTitle from "./../../components/main/MainTitle.vue";

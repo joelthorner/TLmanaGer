@@ -11,7 +11,7 @@ import AppSidebar from "./components/sidebar-left/AppSidebar.vue";
 import AppMainContent from "./components/main/AppMainContent.vue";
 import AppDebug from "./debug/AppDebug.vue";
 
-import { chromeData, achievements } from "./../data.js";
+import { chromeData, achievements } from "@/data.js";
 import watchArchievements from "./../mixins/watchArchievements.js";
 
 import "../scss/options.scss";

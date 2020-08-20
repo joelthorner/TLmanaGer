@@ -26,7 +26,7 @@
 import MainTitle from "./../../components/main/MainTitle.vue";
 import MainContent from "./../../components/main/MainContent.vue";
 import AchievementsCard from "./../../components/AchievementsCard.vue";
-import { achievements } from "./../../../data.js";
+import { achievements } from "@/data.js";
 import getArchievementsMixin from "../../../mixins/getArchievements.js";
 
 import round from "vue-round-filter";

@@ -33,7 +33,7 @@ import moment from "moment";
 import MainContent from "./../../components/main/MainContent.vue";
 import StyleTag from "./../../components/StyleTag.vue";
 
-import posts from "./../../../posts.js";
+import posts from "@/posts.js";
 
 export default {
   name: "AppPagePost",

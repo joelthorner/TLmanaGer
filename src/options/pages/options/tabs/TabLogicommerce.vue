@@ -28,13 +28,13 @@
           itemKey="pagesGridView"
         ></default-card>
 
-				<default-card
+				<beyond-theme-card
           :chromeData="chromeData"
           title="Beyond LC theme"
           :popover="help.beyondTheme"
           scope="logicommerce"
           itemKey="beyondTheme"
-        ></default-card>
+        ></beyond-theme-card>
       </div>
 
       <div class="col col-xs-12 col-lg-8">
@@ -73,12 +73,13 @@
 
 <script>
 import DefaultCard from "./../cards/DefaultCard.vue";	
-import icons from "./../../../../icons.js";
+import BeyondThemeCard from "./../cards/BeyondThemeCard.vue";	
 
 export default {
   name: "TabLogicommerce",
   components: {
     DefaultCard,
+    BeyondThemeCard,
 	},
   props: {
     chromeData: Object,

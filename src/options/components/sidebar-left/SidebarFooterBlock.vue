@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { achievements } from "./../../../data.js";
+import { achievements } from "@/data.js";
 import watchArchievements from "../../../mixins/watchArchievements.js";
 
 export default {
