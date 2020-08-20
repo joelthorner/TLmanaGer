@@ -19,7 +19,7 @@ import SidebarMenu from "@options/components/sidebar-left/SidebarMenu";
 import SidebarFooterBlock from "@options/components/sidebar-left/SidebarFooterBlock";
 import SidebarCopy from "@options/components/sidebar-left/SidebarCopy";
 
-import icons from "@/icons";
+import icons from "@/data/icons";
 
 export default {
   name: "AppSiderbar",

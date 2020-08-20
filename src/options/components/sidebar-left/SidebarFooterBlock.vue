@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { achievements } from "@/data";
+import achievements from "@/data/achievements";
 import watchArchievements from "@options/mixins/watchArchievements";
 
 export default {

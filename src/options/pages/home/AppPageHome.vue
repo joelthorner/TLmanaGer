@@ -37,7 +37,7 @@ import SidebarRight from "@options/pages/home/sidebar-right/SidebarRight";
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import PostCard from "@options/components/PostCard";
-import posts from "@/posts";
+import posts from "@/data/posts";
 
 export default {
   name: "AppPageHome",

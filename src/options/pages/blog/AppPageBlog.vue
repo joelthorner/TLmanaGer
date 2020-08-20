@@ -92,8 +92,8 @@ import PostCard from "@options/components/PostCard";
 import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight";
 import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock";
 
-import posts from "@/posts";
-import icons from "@/icons";
+import posts from "@/data/posts";
+import icons from "@/data/icons";
 
 export default {
   name: "AppPageBlog",

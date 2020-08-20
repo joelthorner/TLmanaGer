@@ -33,7 +33,7 @@ import moment from "moment";
 import MainContent from "@options/components/main/MainContent";
 import StyleTag from "@options/components/StyleTag";
 
-import posts from "@/posts";
+import posts from "@/data/posts";
 
 export default {
   name: "AppPagePost",
