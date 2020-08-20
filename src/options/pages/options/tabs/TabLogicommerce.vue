@@ -10,6 +10,7 @@
           :popover="help.developerBar"
           scope="logicommerce"
           itemKey="developerBar"
+					@savedOptions="reciveShowSavedOptions"
         ></default-card>
 
 				<default-card
@@ -18,6 +19,7 @@
           :popover="help.sandboxLoginButtons"
           scope="logicommerce"
           itemKey="sandboxLoginButtons"
+					@savedOptions="reciveShowSavedOptions"
         ></default-card>
 
 				<default-card
@@ -26,6 +28,7 @@
           :popover="help.pagesGridView"
           scope="logicommerce"
           itemKey="pagesGridView"
+					@savedOptions="reciveShowSavedOptions"
         ></default-card>
 
 				<beyond-theme-card
@@ -34,6 +37,7 @@
           :popover="help.beyondTheme"
           scope="logicommerce"
           itemKey="beyondTheme"
+					@savedOptions="reciveShowSavedOptions"
         ></beyond-theme-card>
       </div>
 
@@ -60,14 +64,6 @@
         </div> -->
       </div>
     </div>
-
-		<b-toast
-      title="Saved options"
-      no-auto-hide
-      toaster="b-toaster-bottom-center"
-      :visible="showSavedOptions"
-      no-close-button
-    ></b-toast>
   </div>
 </template>
 
@@ -83,10 +79,9 @@ export default {
 	},
   props: {
     chromeSync: Object,
-  },
+	},
   data() {
     return {
-			showSavedOptions: false,
       help: {
         developerBar: {
           title: "lorem",
@@ -106,6 +101,11 @@ export default {
         },
       },
     };
-  },
+	},
+	methods: {
+		reciveShowSavedOptions(value) {
+			this.$emit('savedOptionsParent', true);
+		}
+	},
 };
 </script>

@@ -73,24 +73,16 @@ export default {
   methods: {
 		selectTheme(theme) {
 			this.chromeSync.logicommerce.beyondTheme.theme = theme;
-			this.savechromeSync();
+			this.$emit('savedOptions', true);
 		},
     themeActive(key) {
       return this.chromeSync.logicommerce.beyondTheme.theme == key
         ? "active"
         : "";
     },
-    optionChangeActived(checked, scope, option) {
+   optionChangeActived(checked, scope, option) {
       this.chromeSync[scope][option].active = checked;
-      this.savechromeSync();
-    },
-    savechromeSync() {
-      chrome.storage.sync.set(this.chromeSync, () => {
-        this.$parent.showSavedOptions = true;
-        setTimeout(() => {
-          this.$parent.showSavedOptions = false;
-        }, 2000);
-      });
+			this.$emit('savedOptions', true);
     },
   },
 };
