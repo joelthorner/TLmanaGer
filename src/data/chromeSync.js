@@ -29,7 +29,7 @@ export default {
 	logicommerce: {
 		beyondTheme: {
 			actived: false,
-			themeName: ''
+			theme: 'default'
 		},
 		background: {
 			actived: true,
