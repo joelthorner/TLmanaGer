@@ -1,4 +1,4 @@
-export const chromeData = {
+export const chromeSync = {
   zendesk: {
     replyTicketConfirmPopup: {
       actived: false

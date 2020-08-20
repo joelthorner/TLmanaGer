@@ -7,7 +7,7 @@
       v-bind:key="index"
       :title="footerBlock.title"
       :items="footerBlock.items"
-      :chromeData="chromeData"
+      :chromeSync="chromeSync"
     ></sidebar-footer-block>
     <sidebar-copy></sidebar-copy>
   </aside>
@@ -30,7 +30,7 @@ export default {
     SidebarCopy,
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   data: () => {
     return {

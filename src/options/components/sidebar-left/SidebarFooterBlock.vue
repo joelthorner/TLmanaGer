@@ -27,7 +27,7 @@ export default {
   props: {
     title: String,
     items: Array,
-    chromeData: Object,
+    chromeSync: Object,
   },
   mixins: [watchArchievements],
   data() {

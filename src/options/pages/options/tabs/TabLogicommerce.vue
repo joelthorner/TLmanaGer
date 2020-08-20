@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col col-xs-12 col-lg-4">
         <default-card
-          :chromeData="chromeData"
+          :chromeSync="chromeSync"
           title="Developer bar"
           :popover="help.developerBar"
           scope="logicommerce"
@@ -13,7 +13,7 @@
         ></default-card>
 
 				<default-card
-          :chromeData="chromeData"
+          :chromeSync="chromeSync"
           title="Sandbox login buttons"
           :popover="help.sandboxLoginButtons"
           scope="logicommerce"
@@ -21,7 +21,7 @@
         ></default-card>
 
 				<default-card
-          :chromeData="chromeData"
+          :chromeSync="chromeSync"
           title="Pages grid view"
           :popover="help.pagesGridView"
           scope="logicommerce"
@@ -29,7 +29,7 @@
         ></default-card>
 
 				<beyond-theme-card
-          :chromeData="chromeData"
+          :chromeSync="chromeSync"
           title="Beyond LC theme"
           :popover="help.beyondTheme"
           scope="logicommerce"
@@ -50,7 +50,7 @@
               ></b-button>
             </div>
             <b-form-checkbox
-              v-model="chromeData.logicommerce.background.actived"
+              v-model="chromeSync.logicommerce.background.actived"
               name="switch-logicommerce-background"
               switch
               v-on:change="debouncedOptionChangeActived($event,'logicommerce', 'background')"
@@ -82,7 +82,7 @@ export default {
     BeyondThemeCard,
 	},
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   data() {
     return {
