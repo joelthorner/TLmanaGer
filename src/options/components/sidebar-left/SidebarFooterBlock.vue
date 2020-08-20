@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import { achievements } from "@/data.js";
-import watchArchievements from "@options/mixins/watchArchievements.js";
+import { achievements } from "@/data";
+import watchArchievements from "@options/mixins/watchArchievements";
 
 export default {
   name: "SidebarFooterBlock",

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-// import MainTopBar from "@options/components/main/MainTopBar.vue";
+// import MainTopBar from "@options/components/main/MainTopBar";
 
 export default {
   name: "AppMainContent",

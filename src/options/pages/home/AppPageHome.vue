@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import SidebarRight from "@options/pages/home/sidebar-right/SidebarRight.vue";
-import MainTitle from "@options/components/main/MainTitle.vue";
-import MainContent from "@options/components/main/MainContent.vue";
-import PostCard from "@options/components/PostCard.vue";
-import posts from "@/posts.js";
+import SidebarRight from "@options/pages/home/sidebar-right/SidebarRight";
+import MainTitle from "@options/components/main/MainTitle";
+import MainContent from "@options/components/main/MainContent";
+import PostCard from "@options/components/PostCard";
+import posts from "@/posts";
 
 export default {
   name: "AppPageHome",

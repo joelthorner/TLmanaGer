@@ -30,7 +30,7 @@
 <script>
 import moment from "moment";
 import VanillaTilt from "vanilla-tilt";
-import StyleTag from "@options/components/StyleTag.vue";
+import StyleTag from "@options/components/StyleTag";
 
 export default {
 	name: "PostCard",
