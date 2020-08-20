@@ -72,8 +72,8 @@
 </template>
 
 <script>
-import DefaultCard from "./../cards/DefaultCard.vue";	
-import BeyondThemeCard from "./../cards/BeyondThemeCard.vue";	
+import DefaultCard from "@options/pages/options/cards/DefaultCard.vue";	
+import BeyondThemeCard from "@options/pages/options/cards/BeyondThemeCard.vue";	
 
 export default {
   name: "TabLogicommerce",

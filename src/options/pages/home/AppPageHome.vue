@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import SidebarRight from "./sidebar-right/SidebarRight.vue";
-import MainTitle from "./../../components/main/MainTitle.vue";
-import MainContent from "./../../components/main/MainContent.vue";
-import PostCard from "./../../components/PostCard.vue";
+import SidebarRight from "@options/pages/home/sidebar-right/SidebarRight.vue";
+import MainTitle from "@options/components/main/MainTitle.vue";
+import MainContent from "@options/components/main/MainContent.vue";
+import PostCard from "@options/components/PostCard.vue";
 import posts from "@/posts.js";
 
 export default {

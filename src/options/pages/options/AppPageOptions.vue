@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import MainTitle from "./../../components/main/MainTitle.vue";
-import MainContent from "./../../components/main/MainContent.vue";
+import MainTitle from "@options/components/main/MainTitle.vue";
+import MainContent from "@options/components/main/MainContent.vue";
 
 export default {
   name: "AppPageOptions",
