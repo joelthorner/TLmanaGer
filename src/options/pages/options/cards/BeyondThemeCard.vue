@@ -17,6 +17,9 @@
         v-on:change="debouncedOptionChangeActived($event, scope, itemKey)"
       ></b-form-checkbox>
     </div>
+		<div class="card-body">
+			
+		</div>
   </div>
 </template>
 
@@ -25,10 +28,20 @@ import _ from "lodash";
 import icons from "@/icons.js";
 
 export default {
-  name: "DefaultCard",
+  name: "BeyondThemeCard",
   data() {
     return {
-      iconInfo: icons.info,
+			iconInfo: icons.info,
+			themes: {
+				default: {
+					name: 'Default',
+					img: chrome.extension.getURL('img/beyond-themes/default.png'),
+				},
+				cyberPonk: {
+					name: 'Cyber ponk',
+					img: chrome.extension.getURL('img/beyond-themes/cyber-ponk.png'),
+				},
+			},
     };
   },
   props: {

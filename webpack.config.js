@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const ejs = require('ejs');
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ExtensionReloader = require('webpack-extension-reloader');
@@ -20,6 +21,9 @@ const config = {
 	},
 	resolve: {
 		extensions: ['.js', '.vue'],
+		alias: {
+			'@': path.resolve('src'),
+		},
 	},
 	module: {
 		rules: [

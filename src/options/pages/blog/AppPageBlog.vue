@@ -92,8 +92,8 @@ import PostCard from "./../../components/PostCard.vue";
 import SidebarRight from "./sidebar-right/SidebarRight.vue";
 import SidebarRightBlock from "./sidebar-right/SidebarRightBlock.vue";
 
-import posts from "./../../../posts.js";
-import icons from "./../../../icons.js";
+import posts from "@/posts.js";
+import icons from "@/icons.js";
 
 export default {
   name: "AppPageBlog",
