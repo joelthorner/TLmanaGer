@@ -3,9 +3,14 @@
     <div class="card-header">
       <div class="card-title">
         {{ title }}
-        <b-button
+        <!-- <b-button
           v-b-popover.hover.rightbottom="popover.content"
           :title="popover.title"
+          variant="link"
+          v-html="iconInfo"
+        ></b-button> -->
+				<b-button
+          v-b-modal.modal-help
           variant="link"
           v-html="iconInfo"
         ></b-button>
