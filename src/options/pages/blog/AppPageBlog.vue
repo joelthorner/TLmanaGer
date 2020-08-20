@@ -87,13 +87,13 @@
 <script>
 import moment from "moment";
 
-import MainContent from "@options/components/main/MainContent.vue";
-import PostCard from "@options/components/PostCard.vue";
-import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight.vue";
-import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock.vue";
+import MainContent from "@options/components/main/MainContent";
+import PostCard from "@options/components/PostCard";
+import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight";
+import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock";
 
-import posts from "@/posts.js";
-import icons from "@/icons.js";
+import posts from "@/posts";
+import icons from "@/icons";
 
 export default {
   name: "AppPageBlog",

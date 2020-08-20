@@ -38,12 +38,12 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import { achievements } from "@/data.js";
-import icons from "@/icons.js";
-import watchArchievements from "@options/mixins/watchArchievements.js";
+import { achievements } from "@/data";
+import icons from "@/icons";
+import watchArchievements from "@options/mixins/watchArchievements";
 
-import MainTitle from "@options/components/main/MainTitle.vue";
-import MainContent from "@options/components/main/MainContent.vue";
+import MainTitle from "@options/components/main/MainTitle";
+import MainContent from "@options/components/main/MainContent";
 
 const cache = setupCache({
   maxAge: 15 * 60 * 1000,

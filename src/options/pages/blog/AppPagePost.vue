@@ -30,10 +30,10 @@
 <script>
 import moment from "moment";
 
-import MainContent from "@options/components/main/MainContent.vue";
-import StyleTag from "@options/components/StyleTag.vue";
+import MainContent from "@options/components/main/MainContent";
+import StyleTag from "@options/components/StyleTag";
 
-import posts from "@/posts.js";
+import posts from "@/posts";
 
 export default {
   name: "AppPagePost",

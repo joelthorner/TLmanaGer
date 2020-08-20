@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import MainTitle from "@options/components/main/MainTitle.vue";
-import MainContent from "@options/components/main/MainContent.vue";
-import AchievementsCard from "@options/components/AchievementsCard.vue";
-import { achievements } from "@/data.js";
-import getArchievementsMixin from "@options/mixins/getArchievements.js";
+import MainTitle from "@options/components/main/MainTitle";
+import MainContent from "@options/components/main/MainContent";
+import AchievementsCard from "@options/components/AchievementsCard";
+import { achievements } from "@/data";
+import getArchievementsMixin from "@options/mixins/getArchievements";
 
 import round from "vue-round-filter";
 

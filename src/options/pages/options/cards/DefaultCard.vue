@@ -22,7 +22,7 @@
 
 <script>
 import _ from "lodash";
-import icons from "@/icons.js";
+import icons from "@/icons";
 
 export default {
   name: "DefaultCard",

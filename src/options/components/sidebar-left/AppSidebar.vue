@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import SidebarLogo from "@options/components/sidebar-left/SidebarLogo.vue";
-import SidebarMenu from "@options/components/sidebar-left/SidebarMenu.vue";
-import SidebarFooterBlock from "@options/components/sidebar-left/SidebarFooterBlock.vue";
-import SidebarCopy from "@options/components/sidebar-left/SidebarCopy.vue";
+import SidebarLogo from "@options/components/sidebar-left/SidebarLogo";
+import SidebarMenu from "@options/components/sidebar-left/SidebarMenu";
+import SidebarFooterBlock from "@options/components/sidebar-left/SidebarFooterBlock";
+import SidebarCopy from "@options/components/sidebar-left/SidebarCopy";
 
-import icons from "@/icons.js";
+import icons from "@/icons";
 
 export default {
   name: "AppSiderbar",
