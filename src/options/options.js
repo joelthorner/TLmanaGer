@@ -77,17 +77,9 @@ const router = new VueRouter({
       component: AppPageBlog,
     },
     {
-      path: '/post/:id',
-      name: "post",
+      path: '/blog/:id',
+			name: "blog",
       component: AppPagePost,
-      props: true,
-      props: (route) => {
-        const id = Number.parseInt(route.params.id, 10)
-        if (Number.isNaN(id)) {
-          return 0
-        }
-        return { id }
-      }
     }
   ]
 });
@@ -97,9 +89,4 @@ new Vue({
   el: '#app',
   router,
   render: h => h(App),
-  // watch: {
-  // 	'$route'(to, from) {
-  // 	  console.log(to, from);
-  // 	}
-  // },
 })

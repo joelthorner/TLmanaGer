@@ -38,12 +38,12 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import { achievements } from "./../../../data.js";
-import icons from "./../../../icons.js";
-import watchArchievements from "../../../mixins/watchArchievements.js";
+import achievements from "@/data/achievements";
+import icons from "@/data/icons";
+import watchArchievements from "@options/mixins/watchArchievements";
 
-import MainTitle from "./../../components/main/MainTitle.vue";
-import MainContent from "./../../components/main/MainContent.vue";
+import MainTitle from "@options/components/main/MainTitle";
+import MainContent from "@options/components/main/MainContent";
 
 const cache = setupCache({
   maxAge: 15 * 60 * 1000,
@@ -56,7 +56,7 @@ const api = axios.create({
 export default {
   name: "AppPageChangelog",
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   components: {
     MainTitle,

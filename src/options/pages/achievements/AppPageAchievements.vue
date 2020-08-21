@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import MainTitle from "./../../components/main/MainTitle.vue";
-import MainContent from "./../../components/main/MainContent.vue";
-import AchievementsCard from "./../../components/AchievementsCard.vue";
-import { achievements } from "./../../../data.js";
-import getArchievementsMixin from "../../../mixins/getArchievements.js";
+import MainTitle from "@options/components/main/MainTitle";
+import MainContent from "@options/components/main/MainContent";
+import AchievementsCard from "@options/components/AchievementsCard";
+import achievements from "@/data/achievements";
+import getArchievementsMixin from "@options/mixins/getArchievements";
 
 import round from "vue-round-filter";
 
@@ -48,11 +48,11 @@ export default {
     round,
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   methods: {
     isEarned(key) {
-      return this.chromeData.achievements[key].earned;
+      return this.chromeSync.achievements[key].earned;
     },
     // getAchievementData: function(achievementName) {
     // 	return this.achievements[achievementName];
