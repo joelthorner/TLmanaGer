@@ -19,15 +19,15 @@
 </template>
 
 <script>
-import { achievements } from "./../../../data.js";
-import watchArchievements from "../../../mixins/watchArchievements.js";
+import achievements from "@/data/achievements";
+import watchArchievements from "@options/mixins/watchArchievements";
 
 export default {
   name: "SidebarFooterBlock",
   props: {
     title: String,
     items: Array,
-    chromeData: Object,
+    chromeSync: Object,
   },
   mixins: [watchArchievements],
   data() {

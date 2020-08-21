@@ -8,8 +8,8 @@
 export default {
   name: "AppDebug",
   props: {
-    chromeData: Object,
-    loadedChromeData: Boolean,
+    chromeSync: Object,
+    loadedchromeSync: Boolean,
   },
   created() {
     this.isDebug();

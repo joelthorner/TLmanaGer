@@ -1,18 +1,19 @@
 <template>
   <div id="layout" class="d-flex">
-    <app-sidebar :chromeData="chromeData"></app-sidebar>
-    <app-main-content :chromeData="chromeData"></app-main-content>
-    <app-debug :chromeData="chromeData"></app-debug>
+    <app-sidebar :chromeSync="chromeSync"></app-sidebar>
+    <app-main-content :chromeSync="chromeSync"></app-main-content>
+    <app-debug :chromeSync="chromeSync"></app-debug>
   </div>
 </template>
 
 <script>
-import AppSidebar from "./components/sidebar-left/AppSidebar.vue";
-import AppMainContent from "./components/main/AppMainContent.vue";
-import AppDebug from "./debug/AppDebug.vue";
+import AppSidebar from "@options/components/sidebar-left/AppSidebar";
+import AppMainContent from "@options/components/main/AppMainContent";
+import AppDebug from "@options/debug/AppDebug";
 
-import { chromeData, achievements } from "./../data.js";
-import watchArchievements from "./../mixins/watchArchievements.js";
+import achievements from "@/data/achievements";
+import chromeSync from "@/data/chromeSync";
+import watchArchievements from "@options/mixins/watchArchievements";
 
 import "../scss/options.scss";
 
@@ -26,18 +27,18 @@ export default {
 	mixins: [watchArchievements],
   data() {
     return {
-			chromeData: chromeData,
+			chromeSync: chromeSync,
 			achievementsData: achievements,
     };
   },
   created() {
-		this.getSyncChromeData();
+		this.getSyncchromeSync();
 		this.googleAccountSync(); // achievement
   },
   methods: {
-    getSyncChromeData: function () {
-      chrome.storage.sync.get(chromeData, (result) => {
-        this.chromeData = result;
+    getSyncchromeSync: function () {
+      chrome.storage.sync.get(chromeSync, (result) => {
+        this.chromeSync = result;
       });
     },
   },

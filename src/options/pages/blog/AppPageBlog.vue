@@ -1,13 +1,11 @@
 <template>
   <div class="page-content">
     <div id="blog-content">
-      <main-title title="BLOG"></main-title>
-
       <main-content containerClass="blog-container">
         <div class="inner-text" v-if="anyFilter">
           Filtering by
           <span v-if="checkedYears.length" class="filtering-lbl">
-            <span class="lbl">Year</span>
+            <span class="lbl">Year:</span>
             <span class="badge badge-primary" v-for="year in checkedYears" v-bind:key="year">
               {{ year }}
               <button
@@ -18,7 +16,7 @@
             </span>
           </span>
           <span v-if="checkedTag.length" class="filtering-lbl">
-            <span class="lbl">Tag</span>
+            <span class="lbl">Tag:</span>
             <span class="badge badge-primary">
               {{ checkedTag | capitalize }}
               <button
@@ -89,19 +87,17 @@
 <script>
 import moment from "moment";
 
-import MainTitle from "./../../components/main/MainTitle.vue";
-import MainContent from "./../../components/main/MainContent.vue";
-import PostCard from "./../../components/PostCard.vue";
-import SidebarRight from "./sidebar-right/SidebarRight.vue";
-import SidebarRightBlock from "./sidebar-right/SidebarRightBlock.vue";
+import MainContent from "@options/components/main/MainContent";
+import PostCard from "@options/components/PostCard";
+import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight";
+import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock";
 
-import posts from "./../../../posts.js";
-import icons from "./../../../icons.js";
+import posts from "@/data/posts";
+import icons from "@/data/icons";
 
 export default {
   name: "AppPageBlog",
   components: {
-    MainTitle,
     MainContent,
     PostCard,
     SidebarRight,

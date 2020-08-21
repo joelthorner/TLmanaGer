@@ -27,21 +27,21 @@ export default {
 
     clickGithubLink() {
       // Update metric first
-      this.chromeData.metrics.clickedGithubAnchor = true;
+      this.chromeSync.metrics.clickedGithubAnchor = true;
       // Get data of achievement
       const archvData = this.achievementsData['clickGithubLink'];
       // Get confition() parameters
-      const clickedGithubAnchor = this.chromeData.metrics.clickedGithubAnchor;
+      const clickedGithubAnchor = this.chromeSync.metrics.clickedGithubAnchor;
       // Execute condition()
       const result = archvData.condition(clickedGithubAnchor);
       // Get result before update achievement
-      const beforeResult = this.chromeData.achievements['clickGithubLink'].earned;
+      const beforeResult = this.chromeSync.achievements['clickGithubLink'].earned;
 
       if (beforeResult === false && result === true) {
         // Update achievement chrome data
-        this.chromeData.achievements['clickGithubLink'].earned = result;
+        this.chromeSync.achievements['clickGithubLink'].earned = result;
         // Save sync and launch system notify
-        chrome.storage.sync.set(this.chromeData, () => {
+        chrome.storage.sync.set(this.chromeSync, () => {
           this.createAchievementNotify(archvData, result);
         });
       }
@@ -49,21 +49,21 @@ export default {
 
     clickIssuesLink() {
       // Update metric first
-      this.chromeData.metrics.clickedIssuesAnchor = true;
+      this.chromeSync.metrics.clickedIssuesAnchor = true;
       // Get data of achievement
       const archvData = this.achievementsData['clickIssuesLink'];
       // Get confition() parameters
-      const clickedIssuesAnchor = this.chromeData.metrics.clickedIssuesAnchor;
+      const clickedIssuesAnchor = this.chromeSync.metrics.clickedIssuesAnchor;
       // Execute condition()
       const result = archvData.condition(clickedIssuesAnchor);
       // Get result before update achievement
-      const beforeResult = this.chromeData.achievements['clickIssuesLink'].earned;
+      const beforeResult = this.chromeSync.achievements['clickIssuesLink'].earned;
 
       if (beforeResult === false && result === true) {
         // Update achievement chrome data
-        this.chromeData.achievements['clickIssuesLink'].earned = result;
+        this.chromeSync.achievements['clickIssuesLink'].earned = result;
         // Save sync and launch system notify
-        chrome.storage.sync.set(this.chromeData, () => {
+        chrome.storage.sync.set(this.chromeSync, () => {
           this.createAchievementNotify(archvData, result);
         });
       }
@@ -72,19 +72,19 @@ export default {
     lookChangelog50Times() {
       setTimeout(() => {
         // Update metric first
-        this.chromeData.metrics.openChangelogCount++;
+        this.chromeSync.metrics.openChangelogCount++;
         // Get data of achievement
         const archvData = this.achievementsData["lookChangelog50Times"];
         // Get confition() parameters
-        const openChangelogCount = this.chromeData.metrics.openChangelogCount;
+        const openChangelogCount = this.chromeSync.metrics.openChangelogCount;
         // Execute condition()
         const result = archvData.condition(openChangelogCount);
         // Get result before update achievement
-        const beforeResult = this.chromeData.achievements['lookChangelog50Times'].earned;
+        const beforeResult = this.chromeSync.achievements['lookChangelog50Times'].earned;
         // Update achievement chrome data
-        this.chromeData.achievements["lookChangelog50Times"].earned = result;
+        this.chromeSync.achievements["lookChangelog50Times"].earned = result;
         // Save sync and launch system notify
-        chrome.storage.sync.set(this.chromeData, () => {
+        chrome.storage.sync.set(this.chromeSync, () => {
           if (beforeResult == false) {
             this.createAchievementNotify(archvData, result);
           }
@@ -100,13 +100,13 @@ export default {
         chrome.sessions.getDevices((response) => {
           const result = response.length ? true : false;
           // Get result before update achievement
-          const beforeResult = this.chromeData.achievements['googleAccountSync'].earned;
+          const beforeResult = this.chromeSync.achievements['googleAccountSync'].earned;
 
           if (beforeResult === false && result === true) {
             // Update achievement chrome data
-            this.chromeData.achievements['googleAccountSync'].earned = result;
+            this.chromeSync.achievements['googleAccountSync'].earned = result;
             // Save sync and launch system notify
-            chrome.storage.sync.set(this.chromeData, () => {
+            chrome.storage.sync.set(this.chromeSync, () => {
               this.createAchievementNotify(archvData, result);
             });
           }

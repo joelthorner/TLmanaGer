@@ -6,10 +6,10 @@
         <div class="credits">
           <span class="lbl">Photo by</span>
           <a
-            :href="chromeData.logicommerce.background.userLink"
+            :href="chromeSync.logicommerce.background.userLink"
             target="_blank"
             rel="noopener noreferrer"
-          >{{ chromeData.logicommerce.background.userName }}</a>
+          >{{ chromeSync.logicommerce.background.userName }}</a>
         </div>
       </div>
 
@@ -28,16 +28,16 @@
       </main-content>
     </div>
 
-    <sidebar-right :chromeData="chromeData"></sidebar-right>
+    <sidebar-right :chromeSync="chromeSync"></sidebar-right>
   </div>
 </template>
 
 <script>
-import SidebarRight from "./sidebar-right/SidebarRight.vue";
-import MainTitle from "./../../components/main/MainTitle.vue";
-import MainContent from "./../../components/main/MainContent.vue";
-import PostCard from "./../../components/PostCard.vue";
-import posts from "./../../../posts.js";
+import SidebarRight from "@options/pages/home/sidebar-right/SidebarRight";
+import MainTitle from "@options/components/main/MainTitle";
+import MainContent from "@options/components/main/MainContent";
+import PostCard from "@options/components/PostCard";
+import posts from "@/data/posts";
 
 export default {
   name: "AppPageHome",
@@ -48,7 +48,7 @@ export default {
     PostCard,
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
   data: () => {
     return {
@@ -61,7 +61,7 @@ export default {
       return this.posts.slice(0, 3);
     },
     backgroundWindowSize() {
-      return this.chromeData.logicommerce.background.thumb.replace(
+      return this.chromeSync.logicommerce.background.thumb.replace(
         "w=400",
         "w=" + window.innerWidth
       );

@@ -2,13 +2,13 @@
   <main>
     <!-- <main-top-bar></main-top-bar> -->
     <transition name="page" mode="out-in">
-      <router-view :chromeData="chromeData"></router-view>
+      <router-view :chromeSync="chromeSync"></router-view>
     </transition>
   </main>
 </template>
 
 <script>
-// import MainTopBar from "./MainTopBar.vue";
+// import MainTopBar from "@options/components/main/MainTopBar";
 
 export default {
   name: "AppMainContent",
@@ -16,7 +16,7 @@ export default {
     // MainTopBar,
   },
   props: {
-    chromeData: Object,
+    chromeSync: Object,
   },
 };
 </script>

@@ -30,7 +30,7 @@
 <script>
 import moment from "moment";
 import VanillaTilt from "vanilla-tilt";
-import StyleTag from "./../components/StyleTag.vue";
+import StyleTag from "@options/components/StyleTag";
 
 export default {
 	name: "PostCard",
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     getPostRoute(id) {
-      return "/post/" + id;
+      return "/blog/" + id;
     },
     getPostDate(date) {
       return moment(date).fromNow();

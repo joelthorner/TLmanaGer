@@ -1,17 +1,3 @@
-@import "~bootstrap";
-@import "~bootstrap-vue";
-
-$main-font-size: 14px;
-
-@function rem($size) {
-	$remSize: $size / $main-font-size;
-	@return #{$remSize}rem;
-}
-
-@mixin fontSize($size) {
-	font-size: rem($size);
-}
-
 $aside-left-width: 212px;
 $aside-right-width: 250px;
 $top-bar-h: 48px;
@@ -33,6 +19,27 @@ $background-gray-1: #f9f9f9; // aside right bg white part
 
 $logo-blue-start: #00a8ff;
 $logo-blue-end: #007aff;
+
+// overrite BT
+$primary: $logo-blue-end !default;
+$custom-control-indicator-size: 1.4rem !default;
+
+$custom-switch-width: $custom-control-indicator-size * 1.75 !default;
+$custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
+
+@import "~bootstrap";
+@import "~bootstrap-vue";
+
+$main-font-size: 14px;
+
+@function rem($size) {
+	$remSize: $size / $main-font-size;
+	@return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+	font-size: rem($size);
+}
 
 html {
 	font-size: $main-font-size;
@@ -311,12 +318,13 @@ main {
 	letter-spacing: 0.05em;
 }
 
+.card {
+	height: 100%;
+}
+
 .content-block {
 	padding: rem(30px) rem(60px);
 
-	.card {
-		height: 100%;
-	}
 	.inner-text {
 		font-size: rem(14px);
 		color: $title-1;
@@ -370,6 +378,7 @@ main {
 		10.35898% 21.33975%
 	);
 }
+
 .nav {
 	padding-left: rem(30px);
 	padding-right: rem(30px);
@@ -388,6 +397,32 @@ main {
 		&.router-link-exact-active {
 			// font-weight: bold;
 			color: $logo-blue-end;
+		}
+	}
+}
+
+.b-toaster.b-toaster-bottom-center .b-toaster-slot,
+.b-toast,
+.toast {
+	max-width: 300px;
+}
+
+.b-toast .toast {
+	outline: 0;
+	.toast-body {
+		display: none;
+	}
+	.toast-header {
+		font-size: 14px;
+		padding: 0 20px;
+		line-height: 1;
+		height: 48px;
+		color: #fff;
+		background-color: $logo-blue-end;
+		border: 0;
+		border-radius: rem(3px);
+		strong {
+			font-weight: 500;
 		}
 	}
 }
@@ -875,6 +910,7 @@ main {
 }
 
 .blog-container {
+	padding: rem(60px) rem(60px);
 	.inner-text {
 		max-width: 1000px;
 		margin-left: auto;
@@ -883,6 +919,7 @@ main {
 	.filtering-lbl {
 		margin-left: 6px;
 		.lbl {
+			margin-right: 6px;
 			color: $title-2;
 		}
 	}
@@ -919,7 +956,55 @@ main {
 	}
 }
 
+.post-container {
+	padding: rem(60px) rem(60px);
+	// width: 100%;
+}
+
+#post-content {
+	width: 100%;
+	// display: flex;
+	// align-items: center;
+}
+
 // options page ---------------------------------------------------------
 #options-content {
 	width: 100%;
+}
+
+.card.card-option {
+	height: auto;
+
+	+ .card-option {
+		margin-top: 30px;
+	}
+	.card-header {
+		background-color: transparent;
+		border: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 56px;
+		padding: 0 20px;
+
+		.card-title {
+			font-weight: 500;
+			font-size: 16px;
+			color: $title-2;
+			position: relative;
+			margin: 0;
+			display: flex;
+			align-items: center;
+
+			button {
+				box-shadow: none;
+
+				svg {
+					width: 16px;
+					height: 16px;
+					fill: $text-1;
+				}
+			}
+		}
+	}
 }
