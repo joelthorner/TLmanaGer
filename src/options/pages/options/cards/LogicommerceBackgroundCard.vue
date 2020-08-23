@@ -19,7 +19,11 @@
     <div class="card-body">
       <div class="row no-gutters">
         <div class="col-left d-flex flex-column pr-3">
-          <b-form-input v-model="searchCriteria" placeholder="Enter your search" v-on:input="debouncedInputSearch"></b-form-input>
+          <b-form-input
+            v-model="searchCriteria"
+            placeholder="Enter your search"
+            v-on:input="debouncedInputSearch"
+          ></b-form-input>
 
           <div class="block collections-block">
             <div class="title">Collections</div>
@@ -79,9 +83,9 @@
             v-model="currentPage"
             :total-rows="totalRows"
             :per-page="perPage"
-						v-on:input="changePage"
+            v-on:input="changePage"
           ></b-pagination>
-					<!--             
+          <!--             
             prev-text="Older"
             next-text="Newer"
 						v-if="images.length > perPage" 
@@ -91,7 +95,7 @@
 					
 					
 					
-					-->
+          -->
         </div>
       </div>
     </div>
@@ -141,8 +145,8 @@ export default {
       showBackImage: false,
 
       perPage: 20,
-			currentPage: 1,
-			totalRows: 0,
+      currentPage: 1,
+      totalRows: 0,
     };
   },
   created: function () {
@@ -162,22 +166,28 @@ export default {
   },
   methods: {
     changePage() {
-			this.ajaxSearch();
-		},
-		inputSearch() {
-			this.currentPage = 1;
-			this.totalRows = 0;
-			this.ajaxSearch();
-		},
-		ajaxSearch() {
-			axios
+      this.ajaxSearch();
+    },
+    inputSearch() {
+      this.currentPage = 1;
+      this.totalRows = 0;
+      this.ajaxSearch();
+    },
+    ajaxSearch() {
+      axios
         .get(
-          `${this.endPoint}/search/photos?query=${encodeURI(this.searchCriteria.trim())}&page=${this.currentPage}&per_page=${this.perPage}&orientation=landscape&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
+          `${this.endPoint}/search/photos?query=${encodeURI(
+            this.searchCriteria.trim()
+          )}&page=${this.currentPage}&per_page=${
+            this.perPage
+          }&orientation=landscape&client_id=${
+            process.env.VUE_APP_UNSPLASH_ACCESS_KEY
+          }`
         )
         .then((response) => {
           try {
-						this.images = response.data.results;
-						this.totalRows = response.data.total;
+            this.images = response.data.results;
+            this.totalRows = response.data.total;
           } catch (error) {
             console.log(error);
           }
