@@ -751,7 +751,9 @@ main {
 			flex: 0;
 			color: $text-1;
 			// font-weight: 500;
-
+			.custom-control {
+				margin-bottom: 10px;
+			}
 			.custom-radio.b-custom-control-lg,
 			.input-group-lg .custom-radio {
 				font-size: 16px;
