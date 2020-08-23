@@ -15,6 +15,6 @@ export default {
   props: {
     thisModalId: String,
     data: Object,
-	},
+  },
 };
 </script>

@@ -1,7 +1,5 @@
 <template>
-  <div class="tab">
-    TabZendesk
-  </div>
+  <div class="tab">TabZendesk</div>
 </template>
 
 <script>

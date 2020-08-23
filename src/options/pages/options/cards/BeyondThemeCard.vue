@@ -36,7 +36,7 @@
       </div>
     </div>
 
-		<help-modal :thisModalId="thisModalId" :data="help"></help-modal>
+    <help-modal :thisModalId="thisModalId" :data="help"></help-modal>
   </div>
 </template>
 
@@ -45,8 +45,8 @@ import _ from "lodash";
 import optionCard from "@options/mixins/optionCard";
 
 export default {
-	name: "BeyondThemeCard",
-	mixins: [optionCard],
+  name: "BeyondThemeCard",
+  mixins: [optionCard],
   data() {
     return {
       themes: {

@@ -22,7 +22,7 @@ import _ from "lodash";
 import optionCard from "@options/mixins/optionCard";
 
 export default {
-	name: "DefaultCard",
-	mixins: [optionCard],
+  name: "DefaultCard",
+  mixins: [optionCard],
 };
 </script>

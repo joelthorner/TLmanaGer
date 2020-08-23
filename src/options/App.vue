@@ -23,17 +23,17 @@ export default {
     AppDebug,
     AppSidebar,
     AppMainContent,
-	},
-	mixins: [watchArchievements],
+  },
+  mixins: [watchArchievements],
   data() {
     return {
-			chromeSync: chromeSync,
-			achievementsData: achievements,
+      chromeSync: chromeSync,
+      achievementsData: achievements,
     };
   },
   created() {
-		this.getSyncchromeSync();
-		this.googleAccountSync(); // achievement
+    this.getSyncchromeSync();
+    this.googleAccountSync(); // achievement
   },
   methods: {
     getSyncchromeSync: function () {

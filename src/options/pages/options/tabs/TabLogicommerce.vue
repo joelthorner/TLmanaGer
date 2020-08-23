@@ -64,8 +64,8 @@ export default {
   name: "TabLogicommerce",
   components: {
     DefaultCard,
-		BeyondThemeCard,
-		LogicommerceBackgroundCard,
+    BeyondThemeCard,
+    LogicommerceBackgroundCard,
   },
   props: {
     chromeSync: Object,

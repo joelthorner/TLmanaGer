@@ -2,7 +2,7 @@
   <div :class="'card post-' + post.id" data-tilt data-tilt-reverse="true" data-tilt-max="10">
     <style-tag>
       .post-{{ this.post.id }}::before {
-      	background-image: url({{ this.post.img }});
+      background-image: url({{ this.post.img }});
       }
     </style-tag>
     <router-link :to="getPostRoute(post.id)" class="link-img">
@@ -33,10 +33,10 @@ import VanillaTilt from "vanilla-tilt";
 import StyleTag from "@options/components/StyleTag";
 
 export default {
-	name: "PostCard",
-	components: {
-		StyleTag,
-	},
+  name: "PostCard",
+  components: {
+    StyleTag,
+  },
   props: {
     post: Object,
   },
