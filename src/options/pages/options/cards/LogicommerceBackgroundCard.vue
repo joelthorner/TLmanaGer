@@ -1,5 +1,5 @@
 <template>
-  <div class="card card-option" v-bind:class="{ active: chromeSync[scope][itemKey].actived }">
+  <div class="card card-option card-option-lc-bg" v-bind:class="{ active: chromeSync[scope][itemKey].actived }">
     <div class="card-header">
       <div class="card-title">
         {{ title }}
@@ -13,6 +13,10 @@
       ></b-form-checkbox>
     </div>
 
+		<div class="card-body">
+			hola
+		</div>
+
     <help-modal :thisModalId="thisModalId" :data="help"></help-modal>
   </div>
 </template>
@@ -22,7 +26,7 @@ import _ from "lodash";
 import optionCard from "@options/mixins/optionCard";
 
 export default {
-	name: "DefaultCard",
+	name: "LCBackgroundCard",
 	mixins: [optionCard],
 };
 </script>

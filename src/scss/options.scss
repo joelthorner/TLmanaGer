@@ -21,11 +21,15 @@ $logo-blue-start: #00a8ff;
 $logo-blue-end: #007aff;
 
 // overrite BT
+$blue: $logo-blue-end !default;
+
 $primary: $logo-blue-end !default;
 $custom-control-indicator-size: 1.4rem !default;
 
 $custom-switch-width: $custom-control-indicator-size * 1.75 !default;
 $custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
+
+$modal-content-border-width: 0 !default;
 
 @import "~bootstrap";
 @import "~bootstrap-vue";
@@ -1006,5 +1010,58 @@ main {
 				}
 			}
 		}
+	}
+	.custom-control {
+		cursor: pointer;
+	}
+
+	.card-body.grid-themes {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		// grid-template-rows: repeat(3, 1fr);
+		gap: 15px 15px;
+		.item {
+			border-radius: rem(3px);
+			&.active {
+				border: 1px solid $logo-blue-end;
+				a {
+					border-radius: rem(2px);
+					top: 5px;
+					bottom: 5px;
+					left: 5px;
+					right: 5px;
+					width: calc(100% - 10px);
+					height: calc(100% - 10px);
+				}
+			}
+			a {
+				background-position: center;
+				background-size: auto;
+			}
+		}
+		.embed-responsive-theme {
+			padding-bottom: 74%;
+		}
+	}
+}
+.card.card-option {
+	&.card-option-lc-bg,
+	&.card-option-beyond-theme {
+		&:not(.active) .card-body {
+			opacity: 0.5;
+			cursor: not-allowed;
+			* {
+				user-select: none;
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.help-content {
+	img {
+		width: rem(250px);
+		float: left;
+		margin-right: rem(15px);
 	}
 }
