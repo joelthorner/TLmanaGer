@@ -1,7 +1,5 @@
 <template>
-  <div class="tab">
-    TabFluidTools
-  </div>
+  <div class="tab">TabFluidTools</div>
 </template>
 
 <script>

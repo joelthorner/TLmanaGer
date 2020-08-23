@@ -43,15 +43,15 @@ const router = new VueRouter({
           component: TabLogicommerce,
         },
         {
-        	path: 'fluid-tools',
+          path: 'fluid-tools',
           component: TabFluidTools,
         },
         {
-        	path: 'zendesk',
+          path: 'zendesk',
           component: TabZendesk,
         },
         {
-        	path: 'others',
+          path: 'others',
           component: TabOthers,
         },
       ]
@@ -78,7 +78,7 @@ const router = new VueRouter({
     },
     {
       path: '/blog/:id',
-			name: "blog",
+      name: "blog",
       component: AppPagePost,
     }
   ]
