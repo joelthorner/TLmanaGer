@@ -3,7 +3,7 @@
     <div class="inner-text">Opcions de personalització de logicommerce, fons, themes, millores...</div>
 
     <div class="row">
-      <div class="col col-xs-12 col-lg-4">
+      <div class="col col-xs-12 col-lc-layout-left">
         <default-card
           :chromeSync="chromeSync"
           title="Developer bar"
@@ -41,7 +41,7 @@
         ></beyond-theme-card>
       </div>
 
-      <div class="col col-xs-12 col-lg-8">
+      <div class="col col-xs-12 col-lc-layout-right">
         <logicommerce-background-card
           :chromeSync="chromeSync"
           title="LC Background"
@@ -50,26 +50,6 @@
           itemKey="background"
           @savedOptions="reciveShowSavedOptions"
         ></logicommerce-background-card>
-        <!-- <div class="card card-option card-option-bg">
-          <div class="card-header">
-            <div class="card-title">
-              LC Background
-              <b-button
-                v-b-help.hover.rightbottom="'Lorem ipsum'"
-                title="Popover Title"
-                variant="link"
-                v-html="iconInfo"
-              ></b-button>
-            </div>
-            <b-form-checkbox
-              v-model="chromeSync.logicommerce.background.actived"
-              name="switch-logicommerce-background"
-              switch
-              v-on:change="debouncedOptionChangeActived($event,'logicommerce', 'background')"
-            ></b-form-checkbox>
-          </div>
-          <div class="card-body">body</div>
-        </div>-->
       </div>
     </div>
   </div>
