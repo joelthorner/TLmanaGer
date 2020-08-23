@@ -2,7 +2,9 @@
   <main>
     <!-- <main-top-bar></main-top-bar> -->
     <transition name="page" mode="out-in">
-      <router-view :chromeSync="chromeSync"></router-view>
+      <keep-alive>
+        <router-view :chromeSync="chromeSync"></router-view>
+      </keep-alive>
     </transition>
   </main>
 </template>

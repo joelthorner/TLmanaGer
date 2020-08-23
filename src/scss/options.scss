@@ -1039,8 +1039,7 @@ main {
 
 	.card-body.grid-themes {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		// grid-template-rows: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 15px 15px;
 		.item {
 			border-radius: rem(3px);
@@ -1088,6 +1087,23 @@ main {
 		.title {
 			color: $title-1;
 			margin-bottom: 10px;
+			display: flex;
+			a {
+				color: #ff001e;
+				font-weight: bold;
+				margin-left: auto;
+			}
+		}
+		&.collections-block {
+			margin-top: auto;
+		}
+	}
+	.card-body {
+		.col-left {
+			width: 250px;
+		}
+		.col-right {
+			width: calc(100% - 250px);
 		}
 	}
 }
@@ -1130,4 +1146,11 @@ main {
 		visibility: visible;
 		transform: translateY(0);
 	}
+}
+
+.grid-background-items {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1px;
 }

@@ -9,3 +9,11 @@ This template homepage can be found at https://github.com/Kocal/vue-web-extensio
 
 
 https://www.sitepoint.com/build-vue-chrome-extension/
+
+
+
+
+# .env
+# ========================
+
+Add .env file to root folder with .env.example variables

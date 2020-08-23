@@ -33,7 +33,7 @@
 
         <beyond-theme-card
           :chromeSync="chromeSync"
-          title="Beyond LC theme"
+          title="Beyond theme"
           :help="help.beyondTheme"
           scope="logicommerce"
           itemKey="beyondTheme"
@@ -44,7 +44,7 @@
       <div class="col col-xs-12 col-lc-layout-right">
         <logicommerce-background-card
           :chromeSync="chromeSync"
-          title="LC Background"
+          title="Background"
           :help="help.lcBackground"
           scope="logicommerce"
           itemKey="background"
