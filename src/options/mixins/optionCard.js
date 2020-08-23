@@ -18,6 +18,9 @@ export default {
     itemKey: String,
   },
   computed: {
+    disabledOptionMessage() {
+      return this.chromeSync[this.scope][this.itemKey].active ? '' : 'Click top right switch to activate option';
+    },
     thisModalId() {
       return `help-modal-${this.itemKey}`;
     },
