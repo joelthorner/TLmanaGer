@@ -49,7 +49,7 @@
           @change="toTop"
           prev-text="Older"
           next-text="Newer"
-          hide-goto-end-buttons="true"
+          :hide-goto-end-buttons="true"
           pills
           v-if="posts.length > perPage"
         ></b-pagination>

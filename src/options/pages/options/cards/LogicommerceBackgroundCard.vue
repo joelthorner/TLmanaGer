@@ -19,7 +19,7 @@
     <div class="card-body">
       <div class="row no-gutters">
         <div class="col-left d-flex flex-column pr-3">
-          <b-form-input v-model="searchCriteria" placeholder="Enter your search"></b-form-input>
+          <b-form-input v-model="searchCriteria" placeholder="Enter your search" v-on:input="debouncedInputSearch"></b-form-input>
 
           <div class="block collections-block">
             <div class="title">Collections</div>
@@ -74,6 +74,24 @@
               >{{ image.user.name }}</a>
             </div>
           </div>
+
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="totalRows"
+            :per-page="perPage"
+						v-on:input="changePage"
+          ></b-pagination>
+					<!--             
+            prev-text="Older"
+            next-text="Newer"
+						v-if="images.length > perPage" 
+            :hide-goto-end-buttons="true"
+            pills
+					
+					
+					
+					
+					-->
         </div>
       </div>
     </div>
@@ -121,10 +139,15 @@ export default {
       ],
       backImage: {},
       showBackImage: false,
+
+      perPage: 20,
+			currentPage: 1,
+			totalRows: 0,
     };
   },
   created: function () {
     this.debouncedSelectBackground = _.debounce(this.selectBackground, 1000);
+    this.debouncedInputSearch = _.debounce(this.inputSearch, 500);
   },
   mounted() {
     this.getRandomImages();
@@ -138,6 +161,28 @@ export default {
     },
   },
   methods: {
+    changePage() {
+			this.ajaxSearch();
+		},
+		inputSearch() {
+			this.currentPage = 1;
+			this.totalRows = 0;
+			this.ajaxSearch();
+		},
+		ajaxSearch() {
+			axios
+        .get(
+          `${this.endPoint}/search/photos?query=${encodeURI(this.searchCriteria.trim())}&page=${this.currentPage}&per_page=${this.perPage}&orientation=landscape&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
+        )
+        .then((response) => {
+          try {
+						this.images = response.data.results;
+						this.totalRows = response.data.total;
+          } catch (error) {
+            console.log(error);
+          }
+        });
+    },
     initSelectBackground(image) {
       let data = {
         image: image.urls.full,
@@ -158,7 +203,7 @@ export default {
     },
     selectCollection(id) {
       api({
-        url: `${this.endPoint}/collections/${id}/photos?id=${id}&page=1&per_page=20&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`,
+        url: `${this.endPoint}/collections/${id}/photos?id=${id}&page=1&per_page=${this.perPage}&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`,
         method: "get",
       }).then(async (response) => {
         try {
@@ -171,7 +216,7 @@ export default {
     getRandomImages() {
       axios
         .get(
-          `${this.endPoint}/photos/random?query=wallpaper&count=20&orientation=landscape&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
+          `${this.endPoint}/photos/random?query=wallpaper&count=${this.perPage}&orientation=landscape&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
         )
         .then((response) => {
           try {
