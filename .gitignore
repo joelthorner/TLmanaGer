@@ -4,3 +4,4 @@
 /dist-zip
 /new_design
 *.code-workspace
+.env

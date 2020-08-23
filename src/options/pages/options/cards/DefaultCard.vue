@@ -1,5 +1,5 @@
 <template>
-  <div class="card card-option">
+  <div class="card card-option" v-bind:class="{ active: chromeSync[scope][itemKey].actived }">
     <div class="card-header">
       <div class="card-title">
         {{ title }}
@@ -13,49 +13,16 @@
       ></b-form-checkbox>
     </div>
 
-    <b-modal :id="thisModalId" centered :title="popover.title">
-      <span v-html="popover.content"></span>
-    </b-modal>
+    <help-modal :thisModalId="thisModalId" :data="help"></help-modal>
   </div>
 </template>
 
 <script>
 import _ from "lodash";
-import icons from "@/data/icons";
+import optionCard from "@options/mixins/optionCard";
 
 export default {
   name: "DefaultCard",
-  data() {
-    return {
-      iconInfo: icons.info,
-    };
-  },
-  props: {
-    chromeSync: Object,
-    title: String,
-    popover: Object,
-    scope: String,
-    itemKey: String,
-  },
-  computed: {
-    thisModalId() {
-      return `help-modal-${this.itemKey}`;
-    },
-    checkboxName() {
-      return `switch-${this.scope}-${this.itemKey}`;
-    },
-  },
-  created: function () {
-    this.debouncedOptionChangeActived = _.debounce(
-      this.optionChangeActived,
-      1000
-    );
-  },
-  methods: {
-    optionChangeActived(checked, scope, option) {
-      this.chromeSync[scope][option].active = checked;
-      this.$emit("savedOptions", true);
-    },
-  },
+  mixins: [optionCard],
 };
 </script>

@@ -56,12 +56,12 @@ export default {
       this.id = parseInt(to.params.id);
       this.getPostData();
     },
-	},
-	computed: {
-		date() {
+  },
+  computed: {
+    date() {
       return moment(this.post.date).format("MMMM Do YYYY");
     },
-	},
+  },
   methods: {
     getPostData() {
       this.post = {};
