@@ -438,6 +438,14 @@ main {
   border-color: $logo-blue-start;
 }
 
+.pagination {
+  svg {
+    width: 10px;
+    height: 10px;
+    fill: currentColor;
+  }
+}
+
 // home page ----------------------------------------------------
 #home-content {
   width: calc(100% - #{$aside-right-width});
@@ -1084,10 +1092,11 @@ main {
   .block {
     ul {
       padding-left: rem(16px);
+      line-height: 1.8;
     }
     padding-top: rem(30px);
     .title {
-      color: $title-1;
+      color: $text-1;
       margin-bottom: 10px;
       display: flex;
       a {
@@ -1106,7 +1115,17 @@ main {
     }
     .col-right {
       width: calc(100% - 250px);
+      text-align: center;
     }
+  }
+  .pagination {
+    margin: 15px auto 0;
+    display: inline-flex;
+  }
+  .pagination-space-equalizer {
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 15px;
   }
 }
 
@@ -1121,6 +1140,10 @@ main {
 .bg-item {
   position: relative;
   overflow: hidden;
+
+  &.empty {
+    background-color: $background-title;
+  }
   .embed-responsive {
     background-position: center;
     background-size: cover;
@@ -1154,5 +1177,5 @@ main {
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
+  gap: 3px;
 }

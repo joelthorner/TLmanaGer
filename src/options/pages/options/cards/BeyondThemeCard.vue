@@ -16,7 +16,7 @@
       ></b-form-checkbox>
     </div>
 
-    <div class="card-body grid-themes">
+    <div class="card-body grid-themes" :title="disabledOptionMessage">
       <div
         class="embed-responsive embed-responsive-theme item"
         v-for="(theme, key) in themes"
