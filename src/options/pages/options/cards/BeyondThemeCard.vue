@@ -1,5 +1,8 @@
 <template>
-  <div class="card card-option">
+  <div
+    class="card card-option card-option-beyond-theme"
+    v-bind:class="{ active: chromeSync[scope][itemKey].actived }"
+  >
     <div class="card-header">
       <div class="card-title">
         {{ title }}
@@ -13,29 +16,39 @@
       ></b-form-checkbox>
     </div>
 
-    <div class="card-body">
-      <div class="item" v-for="(theme, key) in themes" v-bind:key="key" :class="themeActive(key)">
-        <a href="#" :title="theme.name" v-on:click.prevent="debouncedSelectTheme(key)">
-          <img :src="theme.img" :alt="theme.name" />
+    <div class="card-body grid-themes">
+      <div
+        class="embed-responsive embed-responsive-theme item"
+        v-for="(theme, key) in themes"
+        v-bind:key="key"
+        :class="themeActive(key)"
+        :title="theme.name"
+        v-b-tooltip.hover
+      >
+        <a
+          href="#"
+          v-on:click.prevent="initSelectTheme(key)"
+          class="embed-responsive-item"
+          v-bind:style="{ backgroundImage: 'url(' + theme.img + ')' }"
+        >
+          <div class="rippleJS"></div>
         </a>
       </div>
     </div>
 
-    <b-modal :id="thisModalId" centered :title="popover.title">
-      <span v-html="popover.content"></span>
-    </b-modal>
+		<help-modal :thisModalId="thisModalId" :data="help"></help-modal>
   </div>
 </template>
 
 <script>
 import _ from "lodash";
-import icons from "@/data/icons";
+import optionCard from "@options/mixins/optionCard";
 
 export default {
-  name: "BeyondThemeCard",
+	name: "BeyondThemeCard",
+	mixins: [optionCard],
   data() {
     return {
-      iconInfo: icons.info,
       themes: {
         default: {
           name: "Default",
@@ -48,41 +61,21 @@ export default {
       },
     };
   },
-  props: {
-    chromeSync: Object,
-    title: String,
-    popover: Object,
-    scope: String,
-    itemKey: String,
-  },
-  computed: {
-    thisModalId() {
-      return `help-modal-${this.itemKey}`;
-    },
-    checkboxName() {
-      return `switch-${this.scope}-${this.itemKey}`;
-    },
-  },
   created: function () {
-    this.debouncedOptionChangeActived = _.debounce(
-      this.optionChangeActived,
-      1000
-    );
     this.debouncedSelectTheme = _.debounce(this.selectTheme, 1000);
   },
   methods: {
-    selectTheme(theme) {
+    initSelectTheme(theme) {
       this.chromeSync.logicommerce.beyondTheme.theme = theme;
+      this.debouncedSelectTheme(theme);
+    },
+    selectTheme(theme) {
       this.$emit("savedOptions", true);
     },
     themeActive(key) {
       return this.chromeSync.logicommerce.beyondTheme.theme == key
         ? "active"
         : "";
-    },
-    optionChangeActived(checked, scope, option) {
-      this.chromeSync[scope][option].active = checked;
-      this.$emit("savedOptions", true);
     },
   },
 };
