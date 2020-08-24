@@ -47,13 +47,19 @@
               Current selected
               <a href="#" v-if="showBackImage" v-on:click.prevent="undo">Undo</a>
             </div>
+
             <div class="bg-item bg-item-selected-main">
+              <a
+                class="zoom-btn"
+                href="#"
+                v-b-modal.bgCardZoom
+                v-on:click.prevent="setZoomData(chromeSync.logicommerce.background.regular, chromeSync.logicommerce.background.userName)"
+                v-html="icons.zoom"
+              ></a>
               <div
                 class="embed-responsive embed-responsive-16by9"
                 v-bind:style="{ backgroundImage: 'url(' + chromeSync.logicommerce.background.thumb + ')'}"
-              >
-                <div class="rippleJS"></div>
-              </div>
+              ></div>
               <a
                 :href="chromeSync.logicommerce.background.userLink"
                 target="_blank"
@@ -73,6 +79,13 @@
               v-for="(image, index) in selectableImages"
               v-bind:key="index + '-finded'"
             >
+              <a
+                class="zoom-btn"
+                href="#"
+                v-b-modal.bgCardZoom
+                v-on:click.prevent="setZoomData(image.urls.regular, image.user.name)"
+                v-html="icons.zoom"
+              ></a>
               <a
                 href="#"
                 class="embed-responsive embed-responsive-16by9"
@@ -123,12 +136,14 @@
     </div>
 
     <help-modal :thisModalId="thisModalId" :data="help"></help-modal>
+    <full-image-modal thisModalId="bgCardZoom" :sourceUrl="imageZoom" :title="imageZoomAuthor"></full-image-modal>
   </div>
 </template>
 
 <script>
 import _ from "lodash";
 import optionCard from "@options/mixins/optionCard";
+import FullImageModal from "@options/components/FullImageModal";
 import axios from "axios";
 import icons from "@/data/icons";
 
@@ -138,14 +153,12 @@ const MODE_SEARCH = "search";
 export default {
   name: "LogicommerceBackgroundCard",
   mixins: [optionCard],
+  components: {
+    FullImageModal,
+  },
   data() {
     return {
-      icons: {
-        caretLeft: icons.caretLeft,
-        caretDoubleLeft: icons.caretDoubleLeft,
-        caretRight: icons.caretRight,
-        caretDoubleRight: icons.caretDoubleRight,
-      },
+      icons,
       endPoint: "https://api.unsplash.com",
       searchCriteria: "",
       randomImages: [],
@@ -186,6 +199,8 @@ export default {
       clientId: process.env.VUE_APP_UNSPLASH_ACCESS_KEY,
       mode: null,
       selectedCollection: 0,
+      imageZoom: "",
+      imageZoomAuthor: "",
     };
   },
   created: function () {
@@ -293,9 +308,10 @@ export default {
       let data = {
         image: image.urls.full,
         thumb: image.urls.small,
+        regular: image.urls.regular,
         userName: image.user.name,
         userLink: image.user.links.html,
-        downloadLocation: `${image.links.download_location}?client_id=${this.clientId}`,
+        downloadLocation: image.links.download_location,
       };
       this.chromeSync.logicommerce.background = {
         ...this.chromeSync.logicommerce.background,
@@ -312,6 +328,10 @@ export default {
       this.backImage = {};
       this.showBackImage = false;
       this.debouncedSelectBackground();
+    },
+    setZoomData(image, author) {
+      this.imageZoom = image;
+      this.imageZoomAuthor = 'By ' + author;
     },
   },
 };
