@@ -3,7 +3,7 @@
 
 To get started:
 
-  npm run watch:dev (or if using yarn: yarn watch:dev)
+  npm run watch:dev
 
 This template homepage can be found at https://github.com/Kocal/vue-web-extension
 
