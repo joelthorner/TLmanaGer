@@ -63,7 +63,7 @@ export default {
         `${this.chromeSync.logicommerce.background.downloadLocation}?&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       });
   },
   computed: {

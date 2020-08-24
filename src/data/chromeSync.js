@@ -5,23 +5,23 @@ export default {
     },
     ticketPriorityHighlightColors: {
       actived: false,
-      onlyIncidents: false,
+      onlyIncidents: true,
       colors: {
         low: {
-          bg: '#fff',
-          text: '#222',
+          bg: '#ffffff',
+          text: '#222222',
         },
         normal: {
-          bg: '#ffd',
-          text: '#222',
+          bg: '#ffffdb',
+          text: '#222222',
         },
         high: {
-          bg: '#fb7',
-          text: '#222',
+          bg: '#fdb976',
+          text: '#222222',
         },
         urgent: {
-          bg: '#f77',
-          text: '#222',
+          bg: '#fd7878',
+          text: '#222222',
         },
       }
     },
