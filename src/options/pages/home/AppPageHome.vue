@@ -38,6 +38,7 @@ import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import PostCard from "@options/components/PostCard";
 import posts from "@/data/posts";
+import axios from "axios";
 
 export default {
   name: "AppPageHome",
@@ -56,15 +57,21 @@ export default {
       maxLastPosts: 3,
     };
   },
+  mounted() {
+    axios
+      .get(
+        `${this.chromeSync.logicommerce.background.downloadLocation}?&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
+      )
+      .then((response) => {
+        console.log(response);
+      });
+  },
   computed: {
     last3Posts() {
       return this.posts.slice(0, 3);
     },
     backgroundWindowSize() {
-      return this.chromeSync.logicommerce.background.thumb.replace(
-        "w=400",
-        "w=" + window.innerWidth
-      );
+      return this.chromeSync.logicommerce.background.image;
     },
   },
 };

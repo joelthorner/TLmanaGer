@@ -37,7 +37,6 @@ export default {
   mixins: [getArchievementsMixin],
   data: () => {
     return {
-      version: "1.0.0",
       caret: icons.caretRight,
     };
   },
