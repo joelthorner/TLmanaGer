@@ -1005,7 +1005,46 @@ main {
   width: 100%;
 }
 
-@media (min-width: map-get($grid-breakpoints, lg)) {
+.grid-background-items {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.col-lc-layout-left {
+  flex: 1 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .fake-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .fake-col {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1499px) {
+  .fake-col {
+    flex: 1 0 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1679px) {
+  .fake-col {
+    flex: 1 0 33.33333%;
+    max-width: 33.33333%;
+  }
+}
+@media (min-width: 1680px) {
+  .fake-col {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
   .col-lc-layout-left {
     flex: 0 0 450px;
     max-width: 450px;
@@ -1015,13 +1054,30 @@ main {
     max-width: calc(100% - 450px);
   }
 }
+@media (min-width: 1280px) {
+  .grid-background-items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// .col-lc-layout-left {
+//   width: 100%;
+//   flex: 0 0 100%;
+//   order: 2;
+// }
+// .col-lc-layout-right {
+//   width: 100%;
+//   flex: 0 0 100%;
+//   order: 1;
+// }
+// @media (min-width: 1730px) {
+
+// }
 
 .card.card-option {
   height: auto;
+  margin-bottom: 30px;
 
-  + .card-option {
-    margin-top: 30px;
-  }
   .card-header {
     background-color: transparent;
     border: 0;
@@ -1061,7 +1117,7 @@ main {
 
   .card-body.grid-themes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(100px, 180px));
     gap: 15px 15px;
     .item {
       border-radius: rem(3px);
@@ -1211,11 +1267,4 @@ main {
     opacity: 1;
     visibility: visible;
   }
-}
-
-.grid-background-items {
-  display: -ms-grid;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 3px;
 }

@@ -4,41 +4,48 @@
 
     <div class="row">
       <div class="col col-xs-12 col-lc-layout-left">
-        <default-card
-          :chromeSync="chromeSync"
-          title="Developer bar"
-          :help="help.developerBar"
-          scope="logicommerce"
-          itemKey="developerBar"
-          @savedOptions="reciveShowSavedOptions"
-        ></default-card>
-
-        <default-card
-          :chromeSync="chromeSync"
-          title="Sandbox login buttons"
-          :help="help.sandboxLoginButtons"
-          scope="logicommerce"
-          itemKey="sandboxLoginButtons"
-          @savedOptions="reciveShowSavedOptions"
-        ></default-card>
-
-        <default-card
-          :chromeSync="chromeSync"
-          title="Pages grid view"
-          :help="help.pagesGridView"
-          scope="logicommerce"
-          itemKey="pagesGridView"
-          @savedOptions="reciveShowSavedOptions"
-        ></default-card>
-
-        <beyond-theme-card
-          :chromeSync="chromeSync"
-          title="Beyond theme"
-          :help="help.beyondTheme"
-          scope="logicommerce"
-          itemKey="beyondTheme"
-          @savedOptions="reciveShowSavedOptions"
-        ></beyond-theme-card>
+        <div class="fake-row">
+          <div class="fake-col">
+            <default-card
+              :chromeSync="chromeSync"
+              title="Developer bar"
+              :help="help.developerBar"
+              scope="logicommerce"
+              itemKey="developerBar"
+              @savedOptions="reciveShowSavedOptions"
+            ></default-card>
+          </div>
+          <div class="fake-col">
+            <default-card
+              :chromeSync="chromeSync"
+              title="Sandbox login buttons"
+              :help="help.sandboxLoginButtons"
+              scope="logicommerce"
+              itemKey="sandboxLoginButtons"
+              @savedOptions="reciveShowSavedOptions"
+            ></default-card>
+          </div>
+          <div class="fake-col">
+            <default-card
+              :chromeSync="chromeSync"
+              title="Pages grid view"
+              :help="help.pagesGridView"
+              scope="logicommerce"
+              itemKey="pagesGridView"
+              @savedOptions="reciveShowSavedOptions"
+            ></default-card>
+          </div>
+          <div class="fake-col">
+            <beyond-theme-card
+              :chromeSync="chromeSync"
+              title="Beyond theme"
+              :help="help.beyondTheme"
+              scope="logicommerce"
+              itemKey="beyondTheme"
+              @savedOptions="reciveShowSavedOptions"
+            ></beyond-theme-card>
+          </div>
+        </div>
       </div>
 
       <div class="col col-xs-12 col-lc-layout-right">

@@ -228,7 +228,6 @@ export default {
       return encodeURI(this.searchCriteria.trim());
     },
     showPagination() {
-      console.log(this.totalRows);
       return this.totalRows / this.perPage > 1;
     },
     isValidSearch() {
@@ -283,7 +282,6 @@ export default {
         )
         .then((response) => {
           try {
-            console.log(response);
             this.images = response.data;
             this.totalRows = parseInt(response.headers["x-total"]);
           } catch (error) {
