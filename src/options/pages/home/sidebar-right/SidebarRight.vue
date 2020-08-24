@@ -26,7 +26,6 @@
 <script>
 import SidebarRightResumeItem from "@options/pages/home/sidebar-right/SidebarRightResumeItem";
 import SidebarRightContributors from "@options/pages/home/sidebar-right/SidebarRightContributors";
-import achievements from "@/data/achievements";
 import icons from "@/data/icons";
 import getArchievementsMixin from "@options/mixins/getArchievements";
 
