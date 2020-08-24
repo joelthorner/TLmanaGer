@@ -10,6 +10,9 @@
 <a href="https://img.shields.io/codeclimate/maintainability/joelthorner/TLmanaGer.svg?label=Maintainability" target="_blank">
 	<img src="https://img.shields.io/codeclimate/maintainability/joelthorner/TLmanaGer.svg?label=Maintainability" alt="Code Climate maintainability">
 </a>
+<a href="https://deepscan.io/dashboard#view=project&tid=10657&pid=13496&bid=228614">
+  <img src="https://deepscan.io/api/teams/10657/projects/13496/branches/228614/badge/grade.svg" alt="DeepScan grade">
+</a>
 <a href="https://img.shields.io/github/issues/joelthorner/TLmanaGer.svg?label=Issues" target="_blank">
 	<img src="https://img.shields.io/github/issues/joelthorner/TLmanaGer.svg?label=Issues" alt="GitHub issues">
 </a>
