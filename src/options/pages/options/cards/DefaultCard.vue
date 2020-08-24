@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import _ from "lodash";
 import optionCard from "@options/mixins/optionCard";
 
 export default {

@@ -1,5 +1,6 @@
 import icons from "@/data/icons";
 import HelpModal from "@options/components/HelpModal";
+import _ from "lodash";
 
 export default {
   components: {
