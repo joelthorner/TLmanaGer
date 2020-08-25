@@ -35,11 +35,8 @@ const router = new VueRouter({
       component: AppPageOptions,
       children: [
         {
-          path: '',
-          component: TabLogicommerce,
-        },
-        {
           path: 'logicommerce',
+          alias: '',
           component: TabLogicommerce,
         },
         {

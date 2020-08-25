@@ -55,16 +55,19 @@ export default {
     return {
       posts,
       maxLastPosts: 3,
+      firedDownloadLocation: false,
     };
   },
   mounted() {
-    axios
-      .get(
-        `${this.chromeSync.logicommerce.background.downloadLocation}?&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
-      )
-      .then((response) => {
-        // console.log(response);
-      });
+    if (!this.firedDownloadLocation) {
+      axios
+        .get(
+          `${this.chromeSync.logicommerce.background.downloadLocation}?&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
+        )
+        .then((response) => {
+          this.firedDownloadLocation = true;
+        });
+    }
   },
   computed: {
     last3Posts() {

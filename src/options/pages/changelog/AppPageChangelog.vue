@@ -74,17 +74,21 @@ export default {
       achievementsData: achievements, // required for mixins
       releases: [],
       icon: icons.changelog,
+      firedApiGithub: false,
     };
   },
   methods: {
     getReleases() {
-      api({
-        url: `https://api.github.com/repos/joelthorner/TLmanaGer/releases`,
-        method: "get",
-      }).then(async (response) => {
-        // console.log(response.data);
-        this.releases = response.data;
-      });
+      if (!this.firedApiGithub) {
+        api({
+          url: `https://api.github.com/repos/joelthorner/TLmanaGer/releases`,
+          method: "get",
+        }).then(async (response) => {
+          // console.log(response.data);
+          this.releases = response.data;
+          this.firedApiGithub = true;
+        });
+      }
     },
     getReleaseLines(content) {
       return content.split("\n").sort(function compare(a, b) {

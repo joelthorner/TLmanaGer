@@ -5,7 +5,7 @@
 
       <ul class="nav">
         <li class="nav-item">
-          <router-link to="/options" class="nav-link">
+          <router-link to="/options/logicommerce" class="nav-link">
             Logicommerce
             <div class="rippleJS"></div>
           </router-link>
@@ -31,7 +31,9 @@
       </ul>
 
       <main-content containerClass="options-container">
-        <router-view :chromeSync="chromeSync" @savedOptionsParent="savechromeSync"></router-view>
+        <keep-alive>
+          <router-view :key="$route.fullPath" :chromeSync="chromeSync" @savedOptionsParent="savechromeSync"></router-view>
+        </keep-alive>
       </main-content>
 
       <b-toast
