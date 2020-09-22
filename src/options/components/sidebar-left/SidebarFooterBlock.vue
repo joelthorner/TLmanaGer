@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import achievements from "@/data/achievements";
 import watchArchievements from "@options/mixins/watchArchievements";
 
 export default {
@@ -30,11 +29,6 @@ export default {
     chromeSync: Object,
   },
   mixins: [watchArchievements],
-  data() {
-    return {
-      achievementsData: achievements,
-    };
-  },
   methods: {
     setAchievement(id) {
       if (id === "project") {

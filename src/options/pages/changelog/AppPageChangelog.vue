@@ -38,7 +38,6 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import achievements from "@/data/achievements";
 import icons from "@/data/icons";
 import watchArchievements from "@options/mixins/watchArchievements";
 
@@ -71,7 +70,6 @@ export default {
   mixins: [watchArchievements],
   data() {
     return {
-      achievementsData: achievements, // required for mixins
       releases: [],
       icon: icons.changelog,
       firedApiGithub: false,

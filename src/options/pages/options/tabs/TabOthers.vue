@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import help from "@/data/helpOptions";
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
 
 export default {
@@ -30,12 +31,7 @@ export default {
   },
   data() {
     return {
-      help: {
-        stealFontWesomeIcons: {
-          title: "Pages grid view",
-          content: "lorem ipsum",
-        },
-      },
+      help,
     };
   },
   methods: {
