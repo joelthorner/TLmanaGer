@@ -1,6 +1,6 @@
 <template>
   <div class="tab">
-    <div class="inner-text">Tools for fluid shop developments</div>
+    <div class="inner-text">Eines per desenvolupament de shops basades en Fluid</div>
 
     <div class="row">
       <div class="col-xs-12 col-lg-6 col-xl-4">
@@ -12,8 +12,6 @@
           itemKey="autoForceView"
           @savedOptions="reciveShowSavedOptions"
         ></default-card>
-      </div>
-      <div class="col-xs-12 col-lg-6 col-xl-4">
         <default-card
           :chromeSync="chromeSync"
           title=".igd Flush redis shortcut"
@@ -22,8 +20,6 @@
           itemKey="flushRedisIgdDomain"
           @savedOptions="reciveShowSavedOptions"
         ></default-card>
-      </div>
-      <div class="col-xs-12 col-lg-6 col-xl-4">
         <default-card
           :chromeSync="chromeSync"
           title="Dump auto scroll"
@@ -33,11 +29,14 @@
           @savedOptions="reciveShowSavedOptions"
         ></default-card>
       </div>
+      <!-- <div class="col-xs-12 col-lg-6 col-xl-4"></div> -->
+      <!-- <div class="col-xs-12 col-lg-6 col-xl-4"></div> -->
     </div>
   </div>
 </template>
 
 <script>
+import help from "@/data/helpOptions";
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
 
 export default {
@@ -50,20 +49,7 @@ export default {
   },
   data() {
     return {
-      help: {
-        autoForceView: {
-          title: "Pages grid view",
-          content: "lorem ipsum",
-        },
-        flushRedisIgdDomain: {
-          title: "lorem",
-          content: "lorem ipsum",
-        },
-        dumpAutoScroll: {
-          title: "lorem",
-          content: "lorem ipsum",
-        },
-      },
+      help,
     };
   },
   methods: {

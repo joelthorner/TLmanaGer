@@ -9,7 +9,7 @@
       :items="footerBlock.items"
       :chromeSync="chromeSync"
     ></sidebar-footer-block>
-    <sidebar-copy></sidebar-copy>
+    <sidebar-copy :chromeSync="chromeSync"></sidebar-copy>
   </aside>
 </template>
 

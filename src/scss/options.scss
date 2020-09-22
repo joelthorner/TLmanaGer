@@ -318,7 +318,7 @@ main {
   font-size: rem(16px);
   color: $title-1;
   fill: currentColor;
-  padding: rem(25px) rem(60px);
+  padding: rem(36px) rem(60px);
   letter-spacing: 0.05em;
 }
 
@@ -393,14 +393,21 @@ main {
     font-size: 14px;
     font-weight: 500;
     color: $text-1;
-    height: 47px;
+    height: 48px;
     display: flex;
     align-items: center;
     padding-left: 30px;
     padding-right: 30px;
-    &.router-link-exact-active {
+    &.router-link-exact-active,
+    &.router-link-active-custom {
       // font-weight: bold;
       color: $logo-blue-end;
+    }
+    .icon {
+      width: 16px;
+      height: 22px;
+      margin-right: 8px;
+      fill: currentColor;
     }
   }
 }
@@ -793,6 +800,7 @@ main {
       .custom-control {
         margin-bottom: 10px;
       }
+      .custom-checkbox.b-custom-control-lg,
       .custom-radio.b-custom-control-lg,
       .input-group-lg .custom-radio {
         font-size: 16px;
@@ -1156,6 +1164,7 @@ main {
       opacity: 0.5;
       cursor: not-allowed;
       * {
+        cursor: not-allowed;
         user-select: none;
         pointer-events: none;
       }
@@ -1272,5 +1281,54 @@ main {
   &:hover .zoom-btn {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+.card-zen-tkt-colors {
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  .only-tickets {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    color: $text-1;
+    .custom-control {
+      margin-left: 15px;
+    }
+  }
+  .color-block {
+    position: relative;
+    input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      visibility: hidden;
+      height: 100%;
+    }
+    label {
+      width: 100%;
+      margin: 0;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: capitalize;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 350ms ease;
+      &:hover {
+        transform: scale(0.9);
+      }
+      &:after {
+        content: "";
+        display: block;
+        padding-bottom: 50%;
+      }
+    }
   }
 }

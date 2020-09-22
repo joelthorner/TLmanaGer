@@ -88,7 +88,7 @@ export default {
     }
   },
   resetSyncData: {
-    name: 'Press \'F\'',
+    name: 'Press \'F\' to pay respects',
     desc: 'Reset to default options',
     img: chrome.extension.getURL('img/archv/resetSyncData.png'),
     condition: function (clickedResetData) {
@@ -97,10 +97,10 @@ export default {
   },
   click500TimesAnything: {
     name: 'Sick',
-    desc: 'Click 5000 times on extension pages/popup',
+    desc: 'Click 500 times on extension pages/popup',
     img: chrome.extension.getURL('img/archv/click500TimesAnything.png'),
     condition: function (clickOnExtensionCount) {
-      return clickOnExtensionCount >= 5000
+      return clickOnExtensionCount >= 500
     }
   },
   openPopup100Times: {

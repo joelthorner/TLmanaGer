@@ -35,10 +35,6 @@ const router = new VueRouter({
       component: AppPageOptions,
       children: [
         {
-          path: '',
-          component: TabLogicommerce,
-        },
-        {
           path: 'logicommerce',
           component: TabLogicommerce,
         },

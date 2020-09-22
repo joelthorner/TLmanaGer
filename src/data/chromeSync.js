@@ -1,7 +1,7 @@
 export default {
   zendesk: {
     replyTicketConfirmPopup: {
-      actived: false
+      actived: true
     },
     ticketPriorityHighlightColors: {
       actived: false,
@@ -107,10 +107,10 @@ export default {
     changeBg500Times: {
       earned: false,
     },
-    activeAllZenOpts: {
+    activeAllZenOpts: { // programed
       earned: false,
     },
-    activeAllOpts: {
+    activeAllOpts: { // programed
       earned: false,
     },
     lookChangelog50Times: { // programed
@@ -125,7 +125,7 @@ export default {
     clickGithubLink: { // programed
       earned: false,
     },
-    clickLegalsLink: {
+    clickLegalsLink: { // programed
       earned: false,
     },
     clickAction500Times: {
@@ -137,7 +137,7 @@ export default {
     resetSyncData: {
       earned: false,
     },
-    click500TimesAnything: {
+    click500TimesAnything: { // programed (falta inside popup)
       earned: false,
     },
     openPopup100Times: {

@@ -1,5 +1,5 @@
 <template>
-  <div id="layout" class="d-flex">
+  <div id="layout" class="d-flex" @click="layoutClickHandler">
     <app-sidebar :chromeSync="chromeSync"></app-sidebar>
     <app-main-content :chromeSync="chromeSync"></app-main-content>
     <app-debug :chromeSync="chromeSync"></app-debug>
@@ -11,7 +11,6 @@ import AppSidebar from "@options/components/sidebar-left/AppSidebar";
 import AppMainContent from "@options/components/main/AppMainContent";
 import AppDebug from "@options/debug/AppDebug";
 
-import achievements from "@/data/achievements";
 import chromeSync from "@/data/chromeSync";
 import watchArchievements from "@options/mixins/watchArchievements";
 
@@ -28,7 +27,6 @@ export default {
   data() {
     return {
       chromeSync: chromeSync,
-      achievementsData: achievements,
     };
   },
   created() {
@@ -36,10 +34,13 @@ export default {
     this.googleAccountSync(); // achievement
   },
   methods: {
-    getSyncchromeSync: function () {
+    getSyncchromeSync() {
       chrome.storage.sync.get(chromeSync, (result) => {
         this.chromeSync = result;
       });
+    },
+    layoutClickHandler() {
+      this.click500TimesAnything(); // archivement
     },
   },
 };

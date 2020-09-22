@@ -51,7 +51,7 @@
       <div class="col col-xs-12 col-lc-layout-right">
         <logicommerce-background-card
           :chromeSync="chromeSync"
-          title="Background"
+          title="Logicommerce background"
           :help="help.lcBackground"
           scope="logicommerce"
           itemKey="background"
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import help from "@/data/helpOptions";
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
 import BeyondThemeCard from "@options/pages/options/cards/BeyondThemeCard";
 import LogicommerceBackgroundCard from "@options/pages/options/cards/LogicommerceBackgroundCard";
@@ -79,49 +80,7 @@ export default {
   },
   data() {
     return {
-      help: {
-        developerBar: {
-          title: "Developer bar",
-          content: `<p>Afegeix una barra superior als Logicommerce amb el sistema de publicació de codi Opensaas.</p>
-					<br>
-					<a href="${chrome.extension.getURL(
-            "img/help/developerBar-1.jpg"
-          )}" target="_blank"><img class="img-thumbnail" src="${chrome.extension.getURL(
-            "img/help/developerBar-1.jpg"
-          )}"></a>
-					<p>En l'entorn de PRE es mostra una barra amb els <b>botons de utils d'opensaas i un buscador juntament amb shortcuts a pagines, banners, etiquetes i seccions</b>.
-					En aquest entorn el botó de fluish te una funcionalitat que amaga i cofnirma automaticament les finestres de confimació per optimitzar el temps de desenvolupament.</p>
-					<br><br>
-					<a href="${chrome.extension.getURL(
-            "img/help/developerBar-2.jpg"
-          )}" target="_blank"><img class="img-thumbnail" src="${chrome.extension.getURL(
-            "img/help/developerBar-2.jpg"
-          )}"></a>
-					<p>En l'entorn a real es identic nomes que els utils són els de <b>merge i publicar codi</b>.</p>
-					`,
-        },
-        sandboxLoginButtons: {
-          title: "Sandbox login buttons",
-          content: `<a href="${chrome.extension.getURL(
-            "img/help/sandboxButtons.jpg"
-          )}" target="_blank"><img class="img-thumbnail" src="${chrome.extension.getURL(
-            "img/help/sandboxButtons.jpg"
-          )}"></a><p>En el login d'un client d'un Logicommerce amb el sistema de publicació de codi Opensaas, apareix un selector d'entorn, 
-						aquetsa opció ho transforma en <buttons> per accedir-hi mes ràpid.</p>`,
-        },
-        pagesGridView: {
-          title: "Pages grid view",
-          content: "lorem ipsum",
-        },
-        beyondTheme: {
-          title: "lorem",
-          content: "lorem ipsum",
-        },
-        lcBackground: {
-          title: "lorem",
-          content: "lorem ipsum",
-        },
-      },
+      help,
     };
   },
   methods: {
