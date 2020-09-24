@@ -29,7 +29,7 @@ export default {
   logicommerce: {
     beyondTheme: {
       actived: false,
-      theme: 'default'
+      theme: 'default',
     },
     background: {
       actived: true,
@@ -41,13 +41,16 @@ export default {
       downloadLocation: 'https://api.unsplash.com/photos/Dd_7xDCuuUo/download',
     },
     developerBar: {
-      actived: true
+      actived: true,
     },
     sandboxLoginButtons: {
-      actived: true
+      actived: true,
     },
-    pagesGridView: {
-      actived: true
+    pagesWindowBetter: {
+      actived: true,
+      gridView: true,
+      betterGroupHeaders: true,
+      betterTreeLevels: true,
     }
   },
   fluidWebTools: {
@@ -62,7 +65,7 @@ export default {
     }
   },
   others: {
-    stealFontWesomeIcons: {
+    getFontWesomeIcons: { // injectat & opt programada
       actived: true
     },
   },

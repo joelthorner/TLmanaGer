@@ -22,9 +22,24 @@
     ]
   },
   "options_page": "options/options.html",
+  "web_accessible_resources": [
+    "options/options.html"
+  ],
   "permissions": [
     "storage",
     "notifications",
     "sessions"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://fontawesome.com/*"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/log.js",
+        "inject/getFontWesomeIcons.js"
+      ]
+    }
   ]
 }

@@ -9,7 +9,7 @@
         v-model="chromeSync[scope][itemKey].actived"
         :name="checkboxName"
         switch
-        v-on:change="debouncedOptionChangeActived($event, scope, itemKey)"
+        v-on:change="optionChangeActived($event, scope, itemKey)"
       ></b-form-checkbox>
     </div>
 
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import optionCard from "@options/mixins/optionCard";
+import optionCard from "@mixins/optionCard";
 
 export default {
   name: "DefaultCard",

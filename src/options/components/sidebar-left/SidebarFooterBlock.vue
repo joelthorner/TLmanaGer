@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import watchArchievements from "@options/mixins/watchArchievements";
+import watchArchievements from "@mixins/watchArchievements";
 
 export default {
   name: "SidebarFooterBlock",

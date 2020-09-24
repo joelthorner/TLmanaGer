@@ -12,7 +12,7 @@
         v-model="chromeSync[scope][itemKey].actived"
         :name="checkboxName"
         switch
-        v-on:change="debouncedOptionChangeActived($event, scope, itemKey)"
+        v-on:change="optionChangeActived($event, scope, itemKey)"
       ></b-form-checkbox>
     </div>
 
@@ -41,8 +41,7 @@
 </template>
 
 <script>
-import _ from "lodash";
-import optionCard from "@options/mixins/optionCard";
+import optionCard from "@mixins/optionCard";
 
 export default {
   name: "BeyondThemeCard",
@@ -61,13 +60,10 @@ export default {
       },
     };
   },
-  created: function () {
-    this.debouncedSelectTheme = _.debounce(this.selectTheme, 1000);
-  },
   methods: {
     initSelectTheme(theme) {
       this.chromeSync.logicommerce.beyondTheme.theme = theme;
-      this.debouncedSelectTheme(theme);
+      this.selectTheme(theme);
     },
     selectTheme(theme) {
       this.$emit("savedOptions", true);

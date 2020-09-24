@@ -1,5 +1,5 @@
 <template>
-  <b-modal :ref="thisModalId" :id="thisModalId" size="lg" centered v-bind:title="data.title">
+  <b-modal :ref="thisModalId" :id="thisModalId" scrollable centered v-bind:title="data.title">
     <span class="help-content" v-html="data.content"></span>
     <template v-slot:modal-footer>
       <div class="w-100">

@@ -12,18 +12,18 @@
         v-model="chromeSync[scope][itemKey].actived"
         :name="checkboxName"
         switch
-        v-on:change="debouncedOptionChangeActived($event, scope, itemKey)"
+        v-on:change="optionChangeActived($event, scope, itemKey)"
       ></b-form-checkbox>
     </div>
 
     <div class="card-body">
-      <div class="d-flex only-tickets">
+      <div class="d-flex sub-option-line">
         Only highlight incident tickets
         <b-form-checkbox
           v-model="chromeSync[scope][itemKey].onlyIncidents"
           :name="checkboxNameOnlyIncidents"
           switch
-          v-on:change="debouncedChangeOnlyIncidents($event, scope, itemKey)"
+          v-on:change="changeOnlyIncidents($event, scope, itemKey)"
         ></b-form-checkbox>
       </div>
 
@@ -55,8 +55,9 @@
 </template>
 
 <script>
-import optionCard from "@options/mixins/optionCard";
-import lightOrDark from "@options/mixins/utils/lightOrDark";
+import _ from "lodash";
+import optionCard from "@mixins/optionCard";
+import lightOrDark from "@mixins/utils/lightOrDark";
 
 export default {
   name: "ZendeskTicketPriorityHighlightColorsCard",
@@ -72,10 +73,6 @@ export default {
     },
   },
   created: function () {
-    this.debouncedChangeOnlyIncidents = _.debounce(
-      this.changeOnlyIncidents,
-      1000
-    );
     this.debouncedChangeColor = _.debounce(this.changeColor, 1000);
   },
   methods: {
@@ -88,8 +85,6 @@ export default {
     },
     changeColor(value, scope, option, color) {
       this.chromeSync[scope][option].colors[color].bg = value;
-      // this.chromeSync[scope][option].colors[color].text =
-      //   this.lightOrDark(value) === "light" ? "#222222" : "#ffffff";
       this.$emit("savedOptions", true);
     },
     updateColor(value, scope, option, color) {
