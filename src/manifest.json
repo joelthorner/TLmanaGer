@@ -38,7 +38,26 @@
       "js": [
         "data/chromeSync.js",
         "inject/log.js",
-        "inject/getFontWesomeIcons.js"
+        "inject/getFontWesomeIcons/index.js"
+      ],
+      "css": [
+        "inject/getFontWesomeIcons/index.css"
+      ]
+    },
+    {
+      "matches": [
+        "*://8x-hk.logicommerce.net/*",
+        "*://8x-os.logicommerce.net/*",
+        "*://8x.logicommerce.net/*",
+        "*://8x.logicommerce.cn/*",
+        "*://adm.igd.production/*",
+        "*://adm.igd.pre.production/*"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/log.js"
+      ],
+      "css": [
       ]
     }
   ]

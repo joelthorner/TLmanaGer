@@ -107,77 +107,17 @@ var getFontWesomeIcons = {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
   },
   getCss() {
-    let key = 'getFontWesomeIcons';
     return `
-      #${key}_main {
-        position: fixed;
-        z-index: 999999;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        min-height: 150px;
-        background-color: #f8f9fa;
-        border-top: 4px solid #f1f3f5;
-        padding: 18px 20px 20px;
-      }
-      #${key}_main .${key}_row {
-        margin-left: -15px;
-        margin-right: -15px;
-        overflow: hidden;
-      }
-      #${key}_main .${key}_row .${key}_col {
-        float: left;
-        min-height: 1px;
-        padding-left: 15px;
-        padding-right: 15px;
-        width: 25%;
-      }
-      #${key}_main .${key}_row .${key}_col label {
-        margin-bottom: 10px;
-        font-size: 18px;
-        display: inline-block;
-        line-height: 1;
-        vertical-align: middle;
-      }
-      #${key}_main .${key}_row .${key}_col textarea {
-        font-family: monospace;
-        box-shadow: none;
-        border-width: 2px;
-        resize: none;
-        height: 100px;
-        font-size: 12px;
-      }
-      #${key}_main .${key}_row .${key}_col textarea:focus {
+      #getFontWesomeIcons_main .getFontWesomeIcons_row .getFontWesomeIcons_col textarea:focus {
         border-color: ${this.color};
       }
-      #${key}_main #${key}_close {
-        padding: 20px;
-        cursor: pointer;
-        position: absolute;
-        right: 0;
-        top: 0;
+      #getFontWesomeIcons_main #getFontWesomeIcons_close {
         fill: ${this.color};
       }
-      #${key}_main #${key}_close svg {
-        height: 16px;
-        width: 16px;
-      }
-      #${key}_download {
-        width: 16px;
-        display: inline-block;
-        vertical-align: text-bottom;
-        margin-left: 6px;
+      #getFontWesomeIcons_download {
         fill:${this.color};
-        cursor: pointer;
       }
-      #${key}_title {
-        margin-top: 10px;
-        clear: both;
-        font-size: 12px;
-        text-align: right;
-        margin-bottom: -10px;
-      }
-      #${key}_title > a {
+      #getFontWesomeIcons_title > a {
         color: ${this.color};
       }
     `.replace(/\s\n\t/g, '');
@@ -219,8 +159,7 @@ var getFontWesomeIcons = {
       <div id="getFontWesomeIcons_layout">
         <style>${this.getCss()}</style>
         <div id="getFontWesomeIcons_main">${this.getStructure()}</div>
-      </div>
-    `;
+      </div>`;
     document.body.insertAdjacentHTML('beforeend', widget);
 
     document.getElementById('getFontWesomeIcons_svg').value = this.svg;
@@ -237,10 +176,8 @@ var getFontWesomeIcons = {
       var element = document.createElement('a');
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.svg));
       element.setAttribute('download', this.name + '.svg');
-
       element.style.display = 'none';
       document.body.appendChild(element);
-
       element.click();
       document.body.removeChild(element);
     });

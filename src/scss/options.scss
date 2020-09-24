@@ -9,9 +9,9 @@ $blue-1: #2d3144;
 $blue-2: #333a56;
 $blue-3: #2d4065;
 
-$title-1: #939faa; // header titles content
+$title-1: #86939f; // header titles content
 $title-2: #686b73; // card dark title
-$title-3: #c2c2c2; // aside right title part white
+$title-3: #949494; // aside right title part white
 
 $text-1: #8e9199;
 
@@ -341,14 +341,16 @@ main {
     }
   }
   .read-more {
-    color: $logo-blue-end;
+    // color: $logo-blue-end;
+    font-weight: bold;
+    margin-top: 5px;
   }
 }
 
 .content-title {
   background-color: $background-title;
   font-weight: bold;
-  font-size: rem(16px);
+  font-size: 18px;
   color: $title-1;
   fill: currentColor;
   padding: rem(41px) rem(60px);
@@ -537,7 +539,7 @@ main {
 
   .resume {
     position: relative;
-    height: $menu-height + 48px - 53px;
+    height: $menu-height + $logo-cont-h - 53px;
     background: linear-gradient(0deg, rgba($logo-blue-end, 0.6) 0%, rgba($logo-blue-start, 0.6) 100%);
     z-index: 2;
     backdrop-filter: blur(4px);
@@ -649,7 +651,7 @@ main {
   position: relative;
 
   .image {
-    height: calc(#{$menu-height} + #{$top-bar-h});
+    height: calc(#{$menu-height} + #{$logo-cont-h});
     background-size: cover;
     background-position: center;
     margin-left: -$aside-left-width;
