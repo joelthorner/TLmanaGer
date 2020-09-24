@@ -43,7 +43,7 @@ export default {
     title: "lorem",
     content: "lorem ipsum",
   },
-  stealFontWesomeIcons: {
+  getFontWesomeIcons: {
     title: "Pages grid view",
     content: "lorem ipsum",
   },

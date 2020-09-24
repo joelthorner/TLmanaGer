@@ -87,6 +87,17 @@ const config = {
       patterns: [
         { from: 'icons', to: 'icons' },
         { from: 'img', to: 'img' },
+        
+        { from: 'inject', to: 'inject' },
+        { 
+          from: 'data/chromeSync.js', 
+          to: 'data/chromeSync.js',
+          transform: (content) => {
+            content = content.toString().replace('export default', 'const defaults =');
+            return content;
+          },
+        },
+
         { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
         { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
         {

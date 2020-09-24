@@ -65,7 +65,7 @@ export default {
     }
   },
   others: {
-    stealFontWesomeIcons: {
+    getFontWesomeIcons: { // injectat & opt programada
       actived: true
     },
   },

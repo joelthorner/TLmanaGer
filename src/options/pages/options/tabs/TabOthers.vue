@@ -6,10 +6,10 @@
       <div class="col default-options-col-grid">
         <default-card
           :chromeSync="chromeSync"
-          title="Steal font awesome icon code"
-          :help="help.stealFontWesomeIcons"
+          title="Get font awesome icon code"
+          :help="help.getFontWesomeIcons"
           scope="others"
-          itemKey="stealFontWesomeIcons"
+          itemKey="getFontWesomeIcons"
           @savedOptions="reciveShowSavedOptions"
         ></default-card>
       </div>
