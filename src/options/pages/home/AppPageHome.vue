@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <main-title title="LAST BLOG POSTS"></main-title>
+      <main-title title="Last blog posts"></main-title>
 
       <main-content containerClass="home-last-posts">
         <div class="row">

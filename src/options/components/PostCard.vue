@@ -17,7 +17,7 @@
 
       <p class="card-text">
         {{ getSplittedPostContent(post.content) }}
-        <router-link :to="getPostRoute(post.id)">Read more</router-link>
+        <router-link :to="getPostRoute(post.id)" class="d-block read-more">Read more</router-link>
       </p>
 
       <p class="card-text card-text-foot">

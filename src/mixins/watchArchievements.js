@@ -176,42 +176,33 @@ export default {
     },
 
     activeAllOpts() {
-      // Get data
-      const totalOpts = Object.keys(this.chromeSync.zendesk).length +
-        Object.keys(this.chromeSync.logicommerce).length +
-        Object.keys(this.chromeSync.fluidWebTools).length +
-        Object.keys(this.chromeSync.others).length;
-
+      const watchKeys = ['zendesk', 'logicommerce', 'fluidWebTools', 'others'];
+      // Get data total
+      let totalOpts = 0;
+      watchKeys.forEach(key => {
+        totalOpts += Object.keys(this.chromeSync[key]).length
+      });
       // Update metric first
       let auxActiveOptsCount = 0;
-      Object.keys(this.chromeSync.zendesk).forEach(key => {
-        if (this.chromeSync.zendesk[key].actived) auxActiveOptsCount++;
-      });
-      Object.keys(this.chromeSync.logicommerce).forEach(key => {
-        if (this.chromeSync.logicommerce[key].actived) auxActiveOptsCount++;
-      });
-      Object.keys(this.chromeSync.fluidWebTools).forEach(key => {
-        if (this.chromeSync.fluidWebTools[key].actived) auxActiveOptsCount++;
-      });
-      Object.keys(this.chromeSync.others).forEach(key => {
-        if (this.chromeSync.others[key].actived) auxActiveOptsCount++;
+      watchKeys.forEach(key => {
+        Object.keys(this.chromeSync[key]).forEach(element => {
+          if (this.chromeSync[key][element].actived) auxActiveOptsCount++;
+        });
       });
       this.chromeSync.metrics.totalActiveOptsCount = auxActiveOptsCount;
       // Get data of achievement
-      const archvData = this.achievementsData["activeAllOpts"];
+      const archvData = this.achievementsData.activeAllOpts;
       // Get confition() parameters
       const totalActiveOptsCount = this.chromeSync.metrics.totalActiveOptsCount;
       // Execute condition()
       const result = archvData.condition(totalActiveOptsCount, totalOpts);
       // Get result before update achievement
-      const beforeResult = this.chromeSync.achievements['activeAllOpts'].earned;
+      const beforeResult = this.chromeSync.achievements.activeAllOpts.earned;
       // Update achievement chrome data
-      this.chromeSync.achievements["activeAllOpts"].earned = result;
+      this.chromeSync.achievements.activeAllOpts.earned = result;
       // Save sync and launch system notify
       chrome.storage.sync.set(this.chromeSync, () => {
-        if (beforeResult == false) {
-          this.createAchievementNotify(archvData, result);
-        }
+        if (beforeResult == false) this.createAchievementNotify(archvData, result);
       });
     },
 
