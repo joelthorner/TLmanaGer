@@ -3,7 +3,7 @@
     <div class="inner-text">Other options</div>
 
     <div class="row">
-      <div class="col-xs-12 col-lg-6 col-xl-4">
+      <div class="col default-options-col-grid">
         <default-card
           :chromeSync="chromeSync"
           title="Steal font awesome icon code"

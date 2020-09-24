@@ -57,7 +57,7 @@
 
 <script>
 import icons from "@/data/icons";
-import watchArchievements from "@options/mixins/watchArchievements";
+import watchArchievements from "@mixins/watchArchievements";
 
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";

@@ -1,6 +1,8 @@
-$aside-left-width: 212px;
+$aside-left-width: 250px;
 $aside-right-width: 250px;
+$aside-left-width-mobile: 68px;
 $top-bar-h: 48px;
+$logo-cont-h: 58px;
 $menu-height: 320px;
 
 $blue-1: #2d3144;
@@ -24,7 +26,7 @@ $logo-blue-end: #007aff;
 $blue: $logo-blue-end !default;
 
 $primary: $logo-blue-end !default;
-$custom-control-indicator-size: 1.4rem !default;
+$custom-control-indicator-size: 1.5rem !default;
 
 $custom-switch-width: $custom-control-indicator-size * 1.75 !default;
 $custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
@@ -56,15 +58,19 @@ body,
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .aside-left {
   display: flex;
   flex-direction: column;
-  width: $aside-left-width;
   background-color: $blue-1;
   overflow: auto;
+  width: $aside-left-width-mobile;
+
+  @media (min-width: map-get($grid-breakpoints, "md")) {
+    width: $aside-left-width;
+  }
 
   &,
   a {
@@ -74,9 +80,9 @@ body {
 
   #logo-container {
     background-color: $blue-1;
-    height: $top-bar-h;
-    flex: 1 0 $top-bar-h;
-    max-height: $top-bar-h;
+    height: $logo-cont-h;
+    flex: 1 0 $logo-cont-h;
+    max-height: $logo-cont-h;
     display: flex;
     align-items: center;
     padding-left: rem(22px);
@@ -90,7 +96,15 @@ body {
     svg {
       width: 30px;
       height: 30px;
-      margin-right: rem(10px);
+      @media (min-width: map-get($grid-breakpoints, "md")) {
+        margin-right: rem(10px);
+      }
+    }
+
+    > span {
+      @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+        display: none;
+      }
     }
   }
 
@@ -128,7 +142,7 @@ body {
         .icon,
         .text {
           opacity: 1;
-          font-weight: medium;
+          font-weight: 500;
         }
       }
       &:hover {
@@ -149,9 +163,10 @@ body {
         opacity: 0.75;
       }
       .text {
-        font-weight: medium;
-        font-size: rem(13px);
         opacity: 0.75;
+        @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+          display: none;
+        }
       }
     }
   }
@@ -173,6 +188,9 @@ body {
       letter-spacing: 0.05em;
       z-index: 3;
       position: relative;
+      @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+        display: none;
+      }
     }
     .title,
     a {
@@ -185,7 +203,6 @@ body {
       align-items: center;
       padding-left: rem(22px);
       padding-right: rem(22px);
-      font-size: rem(13px);
       border-top: 1px solid $blue-1;
 
       &:hover {
@@ -202,6 +219,12 @@ body {
       .text {
         opacity: 0.35;
       }
+      .text {
+        @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+          display: none;
+        }
+      }
+
       svg {
         height: rem(18px);
         width: rem(18px);
@@ -212,7 +235,14 @@ body {
   .copy-container {
     margin-top: auto;
     padding-bottom: rem(28px);
-    font-size: 12px;
+    font-size: 9px;
+    padding-left: 3px;
+    padding-right: 3px;
+    @media (min-width: map-get($grid-breakpoints, "md")) {
+      font-size: 12px;
+      padding-left: 0;
+      padding-right: 0;
+    }
     text-align: center;
 
     a {
@@ -234,7 +264,10 @@ body {
 }
 
 main {
-  width: calc(100% - #{$aside-left-width});
+  width: calc(100% - #{$aside-left-width-mobile});
+  @media (min-width: map-get($grid-breakpoints, "md")) {
+    width: calc(100% - #{$aside-left-width});
+  }
   float: left;
   background-color: $background;
   // display: flex;
@@ -318,8 +351,9 @@ main {
   font-size: rem(16px);
   color: $title-1;
   fill: currentColor;
-  padding: rem(36px) rem(60px);
+  padding: rem(41px) rem(60px);
   letter-spacing: 0.05em;
+  line-height: 24px;
 }
 
 .card {
@@ -1038,50 +1072,49 @@ main {
   grid-template-columns: repeat(3, 1fr);
   gap: 3px;
 }
-.col-lc-layout-left {
-  flex: 1 0 100%;
-  max-width: 100%;
+.default-options-col-grid {
+  width: 100%;
 }
-
-@media (min-width: 1200px) {
-  .fake-row {
+@media (min-width: map-get($grid-breakpoints, "xl")) {
+  .default-options-col-grid {
+    max-width: 430px;
+  }
+}
+@media (min-width: map-get($grid-breakpoints, "xl")) and (max-width: 1399px) {
+  .grid-cards-tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 0 30px;
+    height: auto !important;
+  }
+  .card.card-option.card-option-lc-bg {
+    grid-column: span 2;
+  }
+  .grid-background-items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1400px) {
+  .grid-cards-tab {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  .fake-col {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1499px) {
-  .fake-col {
-    flex: 1 0 50%;
-    max-width: 50%;
-  }
-}
-@media (min-width: 1500px) and (max-width: 1679px) {
-  .fake-col {
-    flex: 1 0 33.33333%;
-    max-width: 33.33333%;
+    max-height: 1000px;
+    gap: 0 30px;
+
+    &.grid-cards-logicommerce {
+      .card.card-option {
+        width: 400px;
+        order: 0;
+      }
+      .card.card-option.card-option-lc-bg {
+        order: 1;
+        width: calc(100% - 400px);
+      }
+    }
   }
 }
-@media (min-width: 1680px) {
-  .fake-col {
-    flex: 1 0 100%;
-    max-width: 100%;
-  }
-  .col-lc-layout-left {
-    flex: 0 0 450px;
-    max-width: 450px;
-  }
-  .col-lc-layout-right {
-    flex: 0 0 calc(100% - 450px);
-    max-width: calc(100% - 450px);
-  }
-}
-@media (min-width: 1280px) {
+@media (min-width: 1710px) {
   .grid-background-items {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1125,7 +1158,22 @@ main {
   }
 
   .card-body {
-    padding-top: 0;
+    // padding-top: 0;
+    border-top: 1px solid #e1e9f0;
+  }
+
+  .sub-option-line {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    color: $text-1;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .custom-control {
+      margin-left: 15px;
+    }
   }
 
   .card-body.grid-themes {
@@ -1194,10 +1242,16 @@ main {
   }
   .card-body {
     .col-left {
-      width: 250px;
+      width: 100%;
+      @media (min-width: map-get($grid-breakpoints, "lg")) {
+        width: 250px;
+      }
     }
     .col-right {
-      width: calc(100% - 250px);
+      width: 100%;
+      @media (min-width: map-get($grid-breakpoints, "lg")) {
+        width: calc(100% - 250px);
+      }
       text-align: center;
     }
   }
@@ -1214,9 +1268,7 @@ main {
 
 .help-content {
   img {
-    width: rem(250px);
-    float: left;
-    margin-right: rem(15px);
+    margin-bottom: rem(15px);
   }
 }
 
@@ -1290,14 +1342,7 @@ main {
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
   }
-  .only-tickets {
-    margin-bottom: 20px;
-    margin-top: 5px;
-    color: $text-1;
-    .custom-control {
-      margin-left: 15px;
-    }
-  }
+
   .color-block {
     position: relative;
     input {

@@ -12,13 +12,13 @@
         v-model="chromeSync[scope][itemKey].actived"
         :name="checkboxName"
         switch
-        v-on:change="debouncedOptionChangeActived($event, scope, itemKey)"
+        v-on:change="optionChangeActived($event, scope, itemKey)"
       ></b-form-checkbox>
     </div>
 
     <div class="card-body" :title="disabledOptionMessage">
       <div class="row no-gutters">
-        <div class="col-left d-flex flex-column pr-3">
+        <div class="col-left d-flex flex-column pr-lg-3 mb-3 mb-lg-0">
           <b-form-input
             v-model="searchCriteria"
             placeholder="Enter your search"
@@ -142,7 +142,7 @@
 
 <script>
 import _ from "lodash";
-import optionCard from "@options/mixins/optionCard";
+import optionCard from "@mixins/optionCard";
 import FullImageModal from "@options/components/FullImageModal";
 import axios from "axios";
 import icons from "@/data/icons";
@@ -204,7 +204,6 @@ export default {
     };
   },
   created: function () {
-    this.debouncedSelectBackground = _.debounce(this.selectBackground, 1000);
     this.debouncedInputSearch = _.debounce(this.inputSearch, 500);
   },
   mounted() {
@@ -316,7 +315,7 @@ export default {
         ...data,
       };
       this.showBackImage = true;
-      this.debouncedSelectBackground(image);
+      this.selectBackground(image);
     },
     selectBackground(image) {
       this.$emit("savedOptions", true);
@@ -325,7 +324,7 @@ export default {
       this.chromeSync.logicommerce.background = this.backImage;
       this.backImage = {};
       this.showBackImage = false;
-      this.debouncedSelectBackground();
+      this.selectBackground();
     },
     setZoomData(image, author) {
       this.imageZoom = image;

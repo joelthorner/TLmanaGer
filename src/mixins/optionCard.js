@@ -1,6 +1,5 @@
 import icons from "@/data/icons";
 import HelpModal from "@options/components/HelpModal";
-import _ from "lodash";
 
 export default {
   components: {
@@ -28,12 +27,6 @@ export default {
     checkboxName() {
       return `switch-${this.scope}-${this.itemKey}`;
     },
-  },
-  created: function () {
-    this.debouncedOptionChangeActived = _.debounce(
-      this.optionChangeActived,
-      1000
-    );
   },
   methods: {
     optionChangeActived(checked, scope, option) {

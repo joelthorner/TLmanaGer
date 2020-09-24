@@ -12,7 +12,7 @@ import AppMainContent from "@options/components/main/AppMainContent";
 import AppDebug from "@options/debug/AppDebug";
 
 import chromeSync from "@/data/chromeSync";
-import watchArchievements from "@options/mixins/watchArchievements";
+import watchArchievements from "@mixins/watchArchievements";
 
 import "../scss/options.scss";
 

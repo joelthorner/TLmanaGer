@@ -27,7 +27,7 @@
 import SidebarRightResumeItem from "@options/pages/home/sidebar-right/SidebarRightResumeItem";
 import SidebarRightContributors from "@options/pages/home/sidebar-right/SidebarRightContributors";
 import icons from "@/data/icons";
-import getArchievementsMixin from "@options/mixins/getArchievements";
+import getArchievementsMixin from "@mixins/getArchievements";
 
 export default {
   name: "SidebarRight",

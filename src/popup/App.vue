@@ -5,15 +5,27 @@
 </template>
 
 <script>
+import chromeSync from "@/data/chromeSync";
+import watchArchievements from "@mixins/watchArchievements";
+
+import "../scss/popup.scss";
+
 export default {
+  mixins: [watchArchievements],
   data() {
-    return {};
+    return {
+      chromeSync: chromeSync,
+    };
+  },
+  created() {
+    this.getSyncchromeSync();
+  },
+  methods: {
+    getSyncchromeSync() {
+      chrome.storage.sync.get(chromeSync, (result) => {
+        this.chromeSync = result;
+      });
+    },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-p {
-  font-size: 20px;
-}
-</style>

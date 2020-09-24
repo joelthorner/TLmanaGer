@@ -25,6 +25,7 @@ const config = {
     alias: {
       '@': path.resolve('src'),
       '@options': path.resolve('src/options'),
+      '@mixins': path.resolve('src/mixins'),
       '@popup': path.resolve('src/popup'),
     },
   },
