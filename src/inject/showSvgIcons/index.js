@@ -436,6 +436,7 @@ class ShowSvgIcons {
    */
   _parseSymbolIcon(node) {
     let symbolAttrs = '';
+    let code = node.outerHTML;
     const matchId = code.match(/id=["']([A-Za-z0-9\_\-]*)["']/);
     const canGetUseCode = matchId && matchId[1] ? true : false;
 
@@ -443,14 +444,14 @@ class ShowSvgIcons {
       symbolAttrs += `${element.name}="${element.value}" `;
     });
 
-    const code = `
+    const resultCode = `
       <svg xmlns="http://www.w3.org/2000/svg" ${symbolAttrs.trim()}>
         ${node.innerHTML}
       </svg>`;
 
     return new Icon(
       node,
-      code,
+      resultCode,
       node.nodeName.toLowerCase(),
       canGetUseCode,
       true
