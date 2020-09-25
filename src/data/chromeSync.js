@@ -46,11 +46,11 @@ export default {
     sandboxLoginButtons: {
       actived: true,
     },
-    pagesWindowBetter: {
+    pagesWindowBetter: { // injectat & opt programada
       actived: true,
       gridView: true,  // injectat & opt programada
       betterGroupHeaders: true,  // injectat & opt programada
-      betterTreeLevels: true,
+      betterTreeLevels: true, // injectat & opt programada
     }
   },
   fluidWebTools: {
