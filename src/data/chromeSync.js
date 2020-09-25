@@ -48,8 +48,8 @@ export default {
     },
     pagesWindowBetter: {
       actived: true,
-      gridView: true,
-      betterGroupHeaders: true,
+      gridView: true,  // injectat & opt programada
+      betterGroupHeaders: true,  // injectat & opt programada
       betterTreeLevels: true,
     }
   },

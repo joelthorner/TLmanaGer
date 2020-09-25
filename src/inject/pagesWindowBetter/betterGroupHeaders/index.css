@@ -1,6 +1,10 @@
 .betterGroupHeaders_nameLabel {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+}
+.betterGroupHeaders_nameLabel_text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .betterGroupHeaders_badge-item {
@@ -16,6 +20,7 @@
   box-sizing: border-box;
   text-align: center;
   vertical-align: middle;
+  flex: 0 0 auto;
 }
 
 .betterGroupHeaders_badge-item[class*="menu"] {

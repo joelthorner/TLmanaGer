@@ -97,6 +97,7 @@ class BetterGroupHeaders extends LCModifier {
   _createInnerTextNode(text) {
     let innerTextNode = document.createElement('span');
     innerTextNode.classList.add('betterGroupHeaders_nameLabel_text');
+    innerTextNode.setAttribute('title', text);
     innerTextNode.innerHTML = text;
 
     return innerTextNode;

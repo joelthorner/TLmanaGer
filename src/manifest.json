@@ -62,10 +62,12 @@
         "inject/log.js",
         "inject/ObserverLC.js",
         "inject/LCModifier.js",
-        "inject/pagesWindowBetter/betterGroupHeaders/index.js"
+        "inject/pagesWindowBetter/betterGroupHeaders/index.js",
+        "inject/pagesWindowBetter/gridView/index.js"
       ],
       "css": [
-        "inject/pagesWindowBetter/betterGroupHeaders/index.css"
+        "inject/pagesWindowBetter/betterGroupHeaders/index.css",
+        "inject/pagesWindowBetter/gridView/index.css"
       ]
     }
   ]
