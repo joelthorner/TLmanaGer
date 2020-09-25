@@ -1,7 +1,7 @@
 export default {
   zendesk: {
     replyTicketConfirmPopup: {
-      actived: true
+      actived: true,
     },
     ticketPriorityHighlightColors: {
       actived: false,
@@ -55,18 +55,18 @@ export default {
   },
   fluidWebTools: {
     autoForceView: {
-      actived: true
+      actived: true,
     },
     flushRedisIgdDomain: {
-      actived: true
+      actived: true,
     },
     dumpAutoScroll: {
-      actived: true
+      actived: true,
     }
   },
   others: {
     getFontWesomeIcons: { // injectat & opt programada
-      actived: true
+      actived: true,
     },
   },
   profile: {
