@@ -1,3 +1,22 @@
+/*
+ * Save from EcommerceData.js localStorage 'ecommerceData' item
+ *
+ * Message recived from EcommerceData.js injected in <all_urls>
+ * and save into localStorage of background generated page.
+ * 
+ * After, on open popup, get 'ecommerceData' data from localStorage 
+ * of background generated page
+ */
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    if (request.message && request.message == 'ecommerceData_to_background') {
+      localStorage.setItem('ecommerceData', JSON.stringify(request.data));
+    }
+  });
+
+
+
+
 
 chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason == 'install') {

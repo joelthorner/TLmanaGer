@@ -33,8 +33,8 @@ class EcommerceData {
       return ENV_IGD_PRE_PRODUCTION;
   }
 
-  get getTemplate(){
-    if (document.querySelector('[data-module]') && document.body.classList.value.includes('module-')) 
+  get getTemplate() {
+    if (document.querySelector('[data-module]') && document.body.classList.value.includes('module-'))
       return TEMPLATE_MODULAR_2018;
   }
 
@@ -46,3 +46,10 @@ class EcommerceData {
     }
   }
 }
+
+var data = new EcommerceData().getData;
+
+chrome.runtime.sendMessage({
+  message: "ecommerceData_to_background",
+  data,
+});

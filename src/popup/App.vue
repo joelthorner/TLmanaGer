@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>Hello world!</p>
+    {{ecommerceData}}
   </div>
 </template>
 
@@ -15,10 +16,15 @@ export default {
   data() {
     return {
       chromeSync: chromeSync,
+      ecommerceData: null,
     };
   },
   created() {
     this.getSyncchromeSync();
+
+    this.ecommerceData = chrome.extension
+      .getBackgroundPage()
+      .localStorage.getItem("ecommerceData");
   },
   methods: {
     getSyncchromeSync() {
