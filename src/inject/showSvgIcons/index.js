@@ -78,16 +78,13 @@ class Icon {
 
   _setNameFromCode() {
     let name = '';
-    let search = this.getCode.match(/id=["']([A-Za-z0-9\_\-]*)["']/)
+    let search = this.getCode.match(/id=["']([A-Za-z0-9\_\-]*)["']/);
+    let search2 = this.getCode.match(/name=["']([A-Za-zÀ-ú0-9 \_\-]*)["']/);
 
     if (search && search[1]) {
       name = search[1];
-    } else {
-      search = this.getCode.match(/name=["']([A-Za-zÀ-ú0-9 \_\-]*)["']/);
-
-      if (search && search[1]) {
-        name = search[1];
-      }
+    } else if (search2 && search2[1]) {
+      name = search2[2];
     }
     this.setName(name);
   }
@@ -345,8 +342,7 @@ class ShowSvgIcons {
     const elements = document.querySelectorAll('svg, symbol, img[src$=".svg"]');
     const cssBgElements = this._getBgImgs(document);
 
-    let findedIcons = [];
-    let usedSrcs = [];
+    let findedIcons = [], usedSrcs = [];
 
     elements.forEach((node) => {
       let valid = false, icon;
@@ -539,18 +535,15 @@ class ShowSvgIcons {
       let useInput = `<input type="text" class="showSvgIcons_input-use" value="${useValue}">`;
       let btnDownload = `<button class="showSvgIcons_button-download" data-name="${icon.getName.length ? icon.getName : 'icon'}" type="button">Download</button>`;
 
-      if (icon.getNode.matches('img')) {
+      if (icon.getNode.matches('img')) 
         btnDownload = `<a class="showSvgIcons_button-link" target="_blank" href="${icon.getNode.getAttribute('src')}">Download</a>`;
-      }
 
       html += `
         <div class="showSvgIcons_icon-wrap">
           <div class="showSvgIcons_svg-icon-badge showSvgIcons_svg-icon-badge-${icon.getType.toUpperCase()}">
             ${icon.getType}
           </div>
-          <div class="showSvgIcons_svg-icon-wrap">
-            ${icon.getCode}
-          </div>
+          <div class="showSvgIcons_svg-icon-wrap">${icon.getCode}</div>
           <div class="showSvgIcons_hover-layer">
             ${icon.getCanGetUseCode ? useBtn : ''}
             ${icon.getCanGetSvgCode ? '<button class="showSvgIcons_button-copy showSvgIcons_button-copy-svg" data-type="svg" type="button">Copy &lt;svg&gt;</button>' : ''}
@@ -558,7 +551,6 @@ class ShowSvgIcons {
           </div>
           <input type="text" class="showSvgIcons_input-svg" value="${encodeURIComponent(icon.getCode)}">
           ${icon.getCanGetUseCode ? useInput : ''}
-          
           <div class="showSvgIcons_icon-name">${icon.getName}</div>
         </div>`;
     });

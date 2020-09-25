@@ -19,15 +19,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
  * 
  * ecommerceData send 'ecommerceData_to_background' message
  */
-chrome.tabs.onActivated.addListener((tab) => {
+function ecommerceDataInject() {
   chrome.tabs.executeScript(null, {
     file: 'inject/ecommerceData.js'
   }, () => chrome.runtime.lastError);
+}
+chrome.tabs.onActivated.addListener((tab) => {
+  ecommerceDataInject();
 });
 chrome.tabs.onUpdated.addListener((tab) => {
-  chrome.tabs.executeScript(null, {
-    file: 'inject/ecommerceData.js'
-  }, () => chrome.runtime.lastError);
+  ecommerceDataInject();
 });
 
 
