@@ -12,7 +12,7 @@ class GridView extends LCModifier {
 
     this.node = this.node.closest('.window');
 
-    if (this.node && !this.node.classList.contains('pagesWindowBetter_gridView_window')) {
+    if (this.node && this.node.querySelector('.pagesTreeContainer') && !this.node.classList.contains('pagesWindowBetter_gridView_window')) {
       let deleteElements = this.node.querySelectorAll('.windowLayout > .block, .contentContainer > .block');
       
       if (deleteElements) {
@@ -30,7 +30,7 @@ class GridView extends LCModifier {
 
 chrome.storage.sync.get(defaults.logicommerce.pagesWindowBetter, (result) => {
   if (result.actived && result.gridView) {
-    var gridView = new GridView('.pagesGroupContainer');
+    var gridView = new GridView('.windowLayout');
     observerLC.register(gridView);
   }
 });

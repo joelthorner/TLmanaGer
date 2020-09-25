@@ -63,11 +63,13 @@
         "inject/ObserverLC.js",
         "inject/LCModifier.js",
         "inject/pagesWindowBetter/betterGroupHeaders/index.js",
-        "inject/pagesWindowBetter/gridView/index.js"
+        "inject/pagesWindowBetter/gridView/index.js",
+        "inject/pagesWindowBetter/betterTreeLevels/index.js"
       ],
       "css": [
         "inject/pagesWindowBetter/betterGroupHeaders/index.css",
-        "inject/pagesWindowBetter/gridView/index.css"
+        "inject/pagesWindowBetter/gridView/index.css",
+        "inject/pagesWindowBetter/betterTreeLevels/index.css"
       ]
     }
   ]

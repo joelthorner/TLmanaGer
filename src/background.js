@@ -33,7 +33,7 @@ chrome.tabs.onUpdated.addListener((tab) => {
 
 
 
-
+// TODO all
 chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason == 'install') {
 
