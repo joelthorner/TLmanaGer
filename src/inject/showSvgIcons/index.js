@@ -78,12 +78,12 @@ class Icon {
 
   _setNameFromCode() {
     let name = '';
-    let search = this.getCode.match(/id=["']([A-Za-zA-z0-9\_\-]*)["']/)
+    let search = this.getCode.match(/id=["']([A-Za-z0-9\_\-]*)["']/)
 
     if (search && search[1]) {
       name = search[1];
     } else {
-      search = this.getCode.match(/name=["']([A-Za-zA-zÀ-ú0-9 \_\-]*)["']/);
+      search = this.getCode.match(/name=["']([A-Za-zÀ-ú0-9 \_\-]*)["']/);
 
       if (search && search[1]) {
         name = search[1];
@@ -412,7 +412,7 @@ class ShowSvgIcons {
    */
   _parseSvgIcon(node) {
     let code = node.outerHTML;
-    const matchId = code.match(/id=["']([A-Za-zA-z0-9\_\-]*)["']/);
+    const matchId = code.match(/id=["']([A-Za-z0-9\_\-]*)["']/);
     const canGetUseCode = matchId && matchId[1] ? true : false;
 
     if (node.getAttribute('width') && node.getAttribute('height') && node.getAttribute('viewBox') === null) {
@@ -436,7 +436,7 @@ class ShowSvgIcons {
    */
   _parseSymbolIcon(node) {
     let symbolAttrs = '';
-    const matchId = code.match(/id=["']([A-Za-zA-z0-9\_\-]*)["']/);
+    const matchId = code.match(/id=["']([A-Za-z0-9\_\-]*)["']/);
     const canGetUseCode = matchId && matchId[1] ? true : false;
 
     this._getElAttributes(node).forEach(element => {
