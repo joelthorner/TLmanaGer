@@ -1,7 +1,7 @@
 export default {
   zendesk: {
     replyTicketConfirmPopup: {
-      actived: true
+      actived: true,
     },
     ticketPriorityHighlightColors: {
       actived: false,
@@ -46,27 +46,27 @@ export default {
     sandboxLoginButtons: {
       actived: true,
     },
-    pagesWindowBetter: {
+    pagesWindowBetter: { // injectat & opt programada
       actived: true,
-      gridView: true,
-      betterGroupHeaders: true,
-      betterTreeLevels: true,
+      gridView: true,  // injectat & opt programada
+      betterGroupHeaders: true,  // injectat & opt programada
+      betterTreeLevels: true, // injectat & opt programada
     }
   },
   fluidWebTools: {
     autoForceView: {
-      actived: true
+      actived: true,
     },
     flushRedisIgdDomain: {
-      actived: true
+      actived: true,
     },
     dumpAutoScroll: {
-      actived: true
+      actived: true,
     }
   },
   others: {
     getFontWesomeIcons: { // injectat & opt programada
-      actived: true
+      actived: true,
     },
   },
   profile: {

@@ -19,7 +19,8 @@
   "background": {
     "scripts": [
       "background.js"
-    ]
+    ],
+    "persistent": false
   },
   "options_page": "options/options.html",
   "web_accessible_resources": [
@@ -28,7 +29,10 @@
   "permissions": [
     "storage",
     "notifications",
-    "sessions"
+    "sessions",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
   ],
   "content_scripts": [
     {
@@ -55,9 +59,17 @@
       ],
       "js": [
         "data/chromeSync.js",
-        "inject/log.js"
+        "inject/log.js",
+        "inject/ObserverLC.js",
+        "inject/LCModifier.js",
+        "inject/pagesWindowBetter/betterGroupHeaders/index.js",
+        "inject/pagesWindowBetter/gridView/index.js",
+        "inject/pagesWindowBetter/betterTreeLevels/index.js"
       ],
       "css": [
+        "inject/pagesWindowBetter/betterGroupHeaders/index.css",
+        "inject/pagesWindowBetter/gridView/index.css",
+        "inject/pagesWindowBetter/betterTreeLevels/index.css"
       ]
     }
   ]

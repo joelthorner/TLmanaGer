@@ -1,0 +1,74 @@
+.betterGroupHeaders_nameLabel {
+  display: flex;
+  align-items: center;
+}
+.betterGroupHeaders_nameLabel_text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.betterGroupHeaders_badge-item {
+  color: #fff;
+  padding: 4px 5px 5px;
+  line-height: 1;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 11px;
+  background-color: #607d8b;
+  min-width: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.betterGroupHeaders_badge-item[class*="menu"] {
+  background-color: #03a9f4;
+}
+
+.betterGroupHeaders_badge-item[class*="header"] {
+  background-color: #e91e63;
+}
+
+.betterGroupHeaders_badge-item[class*="home"] {
+  background-color: #8bc34a;
+}
+
+.betterGroupHeaders_badge-item[class*="footer"] {
+  background-color: #ff9800;
+}
+
+.betterGroupHeaders_badge-scope {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 5px;
+  box-sizing: border-box;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.betterGroupHeaders_badge-scope svg {
+  width: 12px;
+  height: 12px;
+}
+
+.betterGroupHeaders_badge-scope-email svg {
+  width: 11px;
+}
+
+.betterGroupHeaders_badge-scope-mobile svg {
+  height: 13px;
+  margin-top: 1px;
+}
+
+.betterGroupHeaders_badge-scope ~ .pagesGroupIcon {
+  display: none !important;
+}
