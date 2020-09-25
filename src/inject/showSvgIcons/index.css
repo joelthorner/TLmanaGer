@@ -1,0 +1,189 @@
+.showSvgIcons_container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999999999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.showSvgIcons_container * {
+  font: 12px/1.43 Roboto, Arial, sans-serif !important;
+  box-sizing: border-box;
+}
+
+.showSvgIcons_container b {
+  font-weight: bold !important;
+}
+
+.showSvgIcons_body {
+  width: 80%;
+  height: 75%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  overflow: auto;
+}
+
+.showSvgIcons_inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 15px;
+  justify-content: center;
+}
+
+.showSvgIcons_container .showSvgIcons_icon-wrap img,
+.showSvgIcons_container .showSvgIcons_icon-wrap svg {
+  width: 80% !important;
+  height: 100px !important;
+  display: block !important;
+  margin: 0 auto 15px !important;
+  float: none !important;
+  position: static;
+}
+
+.showSvgIcons_container .showSvgIcons_icon-wrap {
+  width: 100%;
+  float: left;
+  padding: 20px 5px;
+  text-align: center;
+  border-radius: 3px;
+  background-color: #dfe2ea;
+  position: relative;
+}
+
+.showSvgIcons_container .showSvgIcons_icon-wrap > *:not(.showSvgIcons_hover-layer) {
+  pointer-events: none;
+}
+
+.showSvgIcons_container .showSvgIcons_input-use,
+.showSvgIcons_container .showSvgIcons_input-svg {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.showSvgIcons_container .showSvgIcons_body-title {
+  width: 100%;
+  color: #888;
+  text-align: center;
+}
+
+.showSvgIcons_container a,
+.showSvgIcons_container button {
+  z-index: 1000;
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  white-space: nowrap;
+  width: 95px;
+  min-width: 95px;
+  text-decoration: none;
+}
+
+.showSvgIcons_hover-layer * + * {
+  margin-top: 15px;
+}
+
+.showSvgIcons_container .showSvgIcons_hover-layer {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(163, 169, 185, 0.9);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+  border-radius: 3px;
+}
+
+.showSvgIcons_container .showSvgIcons_icon-wrap:hover .showSvgIcons_hover-layer {
+  opacity: 1;
+  visibility: visible;
+}
+
+.showSvgIcons_container a:hover,
+.showSvgIcons_container button:hover {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.showSvgIcons_container a:active,
+.showSvgIcons_container button:active {
+  background-color: #004fa5;
+  border-color: #004fa5;
+}
+
+.showSvgIcons_svg-icon-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 1;
+  background-color: #007bff;
+  color: #fff;
+  padding: 3px 4px 4px;
+  font-size: 10px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.showSvgIcons_svg-icon-badge.showSvgIcons_svg-icon-badge-IMG {
+  background-color: #ff0070;
+}
+
+.showSvgIcons_svg-icon-badge.showSvgIcons_svg-icon-badge-SYMBOL {
+  background-color: #4caf50;
+}
+
+.showSvgIcons_svg-icon-badge.showSvgIcons_svg-icon-badge-CSS-BG {
+  background-color: #ff9800;
+}
+
+.showSvgIcons_info {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.showSvgIcons_info > div:not(:last-child) {
+  border-right: 1px solid #ddd;
+  padding-right: 15px;
+}
