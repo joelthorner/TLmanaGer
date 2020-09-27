@@ -42,10 +42,10 @@
       "js": [
         "data/chromeSync.js",
         "inject/log.js",
-        "inject/getFontWesomeIcons/index.js"
+        "inject/others/getFontWesomeIcons/index.js"
       ],
       "css": [
-        "inject/getFontWesomeIcons/index.css"
+        "inject/others/getFontWesomeIcons/index.css"
       ]
     },
     {
@@ -62,14 +62,15 @@
         "inject/log.js",
         "inject/ObserverLC.js",
         "inject/LCModifier.js",
-        "inject/pagesWindowBetter/betterGroupHeaders/index.js",
-        "inject/pagesWindowBetter/gridView/index.js",
-        "inject/pagesWindowBetter/betterTreeLevels/index.js"
+        "inject/LogiInfo.js",
+        "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.js",
+        "inject/logicommerce/pagesWindowBetter/gridView/index.js",
+        "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js"
       ],
       "css": [
-        "inject/pagesWindowBetter/betterGroupHeaders/index.css",
-        "inject/pagesWindowBetter/gridView/index.css",
-        "inject/pagesWindowBetter/betterTreeLevels/index.css"
+        "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",
+        "inject/logicommerce/pagesWindowBetter/gridView/index.css",
+        "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.css"
       ]
     }
   ]
