@@ -1,0 +1,128 @@
+html.lcDeveloperBar body {
+  height: calc(100% - 40px);
+}
+
+html.lcDeveloperBar #windowContainer {
+  top: 40px;
+}
+
+html.lcDeveloperBar body.lcDeveloperBar_hidden-tlg div.messageBox,
+html.lcDeveloperBar body.lcDeveloperBar_hidden-tlg .overlay {
+  display: none !important;
+}
+
+html.lcDeveloperBar body:not(.lcDeveloperBar_hidden-tlg-window) .window {
+  display: none !important;
+}
+
+html.lcDeveloperBar .lastposts {
+  display: none !important;
+}
+
+/* nav */
+html.lcDeveloperBar .lcDeveloperBar_nav,
+html.lcDeveloperBar .lcDeveloperBar_nav::before,
+html.lcDeveloperBar .lcDeveloperBar_nav::after,
+html.lcDeveloperBar .lcDeveloperBar_nav *,
+html.lcDeveloperBar .lcDeveloperBar_nav *::before,
+html.lcDeveloperBar .lcDeveloperBar_nav *::after {
+  box-sizing: border-box;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_nav {
+  position: fixed;
+  z-index: 9865;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  border: 0;
+  background-color: #222225;
+  box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.75);
+  display: flex;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_icon_cont {
+  float: left;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_icon {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E%3ClinearGradient id='jt-gradient' gradientUnits='userSpaceOnUse' x1='255.9998' x2='255.9997' y2='512.0005'%3E%3Cstop offset='0' stop-color='%2300a8ff'/%3E%3Cstop offset='1' stop-color='%23007aff'/%3E%3C/linearGradient%3E%3Crect fill='url(%23jt-gradient)' width='512' height='512'/%3E%3Cg%3E%3Cpath fill='%23FFF' d='M417.854 153.285c-5.479-28.378-21.693-52.948-45.637-69.114-17.998-12.18-38.92-18.608-60.565-18.608-36.043 0-69.58 17.805-89.747 47.581L110.753 277.549c-16.197 23.959-22.095 52.771-16.601 81.182 5.479 28.379 21.694 52.935 45.638 69.101 17.981 12.195 38.92 18.607 60.564 18.607 36.027 0 69.563-17.806 89.715-47.599L401.22 234.467c16.231-23.991 22.112-52.787 16.634-81.182zm-157.64 225.307c-13.436 19.879-35.818 31.77-59.858 31.77-14.396 0-28.378-4.307-40.35-12.405-15.957-10.781-26.771-27.142-30.437-46.086-3.664-18.931.289-38.134 11.072-54.072l56.171-82.985L316.334 295l-56.12 83.592z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* nav window */
+html.lcDeveloperBar .lcDeveloperBar_real_window {
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  top: auto !important;
+  left: auto !important;
+  position: relative;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_real_window .windowLayout,
+html.lcDeveloperBar .lcDeveloperBar_real_window .autosize {
+  height: auto !important;
+  width: auto !important;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_real_window .windowContent {
+  background-color: transparent;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_real_window .windowFooter,
+html.lcDeveloperBar .lcDeveloperBar_real_window .titleBar,
+html.lcDeveloperBar .lcDeveloperBar_real_window .block.pad,
+html.lcDeveloperBar .lcDeveloperBar_real_window .opensaasUtilRow h3,
+html.lcDeveloperBar .lcDeveloperBar_real_window .opensaasUtilRow p,
+html.lcDeveloperBar .lcDeveloperBar_real_window .__blankContainer__ {
+  display: none !important;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_real_window .opensaasUtilRow .pad {
+  padding: 0;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_real_window .col-6 {
+  width: auto;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green {
+  height: 40px;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 140px;
+  transition: all 150ms ease;
+  padding-top: 7px;
+  color: #fff;
+  background-color: #222225;
+  border: 0;
+  font-size: 13px;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green:hover {
+  background-color: #434348;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green:active {
+  background-color: #000;
+}
+
+html.lcDeveloperBar #lcDeveloperBar_search-input {
+  height: 40px;
+  border: 0;
+  padding: 5px 20px;
+  background-color: black;
+  color: #f9f9f9;
+  border-left: 3px solid #000;
+  transition: all 150ms ease;
+}
+html.lcDeveloperBar #lcDeveloperBar_search-input:focus {
+  border-color: #007bff;
+}
