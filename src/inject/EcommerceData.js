@@ -49,7 +49,7 @@ var ecommerceData = {
 
 var data = ecommerceData.getData();
 
-chrome.runtime.sendMessage({
-  message: "ecommerceData_to_background",
-  data,
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.message === "getEcommerceData")
+    sendResponse({ ecommerceData: data });
 });
