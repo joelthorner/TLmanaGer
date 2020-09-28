@@ -22,13 +22,11 @@ export default {
   created() {
     this.getSyncchromeSync();
 
-    // chrome.runtime.sendMessage({ message: 'getEcommerceData_to_background' }, (response) => {
-		// 	// this.close();
-		// });
-
-    this.ecommerceData = chrome.extension
-      .getBackgroundPage()
-      .localStorage.getItem("ecommerceData");
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { message: "getEcommerceData" }, (response) => {
+        this.ecommerceData = response.ecommerceData;
+      });
+    });
   },
   methods: {
     getSyncchromeSync() {

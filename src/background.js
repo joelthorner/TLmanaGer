@@ -7,11 +7,11 @@
  * After, on open popup, get 'ecommerceData' data from localStorage 
  * of background generated page
  */
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message && request.message == 'ecommerceData_to_background') {
-    localStorage.setItem('ecommerceData', JSON.stringify(request.data));
-  }
-});
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   if (request.message && request.message == 'ecommerceData_to_background') {
+//     localStorage.setItem('ecommerceData', JSON.stringify(request.data));
+//   }
+// });
 
 /*
  * On change tab and on update tab execute ecommerceData
@@ -19,13 +19,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
  * 
  * ecommerceData send 'ecommerceData_to_background' message
  */
-function ecommerceDataInject(tab) {
-  chrome.tabs.executeScript(null, {
-    file: 'inject/ecommerceData.js'
-  }, () => chrome.runtime.lastError);
-}
-chrome.tabs.onActivated.addListener(ecommerceDataInject);
-chrome.tabs.onUpdated.addListener(ecommerceDataInject);
+// function ecommerceDataInject(tab) {
+//   chrome.tabs.executeScript(null, {
+//     file: 'inject/ecommerceData.js'
+//   }, () => chrome.runtime.lastError);
+// }
+// chrome.tabs.onActivated.addListener(ecommerceDataInject);
+// chrome.tabs.onUpdated.addListener(ecommerceDataInject);
 
 
 
