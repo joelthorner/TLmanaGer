@@ -24,10 +24,10 @@ class LogiInfo {
   devIgdPreProd = /https?:\/\/adm\.igd\.pre\.production/.test(location);
 
   /**
-   * Development lc is (8x-os.logicommerce.net)
+   * LC is development open saas
    * @type {boolean}
    */
-  devOpenSaas = /https?:\/\/8x-os\.logicommerce\.net/.test(location);
+  devOpenSaas = document.getElementById('SML_osUtils') ? true : false;
 
   /**
    * Production lc is (8x.logicommerce.net)
@@ -46,6 +46,10 @@ class LogiInfo {
    * @type {boolean}
    */
   prod8xRealCn = /https?:\/\/8x\.logicommerce\.cn/.test(location);
-};
 
-// Log.info(new LogiInfo());
+  /**
+   * Lc is production open saas
+   * @type {boolean}
+   */
+  proOpenSaas = document.getElementById('SML_osRepo') ? true : false;
+};
