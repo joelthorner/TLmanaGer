@@ -23,7 +23,7 @@ Algunas acciones guardan cookies para su funcionamiento. Estas són:
 
 | Cookie                    | Nombre                 | Finalidad                                                                                          | Tiempo de expiración                                        |
 |---------------------------|------------------------|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
-| Acción "Container guides" | guideLines-active | Cargar de nuevo en cada recarga las guías visuales para el desarrollo de un sitio web.             | La cookie se elimina cuando el usuario cierra el navegador. |
+| Acción "Container guides" | containerLinesGuideCookie | Cargar de nuevo en cada recarga las guías visuales para el desarrollo de un sitio web.             | La cookie se elimina cuando el usuario cierra el navegador. |
 | Forceview                 | FORCEVIEW              | Cookie que se crea en sitios web que estan en desarrollo para que sean visibles ciertos elementos. | La cookie se elimina cuando el usuario cierra el navegador. |
 
 ## 3. Permisos
