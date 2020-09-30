@@ -17,13 +17,13 @@ var containerLinesGuide = {
    * @param {Boolean} load - Indicate if call is in load or by click directive from popup
    */
   init(load) {
-    if (load === true && this._getCookie(this.cookieName) == '1')
+    if (load === true && this._getCookie(this.cookieName) === '1')
       this.create();
 
-    else if (load === false && this._getCookie(this.cookieName) == '1')
+    else if (load === false && this._getCookie(this.cookieName) === '1')
       this.destroy();
 
-    else if (load === false && !this._getCookie(this.cookieName) == '1')
+    else if (load === false && this._getCookie(this.cookieName) !== '1')
       this.create();
   },
 
