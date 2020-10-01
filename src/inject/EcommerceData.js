@@ -37,8 +37,17 @@ var ecommerceData = {
     return null;
   },
 
+  _isTemplateModular2018() {
+    let shopData = document.getElementById('shop-data');
+    if (shopData && shopData.dataSet && shopData.dataSet.shopData) {
+      let json = JSON.parse(shopData.dataSet.shopData);
+      if (json.thisPage) return true;
+    }
+    return false;
+  },
+
   getTemplate() {
-    if (document.querySelector('[data-module]') && document.body.classList.value.includes('module-'))
+    if (document.querySelector('[data-module]') || this._isTemplateModular2018())
       return TEMPLATE_MODULAR_2018;
 
     return null;
