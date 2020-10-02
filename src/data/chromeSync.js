@@ -76,11 +76,11 @@ export default {
     },
     shopTestingEmail: {
       actived: false,
-      value: '',
+      value: 'john.doe@tlgcommerce.com',
     },
     shopTestingUsername: {
       actived: false,
-      value: '',
+      value: 'John Doe',
     },
     shopTestingPassword: {
       actived: false,

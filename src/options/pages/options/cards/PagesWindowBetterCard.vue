@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="card-title">
         {{ title }}
-        <b-button v-b-modal="thisModalId" variant="link" v-html="iconInfo"></b-button>
+        <b-button variant="link" v-html="iconInfo" @click="openModalClick(itemKey)"></b-button>
       </div>
       <b-form-checkbox
         v-model="chromeSync[scope][itemKey].actived"
@@ -42,8 +42,6 @@
         ></b-form-checkbox>
       </div>
     </div>
-
-    <help-modal :thisModalId="thisModalId" :data="help"></help-modal>
   </div>
 </template>
 

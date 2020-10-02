@@ -11,6 +11,7 @@
             :key="$route.fullPath"
             :chromeSync="chromeSync"
             @savedOptionsParent="savechromeSync"
+            @savedHelpKeyParent="sendHelpKey"
           ></router-view>
         </keep-alive>
       </main-content>
@@ -23,6 +24,10 @@
         no-close-button
       ></b-toast>
     </div>
+
+    <help-modal
+      :dataKey="clickedHelpDataKey"
+    ></help-modal>
   </div>
 </template>
 
@@ -32,6 +37,7 @@ import watchArchievements from "@mixins/watchArchievements";
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import OptionsNav from "@options/pages/options/OptionsNav";
+import HelpModal from "@options/components/HelpModal";
 
 export default {
   name: "AppPageOptions",
@@ -42,14 +48,19 @@ export default {
     MainTitle,
     MainContent,
     OptionsNav,
+    HelpModal,
   },
   mixins: [watchArchievements],
   data() {
     return {
       showSavedOptions: false,
+      clickedHelpDataKey: "",
     };
   },
   methods: {
+    sendHelpKey(value) {
+      this.clickedHelpDataKey = value;
+    },
     savechromeSync(value) {
       chrome.storage.sync.set(this.chromeSync, () => {
         this.showSavedOptions = value;

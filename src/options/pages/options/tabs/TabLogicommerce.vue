@@ -6,49 +6,48 @@
       <default-card
         :chromeSync="chromeSync"
         title="Developer bar"
-        :help="help.developerBar"
         scope="logicommerce"
         itemKey="developerBar"
         @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
       ></default-card>
       <default-card
         :chromeSync="chromeSync"
         title="Sandbox login buttons"
-        :help="help.sandboxLoginButtons"
         scope="logicommerce"
         itemKey="sandboxLoginButtons"
         @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
       ></default-card>
       <pages-window-better-card
         :chromeSync="chromeSync"
         title="Pages window better"
-        :help="help.pagesWindowBetter"
         scope="logicommerce"
         itemKey="pagesWindowBetter"
         @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
       ></pages-window-better-card>
       <beyond-theme-card
         :chromeSync="chromeSync"
         title="Beyond theme"
-        :help="help.beyondTheme"
         scope="logicommerce"
         itemKey="beyondTheme"
         @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
       ></beyond-theme-card>
       <logicommerce-background-card
         :chromeSync="chromeSync"
         title="Logicommerce background"
-        :help="help.lcBackground"
         scope="logicommerce"
         itemKey="background"
         @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
       ></logicommerce-background-card>
     </div>
   </div>
 </template>
 
 <script>
-import help from "@/data/helpOptions";
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
 import BeyondThemeCard from "@options/pages/options/cards/BeyondThemeCard";
 import LogicommerceBackgroundCard from "@options/pages/options/cards/LogicommerceBackgroundCard";
@@ -64,11 +63,6 @@ export default {
   },
   props: {
     chromeSync: Object,
-  },
-  data() {
-    return {
-      help,
-    };
   },
   mounted() {
     const numCols = 2;
@@ -87,6 +81,9 @@ export default {
   methods: {
     reciveShowSavedOptions(value) {
       this.$emit("savedOptionsParent", true);
+    },
+    reciveHelpKey(value) {
+      this.$emit("savedHelpKeyParent", value);
     },
   },
 };
