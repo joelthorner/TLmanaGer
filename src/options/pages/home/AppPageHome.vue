@@ -2,14 +2,21 @@
   <div class="page-content">
     <div id="home-content">
       <div class="background-widget">
-        <div class="image" v-bind:style="{ backgroundImage: 'url(' + backgroundWindowSize + ')' }"></div>
+        <div
+          class="image"
+          v-bind:style="{
+            backgroundImage:
+              'url(' + chromeSync.logicommerce.background.image + ')',
+          }"
+        ></div>
         <div class="credits">
           <span class="lbl">Photo by</span>
           <a
             :href="chromeSync.logicommerce.background.userLink"
             target="_blank"
             rel="noopener noreferrer"
-          >{{ chromeSync.logicommerce.background.userName }}</a>
+            >{{ chromeSync.logicommerce.background.userName }}</a
+          >
         </div>
       </div>
 
@@ -51,7 +58,7 @@ export default {
   props: {
     chromeSync: Object,
   },
-  data: () => {
+  data() {
     return {
       posts,
       maxLastPosts: 3,
@@ -72,9 +79,6 @@ export default {
   computed: {
     last3Posts() {
       return this.posts.slice(0, 3);
-    },
-    backgroundWindowSize() {
-      return this.chromeSync.logicommerce.background.image;
     },
   },
 };

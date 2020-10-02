@@ -9,8 +9,8 @@ $blue-1: #2d3144;
 $blue-2: #333a56;
 $blue-3: #2d4065;
 
-$title-1: #86939f; // header titles content
-$title-2: #686b73; // card dark title
+$title-1: #596671; // header titles content
+$title-2: #000; // card dark title
 $title-3: #949494; // aside right title part white
 
 $text-1: #8e9199;
@@ -618,7 +618,7 @@ main {
     }
 
     a {
-      padding-left: rem(45px);
+      padding-left: rem(40px);
       padding-top: rem(10px);
       padding-bottom: rem(10px);
       display: flex;
@@ -654,7 +654,7 @@ main {
     height: calc(#{$menu-height} + #{$logo-cont-h});
     background-size: cover;
     background-position: center;
-    margin-left: -$aside-left-width;
+    margin-left: 0;
     margin-right: -$aside-right-width;
     z-index: 1;
     position: relative;
@@ -1377,5 +1377,50 @@ main {
         padding-bottom: 50%;
       }
     }
+  }
+}
+
+// user
+#user-content {
+  width: 100%;
+}
+
+.user-background {
+  position: relative;
+  .image {
+    height: calc(#{$menu-height} + #{$logo-cont-h});
+    background-size: cover;
+    background-position: center;
+  }
+  .credits {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+.btn-edit-cover {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  color: #fff;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  fill: currentColor;
+  display: flex;
+  gap: 10px;
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }

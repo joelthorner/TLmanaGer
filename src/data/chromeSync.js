@@ -85,7 +85,7 @@ export default {
     shopTestingPassword: {
       actived: false,
       value: '',
-    }
+    },
   },
   metrics: {
     timesBgChanged: 0,
