@@ -36,6 +36,7 @@ const router = new VueRouter({
     },
     {
       path: '/options',
+      redirect: '/options/logicommerce',
       name: "options",
       component: AppPageOptions,
       children: [
@@ -65,6 +66,7 @@ const router = new VueRouter({
     {
       path: '/user',
       name: "user",
+      redirect: '/user/info',
       component: AppPageUser,
       children: [
         {

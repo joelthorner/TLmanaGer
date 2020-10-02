@@ -10,7 +10,7 @@ $blue-2: #333a56;
 $blue-3: #2d4065;
 
 $title-1: #596671; // header titles content
-$title-2: #000; // card dark title
+$title-2: #2d3144; // card dark title
 $title-3: #949494; // aside right title part white
 
 $text-1: #8e9199;
@@ -35,6 +35,10 @@ $modal-content-border-width: 0 !default;
 
 $input-padding-y: .5rem !default;
 $input-padding-x: 1rem !default;
+
+$input-color: #2d3144;
+$input-border-color: #e1e9f0;
+$input-bg: #e1e9f0;
 
 @import "~bootstrap";
 @import "~bootstrap-vue";
@@ -1389,6 +1393,7 @@ main {
 
   .nav {
     position: relative;
+    padding-left: 200px;
   }
 }
 
@@ -1439,10 +1444,6 @@ main {
   bottom: 18px;
   left: 60px;
 
-  + .nav-item {
-    margin-left: 170px;
-  }
-
   a {
     border-radius: 50%;
     // border: 3px solid $logo-blue-end;
@@ -1454,5 +1455,11 @@ main {
       max-width: 100%;
       transform: scale(1.01);
     }
+  }
+}
+
+.card-user-info {
+  label {
+    color: $text-1;
   }
 }
