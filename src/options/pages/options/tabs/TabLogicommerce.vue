@@ -1,6 +1,8 @@
 <template>
   <div class="tab">
-    <div class="inner-text">Opcions de personalització de logicommerce, fons, themes, millores...</div>
+    <div class="inner-text">
+      Opcions de personalització de logicommerce, fons, themes, millores...
+    </div>
 
     <div class="grid-cards-tab grid-cards-logicommerce">
       <default-card
@@ -75,7 +77,7 @@ export default {
     });
     container.style.height = Math.max(...colHeights) + "px";
     Array.from(container.children).forEach((child, i) => {
-      child.style.order = '';
+      child.style.order = "";
     });
   },
   methods: {

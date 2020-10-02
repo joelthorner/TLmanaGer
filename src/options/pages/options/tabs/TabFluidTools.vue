@@ -1,6 +1,8 @@
 <template>
   <div class="tab">
-    <div class="inner-text">Eines per desenvolupament de shops basades en Fluid</div>
+    <div class="inner-text">
+      Eines per desenvolupament de shops basades en Fluid
+    </div>
 
     <div class="row">
       <div class="col default-options-col-grid">

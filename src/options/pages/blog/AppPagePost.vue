@@ -1,15 +1,9 @@
 <template>
   <div class="page-content" v-if="finded">
     <style-tag>
-      main {
-      background-image: url({{ this.post.img }});
-      background-position: center;
-      background-size: cover;
-      }
-      .page-content {
-      backdrop-filter: blur(10px);
-      height: 100%;
-      }
+      main { background-image: url({{ this.post.img }}); background-position:
+      center; background-size: cover; } .page-content { backdrop-filter:
+      blur(10px); height: 100%; }
     </style-tag>
     <div id="post-content">
       <main-content containerClass="post-container">

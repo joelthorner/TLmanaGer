@@ -1,9 +1,16 @@
 <template>
-  <div class="card card-option" v-bind:class="{ active: chromeSync[scope][itemKey].actived }">
+  <div
+    class="card card-option"
+    v-bind:class="{ active: chromeSync[scope][itemKey].actived }"
+  >
     <div class="card-header">
       <div class="card-title">
         {{ title }}
-        <b-button variant="link" v-html="iconInfo" @click="openModalClick(itemKey)"></b-button>
+        <b-button
+          variant="link"
+          v-html="iconInfo"
+          @click="openModalClick(itemKey)"
+        ></b-button>
       </div>
       <b-form-checkbox
         v-model="chromeSync[scope][itemKey].actived"

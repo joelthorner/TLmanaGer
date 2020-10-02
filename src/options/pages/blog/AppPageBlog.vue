@@ -6,7 +6,11 @@
           Filtering by
           <span v-if="checkedYears.length" class="filtering-lbl">
             <span class="lbl">Year:</span>
-            <span class="badge badge-primary" v-for="year in checkedYears" v-bind:key="year">
+            <span
+              class="badge badge-primary"
+              v-for="year in checkedYears"
+              v-bind:key="year"
+            >
               {{ year }}
               <button
                 class="btn btn-link"
@@ -29,7 +33,11 @@
         </div>
 
         <section id="timeline" :class="timelinePageClass">
-          <div class="timeline-block" v-for="post in perPagePosts" v-bind:key="post.id">
+          <div
+            class="timeline-block"
+            v-for="post in perPagePosts"
+            v-bind:key="post.id"
+          >
             <div class="timeline-img"></div>
 
             <div class="timeline-content">
@@ -64,7 +72,6 @@
             v-model="checkedYears"
             :options="postsUniqueYearsFilter"
             stacked
-            size="lg"
           ></b-form-checkbox-group>
         </b-form-group>
       </sidebar-right-block>
@@ -76,7 +83,6 @@
             v-model="checkedTag"
             :options="postsUniqueTagsFilter"
             stacked
-            size="lg"
           ></b-form-radio-group>
         </b-form-group>
       </sidebar-right-block>

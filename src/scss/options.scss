@@ -33,6 +33,9 @@ $custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !defa
 
 $modal-content-border-width: 0 !default;
 
+$input-padding-y: .5rem !default;
+$input-padding-x: 1rem !default;
+
 @import "~bootstrap";
 @import "~bootstrap-vue";
 
@@ -677,10 +680,10 @@ main {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
     .lbl {
-      color: $blue-2;
+      color: $title-1;
     }
     a {
-      color: $blue-3;
+      color: $title-1;
     }
   }
 }
@@ -1111,7 +1114,7 @@ main {
       }
       .card.card-option.card-option-lc-bg {
         order: 1;
-        width: calc(100% - 400px);
+        width: calc(100% - 430px);
       }
     }
   }
@@ -1383,6 +1386,10 @@ main {
 // user
 #user-content {
   width: 100%;
+
+  .nav {
+    position: relative;
+  }
 }
 
 .user-background {
@@ -1396,7 +1403,7 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1rem;
+    padding: 20px;
     color: #fff;
     font-size: 12px;
   }
@@ -1422,5 +1429,30 @@ main {
   svg {
     width: 16px;
     height: 16px;
+  }
+}
+
+.nav-item-avatar {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  bottom: 18px;
+  left: 60px;
+
+  + .nav-item {
+    margin-left: 170px;
+  }
+
+  a {
+    border-radius: 50%;
+    // border: 3px solid $logo-blue-end;
+    overflow: hidden;
+    display: block;
+    // background-color: $logo-blue-end;
+    img {
+      display: block;
+      max-width: 100%;
+      transform: scale(1.01);
+    }
   }
 }

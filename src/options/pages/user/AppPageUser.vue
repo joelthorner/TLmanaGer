@@ -2,7 +2,7 @@
   <div class="page-content">
     <div id="user-content">
       <user-background :chromeSync="chromeSync"></user-background>
-      <user-nav></user-nav>
+      <user-nav :chromeSync="chromeSync"></user-nav>
     </div>
   </div>
 </template>
@@ -20,6 +20,5 @@ export default {
   props: {
     chromeSync: Object,
   },
-  
 };
 </script>

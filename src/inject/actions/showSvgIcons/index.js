@@ -535,7 +535,7 @@ class ShowSvgIcons {
       let useInput = `<input type="text" class="showSvgIcons_input-use" value="${useValue}">`;
       let btnDownload = `<button class="showSvgIcons_button-download" data-name="${icon.getName.length ? icon.getName : 'icon'}" type="button">Download</button>`;
 
-      if (icon.getNode.matches('img')) 
+      if (icon.getNode.matches('img'))
         btnDownload = `<a class="showSvgIcons_button-link" target="_blank" href="${icon.getNode.getAttribute('src')}">Download</a>`;
 
       html += `

@@ -33,15 +33,15 @@ export default {
           exact: false,
         },
         {
-          title: "Achievements",
-          icon: icons.achievements,
-          route: "/achievements",
-          exact: false,
-        },
-        {
           title: "User",
           icon: icons.user,
           route: "/user",
+          exact: false,
+        },
+        {
+          title: "Achievements",
+          icon: icons.achievements,
+          route: "/achievements",
           exact: false,
         },
         {

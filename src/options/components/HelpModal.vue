@@ -23,7 +23,7 @@ import help from "@/data/helpOptions";
 export default {
   name: "HelpModal",
   props: {
-    dataKey: '',
+    dataKey: "",
   },
   data() {
     return {
@@ -38,7 +38,7 @@ export default {
   computed: {
     thisData() {
       return this.help[this.dataKey] ?? {};
-    }
+    },
   },
 };
 </script>

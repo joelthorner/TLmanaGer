@@ -6,7 +6,11 @@
     <div class="card-header">
       <div class="card-title">
         {{ title }}
-        <b-button variant="link" v-html="iconInfo" @click="openModalClick(itemKey)"></b-button>
+        <b-button
+          variant="link"
+          v-html="iconInfo"
+          @click="openModalClick(itemKey)"
+        ></b-button>
       </div>
       <b-form-checkbox
         v-model="chromeSync[scope][itemKey].actived"
@@ -28,13 +32,20 @@
       </div>
 
       <div class="colors-grid">
-        <div class="color-block" v-for="color in orderColors" v-bind:key="color">
+        <div
+          class="color-block"
+          v-for="color in orderColors"
+          v-bind:key="color"
+        >
           <label
             :for="inputColorName(color)"
             class="color-button-bg"
-            :style="{ backgroundColor: chromeSync[scope][itemKey].colors[color].bg, color: chromeSync[scope][itemKey].colors[color].text }"
+            :style="{
+              backgroundColor: chromeSync[scope][itemKey].colors[color].bg,
+              color: chromeSync[scope][itemKey].colors[color].text,
+            }"
           >
-            {{color}}
+            {{ color }}
             <div class="rippleJS"></div>
           </label>
 

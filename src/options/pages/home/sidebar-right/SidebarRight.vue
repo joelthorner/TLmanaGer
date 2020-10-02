@@ -12,7 +12,9 @@
       <sidebar-right-resume-item>
         <router-link to="/achievements">
           <span class="title">ACHIEVEMENTS</span>
-          <span class="content">{{ currentAchievements }}/{{ totalAchievements }}</span>
+          <span class="content"
+            >{{ currentAchievements }}/{{ totalAchievements }}</span
+          >
           <span class="icon" v-html="caret"></span>
           <div class="rippleJS"></div>
         </router-link>

@@ -74,8 +74,8 @@ class DeveloperBar {
         let window = el.closest('.window');
 
         if (window) {
-          clearInterval(stoCatchWindow);  
-          
+          clearInterval(stoCatchWindow);
+
           let container = document.getElementById('lcDeveloperBar_buttons');
           window.removeAttribute('style');
           window.removeAttribute('class');
@@ -92,7 +92,7 @@ class DeveloperBar {
       }
     }, 50);
   }
-  
+
   _devOSButtonsWindow() {
     document.querySelector('input[ls*="utilCleanCacheCode"]').value = 'Flush redis';
     document.querySelector('input[ls*="utilUpdateCacheProducts"]').value = 'Product update';

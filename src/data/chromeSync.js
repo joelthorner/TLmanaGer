@@ -72,7 +72,7 @@ export default {
   profile: {
     avatar: {
       actived: false,
-      value: 'img/logo.svg',
+      value: chrome.extension.getURL('img/user.svg'),
     },
     shopTestingEmail: {
       actived: false,

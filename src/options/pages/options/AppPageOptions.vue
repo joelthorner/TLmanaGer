@@ -25,9 +25,7 @@
       ></b-toast>
     </div>
 
-    <help-modal
-      :dataKey="clickedHelpDataKey"
-    ></help-modal>
+    <help-modal :dataKey="clickedHelpDataKey"></help-modal>
   </div>
 </template>
 

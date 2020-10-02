@@ -1,9 +1,16 @@
 <template>
-  <div class="card card-option" v-bind:class="{ active: chromeSync[scope][itemKey].actived }">
+  <div
+    class="card card-option"
+    v-bind:class="{ active: chromeSync[scope][itemKey].actived }"
+  >
     <div class="card-header">
       <div class="card-title">
         {{ title }}
-        <b-button variant="link" v-html="iconInfo" @click="openModalClick(itemKey)"></b-button>
+        <b-button
+          variant="link"
+          v-html="iconInfo"
+          @click="openModalClick(itemKey)"
+        ></b-button>
       </div>
       <b-form-checkbox
         v-model="chromeSync[scope][itemKey].actived"
@@ -24,12 +31,14 @@
         ></b-form-checkbox>
       </div>
       <div class="d-flex sub-option-line">
-        Decorated page group headers 
+        Decorated page group headers
         <b-form-checkbox
           v-model="chromeSync[scope][itemKey].betterGroupHeaders"
           :name="checkboxNameSubOption('betterGroupHeaders')"
           switch
-          v-on:change="changeSubOption($event, scope, itemKey, 'betterGroupHeaders')"
+          v-on:change="
+            changeSubOption($event, scope, itemKey, 'betterGroupHeaders')
+          "
         ></b-form-checkbox>
       </div>
       <div class="d-flex sub-option-line">
@@ -38,7 +47,9 @@
           v-model="chromeSync[scope][itemKey].betterTreeLevels"
           :name="checkboxNameSubOption('betterTreeLevels')"
           switch
-          v-on:change="changeSubOption($event, scope, itemKey, 'betterTreeLevels')"
+          v-on:change="
+            changeSubOption($event, scope, itemKey, 'betterTreeLevels')
+          "
         ></b-form-checkbox>
       </div>
     </div>

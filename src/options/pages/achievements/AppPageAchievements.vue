@@ -6,7 +6,11 @@
       <main-content containerClass="achievements-container">
         <div class="inner-text">
           You have unlocked
-          <span>{{ currentAchievements }}/{{ totalAchievements }} ({{ earnedPercent | round }}%)</span>
+          <span
+            >{{ currentAchievements }}/{{ totalAchievements }} ({{
+              earnedPercent | round
+            }}%)</span
+          >
         </div>
         <div class="grid d-flex">
           <achievements-card
