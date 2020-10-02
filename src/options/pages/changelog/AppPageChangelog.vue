@@ -7,15 +7,23 @@
         <div class="inner-text">Release notes for TLmanaGer</div>
 
         <div id="release-notes">
-          <section class="release-block card" v-for="release in releases" v-bind:key="release.id">
+          <section
+            class="release-block card"
+            v-for="release in releases"
+            v-bind:key="release.id"
+          >
             <div class="card-body">
               <header>
                 <div class="d-flex">
                   <div class="icon" v-html="icon"></div>
-                  <span class="version">{{ getTagName(release.tag_name) }}</span>
+                  <span class="version">{{
+                    getTagName(release.tag_name)
+                  }}</span>
                 </div>
                 <div class="date">
-                  <small class="text-muted">{{ getReleaseDate(release.created_at) }}</small>
+                  <small class="text-muted">{{
+                    getReleaseDate(release.created_at)
+                  }}</small>
                 </div>
               </header>
 

@@ -6,18 +6,23 @@ import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import rippleJS from 'vanilla-ripplejs' // no remove, works
 
-import AppPageHome from './pages/home/AppPageHome.vue'
-import AppPageOptions from './pages/options/AppPageOptions.vue'
-import AppPageAchievements from './pages/achievements/AppPageAchievements.vue'
-import AppPageUser from './pages/user/AppPageUser.vue'
-import AppPageChangelog from './pages/changelog/AppPageChangelog.vue'
-import AppPageBlog from './pages/blog/AppPageBlog.vue'
-import AppPagePost from './pages/blog/AppPagePost.vue'
+import AppPageHome from '@options/pages/home/AppPageHome'
+import AppPageOptions from '@options/pages/options/AppPageOptions'
+import AppPageAchievements from '@options/pages/achievements/AppPageAchievements'
+import AppPageUser from '@options/pages/user/AppPageUser'
+import AppPageChangelog from '@options/pages/changelog/AppPageChangelog'
+import AppPageBlog from '@options/pages/blog/AppPageBlog'
+import AppPagePost from '@options/pages/blog/AppPagePost'
 
-import TabLogicommerce from './pages/options/tabs/TabLogicommerce.vue'
-import TabFluidTools from './pages/options/tabs/TabFluidTools.vue'
-import TabZendesk from './pages/options/tabs/TabZendesk.vue'
-import TabOthers from './pages/options/tabs/TabOthers.vue'
+import TabLogicommerce from '@options/pages/options/tabs/TabLogicommerce'
+import TabFluidTools from '@options/pages/options/tabs/TabFluidTools'
+import TabZendesk from '@options/pages/options/tabs/TabZendesk'
+import TabOthers from '@options/pages/options/tabs/TabOthers'
+
+import TabAvatar from '@options/pages/user/tabs/TabAvatar'
+import TabInfo from '@options/pages/user/tabs/TabInfo'
+import TabStats from '@options/pages/user/tabs/TabStats'
+import TabReset from '@options/pages/user/tabs/TabReset'
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
@@ -31,6 +36,7 @@ const router = new VueRouter({
     },
     {
       path: '/options',
+      redirect: '/options/logicommerce',
       name: "options",
       component: AppPageOptions,
       children: [
@@ -50,7 +56,7 @@ const router = new VueRouter({
           path: 'others',
           component: TabOthers,
         },
-      ]
+      ],
     },
     {
       path: '/achievements',
@@ -60,7 +66,26 @@ const router = new VueRouter({
     {
       path: '/user',
       name: "user",
+      redirect: '/user/info',
       component: AppPageUser,
+      children: [
+        {
+          path: 'avatar',
+          component: TabAvatar,
+        },
+        {
+          path: 'info',
+          component: TabInfo,
+        },
+        {
+          path: 'stats',
+          component: TabStats,
+        },
+        {
+          path: 'reset',
+          component: TabReset,
+        },
+      ],
     },
     {
       path: '/changelog',

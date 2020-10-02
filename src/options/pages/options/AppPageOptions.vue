@@ -3,36 +3,7 @@
     <div id="options-content">
       <main-title title="OPTIONS"></main-title>
 
-      <ul class="nav">
-        <li class="nav-item">
-          <router-link to="/options/logicommerce" :class="customActiveNavItem">
-            <span class="icon" v-html="icons.shoppingCart"></span>
-            Logicommerce
-            <div class="rippleJS"></div>
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/options/fluid-tools" class="nav-link">
-            <span class="icon" v-html="icons.wrench"></span>
-            Fluid tools
-            <div class="rippleJS"></div>
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/options/zendesk" class="nav-link">
-            <span class="icon" v-html="icons.zendesk"></span>
-            Zendesk
-            <div class="rippleJS"></div>
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/options/others" class="nav-link">
-            <span class="icon" v-html="icons.lemon"></span>
-            Others
-            <div class="rippleJS"></div>
-          </router-link>
-        </li>
-      </ul>
+      <options-nav></options-nav>
 
       <main-content containerClass="options-container">
         <keep-alive>
@@ -40,6 +11,7 @@
             :key="$route.fullPath"
             :chromeSync="chromeSync"
             @savedOptionsParent="savechromeSync"
+            @savedHelpKeyParent="sendHelpKey"
           ></router-view>
         </keep-alive>
       </main-content>
@@ -52,15 +24,18 @@
         no-close-button
       ></b-toast>
     </div>
+
+    <help-modal :dataKey="clickedHelpDataKey"></help-modal>
   </div>
 </template>
 
 <script>
-import icons from "@/data/icons";
 import watchArchievements from "@mixins/watchArchievements";
 
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
+import OptionsNav from "@options/pages/options/OptionsNav";
+import HelpModal from "@options/components/HelpModal";
 
 export default {
   name: "AppPageOptions",
@@ -70,22 +45,20 @@ export default {
   components: {
     MainTitle,
     MainContent,
+    OptionsNav,
+    HelpModal,
   },
   mixins: [watchArchievements],
   data() {
     return {
-      icons,
       showSavedOptions: false,
+      clickedHelpDataKey: "",
     };
   },
-  computed: {
-    customActiveNavItem() {
-      return this.$route.path === "/options"
-        ? "nav-link router-link-active-custom"
-        : "nav-link";
-    },
-  },
   methods: {
+    sendHelpKey(value) {
+      this.clickedHelpDataKey = value;
+    },
     savechromeSync(value) {
       chrome.storage.sync.set(this.chromeSync, () => {
         this.showSavedOptions = value;

@@ -7,18 +7,18 @@
         <default-card
           :chromeSync="chromeSync"
           title="Reply ticket confirm popup"
-          :help="help.replyTicketConfirmPopup"
           scope="zendesk"
           itemKey="replyTicketConfirmPopup"
           @savedOptions="reciveShowSavedOptions"
+          @savedHelpKey="reciveHelpKey"
         ></default-card>
         <zendesk-ticket-priority-highlight-colors-card
           :chromeSync="chromeSync"
           title="Ticket priority highlight"
-          :help="help.ticketPriorityHighlightColors"
           scope="zendesk"
           itemKey="ticketPriorityHighlightColors"
           @savedOptions="reciveShowSavedOptions"
+          @savedHelpKey="reciveHelpKey"
         ></zendesk-ticket-priority-highlight-colors-card>
       </div>
 
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import help from "@/data/helpOptions";
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
 import ZendeskTicketPriorityHighlightColorsCard from "@options/pages/options/cards/ZendeskTicketPriorityHighlightColorsCard";
 
@@ -41,14 +40,12 @@ export default {
   props: {
     chromeSync: Object,
   },
-  data() {
-    return {
-      help,
-    };
-  },
   methods: {
     reciveShowSavedOptions(value) {
       this.$emit("savedOptionsParent", true);
+    },
+    reciveHelpKey(value) {
+      this.$emit("savedHelpKeyParent", value);
     },
   },
 };

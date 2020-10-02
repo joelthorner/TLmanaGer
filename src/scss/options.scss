@@ -9,8 +9,8 @@ $blue-1: #2d3144;
 $blue-2: #333a56;
 $blue-3: #2d4065;
 
-$title-1: #86939f; // header titles content
-$title-2: #686b73; // card dark title
+$title-1: #596671; // header titles content
+$title-2: #2d3144; // card dark title
 $title-3: #949494; // aside right title part white
 
 $text-1: #8e9199;
@@ -32,6 +32,13 @@ $custom-switch-width: $custom-control-indicator-size * 1.75 !default;
 $custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
 
 $modal-content-border-width: 0 !default;
+
+$input-padding-y: .5rem !default;
+$input-padding-x: 1rem !default;
+
+$input-color: #2d3144;
+$input-border-color: #e1e9f0;
+$input-bg: #e1e9f0;
 
 @import "~bootstrap";
 @import "~bootstrap-vue";
@@ -618,7 +625,7 @@ main {
     }
 
     a {
-      padding-left: rem(45px);
+      padding-left: rem(40px);
       padding-top: rem(10px);
       padding-bottom: rem(10px);
       display: flex;
@@ -654,7 +661,7 @@ main {
     height: calc(#{$menu-height} + #{$logo-cont-h});
     background-size: cover;
     background-position: center;
-    margin-left: -$aside-left-width;
+    margin-left: 0;
     margin-right: -$aside-right-width;
     z-index: 1;
     position: relative;
@@ -677,10 +684,10 @@ main {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
     .lbl {
-      color: $blue-2;
+      color: $title-1;
     }
     a {
-      color: $blue-3;
+      color: $title-1;
     }
   }
 }
@@ -1111,7 +1118,7 @@ main {
       }
       .card.card-option.card-option-lc-bg {
         order: 1;
-        width: calc(100% - 400px);
+        width: calc(100% - 430px);
       }
     }
   }
@@ -1377,5 +1384,82 @@ main {
         padding-bottom: 50%;
       }
     }
+  }
+}
+
+// user
+#user-content {
+  width: 100%;
+
+  .nav {
+    position: relative;
+    padding-left: 200px;
+  }
+}
+
+.user-background {
+  position: relative;
+  .image {
+    height: calc(#{$menu-height} + #{$logo-cont-h});
+    background-size: cover;
+    background-position: center;
+  }
+  .credits {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+.btn-edit-cover {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  color: #fff;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  fill: currentColor;
+  display: flex;
+  gap: 10px;
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.nav-item-avatar {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  bottom: 18px;
+  left: 60px;
+
+  a {
+    border-radius: 50%;
+    // border: 3px solid $logo-blue-end;
+    overflow: hidden;
+    display: block;
+    // background-color: $logo-blue-end;
+    img {
+      display: block;
+      max-width: 100%;
+      transform: scale(1.01);
+    }
+  }
+}
+
+.card-user-info {
+  label {
+    color: $text-1;
   }
 }

@@ -1,10 +1,6 @@
 import icons from "@/data/icons";
-import HelpModal from "@options/components/HelpModal";
 
 export default {
-  components: {
-    HelpModal
-  },
   data() {
     return {
       iconInfo: icons.info,
@@ -13,16 +9,12 @@ export default {
   props: {
     chromeSync: Object,
     title: String,
-    help: Object,
     scope: String,
     itemKey: String,
   },
   computed: {
     disabledOptionMessage() {
       return this.chromeSync[this.scope][this.itemKey].active ? '' : 'Click top right switch to activate option';
-    },
-    thisModalId() {
-      return `help-modal-${this.itemKey}`;
     },
     checkboxName() {
       return `switch-${this.scope}-${this.itemKey}`;
@@ -32,6 +24,10 @@ export default {
     optionChangeActived(checked, scope, option) {
       this.chromeSync[scope][option].active = checked;
       this.$emit("savedOptions", true);
+    },
+    openModalClick(value) {
+      this.$bvModal.show('options-help-modal');
+      this.$emit("savedHelpKey", value);
     },
   },
 }

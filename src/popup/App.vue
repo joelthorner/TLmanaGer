@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>Hello world!</p>
-    {{ecommerceData}}
+    {{ ecommerceData }}
   </div>
 </template>
 
@@ -23,9 +23,13 @@ export default {
     this.getSyncchromeSync();
 
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { message: "getEcommerceData" }, (response) => {
-        this.ecommerceData = response.ecommerceData;
-      });
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { message: "getEcommerceData" },
+        (response) => {
+          this.ecommerceData = response.ecommerceData;
+        }
+      );
     });
   },
   methods: {

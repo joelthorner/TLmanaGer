@@ -7,10 +7,10 @@
         <default-card
           :chromeSync="chromeSync"
           title="Get font awesome icon code"
-          :help="help.getFontWesomeIcons"
           scope="others"
           itemKey="getFontWesomeIcons"
           @savedOptions="reciveShowSavedOptions"
+          @savedHelpKey="reciveHelpKey"
         ></default-card>
       </div>
     </div>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import help from "@/data/helpOptions";
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
 
 export default {
@@ -29,14 +28,12 @@ export default {
   props: {
     chromeSync: Object,
   },
-  data() {
-    return {
-      help,
-    };
-  },
   methods: {
     reciveShowSavedOptions(value) {
       this.$emit("savedOptionsParent", true);
+    },
+    reciveHelpKey(value) {
+      this.$emit("savedHelpKeyParent", value);
     },
   },
 };

@@ -1,6 +1,13 @@
 <template>
-  <b-modal :id="thisModalId" size="lg" centered v-bind:title="title" hide-footer modal-class="full-image-modal">
-    <img :src="sourceUrl" :alt="title">
+  <b-modal
+    :id="thisModalId"
+    size="lg"
+    centered
+    v-bind:title="title"
+    hide-footer
+    modal-class="full-image-modal"
+  >
+    <img :src="sourceUrl" :alt="title" />
   </b-modal>
 </template>
 

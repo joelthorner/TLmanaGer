@@ -1,9 +1,14 @@
 <template>
-  <div :class="'card post-' + post.id" data-tilt data-tilt-reverse="true" data-tilt-max="10">
+  <div
+    :class="'card post-' + post.id"
+    data-tilt
+    data-tilt-reverse="true"
+    data-tilt-max="10"
+  >
     <style-tag>
-      .post-{{ this.post.id }}::before {
-      background-image: url({{ this.post.img }});
-      }
+      .post-{{ this.post.id }}::before { background-image: url({{
+        this.post.img
+      }}); }
     </style-tag>
     <router-link :to="getPostRoute(post.id)" class="link-img">
       <img :src="post.img" class="card-img-top" :alt="post.name" />
@@ -17,7 +22,9 @@
 
       <p class="card-text">
         {{ getSplittedPostContent(post.content) }}
-        <router-link :to="getPostRoute(post.id)" class="d-block read-more">Read more</router-link>
+        <router-link :to="getPostRoute(post.id)" class="d-block read-more"
+          >Read more</router-link
+        >
       </p>
 
       <p class="card-text card-text-foot">

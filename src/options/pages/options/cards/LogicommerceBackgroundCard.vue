@@ -6,7 +6,11 @@
     <div class="card-header">
       <div class="card-title">
         {{ title }}
-        <b-button v-b-modal="thisModalId" variant="link" v-html="iconInfo"></b-button>
+        <b-button
+          variant="link"
+          v-html="iconInfo"
+          @click="openModalClick(itemKey)"
+        ></b-button>
       </div>
       <b-form-checkbox
         v-model="chromeSync[scope][itemKey].actived"
@@ -28,7 +32,9 @@
             aria-describedby="input-live-feedback"
           ></b-form-input>
 
-          <b-form-invalid-feedback id="input-live-feedback">No results</b-form-invalid-feedback>
+          <b-form-invalid-feedback id="input-live-feedback"
+            >No results</b-form-invalid-feedback
+          >
 
           <div class="block collections-block">
             <div class="title">Collections</div>
@@ -37,7 +43,8 @@
                 <a
                   href="#"
                   v-on:click.prevent="clickCollection(collection.id)"
-                >{{ collection.name }}</a>
+                  >{{ collection.name }}</a
+                >
               </li>
             </ul>
           </div>
@@ -45,7 +52,9 @@
           <div class="block selected-bg-block">
             <div class="title">
               Current selected
-              <a href="#" v-if="showBackImage" v-on:click.prevent="undo">Undo</a>
+              <a href="#" v-if="showBackImage" v-on:click.prevent="undo"
+                >Undo</a
+              >
             </div>
 
             <div class="bg-item bg-item-selected-main">
@@ -53,23 +62,37 @@
                 class="zoom-btn"
                 href="#"
                 v-b-modal.bgCardZoom
-                v-on:click.prevent="setZoomData(chromeSync.logicommerce.background.regular, chromeSync.logicommerce.background.userName)"
+                v-on:click.prevent="
+                  setZoomData(
+                    chromeSync.logicommerce.background.regular,
+                    chromeSync.logicommerce.background.userName
+                  )
+                "
                 v-html="icons.zoom"
               ></a>
               <div
                 class="embed-responsive embed-responsive-16by9"
-                v-bind:style="{ backgroundImage: 'url(' + chromeSync.logicommerce.background.thumb + ')'}"
+                v-bind:style="{
+                  backgroundImage:
+                    'url(' + chromeSync.logicommerce.background.thumb + ')',
+                }"
               ></div>
               <a
                 :href="chromeSync.logicommerce.background.userLink"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="author"
-              >{{ chromeSync.logicommerce.background.userName }}</a>
+                >{{ chromeSync.logicommerce.background.userName }}</a
+              >
             </div>
           </div>
 
-          <div class="pagination-space-equalizer page-link" v-if="showPagination">&nbsp;</div>
+          <div
+            class="pagination-space-equalizer page-link"
+            v-if="showPagination"
+          >
+            &nbsp;
+          </div>
         </div>
 
         <div class="col-right">
@@ -83,13 +106,17 @@
                 class="zoom-btn"
                 href="#"
                 v-b-modal.bgCardZoom
-                v-on:click.prevent="setZoomData(image.urls.regular, image.user.name)"
+                v-on:click.prevent="
+                  setZoomData(image.urls.regular, image.user.name)
+                "
                 v-html="icons.zoom"
               ></a>
               <a
                 href="#"
                 class="embed-responsive embed-responsive-16by9"
-                v-bind:style="{ backgroundImage: 'url(' + image.urls.small + ')'}"
+                v-bind:style="{
+                  backgroundImage: 'url(' + image.urls.small + ')',
+                }"
                 v-on:click.prevent="initSelectBackground(image)"
               >
                 <div class="rippleJS"></div>
@@ -99,7 +126,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="author"
-              >{{ image.user.name }}</a>
+                >{{ image.user.name }}</a
+              >
             </div>
 
             <div
@@ -135,8 +163,11 @@
       </div>
     </div>
 
-    <help-modal :thisModalId="thisModalId" :data="help"></help-modal>
-    <full-image-modal thisModalId="bgCardZoom" :sourceUrl="imageZoom" :title="imageZoomAuthor"></full-image-modal>
+    <full-image-modal
+      thisModalId="bgCardZoom"
+      :sourceUrl="imageZoom"
+      :title="imageZoomAuthor"
+    ></full-image-modal>
   </div>
 </template>
 
@@ -328,7 +359,7 @@ export default {
     },
     setZoomData(image, author) {
       this.imageZoom = image;
-      this.imageZoomAuthor = 'By ' + author;
+      this.imageZoomAuthor = "By " + author;
     },
   },
 };
