@@ -70,15 +70,17 @@ export default {
     const numCols = 2;
     const colHeights = Array(numCols).fill(0);
     const container = document.querySelector(".grid-cards-tab");
-    Array.from(container.children).forEach((child, i) => {
-      const order = i % numCols;
-      child.style.order = order;
-      colHeights[order] += parseFloat(child.clientHeight);
-    });
-    container.style.height = Math.max(...colHeights) + "px";
-    Array.from(container.children).forEach((child, i) => {
-      child.style.order = "";
-    });
+    if (container) {
+      Array.from(container.children).forEach((child, i) => {
+        const order = i % numCols;
+        child.style.order = order;
+        colHeights[order] += parseFloat(child.clientHeight);
+      });
+      container.style.height = Math.max(...colHeights) + "px";
+      Array.from(container.children).forEach((child, i) => {
+        child.style.order = "";
+      });
+    }
   },
   methods: {
     reciveShowSavedOptions(value) {

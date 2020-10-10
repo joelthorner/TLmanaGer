@@ -27,7 +27,7 @@
     "vanilla-tilt": "^1.7.0",
     "vue": "^2.6.12",
     "vue-round-filter": "^1.1.2",
-    "vue-router": "^3.4.3"
+    "vue-router": "^3.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -37,7 +37,7 @@
     "@types/chrome": "^0.0.74",
     "archiver": "^3.0.0",
     "babel-loader": "^8.0.2",
-    "copy-webpack-plugin": "^6.1.1",
+    "copy-webpack-plugin": "^6.2.0",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^3.4.0",

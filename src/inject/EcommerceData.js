@@ -1,16 +1,41 @@
+/**
+ * @file Define the ecommerceData object and add popup listener
+ * @author joelthorner
+ */
+
+/** @constant {String} */
 var TYPE_FLUID = 'fluid';
+
+/** @constant {String} */
 var TYPE_COLD_FUSION = 'cold-fusion';
+
+/** @constant {String} */
 var TYPE_COLD_BEYOND = 'beyond'; // TODO 
 
+/** @constant {String} */
 var ENV_PRODUCTION = 'production';
+
+/** @constant {String} */
 var ENV_PRE_OPENSAAS = 'pre-opensaas';
+
+/** @constant {String} */
 var ENV_IGD_PRODUCTION = 'igd-production';
+
+/** @constant {String} */
 var ENV_IGD_PRE_PRODUCTION = 'igd-pre-production';
 
+/** @constant {String} */
 var TEMPLATE_MODULAR_2018 = 'template-modular-2018';
 
+/**
+ * @namespace
+ */
 var ecommerceData = {
 
+  /**
+   * Return type
+   * @return {String|null}
+   */
   getType() {
     if (document.body.classList.value.includes('fluidContent'))
       return TYPE_FLUID;
@@ -21,6 +46,10 @@ var ecommerceData = {
     return null;
   },
 
+  /**
+   * Return environment
+   * @return {String|null}
+   */
   getEnvironment() {
     if ((/[0-9]+\.logicommerce\.net/).test(location) || document.querySelector('meta[name="robots"][content="index, follow"]') != null)
       return ENV_PRODUCTION;
@@ -37,6 +66,10 @@ var ecommerceData = {
     return null;
   },
 
+  /**
+   * Get if is template modular 2018
+   * @return {Boolean}
+   */
   _isTemplateModular2018() {
     let shopData = document.getElementById('shop-data');
     if (shopData && shopData.dataSet && shopData.dataSet.shopData) {
@@ -46,6 +79,10 @@ var ecommerceData = {
     return false;
   },
 
+  /**
+   * Return template
+   * @return {String|null}
+   */
   getTemplate() {
     if (document.querySelector('[data-module]') || this._isTemplateModular2018())
       return TEMPLATE_MODULAR_2018;
@@ -53,6 +90,10 @@ var ecommerceData = {
     return null;
   },
 
+  /**
+   * Get html comments texts
+   * @return {Array}
+   */
   _getComments(context) {
     var foundComments = [], elementPath = [context];
 
@@ -71,6 +112,10 @@ var ecommerceData = {
     return foundComments;
   },
 
+  /**
+   * Return if web has fluid cache by html comments
+   * @return {Boolean}
+   */
   getFluidCache() {
     var hasCache = false;
 
@@ -82,6 +127,17 @@ var ecommerceData = {
     return hasCache;
   },
 
+  /**
+   * @typedef fluidData
+   * @type {Object}
+   * @property {String} template - Fluid template type
+   * @property {String} cache - Exists fluid cache
+   */
+
+  /**
+   * Return fluid data object
+   * @return {fluidData}
+   */
   getFluidData() {
     return {
       template: this.getTemplate(),
@@ -89,6 +145,12 @@ var ecommerceData = {
     }
   },
 
+  /**
+   * Extract shop id from text by regexp
+   * @param {String} text
+   * @param {RegExp} regex
+   * @return {Number|null}
+   */
   _extractShopId(text, regex) {
     var match = text.match(new RegExp(regex));
 
@@ -99,6 +161,12 @@ var ecommerceData = {
     return null;
   },
 
+  /**
+   * Extract shop id from text by regexp
+   * @param {String} text
+   * @param {RegExp} regex
+   * @return {Number}
+   */
   getShopId() {
     var shopId = null;
 
@@ -119,6 +187,19 @@ var ecommerceData = {
     return shopId;
   },
 
+  /**
+   * @typedef ecommerceDataObject
+   * @type {Object}
+   * @property {String} type
+   * @property {String} environment
+   * @property {String} fluidData
+   * @property {Number} shopId
+   */
+
+  /**
+   * Return all data object
+   * @return {ecommerceDataObject}
+   */
   getData() {
     return {
       type: this.getType(),

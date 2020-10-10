@@ -1,15 +1,19 @@
+/**
+ * @file Define the getFontWesomeIcons object, initialize it and register it in a observer
+ * @author joelthorner
+ */
 'use strict';
 
 /**
  * @namespace
- * @property {string}  name   - Name of icon
- * @property {string}  raw    - Original code html of svg
- * @property {string}  svg    - Clean svg code
- * @property {string}  symbol - Clean symbol code from svg code
- * @property {string}  use    - Use tag code
- * @property {string}  bg     - Css background code
- * @property {string}  color  - Page color of FA.com
- * @property {boolean} added  - Indicate if widget is added
+ * @property {String}  name   - Name of icon
+ * @property {String}  raw    - Original code html of svg
+ * @property {String}  svg    - Clean svg code
+ * @property {String}  symbol - Clean symbol code from svg code
+ * @property {String}  use    - Use tag code
+ * @property {String}  bg     - Css background code
+ * @property {String}  color  - Page color of FA.com
+ * @property {Boolean} added  - Indicate if widget is added
  */
 var getFontWesomeIcons = {
   name: '',
@@ -22,8 +26,9 @@ var getFontWesomeIcons = {
   added: false,
 
   /**
-   * @param {string} raw - Svg icon html
-   * @param {string} color - Hex or rgb/a color string
+   * Initialize object function
+   * @param {String} raw - Svg icon html
+   * @param {String} color - Hex or rgb/a color string
    */
   init(raw, color) {
     this.raw = raw;
@@ -37,15 +42,27 @@ var getFontWesomeIcons = {
 
     log.info('getFontWesomeIcons init', getFontWesomeIcons);
   },
+
+  /**
+   * Set name property
+   */
   setName() {
     let match = this.raw.match(/data-icon="([a-z0-9\-A-Z]+)"/);
     if (match && match.length > 1) {
       this.name = match[1];
     }
   },
+
+  /**
+   * Set use property
+   */
   setUse() {
     this.use = `<svg class="icon" aria-hidden="true"><use xlink:href="#icon-${this.name}"></use></svg>`;
   },
+
+  /**
+   * Set svg property, cleaning original code (raw)
+   */
   setSvg() {
     let code = this.raw;
     code = code.replace(new RegExp('data-prefix="[a-z]{3}"\\s', "g"), '');
@@ -62,6 +79,10 @@ var getFontWesomeIcons = {
     code = code.replace(new RegExp('\\s{2,}', "g"), ' '); // clear
     this.svg = code;
   },
+
+  /**
+   * Set symbol property, transforming code of svg property
+   */
   setSymbol() {
     let code = this.svg;
     code = code.replace(new RegExp('aria-hidden="true"', "g"), '');
@@ -72,6 +93,10 @@ var getFontWesomeIcons = {
     code = code.replace(new RegExp('\\s{2,}', "g"), ' '); // clear
     this.symbol = code;
   },
+
+  /**
+   * Set bg property, transforming code of svg property
+   */
   setBg() {
     let code = this.svg;
     code = code.replace(new RegExp('id="[a-zA-Z0-9\\#\\-]{1,}"', "g"), 'fill="#000"');
@@ -92,20 +117,31 @@ var getFontWesomeIcons = {
     code = this.replaceAll(code, "@", "%40");
     this.bg = `background-image: url("data:image/svg+xml;charset=UTF-8,${code}");`;
   },
+
   /**
-   * @param {string} str - String to aply replace
-   * @param {string} find - Regex string
-   * @param {string} replace - Replace string
+   * Replace text by regexp string
+   * @param {String} str - String to aply replace
+   * @param {String} find - Regex string
+   * @param {String} replace - Replace string
+   * @return {String}
    */
   replaceAll(str, find, replace) {
     return str.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
   },
+  
   /**
-   * @param {string} str - Regex string to escape
+   * Escape string regexp
+   * @param {String} str - Regex string to escape
+   * @return {String}
    */
   escapeRegExp(str) {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
   },
+
+  /**
+   * Return calculated css part, other css is into ./index.css
+   * @return {String}
+   */
   getCss() {
     return `
       #getFontWesomeIcons_main .getFontWesomeIcons_row .getFontWesomeIcons_col textarea:focus {
@@ -122,9 +158,12 @@ var getFontWesomeIcons = {
       }
     `.replace(/\s\n\t/g, '');
   },
+
   /**
-   * @param {string} key - textarea key output
-   * @param {string} text - textarea label text
+   * Return widget column with textarea, if key is svg add a download button
+   * @param {String} key - textarea key output
+   * @param {String} text - textarea label text
+   * @return {String}
    */
   getOutputElement(key, text) {
     var download = key == 'svg' ? `
@@ -139,6 +178,11 @@ var getFontWesomeIcons = {
         <textarea name="getFontWesomeIcons_${key}" id="getFontWesomeIcons_${key}" onfocus="this.select();" onmouseup="return false;" cols="30" rows="8" class="input-reset input-focus all-animate w-100 bg-white db shadow-inset-2 ba br2 pa3 lh-solid gray8 f4 sans-serif b--gray3"></textarea>
       </div>`;
   },
+
+  /**
+   * Return widget main structure
+   * @return {String}
+   */
   getStructure() {
     return `
       <div id="getFontWesomeIcons_close" title="Close">
@@ -152,6 +196,10 @@ var getFontWesomeIcons = {
       </div>
       <div id="getFontWesomeIcons_title"> Get Font Awesome Powered by <a href="${chrome.extension.getURL("options/options.html")}#/options/others" target="_blank">TLmanaGer</a></div>`;
   },
+
+  /**
+   * Destroy existent widget and add new widget
+   */
   addWidget() {
     this.destroy();
 
@@ -184,6 +232,10 @@ var getFontWesomeIcons = {
 
     this.added = true;
   },
+
+  /**
+   * Destroy the widget
+   */
   destroy() {
     let widget = document.getElementById('getFontWesomeIcons_layout');
     if (widget) {
@@ -204,7 +256,7 @@ chrome.storage.sync.get(defaults.others.getFontWesomeIcons, (result) => {
         mutation.addedNodes.forEach((node) => {
           if (/\/icons\/[a-z0-9\-A-Z]+/.test(location.pathname)) {
             if (node instanceof HTMLElement && node.querySelector('[data-balloon*="size"]')) {
-              // Init here script <---
+              // Init here script
               getFontWesomeIcons.init(
                 node.querySelector('[data-balloon*="size"]').innerHTML,
                 window.getComputedStyle(node.querySelector('.button-depth'))['backgroundColor']
@@ -232,6 +284,5 @@ chrome.storage.sync.get(defaults.others.getFontWesomeIcons, (result) => {
         );
       }
     });
-
   }
 });
