@@ -33,7 +33,7 @@ $custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !defa
 
 $modal-content-border-width: 0 !default;
 
-$input-padding-y: .5rem !default;
+$input-padding-y: 0.5rem !default;
 $input-padding-x: 1rem !default;
 
 $input-color: #2d3144;
@@ -1216,14 +1216,21 @@ main {
 .card.card-option {
   &.card-option-lc-bg,
   &.card-zen-tkt-colors,
+  &.card-pages-window-better,
   &.card-option-beyond-theme {
     &:not(.active) .card-body {
-      opacity: 0.5;
-      cursor: not-allowed;
-      * {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.5);
         cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
     }
   }

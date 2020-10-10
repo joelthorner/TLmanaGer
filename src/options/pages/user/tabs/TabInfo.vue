@@ -15,6 +15,8 @@
                 id="shop-testing-username"
                 placeholder="John Doe"
                 v-model="chromeSync.profile.shopTestingUsername.value"
+                v-on:input="debouncedInputSave"
+                trim
               ></b-form-input>
             </div>
             <div class="form-group">
@@ -23,6 +25,8 @@
                 id="shop-testing-email"
                 placeholder="john.doe@tlgcommerce.com"
                 v-model="chromeSync.profile.shopTestingEmail.value"
+                v-on:input="debouncedInputSave"
+                trim
               ></b-form-input>
             </div>
             <div class="form-group">
@@ -31,6 +35,8 @@
                 id="shop-testing-password"
                 placeholder="Password"
                 v-model="chromeSync.profile.shopTestingPassword.value"
+                v-on:input="debouncedInputSave"
+                trim
               ></b-form-input>
             </div>
           </div>
@@ -43,10 +49,9 @@
             <div class="card-title">Disclaimer!</div>
           </div>
           <div class="card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis iure,
-            minus deserunt libero unde eligendi, dolores reprehenderit ex alias
-            ducimus distinctio officiis illum temporibus inventore qui
-            blanditiis nostrum animi. Quos.
+            El propòsit d'aquestes dades és per eines de testeig.<br />Tot i que
+            no seran mai compartides, no usar una contrasenya d'ús habitual en
+            comptes reals. <br /><br />
           </div>
         </div>
       </div>
@@ -55,14 +60,27 @@
 </template>
 
 <script>
+import _ from "lodash";
+
 export default {
   name: "TabInfo",
   props: {
     chromeSync: Object,
   },
+  created: function () {
+    this.debouncedInputSave = _.debounce(this.inputSave, 500);
+  },
   methods: {
-    reciveShowSavedOptions(value) {
+    reciveShowSavedOptions() {
       this.$emit("savedOptionsParent", true);
+    },
+    inputSave(value) {
+      if (value.length) {
+        chromeSync.profile.shopTestingPassword.actived = true;
+      } else {
+        chromeSync.profile.shopTestingPassword.actived = false;
+      }
+      this.reciveShowSavedOptions();
     },
   },
 };

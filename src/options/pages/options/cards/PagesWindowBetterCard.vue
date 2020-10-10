@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card card-option"
+    class="card card-option card-pages-window-better"
     v-bind:class="{ active: chromeSync[scope][itemKey].actived }"
   >
     <div class="card-header">
