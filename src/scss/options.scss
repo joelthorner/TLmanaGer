@@ -1398,7 +1398,7 @@ main {
 #user-content {
   width: 100%;
 
-  .nav {
+  .nav-menu {
     position: relative;
     padding-left: 200px;
   }
@@ -1456,7 +1456,13 @@ main {
     // border: 3px solid $logo-blue-end;
     overflow: hidden;
     display: block;
+    height: 100%;
+    background-color: #ddd;
     // background-color: $logo-blue-end;
+    &.router-link-active {
+      // border: 3px solid;
+    }
+
     img {
       display: block;
       max-width: 100%;
@@ -1468,5 +1474,29 @@ main {
 .card-user-info {
   label {
     color: $text-1;
+  }
+}
+
+.avatar-nav {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+}
+
+.grid-avatars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  gap: 3px;
+
+  .avatar-item {
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
   }
 }

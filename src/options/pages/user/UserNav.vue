@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav">
+  <ul class="nav nav-menu">
     <li class="nav-item nav-item-avatar">
       <router-link to="/user/avatar">
         <img

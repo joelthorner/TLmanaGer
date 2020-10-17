@@ -3,7 +3,7 @@
     <!-- <div class="inner-text">Other options</div> -->
 
     <div class="row">
-      <div class="col col-xs-12 col-lg-6">
+      <div class="col col-xs-12 col-lg-4">
         <div class="card card-option card-user card-user-info">
           <div class="card-header">
             <div class="card-title">Edit personal Info</div>
@@ -76,9 +76,9 @@ export default {
     },
     inputSave(value) {
       if (value.length) {
-        chromeSync.profile.shopTestingPassword.actived = true;
+        this.chromeSync.profile.shopTestingPassword.actived = true;
       } else {
-        chromeSync.profile.shopTestingPassword.actived = false;
+        this.chromeSync.profile.shopTestingPassword.actived = false;
       }
       this.reciveShowSavedOptions();
     },
