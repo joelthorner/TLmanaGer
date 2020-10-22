@@ -40,6 +40,11 @@ html.lcDeveloperBar .lcDeveloperBar_nav {
   background-color: #222225;
   box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.75);
   display: flex;
+  justify-content: space-between;
+}
+
+html.lcDeveloperBar #lcDeveloperBar_buttons {
+  margin-right: auto;
 }
 
 html.lcDeveloperBar .lcDeveloperBar_icon_cont {
@@ -67,6 +72,10 @@ html.lcDeveloperBar .lcDeveloperBar_real_window .windowLayout,
 html.lcDeveloperBar .lcDeveloperBar_real_window .autosize {
   height: auto !important;
   width: auto !important;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_real_window .autosize {
+  display: flex;
 }
 
 html.lcDeveloperBar .lcDeveloperBar_real_window .windowContent {
@@ -106,12 +115,22 @@ html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green {
   text-transform: none;
 }
 
+html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green.__cleanCacheCode__ {
+  font-weight: bold;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_btn:hover,
 html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green:hover {
   background-color: #434348;
 }
 
+html.lcDeveloperBar .lcDeveloperBar_btn:active,
 html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green:active {
   background-color: #000;
+}
+
+html.lcDeveloperBar #lcDeveloperBar_search {
+  flex-grow: 2;
 }
 
 html.lcDeveloperBar #lcDeveloperBar_search-input {
@@ -120,9 +139,61 @@ html.lcDeveloperBar #lcDeveloperBar_search-input {
   padding: 5px 20px;
   background-color: black;
   color: #f9f9f9;
-  border-left: 3px solid #000;
   transition: all 150ms ease;
+  width: 100%;
 }
-html.lcDeveloperBar #lcDeveloperBar_search-input:focus {
-  border-color: #007bff;
+
+html.lcDeveloperBar #lcDeveloperBar_search-input::placeholder {
+  color: #666;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_btn {
+  width: 40px;
+  height: 40px;
+  float: left;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+html.lcDeveloperBar #lcDeveloperBar_btn-pag {
+  background-size: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cg%3E%3Cpath d='M384 128H272a16 16 0 0 1-16-16V0H24A23.94 23.94 0 0 0 0 23.88V488a23.94 23.94 0 0 0 23.88 24H360a23.94 23.94 0 0 0 24-23.88V128zm-96 244a12 12 0 0 1-12 12H108a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h168a12 12 0 0 1 12 12zm0-64a12 12 0 0 1-12 12H108a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h168a12 12 0 0 1 12 12zm0-64a12 12 0 0 1-12 12H108a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h168a12 12 0 0 1 12 12z' fill='%23fff'%3E%3C/path%3E%3Cpath d='M377 105L279.1 7a24 24 0 0 0-17-7H256v112a16 16 0 0 0 16 16h112v-6.1a23.9 23.9 0 0 0-7-16.9zM276 352H108a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h168a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12zm0-64H108a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h168a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12zm0-64H108a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h168a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+html.lcDeveloperBar #lcDeveloperBar_btn-ban {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cg%3E%3Cpath d='M424.49 120.48a12 12 0 0 0-17 0L272 256l-39.51-39.52a12 12 0 0 0-17 0L160 272v48h352V208zM64 336V128H48a48 48 0 0 0-48 48v256a48 48 0 0 0 48 48h384a48 48 0 0 0 48-48v-16H144a80.09 80.09 0 0 1-80-80z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3Cpath d='M528 32H144a48 48 0 0 0-48 48v256a48 48 0 0 0 48 48h384a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48zM208 80a48 48 0 1 1-48 48 48 48 0 0 1 48-48zm304 240H160v-48l55.52-55.52a12 12 0 0 1 17 0L272 256l135.52-135.52a12 12 0 0 1 17 0L512 208z' fill='%23fff'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+html.lcDeveloperBar #lcDeveloperBar_btn-tag {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cg%3E%3Cpath d='M497.94 225.94L286.06 14.06A48 48 0 0 0 252.12 0H48A48 48 0 0 0 0 48v204.12a48 48 0 0 0 14.06 33.94l211.88 211.88a48 48 0 0 0 67.88 0l204.12-204.12a48 48 0 0 0 0-67.88zM112 160a48 48 0 1 1 48-48 48 48 0 0 1-48 48z' fill='%23fff'%3E%3C/path%3E%3Cpath d='M625.94 293.82L421.82 497.94a48 48 0 0 1-67.88 0l-.36-.36 174.06-174.06a90 90 0 0 0 0-127.28L331.4 0h48.72a48 48 0 0 1 33.94 14.06l211.88 211.88a48 48 0 0 1 0 67.88z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+html.lcDeveloperBar #lcDeveloperBar_btn-sec {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cg%3E%3Cpath d='M104 320H56v-57.59A38.45 38.45 0 0 1 94.41 224H296v-64h48v64h201.59A38.46 38.46 0 0 1 584 262.41V320h-48v-48H344v48h-48v-48H104z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3Cpath d='M128 352H32a32 32 0 0 0-32 32v96a32 32 0 0 0 32 32h96a32 32 0 0 0 32-32v-96a32 32 0 0 0-32-32zM384 0H256a32 32 0 0 0-32 32v96a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32V32a32 32 0 0 0-32-32zm224 352h-96a32 32 0 0 0-32 32v96a32 32 0 0 0 32 32h96a32 32 0 0 0 32-32v-96a32 32 0 0 0-32-32zm-240 0h-96a32 32 0 0 0-32 32v96a32 32 0 0 0 32 32h96a32 32 0 0 0 32-32v-96a32 32 0 0 0-32-32z' fill='%23fff'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+html.lcDeveloperBar #lcDeveloperBar_btn-ftp {
+  background-image: url("data:image/svg+xml,%3Csvg id='icon-folder-upload' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg%3E%3Cpath d='M464,127.08H272l-64-64H48a48,48,0,0,0-48,48v288a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48v-224A48,48,0,0,0,464,127.08Zm-110.81,192H288v48a16,16,0,0,1-16,16H240a16,16,0,0,1-16-16v-48H158.83a16,16,0,0,1-11.27-27.34L244,196a17.05,17.05,0,0,1,24,0l96.42,95.7A16,16,0,0,1,353.19,319.08Z' fill='%23fff'%3E%3C/path%3E%3Cpath d='M353.19,319.08H288v48a16,16,0,0,1-16,16H240a16,16,0,0,1-16-16v-48H158.83a16,16,0,0,1-11.27-27.34L244,196a17.05,17.05,0,0,1,24,0l96.42,95.7A16,16,0,0,1,353.19,319.08Z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+html.lcDeveloperBar .lcDeveloperBar_extra {
+  display: flex;
+}
+
+@media (max-width: 1299px) {
+  html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green.__reloadEvents__ {
+    display: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green.__reloadApps__ {
+    display: none;
+  }
 }
