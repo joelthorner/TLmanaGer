@@ -52,4 +52,10 @@ class LogiInfo {
    * @type {boolean}
    */
   proOpenSaas = document.getElementById('SML_osRepo') ? true : false;
+
+  /**
+   * User has login in LC
+   * @type {boolean}
+   */
+  login = document.getElementById('loginForm') ? false : true;
 };
