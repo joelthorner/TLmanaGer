@@ -16,5 +16,4 @@ https://www.sitepoint.com/build-vue-chrome-extension/
 # .env
 # ========================
 
-Add .env file to root folder with 
- - VUE_APP_UNSPLASH_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
+Add .env file to root folder with .env.example variables
