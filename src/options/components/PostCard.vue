@@ -55,7 +55,7 @@ export default {
       return "/blog/" + id;
     },
     getPostDate(date) {
-      return moment(date).fromNow();
+      return moment(date, "DD/MM/YYYY").fromNow();
     },
     getPLainPostTextContent(content) {
       let span = document.createElement("span");

@@ -147,7 +147,7 @@ export default {
     },
     postsUniqueYearsFilter() {
       let years = this.posts.map(function (obj) {
-        let year = moment(obj.date).year();
+        let year = moment(obj.date, "DD/MM/YYYY").year();
         return {
           text: year,
           value: year,
@@ -212,10 +212,10 @@ export default {
 
   methods: {
     date(date) {
-      return moment(date).format("MMMM Do YYYY");
+      return moment(date, "DD/MM/YYYY").format("MMMM Do YYYY");
     },
     dateAgo(date) {
-      return moment(date).fromNow();
+      return moment(date, "DD/MM/YYYY").fromNow();
     },
     toTop(event) {
       document.getElementsByTagName("main")[0].scrollTo(0, 0);
