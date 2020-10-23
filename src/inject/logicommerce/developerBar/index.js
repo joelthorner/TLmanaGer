@@ -4,13 +4,7 @@ class DeveloperBar {
 
   constructor(logiInfo) {
     this.logiInfo = logiInfo;
-
-    this._appendStructure();
-    this._appendScripts();
-    this._initSearch();
     this._initEnvironment();
-
-    document.body.classList.add('lcDeveloperBar_hidden-tlg-window');
   }
 
   _appendStructure() {
@@ -24,23 +18,13 @@ class DeveloperBar {
         <div id="lcDeveloperBar_buttons"></div>
         <div id="lcDeveloperBar_search"></div>
         <div class="lcDeveloperBar_extra">
-          <button title="Pages" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-pag"></button>
-          <button title="Banners" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ban"></button>
-          <button title="CustomTags" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-tag"></button>
-          <button title="Related sections" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-sec"></button>
-          <button title="FTP" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ftp"></button>
+          <button title="Pages" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-pag" onclick="openPages()"></button>
+          <button title="Banners" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ban" onclick="openBanners()"></button>
+          <button title="CustomTags" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-tag" onclick="openCustomTagsGroups()"></button>
+          <button title="Related sections" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-sec" onclick="openRelatedDefinitions()"></button>
+          <button title="FTP" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ftp" onclick="openFileManager()"></button>
         </div>
       </nav>`);
-  }
-
-  _appendScripts() {
-    document.body.insertAdjacentHTML('beforeend', `<script>
-      document.getElementById('lcDeveloperBar_btn-pag').addEventListener('click', () => { openPages() });
-      document.getElementById('lcDeveloperBar_btn-ban').addEventListener('click', () => { openBanners() });
-      document.getElementById('lcDeveloperBar_btn-tag').addEventListener('click', () => { openCustomTagsGroups() });
-      document.getElementById('lcDeveloperBar_btn-sec').addEventListener('click', () => { openRelatedDefinitions() });
-      document.getElementById('lcDeveloperBar_btn-ftp').addEventListener('click', () => { openFileManager() });
-    </script>`);
   }
 
   _initSearch() {
@@ -52,19 +36,40 @@ class DeveloperBar {
         // TODO
       }
     });
+
+    let searchInputsSelector = '#lcDeveloperBar_search-input, #desktopSearch, #searchMenu input, [name="criteria"]';
+    let searchInputs = document.querySelectorAll(searchInputsSelector);
+
+    document.addEventListener('input', (event) => {
+      // loop parent nodes from the target to the delegation node
+      for (var target = event.target; target && target != this; target = target.parentNode) {
+        if (target instanceof HTMLElement && target.matches(searchInputsSelector)) {
+          for (let i = 0; i < searchInputs.length; i++) {
+            if (event.target.value != searchInputs[i].value) {
+              searchInputs[i].value = event.target.value;
+            }
+          }
+          break;
+        }
+      }
+    }, false);
   }
 
   _initEnvironment() {
-    if (this.logiInfo.devOpenSaas) {
-      this._initDevOpenSaas();
-    } else if (this.logiInfo.proOpenSaas) {
-      this._initProOpenSaas();
-    } else {
-      // TODO
+    if (this.logiInfo.login) {
+      this._appendStructure();
+      this._initSearch();
+
+      if (this.logiInfo.devOpenSaas) {
+        this._initDevOpenSaas();
+      } else if (this.logiInfo.proOpenSaas) {
+        this._initProOpenSaas();
+      }
     }
   }
 
   _initDevOpenSaas() {
+    document.body.classList.add('lcDeveloperBar_hidden-tlg-window');
     document.getElementById('SML_osUtils').click();
 
     let stoCatchWindow = setInterval(() => {
@@ -82,19 +87,29 @@ class DeveloperBar {
           window.classList.add('lcDeveloperBar_real_window');
           container.append(window);
 
-          document.body.insertAdjacentHTML('beforeend', `<script>window.windows.windows = [];</script>`);
+          var tagString = `<script>window.windows.windows = [];</script>`;
+          var range = document.createRange();
+          range.selectNode(document.getElementsByTagName('body')[0]);
+          var documentFragment = range.createContextualFragment(tagString);
+          document.body.appendChild(documentFragment);
+
           document.querySelector('#taskBar .taskMenuLink').remove();
 
           this._devOSButtonsWindow();
           this._flushRedisBetter();
-          // flushSnbxOsBar();
         }
       }
     }, 50);
   }
 
+  _initProOpenSaas() {
+    document.getElementById('lcDeveloperBar_buttons').innerHTML = `
+      <input type="button" class="green" value="Repositories" onclick="openOSRepo()">
+      <input type="button" class="green" value="Publish" onclick="openOSPublish()">`;
+  }
+
   _devOSButtonsWindow() {
-    document.querySelector('input[ls*="utilCleanCacheCode"]').value = 'Flush redis';
+    document.querySelector('input[ls*="utilCleanCacheCode"]').value = 'FLUSH!';
     document.querySelector('input[ls*="utilUpdateCacheProducts"]').value = 'Product update';
     document.querySelector('input[ls*="utilUpdateCacheCategories"]').value = 'Category update';
     document.querySelector('input[ls*="utilReloadApps"]').value = 'App update';
@@ -106,7 +121,7 @@ class DeveloperBar {
     document.addEventListener('click', (event) => {
       // loop parent nodes from the target to the delegation node
       for (var target = event.target; target && target != this; target = target.parentNode) {
-        if (target.matches('.__cleanCacheCode__')) {
+        if (target instanceof HTMLElement && target.matches('.__cleanCacheCode__')) {
           this._flushRedisBetterHandler.call(target, event);
           break;
         }
@@ -114,27 +129,25 @@ class DeveloperBar {
     }, false);
   }
 
-  _flushRedisBetterHandler(target, event) {
+  _flushRedisBetterHandler(event) {
     document.body.classList.add('lcDeveloperBar_hidden-tlg');
-    target.value = '...';
+    this.value = '...';
 
     setTimeout(() => {
       document.querySelector('.messageBox .rightButtons input').click();
 
       setTimeout(() => {
         document.querySelector('.messageBox .rightButtons input').click();
-        target.value = 'Done!';
+        this.value = 'Done!';
 
         setTimeout(() => {
           document.body.classList.remove('lcDeveloperBar_hidden-tlg');
-          target.value = 'Flush redis';
+          this.value = 'FLUSH!';
         }, 650);
       }, 1000);
     }, 300);
   }
 }
-
-
 
 chrome.storage.sync.get(defaults.logicommerce.developerBar, (result) => {
   if (result.actived) {
