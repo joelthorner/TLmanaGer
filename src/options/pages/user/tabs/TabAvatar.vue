@@ -4,8 +4,8 @@
       pills
       vertical
       nav-class="avatar-nav"
-      nav-wrapper-class="col-2"
-      content-class="col-10"
+      nav-wrapper-class="col-xs-3 col-xl-2"
+      content-class="col-xs-9 col-xl-10"
     >
       <b-tab title="Animation" active>
         <div class="grid-avatars">

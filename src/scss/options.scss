@@ -40,6 +40,9 @@ $input-color: #2d3144;
 $input-border-color: #e1e9f0;
 $input-bg: #e1e9f0;
 
+$form-feedback-valid-color: $logo-blue-end !default;
+$form-feedback-icon-valid-color: $logo-blue-end !default;
+
 @import "~bootstrap";
 @import "~bootstrap-vue";
 
@@ -319,6 +322,15 @@ main {
   a {
     position: relative;
     text-decoration: none;
+  }
+
+  .card-title {
+    .icon {
+      width: 16px;
+      height: 22px;
+      margin-right: 8px;
+      fill: currentColor;
+    }
   }
 
   .card-body {
@@ -1457,7 +1469,6 @@ main {
     overflow: hidden;
     display: block;
     height: 100%;
-    background-color: #ddd;
     // background-color: $logo-blue-end;
     &.router-link-active {
       // border: 3px solid;
