@@ -57,6 +57,8 @@ class DeveloperBar {
 
   _initEnvironment() {
     if (this.logiInfo.login) {
+      document.body.classList.add('lcDeveloperBar_hidden-tlg-window');
+      
       this._appendStructure();
       this._initSearch();
 
@@ -69,7 +71,6 @@ class DeveloperBar {
   }
 
   _initDevOpenSaas() {
-    document.body.classList.add('lcDeveloperBar_hidden-tlg-window');
     document.getElementById('SML_osUtils').click();
 
     let stoCatchWindow = setInterval(() => {
