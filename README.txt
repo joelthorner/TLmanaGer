@@ -16,4 +16,4 @@ https://www.sitepoint.com/build-vue-chrome-extension/
 # .env
 # ========================
 
-Add .env file to root folder with .env.example variables
+Add .env file to root folder like .env.example variables

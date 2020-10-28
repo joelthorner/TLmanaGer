@@ -7,7 +7,7 @@ body.pagesWindowBetter_betterTreeLevels div.pagesWindowTree div.pagesTreeContain
   background-repeat: no-repeat;
   background-position: 0 center;
   padding-left: 22px;
-  background-size: 15px;
+  background-size: 14px;
   position: relative;
 }
 body.pagesWindowBetter_betterTreeLevels div.pagesWindowTree div.pagesTreeContainer div.page > div:first-child::after {

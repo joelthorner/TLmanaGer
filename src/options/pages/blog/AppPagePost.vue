@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     date() {
-      return moment(this.post.date).format("MMMM Do YYYY");
+      return moment(this.post.date, "DD/MM/YYYY").format("MMMM Do YYYY");
     },
   },
   methods: {

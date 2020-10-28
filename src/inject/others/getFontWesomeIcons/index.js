@@ -128,7 +128,7 @@ var getFontWesomeIcons = {
   replaceAll(str, find, replace) {
     return str.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
   },
-  
+
   /**
    * Escape string regexp
    * @param {String} str - Regex string to escape
@@ -249,6 +249,15 @@ var getFontWesomeIcons = {
 
 chrome.storage.sync.get(defaults.others.getFontWesomeIcons, (result) => {
   if (result.actived) {
+
+    let onLoadSvg = document.querySelector('[data-balloon*="size"]');
+    console.log(onLoadSvg);
+    if (onLoadSvg) {
+      getFontWesomeIcons.init(
+        onLoadSvg.innerHTML,
+        window.getComputedStyle(document.querySelector('.button-depth'))['backgroundColor']
+      );
+    }
 
     // Fix issue #214
     var mutationObserver = new MutationObserver((mutations) => {

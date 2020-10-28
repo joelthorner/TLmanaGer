@@ -122,7 +122,7 @@ export default {
       });
     },
     getReleaseDate(date) {
-      return moment(date).format("MMMM Do YYYY");
+      return moment(date, "DD/MM/YYYY").format("MMMM Do YYYY");
     },
     getTagName(tag) {
       return tag.replace(/^[vV]{1}/, "");

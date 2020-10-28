@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav">
+  <ul class="nav nav-menu">
     <li class="nav-item nav-item-avatar">
       <router-link to="/user/avatar">
         <img
@@ -12,19 +12,21 @@
     </li>
     <li class="nav-item">
       <router-link to="/user/info" :class="customActiveNavItem">
-        <!-- <span class="icon" v-html="icons.shoppingCart"></span> -->
+        <span class="icon" v-html="icons.pen"></span>
         Personal Info
         <div class="rippleJS"></div>
       </router-link>
     </li>
     <li class="nav-item">
       <router-link to="/user/stats" class="nav-link">
+        <span class="icon" v-html="icons.chart"></span>
         Stats
         <div class="rippleJS"></div>
       </router-link>
     </li>
     <li class="nav-item">
       <router-link to="/user/reset" class="nav-link">
+        <span class="icon" v-html="icons.toilet"></span>
         Reset data
         <div class="rippleJS"></div>
       </router-link>
