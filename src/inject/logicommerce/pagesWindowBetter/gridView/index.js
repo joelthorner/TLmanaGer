@@ -43,8 +43,8 @@ class GridView extends LCModifier {
   }
 }
 
-chrome.storage.sync.get(defaults.logicommerce.pagesWindowBetter, (result) => {
-  if (result.actived && result.gridView) {
+chrome.storage.sync.get(defaults, (result) => {
+  if (result.logicommerce.pagesWindowBetter.actived && result.logicommerce.pagesWindowBetter.gridView) {
     var gridView = new GridView('.windowLayout');
     observerLC.register(gridView);
   }
