@@ -22,6 +22,7 @@ body.pagesWindowBetter_betterTreeLevels div.pagesWindowTree div.pagesTreeContain
   height: 20px;
   text-align: center;
   color: #94a6ad;
+  top: 0;
 }
 body.pagesWindowBetter_betterTreeLevels
   div.pagesWindowTree

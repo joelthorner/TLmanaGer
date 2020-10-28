@@ -8,4 +8,6 @@ body.pagesWindowBetter_gridView .pagesTreeContainer {
 body.pagesWindowBetter_gridView div.pagesWindowTree div.pagesTreeContainer div.pagesGroupContainer {
   margin-bottom: 0;
   min-height: 250px;
+  max-height: 550px;
+  overflow: auto;
 }
