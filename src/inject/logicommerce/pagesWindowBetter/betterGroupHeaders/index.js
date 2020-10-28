@@ -156,8 +156,8 @@ class BetterGroupHeaders extends LCModifier {
   }
 }
 
-chrome.storage.sync.get(defaults.logicommerce.pagesWindowBetter, (result) => {
-  if (result.actived && result.betterGroupHeaders) {
+chrome.storage.sync.get(defaults, (result) => {
+  if (result.logicommerce.pagesWindowBetter.actived && result.logicommerce.pagesWindowBetter.betterGroupHeaders) {
     var betterGroupHeaders = new BetterGroupHeaders('.pagesGroupContainer');
     observerLC.register(betterGroupHeaders);
   }
