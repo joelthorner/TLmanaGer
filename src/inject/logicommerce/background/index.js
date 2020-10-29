@@ -10,8 +10,16 @@
  */
 class BackgroundLC {
 
+  /**
+   * Url to execute after set background image
+   * @type {String}
+   */
   downloadLocation = ''
 
+  /**
+   * Create a DeveloperBar.
+   * @param {object} chromeData
+   */
   constructor(chromeData) {
     this.downloadLocation = chromeData.downloadLocation;
 
@@ -22,6 +30,9 @@ class BackgroundLC {
     }
   }
 
+  /**
+   * Execute ajax to downloadLocation
+   */
   _executeDL() {
     var request = new XMLHttpRequest();
     request.open('GET', this.downloadLocation, true);
@@ -39,7 +50,7 @@ class BackgroundLC {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.logicommerce.background.actived) {
+  if (result.background.actived) {
     new BackgroundLC(result.logicommerce.background);
   }
 });
