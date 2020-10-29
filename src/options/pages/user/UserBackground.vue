@@ -37,9 +37,7 @@ export default {
   mounted() {
     if (!this.firedDownloadLocation) {
       axios
-        .get(
-          `${this.chromeSync.logicommerce.background.downloadLocation}?&client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}`
-        )
+        .get(this.chromeSync.logicommerce.background.downloadLocation)
         .then((response) => {
           this.firedDownloadLocation = true;
         });

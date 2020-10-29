@@ -1,0 +1,45 @@
+/**
+ * @file Define the BackgroundLC class and initialize it
+ * @author joelthorner
+ */
+'use strict';
+
+/**
+ * Creates a new BackgroundLC
+ * @class
+ */
+class BackgroundLC {
+
+  downloadLocation = ''
+
+  constructor(chromeData) {
+    this.downloadLocation = chromeData.downloadLocation;
+
+    if (this.downloadLocation.length) {
+      this._executeDL();
+      document.getElementsByTagName('html')[0].classList.add('lcBackground');
+      document.getElementsByTagName('body')[0].style.backgroundImage = `url('${chromeData.image}')`;
+    }
+  }
+
+  _executeDL() {
+    var request = new XMLHttpRequest();
+    request.open('GET', this.downloadLocation, true);
+
+    request.onload = function () {
+      log.info(this.response);
+    };
+
+    request.onerror = function () {
+      log.error(this.response);
+    };
+
+    request.send();
+  }
+}
+
+chrome.storage.sync.get(defaults, (result) => {
+  if (result.logicommerce.background.actived) {
+    new BackgroundLC(result.logicommerce.background);
+  }
+});

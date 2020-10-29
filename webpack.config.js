@@ -6,7 +6,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ExtensionReloader = require('webpack-extension-reloader');
 const { VueLoaderPlugin } = require('vue-loader');
 const { version } = require('./package.json');
-const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv').config({ path: __dirname + '/.env' });
+const DotenvWebpack = require('dotenv-webpack');
 
 const config = {
   mode: process.env.NODE_ENV,
@@ -75,7 +76,7 @@ const config = {
     ],
   },
   plugins: [
-    new Dotenv(),
+    new DotenvWebpack(),
     new webpack.DefinePlugin({
       global: 'window',
     }),
@@ -93,7 +94,21 @@ const config = {
           from: 'data/chromeSync.js',
           to: 'data/chromeSync.js',
           transform: (content) => {
+            // Transform to valid plain js file
             content = content.toString().replace('export default', 'const defaults =');
+
+            // Add unsplash api key if not exists
+            let findDownloadLocation = content.match(/downloadLocation\s?:\s?['"`]https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)['"`]/);
+            if (findDownloadLocation && findDownloadLocation.length) {
+              let line = findDownloadLocation[0];
+              let findApiKey = line.match(new RegExp(process.env.VUE_APP_UNSPLASH_ACCESS_KEY, 'i'));
+              var lastChar = line.substr(line.length - 1);
+
+              if (findApiKey === null)
+                content = content.replace(line, `${line.slice(0, -1)}?client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}${lastChar}`);
+            }
+            // End add unsplash api key if not exists
+
             return content;
           },
         },

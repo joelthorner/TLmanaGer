@@ -1,6 +1,7 @@
 <template>
-  <div class="debug" v-if="debug">
+  <div class="debug" v-if="debug" style="width: 300px">
     <button class="btn btn-secondary" v-on:click="reset">clear storage</button>
+    <pre>{{ chromeSync }}</pre>
   </div>
 </template>
 

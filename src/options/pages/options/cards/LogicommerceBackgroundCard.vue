@@ -339,7 +339,7 @@ export default {
         regular: image.urls.regular,
         userName: image.user.name,
         userLink: image.user.links.html,
-        downloadLocation: image.links.download_location,
+        downloadLocation: `${image.links.download_location}?client_id=${this.clientId}`,
       };
       this.chromeSync.logicommerce.background = {
         ...this.chromeSync.logicommerce.background,
