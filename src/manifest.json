@@ -106,6 +106,24 @@
         "data/chromeSync.js",
         "inject/fluidWebTools/autoForceView/index.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.igd.production/*"
+      ],
+      "exclude_matches": [
+        "*://adm.igd.production/*",
+        "*://fluiddoc.igd.production/*",
+        "*://management.igd.production/*",
+        "*://tlgcommerce-hk.igd.production/*"
+      ],
+      "css": [
+        "inject/fluidWebTools/flushRedisIgdDomain/index.css"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/fluidWebTools/flushRedisIgdDomain/index.js"
+      ]
     }
   ]
 }
