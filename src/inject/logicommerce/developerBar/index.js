@@ -1,12 +1,33 @@
+/**
+ * @file Define the DeveloperBar class and initialize it.
+ * @author joelthorner
+ */
+'use strict';
+
+/**
+ * Creates a new DeveloperBar
+ * @class
+ */
 class DeveloperBar {
 
+  /**
+   * Logicommerce info data from constructor
+   * @type {Object}
+   */
   logiInfo = {};
 
+  /**
+   * Create a DeveloperBar.
+   * @param {LogiInfo} logiInfo
+   */
   constructor(logiInfo) {
     this.logiInfo = logiInfo;
     this._initEnvironment();
   }
 
+  /**
+   * Called in _initEnvironment, add bar html structure.
+   */
   _appendStructure() {
     document.getElementsByTagName('html')[0].classList.add('lcDeveloperBar');
 
@@ -27,17 +48,20 @@ class DeveloperBar {
       </nav>`);
   }
 
+  /**
+   * Initialize bar search system
+   */
   _initSearch() {
     document.getElementById('lcDeveloperBar_search')
       .insertAdjacentHTML('beforeend', `<input id="lcDeveloperBar_search-input" type="search" placeholder="Search something...">`);
 
     document.getElementById('lcDeveloperBar_search-input').addEventListener('keypress', (event) => {
       if (event.key === 13) {
-        // TODO
+        globalSearch(event.target.value);
       }
     });
 
-    let searchInputsSelector = '#lcDeveloperBar_search-input, #desktopSearch, #searchMenu input, [name="criteria"]';
+    let searchInputsSelector = '#lcDeveloperBar_search-input, #desktopSearch input, #searchMenu input, [name="criteria"]';
     let searchInputs = document.querySelectorAll(searchInputsSelector);
 
     document.addEventListener('input', (event) => {
@@ -55,6 +79,9 @@ class DeveloperBar {
     }, false);
   }
 
+  /**
+   * Initialize bar depends LC environment
+   */
   _initEnvironment() {
     if (this.logiInfo.login) {
       document.body.classList.add('lcDeveloperBar_hidden-tlg-window');
@@ -70,6 +97,9 @@ class DeveloperBar {
     }
   }
 
+  /**
+   * Initialize bar if LC is dev open saas
+   */
   _initDevOpenSaas() {
     document.getElementById('SML_osUtils').click();
 
@@ -103,12 +133,18 @@ class DeveloperBar {
     }, 50);
   }
 
+  /**
+   * Initialize bar if LC is production open saas
+   */
   _initProOpenSaas() {
     document.getElementById('lcDeveloperBar_buttons').innerHTML = `
       <input type="button" class="green" value="Repositories" onclick="openOSRepo()">
       <input type="button" class="green" value="Publish" onclick="openOSPublish()">`;
   }
 
+  /**
+   * Change dev open saas buttons text
+   */
   _devOSButtonsWindow() {
     document.querySelector('input[ls*="utilCleanCacheCode"]').value = 'FLUSH!';
     document.querySelector('input[ls*="utilUpdateCacheProducts"]').value = 'Product update';
@@ -118,6 +154,9 @@ class DeveloperBar {
     document.querySelector('input[ls*="utilDownloadProjectCode"]').value = 'Download code';
   }
 
+  /**
+   * Open saas flush button custom event
+   */
   _flushRedisBetter() {
     document.addEventListener('click', (event) => {
       // loop parent nodes from the target to the delegation node
@@ -130,6 +169,10 @@ class DeveloperBar {
     }, false);
   }
 
+  /**
+   * Open saas flush button custom event handler
+   * @param {object} event
+   */
   _flushRedisBetterHandler(event) {
     document.body.classList.add('lcDeveloperBar_hidden-tlg');
     this.value = '...';
