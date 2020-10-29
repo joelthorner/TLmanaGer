@@ -51,7 +51,10 @@ export default {
       gridView: true,  // injectat & opt programada
       betterGroupHeaders: true,  // injectat & opt programada
       betterTreeLevels: true, // injectat & opt programada
-    }
+    },
+    bigControlInputs: {
+      actived: false,
+    },
   },
   fluidWebTools: {
     autoForceView: {

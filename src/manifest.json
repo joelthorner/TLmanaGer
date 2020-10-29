@@ -76,14 +76,16 @@
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js",
         "inject/logicommerce/developerBar/index.js",
         "inject/logicommerce/autoIncrVersionPublish/index.js",
-        "inject/logicommerce/background/index.js"
+        "inject/logicommerce/background/index.js",
+        "inject/logicommerce/bigControlInputs/index.js"
       ],
       "css": [
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",
         "inject/logicommerce/pagesWindowBetter/gridView/index.css",
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.css",
         "inject/logicommerce/developerBar/index.css",
-        "inject/logicommerce/background/index.css"
+        "inject/logicommerce/background/index.css",
+        "inject/logicommerce/bigControlInputs/index.css"
       ]
     }
   ]

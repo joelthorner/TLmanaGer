@@ -29,14 +29,22 @@
         @savedOptions="reciveShowSavedOptions"
         @savedHelpKey="reciveHelpKey"
       ></pages-window-better-card>
-      <beyond-theme-card
+      <default-card
+        :chromeSync="chromeSync"
+        title="Big control inputs"
+        scope="logicommerce"
+        itemKey="bigControlInputs"
+        @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
+      ></default-card>
+      <!-- <beyond-theme-card
         :chromeSync="chromeSync"
         title="Beyond theme"
         scope="logicommerce"
         itemKey="beyondTheme"
         @savedOptions="reciveShowSavedOptions"
         @savedHelpKey="reciveHelpKey"
-      ></beyond-theme-card>
+      ></beyond-theme-card> -->
       <logicommerce-background-card
         :chromeSync="chromeSync"
         title="Logicommerce background"
