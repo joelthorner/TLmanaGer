@@ -87,6 +87,25 @@
         "inject/logicommerce/background/index.css",
         "inject/logicommerce/bigControlInputs/index.css"
       ]
+    },
+    {
+      "matches": [
+        "*://*.logicommerce.net/*",
+        "*://*.logicommerce.hk/*",
+        "*://*.logicommerce.cn/*",
+        "*://*.igd.production/*",
+        "*://*.igd.pre.production/*"
+      ],
+      "exclude_matches": [
+        "*://8x-hk.logicommerce.net/*",
+        "*://8x-os.logicommerce.net/*",
+        "*://8x.logicommerce.net/*",
+        "*://8x.logicommerce.cn/*"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/fluidWebTools/autoForceView/index.js"
+      ]
     }
   ]
 }
