@@ -74,7 +74,8 @@
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.js",
         "inject/logicommerce/pagesWindowBetter/gridView/index.js",
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js",
-        "inject/logicommerce/developerBar/index.js"
+        "inject/logicommerce/developerBar/index.js",
+        "inject/logicommerce/autoIncrVersionPublish/index.js"
       ],
       "css": [
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",

@@ -7,7 +7,6 @@
 /**
  * Creates a new GridView
  * @class
- * @classdesc Create a GridView to be extended
  */
 class GridView extends LCModifier {
 
