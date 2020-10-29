@@ -56,9 +56,8 @@ class DeveloperBar {
       .insertAdjacentHTML('beforeend', `<input id="lcDeveloperBar_search-input" type="search" placeholder="Search something...">`);
 
     document.getElementById('lcDeveloperBar_search-input').addEventListener('keypress', (event) => {
-      if (event.key === 13) {
-        globalSearch(event.target.value);
-      }
+      if (event.key === 'Enter')
+        this.executeTagScript(`globalSearch("${event.target.value}");`);
     });
 
     let searchInputsSelector = '#lcDeveloperBar_search-input, #desktopSearch input, #searchMenu input, [name="criteria"]';
@@ -118,12 +117,7 @@ class DeveloperBar {
           window.classList.add('lcDeveloperBar_real_window');
           container.append(window);
 
-          var tagString = `<script>window.windows.windows = [];</script>`;
-          var range = document.createRange();
-          range.selectNode(document.getElementsByTagName('body')[0]);
-          var documentFragment = range.createContextualFragment(tagString);
-          document.body.appendChild(documentFragment);
-
+          this.executeTagScript(`window.windows.windows = [];`);
           document.querySelector('#taskBar .taskMenuLink').remove();
 
           this._devOSButtonsWindow();
@@ -131,6 +125,18 @@ class DeveloperBar {
         }
       }
     }, 50);
+  }
+
+  /**
+   * Append script and execute-it into body
+   * @param {string} scriptString
+   */
+  executeTagScript(scriptString) {
+    var range = document.createRange();
+    range.selectNode(document.getElementsByTagName('body')[0]);
+
+    var documentFragment = range.createContextualFragment(`<script>${scriptString}</script>`);
+    document.body.appendChild(documentFragment);
   }
 
   /**
