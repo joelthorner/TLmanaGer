@@ -7,7 +7,6 @@
 /**
  * Creates a new BetterGroupHeaders
  * @class
- * @classdesc Create a BetterGroupHeaders to be extended
  */
 class BetterGroupHeaders extends LCModifier {
 

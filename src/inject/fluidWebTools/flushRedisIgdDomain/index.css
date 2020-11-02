@@ -1,0 +1,21 @@
+html.flushRedisIgdDomain .flushRedisIgdDomain_shortcut {
+  position: fixed !important;
+  z-index: 999999999 !important;
+  top: 0;
+  left: 0;
+  width: 116px !important;
+  height: 34px !important;
+  overflow: hidden;
+  opacity: 0;
+}
+
+html.flushRedisIgdDomain .flushRedisIgdDomain_shortcut.init {
+  opacity: 1;
+}
+
+html.flushRedisIgdDomain .flushRedisIgdDomain_shortcut .flushRedisIgdDomain_iframe {
+  width: 300px !important;
+  height: 120px !important;
+  -webkit-transform: translate(-152px, -69px) !important;
+  transform: translate(-152px, -69px) !important;
+}

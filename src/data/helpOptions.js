@@ -19,6 +19,10 @@ export default {
       </a>
       <p>En el login d'un client d'un Logicommerce amb el sistema de publicació de codi Opensaas, apareix un selector d'entorn, aquetsa opció ho transforma en <buttons> per accedir-hi mes ràpid.</p>`,
   },
+  bigControlInputs: {
+    title: '',
+    content: ``,
+  },
   pagesWindowBetter: {
     title: '',
     content: ``,

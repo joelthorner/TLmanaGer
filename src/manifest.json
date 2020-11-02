@@ -74,13 +74,55 @@
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.js",
         "inject/logicommerce/pagesWindowBetter/gridView/index.js",
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js",
-        "inject/logicommerce/developerBar/index.js"
+        "inject/logicommerce/developerBar/index.js",
+        "inject/logicommerce/autoIncrVersionPublish/index.js",
+        "inject/logicommerce/background/index.js",
+        "inject/logicommerce/bigControlInputs/index.js"
       ],
       "css": [
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",
         "inject/logicommerce/pagesWindowBetter/gridView/index.css",
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.css",
-        "inject/logicommerce/developerBar/index.css"
+        "inject/logicommerce/developerBar/index.css",
+        "inject/logicommerce/background/index.css",
+        "inject/logicommerce/bigControlInputs/index.css"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.logicommerce.net/*",
+        "*://*.logicommerce.hk/*",
+        "*://*.logicommerce.cn/*",
+        "*://*.igd.production/*",
+        "*://*.igd.pre.production/*"
+      ],
+      "exclude_matches": [
+        "*://8x-hk.logicommerce.net/*",
+        "*://8x-os.logicommerce.net/*",
+        "*://8x.logicommerce.net/*",
+        "*://8x.logicommerce.cn/*"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/fluidWebTools/autoForceView/index.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.igd.production/*"
+      ],
+      "exclude_matches": [
+        "*://adm.igd.production/*",
+        "*://fluiddoc.igd.production/*",
+        "*://management.igd.production/*",
+        "*://tlgcommerce-hk.igd.production/*"
+      ],
+      "css": [
+        "inject/fluidWebTools/flushRedisIgdDomain/index.css"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/fluidWebTools/flushRedisIgdDomain/index.js"
       ]
     }
   ]
