@@ -59,7 +59,7 @@
 
 <script>
 import DefaultCard from "@options/pages/options/cards/DefaultCard";
-import BeyondThemeCard from "@options/pages/options/cards/BeyondThemeCard";
+// import BeyondThemeCard from "@options/pages/options/cards/BeyondThemeCard";
 import LogicommerceBackgroundCard from "@options/pages/options/cards/LogicommerceBackgroundCard";
 import PagesWindowBetterCard from "@options/pages/options/cards/PagesWindowBetterCard";
 
@@ -67,7 +67,7 @@ export default {
   name: "TabLogicommerce",
   components: {
     DefaultCard,
-    BeyondThemeCard,
+    // BeyondThemeCard,
     LogicommerceBackgroundCard,
     PagesWindowBetterCard,
   },

@@ -38,8 +38,8 @@ class AutoIncrVersionPublish extends LCModifier {
 
     if (versions && versions.length) {
       let data = JSON.parse(versions[0].getAttribute('data'));
-      let versionStrPart = this._getVersionStringPart(data);
-      let versionNumPart = this._getVersionNumberPart(data);
+      let versionStrPart = this._getPartByRegexp(data, /^\D+/g, 'v');
+      let versionNumPart = this._getPartByRegexp(data, /\.?(\d\.?){3,}$/g, '1.0.0');
       let versionNumberSplit = versionNumPart.split('.');
 
       if (versionNumberSplit.length) {
@@ -50,31 +50,19 @@ class AutoIncrVersionPublish extends LCModifier {
   }
 
   /**
-   * Return string part of version ('v', 'V', ...)
+   * Find a value into data.id els return default
    * @param {object} data - Dataset of last publication row of publications window
+   * @param {RegExp} regexp - Regexp to find
+   * @param {string} defaultValue
    * @return {string}
    */
-  _getVersionStringPart(data) {
-    let stringPartMatch = data.id.match(/^\D+/g);
+  _getPartByRegexp(data, regexp, defaultValue) {
+    let match = data.id.match(regexp);
 
-    if (stringPartMatch) {
-      return stringPartMatch[0];
+    if (match) {
+      return match[0];
     }
-    return 'v';
-  }
-
-  /**
-   * Return number part of version ('2.3.1', ...)
-   * @param {object} data - Dataset of last publication row of publications window
-   * @return {string}
-   */
-  _getVersionNumberPart(data) {
-    let numberPartMatch = data.id.match(/\.?(\d\.?){3,}$/g)
-
-    if (numberPartMatch) {
-      return numberPartMatch[0];
-    }
-    return '1.0.0';
+    return defaultValue;
   }
 
   /**
