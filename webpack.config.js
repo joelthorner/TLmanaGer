@@ -99,7 +99,7 @@ const config = {
             content = content.toString().replace('export default', 'const defaults =');
 
             // Add unsplash api key if not exists
-            let findDownloadLocation = content.match(/downloadLocation\s?:\s?['"`]https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)['"`]/);
+            let findDownloadLocation = content.match(/downloadLocation\s?:\s?['"`]https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&/=]*)['"`]/);
             if (findDownloadLocation && findDownloadLocation.length) {
               let line = findDownloadLocation[0];
               let findApiKey = line.match(new RegExp(process.env.VUE_APP_UNSPLASH_ACCESS_KEY, 'i'));

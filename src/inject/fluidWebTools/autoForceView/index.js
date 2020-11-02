@@ -8,14 +8,12 @@
 * Set a cookie
 * @param {String} name - The name of the cookie to be set
 * @param {String|Number} value - The value of the cookie
-* @param {Object} [options] - supports any cookie option like path, expires, maxAge and domain. [MDN Cookie Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+* @param {Number} days - Days of cookie
 */
-function setCookie(name, value, options = {}) {
-  document.cookie = `${name}=${encodeURIComponent(value)}${Object.keys(options)
-    .reduce((acc, key) => {
-      return acc + `;${key.replace(/([A-Z])/g, $1 => '-' + $1.toLowerCase())}=${options[key]}`;
-    }, '')
-    }`;
+function setCookie(name, value, days) {
+  var d = new Date;
+  d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+  document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
 };
 
 chrome.storage.sync.get(defaults, (result) => {
@@ -27,8 +25,8 @@ chrome.storage.sync.get(defaults, (result) => {
         if (!location.href.toUpperCase().includes('FORCEVIEW')) {
           var param = location.href.includes('?') ? '&' : '?';
           window.location = window.location.href + param + 'forceview=1';
-          setCookie('FORCEVIEW', '1');
-          setCookie('forceview', '1');
+          setCookie('FORCEVIEW', '1', 7);
+          setCookie('forceview', '1', 7);
         }
       }
     }
