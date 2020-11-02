@@ -23,8 +23,8 @@ chrome.storage.sync.get(defaults, (result) => {
     var rgx = /https?:\/\/(www)?\.?[0-9]{2,5}(\.logicommerce(\.net|\.cn|\.hk)|\.igd\.(pre\.)?production)\/?/;
 
     if (location.href.match(rgx)) {
-      if (!document.cookie.toUpperCase().includes('FORCEVIEW=1') && !document.cookie.toUpperCase().includes('forceview=1')) {
-        if (!location.href.toUpperCase().includes('FORCEVIEW') && !location.href.toUpperCase().includes('forceview')) {
+      if (!document.cookie.toUpperCase().includes('FORCEVIEW=1')) {
+        if (!location.href.toUpperCase().includes('FORCEVIEW')) {
           var param = location.href.includes('?') ? '&' : '?';
           window.location = window.location.href + param + 'forceview=1';
           setCookie('FORCEVIEW', '1');

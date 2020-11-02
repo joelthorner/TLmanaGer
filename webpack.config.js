@@ -6,7 +6,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ExtensionReloader = require('webpack-extension-reloader');
 const { VueLoaderPlugin } = require('vue-loader');
 const { version } = require('./package.json');
-const Dotenv = require('dotenv').config({ path: __dirname + '/.env' });
+
+require('dotenv').config({ path: __dirname + '/.env' });
 const DotenvWebpack = require('dotenv-webpack');
 
 const config = {
