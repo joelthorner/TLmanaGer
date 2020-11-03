@@ -77,7 +77,8 @@
         "inject/logicommerce/developerBar/index.js",
         "inject/logicommerce/autoIncrVersionPublish/index.js",
         "inject/logicommerce/background/index.js",
-        "inject/logicommerce/bigControlInputs/index.js"
+        "inject/logicommerce/bigControlInputs/index.js",
+        "inject/logicommerce/themeColors/index.js"
       ],
       "css": [
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",

@@ -87,35 +87,42 @@ const config = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'icons', to: 'icons' },
-        { from: 'img', to: 'img' },
-
-        { from: 'inject', to: 'inject' },
+        {
+          from: 'icons',
+          to: 'icons',
+        },
+        {
+          from: 'img',
+          to: 'img',
+        },
+        {
+          from: 'inject',
+          to: 'inject',
+          transform: (content) => {
+            // If no exists replace app unshplash api key
+            content = content.toString().replace('VUE_APP_UNSPLASH_ACCESS_KEY', process.env.VUE_APP_UNSPLASH_ACCESS_KEY);
+            return content;
+          },
+        },
         {
           from: 'data/chromeSync.js',
           to: 'data/chromeSync.js',
           transform: (content) => {
             // Transform to valid plain js file
             content = content.toString().replace('export default', 'const defaults =');
-
-            // Add unsplash api key if not exists
-            let findDownloadLocation = content.match(/downloadLocation\s?:\s?['"`]https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&/=]*)['"`]/);
-            if (findDownloadLocation && findDownloadLocation.length) {
-              let line = findDownloadLocation[0];
-              let findApiKey = line.match(new RegExp(process.env.VUE_APP_UNSPLASH_ACCESS_KEY, 'i'));
-              var lastChar = line.substr(line.length - 1);
-
-              if (findApiKey === null)
-                content = content.replace(line, `${line.slice(0, -1)}?client_id=${process.env.VUE_APP_UNSPLASH_ACCESS_KEY}${lastChar}`);
-            }
-            // End add unsplash api key if not exists
-
             return content;
           },
         },
-
-        { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
-        { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
+        {
+          from: 'popup/popup.html',
+          to: 'popup/popup.html',
+          transform: transformHtml
+        },
+        {
+          from: 'options/options.html',
+          to: 'options/options.html',
+          transform: transformHtml
+        },
         {
           from: 'manifest.json',
           to: 'manifest.json',

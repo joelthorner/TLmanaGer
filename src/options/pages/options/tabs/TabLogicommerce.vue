@@ -29,6 +29,14 @@
         @savedOptions="reciveShowSavedOptions"
         @savedHelpKey="reciveHelpKey"
       ></pages-window-better-card>
+      <logicommerce-theme-colors-card
+        :chromeSync="chromeSync"
+        title="Logicommerce 8x theme color"
+        scope="logicommerce"
+        itemKey="themeColors"
+        @savedOptions="reciveShowSavedOptions"
+        @savedHelpKey="reciveHelpKey"
+      ></logicommerce-theme-colors-card>
       <default-card
         :chromeSync="chromeSync"
         title="Big control inputs"
@@ -62,6 +70,7 @@ import DefaultCard from "@options/pages/options/cards/DefaultCard";
 // import BeyondThemeCard from "@options/pages/options/cards/BeyondThemeCard";
 import LogicommerceBackgroundCard from "@options/pages/options/cards/LogicommerceBackgroundCard";
 import PagesWindowBetterCard from "@options/pages/options/cards/PagesWindowBetterCard";
+import LogicommerceThemeColorsCard from "@options/pages/options/cards/LogicommerceThemeColorsCard";
 
 export default {
   name: "TabLogicommerce",
@@ -70,6 +79,7 @@ export default {
     // BeyondThemeCard,
     LogicommerceBackgroundCard,
     PagesWindowBetterCard,
+    LogicommerceThemeColorsCard,
   },
   props: {
     chromeSync: Object,
