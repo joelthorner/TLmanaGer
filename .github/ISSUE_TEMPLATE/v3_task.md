@@ -1,3 +1,12 @@
+---
+name: v3 task
+about: 
+title: 'Task for v3 version'
+labels: v3
+assignees: @joelthorner
+
+---
+
 ### Todo list:
 - [ ] Refactor file to vanilla js & drop dependences
 - [ ] Documentation
