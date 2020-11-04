@@ -21,16 +21,6 @@
     </div>
 
     <div class="card-body">
-      <div class="d-flex sub-option-line">
-        Only highlight incident tickets
-        <b-form-checkbox
-          v-model="chromeSync[scope][itemKey].onlyIncidents"
-          :name="checkboxNameOnlyIncidents"
-          switch
-          v-on:change="changeOnlyIncidents($event, scope, itemKey)"
-        ></b-form-checkbox>
-      </div>
-
       <div class="colors-grid">
         <div
           class="color-block"
@@ -41,8 +31,8 @@
             :for="inputColorName(color)"
             class="color-button-bg"
             :style="{
-              backgroundColor: chromeSync[scope][itemKey].colors[color].bg,
-              color: chromeSync[scope][itemKey].colors[color].text,
+              backgroundColor: chromeSync[scope][itemKey].colors[color],
+              color: '#FFF',
             }"
           >
             {{ color }}
@@ -53,9 +43,8 @@
             :id="inputColorName(color)"
             :name="inputColorName(color)"
             type="color"
-            v-model="chromeSync[scope][itemKey].colors[color].bg"
+            v-model="chromeSync[scope][itemKey].colors[color]"
             v-on:change="debouncedChangeColor($event, scope, itemKey, color)"
-            v-on:update="updateColor($event, scope, itemKey, color)"
           ></b-form-input>
         </div>
       </div>
@@ -66,20 +55,14 @@
 <script>
 import _ from "lodash";
 import optionCard from "@mixins/optionCard";
-import lightOrDark from "@mixins/utils/lightOrDark";
 
 export default {
-  name: "ZendeskTicketPriorityHighlightColorsCard",
-  mixins: [optionCard, lightOrDark],
+  name: "LogicommerceThemeColorsCard",
+  mixins: [optionCard],
   data() {
     return {
-      orderColors: ["low", "normal", "high", "urgent"],
+      orderColors: ["main", "secondary"],
     };
-  },
-  computed: {
-    checkboxNameOnlyIncidents() {
-      return `switch-${this.scope}-${this.itemKey}-onlyIncidents`;
-    },
   },
   created: function () {
     this.debouncedChangeColor = _.debounce(this.changeColor, 1000);
@@ -88,17 +71,9 @@ export default {
     inputColorName(key) {
       return `color-${this.scope}-${this.itemKey}-${key}`;
     },
-    changeOnlyIncidents(checked, scope, option) {
-      this.chromeSync[scope][option].onlyIncidents = checked;
-      this.$emit("savedOptions", true);
-    },
     changeColor(value, scope, option, color) {
-      this.chromeSync[scope][option].colors[color].bg = value;
+      this.chromeSync[scope][option].colors[color] = value;
       this.$emit("savedOptions", true);
-    },
-    updateColor(value, scope, option, color) {
-      this.chromeSync[scope][option].colors[color].text =
-        this.lightOrDark(value) === "light" ? "#222222" : "#ffffff";
     },
   },
 };

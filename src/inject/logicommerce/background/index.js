@@ -24,6 +24,9 @@ class BackgroundLC {
     this.downloadLocation = chromeData.downloadLocation;
 
     if (this.downloadLocation.length) {
+      if (this.downloadLocation.match('client_id') === null) {
+        this.downloadLocation += '?client_id=VUE_APP_UNSPLASH_ACCESS_KEY';
+      }
       this._executeDL();
       document.getElementsByTagName('html')[0].classList.add('lcBackground');
       document.getElementsByTagName('body')[0].style.backgroundImage = `url('${chromeData.image}')`;

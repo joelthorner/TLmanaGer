@@ -753,7 +753,6 @@ main {
     li {
       color: $text-1;
       font-size: rem(14px);
-      font-weight: 500;
       margin-top: 6px;
     }
   }
@@ -1176,6 +1175,7 @@ main {
   }
   .custom-control {
     cursor: pointer;
+    margin-right: -6px;
   }
 
   .card-body {
@@ -1227,7 +1227,7 @@ main {
 }
 .card.card-option {
   &.card-option-lc-bg,
-  &.card-zen-tkt-colors,
+  &.card-colors-selectpicker,
   &.card-pages-window-better,
   &.card-option-beyond-theme {
     &:not(.active) .card-body {
@@ -1364,7 +1364,7 @@ main {
   }
 }
 
-.card-zen-tkt-colors {
+.card-colors-selectpicker {
   .colors-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

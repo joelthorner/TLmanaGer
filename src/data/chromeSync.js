@@ -1,9 +1,9 @@
 export default {
   zendesk: {
-    replyTicketConfirmPopup: {
+    replyTicketConfirmPopup: { // TODO
       actived: true,
     },
-    ticketPriorityHighlightColors: {
+    ticketPriorityHighlightColors: { // TODO
       actived: false,
       onlyIncidents: true,
       colors: {
@@ -27,11 +27,11 @@ export default {
     },
   },
   logicommerce: {
-    beyondTheme: {
+    beyondTheme: { // doing
       actived: false,
       theme: 'default',
     },
-    background: {
+    background: { // done
       actived: true,
       image: 'https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjM0NjEwfQ',
       thumb: 'https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjM0NjEwfQ',
@@ -40,35 +40,42 @@ export default {
       userLink: 'https://unsplash.com/@brandon_lam',
       downloadLocation: 'https://api.unsplash.com/photos/Dd_7xDCuuUo/download',
     },
-    developerBar: {
+    developerBar: { // done
       actived: true,
     },
-    sandboxLoginButtons: {
+    sandboxLoginButtons: { // TODO
       actived: true,
     },
-    pagesWindowBetter: { // injectat & opt programada
+    pagesWindowBetter: { // done
       actived: true,
-      gridView: true,  // injectat & opt programada
-      betterGroupHeaders: true,  // injectat & opt programada
-      betterTreeLevels: true, // injectat & opt programada
+      gridView: true, // done
+      betterGroupHeaders: true, // done
+      betterTreeLevels: true, // done
     },
-    bigControlInputs: {
+    bigControlInputs: { // done
       actived: false,
+    },
+    themeColors: {
+      actived: false,
+      colors: {
+        main: '#bfcc00',
+        secondary: '#2c8da3',
+      },
     },
   },
   fluidWebTools: {
-    autoForceView: {
+    autoForceView: { // done
       actived: true,
     },
-    flushRedisIgdDomain: {
+    flushRedisIgdDomain: { // untested, in progress
       actived: true,
     },
-    dumpAutoScroll: {
+    dumpAutoScroll: { // TODO
       actived: true,
     }
   },
   others: {
-    getFontWesomeIcons: { // injectat & opt programada
+    getFontWesomeIcons: { // done
       actived: true,
     },
   },
@@ -95,7 +102,6 @@ export default {
     zendeskActiveOptsCount: 0,
     totalActiveOptsCount: 0,
     openChangelogCount: 0,
-    // syncGoogleAccount: false,
     clickedIssuesAnchor: false,
     clickedGithubAnchor: false,
     clickedLegalsAnchor: false,
