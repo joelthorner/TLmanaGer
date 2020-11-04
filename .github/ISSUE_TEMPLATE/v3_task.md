@@ -1,7 +1,7 @@
 ---
 name: v3 task
-about: 
-title: 'Task for v3 version'
+about: Task for v3 version
+title: ''
 labels: v3
 assignees: @joelthorner
 
