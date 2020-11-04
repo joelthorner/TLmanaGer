@@ -27,7 +27,7 @@ export default {
     },
   },
   logicommerce: {
-    beyondTheme: { // no ready
+    beyondTheme: { // doing
       actived: false,
       theme: 'default',
     },
