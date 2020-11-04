@@ -76,6 +76,7 @@
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js",
         "inject/logicommerce/developerBar/index.js",
         "inject/logicommerce/autoIncrVersionPublish/index.js",
+        "inject/logicommerce/ticketRefLinks/index.js",
         "inject/logicommerce/background/index.js",
         "inject/logicommerce/bigControlInputs/index.js",
         "inject/logicommerce/themeColors/index.js"
