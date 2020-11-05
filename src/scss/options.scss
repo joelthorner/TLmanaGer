@@ -1294,9 +1294,14 @@ main {
   }
 }
 
+@media (min-width: 880px) {
+  #options-help-modal .modal-dialog {
+    max-width: 806px;
+  }
+}
+
 .help-content {
   img {
-    margin-top: rem(15px);
     margin-bottom: rem(15px);
   }
 }

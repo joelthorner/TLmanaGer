@@ -20,8 +20,14 @@ export default {
       <p>En el login d'un client d'un Logicommerce amb el sistema de publicació de codi Opensaas, apareix un selector d'entorn, aquetsa opció ho transforma en <buttons> per accedir-hi mes ràpid.</p>`,
   },
   bigControlInputs: {
-    title: '',
-    content: ``,
+    title: 'Big control inputs',
+    content: `
+      Tots els inputs checkbox, radiobuttons i switches es fan més grans per usabilitat. Útil en tasques repetitives d'emplenament d'informació.
+      <br><br>Abans:
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/bigControlInputs-1.jpg")}">
+      Desprès:
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/bigControlInputs-2.jpg")}">
+    `,
   },
   pagesWindowBetter: {
     title: '',
@@ -34,7 +40,7 @@ export default {
   lcBackground: {
     title: 'Logicommerce background',
     content: `
-      Personalització del fons del Logicommerce, es pot triar cualsevol foto buscant en l'enorme llibrería d'Unsplash.
+      Personalització del fons del Logicommerce, es pot triar qualsevol foto buscant en l'enorme llibreria d'Unsplash.<br><br>
       <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/lcBackground.jpg")}">
     `,
   },
