@@ -32,8 +32,11 @@ export default {
     content: ``,
   },
   lcBackground: {
-    title: '',
-    content: ``,
+    title: 'Logicommerce background',
+    content: `
+      Personalització del fons del Logicommerce, es pot triar cualsevol foto buscant en l'enorme llibrería d'Unsplash.
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/lcBackground.jpg")}">
+    `,
   },
   autoForceView: {
     title: "Pages grid view",

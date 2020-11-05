@@ -1,3 +1,6 @@
+/**
+ * Vue mixin for src\options\pages\options\cards\xxxxxx.vue
+ */
 import icons from "@/data/icons";
 
 export default {

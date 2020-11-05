@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     hideModal() {
-      this.$refs[this.thisModalId].hide();
+      this.$refs['options-help-modal'].hide();
     },
   },
   computed: {

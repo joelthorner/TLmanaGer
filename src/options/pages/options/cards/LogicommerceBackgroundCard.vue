@@ -9,7 +9,7 @@
         <b-button
           variant="link"
           v-html="iconInfo"
-          @click="openModalClick(itemKey)"
+          @click="openModalClick('lcBackground')"
         ></b-button>
       </div>
       <b-form-checkbox
