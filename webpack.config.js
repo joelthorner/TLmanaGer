@@ -102,6 +102,7 @@ const config = {
             // Replace wildcards of .env
             content = content.toString().replace('VUE_APP_UNSPLASH_ACCESS_KEY', process.env.VUE_APP_UNSPLASH_ACCESS_KEY);
             content = content.toString().replace('ZENDESK_DOMAIN_BASE_URL', process.env.ZENDESK_DOMAIN_BASE_URL);
+            content = content.toString().replace('JIRA_DOMAIN_BASE_URL', process.env.JIRA_DOMAIN_BASE_URL);
             return content;
           },
         },
