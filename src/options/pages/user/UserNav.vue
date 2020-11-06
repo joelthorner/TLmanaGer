@@ -8,6 +8,7 @@
           v-b-tooltip.hover
           title="Change avatar"
         />
+        <div class="rippleJS"></div>
       </router-link>
     </li>
     <li class="nav-item">

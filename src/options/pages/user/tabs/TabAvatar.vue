@@ -7,7 +7,12 @@
       nav-wrapper-class="col-xs-3 col-xl-2"
       content-class="col-xs-9 col-xl-10"
     >
-      <b-tab title="Animation" active>
+      <b-tab active>
+        <template #title>
+          Animation
+          <div class="rippleJS"></div>
+        </template>
+
         <div class="grid-avatars">
           <div
             class="avatar-item"
@@ -19,10 +24,16 @@
               :alt="getAlt(avatar)"
               v-on:click="selectAvatar(avatar)"
             />
+            <div class="rippleJS"></div>
           </div>
         </div>
       </b-tab>
-      <b-tab title="Videogames">
+      <b-tab>
+        <template #title>
+          Videogames
+          <div class="rippleJS"></div>
+        </template>
+
         <div class="grid-avatars">
           <div
             class="avatar-item"
@@ -34,10 +45,16 @@
               :alt="getAlt(avatar)"
               v-on:click="selectAvatar(avatar)"
             />
+            <div class="rippleJS"></div>
           </div>
         </div>
       </b-tab>
-      <b-tab title="Movies">
+      <b-tab>
+        <template #title>
+          Movies
+          <div class="rippleJS"></div>
+        </template>
+
         <div class="grid-avatars">
           <div
             class="avatar-item"
@@ -49,11 +66,17 @@
               :alt="getAlt(avatar)"
               v-on:click="selectAvatar(avatar)"
             />
+            <div class="rippleJS"></div>
           </div>
         </div>
       </b-tab>
-      <b-tab title="Memes"
-        ><div class="grid-avatars">
+      <b-tab>
+        <template #title>
+          Memes
+          <div class="rippleJS"></div>
+        </template>
+
+        <div class="grid-avatars">
           <div
             class="avatar-item"
             v-for="(avatar, index) in avatars.memes"
@@ -64,10 +87,17 @@
               :alt="getAlt(avatar)"
               v-on:click="selectAvatar(avatar)"
             />
-          </div></div
-      ></b-tab>
-      <b-tab title="Other"
-        ><div class="grid-avatars">
+            <div class="rippleJS"></div>
+          </div>
+        </div>
+      </b-tab>
+      <b-tab>
+        <template #title>
+          Other
+          <div class="rippleJS"></div>
+        </template>
+
+        <div class="grid-avatars">
           <div
             class="avatar-item"
             v-for="(avatar, index) in avatars.other"
@@ -78,8 +108,10 @@
               :alt="getAlt(avatar)"
               v-on:click="selectAvatar(avatar)"
             />
-          </div></div
-      ></b-tab>
+            <div class="rippleJS"></div>
+          </div>
+        </div>
+      </b-tab>
     </b-tabs>
   </div>
 </template>
