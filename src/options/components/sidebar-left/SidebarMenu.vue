@@ -13,7 +13,14 @@
 </template>
 
 <script>
-import icons from "@/data/icons";
+import {
+  home as homeIcon,
+  settings as settingsIcon,
+  user as userIcon,
+  achievements as achievementsIcon,
+  changelog as changelogIcon,
+  archive as archiveIcon,
+} from "@/data/icons";
 
 export default {
   name: "SidebarMenu",
@@ -22,37 +29,37 @@ export default {
       menuItems: [
         {
           title: "Home",
-          icon: icons.home,
+          icon: homeIcon,
           route: "/",
           exact: true,
         },
         {
           title: "Options",
-          icon: icons.settings,
+          icon: settingsIcon,
           route: "/options/logicommerce",
           exact: false,
         },
         {
           title: "User",
-          icon: icons.user,
+          icon: userIcon,
           route: "/user",
           exact: false,
         },
         {
           title: "Achievements",
-          icon: icons.achievements,
+          icon: achievementsIcon,
           route: "/achievements",
           exact: false,
         },
         {
           title: "Changelog",
-          icon: icons.changelog,
+          icon: changelogIcon,
           route: "/changelog",
           exact: false,
         },
         {
           title: "Blog",
-          icon: icons.archive,
+          icon: archiveIcon,
           route: "/blog",
           exact: false,
         },

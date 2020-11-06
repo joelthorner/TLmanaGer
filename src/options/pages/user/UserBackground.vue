@@ -18,7 +18,7 @@
     </div>
 
     <router-link to="/options/logicommerce" class="btn btn-edit-cover">
-      <span class="icon" v-html="icons.pen"></span>
+      <span class="icon" v-html="penIcon"></span>
       <span class="text">Edit cover</span>
       <div class="rippleJS"></div>
     </router-link>
@@ -27,7 +27,7 @@
 
 <script>
 import axios from "axios";
-import icons from "@/data/icons";
+import { pen as penIcon } from "@/data/icons";
 
 export default {
   name: "UserBackground",
@@ -36,16 +36,20 @@ export default {
   },
   mounted() {
     if (!this.firedDownloadLocation) {
-      axios
-        .get(this.chromeSync.logicommerce.background.downloadLocation)
-        .then((response) => {
-          this.firedDownloadLocation = true;
-        });
+      let url = this.chromeSync.logicommerce.background.downloadLocation;
+
+      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+      }
+
+      axios.get(url).then((response) => {
+        this.firedDownloadLocation = true;
+      });
     }
   },
   data() {
     return {
-      icons,
+      penIcon,
       firedDownloadLocation: false,
     };
   },

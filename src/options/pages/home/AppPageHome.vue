@@ -67,8 +67,13 @@ export default {
   },
   mounted() {
     if (!this.firedDownloadLocation) {
+      let url = this.chromeSync.logicommerce.background.downloadLocation;
+
+      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+      }
       axios
-        .get(this.chromeSync.logicommerce.background.downloadLocation)
+        .get(url)
         .then((response) => {
           this.firedDownloadLocation = true;
         });

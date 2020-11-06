@@ -46,7 +46,7 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import icons from "@/data/icons";
+import { changelog as changelogIcon } from "@/data/icons";
 import watchArchievements from "@mixins/watchArchievements";
 
 import MainTitle from "@options/components/main/MainTitle";
@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       releases: [],
-      icon: icons.changelog,
+      icon: changelogIcon,
       firedApiGithub: false,
     };
   },

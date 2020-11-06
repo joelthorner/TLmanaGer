@@ -1,9 +1,12 @@
-import icons from "@/data/icons";
+/**
+ * Vue mixin for src\options\pages\options\cards\xxxxxx.vue
+ */
+import { info as infoIcon } from "@/data/icons";
 
 export default {
   data() {
     return {
-      iconInfo: icons.info,
+      infoIcon,
     };
   },
   props: {

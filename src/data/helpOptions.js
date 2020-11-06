@@ -20,20 +20,41 @@ export default {
       <p>En el login d'un client d'un Logicommerce amb el sistema de publicació de codi Opensaas, apareix un selector d'entorn, aquetsa opció ho transforma en <buttons> per accedir-hi mes ràpid.</p>`,
   },
   bigControlInputs: {
-    title: '',
-    content: ``,
+    title: 'Big control inputs',
+    content: `
+      Tots els inputs checkbox, radiobuttons i switches es fan més grans per usabilitat. Útil en tasques repetitives d'emplenament d'informació.
+      <br><br><b>Abans</b>:
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/bigControlInputs-1.jpg")}">
+      <b>Desprès</b>:
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/bigControlInputs-2.jpg")}">
+    `,
   },
   pagesWindowBetter: {
-    title: '',
-    content: ``,
+    title: 'Pages window better',
+    content: `
+      Dins de la millora de la finestra de pàgines de Logicommerce, tenim 3 opcions, totes combinables entre elles o alhora:
+      <br><br><b>Grid view</b>, que disposa tots els grups de pàgines en graella:
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/pagesWindowBetter-gridView.jpg")}">
+      <br><br><b>Better group headers.</b><br>
+      Quan al nom del grup s'afegeix [Lorem] Aquest text es converteix en un badge. Depenent de la paraula, 'home', 'menu', 'header', 'footer', etc. canviarà de color.<br>
+      Si en qualsevol lloc del nom del grup de pàgines hi ha el text 'mobile' o 'desktop' canviarà la icona del principi.
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/pagesWindowBetter-bgh.jpg")}">
+      <br><br><b>Better tree pages indentation</b><br>
+      Augmenta la indentació els diferents nivells de pàgines i afegeix una icona amb el nivell de subpàgines.<br>
+      També marca amb una icona diferent les pàgines desactivades.
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/pagesWindowBetter-btpi.jpg")}">
+    `,
   },
   beyondTheme: {
     title: '',
     content: ``,
   },
   lcBackground: {
-    title: '',
-    content: ``,
+    title: 'Logicommerce background',
+    content: `
+      Personalització del fons del Logicommerce, es pot triar qualsevol foto buscant en l'enorme llibreria d'Unsplash.<br><br>
+      <img class="img-thumbnail" src="${chrome.extension.getURL("img/help/lcBackground.jpg")}">
+    `,
   },
   autoForceView: {
     title: "Pages grid view",
