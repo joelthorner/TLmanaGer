@@ -1523,3 +1523,23 @@ main {
     }
   }
 }
+
+.card-stats {
+  max-width: 600px;
+}
+
+.table-stats {
+  margin-bottom: 0;
+  td {
+    vertical-align: middle;
+    &:nth-child(1) {
+      width: 38px;
+    }
+    &:nth-child(2) {
+      max-width: 300px;
+    }
+    svg {
+      width: 16px;
+    }
+  }
+}

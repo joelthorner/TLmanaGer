@@ -36,11 +36,15 @@ export default {
   },
   mounted() {
     if (!this.firedDownloadLocation) {
-      axios
-        .get(this.chromeSync.logicommerce.background.downloadLocation)
-        .then((response) => {
-          this.firedDownloadLocation = true;
-        });
+      let url = this.chromeSync.logicommerce.background.downloadLocation;
+
+      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+      }
+
+      axios.get(url).then((response) => {
+        this.firedDownloadLocation = true;
+      });
     }
   },
   data() {
