@@ -14,9 +14,10 @@ assignees: joelthorner
 - [ ] Help info (vue)
 
 ### Improvements:
-- [ ] Lorem ipsum
+- [ ] None
 
 ### New functionalities:
-- [ ] Lorem ipsum
+- [ ] None
 
 ### Other:
+- [ ] None
