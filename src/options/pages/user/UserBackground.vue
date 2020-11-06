@@ -18,7 +18,7 @@
     </div>
 
     <router-link to="/options/logicommerce" class="btn btn-edit-cover">
-      <span class="icon" v-html="icons.pen"></span>
+      <span class="icon" v-html="penIcon"></span>
       <span class="text">Edit cover</span>
       <div class="rippleJS"></div>
     </router-link>
@@ -27,7 +27,7 @@
 
 <script>
 import axios from "axios";
-import icons from "@/data/icons";
+import { pen as penIcon } from "@/data/icons";
 
 export default {
   name: "UserBackground",
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      icons,
+      penIcon,
       firedDownloadLocation: false,
     };
   },

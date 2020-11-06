@@ -12,21 +12,21 @@
     </li>
     <li class="nav-item">
       <router-link to="/user/info" :class="customActiveNavItem">
-        <span class="icon" v-html="icons.pen"></span>
+        <span class="icon" v-html="penIcon"></span>
         Personal Info
         <div class="rippleJS"></div>
       </router-link>
     </li>
     <li class="nav-item">
       <router-link to="/user/stats" class="nav-link">
-        <span class="icon" v-html="icons.chart"></span>
+        <span class="icon" v-html="chartIcon"></span>
         Stats
         <div class="rippleJS"></div>
       </router-link>
     </li>
     <li class="nav-item">
       <router-link to="/user/reset" class="nav-link">
-        <span class="icon" v-html="icons.toilet"></span>
+        <span class="icon" v-html="toiletPaperIcon"></span>
         Reset data
         <div class="rippleJS"></div>
       </router-link>
@@ -35,7 +35,11 @@
 </template>
 
 <script>
-import icons from "@/data/icons";
+import {
+  pen as penIcon,
+  chart as chartIcon,
+  toiletPaper as toiletPaperIcon,
+} from "@/data/icons";
 
 export default {
   name: "UserNav",
@@ -44,7 +48,9 @@ export default {
   },
   data() {
     return {
-      icons,
+      penIcon,
+      chartIcon,
+      toiletPaperIcon,
     };
   },
   computed: {

@@ -19,7 +19,22 @@
 
 <script>
 import getArchievementsMixin from "@mixins/getArchievements";
-import icons from "@/data/icons";
+import {
+  award as awardIcon,
+  unsplash as unsplashIcon,
+  zendesk as zendeskIcon,
+  toggleOn as toggleOnIcon,
+  codeBranch as codeBranchIcon,
+  bug as bugIcon,
+  github as githubIcon,
+  file as fileIcon,
+  functionMath as functionMathIcon,
+  userFill as userFillIcon,
+  download as downloadIcon,
+  toilet as toiletIcon,
+  mouse as mouseIcon,
+  chevronCircleDown as chevronCircleDownIcon,
+} from "@/data/icons";
 
 export default {
   name: "TabStats",
@@ -36,74 +51,74 @@ export default {
     getItems() {
       return [
         {
-          icon: icons.award,
+          icon: awardIcon,
           name: "Achievements earned",
           value: `${this.currentAchievements}/${
             this.totalAchievements
           } (${Number(this.earnedPercent.toFixed(1))}%)`,
         },
         {
-          icon: icons.unsplash,
+          icon: unsplashIcon,
           name: "Times background changed",
           value: this.chromeSync.metrics.timesBgChanged,
         },
         {
-          icon: icons.zendesk,
+          icon: zendeskIcon,
           name: "Zendesk active options",
           value: this.chromeSync.metrics.zendeskActiveOptsCount,
         },
         {
-          icon: icons.toggleOn,
+          icon: toggleOnIcon,
           name: "Total active options",
           value: this.chromeSync.metrics.totalActiveOptsCount,
         },
         {
-          icon: icons.codeBranch,
+          icon: codeBranchIcon,
           name: "Times open changelog",
           value: this.chromeSync.metrics.openChangelogCount,
         },
         {
-          icon: icons.bug,
+          icon: bugIcon,
           name: "Clicked issues anchor",
-          value: this.chromeSync.metrics.clickedIssuesAnchor ? 'Yuup!' : 'Nope',
+          value: this.chromeSync.metrics.clickedIssuesAnchor ? "Yuup!" : "Nope",
         },
         {
-          icon: icons.github,
+          icon: githubIcon,
           name: "Clicked github anchor",
-          value: this.chromeSync.metrics.clickedGithubAnchor ? 'Yuup!' : 'Nope',
+          value: this.chromeSync.metrics.clickedGithubAnchor ? "Yuup!" : "Nope",
         },
         {
-          icon: icons.file,
+          icon: fileIcon,
           name: "Clicked legals anchor",
-          value: this.chromeSync.metrics.clickedLegalsAnchor ? 'Yuup!' : 'Nope',
+          value: this.chromeSync.metrics.clickedLegalsAnchor ? "Yuup!" : "Nope",
         },
         {
-          icon: icons.function,
+          icon: functionMathIcon,
           name: "Times clicked popup action",
           value: this.chromeSync.metrics.clickedActionCount,
         },
         {
-          icon: icons.userFill,
+          icon: userFillIcon,
           name: "Changed default avatar",
-          value: this.chromeSync.metrics.changedAvatarOpt ? 'Yuup!' : 'Nope',
+          value: this.chromeSync.metrics.changedAvatarOpt ? "Yuup!" : "Nope",
         },
         {
-          icon: icons.download,
+          icon: downloadIcon,
           name: "Extension installed lol",
-          value: this.chromeSync.metrics.extensionInstalled ? 'Yuup!' : 'Nope',
+          value: this.chromeSync.metrics.extensionInstalled ? "Yuup!" : "Nope",
         },
         {
-          icon: icons.toilet,
+          icon: toiletIcon,
           name: "Clicked reset data",
-          value: this.chromeSync.metrics.clickedResetData ? 'Yuup!' : 'Nope',
+          value: this.chromeSync.metrics.clickedResetData ? "Yuup!" : "Nope",
         },
         {
-          icon: icons.mouse,
+          icon: mouseIcon,
           name: "General extension clicks",
           value: this.chromeSync.metrics.clickOnExtensionCount,
         },
         {
-          icon: icons.chevronCircleDown,
+          icon: chevronCircleDownIcon,
           name: "Times open popup",
           value: this.chromeSync.metrics.openPopupCounter,
         },

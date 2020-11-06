@@ -19,7 +19,7 @@ import SidebarMenu from "@options/components/sidebar-left/SidebarMenu";
 import SidebarFooterBlock from "@options/components/sidebar-left/SidebarFooterBlock";
 import SidebarCopy from "@options/components/sidebar-left/SidebarCopy";
 
-import icons from "@/data/icons";
+import { github as githubIcon, bug as bugIcon } from "@/data/icons";
 
 export default {
   name: "AppSiderbar",
@@ -41,13 +41,13 @@ export default {
             {
               id: "project",
               title: "Project",
-              icon: icons.github,
+              icon: githubIcon,
               route: "https://github.com/joelthorner/TLmanaGer",
             },
             {
               id: "issues",
               title: "Issues",
-              icon: icons.bug,
+              icon: bugIcon,
               route: "https://github.com/joelthorner/TLmanaGer/issues",
             },
           ],

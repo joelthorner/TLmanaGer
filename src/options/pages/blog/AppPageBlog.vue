@@ -99,7 +99,7 @@ import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight";
 import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock";
 
 import posts from "@/data/posts";
-import icons from "@/data/icons";
+import { times as timesIcon } from "@/data/icons";
 
 export default {
   name: "AppPageBlog",
@@ -116,7 +116,7 @@ export default {
       posts,
       checkedYears: [],
       checkedTag: "",
-      iconClose: icons.times,
+      iconClose: timesIcon,
     };
   },
   computed: {

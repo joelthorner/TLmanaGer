@@ -68,7 +68,7 @@
                     chromeSync.logicommerce.background.userName
                   )
                 "
-                v-html="icons.zoom"
+                v-html="zoomIcon"
               ></a>
               <div
                 class="embed-responsive embed-responsive-16by9"
@@ -147,16 +147,16 @@
             v-if="showPagination"
           >
             <template v-slot:first-text>
-              <span class="icon" v-html="icons.caretDoubleLeft"></span>
+              <span class="icon" v-html="caretDoubleLeftIcon"></span>
             </template>
             <template v-slot:prev-text>
-              <span class="icon" v-html="icons.caretLeft"></span>
+              <span class="icon" v-html="caretLeftIcon"></span>
             </template>
             <template v-slot:next-text>
-              <span class="icon" v-html="icons.caretRight"></span>
+              <span class="icon" v-html="caretRightIcon"></span>
             </template>
             <template v-slot:last-text>
-              <span class="icon" v-html="icons.caretDoubleRight"></span>
+              <span class="icon" v-html="caretDoubleRightIcon"></span>
             </template>
           </b-pagination>
         </div>
@@ -176,7 +176,13 @@ import _ from "lodash";
 import optionCard from "@mixins/optionCard";
 import FullImageModal from "@options/components/FullImageModal";
 import axios from "axios";
-import icons from "@/data/icons";
+import {
+  zoom as zoomIcon,
+  caretDoubleLeft as caretDoubleLeftIcon,
+  caretLeft as caretLeftIcon,
+  caretRight as caretRightIcon,
+  caretDoubleRight as caretDoubleRightIcon,
+} from "@/data/icons";
 
 const MODE_COLLECTION = "collection";
 const MODE_SEARCH = "search";
@@ -189,7 +195,12 @@ export default {
   },
   data() {
     return {
-      icons,
+      zoomIcon,
+      caretDoubleLeftIcon,
+      caretLeftIcon,
+      caretRightIcon,
+      caretDoubleRightIcon,
+
       endPoint: "https://api.unsplash.com",
       searchCriteria: "",
       randomImages: [],
