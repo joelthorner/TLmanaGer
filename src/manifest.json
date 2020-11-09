@@ -126,6 +126,15 @@
         "data/chromeSync.js",
         "inject/fluidWebTools/flushRedisIgdDomain/index.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.sandbox.logicommerce.net/*",
+        "*://*.igd.production/*"
+      ],
+      "js": [
+        "inject/fluidWebTools/dumpAutoScroll/index.js"
+      ]
     }
   ]
 }

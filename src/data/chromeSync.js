@@ -70,7 +70,7 @@ export default {
     flushRedisIgdDomain: { // untested, in progress
       actived: true,
     },
-    dumpAutoScroll: { // TODO
+    dumpAutoScroll: { // done
       actived: true,
     }
   },
