@@ -8,7 +8,7 @@
         {{ title }}
         <b-button
           variant="link"
-          v-html="iconInfo"
+          v-html="infoIcon"
           @click="openModalClick(itemKey)"
         ></b-button>
       </div>
