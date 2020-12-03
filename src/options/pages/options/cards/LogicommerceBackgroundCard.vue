@@ -8,7 +8,7 @@
         {{ title }}
         <b-button
           variant="link"
-          v-html="iconInfo"
+          v-html="infoIcon"
           @click="openModalClick('lcBackground')"
         ></b-button>
       </div>
@@ -109,7 +109,7 @@
                 v-on:click.prevent="
                   setZoomData(image.urls.regular, image.user.name)
                 "
-                v-html="icons.zoom"
+                v-html="zoomIcon"
               ></a>
               <a
                 href="#"

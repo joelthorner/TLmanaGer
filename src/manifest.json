@@ -126,6 +126,27 @@
         "data/chromeSync.js",
         "inject/fluidWebTools/flushRedisIgdDomain/index.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.sandbox.logicommerce.net/*",
+        "*://*.igd.production/*"
+      ],
+      "js": [
+        "inject/fluidWebTools/dumpAutoScroll/index.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://8x-os.logicommerce.net/login/*",
+        "*://8x.logicommerce.net/login/*"
+      ],
+      "js": [
+        "inject/logicommerce/sandboxLoginButtons/index.js"
+      ],
+      "css": [
+        "inject/logicommerce/sandboxLoginButtons/index.css"
+      ]
     }
   ]
 }

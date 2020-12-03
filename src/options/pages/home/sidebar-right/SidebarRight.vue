@@ -28,7 +28,7 @@
 <script>
 import SidebarRightResumeItem from "@options/pages/home/sidebar-right/SidebarRightResumeItem";
 import SidebarRightContributors from "@options/pages/home/sidebar-right/SidebarRightContributors";
-import { caretRight as caretRightIcons } from "@/data/icons";
+import { caretSimpleRight as caretSimpleRightIcon } from "@/data/icons";
 import getArchievementsMixin from "@mixins/getArchievements";
 
 export default {
@@ -39,7 +39,7 @@ export default {
   mixins: [getArchievementsMixin],
   data: () => {
     return {
-      caret: caretRightIcons,
+      caret: caretSimpleRightIcon,
     };
   },
   components: {
