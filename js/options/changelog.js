@@ -1,5 +1,10 @@
 const CHANGELOG = [
 	{
+		version: 'v2.5.1', date: '04 Dec 2020',
+		lines: [
+			'NEW New "get FontWesome icon", vanilla js script, beta from 3.x, with new features and fix #214',
+		]
+	}, {
 		version: 'v2.5.0', date: '09 Nov 2019',
 		lines: [
 			'CHANGED Update dependencies sweetalert2, popper js and node snackbar',

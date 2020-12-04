@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.5.0",
+	"version": "2.5.1",
 	"manifest_version": 2,
 	"author": "joelthorner",
 	"description": "__MSG_appDesc__",
@@ -50,13 +50,16 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"*://fontawesome.com/icons/*"
-			],
+        "*://fontawesome.com/*"
+      ],
 			"exclude_matches": [
 				"*://fontawesome.com/icons?d=gallery"
 			],
 			"js": [
 				"js/inject/steal-font-awesome.js"
+			],
+			"css": [
+				"css/inject/steal-font-awesome.css"
 			]
 		},
 		{
