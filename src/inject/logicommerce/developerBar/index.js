@@ -182,6 +182,7 @@ class DeveloperBar {
   _flushRedisBetterHandler(event) {
     document.body.classList.add('lcDeveloperBar_hidden-tlg');
     this.value = '...';
+    this.disabled = true;
 
     setTimeout(() => {
       document.querySelector('.messageBox .rightButtons input').click();
@@ -193,6 +194,7 @@ class DeveloperBar {
         setTimeout(() => {
           document.body.classList.remove('lcDeveloperBar_hidden-tlg');
           this.value = 'FLUSH!';
+          this.disabled = false;
         }, 650);
       }, 1000);
     }, 300);

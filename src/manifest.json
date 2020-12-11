@@ -142,6 +142,7 @@
         "*://8x.logicommerce.net/login/*"
       ],
       "js": [
+        "inject/ObserverLC.js",
         "inject/logicommerce/sandboxLoginButtons/index.js"
       ],
       "css": [
