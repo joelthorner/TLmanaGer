@@ -1,0 +1,205 @@
+.blog-pagination {
+  padding-top: 60px;
+  justify-content: center;
+  max-width: 1000px;
+}
+
+.blog-container {
+  padding: rem(60px) rem(60px);
+
+  .inner-text {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .filtering-lbl {
+    margin-left: 6px;
+    .lbl {
+      margin-right: 6px;
+      color: $title-2;
+    }
+  }
+  .badge {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    position: relative;
+    padding-right: calc(18px + 0.4em);
+
+    .btn {
+      border: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 18px;
+      svg {
+        width: 12px;
+        height: 12px;
+        fill: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+  }
+  .badge + .badge {
+    margin-left: 4px;
+  }
+}
+
+#timeline {
+  position: relative;
+  max-width: 1000px;
+  padding-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 25px;
+    height: 100%;
+    width: 4px;
+    background: $background-title;
+  }
+  @media only screen and (min-width: 1400px) {
+    &::before {
+      left: 50%;
+      margin-left: -2px;
+      top: 0;
+    }
+    &.page-1::before {
+      top: 185px;
+      height: calc(100% - 185px);
+    }
+  }
+}
+
+.timeline-block {
+  position: relative;
+  margin: rem(45px) 0;
+
+  @media only screen and (min-width: 1400px) {
+    margin: rem(40px) 0;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .page-last &:last-child .timeline-img::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10000px;
+    background: #f0f6fb;
+    top: 100%;
+    left: 10px;
+  }
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .timeline-img {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $title-1;
+
+    @media only screen and (min-width: 1400px) {
+      width: 30px;
+      height: 30px;
+      left: 50%;
+      margin-left: -15px;
+      margin-top: 8px;
+      // Force Hardware Acceleration in WebKit
+      -webkit-transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+    }
+  }
+
+  .timeline-content {
+    position: relative;
+    margin-left: 80px;
+    z-index: 2;
+
+    @media only screen and (min-width: 1400px) {
+      margin-left: 0;
+      width: calc(50% - 70px);
+    }
+  }
+
+  .date {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 16px;
+    color: $title-2;
+    margin-top: 20px;
+
+    @media only screen and (min-width: 1400px) {
+      position: absolute;
+      width: 100%;
+      left: calc(100% + 120px);
+      top: 18px;
+      margin-top: 0;
+    }
+
+    span {
+      display: block;
+      color: $title-1;
+      font-size: 13px;
+    }
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: 100%;
+    height: 14px;
+    width: 14px;
+    clip-path: polygon(100% 0%, 40% 50%, 100% 100%);
+
+    @media only screen and (min-width: 1400px) {
+      top: 49%;
+      left: 100%;
+      clip-path: polygon(0% 100%, 0% 0%, 60% 50%);
+    }
+  }
+
+  @media only screen and (min-width: 1400px) {
+    &:not(:first-child) {
+      margin-top: -8%;
+    }
+    .date,
+    .timeline-img {
+      top: 44%;
+    }
+    &:nth-child(even) .timeline-content {
+      float: right;
+    }
+    &:nth-child(even) .timeline-content .card::before {
+      left: auto;
+      right: 100%;
+      clip-path: polygon(100% 0%, 40% 50%, 100% 100%);
+    }
+    &:nth-child(even) .timeline-content .date {
+      left: auto;
+      right: calc(100% + 120px);
+      text-align: right;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-bind:class="[earned ? 'active' : '', 'card']"
+    v-bind:class="[earned ? 'active' : '', 'card', 'card-achievement']"
     data-tilt
     data-tilt-reverse="true"
     data-tilt-max="15"

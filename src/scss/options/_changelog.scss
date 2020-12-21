@@ -1,0 +1,69 @@
+.release-block:first-child svg {
+  fill: $logo-blue-end;
+}
+
+.release-block {
+  margin-bottom: 30px;
+  position: relative;
+
+  .card-body {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 2;
+  }
+  header {
+    margin-bottom: 16px;
+    float: left;
+    width: 180px;
+
+    .version {
+      width: 136px;
+      font-size: 20px;
+      padding-left: 15px;
+      font-weight: bold;
+      line-height: 26px;
+      font-family: "Roboto", sans-serif;
+    }
+    .date {
+      margin-top: 5px;
+    }
+  }
+  ul {
+    float: left;
+    width: calc(100% - 180px);
+    li {
+      color: $text-1;
+      font-size: rem(14px);
+      margin-top: 6px;
+    }
+  }
+  .badge {
+    width: 68px;
+    font-size: 10px;
+    padding: 0.35em 0.4em;
+    color: #fff;
+    margin-right: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .badge-new {
+    background-color: #28a745;
+  }
+  .badge-fixed,
+  .badge-improved {
+    background-color: #007bff;
+  }
+  .badge-changed {
+    background-color: #6f42c1;
+  }
+  .badge-removed {
+    background-color: #d73a49;
+  }
+  .icon {
+    width: 20px;
+    svg {
+      fill: $title-2;
+    }
+  }
+}

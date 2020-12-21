@@ -1,0 +1,59 @@
+.card {
+  border-color: rgba(0, 0, 0, 0.1);
+  border: 0;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.14);
+
+  &[data-tilt]:hover {
+    .card-body {
+      transform: translateZ(20px);
+    }
+  }
+
+  a {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .card-title {
+    .icon {
+      width: 16px;
+      height: 22px;
+      margin-right: 8px;
+      fill: currentColor;
+    }
+  }
+
+  .card-body {
+    padding: rem(20px);
+    display: flex;
+    flex-direction: column;
+
+    .card-title {
+      font-size: rem(18px);
+      font-weight: 500;
+      color: $title-2;
+      margin-bottom: 0;
+    }
+    .card-text:not(.card-text-foot) {
+      color: $text-1;
+      font-size: rem(14px);
+      margin-top: rem(15px);
+      line-height: 1.7;
+
+      .text-muted {
+        line-height: initial;
+        display: block;
+      }
+    }
+    .card-text-foot {
+      margin-top: auto;
+    }
+  }
+  .read-more {
+    font-weight: bold;
+    margin-top: 5px;
+  }
+}

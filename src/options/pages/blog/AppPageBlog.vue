@@ -1,70 +1,71 @@
 <template>
   <div class="page-content">
-    <div id="blog-content">
-      <main-content containerClass="blog-container">
-        <div class="inner-text" v-if="anyFilter">
-          Filtering by
-          <span v-if="checkedYears.length" class="filtering-lbl">
-            <span class="lbl">Year:</span>
-            <span
-              class="badge badge-primary"
-              v-for="year in checkedYears"
-              v-bind:key="year"
-            >
-              {{ year }}
-              <button
-                class="btn btn-link"
-                @click="removeYearFilterItem(year)"
-                v-html="iconClose"
-              ></button>
-            </span>
-          </span>
-          <span v-if="checkedTag.length" class="filtering-lbl">
-            <span class="lbl">Tag:</span>
-            <span class="badge badge-primary">
-              {{ checkedTag | capitalize }}
-              <button
-                class="btn btn-link"
-                @click="checkedTag = ''"
-                v-html="iconClose"
-              ></button>
-            </span>
-          </span>
-        </div>
+    <main-title title="Blog"></main-title>
 
-        <section id="timeline" :class="timelinePageClass">
-          <div
-            class="timeline-block"
-            v-for="post in perPagePosts"
-            v-bind:key="post.id"
+    <main-content containerClass="blog-container">
+      <div class="inner-text" v-if="anyFilter">
+        Filtering by
+        <span v-if="checkedYears.length" class="filtering-lbl">
+          <span class="lbl">Year:</span>
+          <span
+            class="badge badge-primary"
+            v-for="year in checkedYears"
+            v-bind:key="year"
           >
-            <div class="timeline-img"></div>
+            {{ year }}
+            <button
+              class="btn btn-link"
+              @click="removeYearFilterItem(year)"
+              v-html="iconClose"
+            ></button>
+          </span>
+        </span>
+        <span v-if="checkedTag.length" class="filtering-lbl">
+          <span class="lbl">Tag:</span>
+          <span class="badge badge-primary">
+            {{ checkedTag | capitalize }}
+            <button
+              class="btn btn-link"
+              @click="checkedTag = ''"
+              v-html="iconClose"
+            ></button>
+          </span>
+        </span>
+      </div>
 
-            <div class="timeline-content">
-              <post-card :post="post"></post-card>
-              <span class="date">
-                {{ date(post.date) }}
-                <span>{{ dateAgo(post.date) }}</span>
-              </span>
-            </div>
+      <section id="timeline" :class="timelinePageClass">
+        <div
+          class="timeline-block"
+          v-for="post in perPagePosts"
+          v-bind:key="post.id"
+        >
+          <div class="timeline-img"></div>
+
+          <div class="timeline-content">
+            <post-card :post="post"></post-card>
+            <span class="date">
+              {{ date(post.date) }}
+              <span>{{ dateAgo(post.date) }}</span>
+            </span>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="paginationRows"
-          :per-page="perPage"
-          @change="toTop"
-          prev-text="Older"
-          next-text="Newer"
-          :hide-goto-end-buttons="true"
-          pills
-          v-if="posts.length > perPage"
-        ></b-pagination>
-      </main-content>
-    </div>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="paginationRows"
+        :per-page="perPage"
+        @change="toTop"
+        prev-text="Older"
+        next-text="Newer"
+        :hide-goto-end-buttons="true"
+        pills
+        v-if="posts.length > perPage"
+        class="blog-pagination"
+      ></b-pagination>
+    </main-content>
 
-    <sidebar-right>
+    <!-- <sidebar-right>
       <sidebar-right-block title="ARCHIVE" classContainer="blog-widget">
         <b-form-group>
           <b-form-checkbox-group
@@ -86,7 +87,7 @@
           ></b-form-radio-group>
         </b-form-group>
       </sidebar-right-block>
-    </sidebar-right>
+    </sidebar-right> -->
   </div>
 </template>
 
@@ -95,8 +96,8 @@ import moment from "moment";
 
 import MainContent from "@options/components/main/MainContent";
 import PostCard from "@options/components/PostCard";
-import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight";
-import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock";
+// import SidebarRight from "@options/pages/blog/sidebar-right/SidebarRight";
+// import SidebarRightBlock from "@options/pages/blog/sidebar-right/SidebarRightBlock";
 
 import posts from "@/data/posts";
 import { times as timesIcon } from "@/data/icons";
@@ -106,8 +107,8 @@ export default {
   components: {
     MainContent,
     PostCard,
-    SidebarRight,
-    SidebarRightBlock,
+    // SidebarRight,
+    // SidebarRightBlock,
   },
   data: () => {
     return {

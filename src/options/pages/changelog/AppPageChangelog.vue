@@ -1,7 +1,7 @@
 <template>
   <div class="page-content">
     <div id="changelog-content">
-      <main-title title="CHANGELOG"></main-title>
+      <main-title title="Changelog"></main-title>
 
       <main-content containerClass="changelog-container">
         <div class="inner-text">Release notes for TLmanaGer</div>
