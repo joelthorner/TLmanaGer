@@ -1,0 +1,22 @@
+.dynamic-grid {
+  position: relative;
+}
+
+.dynamic-grid-enter {
+  transform: scale(0.5) translatey(-50%);
+  opacity: 0;
+}
+
+.dynamic-grid-leave-to {
+  transform: translatey(25%);
+  opacity: 0;
+}
+
+.dynamic-grid-leave-active {
+  position: absolute;
+  z-index: -1;
+}
+
+.dynamic-grid-item {
+  transition: all 0.35s ease-in-out;
+}

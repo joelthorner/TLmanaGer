@@ -8,7 +8,9 @@
     position: relative;
     font-size: 14px;
     font-weight: 500;
-    color: $text-1;
+    &:not(.active) {
+      color: $text-1;
+    }
     height: 48px;
     display: flex;
     align-items: center;

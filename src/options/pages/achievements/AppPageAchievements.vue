@@ -12,14 +12,13 @@
         >
       </div>
 
-      <div class="achievements-grid d-flex">
+      <div class="achievements-grid">
         <achievements-card
           v-for="(achievementItem, key) in achievementsData"
           v-bind:key="key"
           :achievement="achievementItem"
           :earned="isEarned(key)"
         ></achievements-card>
-        <div class="card empty" v-for="index in 10" :key="index"></div>
       </div>
     </main-content>
   </div>

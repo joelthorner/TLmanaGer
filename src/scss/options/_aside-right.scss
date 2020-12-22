@@ -17,7 +17,7 @@
 
   .resume {
     position: relative;
-    height: $menu-height + $logo-cont-h - 53px;
+    height: $menu-height + $logo-cont-h;
     background: linear-gradient(0deg, rgba($logo-blue-end, 1) 0%, rgba($logo-blue-start, 1) 100%);
     z-index: 2;
     backdrop-filter: blur(4px);

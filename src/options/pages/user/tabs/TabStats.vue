@@ -1,23 +1,17 @@
 <template>
   <div class="tab">
-    <div class="card card-stats">
-      <div class="card-body">
-        <b-table
-          :items="getItems"
-          thead-class="d-none"
-          borderless
-          table-class="table-stats"
-        >
-          <template #cell(icon)="data">
-            <span v-html="data.value"></span>
-          </template>
-        </b-table>
-      </div>
+    <div class="user-stats-grid">
+      <user-stat-data-card
+        v-for="statData in getItems"
+        v-bind:key="statData.name"
+        :statData="statData"
+      ></user-stat-data-card>
     </div>
   </div>
 </template>
 
 <script>
+import UserStatDataCard from "@options/pages/user/UserStatDataCard";
 import getArchievementsMixin from "@mixins/getArchievements";
 import {
   award as awardIcon,
@@ -39,13 +33,11 @@ import {
 export default {
   name: "TabStats",
   mixins: [getArchievementsMixin],
+  components: {
+    UserStatDataCard,
+  },
   props: {
     chromeSync: Object,
-  },
-  data() {
-    return {
-      icons,
-    };
   },
   computed: {
     getItems() {

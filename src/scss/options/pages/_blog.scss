@@ -1,0 +1,12 @@
+.grid-posts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+
+  .dynamic-grid-item {
+    width: 33.33333%;
+    float: left;
+    padding: 0 15px 30px;
+    display: flex;
+  }
+}

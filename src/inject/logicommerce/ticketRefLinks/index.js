@@ -73,7 +73,7 @@ class TicketRefLinks extends LCModifier {
       const element = elements[i];
 
       if (element.dataset.parsedTickets != 'true') {
-        let tickets = element.innerHTML.match(/(#\d{5,6}|(PRJ|MKTG)-\d{4,5})/g);
+        let tickets = element.innerHTML.match(/(#\d{5,6}|(PRJ|MKTG|RD)-\d{4,5})/g);
         element.innerHTML = this.getLineHtml(element.innerHTML, tickets);
         element.dataset.parsedTickets = 'true';
       }

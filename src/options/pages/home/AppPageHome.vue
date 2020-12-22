@@ -2,7 +2,7 @@
   <div class="page-content">
     <background-widget></background-widget>
 
-    <main-title title="Last blog posts"></main-title>
+    <main-title title="Last news. Tinnonanino tirori!"></main-title>
 
     <main-content containerClass="home-last-posts">
       <last-posts></last-posts>

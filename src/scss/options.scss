@@ -72,7 +72,9 @@ body,
 @import "options/aside-left";
 @import "options/aside-right";
 @import "options/main-content";
-@import "options/home";
-@import "options/achievements";
-@import "options/changelog";
-@import "options/blog";
+
+@import "options/pages/home";
+@import "options/pages/achievements";
+@import "options/pages/changelog";
+@import "options/pages/blog";
+@import "options/pages/user";

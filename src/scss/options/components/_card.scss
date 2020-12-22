@@ -17,12 +17,45 @@
     text-decoration: none;
   }
 
-  .card-title {
-    .icon {
-      width: 16px;
-      height: 22px;
-      margin-right: 8px;
-      fill: currentColor;
+  .card-header {
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 0 20px;
+
+    .card-title {
+      font-weight: 500;
+      font-size: 16px;
+      color: $title-2;
+      position: relative;
+      margin: 0;
+      display: flex;
+      align-items: center;
+
+      button {
+        box-shadow: none;
+      }
+      
+      .icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        display: block;
+        
+        svg {
+          width: 100%;
+          height: 100%;
+          fill: currentColor;
+          display: block;
+        }
+      }
+    }
+
+    & + .card-body {
+      border-top: 1px solid #e1e9f0;
     }
   }
 
@@ -30,6 +63,7 @@
     padding: rem(20px);
     display: flex;
     flex-direction: column;
+    color: $text-2;
 
     .card-title {
       font-size: rem(18px);

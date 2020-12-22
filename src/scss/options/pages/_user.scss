@@ -1,0 +1,269 @@
+.nav-menu-user {
+  position: relative;
+  padding-left: 200px;
+}
+
+.user-background {
+  position: relative;
+
+  .image {
+    height: calc(#{$menu-height} + #{$logo-cont-h});
+    background-size: cover;
+    background-position: center;
+  }
+  .credits {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    color: #fff;
+    font-size: 12px;
+    z-index: 1;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
+
+.btn-edit-cover {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  color: #fff;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  fill: currentColor;
+  display: flex;
+  gap: 10px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.nav-item-avatar,
+.avatar-card-img {
+  position: relative;
+
+  .icon.hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($logo-blue-end, 0.5);
+    border-radius: 50%;
+    fill: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 350ms ease;
+
+    svg {
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+
+  &:hover .icon.hover {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.nav-item-avatar {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  bottom: 18px;
+  left: 60px;
+
+  a {
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    height: 100%;
+
+    img {
+      display: block;
+      max-width: 100%;
+      transform: scale(1.01);
+    }
+  }
+}
+
+.card-user-info {
+  label {
+    color: $text-1;
+  }
+}
+
+.avatar-nav {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+}
+
+.grid-avatars {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+
+  .dynamic-grid-item {
+    width: 200px;
+    float: left;
+    padding: 0 10px 20px;
+    display: flex;
+  }
+
+  .avatar-item {
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  }
+}
+
+.card-user-info-avatar {
+  .card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .avatar-name {
+    float: left;
+    width: 50%;
+
+    > strong,
+    > span {
+      display: block;
+    }
+    .btn {
+      margin-top: 5px;
+    }
+  }
+
+  .avatar-card-img {
+    float: left;
+    width: 50%;
+
+    a {
+      position: static;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      .icon.hover {
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.user-stats-grid {
+  gap: rem(30px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
+
+  .card-stat-data {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    .hexagon {
+      margin-left: auto;
+      margin-right: auto;
+      width: rem(110px);
+      height: rem(110px);
+      margin-bottom: rem(15px);
+      position: relative;
+      @include hexagon;
+      background-color: $logo-blue-end;
+
+      svg {
+        height: 60px;
+        width: 60px;
+        fill: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+  }
+}
+
+.reset-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .inner {
+    width: 100%;
+    height: 350px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .title {
+    margin: 20px 0 10px;
+  }
+
+  .btn {
+    margin-top: 30px;
+  }
+}
+
+#modal-restore .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .emoji {
+    font-size: 30px;
+  }
+  .text-muted {
+    margin-bottom: 10px;
+  }
+}

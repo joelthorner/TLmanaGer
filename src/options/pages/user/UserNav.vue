@@ -1,13 +1,13 @@
 <template>
-  <ul class="nav nav-menu">
+  <ul class="nav nav-menu-user">
     <li class="nav-item nav-item-avatar">
-      <router-link to="/user/avatar">
+      <router-link to="/user/avatar" title="Change avatar">
         <img
           :src="chromeSync.profile.avatar.value"
           alt="User avatar"
           v-b-tooltip.hover
-          title="Change avatar"
         />
+        <span class="icon hover" v-html="penIcon"></span>
         <div class="rippleJS"></div>
       </router-link>
     </li>

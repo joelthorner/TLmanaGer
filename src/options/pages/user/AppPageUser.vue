@@ -1,27 +1,25 @@
 <template>
   <div class="page-content">
-    <div id="user-content">
-      <user-background :chromeSync="chromeSync"></user-background>
-      <user-nav :chromeSync="chromeSync"></user-nav>
+    <user-background :chromeSync="chromeSync"></user-background>
+    <user-nav :chromeSync="chromeSync"></user-nav>
 
-      <main-content containerClass="user-container">
-        <keep-alive>
-          <router-view
-            :key="$route.fullPath"
-            :chromeSync="chromeSync"
-            @savedOptionsParent="savechromeSync"
-          ></router-view>
-        </keep-alive>
-      </main-content>
+    <main-content containerClass="user-container">
+      <keep-alive>
+        <router-view
+          :key="$route.fullPath"
+          :chromeSync="chromeSync"
+          @savedOptionsParent="savechromeSync"
+        ></router-view>
+      </keep-alive>
+    </main-content>
 
-      <b-toast
-        title="Saved options"
-        no-auto-hide
-        toaster="b-toaster-bottom-center"
-        :visible="showSavedOptions"
-        no-close-button
-      ></b-toast>
-    </div>
+    <b-toast
+      title="Saved options"
+      no-auto-hide
+      toaster="b-toaster-bottom-center"
+      :visible="showSavedOptions"
+      no-close-button
+    ></b-toast>
   </div>
 </template>
 
