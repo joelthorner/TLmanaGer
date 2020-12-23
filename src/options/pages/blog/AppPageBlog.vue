@@ -19,15 +19,12 @@
 </template>
 
 <script>
-import moment from "moment";
+import posts from "@/data/posts";
 
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import PostCard from "@options/components/PostCard";
 import BlogNav from "@options/pages/blog/BlogNav";
-
-import posts from "@/data/posts";
-import { times as timesIcon } from "@/data/icons";
 
 const ALL_POSTS = "all";
 
