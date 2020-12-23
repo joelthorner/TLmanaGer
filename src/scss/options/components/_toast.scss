@@ -1,0 +1,25 @@
+.b-toaster.b-toaster-bottom-center .b-toaster-slot,
+.b-toast,
+.toast {
+  max-width: 300px;
+}
+
+.b-toast .toast {
+  outline: 0;
+  .toast-body {
+    display: none;
+  }
+  .toast-header {
+    font-size: 14px;
+    padding: 0 20px;
+    line-height: 1;
+    height: 48px;
+    color: #fff;
+    background-color: $logo-blue-end;
+    border: 0;
+    border-radius: rem(3px);
+    strong {
+      font-weight: 500;
+    }
+  }
+}

@@ -2,11 +2,12 @@
   <div class="user-background">
     <div
       class="image"
-      v-bind:style="{
+      
+    ></div>
+    <!-- v-bind:style="{
         backgroundImage:
           'url(' + chromeSync.logicommerce.background.image + ')',
-      }"
-    ></div>
+      }" -->
     <div class="credits">
       <span class="lbl">Photo by</span>
       <a
@@ -35,17 +36,17 @@ export default {
     chromeSync: Object,
   },
   mounted() {
-    if (!this.firedDownloadLocation) {
-      let url = this.chromeSync.logicommerce.background.downloadLocation;
+    // if (!this.firedDownloadLocation) {
+    //   let url = this.chromeSync.logicommerce.background.downloadLocation;
 
-      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
-        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
-      }
+    //   if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+    //     url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+    //   }
 
-      axios.get(url).then((response) => {
-        this.firedDownloadLocation = true;
-      });
-    }
+    //   axios.get(url).then((response) => {
+    //     this.firedDownloadLocation = true;
+    //   });
+    // }
   },
   data() {
     return {

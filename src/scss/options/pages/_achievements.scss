@@ -1,0 +1,44 @@
+.achievements-grid {
+  gap: rem(30px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
+}
+
+.card-achievement {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+    margin-right: auto;
+
+  &:hover {
+    .card-body {
+      transform: translateZ(15px);
+    }
+  }
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &:not(.empty)::after {
+    content: "";
+    display: block;
+    padding-bottom: 120%;
+  }
+  &:not(.active) img {
+    filter: grayscale(1);
+    opacity: 0.3;
+  }
+  .hexagon {
+    width: rem(110px);
+    margin-bottom: rem(15px);
+    @include hexagon;
+  }
+}

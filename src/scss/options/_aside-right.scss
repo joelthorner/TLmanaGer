@@ -1,0 +1,131 @@
+.aside-right {
+  width: $aside-right-width;
+  float: left;
+  background-color: $background-gray-1;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+
+  > *:not(.resume) {
+    z-index: 3;
+  }
+
+  .resume {
+    position: relative;
+    height: $menu-height + $logo-cont-h;
+    background: linear-gradient(0deg, rgba($logo-blue-end, 1) 0%, rgba($logo-blue-start, 1) 100%);
+    z-index: 2;
+    backdrop-filter: blur(4px);
+
+    .resume-item {
+      position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      height: 96px;
+
+      &,
+      a {
+        color: #fff;
+        fill: currentColor;
+        text-decoration: none;
+      }
+      a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      > * {
+        height: 100%;
+        padding: rem(15px);
+        display: flex;
+        flex-direction: column;
+      }
+      .title {
+        font-weight: bold;
+        font-size: rem(12px);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .content {
+        font-size: rem(36px);
+        font-family: "Roboto", sans-serif;
+        font-weight: 100;
+        line-height: 1;
+        margin-top: auto;
+      }
+      svg {
+        position: absolute;
+        width: rem(9px);
+        height: rem(16px);
+        top: 50%;
+        margin-top: rem(-8px);
+        right: rem(30px);
+      }
+    }
+  }
+
+  .white-block {
+    background-color: #FFF;
+    position: relative;
+    flex: 1;
+
+    + .white-block {
+      border-top: 1px solid #e7e7e7;
+    }
+
+    .title {
+      height: 53px;
+      border-bottom: 1px solid #e7e7e7;
+      font-weight: bold;
+      font-size: rem(14px);
+      color: $title-3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.05em;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      padding-top: rem(18px);
+      margin-bottom: 0;
+      height: calc(100% - 53px);
+      border-left: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    a {
+      padding-left: rem(30px);
+      padding-top: rem(10px);
+      padding-bottom: rem(10px);
+      display: flex;
+      gap: rem(15px);
+      color: $title-3;
+      text-decoration: none;
+      position: relative;
+      transition: all 350ms ease;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-weight: bold;
+        }
+        .role {
+          opacity: 0.75;
+        }
+      }
+
+      &:hover {
+        color: #000;
+      }
+
+      img {
+        height: 43px;
+        width: 43px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

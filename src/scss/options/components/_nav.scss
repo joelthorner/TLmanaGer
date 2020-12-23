@@ -1,0 +1,31 @@
+.nav {
+  padding-left: rem(30px);
+  padding-right: rem(30px);
+  background-color: #fff;
+  border-bottom: 1px solid $background-title;
+
+  .nav-link {
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    &:not(.active) {
+      color: $text-1;
+    }
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    &.router-link-exact-active,
+    &.router-link-active-custom {
+      color: $logo-blue-end;
+    }
+    .icon {
+      width: 16px;
+      height: 22px;
+      margin-right: 8px;
+      fill: currentColor;
+    }
+  }
+}

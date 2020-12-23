@@ -83,6 +83,8 @@ export default {
     avatar: {
       actived: false,
       value: chrome.extension.getURL('img/user.svg'),
+      name: 'Default',
+      description: 'Nothing to say!',
     },
     shopTestingEmail: {
       actived: false,

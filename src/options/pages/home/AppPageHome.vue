@@ -1,88 +1,31 @@
 <template>
   <div class="page-content">
-    <div id="home-content">
-      <div class="background-widget">
-        <div
-          class="image"
-          v-bind:style="{
-            backgroundImage:
-              'url(' + chromeSync.logicommerce.background.image + ')',
-          }"
-        ></div>
-        <div class="credits">
-          <span class="lbl">Photo by</span>
-          <a
-            :href="chromeSync.logicommerce.background.userLink"
-            target="_blank"
-            rel="noopener noreferrer"
-            >{{ chromeSync.logicommerce.background.userName }}</a
-          >
-        </div>
-      </div>
+    <background-widget></background-widget>
 
-      <main-title title="Last blog posts"></main-title>
+    <main-title title="Last news. Tinnonanino tirori!"></main-title>
 
-      <main-content containerClass="home-last-posts">
-        <div class="row">
-          <div
-            class="col col-md-12 col-lg-6 col-xl-4"
-            v-for="post in last3Posts"
-            v-bind:key="post.id"
-          >
-            <post-card :post="post"></post-card>
-          </div>
-        </div>
-      </main-content>
-    </div>
-
-    <sidebar-right :chromeSync="chromeSync"></sidebar-right>
+    <main-content containerClass="home-last-posts">
+      <last-posts></last-posts>
+    </main-content>
   </div>
 </template>
 
 <script>
-import SidebarRight from "@options/pages/home/sidebar-right/SidebarRight";
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
-import PostCard from "@options/components/PostCard";
-import posts from "@/data/posts";
-import axios from "axios";
+import BackgroundWidget from "@options/pages/home/BackgroundWidget";
+import LastPosts from "@options/pages/home/LastPosts";
 
 export default {
   name: "AppPageHome",
   components: {
-    SidebarRight,
     MainTitle,
     MainContent,
-    PostCard,
+    BackgroundWidget,
+    LastPosts,
   },
   props: {
     chromeSync: Object,
-  },
-  data() {
-    return {
-      posts,
-      maxLastPosts: 3,
-      firedDownloadLocation: false,
-    };
-  },
-  mounted() {
-    if (!this.firedDownloadLocation) {
-      let url = this.chromeSync.logicommerce.background.downloadLocation;
-
-      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
-        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
-      }
-      axios
-        .get(url)
-        .then((response) => {
-          this.firedDownloadLocation = true;
-        });
-    }
-  },
-  computed: {
-    last3Posts() {
-      return this.posts.slice(0, 3);
-    },
   },
 };
 </script>

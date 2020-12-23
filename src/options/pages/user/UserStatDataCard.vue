@@ -1,18 +1,18 @@
 <template>
   <div
-    v-bind:class="[earned ? 'active' : '', 'card', 'card-achievement']"
+    class="card card-stat-data"
     data-tilt
     data-tilt-reverse="true"
     data-tilt-max="15"
   >
     <div class="content card-body">
       <div class="hexagon">
-        <img class="img-fluid" :src="achievement.img" :alt="achievement.name" />
+        <span class="icon" v-html="statData.icon"></span>
       </div>
 
-      <div class="card-title name">{{ achievement.name }}</div>
+      <div class="card-title name">{{ statData.name }}</div>
       <p class="card-text desc">
-        <small class="text-muted">{{ achievement.desc }}</small>
+        <small class="text-muted">{{ statData.value }}</small>
       </p>
     </div>
   </div>
@@ -22,10 +22,9 @@
 import VanillaTilt from "vanilla-tilt";
 
 export default {
-  name: "AchievementsCard",
+  name: "UserStatDataCard",
   props: {
-    earned: Boolean,
-    achievement: Object,
+    statData: Object,
   },
   mounted() {
     VanillaTilt.init(this.$el, {

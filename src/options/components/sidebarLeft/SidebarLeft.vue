@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import SidebarLogo from "@options/components/sidebar-left/SidebarLogo";
-import SidebarMenu from "@options/components/sidebar-left/SidebarMenu";
-import SidebarFooterBlock from "@options/components/sidebar-left/SidebarFooterBlock";
-import SidebarCopy from "@options/components/sidebar-left/SidebarCopy";
+import SidebarLogo from "@options/components/sidebarLeft/SidebarLogo";
+import SidebarMenu from "@options/components/sidebarLeft/SidebarMenu";
+import SidebarFooterBlock from "@options/components/sidebarLeft/SidebarFooterBlock";
+import SidebarCopy from "@options/components/sidebarLeft/SidebarCopy";
 
 import { github as githubIcon, bug as bugIcon } from "@/data/icons";
 
 export default {
-  name: "AppSiderbar",
+  name: "SidebarLeft",
   components: {
     SidebarLogo,
     SidebarMenu,

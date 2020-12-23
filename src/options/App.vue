@@ -1,15 +1,26 @@
 <template>
-  <div id="layout" class="d-flex" @click="layoutClickHandler">
-    <app-sidebar :chromeSync="chromeSync"></app-sidebar>
-    <app-main-content :chromeSync="chromeSync"></app-main-content>
-    <app-debug :chromeSync="chromeSync"></app-debug>
+  <div id="layout" @click="layoutClickHandler">
+    <sidebar-left :chromeSync="chromeSync"></sidebar-left>
+
+    <main :class="mainClass">
+      <keep-alive>
+        <router-view :chromeSync="chromeSync"></router-view>
+      </keep-alive>
+    </main>
+
+    <sidebar-right className="aside-home" v-if="showAsideRight">
+      <sidebar-resume :chromeSync="chromeSync"></sidebar-resume>
+      <sidebar-contributors></sidebar-contributors>
+    </sidebar-right>
   </div>
 </template>
 
 <script>
-import AppSidebar from "@options/components/sidebar-left/AppSidebar";
-import AppMainContent from "@options/components/main/AppMainContent";
-import AppDebug from "@options/debug/AppDebug";
+import SidebarLeft from "@options/components/sidebarLeft/SidebarLeft";
+
+import SidebarRight from "@options/components/sidebarRight/SidebarRight";
+import SidebarResume from "@options/components/sidebarRight/SidebarResume";
+import SidebarContributors from "@options/components/sidebarRight/SidebarContributors";
 
 import chromeSync from "@/data/chromeSync";
 import watchArchievements from "@mixins/watchArchievements";
@@ -19,9 +30,10 @@ import "../scss/options.scss";
 export default {
   name: "App",
   components: {
-    AppDebug,
-    AppSidebar,
-    AppMainContent,
+    SidebarLeft,
+    SidebarRight,
+    SidebarResume,
+    SidebarContributors,
   },
   mixins: [watchArchievements],
   data() {
@@ -32,6 +44,14 @@ export default {
   created() {
     this.getSyncchromeSync();
     this.googleAccountSync(); // achievement
+  },
+  computed: {
+    showAsideRight() {
+      return this.$route.name === "home";
+    },
+    mainClass() {
+      return this.showAsideRight ? "has-aside-right" : "";
+    },
   },
   methods: {
     getSyncchromeSync() {

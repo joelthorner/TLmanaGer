@@ -37,10 +37,10 @@ var ecommerceData = {
    * @return {String|null}
    */
   getType() {
-    if (document.body.classList.value.includes('fluidContent'))
+    if (document.body && document.body.classList.value.includes('fluidContent'))
       return TYPE_FLUID;
 
-    if (document.querySelector('[href*=".cfm"]'))
+    if (document && document.querySelector('[href*=".cfm"]'))
       return TYPE_COLD_FUSION;
 
     return null;

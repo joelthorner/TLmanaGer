@@ -1,0 +1,39 @@
+main {
+  overflow: auto;
+  height: 100%;
+
+  width: calc(100% - #{$aside-left-width-mobile});
+  margin-left: $aside-left-width-mobile;
+
+  @media (min-width: map-get($grid-breakpoints, "md")) {
+    width: calc(100% - #{$aside-left-width});
+    margin-left: $aside-left-width;
+  }
+
+  &.has-aside-right {
+    @media (min-width: map-get($grid-breakpoints, "md")) {
+      width: calc(100% - #{$aside-left-width * 2});
+      margin-right: $aside-left-width;
+    }
+  }
+}
+
+.content-block {
+  padding: rem(40px) rem(45px);
+
+  .inner-text {
+    font-size: rem(14px);
+    color: $title-1;
+    margin-bottom: rem(30px);
+  }
+}
+
+.content-title {
+  background-color: $background-title;
+  font-weight: bold;
+  font-size: 18px;
+  color: $title-1;
+  fill: currentColor;
+  padding: rem(30px) rem(45px);
+  line-height: 24px;
+}
