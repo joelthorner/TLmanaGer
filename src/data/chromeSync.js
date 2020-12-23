@@ -113,6 +113,7 @@ export default {
     clickedResetData: false,
     clickOnExtensionCount: 0,
     openPopupCounter: 0,
+    googleAccountSync: false,
   },
   achievements: {
     intallExtension: { // programed

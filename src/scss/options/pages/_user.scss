@@ -1,6 +1,6 @@
 .nav-menu-user {
   position: relative;
-  padding-left: 200px;
+  padding-left: 180px;
 }
 
 .user-background {
@@ -92,7 +92,7 @@
   width: 140px;
   height: 140px;
   bottom: 18px;
-  left: 60px;
+  left: 40px;
 
   a {
     border-radius: 50%;
@@ -105,12 +105,6 @@
       max-width: 100%;
       transform: scale(1.01);
     }
-  }
-}
-
-.card-user-info {
-  label {
-    color: $text-1;
   }
 }
 
@@ -145,6 +139,10 @@
       display: block;
     }
   }
+}
+
+.card-user-info {
+  margin-bottom: 30px;
 }
 
 .card-user-info-avatar {
@@ -190,7 +188,7 @@
 .user-stats-grid {
   gap: rem(30px);
   display: grid;
-  grid-template-columns: repeat(auto-fit, 220px);
+  grid-template-columns: repeat(auto-fit, minMax(220px, 1fr));
 
   .card-stat-data {
     width: 100%;
@@ -265,5 +263,26 @@
   }
   .text-muted {
     margin-bottom: 10px;
+  }
+}
+
+.grid-user-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card-user-info-google-sync {
+  background: #007aff;
+
+  .card-body {
+    flex-direction: row;
+  }
+  .icon-google {
+    width: 60px;
+    margin-right: 20px;
+  }
+  .btn {
+    margin-top: 8px;
   }
 }

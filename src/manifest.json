@@ -29,10 +29,10 @@
   "permissions": [
     "storage",
     "notifications",
-    "sessions",
     "tabs",
-    "http://*/*",
-    "https://*/*"
+    "identity",
+    "identity.email",
+    "<all_urls>"
   ],
   "content_scripts": [
     {
