@@ -25,7 +25,7 @@ class BetterTreeLevels extends LCModifier {
 
     this.node = this.node.closest('.window');
 
-    if (this.node && this.node.querySelector('.pagesTreeContainer') && !this.node.classList.contains('pagesWindowBetter_betterTreeLevels_window')) {
+    if (this.node.querySelector('.pagesTreeContainer') && !this.node.classList.contains('pagesWindowBetter_betterTreeLevels_window')) {
       this.node.classList.add('pagesWindowBetter_betterTreeLevels_window');
     }
   }

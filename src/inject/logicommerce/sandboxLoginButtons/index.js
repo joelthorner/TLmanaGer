@@ -51,7 +51,7 @@ class SandboxLoginButtons extends LCModifier {
 
   _match() {
     const select = this.node.querySelector('select#sandbox');
-    if (this.node && select) {
+    if (select) {
       this.select = select;
       this._initSelect();
     }

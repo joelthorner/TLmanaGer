@@ -21,16 +21,16 @@ class TicketRefLinks extends LCModifier {
    * If find node search find text elements and initialize tickets search
    */
   _match() {
-    if (this.node && this.node.matches('.gitHistoryView')) {
+    if (this.node.matches('.gitHistoryView')) {
       let elements = this.node.querySelectorAll('.commitRowDesc > span');
       this.changeLines(elements);
-    } else if (this.node && this.node.matches('.gitRepoLsRow')) {
+    } else if (this.node.matches('.gitRepoLsRow')) {
       let elements = this.node.querySelectorAll('.message');
       this.changeLines(elements);
-    } else if (this.node && this.node.matches('.column.name') && this.node.closest('.__gitRepoCommitsView__')) {
+    } else if (this.node.matches('.column.name') && this.node.closest('.__gitRepoCommitsView__')) {
       let elements = this.node.nextElementSibling.querySelectorAll('.content > div');
       this.changeLines(elements);
-    } else if (this.node && this.node.matches('.column.name') && this.node.closest('.publishCode')) {
+    } else if (this.node.matches('.column.name') && this.node.closest('.publishCode')) {
       let elements = this.node.nextElementSibling.querySelectorAll('.content > div');
       this.changeLines(elements);
     }

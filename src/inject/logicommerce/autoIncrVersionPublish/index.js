@@ -21,7 +21,7 @@ class AutoIncrVersionPublish extends LCModifier {
    * If node contains #__popupPublishForm__ find and set next publish version 
    */
   _match() {
-    if (this.node && this.node.querySelector('#__popupPublishForm__')) {
+    if (this.node.querySelector('#__popupPublishForm__')) {
       let version = this._getNextPublishVersion();
       let input = this.node.querySelector('#__popupName__');
       if (input) input.value = version;

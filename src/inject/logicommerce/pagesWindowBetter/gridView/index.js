@@ -25,7 +25,7 @@ class GridView extends LCModifier {
 
     this.node = this.node.closest('.window');
 
-    if (this.node && this.node.querySelector('.pagesTreeContainer') && !this.node.classList.contains('pagesWindowBetter_gridView_window')) {
+    if (this.node.querySelector('.pagesTreeContainer') && !this.node.classList.contains('pagesWindowBetter_gridView_window')) {
       this.node.classList.add('pagesWindowBetter_gridView_window');
 
       let deleteElements = this.node.querySelectorAll('.windowLayout > .block, .contentContainer > .block');
