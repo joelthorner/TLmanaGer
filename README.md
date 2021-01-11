@@ -43,7 +43,7 @@
 	<a href="#credits">Credits</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/joelthorner/TLmanaGery/master/screenshot.jpg)
+![screenshot](https://raw.githubusercontent.com/joelthorner/TLmanaGer/master/screenshot.jpg)
 
 ## Key Features
 
