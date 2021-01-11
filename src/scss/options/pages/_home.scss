@@ -24,3 +24,15 @@
     }
   }
 }
+
+.content-block.home-last-posts {
+  padding-bottom: 10px;
+}
+
+.col-last-blog {
+  margin-bottom: 30px;
+  @media (min-width: 1500px) {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+}
