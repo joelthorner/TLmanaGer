@@ -57,6 +57,10 @@
     & + .card-body {
       border-top: 1px solid #e1e9f0;
     }
+
+    label {
+      color: $text-1;
+    }
   }
 
   .card-body {

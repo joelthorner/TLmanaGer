@@ -19,7 +19,7 @@ main {
 }
 
 .content-block {
-  padding: rem(40px) rem(45px);
+  padding: 40px 45px;
 
   .inner-text {
     font-size: rem(14px);
@@ -34,6 +34,6 @@ main {
   font-size: 18px;
   color: $title-1;
   fill: currentColor;
-  padding: rem(30px) rem(45px);
+  padding: 30px 45px;
   line-height: 24px;
 }

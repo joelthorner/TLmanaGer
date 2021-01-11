@@ -209,16 +209,18 @@ export default {
     googleAccountSync() {
       setTimeout(() => {
         // Get data of achievement
-        const archvData = this.achievementsData["googleAccountSync"];
+        const archvData = this.achievementsData.googleAccountSync;
         // Execute condition()
-        chrome.sessions.getDevices((response) => {
-          const result = response.length ? true : false;
+        chrome.identity.getProfileUserInfo((data) => {
+          const result = data.id ? true : false;
+          // Update metric first
+          this.chromeSync.metrics.googleAccountSync = result;
           // Get result before update achievement
-          const beforeResult = this.chromeSync.achievements['googleAccountSync'].earned;
+          const beforeResult = this.chromeSync.achievements.googleAccountSync.earned;
 
           if (beforeResult === false && result === true) {
             // Update achievement chrome data
-            this.chromeSync.achievements['googleAccountSync'].earned = result;
+            this.chromeSync.achievements.googleAccountSync.earned = result;
             // Save sync and launch system notify
             chrome.storage.sync.set(this.chromeSync, () => {
               this.createAchievementNotify(archvData, result);

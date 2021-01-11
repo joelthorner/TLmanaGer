@@ -19,15 +19,10 @@ import {
   zendesk as zendeskIcon,
   toggleOn as toggleOnIcon,
   codeBranch as codeBranchIcon,
-  bug as bugIcon,
-  github as githubIcon,
-  file as fileIcon,
   functionMath as functionMathIcon,
-  userFill as userFillIcon,
-  download as downloadIcon,
-  toilet as toiletIcon,
   mouse as mouseIcon,
   chevronCircleDown as chevronCircleDownIcon,
+  sync as syncIcon,
 } from "@/data/icons";
 
 export default {
@@ -70,39 +65,9 @@ export default {
           value: this.chromeSync.metrics.openChangelogCount,
         },
         {
-          icon: bugIcon,
-          name: "Clicked issues anchor",
-          value: this.chromeSync.metrics.clickedIssuesAnchor ? "Yuup!" : "Nope",
-        },
-        {
-          icon: githubIcon,
-          name: "Clicked github anchor",
-          value: this.chromeSync.metrics.clickedGithubAnchor ? "Yuup!" : "Nope",
-        },
-        {
-          icon: fileIcon,
-          name: "Clicked legals anchor",
-          value: this.chromeSync.metrics.clickedLegalsAnchor ? "Yuup!" : "Nope",
-        },
-        {
           icon: functionMathIcon,
           name: "Times clicked popup action",
           value: this.chromeSync.metrics.clickedActionCount,
-        },
-        {
-          icon: userFillIcon,
-          name: "Changed default avatar",
-          value: this.chromeSync.metrics.changedAvatarOpt ? "Yuup!" : "Nope",
-        },
-        {
-          icon: downloadIcon,
-          name: "Extension installed lol",
-          value: this.chromeSync.metrics.extensionInstalled ? "Yuup!" : "Nope",
-        },
-        {
-          icon: toiletIcon,
-          name: "Clicked reset data",
-          value: this.chromeSync.metrics.clickedResetData ? "Yuup!" : "Nope",
         },
         {
           icon: mouseIcon,
@@ -113,6 +78,11 @@ export default {
           icon: chevronCircleDownIcon,
           name: "Times open popup",
           value: this.chromeSync.metrics.openPopupCounter,
+        },
+        {
+          icon: syncIcon,
+          name: "Activate sync",
+          value: this.chromeSync.metrics.googleAccountSync,
         },
       ];
     },

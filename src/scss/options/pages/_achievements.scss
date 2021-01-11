@@ -1,7 +1,7 @@
 .achievements-grid {
   gap: rem(30px);
   display: grid;
-  grid-template-columns: repeat(auto-fit, 220px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .card-achievement {

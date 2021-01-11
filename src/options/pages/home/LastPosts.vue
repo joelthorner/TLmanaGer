@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div
-      class="col col-md-12 col-lg-6 col-xl-4"
+      class="col-12 col-xl-6 col-last-blog"
       v-for="post in last3Posts"
       v-bind:key="post.id"
     >
