@@ -1,5 +1,10 @@
 const CHANGELOG = [
 	{
+		version: 'v2.5.2', date: '05 Jan 2021',
+		lines: [
+			'CHANGED Remove chrome unused permissions',
+		]
+	}, {
 		version: 'v2.5.1', date: '04 Dec 2020',
 		lines: [
 			'NEW New "get FontWesome icon", vanilla js script, beta from 3.x, with new features and fix #214',

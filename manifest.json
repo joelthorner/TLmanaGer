@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.5.1",
+	"version": "2.5.2",
 	"manifest_version": 2,
 	"author": "joelthorner",
 	"description": "__MSG_appDesc__",
@@ -25,10 +25,7 @@
 		"default_popup": "src/popup/index.html"
 	},
 	"permissions": [
-		"contentSettings",
-		"clipboardRead",
 		"clipboardWrite",
-		"contextMenus",
 		"cookies",
 		"notifications",
 		"tabs",
