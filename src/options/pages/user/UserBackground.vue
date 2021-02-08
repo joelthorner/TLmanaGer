@@ -18,7 +18,7 @@
       >
     </div>
 
-    <router-link to="/options/logicommerce" class="btn btn-edit-cover">
+    <router-link to="/options" class="btn btn-edit-cover">
       <span class="icon" v-html="penIcon"></span>
       <span class="text">Edit cover</span>
       <div class="rippleJS"></div>

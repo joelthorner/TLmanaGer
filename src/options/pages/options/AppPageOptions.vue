@@ -3,29 +3,33 @@
     <div id="options-content">
       <main-title title="OPTIONS"></main-title>
 
-      <options-nav></options-nav>
+      <options-nav
+        :categories="categories"
+        @setFilterParent="setFilter"
+      ></options-nav>
 
       <main-content containerClass="options-container">
-        <keep-alive>
-          <router-view
-            :key="$route.fullPath"
-            :chromeSync="chromeSync"
-            @savedOptionsParent="savechromeSync"
-            @savedHelpKeyParent="sendHelpKey"
-          ></router-view>
-        </keep-alive>
+        <transition-group class="grid-options dynamic-grid" name="dynamic-grid">
+          <div
+            class="dynamic-grid-item"
+            v-for="(option, optionKey) in activeOptions"
+            v-bind:key="option.priority"
+          >
+            <option-card :option="option" :optionKey="optionKey"></option-card>
+          </div>
+        </transition-group>
       </main-content>
 
-      <b-toast
+      <!--- <b-toast
         title="Saved options"
         no-auto-hide
         toaster="b-toaster-bottom-center"
         :visible="showSavedOptions"
         no-close-button
-      ></b-toast>
+      ></b-toast> -->
     </div>
 
-    <help-modal :dataKey="clickedHelpDataKey"></help-modal>
+    <!-- <help-modal :dataKey="clickedHelpDataKey"></help-modal> -->
   </div>
 </template>
 
@@ -35,7 +39,10 @@ import watchArchievements from "@mixins/watchArchievements";
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import OptionsNav from "@options/pages/options/OptionsNav";
-import HelpModal from "@options/components/HelpModal";
+import OptionCard from "@options/components/OptionCard";
+// import HelpModal from "@options/components/HelpModal";
+
+const ALL_CATEGORIES = "all";
 
 export default {
   name: "AppPageOptions",
@@ -46,30 +53,56 @@ export default {
     MainTitle,
     MainContent,
     OptionsNav,
-    HelpModal,
+    OptionCard,
+    // HelpModal,
   },
   mixins: [watchArchievements],
   data() {
     return {
-      showSavedOptions: false,
-      clickedHelpDataKey: "",
+      currentFilter: ALL_CATEGORIES,
+      openedKey: "",
     };
   },
-  methods: {
-    sendHelpKey(value) {
-      this.clickedHelpDataKey = value;
+  computed: {
+    orderedOptions() {
+      return Object.fromEntries(
+        Object.entries(this.chromeSync.options).sort(
+          ([, a], [, b]) => a.priority - b.priority
+        )
+      );
     },
-    savechromeSync(value) {
-      chrome.storage.sync.set(this.chromeSync, () => {
-        this.showSavedOptions = value;
+    activeOptions() {
+      return Object.fromEntries(
+        Object.entries(this.orderedOptions).filter(
+          ([key, value]) =>
+            value.category === this.currentFilter ||
+            this.currentFilter === ALL_CATEGORIES
+        )
+      );
+    },
+    categories() {
+      let result = [],
+        keys = [];
 
-        this.activeAllOpts(); // archivement
-        this.activeAllZenOpts(); // archivement
+      for (const property in this.orderedOptions) {
+        const category = this.orderedOptions[property].category;
 
-        setTimeout(() => {
-          this.showSavedOptions = false;
-        }, 2000);
-      });
+        if (!keys.includes(category)) {
+          keys.push(category);
+
+          result.push({
+            text: category.charAt(0).toUpperCase() + category.slice(1),
+            value: category,
+          });
+        }
+      }
+
+      return result;
+    },
+  },
+  methods: {
+    setFilter(value) {
+      this.currentFilter = value;
     },
   },
 };

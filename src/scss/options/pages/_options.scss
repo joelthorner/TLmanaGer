@@ -1,0 +1,28 @@
+.grid-options {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+
+  .dynamic-grid-item {
+    width: 100%;
+    float: left;
+    padding: 0 15px 30px;
+    display: flex;
+    @media (min-width: 1300px) {
+      width: 50%;
+    }
+    @media (min-width: 1600px) {
+      width: 33.33333%;
+    }
+  }
+}
+
+.card-option {
+  &.opened {
+    // transform: none !important;
+    // position: absolute;
+    // z-index: 200;
+    // left: 15px;
+    // right: 15px;
+  }
+}

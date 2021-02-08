@@ -36,7 +36,7 @@ export default {
         {
           title: "Options",
           icon: settingsIcon,
-          route: "/options/logicommerce",
+          route: "/options",
           exact: false,
         },
         {
