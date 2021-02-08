@@ -353,8 +353,8 @@ class ThemeColors {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.logicommerce.themeColors.actived) {
-    let colors = result.logicommerce.themeColors.colors;
+  if (result.options.themeColors.actived) {
+    let colors = result.options.themeColors.colors;
     new ThemeColors(colors.main, colors.secondary);
   }
 });

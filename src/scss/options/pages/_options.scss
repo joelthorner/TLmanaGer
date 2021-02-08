@@ -18,11 +18,66 @@
 }
 
 .card-option {
-  &.opened {
-    // transform: none !important;
-    // position: absolute;
-    // z-index: 200;
-    // left: 15px;
-    // right: 15px;
+  position: relative;
+
+  .card-body + .list-group > .list-group-item {
+    border-top-width: 1px;
+    + .list-group-item {
+      margin-top: -1px;
+    }
   }
+
+  .column-left {
+    float: left;
+    width: 100%;
+  }
+  .column-right {
+    display: none;
+    float: left;
+    width: calc(100% - 360px);
+    border-left: 1px solid #e7e7e7;
+  }
+  .close-card {
+    display: none;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .ocult {
+    display: none;
+  }
+}
+.opened .card-option {
+  width: 100%;
+  transform: none !important;
+  flex-direction: row;
+  z-index: 200;
+
+  .column-left {
+    width: 360px;
+  }
+  .column-right {
+    display: flex;
+  }
+  .close-card {
+    display: block;
+  }
+  .card-img,
+  .card-img-top {
+    border-top-right-radius: 0;
+  }
+  .ocult {
+    display: block;
+  }
+}
+
+.dynamic-grid-item.opened {
+  width: 100%;
 }

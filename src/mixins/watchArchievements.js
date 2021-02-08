@@ -148,14 +148,17 @@ export default {
 
     activeAllZenOpts() {
       // Get data
-      const totalZendeskOpts = Object.keys(this.chromeSync.zendesk).length;
-      // Update metric first
+      let totalZendeskOpts = 0;
       let auxActiveOptsCount = 0;
-      Object.keys(this.chromeSync.zendesk).forEach(key => {
-        if (this.chromeSync.zendesk[key].actived) {
-          auxActiveOptsCount++;
-        }
-      });
+      for (const optionKey in this.chromeSync.options) {
+        const category = this.orderedOptions[optionKey].category;
+        const actived = this.orderedOptions[optionKey].actived;
+
+        if (category == 'zendesk') totalZendeskOpts++;
+        if (actived) auxActiveOptsCount++;
+      }
+
+      // Update metric first
       this.chromeSync.metrics.zendeskActiveOptsCount = auxActiveOptsCount;
       // Get data of achievement
       const archvData = this.achievementsData["activeAllZenOpts"];
@@ -176,19 +179,14 @@ export default {
     },
 
     activeAllOpts() {
-      const watchKeys = ['zendesk', 'logicommerce', 'fluidWebTools', 'others'];
       // Get data total
-      let totalOpts = 0;
-      watchKeys.forEach(key => {
-        totalOpts += Object.keys(this.chromeSync[key]).length
-      });
+      let totalOpts = Object.keys(this.chromeSync.options).length;
       // Update metric first
       let auxActiveOptsCount = 0;
-      watchKeys.forEach(key => {
-        Object.keys(this.chromeSync[key]).forEach(element => {
-          if (this.chromeSync[key][element].actived) auxActiveOptsCount++;
-        });
+      Object.keys(this.chromeSync.options).forEach(element => {
+        if (this.chromeSync.options[element].actived) auxActiveOptsCount++;
       });
+
       this.chromeSync.metrics.totalActiveOptsCount = auxActiveOptsCount;
       // Get data of achievement
       const archvData = this.achievementsData.activeAllOpts;

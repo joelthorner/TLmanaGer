@@ -28,10 +28,10 @@ $blue: $logo-blue-end !default;
 $yiq-text-dark: $logo-blue-end !default;
 
 $primary: $logo-blue-end !default;
-$custom-control-indicator-size: 1.5rem !default;
+$custom-control-indicator-size: 1.33rem !default;
 
-$custom-switch-width: $custom-control-indicator-size * 1.75 !default;
-$custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
+// $custom-switch-width: $custom-control-indicator-size * 1.75 !default;
+// $custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
 
 $modal-content-border-width: 0 !default;
 
@@ -44,6 +44,10 @@ $input-bg: #e1e9f0;
 
 $form-feedback-valid-color: $logo-blue-end !default;
 $form-feedback-icon-valid-color: $logo-blue-end !default;
+
+$list-group-border-color: #e7e7e7 !default;
+$list-group-item-padding-y: 1.25rem !default;
+// $list-group-item-padding-x: 1.25rem !default;
 
 @import "~bootstrap";
 @import "~bootstrap-vue";
@@ -63,7 +67,7 @@ body {
 }
 
 html,
-body, 
+body,
 #layout {
   height: 100%;
 }

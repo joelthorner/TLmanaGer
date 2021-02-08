@@ -9,24 +9,42 @@
       ></options-nav>
 
       <main-content containerClass="options-container">
-        <transition-group class="grid-options dynamic-grid" name="dynamic-grid">
+        <transition-group
+          v-bind:class="{
+            'grid-options': true,
+            'dynamic-grid': true,
+            'opened-card': isCardOpened(cardOpenKey),
+          }"
+          name="dynamic-grid"
+        >
           <div
-            class="dynamic-grid-item"
+            v-bind:class="{
+              'dynamic-grid-item': true,
+              hidden: isCardHidden(optionKey),
+              opened: isCardOpened(optionKey),
+            }"
             v-for="(option, optionKey) in activeOptions"
             v-bind:key="option.priority"
           >
-            <option-card :option="option" :optionKey="optionKey"></option-card>
+            <option-card
+              :option="option"
+              :optionKey="optionKey"
+              :chromeSync="chromeSync"
+              :opened="cardOpenKey == optionKey"
+              @setCardOpenKeyParent="setCardOpenKey"
+              @setSavedOptionsParent="setSavedOptions"
+            ></option-card>
           </div>
         </transition-group>
       </main-content>
 
-      <!--- <b-toast
+      <b-toast
         title="Saved options"
         no-auto-hide
         toaster="b-toaster-bottom-center"
         :visible="showSavedOptions"
         no-close-button
-      ></b-toast> -->
+      ></b-toast>
     </div>
 
     <!-- <help-modal :dataKey="clickedHelpDataKey"></help-modal> -->
@@ -60,7 +78,8 @@ export default {
   data() {
     return {
       currentFilter: ALL_CATEGORIES,
-      openedKey: "",
+      cardOpenKey: "",
+      showSavedOptions: false,
     };
   },
   computed: {
@@ -73,11 +92,19 @@ export default {
     },
     activeOptions() {
       return Object.fromEntries(
-        Object.entries(this.orderedOptions).filter(
-          ([key, value]) =>
-            value.category === this.currentFilter ||
-            this.currentFilter === ALL_CATEGORIES
-        )
+        Object.entries(this.orderedOptions).filter(([key, value]) => {
+          if (this.cardOpenKey.length && this.cardOpenKey === key) {
+            return true;
+          }
+          if (
+            !this.cardOpenKey.length &&
+            (value.category === this.currentFilter ||
+              this.currentFilter === ALL_CATEGORIES)
+          ) {
+            return true;
+          }
+          return false;
+        })
       );
     },
     categories() {
@@ -101,8 +128,27 @@ export default {
     },
   },
   methods: {
+    isCardHidden(optionKey) {
+      return this.cardOpenKey.length && this.cardOpenKey != optionKey;
+    },
+    isCardOpened(optionKey) {
+      return this.cardOpenKey.length && this.cardOpenKey == optionKey;
+    },
     setFilter(value) {
       this.currentFilter = value;
+    },
+    setCardOpenKey(value) {
+      this.cardOpenKey = value;
+    },
+    setSavedOptions(value) {
+      chrome.storage.sync.set(this.chromeSync, () => {
+        this.showSavedOptions = true;
+        this.activeAllOpts(); // archivement
+        this.activeAllZenOpts(); // archivement
+        setTimeout(() => {
+          this.showSavedOptions = false;
+        }, 2000);
+      });
     },
   },
 };

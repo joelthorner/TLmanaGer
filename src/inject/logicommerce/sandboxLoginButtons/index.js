@@ -149,7 +149,7 @@ class SandboxLoginButtons extends LCModifier {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.logicommerce.sandboxLoginButtons.actived) {
+  if (result.options.sandboxLoginButtons.actived) {
     var sandboxLoginButtons = new SandboxLoginButtons('.opensaasLoginFields', /\(.*\)/g, true, true);
     observerLC.register(sandboxLoginButtons);
   }

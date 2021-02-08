@@ -202,7 +202,7 @@ class DeveloperBar {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.logicommerce.developerBar.actived) {
+  if (result.options.developerBar.actived) {
     const logi = new LogiInfo();
     new DeveloperBar(logi);
   }
