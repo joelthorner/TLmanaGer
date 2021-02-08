@@ -30,7 +30,7 @@
     .card-title {
       font-weight: 500;
       font-size: 16px;
-      color: $title-2;
+      // color: $title-2;
       position: relative;
       margin: 0;
       display: flex;
@@ -60,7 +60,7 @@
     }
 
     label {
-      color: $text-1;
+      // color: $text-1;
     }
   }
 
@@ -68,7 +68,7 @@
     padding: rem(20px);
     display: flex;
     flex-direction: column;
-    color: $text-2;
+    // color: $text-2;
 
     & + .list-group > .list-group-item .icon svg {
       width: 1.33rem;
@@ -79,11 +79,11 @@
     .card-title {
       font-size: rem(18px);
       font-weight: 500;
-      color: $title-2;
+      // color: $title-2;
       margin-bottom: 0;
     }
     .card-text:not(.card-text-foot) {
-      color: $text-1;
+      // color: $text-1;
       font-size: rem(14px);
       margin-top: rem(15px);
       line-height: 1.7;

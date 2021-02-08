@@ -1,7 +1,7 @@
 <template>
   <div class="page-content">
     <div id="options-content">
-      <main-title title="OPTIONS"></main-title>
+      <main-title title="Options"></main-title>
 
       <options-nav
         :categories="categories"

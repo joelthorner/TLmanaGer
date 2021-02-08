@@ -1,27 +1,21 @@
-$aside-left-width: 250px;
-$aside-right-width: 250px;
+$aside-left-width: 260px;
+$aside-right-width: 260px;
 $aside-left-width-mobile: 68px;
 $top-bar-h: 48px;
 $logo-cont-h: 58px;
 $menu-height: 320px;
 
-$blue-1: #2d3144;
-$blue-2: #333a56;
-$blue-3: #2d4065;
+// COLORS THEME
+$white: #fff;
+$border-from-white: #e7e7e7;
 
-$title-1: #596671; // header titles content
-$title-2: #2d3144; // card dark title
-$title-3: #949494; // aside right title part white
-
-$text-1: #8e9199;
-$text-2: #777b83;
-
-$background: #f0f6fb; // global
-$background-title: #e1e9f0; // header title content bg
-$background-gray-1: #f9f9f9; // aside right bg white part
+$gray-1: #596671;
+$gray-2: #515365;
+$background: #f6f7fb; // global
 
 $logo-blue-start: #00a8ff;
 $logo-blue-end: #007aff;
+// END COLORS THEME
 
 // overrite BT
 $blue: $logo-blue-end !default;
@@ -38,14 +32,14 @@ $modal-content-border-width: 0 !default;
 $input-padding-y: 0.5rem !default;
 $input-padding-x: 1rem !default;
 
-$input-color: #2d3144;
-$input-border-color: #e1e9f0;
-$input-bg: #e1e9f0;
+// $input-color: #2d3144;
+$input-border-color: #e7e7e7;
+$input-bg: #f6f7fb;
 
 $form-feedback-valid-color: $logo-blue-end !default;
 $form-feedback-icon-valid-color: $logo-blue-end !default;
 
-$list-group-border-color: #e7e7e7 !default;
+$list-group-border-color: $border-from-white !default;
 $list-group-item-padding-y: 1.25rem !default;
 // $list-group-item-padding-x: 1.25rem !default;
 
@@ -62,7 +56,6 @@ html {
 
 body {
   background-color: $background;
-  font-family: "Roboto", sans-serif;
   overflow: hidden;
 }
 

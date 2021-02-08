@@ -23,16 +23,18 @@ main {
 
   .inner-text {
     font-size: rem(14px);
-    color: $title-1;
+    // color: $title-1;
     margin-bottom: rem(30px);
   }
 }
 
 .content-title {
-  background-color: $background-title;
-  font-weight: bold;
-  font-size: 18px;
-  color: $title-1;
+  background-color: $white;
+  font-weight: 500;
+  font-size: 22px;
+  // color: $title-1;
+  border-bottom: 1px solid $border-from-white;
+  color: $gray-2;
   fill: currentColor;
   padding: 30px 45px;
   line-height: 24px;
