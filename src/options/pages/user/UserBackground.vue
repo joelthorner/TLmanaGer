@@ -2,19 +2,18 @@
   <div class="user-background">
     <div
       class="image"
-      
+      v-bind:style="{
+        backgroundImage: 'url(' + chromeSync.options.background.image + ')',
+      }"
     ></div>
-    <!-- v-bind:style="{
-        backgroundImage:
-          'url(' + chromeSync.logicommerce.background.image + ')',
-      }" -->
+
     <div class="credits">
       <span class="lbl">Photo by</span>
       <a
-        :href="chromeSync.logicommerce.background.userLink"
+        :href="chromeSync.options.background.userLink"
         target="_blank"
         rel="noopener noreferrer"
-        >{{ chromeSync.logicommerce.background.userName }}</a
+        >{{ chromeSync.options.background.userName }}</a
       >
     </div>
 
@@ -36,17 +35,15 @@ export default {
     chromeSync: Object,
   },
   mounted() {
-    // if (!this.firedDownloadLocation) {
-    //   let url = this.chromeSync.logicommerce.background.downloadLocation;
-
-    //   if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
-    //     url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
-    //   }
-
-    //   axios.get(url).then((response) => {
-    //     this.firedDownloadLocation = true;
-    //   });
-    // }
+    if (!this.firedDownloadLocation) {
+      let url = this.chromeSync.options.background.downloadLocation;
+      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+      }
+      axios.get(url).then((response) => {
+        this.firedDownloadLocation = true;
+      });
+    }
   },
   data() {
     return {
