@@ -70,7 +70,7 @@
     flex-direction: column;
     color: $text-2;
 
-    & + .list-group > .list-group-item a svg {
+    & + .list-group > .list-group-item .icon svg {
       width: 1.33rem;
       height: 1.33rem;
       margin-right: 0.75rem;
@@ -98,7 +98,6 @@
     }
   }
   .read-more {
-    font-weight: bold;
     margin-top: 5px;
   }
 }

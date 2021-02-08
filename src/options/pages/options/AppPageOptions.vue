@@ -118,7 +118,13 @@ export default {
           keys.push(category);
 
           result.push({
-            text: category.charAt(0).toUpperCase() + category.slice(1),
+            text:
+              category.charAt(0).toUpperCase() +
+              category
+                .slice(1)
+                .split(/(?=[A-Z])/)
+                .join(" ")
+                .toLowerCase(),
             value: category,
           });
         }
