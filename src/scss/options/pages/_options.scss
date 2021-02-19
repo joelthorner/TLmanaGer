@@ -33,7 +33,13 @@
   width: 100%;
 
   .card-front {
-    // transition: all 0.35s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .list-group-flush {
+      border-radius: 0;
+    }
   }
 
   .card-back {

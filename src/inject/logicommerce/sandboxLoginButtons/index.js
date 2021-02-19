@@ -26,34 +26,14 @@ class SandboxLoginButtons extends LCModifier {
     this.regexTextButton = regexTextButton;
     this.regexFindedInData = regexFindedInData;
     this.regexWrapText = regexWrapText;
-
-    // this._initObserver();
   }
-
-  // _initObserver() {
-  //   this.observer = new MutationObserver(mutations => {
-  //     mutations.forEach(mutation => {
-  //       if (mutation.addedNodes.length) {
-  //         for (let i = 0; i < mutation.addedNodes.length; i++) {
-  //           const node = mutation.addedNodes[i];
-
-  //           if (node.matches('.opensaasLoginFields')) {
-  //             this.observer.disconnect();
-  //             this.select = node.querySelector('select');
-  //             this._initSelect();
-  //             break;
-  //           }
-  //         }
-  //       }
-  //     });
-  //   });
-  // }
 
   _match() {
     const select = this.node.querySelector('select#sandbox');
     if (select) {
       this.select = select;
       this._initSelect();
+      this.select.classList.add('select-html-tlmanager-hidden');
     }
   }
 
@@ -75,19 +55,20 @@ class SandboxLoginButtons extends LCModifier {
       const btn = wrap.querySelectorAll('.option')[i];
 
       btn.addEventListener('click', (event) => {
-        newEl.querySelectorAll('.option').forEach((opt) => {
+        wrap.querySelectorAll('.option').forEach((opt) => {
           opt.classList.remove('active');
         })
-        event.target.addClass('active');
+
+        event.target.classList.add('active');
         this.select.value = event.target.dataset.optionSelect;
-      })
+      });
     }
   }
 
   _createWrap() {
     let buttonsCont = document.createElement('div');
-    buttonsCont.className = 'select-html-fluid';
-    buttonsCont.id = `select-html-fluid-${this.select.id}`;
+    buttonsCont.className = 'select-html-tlmanager';
+    buttonsCont.id = `select-html-tlmanager-${this.select.id}`;
 
     return buttonsCont;
   }
@@ -100,7 +81,7 @@ class SandboxLoginButtons extends LCModifier {
       btn.dataset.optionSelect = option.value;
 
       if (option.selected) {
-        btn.classList += 'active';
+        btn.classList += ' active';
       }
 
       let textData = this._getButtonText(option);

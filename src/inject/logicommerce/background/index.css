@@ -1,5 +1,5 @@
 html.lcBackground div#main {
-  background-color: #FFF;
+  background-color: #fff;
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 56px;
@@ -14,7 +14,7 @@ html.lcBackground div#main {
 }
 
 html.lcBackground body {
-  background-color: #FFF;
+  background-color: #fff;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,14 +32,14 @@ html.lcBackground #desktop .search img {
 }
 
 html.lcBackground #desktop .search input::placeholder {
-  color: #FFF;
+  color: #fff;
 }
 
 html.lcBackground #desktop .search input,
 html.lcBackground #desktop .shortcut {
   background-color: rgba(0, 0, 0, 0.5);
   border: 0;
-  color: #FFF;
+  color: #fff;
 }
 
 html.lcBackground #desktop .shortcut:not(:hover) img {
