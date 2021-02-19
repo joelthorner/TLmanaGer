@@ -5,13 +5,13 @@ main {
   width: calc(100% - #{$aside-left-width-mobile});
   margin-left: $aside-left-width-mobile;
 
-  @media (min-width: map-get($grid-breakpoints, "md")) {
+  @media (min-width: map-get($grid-breakpoints, "xl")) {
     width: calc(100% - #{$aside-left-width});
     margin-left: $aside-left-width;
   }
 
   &.has-aside-right {
-    @media (min-width: map-get($grid-breakpoints, "md")) {
+    @media (min-width: map-get($grid-breakpoints, "xl")) {
       width: calc(100% - #{$aside-left-width * 2});
       margin-right: $aside-left-width;
     }
@@ -23,16 +23,18 @@ main {
 
   .inner-text {
     font-size: rem(14px);
-    color: $title-1;
+    // color: $title-1;
     margin-bottom: rem(30px);
   }
 }
 
 .content-title {
-  background-color: $background-title;
-  font-weight: bold;
-  font-size: 18px;
-  color: $title-1;
+  background-color: $white;
+  font-weight: 500;
+  font-size: 22px;
+  // color: $title-1;
+  border-bottom: 1px solid $border-from-white;
+  color: $gray-2;
   fill: currentColor;
   padding: 30px 45px;
   line-height: 24px;

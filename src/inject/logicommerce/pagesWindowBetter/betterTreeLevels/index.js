@@ -32,7 +32,7 @@ class BetterTreeLevels extends LCModifier {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.logicommerce.pagesWindowBetter.actived && result.logicommerce.pagesWindowBetter.betterTreeLevels) {
+  if (result.options.pagesWindowBetter.actived && result.options.pagesWindowBetter.betterTreeLevels) {
     var gridView = new BetterTreeLevels('.windowLayout');
     observerLC.register(gridView);
   }

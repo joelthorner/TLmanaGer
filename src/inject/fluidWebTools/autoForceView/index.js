@@ -17,7 +17,7 @@ function setCookie(name, value, days) {
 };
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.fluidWebTools.autoForceView.actived) {
+  if (result.options.autoForceView.actived) {
     var rgx = /https?:\/\/(www)?\.?[0-9]{2,5}(\.logicommerce(\.net|\.cn|\.hk)|\.igd\.(pre\.)?production)\/?/;
 
     if (location.href.match(rgx)) {

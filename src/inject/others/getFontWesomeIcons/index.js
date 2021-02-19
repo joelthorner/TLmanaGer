@@ -248,7 +248,7 @@ var getFontWesomeIcons = {
 };
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.others.getFontWesomeIcons.actived) {
+  if (result.options.getFontWesomeIcons.actived) {
 
     let onLoadSvg = document.querySelector('[data-balloon*="size"]');
 

@@ -36,7 +36,7 @@ export default {
     return {
       footerBlocks: [
         {
-          title: "GITHUB",
+          title: "Github",
           items: [
             {
               id: "project",

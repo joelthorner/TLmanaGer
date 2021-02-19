@@ -1,7 +1,7 @@
 <template>
   <div class="page-content">
     <div id="options-content">
-      <main-title title="OPTIONS"></main-title>
+      <main-title title="Options"></main-title>
 
       <options-nav
         :categories="categories"
@@ -9,24 +9,51 @@
       ></options-nav>
 
       <main-content containerClass="options-container">
-        <transition-group class="grid-options dynamic-grid" name="dynamic-grid">
+        <div class="p-relative">
           <div
-            class="dynamic-grid-item"
+            class="dynamic-grid-item dynamic-grid-item-ref"
+            ref="cardRefWidth"
+          ></div>
+        </div>
+
+        <transition-group
+          v-bind:class="{
+            'grid-options': true,
+            'dynamic-grid': true,
+            'opened-card': isCardOpened(cardOpenKey),
+          }"
+          name="dynamic-grid"
+        >
+          <div
+            v-bind:class="{
+              'dynamic-grid-item': true,
+              'dynamic-grid-options-item': true,
+              hidden: isCardHidden(optionKey),
+              opened: isCardOpened(optionKey),
+            }"
             v-for="(option, optionKey) in activeOptions"
             v-bind:key="option.priority"
           >
-            <option-card :option="option" :optionKey="optionKey"></option-card>
+            <option-card
+              :option="option"
+              :optionKey="optionKey"
+              :chromeSync="chromeSync"
+              :maxWidth="cardMaxWidth"
+              :opened="cardOpenKey == optionKey"
+              @setCardOpenKeyParent="setCardOpenKey"
+              @setSavedOptionsParent="setSavedOptions"
+            ></option-card>
           </div>
         </transition-group>
       </main-content>
 
-      <!--- <b-toast
+      <b-toast
         title="Saved options"
         no-auto-hide
         toaster="b-toaster-bottom-center"
         :visible="showSavedOptions"
         no-close-button
-      ></b-toast> -->
+      ></b-toast>
     </div>
 
     <!-- <help-modal :dataKey="clickedHelpDataKey"></help-modal> -->
@@ -56,11 +83,20 @@ export default {
     OptionCard,
     // HelpModal,
   },
+  created: function () {
+    this.debounceSetCardMaxWidth = _.debounce(this.setCardMaxWidth, 250);
+    window.addEventListener("resize", this.debounceSetCardMaxWidth);
+  },
+  mounted() {
+    this.setCardMaxWidth();
+  },
   mixins: [watchArchievements],
   data() {
     return {
       currentFilter: ALL_CATEGORIES,
-      openedKey: "",
+      cardOpenKey: "",
+      showSavedOptions: false,
+      cardMaxWidth: "100%",
     };
   },
   computed: {
@@ -73,11 +109,19 @@ export default {
     },
     activeOptions() {
       return Object.fromEntries(
-        Object.entries(this.orderedOptions).filter(
-          ([key, value]) =>
-            value.category === this.currentFilter ||
-            this.currentFilter === ALL_CATEGORIES
-        )
+        Object.entries(this.orderedOptions).filter(([key, value]) => {
+          if (this.cardOpenKey.length && this.cardOpenKey === key) {
+            return true;
+          }
+          if (
+            !this.cardOpenKey.length &&
+            (value.category === this.currentFilter ||
+              this.currentFilter === ALL_CATEGORIES)
+          ) {
+            return true;
+          }
+          return false;
+        })
       );
     },
     categories() {
@@ -91,7 +135,13 @@ export default {
           keys.push(category);
 
           result.push({
-            text: category.charAt(0).toUpperCase() + category.slice(1),
+            text:
+              category.charAt(0).toUpperCase() +
+              category
+                .slice(1)
+                .split(/(?=[A-Z])/)
+                .join(" ")
+                .toLowerCase(),
             value: category,
           });
         }
@@ -101,8 +151,38 @@ export default {
     },
   },
   methods: {
+    setCardMaxWidth() {
+      this.cardMaxWidth = "100%;";
+
+      let style = window.getComputedStyle(this.$refs.cardRefWidth, null);
+
+      this.cardMaxWidth =
+        parseFloat(style.getPropertyValue("width")) -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight) +
+        "px";
+    },
+    isCardHidden(optionKey) {
+      return this.cardOpenKey.length && this.cardOpenKey != optionKey;
+    },
+    isCardOpened(optionKey) {
+      return this.cardOpenKey.length && this.cardOpenKey == optionKey;
+    },
     setFilter(value) {
       this.currentFilter = value;
+    },
+    setCardOpenKey(value) {
+      this.cardOpenKey = value;
+    },
+    setSavedOptions(value) {
+      chrome.storage.sync.set(this.chromeSync, () => {
+        this.showSavedOptions = true;
+        this.activeAllOpts(); // archivement
+        this.activeAllZenOpts(); // archivement
+        setTimeout(() => {
+          this.showSavedOptions = false;
+        }, 2000);
+      });
     },
   },
 };

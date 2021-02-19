@@ -53,7 +53,7 @@ class BackgroundLC {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.logicommerce.background.actived) {
-    new BackgroundLC(result.logicommerce.background);
+  if (result.options.background.actived) {
+    new BackgroundLC(result.options.background);
   }
 });

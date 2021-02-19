@@ -2,27 +2,100 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 -15px;
+}
 
-  .dynamic-grid-item {
+.p-relative {
+  position: relative;
+  margin: 0 -15px;
+}
+
+.dynamic-grid-item-ref {
+  visibility: hidden;
+  position: absolute;
+}
+
+.dynamic-grid-options-item,
+.dynamic-grid-item-ref {
+  width: 50%;
+  float: left;
+  padding: 0 15px 30px;
+  display: flex;
+  @media (min-width: map-get($grid-breakpoints, "lg")) {
+    width: 33.33333%;
+  }
+  &.opened {
     width: 100%;
-    float: left;
-    padding: 0 15px 30px;
-    display: flex;
-    @media (min-width: 1300px) {
-      width: 50%;
-    }
-    @media (min-width: 1600px) {
-      width: 33.33333%;
-    }
   }
 }
 
 .card-option {
-  &.opened {
-    // transform: none !important;
-    // position: absolute;
-    // z-index: 200;
-    // left: 15px;
-    // right: 15px;
+  position: relative;
+  width: 100%;
+
+  .card-front {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .list-group-flush {
+      border-radius: 0;
+    }
+  }
+
+  .card-back {
+    // transition: all 0.35s ease-in-out;
+    border-left: 1px solid $border-from-white;
+  }
+
+  .list-group-item label {
+    display: block;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: $logo-blue-end;
+  }
+
+  .card-body + .list-group > .list-group-item {
+    border-top-width: 1px;
+    + .list-group-item {
+      margin-top: -1px;
+    }
+  }
+
+  .list-group-item a {
+    display: block;
+    position: relative;
+  }
+
+  .card-img-top-link {
+    display: block;
+    position: relative;
+  }
+
+  .close-card {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  .breadcrumb {
+    padding: 0;
+    background-color: transparent;
+    margin: 0;
+  }
+}
+.opened .card-option {
+  flex-direction: row;
+  z-index: 200;
+
+  .card-img,
+  .card-img-top {
+    border-top-right-radius: 0;
   }
 }

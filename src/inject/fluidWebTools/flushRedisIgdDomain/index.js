@@ -66,7 +66,7 @@ class FlushRedisIgdDomain {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.fluidWebTools.flushRedisIgdDomain.actived) {
+  if (result.options.flushRedisIgdDomain.actived) {
     new FlushRedisIgdDomain();
   }
 });

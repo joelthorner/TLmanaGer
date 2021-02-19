@@ -1,6 +1,6 @@
 <template>
   <div class="white-block contributors">
-    <div class="title">CONTRIBUTORS</div>
+    <div class="title">Contributors</div>
     <ul class="list-unstyled">
       <li v-for="(contributor, index) in contributors" v-bind:key="index">
         <a
