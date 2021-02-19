@@ -9,6 +9,13 @@
       ></options-nav>
 
       <main-content containerClass="options-container">
+        <div class="p-relative">
+          <div
+            class="dynamic-grid-item dynamic-grid-item-ref"
+            ref="cardRefWidth"
+          ></div>
+        </div>
+
         <transition-group
           v-bind:class="{
             'grid-options': true,
@@ -20,6 +27,7 @@
           <div
             v-bind:class="{
               'dynamic-grid-item': true,
+              'dynamic-grid-options-item': true,
               hidden: isCardHidden(optionKey),
               opened: isCardOpened(optionKey),
             }"
@@ -30,6 +38,7 @@
               :option="option"
               :optionKey="optionKey"
               :chromeSync="chromeSync"
+              :maxWidth="cardMaxWidth"
               :opened="cardOpenKey == optionKey"
               @setCardOpenKeyParent="setCardOpenKey"
               @setSavedOptionsParent="setSavedOptions"
@@ -74,12 +83,20 @@ export default {
     OptionCard,
     // HelpModal,
   },
+  created: function () {
+    this.debounceSetCardMaxWidth = _.debounce(this.setCardMaxWidth, 250);
+    window.addEventListener("resize", this.debounceSetCardMaxWidth);
+  },
+  mounted() {
+    this.setCardMaxWidth();
+  },
   mixins: [watchArchievements],
   data() {
     return {
       currentFilter: ALL_CATEGORIES,
       cardOpenKey: "",
       showSavedOptions: false,
+      cardMaxWidth: "100%",
     };
   },
   computed: {
@@ -134,6 +151,17 @@ export default {
     },
   },
   methods: {
+    setCardMaxWidth() {
+      this.cardMaxWidth = "100%;";
+
+      let style = window.getComputedStyle(this.$refs.cardRefWidth, null);
+
+      this.cardMaxWidth =
+        parseFloat(style.getPropertyValue("width")) -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight) +
+        "px";
+    },
     isCardHidden(optionKey) {
       return this.cardOpenKey.length && this.cardOpenKey != optionKey;
     },

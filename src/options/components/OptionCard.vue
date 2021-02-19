@@ -1,10 +1,6 @@
 <template>
   <div :class="classList">
-    <button class="close close-card" v-on:click.prevent="closeCard()">
-      <span class="icon" v-html="timesIcon"></span>
-    </button>
-
-    <div class="column-left">
+    <div class="card-front" :style="{ 'max-width': maxWidth }">
       <a href="#" v-on:click.prevent="clickImage()" class="card-img-top-link">
         <img
           :src="optionsData[optionKey].image"
@@ -18,9 +14,9 @@
         <a href="#" v-on:click.prevent="openCard()">
           <div class="card-title">{{ optionsData[optionKey].title }}</div>
         </a>
-
         <p class="card-text">{{ optionsData[optionKey].description }}</p>
       </div>
+
       <div class="list-group list-group-flush">
         <div class="list-group-item d-flex">
           <b-form-checkbox
@@ -34,17 +30,17 @@
           <label class="rippleJS" :for="checkboxId"></label>
         </div>
 
-        <a href="#" class="list-group-item ocult"
+        <a href="#" class="list-group-item" v-if="opened"
           ><span class="icon" v-html="infoIcon"></span>Info
           <div class="rippleJS"></div
         ></a>
 
-        <a href="#" class="list-group-item ocult"
+        <a href="#" class="list-group-item" v-if="opened"
           ><span class="icon" v-html="bugIcon"></span>Report bug
           <div class="rippleJS"></div
         ></a>
 
-        <div class="list-group-item ocult">
+        <div class="list-group-item" v-if="opened">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
               {{ category }}
@@ -56,10 +52,19 @@
         </div>
       </div>
     </div>
-    <div class="column-right pl-5 p-4">
+
+    <div class="card-back" v-if="opened">
+      <button class="close close-card" v-on:click.prevent="closeCard()">
+        <span class="icon" v-html="timesIcon"></span>
+      </button>
+
+      <!-- asdasdasd -->
+    </div>
+
+    <!-- <div class="column-right pl-5 p-4">
       <div class="card-title">asdasdasd</div>
       <div class="card-body"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -79,6 +84,7 @@ export default {
     optionKey: String,
     chromeSync: Object,
     opened: Boolean,
+    maxWidth: String,
   },
   data() {
     return {
@@ -88,9 +94,9 @@ export default {
       bugIcon,
     };
   },
-  mounted() {
-    // VanillaTilt.init(this.$el);
-  },
+  // mounted() {
+  //   VanillaTilt.init(this.$el);
+  // },
   computed: {
     classList() {
       return ["card", "card-option", "option-" + this.optionKey].join(" ");

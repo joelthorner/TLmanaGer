@@ -5,13 +5,13 @@ main {
   width: calc(100% - #{$aside-left-width-mobile});
   margin-left: $aside-left-width-mobile;
 
-  @media (min-width: map-get($grid-breakpoints, "md")) {
+  @media (min-width: map-get($grid-breakpoints, "xl")) {
     width: calc(100% - #{$aside-left-width});
     margin-left: $aside-left-width;
   }
 
   &.has-aside-right {
-    @media (min-width: map-get($grid-breakpoints, "md")) {
+    @media (min-width: map-get($grid-breakpoints, "xl")) {
       width: calc(100% - #{$aside-left-width * 2});
       margin-right: $aside-left-width;
     }

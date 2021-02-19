@@ -11,7 +11,7 @@
   bottom: 0;
   z-index: 10;
 
-  @media (min-width: map-get($grid-breakpoints, "md")) {
+  @media (min-width: map-get($grid-breakpoints, "xl")) {
     width: $aside-left-width;
   }
 
@@ -38,13 +38,13 @@
     svg {
       width: 30px;
       height: 30px;
-      @media (min-width: map-get($grid-breakpoints, "md")) {
+      @media (min-width: map-get($grid-breakpoints, "xl")) {
         margin-right: rem(10px);
       }
     }
 
     > span {
-      @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+      @media (max-width: map-get($grid-breakpoints, "xl") - 1px) {
         display: none;
       }
     }
@@ -105,7 +105,7 @@
       }
       .text {
         // opacity: 0.75;
-        @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+        @media (max-width: map-get($grid-breakpoints, "xl") - 1px) {
           display: none;
         }
       }
@@ -129,7 +129,7 @@
       letter-spacing: 0.05em;
       z-index: 3;
       position: relative;
-      @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+      @media (max-width: map-get($grid-breakpoints, "xl") - 1px) {
         display: none;
       }
     }
@@ -161,7 +161,7 @@
       //   opacity: 0.35;
       // }
       .text {
-        @media (max-width: map-get($grid-breakpoints, "md") - 1px) {
+        @media (max-width: map-get($grid-breakpoints, "xl") - 1px) {
           display: none;
         }
       }
@@ -179,7 +179,7 @@
     font-size: 9px;
     padding-left: 3px;
     padding-right: 3px;
-    @media (min-width: map-get($grid-breakpoints, "md")) {
+    @media (min-width: map-get($grid-breakpoints, "xl")) {
       font-size: 12px;
       padding-left: 0;
       padding-right: 0;
