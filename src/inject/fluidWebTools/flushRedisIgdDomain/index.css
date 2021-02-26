@@ -13,7 +13,7 @@ html.flushRedisIgdDomain .flushRedisIgdDomain_shortcut.init {
   opacity: 1;
 }
 
-html.flushRedisIgdDomain .flushRedisIgdDomain_shortcut .flushRedisIgdDomain_iframe {
+html.flushRedisIgdDomain .flushRedisIgdDomain_shortcut #flushRedisIgdDomain_iframe {
   width: 300px !important;
   height: 120px !important;
   -webkit-transform: translate(-152px, -69px) !important;
