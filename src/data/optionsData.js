@@ -35,6 +35,10 @@ export default {
     image: chrome.extension.getURL('img/optionsData/developerBar.jpg'),
     title: "Developer bar",
     description: "Afegeix una barra superior als Logicommerce amb el sistema de publicació de codi Opensaas i altres utils.",
+    infoBlock: {
+      Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
+      Since: '22 Oct 2018',
+    },
     help: {
 
     },

@@ -58,10 +58,12 @@
     & + .card-body {
       border-top: 1px solid #e1e9f0;
     }
+  }
 
-    label {
-      // color: $text-1;
-    }
+  .list-group > .list-group-item .icon svg {
+    width: 1.33rem;
+    height: 1.33rem;
+    margin-right: 0.75rem;
   }
 
   .card-body {
@@ -69,12 +71,6 @@
     display: flex;
     flex-direction: column;
     // color: $text-2;
-
-    & + .list-group > .list-group-item .icon svg {
-      width: 1.33rem;
-      height: 1.33rem;
-      margin-right: 0.75rem;
-    }
 
     .card-title {
       font-size: rem(18px);

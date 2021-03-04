@@ -17,7 +17,7 @@
         </div>
 
         <transition-group
-          v-bind:class="{
+          :class="{
             'grid-options': true,
             'dynamic-grid': true,
             'opened-card': isCardOpened(cardOpenKey),
@@ -25,14 +25,14 @@
           name="dynamic-grid"
         >
           <div
-            v-bind:class="{
+            :class="{
               'dynamic-grid-item': true,
               'dynamic-grid-options-item': true,
               hidden: isCardHidden(optionKey),
               opened: isCardOpened(optionKey),
             }"
             v-for="(option, optionKey) in activeOptions"
-            v-bind:key="option.priority"
+            :key="option.priority"
           >
             <option-card
               :option="option"
@@ -40,6 +40,7 @@
               :chromeSync="chromeSync"
               :maxWidth="cardMaxWidth"
               :opened="cardOpenKey == optionKey"
+              :optionCardContent="optionCardContent(optionKey)"
               @setCardOpenKeyParent="setCardOpenKey"
               @setSavedOptionsParent="setSavedOptions"
             ></option-card>
@@ -55,8 +56,6 @@
         no-close-button
       ></b-toast>
     </div>
-
-    <!-- <help-modal :dataKey="clickedHelpDataKey"></help-modal> -->
   </div>
 </template>
 
@@ -67,7 +66,6 @@ import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import OptionsNav from "@options/pages/options/OptionsNav";
 import OptionCard from "@options/components/OptionCard";
-// import HelpModal from "@options/components/HelpModal";
 
 const ALL_CATEGORIES = "all";
 
@@ -81,7 +79,6 @@ export default {
     MainContent,
     OptionsNav,
     OptionCard,
-    // HelpModal,
   },
   created: function () {
     this.debounceSetCardMaxWidth = _.debounce(this.setCardMaxWidth, 250);
@@ -151,6 +148,15 @@ export default {
     },
   },
   methods: {
+    /**
+     * Get content type option vue component
+     */
+    optionCardContent(key) {
+      if (key === "background") {
+        return "ContentBackground";
+      }
+      return "ContentDefault";
+    },
     setCardMaxWidth() {
       this.cardMaxWidth = "100%;";
 
