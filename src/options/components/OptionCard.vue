@@ -39,7 +39,7 @@
         <div class="list-group-item" v-if="opened">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              {{ category }}
+              {{ data.category }}
             </li>
             <li class="breadcrumb-item active">
               {{ data.title }}
@@ -85,7 +85,6 @@ import {
 export default {
   name: "OptionCard",
   props: {
-    option: Object,
     optionKey: String,
     chromeSync: Object,
     opened: Boolean,
@@ -106,6 +105,9 @@ export default {
     };
   },
   computed: {
+    // option() {
+    //   return this.chromeSync[this.optionKey];
+    // },
     data() {
       return this.optionsData[this.optionKey];
     },
