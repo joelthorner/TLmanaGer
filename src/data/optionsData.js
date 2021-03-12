@@ -103,17 +103,19 @@ export default {
     infoBlock: {
       Environments: `*://*.logicommerce.net/*, *://*.logicommerce.hk/*, *://*.logicommerce.cn/*, *://*.igd.production/*, *://*.igd.pre.production/*`,
       ExcludeEnvironments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*`,
-      Since: 'Aug 28, 2018',
+      Since: 'Aug 26, 2018',
     },
   },
   flushRedisIgdDomain: {
     priority: 201,
     category: 'fluidWebTools',
-    image: "",
-    title: "",
-    description: "",
-    help: {
-
+    image: chrome.extension.getURL('img/optionsData/flushRedisIgdDomain.jpg'),
+    title: "Flush redis button (.igd.production)",
+    description: "Als entorns locals .igd.production, s'afegeix un shortcut per poder netejar la cache de redis.",
+    infoBlock: {
+      Environments: `*://*.igd.production/*`,
+      ExcludeEnvironments: `*://adm.igd.production/*, *://fluiddoc.igd.production/*, *://management.igd.production/*, *://tlgcommerce-hk.igd.production/*`,
+      Since: 'Dec 12, 2018',
     },
   },
   dumpAutoScroll: {
@@ -129,11 +131,12 @@ export default {
   getFontWesomeIcons: {
     priority: 400,
     category: 'others',
-    image: "",
-    title: "",
-    description: "",
-    help: {
-
+    image: chrome.extension.getURL('img/optionsData/getFontWesomeIcons.jpg'),
+    title: "Download FontWesome icons",
+    description: "Descarrega cualsevol icon de FontWesome, tant els normals com els PRO.",
+    infoBlock: {
+      Environments: `*://fontawesome.com/*`,
+      Since: 'Aug 26, 2018',
     },
   },
 };
