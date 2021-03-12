@@ -42,9 +42,20 @@
     }
   }
 
+  .fade-enter-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter {
+    opacity: 0;
+  }
+
   .card-back {
     // transition: all 0.35s ease-in-out;
     border-left: 1px solid $border-from-white;
+
+    .info {
+      font-size: 12px;
+    }
   }
 
   .list-group-item label {
@@ -54,7 +65,7 @@
     color: $logo-blue-end;
   }
 
-  .card-body + .list-group > .list-group-item {
+  .list-group > .list-group-item {
     border-top-width: 1px;
     + .list-group-item {
       margin-top: -1px;

@@ -17,7 +17,7 @@
         </div>
 
         <transition-group
-          v-bind:class="{
+          :class="{
             'grid-options': true,
             'dynamic-grid': true,
             'opened-card': isCardOpened(cardOpenKey),
@@ -25,21 +25,21 @@
           name="dynamic-grid"
         >
           <div
-            v-bind:class="{
+            :class="{
               'dynamic-grid-item': true,
               'dynamic-grid-options-item': true,
-              hidden: isCardHidden(optionKey),
-              opened: isCardOpened(optionKey),
+              hidden: isCardHidden(option.key),
+              opened: isCardOpened(option.key),
             }"
-            v-for="(option, optionKey) in activeOptions"
-            v-bind:key="option.priority"
+            v-for="option in getOptions"
+            :key="option.priority"
           >
             <option-card
-              :option="option"
-              :optionKey="optionKey"
+              :optionKey="option.key"
               :chromeSync="chromeSync"
               :maxWidth="cardMaxWidth"
-              :opened="cardOpenKey == optionKey"
+              :opened="cardOpenKey == option.key"
+              :optionCardContent="optionCardContent(option.key)"
               @setCardOpenKeyParent="setCardOpenKey"
               @setSavedOptionsParent="setSavedOptions"
             ></option-card>
@@ -55,19 +55,17 @@
         no-close-button
       ></b-toast>
     </div>
-
-    <!-- <help-modal :dataKey="clickedHelpDataKey"></help-modal> -->
   </div>
 </template>
 
 <script>
+import _ from "lodash";
 import watchArchievements from "@mixins/watchArchievements";
-
+import optionsData from "@/data/optionsData";
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import OptionsNav from "@options/pages/options/OptionsNav";
 import OptionCard from "@options/components/OptionCard";
-// import HelpModal from "@options/components/HelpModal";
 
 const ALL_CATEGORIES = "all";
 
@@ -81,7 +79,6 @@ export default {
     MainContent,
     OptionsNav,
     OptionCard,
-    // HelpModal,
   },
   created: function () {
     this.debounceSetCardMaxWidth = _.debounce(this.setCardMaxWidth, 250);
@@ -97,39 +94,52 @@ export default {
       cardOpenKey: "",
       showSavedOptions: false,
       cardMaxWidth: "100%",
+      optionsData,
     };
   },
   computed: {
-    orderedOptions() {
-      return Object.fromEntries(
-        Object.entries(this.chromeSync.options).sort(
-          ([, a], [, b]) => a.priority - b.priority
-        )
-      );
-    },
-    activeOptions() {
-      return Object.fromEntries(
-        Object.entries(this.orderedOptions).filter(([key, value]) => {
-          if (this.cardOpenKey.length && this.cardOpenKey === key) {
-            return true;
-          }
-          if (
-            !this.cardOpenKey.length &&
-            (value.category === this.currentFilter ||
-              this.currentFilter === ALL_CATEGORIES)
-          ) {
-            return true;
-          }
-          return false;
-        })
-      );
+    getOptions() {
+      const cloneOptions = { ...this.chromeSync.options };
+
+      // Merge chromeSync with options extra data
+      for (const property in cloneOptions) {
+        cloneOptions[property] = {
+          ...cloneOptions[property],
+          ...this.optionsData[property],
+          ...{ key: property },
+        };
+      }
+
+      // Transform to array and order
+      let result = _.sortBy(cloneOptions, [
+        function (o) {
+          return o.priority;
+        },
+      ]);
+
+      // Filter by category or a unique card if someone is actived
+      result = result.filter((option) => {
+        if (this.cardOpenKey.length && this.cardOpenKey === option.key) {
+          return true;
+        }
+        if (
+          !this.cardOpenKey.length &&
+          (option.category === this.currentFilter ||
+            this.currentFilter === ALL_CATEGORIES)
+        ) {
+          return true;
+        }
+        return false;
+      });
+
+      return result;
     },
     categories() {
       let result = [],
         keys = [];
 
-      for (const property in this.orderedOptions) {
-        const category = this.orderedOptions[property].category;
+      for (const property in this.optionsData) {
+        const category = this.optionsData[property].category;
 
         if (!keys.includes(category)) {
           keys.push(category);
@@ -151,6 +161,15 @@ export default {
     },
   },
   methods: {
+    /**
+     * Get content type option vue component
+     */
+    optionCardContent(key) {
+      if (key === "background") {
+        return "ContentBackground";
+      }
+      return "ContentDefault";
+    },
     setCardMaxWidth() {
       this.cardMaxWidth = "100%;";
 

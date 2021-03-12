@@ -1,20 +1,16 @@
 <template>
   <div :class="classList">
-    <div class="card-front" :style="{ 'max-width': maxWidth }">
+    <div class="card-front" :style="{ 'max-width': maxWidth, flex: flex }">
       <a href="#" v-on:click.prevent="clickImage()" class="card-img-top-link">
-        <img
-          :src="optionsData[optionKey].image"
-          class="card-img-top"
-          :alt="optionsData[optionKey].title"
-        />
+        <img :src="data.image" class="card-img-top" :alt="data.title" />
         <div class="rippleJS"></div>
       </a>
 
-      <div class="card-body">
+      <div class="card-body" v-if="!opened">
         <a href="#" v-on:click.prevent="openCard()">
-          <div class="card-title">{{ optionsData[optionKey].title }}</div>
+          <div class="card-title">{{ data.title }}</div>
         </a>
-        <p class="card-text">{{ optionsData[optionKey].description }}</p>
+        <p class="card-text">{{ data.description }}</p>
       </div>
 
       <div class="list-group list-group-flush">
@@ -43,48 +39,62 @@
         <div class="list-group-item" v-if="opened">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              {{ category }}
+              {{ data.category }}
             </li>
             <li class="breadcrumb-item active">
-              {{ optionsData[optionKey].title }}
+              {{ data.title }}
             </li>
           </ol>
         </div>
       </div>
     </div>
 
-    <div class="card-back" v-if="opened">
-      <button class="close close-card" v-on:click.prevent="closeCard()">
-        <span class="icon" v-html="timesIcon"></span>
-      </button>
+    <transition name="fade">
+      <div class="card-back" v-if="opened">
+        <component
+          :is="optionCardContent"
+          :optionKey="optionKey"
+          :chromeSync="chromeSync"
+          @setSavedOptionsCard="sendChangeActived"
+        ></component>
 
-      <!-- asdasdasd -->
-    </div>
+        <button class="close close-card" v-on:click.prevent="closeCard()">
+          <span class="icon" v-html="timesIcon"></span>
+        </button>
+      </div>
+    </transition>
 
-    <!-- <div class="column-right pl-5 p-4">
-      <div class="card-title">asdasdasd</div>
-      <div class="card-body"></div>
-    </div> -->
+    <zoom-image-modal
+      ref="component-zoom-image-modal"
+      :image="data.image"
+    ></zoom-image-modal>
   </div>
 </template>
 
 <script>
-// import VanillaTilt from "vanilla-tilt";
+import optionsData from "@/data/optionsData";
+import ZoomImageModal from "@options/components/ZoomImageModal";
+import ContentDefault from "@options/pages/options/optionContents/ContentDefault";
+import ContentBackground from "@options/pages/options/optionContents/ContentBackground";
 import {
   times as timesIcon,
   info as infoIcon,
   bug as bugIcon,
 } from "@/data/icons";
-import optionsData from "@/data/optionsData";
 
 export default {
   name: "OptionCard",
   props: {
-    option: Object,
     optionKey: String,
     chromeSync: Object,
     opened: Boolean,
     maxWidth: String,
+    optionCardContent: String,
+  },
+  components: {
+    ZoomImageModal,
+    ContentDefault,
+    ContentBackground,
   },
   data() {
     return {
@@ -94,10 +104,16 @@ export default {
       bugIcon,
     };
   },
-  // mounted() {
-  //   VanillaTilt.init(this.$el);
-  // },
   computed: {
+    // option() {
+    //   return this.chromeSync[this.optionKey];
+    // },
+    data() {
+      return this.optionsData[this.optionKey];
+    },
+    flex() {
+      return `1 0 ${this.maxWidth}`;
+    },
     classList() {
       return ["card", "card-option", "option-" + this.optionKey].join(" ");
     },
@@ -133,6 +149,7 @@ export default {
     },
     clickImage() {
       if (this.opened) {
+        this.$refs["component-zoom-image-modal"].show();
       } else {
         this.$emit("setCardOpenKeyParent", this.optionKey);
       }
