@@ -97,11 +97,13 @@ export default {
   autoForceView: {
     priority: 200,
     category: 'fluidWebTools',
-    image: "",
-    title: "",
-    description: "",
-    help: {
-
+    image: chrome.extension.getURL('img/optionsData/autoForceView.jpg'),
+    title: "Automatic force view",
+    description: "Al entrar sempre al entorn de producció d'una botiga sense domini es recarrega amb el ?forceview=1 automàticament.",
+    infoBlock: {
+      Environments: `*://*.logicommerce.net/*, *://*.logicommerce.hk/*, *://*.logicommerce.cn/*, *://*.igd.production/*, *://*.igd.pre.production/*`,
+      ExcludeEnvironments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*`,
+      Since: 'Aug 28, 2018',
     },
   },
   flushRedisIgdDomain: {
