@@ -7,12 +7,12 @@
 
 <script>
 import chromeSync from "@/data/chromeSync";
-import watchArchievements from "@mixins/watchArchievements";
+import watchAchievements from "@mixins/watchAchievements";
 
 import "../scss/popup.scss";
 
 export default {
-  mixins: [watchArchievements],
+  mixins: [watchAchievements],
   data() {
     return {
       chromeSync: chromeSync,

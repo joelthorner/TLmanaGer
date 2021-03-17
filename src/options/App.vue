@@ -23,7 +23,7 @@ import SidebarResume from "@options/components/sidebarRight/SidebarResume";
 import SidebarContributors from "@options/components/sidebarRight/SidebarContributors";
 
 import chromeSync from "@/data/chromeSync";
-import watchArchievements from "@mixins/watchArchievements";
+import watchAchievements from "@mixins/watchAchievements";
 
 import "../scss/options.scss";
 
@@ -35,7 +35,7 @@ export default {
     SidebarResume,
     SidebarContributors,
   },
-  mixins: [watchArchievements],
+  mixins: [watchAchievements],
   data() {
     return {
       chromeSync: chromeSync,

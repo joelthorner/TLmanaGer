@@ -1,14 +1,24 @@
+/**
+ * Requires a chromeSync prop {object}
+ */
+
 import achievements from "@/data/achievements";
 import optionsData from "@/data/optionsData";
 
 export default {
   data() {
     return {
+      optionsData,
       achievementsData: achievements,
       click500TimesAnything_sto: null,
     };
   },
   methods: {
+    /**
+     * Create chrome notify
+     * @param {object} archvievement - object from achievements.js
+     * @param {boolean} earned 
+     */
     createAchievementNotify(archvievement, earned) {
       if (earned) {
         const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -27,77 +37,47 @@ export default {
         });
 
         chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
-          if (notificationId == uniqid && buttonIndex == 1) {
+          if (notificationId == uniqid && buttonIndex == 0) {
+            chrome.notifications.clear(notificationId);
+          } else if (notificationId == uniqid && buttonIndex == 1) {
             chrome.tabs.create({ url: chrome.extension.getURL('/options/options.html') + '#/achievements' });
           }
         });
       }
     },
 
-    clickGithubLink() {
+    _onceClickAchievement(metricsKey, achievementKey) {
       // Update metric first
-      this.chromeSync.metrics.clickedGithubAnchor = true;
+      this.chromeSync.metrics[metricsKey] = true;
       // Get data of achievement
-      const archvData = this.achievementsData['clickGithubLink'];
+      const archvData = this.achievementsData[achievementKey];
       // Get confition() parameters
-      const clickedGithubAnchor = this.chromeSync.metrics.clickedGithubAnchor;
+      const condition = this.chromeSync.metrics[metricsKey];
       // Execute condition()
-      const result = archvData.condition(clickedGithubAnchor);
+      const result = archvData.condition(condition);
       // Get result before update achievement
-      const beforeResult = this.chromeSync.achievements['clickGithubLink'].earned;
+      const beforeResult = this.chromeSync.achievements[achievementKey].earned;
 
       if (beforeResult === false && result === true) {
         // Update achievement chrome data
-        this.chromeSync.achievements['clickGithubLink'].earned = result;
+        this.chromeSync.achievements[achievementKey].earned = result;
         // Save sync and launch system notify
         chrome.storage.sync.set(this.chromeSync, () => {
           this.createAchievementNotify(archvData, result);
         });
       }
+    },
+
+    clickGithubLink() {
+      this._onceClickAchievement('clickedGithubAnchor', 'clickGithubLink');
     },
 
     clickIssuesLink() {
-      // Update metric first
-      this.chromeSync.metrics.clickedIssuesAnchor = true;
-      // Get data of achievement
-      const archvData = this.achievementsData['clickIssuesLink'];
-      // Get confition() parameters
-      const clickedIssuesAnchor = this.chromeSync.metrics.clickedIssuesAnchor;
-      // Execute condition()
-      const result = archvData.condition(clickedIssuesAnchor);
-      // Get result before update achievement
-      const beforeResult = this.chromeSync.achievements['clickIssuesLink'].earned;
-
-      if (beforeResult === false && result === true) {
-        // Update achievement chrome data
-        this.chromeSync.achievements['clickIssuesLink'].earned = result;
-        // Save sync and launch system notify
-        chrome.storage.sync.set(this.chromeSync, () => {
-          this.createAchievementNotify(archvData, result);
-        });
-      }
+      this._onceClickAchievement('clickedIssuesAnchor', 'clickIssuesLink');
     },
 
     clickLegalsLink() {
-      // Update metric first
-      this.chromeSync.metrics.clickedLegalsAnchor = true;
-      // Get data of achievement
-      const archvData = this.achievementsData['clickLegalsLink'];
-      // Get confition() parameters
-      const clickedLegalsAnchor = this.chromeSync.metrics.clickedLegalsAnchor;
-      // Execute condition()
-      const result = archvData.condition(clickedLegalsAnchor);
-      // Get result before update achievement
-      const beforeResult = this.chromeSync.achievements['clickLegalsLink'].earned;
-
-      if (beforeResult === false && result === true) {
-        // Update achievement chrome data
-        this.chromeSync.achievements['clickLegalsLink'].earned = result;
-        // Save sync and launch system notify
-        chrome.storage.sync.set(this.chromeSync, () => {
-          this.createAchievementNotify(archvData, result);
-        });
-      }
+      this._onceClickAchievement('clickedLegalsAnchor', 'clickLegalsLink');
     },
 
     lookChangelog50Times() {
@@ -147,12 +127,12 @@ export default {
       }, 1000);
     },
 
-    activeAllZenOpts(optionsData) {
+    activeAllZenOpts() {
       // Get data
       let totalZendeskOpts = 0;
       let auxActiveOptsCount = 0;
       for (const optionKey in this.chromeSync.options) {
-        const category = optionsData[optionKey].category;
+        const category = this.optionsData[optionKey].category;
         const actived = this.chromeSync.options[optionKey].actived;
 
         if (category == 'zendesk') {

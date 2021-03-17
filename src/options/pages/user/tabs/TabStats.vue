@@ -12,7 +12,7 @@
 
 <script>
 import UserStatDataCard from "@options/pages/user/UserStatDataCard";
-import getArchievementsMixin from "@mixins/getArchievements";
+import getAchievementsMixin from "@mixins/getAchievements";
 import {
   award as awardIcon,
   unsplash as unsplashIcon,
@@ -27,7 +27,7 @@ import {
 
 export default {
   name: "TabStats",
-  mixins: [getArchievementsMixin],
+  mixins: [getAchievementsMixin],
   components: {
     UserStatDataCard,
   },
