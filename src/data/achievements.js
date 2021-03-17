@@ -23,10 +23,10 @@ export default {
       return zendeskActiveOptsCount === totalZendeskOpts
     }
   },
-  activeAllOpts: {
+  activeAllOptions: {
     name: 'Full equip',
     desc: 'Activate all options',
-    img: chrome.extension.getURL('img/archv/activeAllOpts.png'),
+    img: chrome.extension.getURL('img/archv/activeAllOptions.png'),
     condition: function (totalActiveOptsCount, activeOptsCount) {
       return totalActiveOptsCount === activeOptsCount
     }

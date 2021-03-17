@@ -19,7 +19,7 @@ export default {
      * @param {object} archvievement - object from achievements.js
      * @param {boolean} earned 
      */
-    createAchievementNotify(archvievement, earned) {
+    _createNotify(archvievement, earned) {
       if (earned) {
         const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
         const uniqid = randLetter + Date.now();
@@ -46,7 +46,12 @@ export default {
       }
     },
 
-    _onceClickAchievement(metricsKey, achievementKey) {
+    /**
+     * Logic of an achievement that consists of capturing a single click.
+     * @param {string} metricsKey 
+     * @param {string} achievementKey 
+     */
+    _singleClickLogic(metricsKey, achievementKey) {
       // Update metric first
       this.chromeSync.metrics[metricsKey] = true;
       // Get data of achievement
@@ -63,21 +68,21 @@ export default {
         this.chromeSync.achievements[achievementKey].earned = result;
         // Save sync and launch system notify
         chrome.storage.sync.set(this.chromeSync, () => {
-          this.createAchievementNotify(archvData, result);
+          this._createNotify(archvData, result);
         });
       }
     },
 
     clickGithubLink() {
-      this._onceClickAchievement('clickedGithubAnchor', 'clickGithubLink');
+      this._singleClickLogic('clickedGithubAnchor', 'clickGithubLink');
     },
 
     clickIssuesLink() {
-      this._onceClickAchievement('clickedIssuesAnchor', 'clickIssuesLink');
+      this._singleClickLogic('clickedIssuesAnchor', 'clickIssuesLink');
     },
 
     clickLegalsLink() {
-      this._onceClickAchievement('clickedLegalsAnchor', 'clickLegalsLink');
+      this._singleClickLogic('clickedLegalsAnchor', 'clickLegalsLink');
     },
 
     lookChangelog50Times() {
@@ -97,7 +102,7 @@ export default {
         // Save sync and launch system notify
         chrome.storage.sync.set(this.chromeSync, () => {
           if (beforeResult == false) {
-            this.createAchievementNotify(archvData, result);
+            this._createNotify(archvData, result);
           }
         });
       }, 1000);
@@ -121,7 +126,7 @@ export default {
         // Save sync and launch system notify
         chrome.storage.sync.set(this.chromeSync, () => {
           if (beforeResult == false) {
-            this.createAchievementNotify(archvData, result);
+            this._createNotify(archvData, result);
           }
         });
       }, 1000);
@@ -158,34 +163,35 @@ export default {
       // Save sync and launch system notify
       chrome.storage.sync.set(this.chromeSync, () => {
         if (beforeResult == false) {
-          this.createAchievementNotify(archvData, result);
+          this._createNotify(archvData, result);
         }
       });
     },
 
-    activeAllOpts() {
+    activeAllOptions() {
       // Get data total
       let totalOpts = Object.keys(this.chromeSync.options).length;
       // Update metric first
       let auxActiveOptsCount = 0;
-      Object.keys(this.chromeSync.options).forEach(element => {
-        if (this.chromeSync.options[element].actived) auxActiveOptsCount++;
-      });
+      for (const optionKey in this.chromeSync.options) {
+        const actived = this.optionsData[optionKey].actived;
+        if (actived) auxActiveOptsCount++;
+      }
 
       this.chromeSync.metrics.totalActiveOptsCount = auxActiveOptsCount;
       // Get data of achievement
-      const archvData = this.achievementsData.activeAllOpts;
-      // Get confition() parameters
+      const archvData = this.achievementsData.activeAllOptions;
+      // Get condition() parameters
       const totalActiveOptsCount = this.chromeSync.metrics.totalActiveOptsCount;
       // Execute condition()
       const result = archvData.condition(totalActiveOptsCount, totalOpts);
       // Get result before update achievement
-      const beforeResult = this.chromeSync.achievements.activeAllOpts.earned;
+      const beforeResult = this.chromeSync.achievements.activeAllOptions.earned;
       // Update achievement chrome data
-      this.chromeSync.achievements.activeAllOpts.earned = result;
+      this.chromeSync.achievements.activeAllOptions.earned = result;
       // Save sync and launch system notify
       chrome.storage.sync.set(this.chromeSync, () => {
-        if (beforeResult == false) this.createAchievementNotify(archvData, result);
+        if (beforeResult == false) this._createNotify(archvData, result);
       });
     },
 
@@ -206,7 +212,7 @@ export default {
             this.chromeSync.achievements.googleAccountSync.earned = result;
             // Save sync and launch system notify
             chrome.storage.sync.set(this.chromeSync, () => {
-              this.createAchievementNotify(archvData, result);
+              this._createNotify(archvData, result);
             });
           }
         });
