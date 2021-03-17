@@ -1,4 +1,5 @@
 import achievements from "@/data/achievements";
+import optionsData from "@/data/optionsData";
 
 export default {
   data() {
@@ -146,16 +147,20 @@ export default {
       }, 1000);
     },
 
-    activeAllZenOpts() {
+    activeAllZenOpts(optionsData) {
       // Get data
       let totalZendeskOpts = 0;
       let auxActiveOptsCount = 0;
       for (const optionKey in this.chromeSync.options) {
-        const category = this.orderedOptions[optionKey].category;
-        const actived = this.orderedOptions[optionKey].actived;
+        const category = optionsData[optionKey].category;
+        const actived = this.chromeSync.options[optionKey].actived;
 
-        if (category == 'zendesk') totalZendeskOpts++;
-        if (actived) auxActiveOptsCount++;
+        if (category == 'zendesk') {
+          totalZendeskOpts++;
+          if (actived) {
+            auxActiveOptsCount++;
+          }
+        }
       }
 
       // Update metric first

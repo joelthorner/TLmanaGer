@@ -25,11 +25,11 @@ export default {
     chromeSync: Object,
   },
   created() {
-    this.$router.push({
-      // name: "options",
-      params: { option: this.optionKey },
-    });
-    // .catch(() => {});
+    this.$router
+      .push({
+        params: { option: this.optionKey },
+      })
+      .catch(() => {});
   },
   data() {
     return {

@@ -201,7 +201,7 @@ export default {
       chrome.storage.sync.set(this.chromeSync, () => {
         this.showSavedOptions = true;
         this.activeAllOpts(); // archivement
-        this.activeAllZenOpts(); // archivement
+        this.activeAllZenOpts(this.optionsData); // archivement
         setTimeout(() => {
           this.showSavedOptions = false;
         }, 2000);
