@@ -29,7 +29,7 @@ import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
 import AchievementsCard from "@options/components/AchievementsCard";
 import achievements from "@/data/achievements";
-import getArchievementsMixin from "@mixins/getArchievements";
+import getAchievementsMixin from "@mixins/getAchievements";
 
 import round from "vue-round-filter";
 
@@ -40,7 +40,7 @@ export default {
     MainContent,
     AchievementsCard,
   },
-  mixins: [getArchievementsMixin],
+  mixins: [getAchievementsMixin],
   data() {
     return {
       achievementsData: achievements,

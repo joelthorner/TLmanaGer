@@ -105,9 +105,6 @@ export default {
     };
   },
   computed: {
-    // option() {
-    //   return this.chromeSync[this.optionKey];
-    // },
     data() {
       return this.optionsData[this.optionKey];
     },

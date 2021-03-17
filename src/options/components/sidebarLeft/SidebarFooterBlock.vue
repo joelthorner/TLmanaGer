@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import watchArchievements from "@mixins/watchArchievements";
+import watchAchievements from "@mixins/watchAchievements";
 
 export default {
   name: "SidebarFooterBlock",
@@ -28,7 +28,7 @@ export default {
     items: Array,
     chromeSync: Object,
   },
-  mixins: [watchArchievements],
+  mixins: [watchAchievements],
   methods: {
     setAchievement(id) {
       if (id === "project") {

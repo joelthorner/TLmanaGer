@@ -24,7 +24,7 @@
 <script>
 import SidebarResumeItem from "@options/components/sidebarRight/SidebarResumeItem";
 import { caretSimpleRight as caretSimpleRightIcon } from "@/data/icons";
-import getArchievementsMixin from "@mixins/getArchievements";
+import getAchievementsMixin from "@mixins/getAchievements";
 
 export default {
   name: "SidebarRightResume",
@@ -34,7 +34,7 @@ export default {
   components: {
     SidebarResumeItem,
   },
-  mixins: [getArchievementsMixin],
+  mixins: [getAchievementsMixin],
   data() {
     return {
       caret: caretSimpleRightIcon,

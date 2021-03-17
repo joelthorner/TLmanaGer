@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import watchArchievements from "@mixins/watchArchievements";
+import watchAchievements from "@mixins/watchAchievements";
 
 export default {
   name: "SidebarCopy",
@@ -27,7 +27,7 @@ export default {
       return new Date().getFullYear();
     },
   },
-  mixins: [watchArchievements],
+  mixins: [watchAchievements],
   methods: {
     setAchievement() {
       this.clickLegalsLink(); // archivement

@@ -7,9 +7,10 @@
   .nav-link {
     position: relative;
     font-size: 14px;
+    color: $gray-1;
 
-    &:not(.active) {
-      // color: $text-1;
+    &.active {
+      color: $logo-blue-end;
     }
     height: 48px;
     display: flex;

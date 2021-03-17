@@ -127,7 +127,7 @@ export default {
     activeAllZenOpts: { // programed
       earned: false,
     },
-    activeAllOpts: { // programed
+    activeAllOptions: { // programed
       earned: false,
     },
     lookChangelog50Times: { // programed

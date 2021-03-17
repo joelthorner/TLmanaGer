@@ -60,7 +60,7 @@
 
 <script>
 import _ from "lodash";
-import watchArchievements from "@mixins/watchArchievements";
+import watchAchievements from "@mixins/watchAchievements";
 import optionsData from "@/data/optionsData";
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
@@ -83,11 +83,15 @@ export default {
   created: function () {
     this.debounceSetCardMaxWidth = _.debounce(this.setCardMaxWidth, 250);
     window.addEventListener("resize", this.debounceSetCardMaxWidth);
+
+    if (this.$route.params.option) {
+      this.cardOpenKey = this.$route.params.option;
+    }
   },
   mounted() {
     this.setCardMaxWidth();
   },
-  mixins: [watchArchievements],
+  mixins: [watchAchievements],
   data() {
     return {
       currentFilter: ALL_CATEGORIES,
@@ -196,7 +200,7 @@ export default {
     setSavedOptions(value) {
       chrome.storage.sync.set(this.chromeSync, () => {
         this.showSavedOptions = true;
-        this.activeAllOpts(); // archivement
+        this.activeAllOptions(); // archivement
         this.activeAllZenOpts(); // archivement
         setTimeout(() => {
           this.showSavedOptions = false;

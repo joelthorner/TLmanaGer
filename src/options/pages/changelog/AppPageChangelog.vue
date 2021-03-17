@@ -47,7 +47,7 @@ import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
 import { changelog as changelogIcon } from "@/data/icons";
-import watchArchievements from "@mixins/watchArchievements";
+import watchAchievements from "@mixins/watchAchievements";
 
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
@@ -75,7 +75,7 @@ export default {
   mounted() {
     this.lookChangelog50Times();
   },
-  mixins: [watchArchievements],
+  mixins: [watchAchievements],
   data() {
     return {
       releases: [],
@@ -133,13 +133,13 @@ export default {
       // list clean
       newValue = newValue.replace(/^-\s{1}/, "");
       // badge
-      newValue = newValue.replace(/(\*\*[A-Z]{2,}\*\*)/, function (
-        match,
-        capture
-      ) {
-        const _c = capture.replace(/\*/g, "");
-        return `<span class="badge badge-${_c.toLowerCase()}">${_c.toUpperCase()}</span>`;
-      });
+      newValue = newValue.replace(
+        /(\*\*[A-Z]{2,}\*\*)/,
+        function (match, capture) {
+          const _c = capture.replace(/\*/g, "");
+          return `<span class="badge badge-${_c.toLowerCase()}">${_c.toUpperCase()}</span>`;
+        }
+      );
       // issue
       newValue = newValue.replace(
         /(#\d{1,4})(#issuecomment-\d{1,20})?/,
