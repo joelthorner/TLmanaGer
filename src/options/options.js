@@ -35,28 +35,9 @@ const router = new VueRouter({
       component: AppPageHome,
     },
     {
-      path: '/options',
-      // redirect: '/options/logicommerce',
+      path: '/options/:option?',
       name: "options",
       component: AppPageOptions,
-      // children: [
-      //   {
-      //     path: 'logicommerce',
-      //     component: TabLogicommerce,
-      //   },
-      //   {
-      //     path: 'fluid-tools',
-      //     component: TabFluidTools,
-      //   },
-      //   {
-      //     path: 'zendesk',
-      //     component: TabZendesk,
-      //   },
-      //   {
-      //     path: 'others',
-      //     component: TabOthers,
-      //   },
-      // ],
     },
     {
       path: '/achievements',

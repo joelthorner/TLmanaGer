@@ -24,6 +24,13 @@ export default {
     optionKey: String,
     chromeSync: Object,
   },
+  created() {
+    this.$router.push({
+      // name: "options",
+      params: { option: this.optionKey },
+    });
+    // .catch(() => {});
+  },
   data() {
     return {
       optionsData,
@@ -33,22 +40,6 @@ export default {
     data() {
       return this.optionsData[this.optionKey];
     },
-    // activedText() {
-    //   return this.chromeSync.options[this.optionKey].actived
-    //     ? "Desactivar"
-    //     : "Activar";
-    // },
-    // checkboxId() {
-    //   return `id-switch-${this.optionKey}-content`;
-    // },
-    // checkboxName() {
-    //   return `switch-${this.optionKey}-content`;
-    // },
   },
-  // methods: {
-  //   sendChangeActived(checked) {
-  //     this.$emit("setSavedOptionsCard", checked);
-  //   },
-  // },
 };
 </script>

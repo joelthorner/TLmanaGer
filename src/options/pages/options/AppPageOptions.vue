@@ -83,6 +83,10 @@ export default {
   created: function () {
     this.debounceSetCardMaxWidth = _.debounce(this.setCardMaxWidth, 250);
     window.addEventListener("resize", this.debounceSetCardMaxWidth);
+
+    if (this.$route.params.option) {
+      this.cardOpenKey = this.$route.params.option;
+    }
   },
   mounted() {
     this.setCardMaxWidth();

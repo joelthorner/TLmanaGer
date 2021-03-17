@@ -65,6 +65,13 @@ body,
   height: 100%;
 }
 
+::-webkit-scrollbar {
+  height: 16px;
+  overflow: visible;
+  width: 16px;
+  display: none;
+}
+
 @import "options/components";
 
 @import "options/aside-left";
