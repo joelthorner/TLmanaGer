@@ -51,12 +51,14 @@
 
     <transition name="fade">
       <div class="card-back" v-if="opened">
-        <component
-          :is="optionCardContent"
-          :optionKey="optionKey"
-          :chromeSync="chromeSync"
-          @setSavedOptionsCard="sendChangeActived"
-        ></component>
+        <keep-alive include="ContentBackground">
+          <component
+            :is="optionCardContent"
+            :optionKey="optionKey"
+            :chromeSync="chromeSync"
+            @setSavedOptionsCard="sendChangeActived"
+          ></component>
+        </keep-alive>
 
         <button class="close close-card" v-on:click.prevent="closeCard()">
           <span class="icon" v-html="timesIcon"></span>
