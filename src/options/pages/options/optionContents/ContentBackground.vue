@@ -148,7 +148,6 @@
 </template>
 
 <script>
-import _ from "lodash";
 import axios from "axios";
 import optionsData from "@/data/optionsData";
 import FullImageModal from "@options/components/FullImageModal";
@@ -173,13 +172,11 @@ export default {
     FullImageModal,
   },
   created() {
-    this.$router.push({
-      // name: "options",
-      params: { option: this.optionKey },
-    });
-    // .catch(() => {});
-
-    // this.debouncedInputSearch = _.debounce(this.inputSearch, 500);
+    this.$router
+      .push({
+        params: { option: this.optionKey },
+      })
+      .catch(() => {});
   },
   mounted() {
     this.ajaxRandoms();
