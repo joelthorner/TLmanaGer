@@ -30,7 +30,7 @@ class AutoIncrVersionPublish extends LCModifier {
 
   /**
    * Return next publish version
-   * @return {string}
+   * @returns {string}
    */
   _getNextPublishVersion() {
     let versions = document.querySelectorAll('.iconGrid .column.name .osPublishCode');
@@ -54,7 +54,7 @@ class AutoIncrVersionPublish extends LCModifier {
    * @param {object} data - Dataset of last publication row of publications window
    * @param {RegExp} regexp - Regexp to find
    * @param {string} defaultValue
-   * @return {string}
+   * @returns {string}
    */
   _getPartByRegexp(data, regexp, defaultValue) {
     let match = data.id.match(regexp);
@@ -69,7 +69,7 @@ class AutoIncrVersionPublish extends LCModifier {
    * Return concat of next version value
    * @param {string} versionStrPart - ('v', 'V', ...)
    * @param {array} versionNumbersArr - Array of number part [2, 3, 1] from '2.3.1' for example.
-   * @return {string}
+   * @returns {string}
    */
   _getVersionNextNumberPart(versionStrPart, versionNumbersArr) {
     let versionLastNum = versionNumbersArr[versionNumbersArr.length - 1];
@@ -95,7 +95,7 @@ class AutoIncrVersionPublish extends LCModifier {
   /**
    * Return incremented last number 
    * @param {string} number
-   * @return {string}
+   * @returns {string}
    */
   _getLastNumberIncr(number) {
     let result = parseInt(number) + 1;
@@ -110,7 +110,7 @@ class AutoIncrVersionPublish extends LCModifier {
    * Return incremented penultimate number 
    * @param {string} number
    * @param {number} lastNumber
-   * @return {string}
+   * @returns {string}
    */
   _getPenultimateNumberIncr(number, lastNumber) {
     if (lastNumber == 0) {

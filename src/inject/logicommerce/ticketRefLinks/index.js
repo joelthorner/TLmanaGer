@@ -39,7 +39,7 @@ class TicketRefLinks extends LCModifier {
   /**
    * Return string html of ticket
    * @param {string} ticket
-   * @return {string}
+   * @returns {string}
    */
   getTicketLink(ticket) {
     const ticketId = parseInt(ticket.replace(/\D+/g, ''));
@@ -52,7 +52,7 @@ class TicketRefLinks extends LCModifier {
    * If html string contains tickets replace it with ticket link, else return defautl html.
    * @param {string} html
    * @param {array<string>} tickets
-   * @return {string}
+   * @returns {string}
    */
   getLineHtml(html, tickets) {
     if (tickets) {

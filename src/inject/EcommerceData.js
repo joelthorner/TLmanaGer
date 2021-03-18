@@ -34,7 +34,7 @@ var ecommerceData = {
 
   /**
    * Return type
-   * @return {String|null}
+   * @returns {String|null}
    */
   getType() {
     if (document.body && document.body.classList.value.includes('fluidContent'))
@@ -48,7 +48,7 @@ var ecommerceData = {
 
   /**
    * Return environment
-   * @return {String|null}
+   * @returns {String|null}
    */
   getEnvironment() {
     if ((/[0-9]+\.logicommerce\.net/).test(location) || document.querySelector('meta[name="robots"][content="index, follow"]') != null)
@@ -68,7 +68,7 @@ var ecommerceData = {
 
   /**
    * Get if is template modular 2018
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   _isTemplateModular2018() {
     let shopData = document.getElementById('shop-data');
@@ -81,7 +81,7 @@ var ecommerceData = {
 
   /**
    * Return template
-   * @return {String|null}
+   * @returns {String|null}
    */
   getTemplate() {
     if (document.querySelector('[data-module]') || this._isTemplateModular2018())
@@ -92,7 +92,7 @@ var ecommerceData = {
 
   /**
    * Get html comments texts
-   * @return {Array}
+   * @returns {Array}
    */
   _getComments(context) {
     var foundComments = [], elementPath = [context];
@@ -114,7 +114,7 @@ var ecommerceData = {
 
   /**
    * Return if web has fluid cache by html comments
-   * @return {Boolean}
+   * @returns {Boolean}
    */
   getFluidCache() {
     var hasCache = false;
@@ -136,7 +136,7 @@ var ecommerceData = {
 
   /**
    * Return fluid data object
-   * @return {fluidData}
+   * @returns {fluidData}
    */
   getFluidData() {
     return {
@@ -149,7 +149,7 @@ var ecommerceData = {
    * Extract shop id from text by regexp
    * @param {String} text
    * @param {RegExp} regex
-   * @return {Number|null}
+   * @returns {Number|null}
    */
   _extractShopId(text, regex) {
     var match = text.match(new RegExp(regex));
@@ -165,7 +165,7 @@ var ecommerceData = {
    * Extract shop id from text by regexp
    * @param {String} text
    * @param {RegExp} regex
-   * @return {Number}
+   * @returns {Number}
    */
   getShopId() {
     var shopId = null;
@@ -198,7 +198,7 @@ var ecommerceData = {
 
   /**
    * Return all data object
-   * @return {ecommerceDataObject}
+   * @returns {ecommerceDataObject}
    */
   getData() {
     return {

@@ -123,7 +123,7 @@ var getFontWesomeIcons = {
    * @param {String} str - String to aply replace
    * @param {String} find - Regex string
    * @param {String} replace - Replace string
-   * @return {String}
+   * @returns {String}
    */
   replaceAll(str, find, replace) {
     return str.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
@@ -132,7 +132,7 @@ var getFontWesomeIcons = {
   /**
    * Escape string regexp
    * @param {String} str - Regex string to escape
-   * @return {String}
+   * @returns {String}
    */
   escapeRegExp(str) {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
@@ -140,7 +140,7 @@ var getFontWesomeIcons = {
 
   /**
    * Return calculated css part, other css is into ./index.css
-   * @return {String}
+   * @returns {String}
    */
   getCss() {
     return `
@@ -163,7 +163,7 @@ var getFontWesomeIcons = {
    * Return widget column with textarea, if key is svg add a download button
    * @param {String} key - textarea key output
    * @param {String} text - textarea label text
-   * @return {String}
+   * @returns {String}
    */
   getOutputElement(key, text) {
     var download = key == 'svg' ? `
@@ -181,7 +181,7 @@ var getFontWesomeIcons = {
 
   /**
    * Return widget main structure
-   * @return {String}
+   * @returns {String}
    */
   getStructure() {
     return `
