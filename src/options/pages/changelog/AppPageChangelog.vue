@@ -10,10 +10,14 @@
           <section
             class="release-block card"
             v-for="release in releases"
-            v-bind:key="release.id"
+            :key="release.id"
           >
             <div class="card-body">
-              <header>
+              <a
+                class="header"
+                :href="releaseLink(release.tag_name)"
+                target="_blank"
+              >
                 <div class="d-flex">
                   <div class="icon" v-html="icon"></div>
                   <span class="version">{{
@@ -25,12 +29,12 @@
                     getReleaseDate(release.created_at)
                   }}</small>
                 </div>
-              </header>
+              </a>
 
               <ul class="list-unstyled">
                 <li
                   v-for="(line, index) in getReleaseLines(release.body)"
-                  v-bind:key="index"
+                  :key="index"
                   v-html="changelogLineParse(line)"
                 ></li>
               </ul>
@@ -150,6 +154,9 @@ export default {
         }
       );
       return newValue;
+    },
+    releaseLink(version) {
+      return `https://github.com/joelthorner/TLmanaGer/releases/tag/${version}`;
     },
   },
 };

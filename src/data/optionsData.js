@@ -133,11 +133,12 @@ export default {
     show: true,
     priority: 202,
     category: 'fluidWebTools',
-    image: "",
-    title: "",
-    description: "",
-    help: {
-
+    image: chrome.extension.getURL('img/optionsData/dumpAutoScroll.jpg'),
+    title: "Auto scroll to dumps",
+    description: "Automàticament la web fa scroll al dump i el deixa clarament visible, en entorns de development.",
+    infoBlock: {
+      Environments: `*://*.sandbox.logicommerce.net/*, *://*.igd.production/*`,
+      Since: 'Apr 18, 2019',
     },
   },
   getFontWesomeIcons: {
