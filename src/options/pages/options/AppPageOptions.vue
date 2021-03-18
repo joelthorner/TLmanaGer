@@ -116,27 +116,18 @@ export default {
 
       // Transform to array and order
       let result = _.sortBy(cloneOptions, [
-        function (o) {
-          return o.priority;
+        (object) => {
+          return object.priority;
         },
       ]);
 
       // Filter by category or a unique card if someone is actived
-      result = result.filter((option) => {
-        if (this.cardOpenKey.length && this.cardOpenKey === option.key) {
-          return true;
-        }
-        if (
-          !this.cardOpenKey.length &&
-          (option.category === this.currentFilter ||
-            this.currentFilter === ALL_CATEGORIES)
-        ) {
-          return true;
-        }
-        return false;
+      return result.filter((option) => {
+        return (
+          this.cardKeyMatch(option.key) ||
+          this.cardCategoryMatch(option.category, option.show)
+        );
       });
-
-      return result;
     },
     categories() {
       let result = [],
@@ -149,13 +140,7 @@ export default {
           keys.push(category);
 
           result.push({
-            text:
-              category.charAt(0).toUpperCase() +
-              category
-                .slice(1)
-                .split(/(?=[A-Z])/)
-                .join(" ")
-                .toLowerCase(),
+            text: this.getCategoryText(category),
             value: category,
           });
         }
@@ -165,8 +150,42 @@ export default {
     },
   },
   methods: {
+    getCategoryText(name) {
+      return `${name.charAt(0).toUpperCase()}${name
+        .slice(1)
+        .split(/(?=[A-Z])/)
+        .join(" ")
+        .toLowerCase()}`;
+    },
+    /**
+     * Returns true if param key is same as opened card key
+     * @param {string} key
+     * @return {boolean}
+     */
+    cardKeyMatch(key) {
+      return this.cardOpenKey.length && this.cardOpenKey === key;
+    },
+    /**
+     * Returns true if hasn opened card and category is all value or
+     * selected category is same as option
+     * @param {string} category
+     * @param {boolean} show
+     * @return {boolean}
+     */
+    cardCategoryMatch(category, show) {
+      const categoryMatch = category === this.currentFilter,
+        allCategoriesMatch = this.currentFilter === ALL_CATEGORIES;
+
+      return (
+        !this.cardOpenKey.length &&
+        (categoryMatch || allCategoriesMatch) &&
+        show === true
+      );
+    },
     /**
      * Get content type option vue component
+     * @param {string} key
+     * @return {string}
      */
     optionCardContent(key) {
       if (key === "background") {
@@ -199,11 +218,13 @@ export default {
     setCardOpenKey(value) {
       this.cardOpenKey = value;
     },
-    setSavedOptions(value) {
+    setSavedOptions() {
       chrome.storage.sync.set(this.chromeSync, () => {
         this.showSavedOptions = true;
-        this.activeAllOptions(); // archivement
-        this.activeAllZenOpts(); // archivement
+        // Achievements
+        this.activeAllOptions();
+        this.activeAllZenOpts();
+
         setTimeout(() => {
           this.showSavedOptions = false;
         }, 2000);

@@ -80,6 +80,7 @@ import optionsData from "@/data/optionsData";
 import ZoomImageModal from "@options/components/ZoomImageModal";
 import ContentDefault from "@options/pages/options/optionContents/ContentDefault";
 import ContentBackground from "@options/pages/options/optionContents/ContentBackground";
+import ContentPagesWindowBetter from "@options/pages/options/optionContents/ContentPagesWindowBetter";
 import {
   times as timesIcon,
   info as infoIcon,
@@ -99,6 +100,7 @@ export default {
     ZoomImageModal,
     ContentDefault,
     ContentBackground,
+    ContentPagesWindowBetter,
   },
   data() {
     return {
