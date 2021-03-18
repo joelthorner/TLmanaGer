@@ -1,5 +1,6 @@
 export default {
   replyTicketConfirmPopup: {
+    show: true,
     priority: 301,
     category: 'zendesk',
     image: "",
@@ -10,6 +11,7 @@ export default {
     },
   },
   ticketPriorityHighlightColors: {
+    show: true,
     priority: 302,
     category: 'zendesk',
     image: "",
@@ -20,6 +22,7 @@ export default {
     },
   },
   beyondTheme: {
+    show: false,
     priority: 107,
     category: 'logicommerce',
     image: "",
@@ -30,6 +33,7 @@ export default {
     },
   },
   background: {
+    show: true,
     priority: 100,
     category: 'logicommerce',
     image: chrome.extension.getURL('img/optionsData/background.jpg'),
@@ -41,6 +45,7 @@ export default {
     },
   },
   developerBar: {
+    show: true,
     priority: 101,
     category: 'logicommerce',
     image: chrome.extension.getURL('img/optionsData/developerBar.jpg'),
@@ -52,6 +57,7 @@ export default {
     },
   },
   sandboxLoginButtons: {
+    show: true,
     priority: 102,
     category: 'logicommerce',
     image: chrome.extension.getURL('img/optionsData/sandboxLoginButtons.jpg'),
@@ -63,6 +69,7 @@ export default {
     },
   },
   pagesWindowBetter: {
+    show: true,
     priority: 103,
     category: 'logicommerce',
     image: chrome.extension.getURL('img/optionsData/pagesWindowBetter.jpg'),
@@ -74,6 +81,7 @@ export default {
     },
   },
   bigControlInputs: {
+    show: true,
     priority: 105,
     category: 'logicommerce',
     image: chrome.extension.getURL('img/optionsData/bigControlInputs.jpg'),
@@ -85,6 +93,7 @@ export default {
     },
   },
   themeColors: {
+    show: false,
     priority: 104,
     category: 'logicommerce',
     image: "",
@@ -95,6 +104,7 @@ export default {
     },
   },
   autoForceView: {
+    show: true,
     priority: 200,
     category: 'fluidWebTools',
     image: chrome.extension.getURL('img/optionsData/autoForceView.jpg'),
@@ -107,6 +117,7 @@ export default {
     },
   },
   flushRedisIgdDomain: {
+    show: true,
     priority: 201,
     category: 'fluidWebTools',
     image: chrome.extension.getURL('img/optionsData/flushRedisIgdDomain.jpg'),
@@ -119,16 +130,19 @@ export default {
     },
   },
   dumpAutoScroll: {
+    show: true,
     priority: 202,
     category: 'fluidWebTools',
-    image: "",
-    title: "",
-    description: "",
-    help: {
-
+    image: chrome.extension.getURL('img/optionsData/dumpAutoScroll.jpg'),
+    title: "Auto scroll to dumps",
+    description: "Automàticament la web fa scroll al dump i el deixa clarament visible, en entorns de development.",
+    infoBlock: {
+      Environments: `*://*.sandbox.logicommerce.net/*, *://*.igd.production/*`,
+      Since: 'Apr 18, 2019',
     },
   },
   getFontWesomeIcons: {
+    show: true,
     priority: 400,
     category: 'others',
     image: chrome.extension.getURL('img/optionsData/getFontWesomeIcons.jpg'),

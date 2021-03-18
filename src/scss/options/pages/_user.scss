@@ -11,21 +11,6 @@
     background-size: cover;
     background-position: center;
   }
-  .credits {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 20px;
-    color: #fff;
-    font-size: 12px;
-    z-index: 1;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-
-    a {
-      color: #fff;
-      font-weight: bold;
-    }
-  }
 }
 
 .btn-edit-cover {

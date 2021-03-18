@@ -31,7 +31,11 @@
           <div class="rippleJS"></div
         ></a>
 
-        <a href="#" class="list-group-item" v-if="opened"
+        <a
+          :href="issueLink"
+          target="_blank"
+          class="list-group-item"
+          v-if="opened"
           ><span class="icon" v-html="bugIcon"></span>Report bug
           <div class="rippleJS"></div
         ></a>
@@ -76,6 +80,7 @@ import optionsData from "@/data/optionsData";
 import ZoomImageModal from "@options/components/ZoomImageModal";
 import ContentDefault from "@options/pages/options/optionContents/ContentDefault";
 import ContentBackground from "@options/pages/options/optionContents/ContentBackground";
+import ContentPagesWindowBetter from "@options/pages/options/optionContents/ContentPagesWindowBetter";
 import {
   times as timesIcon,
   info as infoIcon,
@@ -95,6 +100,7 @@ export default {
     ZoomImageModal,
     ContentDefault,
     ContentBackground,
+    ContentPagesWindowBetter,
   },
   data() {
     return {
@@ -136,6 +142,12 @@ export default {
           .toLowerCase()
       );
     },
+    issueLink() {
+      const url = "https://github.com/joelthorner/TLmanaGer/issues/new",
+        title = encodeURIComponent(this.data.title + " bug report");
+
+      return `${url}?labels=bug&title=${title}&template=bug_report.md&assignees=joelthorner`;
+    },
   },
   methods: {
     openCard() {
@@ -152,6 +164,11 @@ export default {
       }
     },
     closeCard() {
+      this.$router
+        .push({
+          params: { option: "" },
+        })
+        .catch(() => {});
       this.$emit("setCardOpenKeyParent", "");
     },
   },
