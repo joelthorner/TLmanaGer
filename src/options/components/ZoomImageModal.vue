@@ -6,6 +6,7 @@
     size="xl"
     hide-footer
     hide-header
+    modal-class="full-image-modal"
   >
     <img v-if="image.length" :src="image" class="img-fluid" />
   </b-modal>

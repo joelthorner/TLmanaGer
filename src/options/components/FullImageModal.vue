@@ -1,13 +1,14 @@
 <template>
   <b-modal
     :id="thisModalId"
-    size="lg"
     centered
-    v-bind:title="title"
+    size="xl"
     hide-footer
+    hide-header
     modal-class="full-image-modal"
   >
-    <img :src="sourceUrl" :alt="title" />
+    <div class="credits">{{ title }}</div>
+    <img :src="sourceUrl" :alt="title" class="img-fluid" />
   </b-modal>
 </template>
 
