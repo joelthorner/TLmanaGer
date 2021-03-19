@@ -88,14 +88,25 @@ class TicketPriorityHighlightColors extends ZendeskModifier {
 
       let data = this.getRowData(cells),
         hasPriority = data.priority ? true : false,
-        priorityText = data.priority;
+        priorityText = data.priority,
+        isIncident = data.incident;
 
       this.clearRow(row);
 
-      if (hasPriority && ((this.onlyIncidents && data.incident) || !this.onlyIncidents)) {
+      if (this.evalDecorateRow(hasPriority, isIncident)) {
         this.decorateRow(row, priorityText);
       }
     }
+  }
+
+  /**
+   * Returns boolean if the row has to be decorated
+   * @param {boolean} hasPriority 
+   * @param {boolean} isIncident 
+   * @returns {boolean}
+   */
+  evalDecorateRow(hasPriority, isIncident) {
+    return hasPriority && ((this.onlyIncidents && isIncident) || !this.onlyIncidents);
   }
 
   /**
