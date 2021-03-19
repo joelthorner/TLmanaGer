@@ -68,6 +68,7 @@
       "js": [
         "data/chromeSync.js",
         "inject/log.js",
+        "inject/Observer.js",
         "inject/logicommerce/ObserverLC.js",
         "inject/logicommerce/LCModifier.js",
         "inject/logicommerce/LogiInfo.js",
@@ -142,7 +143,6 @@
         "*://8x.logicommerce.net/login/*"
       ],
       "js": [
-        "inject/logicommerce/ObserverLC.js",
         "inject/logicommerce/sandboxLoginButtons/index.js"
       ],
       "css": [
@@ -157,6 +157,7 @@
         "data/chromeSync.js",
         "inject/zendesk/api.js",
         "inject/log.js",
+        "inject/Observer.js",
         "inject/zendesk/ObserverZendesk.js",
         "inject/zendesk/ZendeskModifier.js",
         "inject/zendesk/ticketPriorityHighlightColors/index.js"
