@@ -68,9 +68,10 @@
       "js": [
         "data/chromeSync.js",
         "inject/log.js",
-        "inject/ObserverLC.js",
-        "inject/LCModifier.js",
-        "inject/LogiInfo.js",
+        "inject/Observer.js",
+        "inject/Modifier.js",
+        "inject/logicommerce/ObserverLC.js",
+        "inject/logicommerce/LogiInfo.js",
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.js",
         "inject/logicommerce/pagesWindowBetter/gridView/index.js",
         "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js",
@@ -142,11 +143,27 @@
         "*://8x.logicommerce.net/login/*"
       ],
       "js": [
-        "inject/ObserverLC.js",
         "inject/logicommerce/sandboxLoginButtons/index.js"
       ],
       "css": [
         "inject/logicommerce/sandboxLoginButtons/index.css"
+      ]
+    },
+    {
+      "matches": [
+        "ZENDESK_DOMAIN_BASE_URL"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/zendesk/api.js",
+        "inject/log.js",
+        "inject/Observer.js",
+        "inject/Modifier.js",
+        "inject/zendesk/ObserverZendesk.js",
+        "inject/zendesk/ticketPriorityHighlightColors/index.js"
+      ],
+      "css": [
+        "inject/zendesk/ticketPriorityHighlightColors/index.css"
       ]
     }
   ]

@@ -8,7 +8,7 @@
  * Creates a new BetterGroupHeaders
  * @class
  */
-class BetterGroupHeaders extends LCModifier {
+class BetterGroupHeaders extends Modifier {
 
   /**
    * Types of header badge icons
@@ -91,7 +91,7 @@ class BetterGroupHeaders extends LCModifier {
   /**
    * Create span with simple text
    * @param {String} textContent - textContent of nameLabel property
-   * @return {HTMLElement}
+   * @returns {HTMLElement}
    */
   _createInnerTextNode(text) {
     let innerTextNode = document.createElement('span');
@@ -105,7 +105,7 @@ class BetterGroupHeaders extends LCModifier {
   /**
    * Create span with badge
    * @param {String} text - Example: [textfinded] -> textfinded
-   * @return {HTMLElement}
+   * @returns {HTMLElement}
    */
   _createBadge(text) {
     let badge = document.createElement('span');
@@ -119,7 +119,7 @@ class BetterGroupHeaders extends LCModifier {
   /**
    * Create span with badge icon, for each type search and mathc type of icon
    * @param {String} textContent - textContent of nameLabel property
-   * @return {HTMLElement}
+   * @returns {HTMLElement}
    */
   _createBadgeIcon(textContent) {
     let badgeIconNode = document.createElement('span');
@@ -141,7 +141,7 @@ class BetterGroupHeaders extends LCModifier {
   /**
    * Util, convert string to valid class attr string
    * @param {String} name
-   * @return {String}
+   * @returns {String}
    */
   _makeSafeForCSS(name) {
     return name.replace(/[^a-z0-9]/g, function (s) {

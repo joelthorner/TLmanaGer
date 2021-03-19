@@ -8,7 +8,7 @@
  * Creates a new BetterTreeLevels
  * @class
  */
-class BetterTreeLevels extends LCModifier {
+class BetterTreeLevels extends Modifier {
 
   /**
    * Create a BetterTreeLevels.

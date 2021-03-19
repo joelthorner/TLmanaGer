@@ -129,6 +129,11 @@ const config = {
           from: 'manifest.json',
           to: 'manifest.json',
           transform: (content) => {
+            //  https://xxxxxxxxxx.zendesk.com/ -> *://xxxxxxxxxx.zendesk.com/*
+            content = content.toString().replace('ZENDESK_DOMAIN_BASE_URL',
+              process.env.ZENDESK_DOMAIN_BASE_URL.replace(/https?/, '*') + '*'
+            );
+
             const jsonContent = JSON.parse(content);
             jsonContent.version = version;
 

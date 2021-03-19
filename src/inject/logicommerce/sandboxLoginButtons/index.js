@@ -8,7 +8,7 @@
  * Creates a new SandboxLoginButtons
  * @class
  */
-class SandboxLoginButtons extends LCModifier {
+class SandboxLoginButtons extends Modifier {
 
   /**
    * Select input
@@ -100,7 +100,7 @@ class SandboxLoginButtons extends LCModifier {
 
   /**
    * Create an element that will contain the buttons
-   * @return {HTMLDivElement}
+   * @returns {HTMLDivElement}
    */
   _createWrap() {
     let buttonsCont = document.createElement('div');
@@ -113,7 +113,7 @@ class SandboxLoginButtons extends LCModifier {
   /**
    * From an option of a selector create a button
    * @param {HTMLOptionElement} option 
-   * @return {HTMLButtonElement|null}
+   * @returns {HTMLButtonElement|null}
    */
   _createButton(option) {
     if (option.value != 0) {
@@ -138,7 +138,7 @@ class SandboxLoginButtons extends LCModifier {
   /**
    * From a select option it returns the text that will go inside the new button
    * @param {HTMLOptionElement} option
-   * @return {Object}
+   * @returns {Object}
    */
   _getButtonText(option) {
     let btnText = option.text,

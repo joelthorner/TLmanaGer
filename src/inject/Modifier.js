@@ -1,15 +1,15 @@
 /**
- * @file Define the LCModifier class
+ * @file Define the Modifier class
  * @author joelthorner
  */
 'use strict';
 
 /**
- * Creates a new LCModifier
+ * Creates a new Modifier
  * @class
- * @classdesc Create a LCModifier to be extended
+ * @classdesc Create a Modifier to be extended
  */
-class LCModifier {
+class Modifier {
 
   /**
    * HTML selector tobe observed
@@ -18,20 +18,20 @@ class LCModifier {
   selector = '';
 
   /**
-   * Finded element from ObserverLC to test
+   * Finded element from ObserverZendesk to test
    * @type {HTMLElement}
    */
   node = null;
 
   /**
-   * Create a LCModifier.
+   * Create a Modifier.
    */
   constructor(selector) {
     this.selector = selector;
   }
 
   /**
-   * Initialize LCModifier logic if node is valid
+   * Initialize Modifier logic if node is valid
    * @param {HTMLElement} node - Finded element from ObserverLC to test
    */
   init(node) {
@@ -46,6 +46,6 @@ class LCModifier {
    * This method has to be overwritten !!
    */
   _match() {
-    Log.error('LCModifier _match not defined!');
+    Log.error('Modifier _match not defined!');
   }
 }

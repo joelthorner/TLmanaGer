@@ -160,7 +160,7 @@ export default {
     /**
      * Returns true if param key is same as opened card key
      * @param {string} key
-     * @return {boolean}
+     * @returns {boolean}
      */
     cardKeyMatch(key) {
       return this.cardOpenKey.length && this.cardOpenKey === key;
@@ -170,7 +170,7 @@ export default {
      * selected category is same as option
      * @param {string} category
      * @param {boolean} show
-     * @return {boolean}
+     * @returns {boolean}
      */
     cardCategoryMatch(category, show) {
       const categoryMatch = category === this.currentFilter,
@@ -185,7 +185,7 @@ export default {
     /**
      * Get content type option vue component
      * @param {string} key
-     * @return {string}
+     * @returns {string}
      */
     optionCardContent(key) {
       if (key === "background") {

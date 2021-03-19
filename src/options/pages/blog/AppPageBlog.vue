@@ -49,7 +49,7 @@ export default {
     activePosts() {
       return this.posts.filter((post) => {
         return (
-          post.tags.indexOf(this.currentFilter) ||
+          post.tags.indexOf(this.currentFilter) !== -1 ||
           this.currentFilter === ALL_POSTS
         );
       });

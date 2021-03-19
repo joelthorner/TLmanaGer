@@ -54,6 +54,7 @@ export default {
           });
         }
       });
+
       return tags.filter((thing, index) => {
         const _thing = JSON.stringify(thing);
         return (

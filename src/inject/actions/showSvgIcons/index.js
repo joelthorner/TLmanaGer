@@ -184,7 +184,7 @@ class ShowSvgIcons {
 
   /**
    * Get the icons value.
-   * @return {Array.<Icon>} The icons value.
+   * @returns {Array.<Icon>} The icons value.
    */
   get getIcons() {
     return this.icons;
@@ -202,7 +202,7 @@ class ShowSvgIcons {
 
   /**
    * Get the el value.
-   * @return {HTMLElement} The el value.
+   * @returns {HTMLElement} The el value.
    */
   get getEl() {
     return this.el;
@@ -220,7 +220,7 @@ class ShowSvgIcons {
 
   /**
    * Get the uniqueIcons value.
-   * @return {Number} The uniqueIcons value.
+   * @returns {Number} The uniqueIcons value.
    */
   get getUniqueIcons() {
     return this.uniqueIcons;
@@ -238,7 +238,7 @@ class ShowSvgIcons {
 
   /**
    * Get the totalIcons value.
-   * @return {Number} The totalIcons value.
+   * @returns {Number} The totalIcons value.
    */
   get getTotalIcons() {
     return this.totalIcons;
@@ -256,7 +256,7 @@ class ShowSvgIcons {
 
   /**
    * Get the uniqueImgIcons value.
-   * @return {Number} The uniqueImgIcons value.
+   * @returns {Number} The uniqueImgIcons value.
    */
   get getUniqueImgIcons() {
     return this.uniqueImgIcons;
@@ -274,7 +274,7 @@ class ShowSvgIcons {
 
   /**
    * Get the uniqueSvgIcons value.
-   * @return {Number} The uniqueSvgIcons value.
+   * @returns {Number} The uniqueSvgIcons value.
    */
   get getUniqueSvgIcons() {
     return this.uniqueSvgIcons;
@@ -292,7 +292,7 @@ class ShowSvgIcons {
 
   /**
    * Get the uniqueSymbolIcons value.
-   * @return {Number} The uniqueSymbolIcons value.
+   * @returns {Number} The uniqueSymbolIcons value.
    */
   get getUniqueSymbolIcons() {
     return this.uniqueSymbolIcons;
@@ -310,7 +310,7 @@ class ShowSvgIcons {
 
   /**
    * Get the uniqueCssBgIcons value.
-   * @return {Number} The uniqueCssBgIcons value.
+   * @returns {Number} The uniqueCssBgIcons value.
    */
   get getUniqueCssBgIcons() {
     return this.uniqueCssBgIcons;
@@ -336,7 +336,7 @@ class ShowSvgIcons {
 
   /**
    * Find all svg icons.
-   * @return {Array.<Icon>} An array of objects
+   * @returns {Array.<Icon>} An array of objects
    */
   _findIcons() {
     const elements = document.querySelectorAll('svg, symbol, img[src$=".svg"]');
@@ -404,7 +404,7 @@ class ShowSvgIcons {
   /**
    * Get HTML parsed code from svg node.
    * @param {HTMLElement} node - Svg html node.
-   * @return {Icon} Icon object
+   * @returns {Icon} Icon object
    */
   _parseSvgIcon(node) {
     let code = node.outerHTML;
@@ -428,7 +428,7 @@ class ShowSvgIcons {
   /**
    * Get HTML parsed code from symbol node.
    * @param {HTMLElement} node - Symbol html node.
-   * @return {Icon} Icon object
+   * @returns {Icon} Icon object
    */
   _parseSymbolIcon(node) {
     let symbolAttrs = '';
@@ -459,7 +459,7 @@ class ShowSvgIcons {
    * @param {HTMLElement} node - Img html node.
    * @param {String} src - Image source
    * @param {String} [type] - Icon type
-   * @return {Icon} Icon object
+   * @returns {Icon} Icon object
    */
   _parseImgIcon(node, src, type = 'img') {
     let code = '', canGetSvgCode = false;
@@ -489,7 +489,7 @@ class ShowSvgIcons {
   /**
    * Remove duplicated icons from array based on code Icon property
    * @param {Array.<Icon>} findedIcons - Array of Icon objects
-   * @return {Array.<Icon>} Unique Array of Icon objects
+   * @returns {Array.<Icon>} Unique Array of Icon objects
    */
   _removeDuplicateds(findedIcons) {
     return Array.from(new Set(findedIcons.map(a => a.getCode)))
@@ -524,7 +524,7 @@ class ShowSvgIcons {
 
   /**
    * For each icon generate html structure.
-   * @return {String} HTML in string format
+   * @returns {String} HTML in string format
    */
   _insertIcons() {
     var html = '';
@@ -561,7 +561,7 @@ class ShowSvgIcons {
   /**
    * Get all HTMLElement attributes
    * @param {HTMLElement} node - Element to substract attributes
-   * @return {Array.<{name: String, value: String}>} Array of objects
+   * @returns {Array.<{name: String, value: String}>} Array of objects
    */
   _getElAttributes(node) {
     for (var i = 0, atts = node.attributes, n = atts.length, arr = []; i < n; i++) {
