@@ -11,6 +11,15 @@
 const ZENDESK_API_TOKEN = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
 /**
+ * Define api headers
+ * @type {object}
+ */
+const ZENDESK_API_HEADERS = {
+  'x-csrf-token': ZENDESK_API_TOKEN,
+  'Content-Type': 'application/json'
+};
+
+/**
  * https://developer.zendesk.com/rest_api/docs/support/organizations#show-organization
  * @param {string} id - Organitzation id
  * @returns {object}
@@ -18,10 +27,7 @@ const ZENDESK_API_TOKEN = document.querySelector('[name="csrf-token"]').getAttri
 async function api_showOrganization(id) {
   const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
     method: 'GET',
-    headers: {
-      'x-csrf-token': ZENDESK_API_TOKEN,
-      'Content-Type': 'application/json'
-    }
+    headers: ZENDESK_API_HEADERS,
   });
   let data = await rawResponse.json();
   return data;
@@ -35,10 +41,7 @@ async function api_showOrganization(id) {
 async function api_showManyOrganizations(idList) {
   const rawResponse = await fetch(`/api/v2/organizations/show_many?ids=${idList}`, {
     method: 'GET',
-    headers: {
-      'x-csrf-token': ZENDESK_API_TOKEN,
-      'Content-Type': 'application/json'
-    }
+    headers: ZENDESK_API_HEADERS,
   });
   let data = await rawResponse.json();
   return data;
@@ -53,10 +56,7 @@ async function api_showManyOrganizations(idList) {
 async function api_updateOrganization(id, obj) {
   const rawResponse = await fetch(`/api/v2/organizations/${id}`, {
     method: 'PUT',
-    headers: {
-      'x-csrf-token': ZENDESK_API_TOKEN,
-      'Content-Type': 'application/json'
-    },
+    headers: ZENDESK_API_HEADERS,
     body: JSON.stringify(obj)
   });
   let data = await rawResponse.json();
@@ -71,10 +71,7 @@ async function api_updateOrganization(id, obj) {
 async function api_showUser(id) {
   const rawResponse = await fetch(`/api/v2/users/${id}`, {
     method: 'GET',
-    headers: {
-      'x-csrf-token': ZENDESK_API_TOKEN,
-      'Content-Type': 'application/json'
-    }
+    headers: ZENDESK_API_HEADERS,
   });
   let data = await rawResponse.json();
   return data;
