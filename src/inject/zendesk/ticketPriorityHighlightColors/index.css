@@ -1,0 +1,64 @@
+.TLmanaGer-highlight-low {
+  background-color: var(--color-bg-low);
+}
+
+.TLmanaGer-highlight-low:not(:hover) td {
+  border-bottom-color: var(--color-border-low);
+}
+
+.TLmanaGer-highlight-low:not(:hover) td,
+.TLmanaGer-highlight-low:not(:hover) td>*,
+.TLmanaGer-highlight-low:not(:hover) td a>* {
+  color: var(--color-text-low) !important;
+}
+
+.TLmanaGer-highlight-normal {
+  background-color: var(--color-bg-normal);
+}
+
+.TLmanaGer-highlight-normal:not(:hover) td {
+  border-bottom-color: var(--color-border-normal);
+}
+
+.TLmanaGer-highlight-normal:not(:hover) td,
+.TLmanaGer-highlight-normal:not(:hover) td>*,
+.TLmanaGer-highlight-normal:not(:hover) td a>* {
+  color: var(--color-text-normal) !important;
+}
+
+.TLmanaGer-highlight-high {
+  background-color: var(--color-bg-high);
+}
+
+.TLmanaGer-highlight-high:not(:hover) td {
+  border-bottom-color: var(--color-border-high)
+}
+
+.TLmanaGer-highlight-high:not(:hover) td,
+.TLmanaGer-highlight-high:not(:hover) td>*,
+.TLmanaGer-highlight-high:not(:hover) td a>* {
+  color: var(--color-text-high) !important;
+}
+
+.TLmanaGer-highlight-urgent {
+  background-color: var(--color-bg-urgent);
+}
+
+.TLmanaGer-highlight-urgent:not(:hover) td {
+  border-bottom-color: var(--color-border-urgent);
+}
+
+.TLmanaGer-highlight-urgent:not(:hover) td,
+.TLmanaGer-highlight-urgent:not(:hover) td>*,
+.TLmanaGer-highlight-urgent:not(:hover) td a>* {
+  color: var(--color-text-urgent) !important;
+}
+
+.ember-view tbody tr td[style*="padding: 0px 0px 0px 3px;"] {
+  padding: 0px 1px 0px 2px !important;
+}
+
+.ember-view tbody tr td .pop>* {
+  margin-right: 1px;
+  box-shadow: 1px 1px 0px 0px #FFF, -1px -1px 0px 0px #FFF, -1px 1px 0px 0px #FFF, 1px -1px 0px 0px #FFF;
+}

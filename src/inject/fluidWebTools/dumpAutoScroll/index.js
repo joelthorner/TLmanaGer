@@ -20,4 +20,8 @@ if (!document.getElementById('development-tool') && dump) {
       clearInterval(interval);
     }
   }, 100);
+
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 1000);
 }

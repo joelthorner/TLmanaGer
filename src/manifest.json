@@ -154,8 +154,11 @@
         "ZENDESK_DOMAIN_BASE_URL"
       ],
       "js": [
+        "data/chromeSync.js",
         "inject/zendesk/api.js",
+        "inject/log.js",
         "inject/zendesk/ObserverZendesk.js",
+        "inject/zendesk/ZendeskModifier.js",
         "inject/zendesk/ticketPriorityHighlightColors/index.js"
       ],
       "css": [

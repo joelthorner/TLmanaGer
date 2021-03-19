@@ -1,5 +1,5 @@
 /**
- * @file Define ObserverZendesk class and initialize for all LCModifier object scripts after this file
+ * @file Define ObserverZendesk class and initialize for all ZendeskModifier object scripts after this file
  * @author joelthorner
  */
 'use strict';
@@ -7,7 +7,7 @@
 /**
  * Creates a new ObserverZendesk
  * @class
- * @classdesc Create a MutationObserver for Logicommerce plugins
+ * @classdesc Create a MutationObserver for Zendesk plugins
  */
 class ObserverZendesk {
 
@@ -30,26 +30,22 @@ class ObserverZendesk {
   constructor() {
     this.observer = new MutationObserver((mutations) => {
       for (let i = 0; i < mutations.length; i++) {
-        let addedNodes = mutations[i].addedNodes;
+        const target = mutations[i].target;
 
-        for (let j = 0; j < addedNodes.length; j++) {
-          let node = addedNodes[j];
-
-          for (let k = 0; k < this.registeredZendeskModifiers.length; k++) {
-            let ZendeskModifier = this.registeredZendeskModifiers[k];
-            ZendeskModifier.init(node);
-          }
+        for (let k = 0; k < this.registeredZendeskModifiers.length; k++) {
+          let ZendeskModifier = this.registeredZendeskModifiers[k];
+          ZendeskModifier.init(target);
         }
       }
     });
   }
 
   /**
-   * Push LCModifier to registeredLCModifiers
-   * @param {LCModifier} LCModifier
+   * Push ZendeskModifier to registeredZendeskModifiers
+   * @param {ZendeskModifier} ZendeskModifier
    */
-  register(LCModifier) {
-    this.registeredLCModifiers.push(LCModifier);
+  register(ZendeskModifier) {
+    this.registeredZendeskModifiers.push(ZendeskModifier);
   }
 
   /**

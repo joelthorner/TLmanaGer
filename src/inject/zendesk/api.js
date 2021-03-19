@@ -4,6 +4,10 @@
  */
 'use strict';
 
+/**
+ * Define user session api token
+ * @type {string}
+ */
 const ZENDESK_API_TOKEN = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
 /**
