@@ -1,5 +1,5 @@
 /**
- * @file Define ObserverLC class and initialize for all LCModifier object scripts after this file
+ * @file Define ObserverLC class and initialize for all Modifier object scripts after this file
  * @author joelthorner
  */
 'use strict';
@@ -23,8 +23,8 @@ class ObserverLC extends Observer {
           let node = addedNodes[j];
 
           for (let k = 0; k < this.registeredModifiers.length; k++) {
-            let LCModifier = this.registeredModifiers[k];
-            LCModifier.init(node);
+            let Modifier = this.registeredModifiers[k];
+            Modifier.init(node);
           }
         }
       }

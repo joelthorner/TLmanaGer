@@ -8,7 +8,7 @@
  * Creates a new AutoIncrVersionPublish
  * @class
  */
-class AutoIncrVersionPublish extends LCModifier {
+class AutoIncrVersionPublish extends Modifier {
 
   /**
    * Create a AutoIncrVersionPublish.

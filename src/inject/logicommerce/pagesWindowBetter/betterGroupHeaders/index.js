@@ -8,7 +8,7 @@
  * Creates a new BetterGroupHeaders
  * @class
  */
-class BetterGroupHeaders extends LCModifier {
+class BetterGroupHeaders extends Modifier {
 
   /**
    * Types of header badge icons

@@ -8,7 +8,7 @@
  * Creates a new TicketRefLinks
  * @class
  */
-class TicketRefLinks extends LCModifier {
+class TicketRefLinks extends Modifier {
 
   /**
    * Create a TicketRefLinks.

@@ -8,7 +8,7 @@
  * Creates a new TicketPriorityHighlightColors
  * @class
  */
-class TicketPriorityHighlightColors extends ZendeskModifier {
+class TicketPriorityHighlightColors extends Modifier {
 
   /**
    * <tr> rows to update

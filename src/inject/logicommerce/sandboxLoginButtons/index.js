@@ -8,7 +8,7 @@
  * Creates a new SandboxLoginButtons
  * @class
  */
-class SandboxLoginButtons extends LCModifier {
+class SandboxLoginButtons extends Modifier {
 
   /**
    * Select input

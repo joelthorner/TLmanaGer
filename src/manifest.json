@@ -69,8 +69,8 @@
         "data/chromeSync.js",
         "inject/log.js",
         "inject/Observer.js",
+        "inject/Modifier.js",
         "inject/logicommerce/ObserverLC.js",
-        "inject/logicommerce/LCModifier.js",
         "inject/logicommerce/LogiInfo.js",
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.js",
         "inject/logicommerce/pagesWindowBetter/gridView/index.js",
@@ -158,8 +158,8 @@
         "inject/zendesk/api.js",
         "inject/log.js",
         "inject/Observer.js",
+        "inject/Modifier.js",
         "inject/zendesk/ObserverZendesk.js",
-        "inject/zendesk/ZendeskModifier.js",
         "inject/zendesk/ticketPriorityHighlightColors/index.js"
       ],
       "css": [
