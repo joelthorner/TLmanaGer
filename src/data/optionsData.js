@@ -14,11 +14,12 @@ export default {
     show: true,
     priority: 302,
     category: 'zendesk',
-    image: "",
-    title: "",
-    description: "",
-    help: {
-
+    image: chrome.extension.getURL('img/optionsData/ticketPriorityHighlightColors.jpg'),
+    title: 'Zendesk tickets highlighting',
+    description: '',
+    infoBlock: {
+      Environments: `ZENDESK_DOMAIN_BASE_URL`,
+      Since: 'Mar 6, 2019',
     },
   },
   beyondTheme: {
