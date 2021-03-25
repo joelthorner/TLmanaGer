@@ -34,12 +34,11 @@ export default {
       );
 
       // Using the HSP value, determine whether the color is light or dark
-      if (hsp > 127.5) {
-
+      // if (hsp > 127.5) {
+      if (hsp > 175) {
         return 'light';
       }
       else {
-
         return 'dark';
       }
     }
