@@ -1,0 +1,50 @@
+#main_navigation .toolbar_link_extension_settings.toolbar_link .logo_icon {
+  width: 20px;
+  height: 20px;
+}
+
+#main_navigation .toolbar_link_extension_settings.toolbar_link .settings_icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 12px;
+  bottom: 10px;
+}
+
+#main_navigation .toolbar_link_extension_settings.toolbar_link .tooltip-text {
+  visibility: hidden;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  opacity: 0;
+  transition: opacity 350ms ease .5s;
+  border-radius: 4px;
+  line-height: 1.66667;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  background-color: #2F3941;
+  padding: 4px 8px 5px 8px;
+  bottom: auto;
+  left: calc(100% + 9px);
+  right: auto;
+}
+
+#main_navigation .toolbar_link_extension_settings.toolbar_link .tooltip-text::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+  top: 50%;
+  left: -5px;
+  margin-left: -5px;
+  border-color: transparent rgb(47, 57, 65) transparent transparent;
+  transform: translateY(-50%);
+}
+
+#main_navigation .toolbar_link_extension_settings.toolbar_link:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

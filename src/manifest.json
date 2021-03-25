@@ -160,9 +160,11 @@
         "inject/Observer.js",
         "inject/Modifier.js",
         "inject/zendesk/ObserverZendesk.js",
+        "inject/zendesk/navigationMenu/index.js",
         "inject/zendesk/ticketPriorityHighlightColors/index.js"
       ],
       "css": [
+        "inject/zendesk/navigationMenu/index.css",
         "inject/zendesk/ticketPriorityHighlightColors/index.css"
       ]
     }
