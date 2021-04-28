@@ -167,6 +167,18 @@
         "inject/zendesk/navigationMenu/index.css",
         "inject/zendesk/ticketPriorityHighlightColors/index.css"
       ]
+    },
+    {
+      "matches": [
+        "*://8x-os.logicommerce.net/*"
+      ],
+      "js": [
+        "inject/trello/api.js",
+        "inject/trello/sandboxConnect/index.js"
+      ],
+      "css": [
+        "inject/zendesk/navigationMenu/index.css"
+      ]
     }
   ]
 }
