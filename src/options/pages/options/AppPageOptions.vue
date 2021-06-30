@@ -188,10 +188,8 @@ export default {
      * @returns {string}
      */
     optionCardContent(key) {
-      if (key === "background") {
-        return "ContentBackground";
-      } else if (key === "pagesWindowBetter") {
-        return "ContentPagesWindowBetter";
+      if (this.optionsData[key].customCardContent) {
+        return this.optionsData[key].customCardContent;
       }
       return "ContentDefault";
     },

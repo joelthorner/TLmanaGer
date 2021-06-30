@@ -76,16 +76,17 @@
 </template>
 
 <script>
-import optionsData from "@/data/optionsData";
-import ZoomImageModal from "@options/components/ZoomImageModal";
-import ContentDefault from "@options/pages/options/optionContents/ContentDefault";
-import ContentBackground from "@options/pages/options/optionContents/ContentBackground";
-import ContentPagesWindowBetter from "@options/pages/options/optionContents/ContentPagesWindowBetter";
 import {
   times as timesIcon,
   info as infoIcon,
   bug as bugIcon,
 } from "@/data/icons";
+import optionsData from "@/data/optionsData";
+import ZoomImageModal from "@options/components/ZoomImageModal";
+import ContentDefault from "@options/pages/options/optionContents/ContentDefault";
+import ContentBackground from "@options/pages/options/optionContents/ContentBackground";
+import ContentPagesWindowBetter from "@options/pages/options/optionContents/ContentPagesWindowBetter";
+import ContentTicketPriorityHighlightColors from "@options/pages/options/optionContents/ContentTicketPriorityHighlightColors";
 
 export default {
   name: "OptionCard",
@@ -101,6 +102,7 @@ export default {
     ContentDefault,
     ContentBackground,
     ContentPagesWindowBetter,
+    ContentTicketPriorityHighlightColors,
   },
   data() {
     return {
