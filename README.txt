@@ -17,3 +17,8 @@ https://www.sitepoint.com/build-vue-chrome-extension/
 # ========================
 
 Add .env file to root folder like .env.example variables
+
+# Error amb sass 
+
+1.npm uninstall node-sass
+2.npm install node-sass@4.14.1
