@@ -1,0 +1,20 @@
+@import "utils/variables";
+@import "popup/variables";
+
+@import "~bootstrap";
+@import "~bootstrap-vue";
+
+@import "utils/common";
+
+html {
+  font-size: $main-font-size;
+}
+
+body {
+  background-color: $background;
+  overflow: hidden;
+  width: $width-popup;
+}
+
+@import "popup/header";
+@import "popup/ecommerce-info";

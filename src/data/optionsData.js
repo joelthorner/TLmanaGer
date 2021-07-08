@@ -1,6 +1,6 @@
 export default {
   replyTicketConfirmPopup: {
-    show: true,
+    show: false,
     priority: 301,
     category: 'zendesk',
     image: "",

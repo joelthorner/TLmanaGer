@@ -10,7 +10,7 @@ var TYPE_FLUID = 'fluid';
 var TYPE_COLD_FUSION = 'cold-fusion';
 
 /** @constant {String} */
-var TYPE_COLD_BEYOND = 'beyond'; // TODO 
+var TYPE_BEYOND = 'beyond'; // TODO 
 
 /** @constant {String} */
 var ENV_PRODUCTION = 'production';
@@ -113,6 +113,20 @@ var ecommerceData = {
   },
 
   /**
+   * Return if web has any cache detected
+   * @returns {Boolean}
+   */
+  getCache() {
+    if (this.getType() == TYPE_FLUID) {
+      return this.getFluidCache();
+    } else if (this.getType() == TYPE_COLD_FUSION) {
+      return false; // TODO, i can find cf cache?
+    } else if (this.getType() == TYPE_BEYOND) {
+      // TODO
+    }
+  },
+
+  /**
    * Return if web has fluid cache by html comments
    * @returns {Boolean}
    */
@@ -131,7 +145,6 @@ var ecommerceData = {
    * @typedef fluidData
    * @type {Object}
    * @property {String} template - Fluid template type
-   * @property {String} cache - Exists fluid cache
    */
 
   /**
@@ -141,7 +154,6 @@ var ecommerceData = {
   getFluidData() {
     return {
       template: this.getTemplate(),
-      cache: this.getFluidCache(),
     }
   },
 
@@ -194,6 +206,7 @@ var ecommerceData = {
    * @property {String} environment
    * @property {String} fluidData
    * @property {Number} shopId
+   * @property {Boolean} cache
    */
 
   /**
@@ -206,6 +219,7 @@ var ecommerceData = {
       environment: this.getEnvironment(),
       fluidData: this.getFluidData(),
       shopId: this.getShopId(),
+      cache: this.getCache(),
     }
   },
 };
