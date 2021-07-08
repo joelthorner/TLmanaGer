@@ -99,10 +99,10 @@ class AutoIncrVersionPublish extends Modifier {
    */
   _getLastNumberIncr(number) {
     let result = parseInt(number) + 1;
-
-    if (result > 10) {
-      return 0;
-    }
+    // If value is > 10 increment normally
+    // if (result > 10) {
+    //   return 0;
+    // }
     return result;
   }
 
