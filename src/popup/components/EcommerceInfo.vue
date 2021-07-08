@@ -2,14 +2,18 @@
   <div class="ecommerce-info" v-if="existsEcommerceData">
     <div class="title">Ecommerce Info</div>
     <div class="info d-flex">
-      <div class="item item-type" v-if="ecommerceData.type">
+      <div class="item item-type" v-if="ecommerceData.type" title="Type">
         <span :class="iconClass('type')"></span>{{ ecommerceData.type }}
       </div>
-      <div class="item item-environment" v-if="ecommerceData.environment">
+      <div
+        class="item item-environment"
+        v-if="ecommerceData.environment"
+        title="Environment"
+      >
         <span :class="iconClass('environment')"></span
         >{{ ecommerceData.environment }}
       </div>
-      <div class="item item-cache" v-if="ecommerceData.cache">
+      <div class="item item-cache" v-if="ecommerceData.cache" title="Cache">
         <span :class="iconClass('cache')"></span>{{ ecommerceData.cache }}
       </div>
     </div>
