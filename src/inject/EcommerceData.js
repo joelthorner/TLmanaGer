@@ -10,7 +10,7 @@ var TYPE_FLUID = 'fluid';
 var TYPE_COLD_FUSION = 'cold-fusion';
 
 /** @constant {String} */
-var TYPE_BEYOND = 'beyond'; // TODO 
+var TYPE_BEYOND = 'beyond';
 
 /** @constant {String} */
 var ENV_PRODUCTION = 'production';
@@ -42,6 +42,9 @@ var ecommerceData = {
 
     if (document && document.querySelector('[href*=".cfm"]'))
       return TYPE_COLD_FUSION;
+
+    if (document.body && document.body.classList.value.includes('lcContent'))
+      return TYPE_BEYOND;
 
     return null;
   },
@@ -182,18 +185,26 @@ var ecommerceData = {
   getShopId() {
     var shopId = null;
 
-    document.querySelectorAll('link[type="text/css"][href]').forEach((item) => {
-      shopId = this._extractShopId(item.getAttribute('href'), /cloudfront.net\/([0-9]{1,5})/);
-    });
+    if (this.getType() == TYPE_FLUID) {
+      document.querySelectorAll('link[type="text/css"][href]').forEach((item) => {
+        var auxShopId = this._extractShopId(item.getAttribute('href'), /cloudfront.net\/([0-9]{1,5})/);
+        if (auxShopId) shopId = auxShopId;
+      });
 
-    if (this.getType() == TYPE_FLUID && this.getEnvironment() == ENV_PRE_OPENSAAS && shopId == null) {
-      shopId = this._extractShopId(location.href, /([0-9]+)\.sandbox\.logicommerce\.net/);
+      if (this.getEnvironment() == ENV_PRE_OPENSAAS && shopId == null) {
+        shopId = this._extractShopId(location.href, /([0-9]+)\.sandbox\.logicommerce\.net/);
 
-    } else if (this.getEnvironment() == ENV_IGD_PRODUCTION && shopId == null) {
-      shopId = this._extractShopId(location.href, /([0-9]+)\.igd\.production/);
+      } else if (this.getEnvironment() == ENV_IGD_PRODUCTION && shopId == null) {
+        shopId = this._extractShopId(location.href, /([0-9]+)\.igd\.production/);
 
-    } else if (this.getEnvironment() == ENV_IGD_PRE_PRODUCTION && shopId == null) {
-      shopId = this._extractShopId(location.href, /([0-9]+)\.igd\.pre\.production/);
+      } else if (this.getEnvironment() == ENV_IGD_PRE_PRODUCTION && shopId == null) {
+        shopId = this._extractShopId(location.href, /([0-9]+)\.igd\.pre\.production/);
+      }
+    } else if (this.getType() == TYPE_BEYOND) {
+      document.querySelectorAll('link[type="text/css"][href]').forEach((item) => {
+        var auxShopId = this._extractShopId(item.getAttribute('href'), /assets.logicommerce.cloud\/([0-9]{1,5})/);
+        if (auxShopId) shopId = auxShopId;
+      });
     }
 
     return shopId;
