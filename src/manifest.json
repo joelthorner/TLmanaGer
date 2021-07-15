@@ -34,8 +34,7 @@
     "identity.email",
     "<all_urls>"
   ],
-  "content_scripts": [
-    {
+  "content_scripts": [{
       "matches": [
         "<all_urls>"
       ],
@@ -178,6 +177,19 @@
       ],
       "css": [
         "inject/zendesk/navigationMenu/index.css"
+      ]
+    },
+    {
+      "matches": [
+        "*://admin.beyond/*"
+      ],
+      "js": [
+        "data/chromeSync.js",
+        "inject/log.js",
+        "inject/logicommerce/background/index.js"
+      ],
+      "css": [
+        "inject/logicommerce/background/index.css"
       ]
     }
   ]
