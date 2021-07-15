@@ -1,18 +1,3 @@
-html.lcBackground div#main {
-  background-color: #fff;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 56px;
-  box-sizing: border-box;
-  height: auto;
-  top: 50%;
-  transform: translate(-50%, calc(-50% - calc(50px - 0.5px)));
-  margin: 0;
-  border-radius: 7px;
-  width: 460px;
-  backdrop-filter: blur(5px);
-}
-
 html.lcBackground body {
   background-color: #fff;
   background-size: cover;
@@ -27,30 +12,30 @@ html.lcBackground .lastposts {
   display: none !important;
 }
 
-html.lcBackground #desktop .search img {
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .search img {
   filter: brightness(3);
 }
 
-html.lcBackground #desktop .search input::placeholder {
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .search input::placeholder {
   color: #fff;
 }
 
-html.lcBackground #desktop .search input,
-html.lcBackground #desktop .shortcut {
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .search input,
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .shortcut {
   background-color: rgba(0, 0, 0, 0.5);
   border: 0;
   color: #fff;
 }
 
-html.lcBackground #desktop .shortcut:not(:hover) img {
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .shortcut:not(:hover) img {
   filter: brightness(2);
 }
 
-html.lcBackground #desktop .shortcut div {
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .shortcut div {
   text-transform: none;
   color: #fff;
 }
 
-html.lcBackground #desktop .logo img {
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .logo img {
   display: none;
 }

@@ -28,9 +28,31 @@ class BackgroundLC {
         this.downloadLocation += '?client_id=VUE_APP_UNSPLASH_ACCESS_KEY';
       }
       this._executeDL();
-      document.getElementsByTagName('html')[0].classList.add('lcBackground');
+      this._addClasses()
       document.getElementsByTagName('body')[0].style.backgroundImage = `url('${chromeData.image}')`;
     }
+  }
+
+  /**
+   * Add classes to html node
+   */
+  _addClasses() {
+    document.getElementsByTagName('html')[0].classList.add('lcBackground');
+    if (this._isBeyondLc()) {
+      document.getElementsByTagName('html')[0].classList.add('lcBackgroundBeyond');
+    }
+  }
+
+  /**
+   * Detect if Logicommerce is beyond version
+   * @returns {boolean}
+   */
+  _isBeyondLc() {
+    var shopName = document.getElementById('shopName');
+    if (shopName) {
+      return shopName.getAttribute('onclick').includes('beyond');
+    }
+    return false;
   }
 
   /**
@@ -53,7 +75,7 @@ class BackgroundLC {
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.options.background.actived) {
+  if (result.options.background.actived && !document.getElementById('loginForm')) {
     new BackgroundLC(result.options.background);
   }
 });
