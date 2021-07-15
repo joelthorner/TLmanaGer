@@ -5,7 +5,6 @@
         <img
           :src="chromeSync.profile.avatar.value"
           alt="User avatar"
-          v-b-tooltip.hover
         />
         <span class="icon hover" v-html="penIcon"></span>
         <div class="rippleJS"></div>

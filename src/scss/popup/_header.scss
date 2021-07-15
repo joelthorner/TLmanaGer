@@ -8,6 +8,40 @@
     border-radius: 10px;
   }
 
+  .avatar {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:hover .icon.hover {
+      opacity: 1;
+      visibility: visible;
+    }
+    .icon.hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($logo-blue-end, 0.5);
+      fill: $white;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 350ms ease;
+
+      svg {
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+  }
+
   .titles {
     padding: 0 15px;
     display: flex;
@@ -21,18 +55,30 @@
     color: $gray-1;
   }
   .options-btn {
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
     border: 0;
     background: none;
-    width: 60px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     margin-left: auto;
+    color: $gray-1;
+    transition: all 350ms ease;
+    fill: currentColor;
+    transform: translateY(-4px) translateX(4px);
 
     svg {
       width: 24px;
       height: 24px;
+    }
+
+    &:hover {
+      color: $logo-blue-end;
     }
   }
 }

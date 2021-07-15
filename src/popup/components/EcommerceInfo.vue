@@ -14,7 +14,8 @@
         >{{ ecommerceData.environment }}
       </div>
       <div class="item item-cache" v-if="ecommerceData.cache" title="Cache">
-        <span :class="iconClass('cache')"></span>{{ ecommerceData.cache }}
+        <span :class="iconClass('cache')"></span>Cache:
+        {{ ecommerceData.cache }}
       </div>
     </div>
 
@@ -42,6 +43,7 @@ export default {
   computed: {
     existsEcommerceData() {
       return this.ecommerceData &&
+        this.ecommerceData.shopId &&
         (this.ecommerceData.type ||
           this.ecommerceData.environment ||
           this.ecommerceData.cache)
@@ -51,7 +53,7 @@ export default {
   },
   methods: {
     iconClass(value) {
-      return `icon icon-${this.ecommerceData[value]}`;
+      return `icon icon-${value} icon-${this.ecommerceData[value]}`;
     },
   },
 };
