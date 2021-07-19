@@ -2,10 +2,10 @@
   .title {
     height: 47px;
     background-color: $white;
+    border-bottom: 1px solid $border-from-white;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid $border-from-white;
     font-weight: 500;
     font-size: 1rem;
   }

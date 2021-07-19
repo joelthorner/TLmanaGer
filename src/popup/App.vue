@@ -1,6 +1,7 @@
 <template>
   <div id="popup">
     <user-header :chromeSync="chromeSync"></user-header>
+    <nav-tabs-actions></nav-tabs-actions>
     <ecommerce-info :ecommerceData="ecommerceData"></ecommerce-info>
   </div>
 </template>
@@ -8,6 +9,7 @@
 <script>
 import UserHeader from "@popup/components/UserHeader";
 import EcommerceInfo from "@popup/components/EcommerceInfo";
+import NavTabsActions from "@popup/components/NavTabsActions";
 
 import chromeSync from "@/data/chromeSync";
 import watchAchievements from "@mixins/watchAchievements";
@@ -19,6 +21,7 @@ export default {
   components: {
     UserHeader,
     EcommerceInfo,
+    NavTabsActions,
   },
   mixins: [watchAchievements],
   data() {
@@ -30,19 +33,29 @@ export default {
   created() {
     this.getSyncchromeSync();
 
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(
-        tabs[0].id,
-        {
-          message: "getEcommerceData",
-        },
-        (response) => {
-          if (response && response.ecommerceData) {
-            this.ecommerceData = response.ecommerceData;
+    chrome.tabs.query(
+      {
+        active: true,
+        currentWindow: true,
+      },
+      (tabs) => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {
+            message: "getEcommerceData",
+          },
+          (response) => {
+            if (!window.chrome.runtime.lastError) {
+              if (response && response.ecommerceData) {
+                this.ecommerceData = response.ecommerceData;
+              }
+            } else {
+              console.log("Error getting getEcommerceData");
+            }
           }
-        }
-      );
-    });
+        );
+      }
+    );
   },
   methods: {
     getSyncchromeSync() {

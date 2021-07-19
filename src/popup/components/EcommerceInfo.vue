@@ -74,17 +74,6 @@ export default {
         ? true
         : false;
     },
-    existsFluidData() {
-      if (this.ecommerceData) {
-        for (const property in this.ecommerceData.fluidData) {
-          if (this.ecommerceData.fluidData[property] === null) {
-            return false;
-          }
-        }
-        return true;
-      }
-      return false;
-    },
   },
   methods: {
     iconClass(key) {

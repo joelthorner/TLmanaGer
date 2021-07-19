@@ -1,0 +1,32 @@
+.nav-tabs-actions {
+  .nav-tabs {
+    background-color: $white;
+    border-bottom: 1px solid $border-from-white;
+
+    > .nav-item {
+      > .nav-link {
+        border: 0;
+        position: relative;
+        color: $gray-1;
+        height: 47px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border-radius: 0;
+        &.active {
+          font-weight: 500;
+          color: $logo-blue-end;
+        }
+      }
+    }
+  }
+  .tab-content {
+    .tab-pane {
+      .grid {
+        padding: 20px;
+        display: grid;
+      }
+    }
+  }
+}
