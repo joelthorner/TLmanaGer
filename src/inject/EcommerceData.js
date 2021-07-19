@@ -3,29 +3,53 @@
  * @author joelthorner
  */
 
-/** @constant {String} */
+/**
+ * Ecommerce type fluid
+ * @constant {String} 
+ */
 var TYPE_FLUID = 'fluid';
 
-/** @constant {String} */
+/**
+ * Ecommerce type cold fusion (cf)
+ * @constant {String} 
+ */
 var TYPE_COLD_FUSION = 'cold-fusion';
 
-/** @constant {String} */
+/**
+ * Ecommerce type beyond (php, twig)
+ * @constant {String} 
+ */
 var TYPE_BEYOND = 'beyond';
 
-/** @constant {String} */
+/**
+ * Production environment (no testing, no dev)
+ * @constant {String} 
+ */
 var ENV_PRODUCTION = 'production';
 
-/** @constant {String} */
+/**
+ * Development opensaas environment
+ * @constant {String} 
+ */
 var ENV_PRE_OPENSAAS = 'pre-opensaas';
 
-/** @constant {String} */
+/**
+ * Development local environment
+ * @constant {String} 
+ */
 var ENV_IGD_PRODUCTION = 'igd-production';
 
-/** @constant {String} */
+/**
+ * Development testing environment
+ * @constant {String} 
+ */
 var ENV_IGD_PRE_PRODUCTION = 'igd-pre-production';
 
-/** @constant {String} */
-var TEMPLATE_MODULAR_2018 = 'template-modular-2018';
+/**
+ * Ecommerce source code template 2018
+ * @constant {String} 
+ */
+var TEMPLATE_MODULAR_2018 = 'modular-2018';
 
 /**
  * @namespace
@@ -145,22 +169,6 @@ var ecommerceData = {
   },
 
   /**
-   * @typedef fluidData
-   * @type {Object}
-   * @property {String} template - Fluid template type
-   */
-
-  /**
-   * Return fluid data object
-   * @returns {fluidData}
-   */
-  getFluidData() {
-    return {
-      template: this.getTemplate(),
-    }
-  },
-
-  /**
    * Extract shop id from text by regexp
    * @param {String} text
    * @param {RegExp} regex
@@ -228,7 +236,7 @@ var ecommerceData = {
     return {
       type: this.getType(),
       environment: this.getEnvironment(),
-      fluidData: this.getFluidData(),
+      template: this.getTemplate(),
       shopId: this.getShopId(),
       cache: this.getCache(),
     }

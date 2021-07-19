@@ -3,7 +3,7 @@
     <div class="title">
       Ecommerce info
     </div>
-    <div class="info d-flex">
+    <div class="info d-flex flex-wrap">
       <div
         class="item item-shopId"
         v-if="ecommerceData.shopId"
@@ -35,15 +35,18 @@
         title="Cache"
         v-b-tooltip.hover
       >
-        <span :class="iconClass('cache')"></span>Cache:
-        {{ ecommerceData.cache }}
+        <span :class="iconClass('cache')"></span>Has cache
+      </div>
+      <div
+        class="item item-template"
+        v-if="ecommerceData.template"
+        title="Template"
+        v-b-tooltip.hover
+      >
+        <span :class="iconClass('template')"></span>
+        {{ ecommerceData.template }}
       </div>
     </div>
-
-    <!-- {{ ecommerceData }} -->
-
-    <!-- { "type": null, "environment": null, "fluidData": { "template": null },
-    "shopId": null, "cache": false } -->
   </div>
 </template>
 
@@ -71,10 +74,22 @@ export default {
         ? true
         : false;
     },
+    existsFluidData() {
+      if (this.ecommerceData) {
+        for (const property in this.ecommerceData.fluidData) {
+          if (this.ecommerceData.fluidData[property] === null) {
+            return false;
+          }
+        }
+        return true;
+      }
+      return false;
+    },
   },
   methods: {
-    iconClass(value) {
-      return `icon icon-${value} icon-${this.ecommerceData[value]}`;
+    iconClass(key) {
+      let value = this.ecommerceData[key];
+      return `icon icon-${key} icon-${value}`;
     },
   },
 };
