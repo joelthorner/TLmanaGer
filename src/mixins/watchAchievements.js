@@ -170,12 +170,19 @@ export default {
 
     activeAllOptions() {
       // Get data total
-      let totalOpts = Object.keys(this.chromeSync.options).length;
+      // let totalOpts = Object.keys(this.chromeSync.options).length;
+      let totalOpts = 0;
+      for (const optionKey in this.chromeSync.options) {
+        const show = this.optionsData[optionKey].show;
+        if (show) totalOpts++;
+      }
+
       // Update metric first
       let auxActiveOptsCount = 0;
       for (const optionKey in this.chromeSync.options) {
-        const actived = this.optionsData[optionKey].actived;
-        if (actived) auxActiveOptsCount++;
+        const actived = this.chromeSync.options[optionKey].actived;
+        const show = this.optionsData[optionKey].show;
+        if (actived && show) auxActiveOptsCount++;
       }
 
       this.chromeSync.metrics.totalActiveOptsCount = auxActiveOptsCount;

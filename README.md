@@ -35,11 +35,6 @@
     <img src="https://img.shields.io/chrome-web-store/stars/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Rating"
       alt="Chrome Web Store">
   </a>
-  <a href="https://doxdox.org/joelthorner/TLmanaGer"
-    target="_blank">
-    <img src="https://doxdox.org/images/badge-flat.svg"
-      alt="Latest Documentation">
-  </a>
 </p>
 
 <p align="center">

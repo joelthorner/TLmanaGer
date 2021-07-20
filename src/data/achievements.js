@@ -26,7 +26,7 @@ export default {
   activeAllOptions: {
     name: 'Full equip',
     desc: 'Activate all options',
-    img: chrome.extension.getURL('img/archv/activeAllOptions.png'),
+    img: chrome.extension.getURL('img/archv/activeAllOpts.png'),
     condition: function (totalActiveOptsCount, activeOptsCount) {
       return totalActiveOptsCount === activeOptsCount
     }
