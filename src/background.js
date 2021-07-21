@@ -1,10 +1,70 @@
+function executeScripts(tabId, injectDetailsArray) {
+  function createCallback(tabId, injectDetails, innerCallback) {
+    return function () {
+      chrome.tabs.executeScript(tabId, injectDetails, innerCallback);
+    };
+  }
+  var callback = null;
+  for (var i = injectDetailsArray.length - 1; i >= 0; --i)
+    callback = createCallback(tabId, injectDetailsArray[i], callback);
+
+  if (callback !== null) callback(); // execute outermost function
+}
+
+function insertCSSs(tabId, injectDetailsArray) {
+  function createCallback(tabId, injectDetails, innerCallback) {
+    return function () {
+      chrome.tabs.insertCSS(tabId, injectDetails, innerCallback);
+    };
+  }
+  var callback = null;
+  for (var i = injectDetailsArray.length - 1; i >= 0; --i)
+    callback = createCallback(tabId, injectDetailsArray[i], callback);
+
+  if (callback !== null) callback(); // execute outermost function
+}
+
+// Popup actions listener
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    if (typeof request.directive !== 'undefined') {
+      let files = request.directive.split(','),
+        jsFiles = [],
+        cssFiles = [];
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        if (file.includes('.js')) jsFiles.push({ file: file });
+        else if (file.includes('.css')) cssFiles.push({ file: file });
+      }
+
+      if (jsFiles.length) executeScripts(null, jsFiles);
+      if (cssFiles.length) insertCSSs(null, cssFiles);
+    }
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * Save from ecommerceData.js localStorage 'ecommerceData' item
  *
  * Message recived from ecommerceData.js injected in <all_urls>
  * and save into localStorage of background generated page.
- * 
- * After, on open popup, get 'ecommerceData' data from localStorage 
+ *
+ * After, on open popup, get 'ecommerceData' data from localStorage
  * of background generated page
  */
 // chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -16,7 +76,7 @@
 /*
  * On change tab and on update tab execute ecommerceData
  * and this refresh data.
- * 
+ *
  * ecommerceData send 'ecommerceData_to_background' message
  */
 // function ecommerceDataInject(tab) {
@@ -31,8 +91,8 @@
 
 
 // TODO all
-chrome.runtime.onInstalled.addListener(function (details) {
-  if (details.reason == 'install') {
+// chrome.runtime.onInstalled.addListener(function (details) {
+  // if (details.reason == 'install') {
 
     // TODO page install
 
@@ -40,7 +100,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
     // 	url: chrome.extension.getURL('/src/install/index.html')
     // });
 
-  } else if (details.reason == 'update') {
+  // } else if (details.reason == 'update') {
     // TODO new notify on update extension installed
 
     // var newVersionArr = manifestData.version.split('.'),
@@ -65,5 +125,5 @@ chrome.runtime.onInstalled.addListener(function (details) {
     // 	}
     // 	chrome.storage.sync.set({ newVersionNotify: newMainVersion });
     // });
-  }
-});
+  // }
+// });
