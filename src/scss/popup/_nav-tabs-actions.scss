@@ -48,6 +48,10 @@
   gap: 10px;
   color: $logo-blue-end;
 
+  &.actived {
+    border-color: $logo-blue-end;
+  }
+
   .name {
     color: $gray-1;
   }
@@ -68,7 +72,7 @@
   &:active {
     background-color: $logo-blue-end;
     color: $white;
-    border-color: $border-from-white;
+    border-color: $logo-blue-end;
     .name {
       color: currentColor;
     }

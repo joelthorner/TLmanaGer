@@ -31,7 +31,7 @@ var containerLinesGuide = {
    * Create containerLinesGuide, add elements and cookie
    */
   create() {
-    this._setCookie(this.cookieName, '1');
+    this._setCookie(this.cookieName, '1', { path: '/' });
 
     document.body.insertAdjacentHTML('afterbegin', `
       <div id="containerLinesGuide_wrap">
@@ -77,9 +77,12 @@ var containerLinesGuide = {
    * Destroy containerLinesGuide, remove elements and cookie
    */
   destroy() {
-    this._deleteCookie(this.cookieName);
-    document.getElementById('containerLinesGuide_wrap').remove();
-    document.getElementById('containerLinesGuide_css').remove();
+    this._deleteCookie(this.cookieName, '/');
+    let containerLinesGuide_wrap = document.getElementById('containerLinesGuide_wrap');
+    let containerLinesGuide_css = document.getElementById('containerLinesGuide_css');
+
+    if (containerLinesGuide_wrap) containerLinesGuide_wrap.remove();
+    if (containerLinesGuide_css) containerLinesGuide_css.remove();
 
     window.onresize = null;
   },

@@ -13,10 +13,10 @@
 
         <div class="grid">
           <button
-            v-for="(item, index) in element.items"
-            :key="index"
+            v-for="item in element.items"
+            :key="item.key"
             @click="executeDirective(item.directive)"
-            class="btn btn-action"
+            :class="`btn btn-action ${item.activedByCookie ? ' actived' : ''}`"
             type="button"
           >
             <span class="icon-wrap" v-html="item.icon"></span>
@@ -34,26 +34,97 @@
 
 export default {
   name: "NavTabsActions",
+  created() {
+    this.readTabCookie(
+      "containerLinesGuideCookie",
+      "1",
+      "utils",
+      "containerLinesGuide"
+    );
+  },
   methods: {
+    /**
+     * Execute popup action
+     * @param {string|string[]} directive
+     */
     executeDirective(directive) {
       if (directive.includes("http")) {
-        chrome.tabs.create({
-          url: directive,
-        });
+        this.createTabDirective(directive);
       } else {
-        if (Array.isArray(directive)) {
-          directive = directive.join(",");
-        }
-        // Send directive to background.js
-        chrome.runtime.sendMessage(
-          {
-            directive: directive,
-          },
-          function(response) {
-            this.close();
-          }
-        );
+        this.sendMessageDirective(directive);
       }
+    },
+
+    sendMessageDirective(directive) {
+      if (Array.isArray(directive)) {
+        directive = directive.join(",");
+      }
+      // Send directive to background.js
+      chrome.runtime.sendMessage(
+        {
+          directive: directive,
+        },
+        function(response) {
+          // this.close();
+        }
+      );
+    },
+
+    createTabDirective(directive) {
+      chrome.tabs.create({
+        url: directive,
+      });
+    },
+
+    /**
+     * Find action item set peoperty "activedByCookie" true
+     * @param {string} groupKeyName
+     * @param {string} itemKeyName
+     */
+    setActivedByCookie(groupKeyName, itemKeyName) {
+      for (let i = 0; i < this.elements.length; i++) {
+        const element = this.elements[i];
+        if (element.key == groupKeyName) {
+          for (let j = 0; j < element.items.length; j++) {
+            const item = element.items[j];
+            if (item.key == itemKeyName) {
+              item.activedByCookie = true;
+            }
+          }
+        }
+      }
+    },
+
+    /**
+     * Read tab cookie from active tab
+     * @param {string} cookieName
+     * @param {string} cookieValue
+     * @param {string} groupKeyName
+     * @param {string} itemKeyName
+     */
+    readTabCookie(cookieName, cookieValue, groupKeyName, itemKeyName) {
+      chrome.tabs.query(
+        {
+          status: "complete",
+          windowId: chrome.windows.WINDOW_ID_CURRENT,
+          active: true,
+        },
+        (tab) => {
+          if (tab[0] && tab[0].url.includes("http")) {
+            chrome.cookies.get(
+              {
+                url: tab[0].url,
+                name: cookieName,
+              },
+              (cookie) => {
+                if (cookie && cookie.value === cookieValue) {
+                  this.setActivedByCookie(groupKeyName, itemKeyName);
+                }
+              }
+            );
+          }
+        }
+      );
     },
   },
   data() {
@@ -64,8 +135,9 @@ export default {
           key: "utils",
           items: [
             {
+              activedByCookie: false,
+              key: "containerLinesGuide",
               directive: [
-                "inject/actions/containerLinesGuide/index.css",
                 "inject/actions/containerLinesGuide/index.js",
                 "inject/actions/containerLinesGuide/click.js",
               ],
@@ -74,30 +146,40 @@ export default {
                 '<svg viewBox="0 0 512 512"><path d="M160 288h-56c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h56v-64h-56c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h56V96h-56c-4.42 0-8-3.58-8-8V72c0-4.42 3.58-8 8-8h56V32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v448c0 2.77.91 5.24 1.57 7.8L160 329.38V288zm320 64h-32v56c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-56h-64v56c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-56h-64v56c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-56h-41.37L24.2 510.43c2.56.66 5.04 1.57 7.8 1.57h448c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32z"></path></svg>',
             },
             {
-              directive: ["inject/actions/GETRefreshImg/index"],
+              activedByCookie: null,
+              key: "GETRefreshImg",
+              directive: ["inject/actions/GETRefreshImg/index.js"],
               text: "GET Refresh img",
               icon:
                 '<svg viewBox="0 0 512 512"><path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"></path></svg>',
             },
             {
+              activedByCookie: null,
+              key: "emilioGenerator",
               directive: "https://joelthorner.github.io/emilio-generator/",
               text: "Emilio Generator",
               icon:
                 '<svg viewBox="0 0 576 512"><path d="M160 448c-25.6 0-51.2-22.4-64-32-64-44.8-83.2-60.8-96-70.4V480c0 17.67 14.33 32 32 32h256c17.67 0 32-14.33 32-32V345.6c-12.8 9.6-32 25.6-96 70.4-12.8 9.6-38.4 32-64 32zm128-192H32c-17.67 0-32 14.33-32 32v16c25.6 19.2 22.4 19.2 115.2 86.4 9.6 6.4 28.8 25.6 44.8 25.6s35.2-19.2 44.8-22.4c92.8-67.2 89.6-67.2 115.2-86.4V288c0-17.67-14.33-32-32-32zm256-96H224c-17.67 0-32 14.33-32 32v32h96c33.21 0 60.59 25.42 63.71 57.82l.29-.22V416h192c17.67 0 32-14.33 32-32V192c0-17.67-14.33-32-32-32zm-32 128h-64v-64h64v64zm-352-96c0-35.29 28.71-64 64-64h224V32c0-17.67-14.33-32-32-32H96C78.33 0 64 14.33 64 32v192h96v-32z"></path></svg>',
             },
             {
+              activedByCookie: null,
+              key: "showModulesTemplate2018",
               directive: ["inject/actions/showModulesTemplate2018/click.js"],
-              text: "Show modules Templates '18",
+              text: "Show '18 template modules",
               icon:
                 '<svg viewBox="0 0 448 512"><path d="M448 358.4V25.6c0-16-9.6-25.6-25.6-25.6H96C41.6 0 0 41.6 0 96v320c0 54.4 41.6 96 96 96h326.4c12.8 0 25.6-9.6 25.6-25.6v-16c0-6.4-3.2-12.8-9.6-19.2-3.2-16-3.2-60.8 0-73.6 6.4-3.2 9.6-9.6 9.6-19.2zM272 160l26.66 53.33L352 240l-53.34 26.67L272 320l-26.66-53.33L192 240l53.34-26.67L272 160zM160 96l16-32 16 32 32 16-32 16-16 32-16-32-32-16 32-16zm220.8 352H96c-19.2 0-32-12.8-32-32s16-32 32-32h284.8v64z"></path></svg>',
             },
             {
+              activedByCookie: null,
+              key: "swiperCssGenerator",
               directive: "https://joelthorner.github.io/swiper-css-generator/",
               text: "Swiper css generator",
               icon:
                 '<svg viewBox="0 0 448 512"><path d="M448 358.4V25.6c0-16-9.6-25.6-25.6-25.6H96C41.6 0 0 41.6 0 96v320c0 54.4 41.6 96 96 96h326.4c12.8 0 25.6-9.6 25.6-25.6v-16c0-6.4-3.2-12.8-9.6-19.2-3.2-16-3.2-60.8 0-73.6 6.4-3.2 9.6-9.6 9.6-19.2zM272 160l26.66 53.33L352 240l-53.34 26.67L272 320l-26.66-53.33L192 240l53.34-26.67L272 160zM160 96l16-32 16 32 32 16-32 16-16 32-16-32-32-16 32-16zm220.8 352H96c-19.2 0-32-12.8-32-32s16-32 32-32h284.8v64z"></path></svg>',
             },
             {
+              activedByCookie: null,
+              key: "showSvgIcons",
               directive: [
                 "inject/log.js",
                 "inject/actions/showSvgIcons/index.js",
@@ -114,12 +196,16 @@ export default {
           key: "testing",
           items: [
             {
+              activedByCookie: null,
+              key: "testingFluidNotifies",
               directive: ["inject/actions/testingFluidNotifies/index.js"],
               text: "Fluid notifies",
               icon:
                 '<svg viewBox="0 0 512 512"><path d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path></svg>',
             },
             {
+              activedByCookie: null,
+              key: "fluidAutoSignup",
               directive: ["inject/actions/fluidAutoSignup/index.js"],
               text: "Fluid auto signup",
               icon:
@@ -132,6 +218,8 @@ export default {
           key: "hacks",
           items: [
             {
+              activedByCookie: null,
+              key: "showLCFTPSettings",
               directive: ["inject/actions/showLCFTPSettings/index.js"],
               text: "FTP password",
               icon:

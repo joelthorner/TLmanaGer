@@ -31,34 +31,50 @@ export default {
     };
   },
   created() {
-    this.getSyncchromeSync();
-
-    chrome.tabs.query(
-      {
-        active: true,
-        currentWindow: true,
-      },
-      (tabs) => {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          {
-            message: "getEcommerceData",
-          },
-          (response) => {
-            if (!window.chrome.runtime.lastError) {
-              if (response && response.ecommerceData) {
-                this.ecommerceData = response.ecommerceData;
-              }
-            } else {
-              console.log("Error getting getEcommerceData");
-            }
-          }
-        );
-      }
-    );
+    this.getSyncChromeSync();
+    this.getEcommerceData();
+    this.cleanUpdateAlert();
   },
   methods: {
-    getSyncchromeSync() {
+    cleanUpdateAlert() {
+      chrome.browserAction.getBadgeText({}, (result) => {
+        if (result === "!") {
+          chrome.browserAction.setBadgeText({ text: "" });
+          chrome.tabs.create({
+            url:
+              chrome.extension.getURL("options/options.html") + "#/changelog",
+          });
+        }
+      });
+    },
+
+    getEcommerceData() {
+      chrome.tabs.query(
+        {
+          active: true,
+          currentWindow: true,
+        },
+        (tabs) => {
+          chrome.tabs.sendMessage(
+            tabs[0].id,
+            {
+              message: "getEcommerceData",
+            },
+            (response) => {
+              if (!window.chrome.runtime.lastError) {
+                if (response && response.ecommerceData) {
+                  this.ecommerceData = response.ecommerceData;
+                }
+              } else {
+                console.log("Error getting getEcommerceData");
+              }
+            }
+          );
+        }
+      );
+    },
+
+    getSyncChromeSync() {
       chrome.storage.sync.get(chromeSync, (result) => {
         this.chromeSync = result;
       });

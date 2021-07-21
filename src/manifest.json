@@ -30,6 +30,7 @@
     "storage",
     "notifications",
     "tabs",
+    "cookies",
     "identity",
     "identity.email",
     "<all_urls>"
@@ -39,7 +40,12 @@
         "<all_urls>"
       ],
       "js": [
-        "inject/EcommerceData.js"
+        "inject/EcommerceData.js",
+        "inject/actions/containerLinesGuide/index.js",
+        "inject/actions/containerLinesGuide/load.js"
+      ],
+      "css": [
+        "inject/actions/containerLinesGuide/index.css"
       ]
     },
     {

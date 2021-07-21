@@ -38,10 +38,10 @@
   background-color: blue;
 }
 
-#containerLinesGuide_data > span {
+#containerLinesGuide_data>span {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   padding: 3px 0;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
   margin: 0;
   width: 100%;
@@ -49,14 +49,18 @@
   text-align: center;
 }
 
-#containerLinesGuide_data > span:nth-child(1) {
+#containerLinesGuide_data>span:nth-child(1) {
   color: blueviolet;
   border-bottom: 1px solid blueviolet;
 }
 
-#containerLinesGuide_data > span:nth-child(2) {
+#containerLinesGuide_data>span:nth-child(2) {
   color: blue;
   border-bottom: 1px solid blue;
+}
+
+#containerLinesGuide_data>span:nth-child(3) {
+  color: #000;
 }
 
 #containerLinesGuide_data {

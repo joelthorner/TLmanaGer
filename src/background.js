@@ -1,3 +1,8 @@
+/**
+ * Execute js files recursively
+ * @param {number|null} tabId 
+ * @param {object} injectDetailsArray 
+ */
 function executeScripts(tabId, injectDetailsArray) {
   function createCallback(tabId, injectDetails, innerCallback) {
     return function () {
@@ -11,6 +16,11 @@ function executeScripts(tabId, injectDetailsArray) {
   if (callback !== null) callback(); // execute outermost function
 }
 
+/**
+ * Execute css files recursively
+ * @param {number|null} tabId 
+ * @param {object} injectDetailsArray 
+ */
 function insertCSSs(tabId, injectDetailsArray) {
   function createCallback(tabId, injectDetails, innerCallback) {
     return function () {
@@ -23,6 +33,7 @@ function insertCSSs(tabId, injectDetailsArray) {
 
   if (callback !== null) callback(); // execute outermost function
 }
+
 
 // Popup actions listener
 chrome.runtime.onMessage.addListener(
@@ -41,89 +52,85 @@ chrome.runtime.onMessage.addListener(
 
       if (jsFiles.length) executeScripts(null, jsFiles);
       if (cssFiles.length) insertCSSs(null, cssFiles);
+
+      // close
+      let windows = chrome.extension.getViews({ type: "popup" });
+      if (windows.length) {
+        windows[0].close();
+      }
     }
   }
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * Save from ecommerceData.js localStorage 'ecommerceData' item
- *
- * Message recived from ecommerceData.js injected in <all_urls>
- * and save into localStorage of background generated page.
- *
- * After, on open popup, get 'ecommerceData' data from localStorage
- * of background generated page
+/**
+ * Contains all mainfest json data
+ * @type {object}
  */
-// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-//   if (request.message && request.message == 'ecommerceData_to_background') {
-//     localStorage.setItem('ecommerceData', JSON.stringify(request.data));
-//   }
-// });
+const MANIFEST_DATA = chrome.runtime.getManifest();
 
-/*
- * On change tab and on update tab execute ecommerceData
- * and this refresh data.
- *
- * ecommerceData send 'ecommerceData_to_background' message
+/**
+ * On install extension create tab with configuration landing
  */
-// function ecommerceDataInject(tab) {
-//   chrome.tabs.executeScript(null, {
-//     file: 'inject/ecommerceData.js'
-//   }, () => chrome.runtime.lastError);
-// }
-// chrome.tabs.onActivated.addListener(ecommerceDataInject);
-// chrome.tabs.onUpdated.addListener(ecommerceDataInject);
+function onInstallExtension() {
+  const url = chrome.extension.getURL("install/install.html");
+  chrome.tabs.create({ url });
+}
 
+/**
+ * On update extension (major or medium update), 
+ * create notify with new version and set alert badge.
+ */
+function onUpdateExtension() {
+  let mainVersion = MANIFEST_DATA.version.split('.').splice(0, 2).join('.');
 
+  chrome.storage.sync.get({
+    newVersionNotify: mainVersion
+  }, function (result) {
+    let oldMainVersion = result.newVersionNotify.split('.').splice(0, 2).join('.');
 
+    if (parseFloat(mainVersion) > parseFloat(oldMainVersion)) {
+      createUpdateExtensionNotify();
+      chrome.browserAction.setBadgeText({ text: '!' });
+      chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
+    }
 
-// TODO all
-// chrome.runtime.onInstalled.addListener(function (details) {
-  // if (details.reason == 'install') {
+    chrome.storage.sync.set({ newVersionNotify: mainVersion });
+  });
+}
 
-    // TODO page install
+/**
+ * Create notify with new extension version
+ */
+function createUpdateExtensionNotify() {
+  const notifyId = `newVersion-${MANIFEST_DATA.version}`;
+  const updateNotifyConfig = {
+    type: 'basic',
+    title: `New TLmanaGer ${MANIFEST_DATA.version} !`,
+    iconUrl: '../icons/icon128.png',
+    message: 'Nova versió feta amb carinyo i una cullerada de bugs.',
+    priority: 1,
+    buttons: [
+      { title: 'Dimiss' },
+      { title: 'Release notes' }
+    ]
+  };
 
-    // chrome.tabs.create({
-    // 	url: chrome.extension.getURL('/src/install/index.html')
-    // });
+  chrome.notifications.create(notifyId, updateNotifyConfig);
 
-  // } else if (details.reason == 'update') {
-    // TODO new notify on update extension installed
+  chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
+    if (notificationId === notifyId && buttonIndex === 1) {
+      chrome.tabs.create({
+        url: chrome.extension.getURL("options/options.html") + "#/changelog"
+      });
+    }
+  });
+}
 
-    // var newVersionArr = manifestData.version.split('.'),
-    // 	newMainVersion = newVersionArr[0] + '.' + newVersionArr[1];
+// Extension update/install
+chrome.runtime.onInstalled.addListener(function (details) {
+  if (details.reason == 'install')
+    onInstallExtension();
 
-    // chrome.storage.sync.get({ newVersionNotify: newMainVersion }, function (result) {
-    // 	var oldVersionArr = result.newVersionNotify.split('.'),
-    // 		oldMainVersion = oldVersionArr[0] + '.' + oldVersionArr[1];
-
-    // 	console.log(parseFloat(newMainVersion), parseFloat(oldMainVersion));
-    // 	if (parseFloat(newMainVersion) > parseFloat(oldMainVersion)) {
-    // 		chrome.notifications.create('newVersion-' + manifestData.version, opt);
-
-    // 		chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
-    // 			if (notificationId == 'newVersion-' + manifestData.version && buttonIndex == 1) {
-    // 				chrome.tabs.create({ url: chrome.extension.getURL('/src/options/index.html') + '#changelog' });
-    // 			}
-    // 		});
-
-    // 		chrome.browserAction.setBadgeText({ text: '!' });
-    // 		chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0068' });
-    // 	}
-    // 	chrome.storage.sync.set({ newVersionNotify: newMainVersion });
-    // });
-  // }
-// });
+  else if (details.reason == 'update')
+    onUpdateExtension();
+});
