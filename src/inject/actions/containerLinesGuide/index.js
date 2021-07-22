@@ -54,16 +54,21 @@ var containerLinesGuide = {
     `);
 
     this._setSizeValues();
-    window.onresize = this._windowResizeListener;
+    // window.onresize = this._windowResizeListener;
+    window.addEventListener('resize', this._windowResizeListener);
   },
 
   /**
    * Set container and padding data values on window resize
    */
   _setSizeValues() {
-    document.getElementById('containerLinesGuide_width_inner').innerHTML = this._getContainerWidth() + 'px';
-    document.getElementById('containerLinesGuide_width_outer').innerHTML = this._getContainerOuterWidth() + 'px';
-    document.getElementById('containerLinesGuide_paddings_val').innerHTML = this._getContainerPadding() + 'px';
+    let containerLinesGuide_width_inner = document.getElementById('containerLinesGuide_width_inner');
+    let containerLinesGuide_width_outer = document.getElementById('containerLinesGuide_width_outer');
+    let containerLinesGuide_paddings_val = document.getElementById('containerLinesGuide_paddings_val');
+
+    if (containerLinesGuide_width_inner) containerLinesGuide_width_inner.innerHTML = this._getContainerWidth() + 'px';
+    if (containerLinesGuide_width_outer) containerLinesGuide_width_outer.innerHTML = this._getContainerOuterWidth() + 'px';
+    if (containerLinesGuide_paddings_val) containerLinesGuide_paddings_val.innerHTML = this._getContainerPadding() + 'px';
   },
 
   /**
@@ -84,7 +89,8 @@ var containerLinesGuide = {
     if (containerLinesGuide_wrap) containerLinesGuide_wrap.remove();
     if (containerLinesGuide_css) containerLinesGuide_css.remove();
 
-    window.onresize = null;
+    // window.onresize = null;
+    window.removeEventListener('resize', this._windowResizeListener);
   },
 
   /**

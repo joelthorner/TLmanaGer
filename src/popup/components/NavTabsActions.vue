@@ -16,13 +16,14 @@
             v-for="item in element.items"
             :key="item.key"
             @click="executeDirective(item.directive)"
+            :disabled="item.disabled"
             :class="`btn btn-action ${item.activedByCookie ? ' actived' : ''}`"
             type="button"
           >
             <span class="icon-wrap" v-html="item.icon"></span>
             <span class="name">{{ item.text }}</span>
 
-            <div class="rippleJS"></div>
+            <div class="rippleJS" v-if="!item.disabled"></div>
           </button></div
       ></b-tab>
     </b-tabs>
@@ -34,15 +35,155 @@
 
 export default {
   name: "NavTabsActions",
+  props: {
+    ecommerceData: {
+      required: true,
+      validator: (prop) => typeof prop === "object" || prop === null,
+    },
+  },
   created() {
-    this.readTabCookie(
-      "containerLinesGuideCookie",
-      "1",
-      "utils",
-      "containerLinesGuide"
-    );
+    this.readTabCookie("containerLinesGuideCookie", "1", "containerLinesGuide");
+  },
+  computed: {
+    elements() {
+      return [
+        {
+          name: "Utils",
+          key: "utils",
+          items: [
+            {
+              activedByCookie: this.containerLinesGuide_activedByCookie,
+              disabled: false,
+              key: "containerLinesGuide",
+              directive: [
+                "inject/actions/containerLinesGuide/index.js",
+                "inject/actions/containerLinesGuide/click.js",
+              ],
+              text: "Container guides",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-vr" viewBox="0 0 16 16">
+                      <path d="M3 12V4a1 1 0 0 1 1-1h2.5V2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5v-1H4a1 1 0 0 1-1-1zm6.5 1v1H12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H9.5v1H12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H9.5zM8 16a.5.5 0 0 1-.5-.5V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-.5.5z"/>
+                    </svg>`,
+            },
+            {
+              activedByCookie: null,
+              disabled: false,
+              key: "GETRefreshImg",
+              directive: ["inject/actions/GETRefreshImg/index.js"],
+              text: "GET Refresh img",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                      <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                      <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+                    </svg>`,
+            },
+            {
+              activedByCookie: null,
+              disabled: false,
+              key: "emilioGenerator",
+              directive: "https://joelthorner.github.io/emilio-generator/",
+              text: "Emilio Generator",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                    </svg>`,
+            },
+            {
+              activedByCookie: null,
+              disabled:
+                this.existsEcommerceData() &&
+                !this.isFluid() &&
+                !this.isModular2018(),
+              key: "showModulesTemplate2018",
+              directive: ["inject/actions/showModulesTemplate2018/click.js"],
+              text: "Show '18 template modules",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
+                      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                    </svg>`,
+            },
+            {
+              activedByCookie: null,
+              disabled: false,
+              key: "swiperCssGenerator",
+              directive: "https://joelthorner.github.io/swiper-css-generator/",
+              text: "Swiper css generator",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-1x2" viewBox="0 0 16 16">
+                      <path d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9v5h-5v-5h5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
+                    </svg>`,
+            },
+            {
+              activedByCookie: null,
+              disabled: false,
+              key: "showSvgIcons",
+              directive: [
+                "inject/log.js",
+                "inject/actions/showSvgIcons/index.js",
+                "inject/actions/showSvgIcons/index.css",
+              ],
+              text: "Show svg icons",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M11.315 10.014a.5.5 0 0 1 .548.736A4.498 4.498 0 0 1 7.965 13a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .548-.736h.005l.017.005.067.015.252.055c.215.046.515.108.857.169.693.124 1.522.242 2.152.242.63 0 1.46-.118 2.152-.242a26.58 26.58 0 0 0 1.109-.224l.067-.015.017-.004.005-.002zM4.756 4.566c.763-1.424 4.02-.12.952 3.434-4.496-1.596-2.35-4.298-.952-3.434zm6.488 0c1.398-.864 3.544 1.838-.952 3.434-3.067-3.554.19-4.858.952-3.434z"/>
+                    </svg>`,
+            },
+          ],
+        },
+        {
+          name: "Testing",
+          key: "testing",
+          items: [
+            {
+              activedByCookie: null,
+              disabled: this.existsEcommerceData() && !this.isFluid(),
+              key: "testingFluidNotifies",
+              directive: ["inject/actions/testingFluidNotifies/index.js"],
+              text: "Fluid notifies",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    </svg>`,
+            },
+            {
+              activedByCookie: null,
+              key: "fluidAutoSignup",
+              disabled: this.existsEcommerceData() && !this.isFluid(),
+              directive: ["inject/actions/fluidAutoSignup/index.js"],
+              text: "Fluid auto signup",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                      <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z"/>
+                    </svg>`,
+            },
+          ],
+        },
+        {
+          name: "Hacks",
+          key: "hacks",
+          items: [
+            {
+              activedByCookie: null,
+              disabled: false,
+              key: "showLCFTPSettings",
+              directive: ["inject/actions/showLCFTPSettings/index.js"],
+              text: "FTP password",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                      <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+                      <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>`,
+            },
+          ],
+        },
+      ];
+    },
   },
   methods: {
+    isFluid() {
+      return this.ecommerceData.type === "fluid";
+    },
+    isModular2018() {
+      return this.ecommerceData.template === "modular-2018";
+    },
+    existsEcommerceData() {
+      return this.ecommerceData ? true : false;
+    },
     /**
      * Execute popup action
      * @param {string|string[]} directive
@@ -78,31 +219,32 @@ export default {
 
     /**
      * Find action item set peoperty "activedByCookie" true
-     * @param {string} groupKeyName
      * @param {string} itemKeyName
      */
-    setActivedByCookie(groupKeyName, itemKeyName) {
-      for (let i = 0; i < this.elements.length; i++) {
-        const element = this.elements[i];
-        if (element.key == groupKeyName) {
-          for (let j = 0; j < element.items.length; j++) {
-            const item = element.items[j];
-            if (item.key == itemKeyName) {
-              item.activedByCookie = true;
-            }
-          }
-        }
-      }
+    setActivedByCookie(itemKeyName) {
+      // console.log(groupKeyName, itemKeyName);
+      // for (let i = 0; i < this.elements.length; i++) {
+      //   // const element = this.elements[i];
+      //   if (this.elements[i].key == groupKeyName) {
+      //     for (let j = 0; j < this.elements[i].items.length; j++) {
+      //       // const item = this.elements[i].items[j];
+      //       if (this.elements[i].items[j].key == itemKeyName) {
+      //         this.elements[i].items[j].activedByCookie = true;
+      //         console.log(this.elements);
+      //       }
+      //     }
+      //   }
+      // }
+      this[itemKeyName + "_activedByCookie"] = true;
     },
 
     /**
      * Read tab cookie from active tab
      * @param {string} cookieName
      * @param {string} cookieValue
-     * @param {string} groupKeyName
      * @param {string} itemKeyName
      */
-    readTabCookie(cookieName, cookieValue, groupKeyName, itemKeyName) {
+    readTabCookie(cookieName, cookieValue, itemKeyName) {
       chrome.tabs.query(
         {
           status: "complete",
@@ -118,7 +260,7 @@ export default {
               },
               (cookie) => {
                 if (cookie && cookie.value === cookieValue) {
-                  this.setActivedByCookie(groupKeyName, itemKeyName);
+                  this.setActivedByCookie(itemKeyName);
                 }
               }
             );
@@ -129,105 +271,7 @@ export default {
   },
   data() {
     return {
-      elements: [
-        {
-          name: "Utils",
-          key: "utils",
-          items: [
-            {
-              activedByCookie: false,
-              key: "containerLinesGuide",
-              directive: [
-                "inject/actions/containerLinesGuide/index.js",
-                "inject/actions/containerLinesGuide/click.js",
-              ],
-              text: "Container guides",
-              icon:
-                '<svg viewBox="0 0 512 512"><path d="M160 288h-56c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h56v-64h-56c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h56V96h-56c-4.42 0-8-3.58-8-8V72c0-4.42 3.58-8 8-8h56V32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v448c0 2.77.91 5.24 1.57 7.8L160 329.38V288zm320 64h-32v56c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-56h-64v56c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-56h-64v56c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-56h-41.37L24.2 510.43c2.56.66 5.04 1.57 7.8 1.57h448c17.67 0 32-14.33 32-32v-96c0-17.67-14.33-32-32-32z"></path></svg>',
-            },
-            {
-              activedByCookie: null,
-              key: "GETRefreshImg",
-              directive: ["inject/actions/GETRefreshImg/index.js"],
-              text: "GET Refresh img",
-              icon:
-                '<svg viewBox="0 0 512 512"><path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"></path></svg>',
-            },
-            {
-              activedByCookie: null,
-              key: "emilioGenerator",
-              directive: "https://joelthorner.github.io/emilio-generator/",
-              text: "Emilio Generator",
-              icon:
-                '<svg viewBox="0 0 576 512"><path d="M160 448c-25.6 0-51.2-22.4-64-32-64-44.8-83.2-60.8-96-70.4V480c0 17.67 14.33 32 32 32h256c17.67 0 32-14.33 32-32V345.6c-12.8 9.6-32 25.6-96 70.4-12.8 9.6-38.4 32-64 32zm128-192H32c-17.67 0-32 14.33-32 32v16c25.6 19.2 22.4 19.2 115.2 86.4 9.6 6.4 28.8 25.6 44.8 25.6s35.2-19.2 44.8-22.4c92.8-67.2 89.6-67.2 115.2-86.4V288c0-17.67-14.33-32-32-32zm256-96H224c-17.67 0-32 14.33-32 32v32h96c33.21 0 60.59 25.42 63.71 57.82l.29-.22V416h192c17.67 0 32-14.33 32-32V192c0-17.67-14.33-32-32-32zm-32 128h-64v-64h64v64zm-352-96c0-35.29 28.71-64 64-64h224V32c0-17.67-14.33-32-32-32H96C78.33 0 64 14.33 64 32v192h96v-32z"></path></svg>',
-            },
-            {
-              activedByCookie: null,
-              key: "showModulesTemplate2018",
-              directive: ["inject/actions/showModulesTemplate2018/click.js"],
-              text: "Show '18 template modules",
-              icon:
-                '<svg viewBox="0 0 448 512"><path d="M448 358.4V25.6c0-16-9.6-25.6-25.6-25.6H96C41.6 0 0 41.6 0 96v320c0 54.4 41.6 96 96 96h326.4c12.8 0 25.6-9.6 25.6-25.6v-16c0-6.4-3.2-12.8-9.6-19.2-3.2-16-3.2-60.8 0-73.6 6.4-3.2 9.6-9.6 9.6-19.2zM272 160l26.66 53.33L352 240l-53.34 26.67L272 320l-26.66-53.33L192 240l53.34-26.67L272 160zM160 96l16-32 16 32 32 16-32 16-16 32-16-32-32-16 32-16zm220.8 352H96c-19.2 0-32-12.8-32-32s16-32 32-32h284.8v64z"></path></svg>',
-            },
-            {
-              activedByCookie: null,
-              key: "swiperCssGenerator",
-              directive: "https://joelthorner.github.io/swiper-css-generator/",
-              text: "Swiper css generator",
-              icon:
-                '<svg viewBox="0 0 448 512"><path d="M448 358.4V25.6c0-16-9.6-25.6-25.6-25.6H96C41.6 0 0 41.6 0 96v320c0 54.4 41.6 96 96 96h326.4c12.8 0 25.6-9.6 25.6-25.6v-16c0-6.4-3.2-12.8-9.6-19.2-3.2-16-3.2-60.8 0-73.6 6.4-3.2 9.6-9.6 9.6-19.2zM272 160l26.66 53.33L352 240l-53.34 26.67L272 320l-26.66-53.33L192 240l53.34-26.67L272 160zM160 96l16-32 16 32 32 16-32 16-16 32-16-32-32-16 32-16zm220.8 352H96c-19.2 0-32-12.8-32-32s16-32 32-32h284.8v64z"></path></svg>',
-            },
-            {
-              activedByCookie: null,
-              key: "showSvgIcons",
-              directive: [
-                "inject/log.js",
-                "inject/actions/showSvgIcons/index.js",
-                "inject/actions/showSvgIcons/index.css",
-              ],
-              text: "Show svg icons",
-              icon:
-                '<svg viewBox="0 0 640 512"><path d="M18.32 255.78L192 223.96l-91.28 68.69c-10.08 10.08-2.94 27.31 11.31 27.31h222.7c-9.44-26.4-14.73-54.47-14.73-83.38v-42.27l-119.73-87.6c-23.82-15.88-55.29-14.01-77.06 4.59L5.81 227.64c-12.38 10.33-3.45 30.42 12.51 28.14zm556.87 34.1l-100.66-50.31A47.992 47.992 0 0 1 448 196.65v-36.69h64l28.09 22.63c6 6 14.14 9.37 22.63 9.37h30.97a32 32 0 0 0 28.62-17.69l14.31-28.62a32.005 32.005 0 0 0-3.02-33.51l-74.53-99.38C553.02 4.7 543.54 0 533.47 0H296.02c-7.13 0-10.7 8.57-5.66 13.61L352 63.96 292.42 88.8c-5.9 2.95-5.9 11.36 0 14.31L352 127.96v108.62c0 72.08 36.03 139.39 96 179.38-195.59 6.81-344.56 41.01-434.1 60.91C5.78 478.67 0 485.88 0 494.2 0 504 7.95 512 17.76 512h499.08c63.29.01 119.61-47.56 122.99-110.76 2.52-47.28-22.73-90.4-64.64-111.36zM489.18 66.25l45.65 11.41c-2.75 10.91-12.47 18.89-24.13 18.26-12.96-.71-25.85-12.53-21.52-29.67z"></path></svg>',
-            },
-          ],
-        },
-        {
-          name: "Testing",
-          key: "testing",
-          items: [
-            {
-              activedByCookie: null,
-              key: "testingFluidNotifies",
-              directive: ["inject/actions/testingFluidNotifies/index.js"],
-              text: "Fluid notifies",
-              icon:
-                '<svg viewBox="0 0 512 512"><path d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"></path></svg>',
-            },
-            {
-              activedByCookie: null,
-              key: "fluidAutoSignup",
-              directive: ["inject/actions/fluidAutoSignup/index.js"],
-              text: "Fluid auto signup",
-              icon:
-                '<svg viewBox="0 0 640 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h274.9c-2.4-6.8-3.4-14-2.6-21.3l6.8-60.9 1.2-11.1 7.9-7.9 77.3-77.3c-24.5-27.7-60-45.5-99.9-45.5zm45.3 145.3l-6.8 61c-1.1 10.2 7.5 18.8 17.6 17.6l60.9-6.8 137.9-137.9-71.7-71.7-137.9 137.8zM633 268.9L595.1 231c-9.3-9.3-24.5-9.3-33.8 0l-37.8 37.8-4.1 4.1 71.8 71.7 41.8-41.8c9.3-9.4 9.3-24.5 0-33.9z"></path></svg>',
-            },
-          ],
-        },
-        {
-          name: "Hacks",
-          key: "hacks",
-          items: [
-            {
-              activedByCookie: null,
-              key: "showLCFTPSettings",
-              directive: ["inject/actions/showLCFTPSettings/index.js"],
-              text: "FTP password",
-              icon:
-                '<svg viewBox="0 0 512 512"><path d="M512 176.001C512 273.203 433.202 352 336 352c-11.22 0-22.19-1.062-32.827-3.069l-24.012 27.014A23.999 23.999 0 0 1 261.223 384H224v40c0 13.255-10.745 24-24 24h-40v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24v-78.059c0-6.365 2.529-12.47 7.029-16.971l161.802-161.802C163.108 213.814 160 195.271 160 176 160 78.798 238.797.001 335.999 0 433.488-.001 512 78.511 512 176.001zM336 128c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z"></path></svg>',
-            },
-          ],
-        },
-      ],
+      containerLinesGuide_activedByCookie: false,
     };
   },
 };

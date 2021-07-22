@@ -1,7 +1,7 @@
 <template>
   <div id="popup">
     <user-header :chromeSync="chromeSync"></user-header>
-    <nav-tabs-actions></nav-tabs-actions>
+    <nav-tabs-actions :ecommerceData="ecommerceData"></nav-tabs-actions>
     <ecommerce-info :ecommerceData="ecommerceData"></ecommerce-info>
   </div>
 </template>
