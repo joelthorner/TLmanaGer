@@ -1,0 +1,33 @@
+.showModulesTemplate2018_module.showModulesTemplate2018_module-static {
+  position: relative !important;
+}
+
+.showModulesTemplate2018_module.mm-menu {
+  /* position: absolute !important; */
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line,
+.showModulesTemplate2018_module .showModulesTemplate2018_module_name {
+  position: absolute;
+  z-index: 100000;
+  background-color: rgb(255, 0, 46);
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_name {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px;
+  margin: 0;
+  color: #FFF;
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-top,
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-bottom {
+  height: 1px;
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-left,
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-right {
+  width: 1px;
+}
