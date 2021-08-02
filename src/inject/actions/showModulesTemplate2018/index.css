@@ -2,14 +2,10 @@
   position: relative !important;
 }
 
-.showModulesTemplate2018_module.mm-menu {
-  /* position: absolute !important; */
-}
-
 .showModulesTemplate2018_module .showModulesTemplate2018_module_line,
 .showModulesTemplate2018_module .showModulesTemplate2018_module_name {
   position: absolute;
-  z-index: 100000;
+  z-index: var(--zIndex);
   background-color: rgb(255, 0, 46);
 }
 
@@ -30,4 +26,38 @@
 .showModulesTemplate2018_module .showModulesTemplate2018_module_line-left,
 .showModulesTemplate2018_module .showModulesTemplate2018_module_line-right {
   width: 1px;
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-top {
+  top: var(--top);
+  left: var(--left);
+  right: var(--right);
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-left {
+  left: var(--left);
+  top: var(--top);
+  bottom: var(--bottom);
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-bottom {
+  bottom: var(--bottom);
+  left: var(--left);
+  right: var(--right);
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_line-right {
+  right: var(--right);
+  top: var(--top);
+  bottom: var(--bottom);
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_name-top-left {
+  top: var(--top);
+  left: var(--left);
+}
+
+.showModulesTemplate2018_module .showModulesTemplate2018_module_name-top-right {
+  top: var(--top);
+  right: var(--right);
 }

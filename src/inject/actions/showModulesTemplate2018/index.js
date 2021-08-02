@@ -18,6 +18,12 @@ class ShowModulesTemplate2018 {
   elements = null;
 
   /**
+   * z-index of each module that is being decremented.
+   * @type {number}
+   */
+  zIndex = 100000;
+
+  /**
    * Create a showModulesTemplate2018.
    */
   constructor(elements) {
@@ -39,12 +45,11 @@ class ShowModulesTemplate2018 {
    */
   _addModuleMarkup(element) {
     const elementClass = this.generateUidClass();
+    const positionClass = this.getModuloPositionClass(element);
+
     element.classList.add('showModulesTemplate2018_module');
     element.classList.add(elementClass);
-
-    // refactor add this class when module (element) is static
-    // 'showModulesTemplate2018_module-static'
-    // end refactor
+    element.classList.add(positionClass);
 
     const markupElements = this._getMarkupElementsObj(element);
 
@@ -56,6 +61,18 @@ class ShowModulesTemplate2018 {
 
     const positions = this._getElementPositions(element);
     this._insertMarkupStyles(elementClass, positions);
+
+    this.zIndex--;
+  }
+
+  /**
+   * Returns class with a position css value
+   * @param {object} element 
+   * @returns {string}
+   */
+  getModuloPositionClass(element) {
+    const styles = document.defaultView.getComputedStyle(element);
+    return `showModulesTemplate2018_module-${styles.position}`
   }
 
   /**
@@ -66,38 +83,12 @@ class ShowModulesTemplate2018 {
   _insertMarkupStyles(className, positions) {
     let style = `
       <style>
-        .${className} .showModulesTemplate2018_module_line-top {
-          top: ${positions.top}px;
-          left: ${positions.left}px;
-          right: ${positions.right}px;
-        }
-
-        .${className} .showModulesTemplate2018_module_line-left {
-          left: ${positions.left}px;
-          top: ${positions.top}px;
-          bottom: ${positions.bottom}px;
-        }
-
-        .${className} .showModulesTemplate2018_module_line-bottom {
-          bottom: ${positions.bottom}px;
-          left: ${positions.left}px;
-          right: ${positions.right}px;
-        }
-
-        .${className} .showModulesTemplate2018_module_line-right {
-          right: ${positions.right}px;
-          top: ${positions.top}px;
-          bottom: ${positions.bottom}px;
-        }
-
-        .${className} .showModulesTemplate2018_module_name-top-left {
-          top: ${positions.top}px;
-          left: ${positions.left}px;
-        }
-
-        .${className} .showModulesTemplate2018_module_name-top-right {
-          top: ${positions.top}px;
-          right: ${positions.right}px;
+        .${className} {
+          --top: ${positions.top}px;
+          --left: ${positions.left}px;
+          --right: ${positions.right}px;
+          --bottom: ${positions.bottom}px;
+          --zIndex: ${this.zIndex};
         }
       </style>
     `;
@@ -113,25 +104,30 @@ class ShowModulesTemplate2018 {
   _getElementPositions(element) {
     const nextElement = element.nextElementSibling;
 
-    let bottom = 0;
+    let bottom = 0, top = 0;
 
     if (nextElement && nextElement.matches('[data-module]')) {
       const styles = document.defaultView.getComputedStyle(nextElement);
-      const _top = parseFloat(styles['margin-top']);
-      // const right = parseFloat(styles['margin-right']);
-      // const bottom = parseFloat(styles['margin-bottom']);
-      // const left = parseFloat(styles['margin-left']);
-      if (_top < 0) {
-        bottom = _top * -1;
+      const marginTop = parseFloat(styles['margin-top']);
+      if (marginTop < 0) {
+        bottom = marginTop * -1;
       }
     }
 
+    if (element.matches('.block-full-width')) {
+      const styles = document.defaultView.getComputedStyle(element);
+      const marginTop = parseFloat(styles['margin-top']);
+
+      if (marginTop < 0) {
+        top = marginTop * -1;
+      }
+    }
 
     return {
-      top: 0,// top < 0 ? top * -1 : 0,
-      right: 0,// right < 0 ? right * -1 : 0,
-      bottom: bottom,// bottom < 0 ? bottom * -1 : 0,
-      left: 0,// left < 0 ? left * -1 : 0,
+      top,
+      right: 0,
+      bottom,
+      left: 0,
     }
   }
 
