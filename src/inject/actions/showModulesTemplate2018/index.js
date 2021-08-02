@@ -9,35 +9,48 @@
  * @class
  * @classdesc Display all template modules with borders and name of module.
  */
-class ShowModulesTemplate2018 {
+var ShowModulesTemplate2018 = {
 
   /**
    * HTML nodes to iterate
    * @type {HTMLElement}
    */
-  elements = null;
+  elements: null,
 
   /**
    * z-index of each module that is being decremented.
    * @type {number}
    */
-  zIndex = 100000;
+  zIndex: 100000,
+
+  /**
+   * Indicates if ShowModulesTemplate2018 system is already initialized
+   * @type {HTMLElement|null}
+   */
+  alreadyShowing: null,
 
   /**
    * Create a showModulesTemplate2018.
    */
   constructor(elements) {
     this.elements = elements;
+    this.alreadyShowing = document.querySelectorAll('.showModulesTemplate2018_module');
+    console.log(!this.alreadyShowing.length);
 
-    if (this.elements) {
+    if (this.elements && !this.alreadyShowing.length) {
       for (let i = 0; i < this.elements.length; i++) {
         const element = this.elements[i];
         if (this._isValidModule(element)) {
           this._addModuleMarkup(element)
         }
       }
+    } else if (this.alreadyShowing) {
+      for (let i = 0; i < this.alreadyShowing.length; i++) {
+        const element = this.alreadyShowing[i];
+        this._clean(element)
+      }
     }
-  }
+  },
 
   /**
    * Add HTML structure for display module limits and her name
@@ -63,7 +76,7 @@ class ShowModulesTemplate2018 {
     this._insertMarkupStyles(elementClass, positions);
 
     this.zIndex--;
-  }
+  },
 
   /**
    * Returns class with a position css value
@@ -73,7 +86,7 @@ class ShowModulesTemplate2018 {
   getModuloPositionClass(element) {
     const styles = document.defaultView.getComputedStyle(element);
     return `showModulesTemplate2018_module-${styles.position}`
-  }
+  },
 
   /**
    * Append calculated module markup styles
@@ -82,7 +95,7 @@ class ShowModulesTemplate2018 {
    */
   _insertMarkupStyles(className, positions) {
     let style = `
-      <style>
+      <style class="showModulesTemplate2018_module_style">
         .${className} {
           --top: ${positions.top}px;
           --left: ${positions.left}px;
@@ -94,7 +107,7 @@ class ShowModulesTemplate2018 {
     `;
 
     document.body.insertAdjacentHTML('beforeend', style);
-  }
+  },
 
   /**
    * Returns element cardinal margins
@@ -129,7 +142,7 @@ class ShowModulesTemplate2018 {
       bottom,
       left: 0,
     }
-  }
+  },
 
   /**
    * Create an HTML node
@@ -147,7 +160,7 @@ class ShowModulesTemplate2018 {
     let textNode = document.createTextNode(text);
     node.appendChild(textNode);
     return node;
-  }
+  },
 
   /**
    * Returns if module is valid for display markup
@@ -155,7 +168,7 @@ class ShowModulesTemplate2018 {
    */
   _isValidModule(element) {
     return element.dataset && element.dataset.module ? true : false;
-  }
+  },
 
   /**
    * Return all markup module elements
@@ -191,7 +204,7 @@ class ShowModulesTemplate2018 {
         text: element.dataset.module,
       },
     ];
-  }
+  },
 
   /**
    * Create a unique class
@@ -199,7 +212,27 @@ class ShowModulesTemplate2018 {
    */
   generateUidClass() {
     return 'showModulesTemplate2018_module_' + Math.floor(Math.random() * 100000000);
-  }
+  },
+
+  /**
+   * Clean all ShowModulesTemplate2018 system of module
+   * @param {object} element 
+   */
+  _clean(element) {
+    let elements = element
+      .querySelectorAll(
+        '.showModulesTemplate2018_module_line, .showModulesTemplate2018_module_name, .showModulesTemplate2018_module_style'
+      );
+
+    if (elements) {
+      for (let index = 0; index < elements.length; index++) {
+        const element = elements[index];
+        element.remove();
+      }
+    }
+
+    element.className = element.className.replace(/(?:^|\s)showModulesTemplate2018_module(_[0-9]{1,}|\-[a-z]{3,})?/, '');
+  },
 }
 
-let showModulesTemplate2018 = new ShowModulesTemplate2018(document.querySelectorAll('[data-module]'));
+ShowModulesTemplate2018.constructor(document.querySelectorAll('[data-module]'));
