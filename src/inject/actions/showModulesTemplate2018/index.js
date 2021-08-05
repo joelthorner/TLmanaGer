@@ -35,19 +35,32 @@ var ShowModulesTemplate2018 = {
   constructor(elements) {
     this.elements = elements;
     this.alreadyShowing = document.querySelectorAll('.showModulesTemplate2018_module');
-    console.log(!this.alreadyShowing.length);
 
     if (this.elements && !this.alreadyShowing.length) {
-      for (let i = 0; i < this.elements.length; i++) {
-        const element = this.elements[i];
-        if (this._isValidModule(element)) {
-          this._addModuleMarkup(element)
-        }
-      }
+      this._initElements();
     } else if (this.alreadyShowing) {
-      for (let i = 0; i < this.alreadyShowing.length; i++) {
-        const element = this.alreadyShowing[i];
-        this._clean(element)
+      this._cleanElements();
+    }
+  },
+
+  /**
+   * Destroy modules markup
+   */
+  _cleanElements() {
+    for (let i = 0; i < this.alreadyShowing.length; i++) {
+      const element = this.alreadyShowing[i];
+      this._clean(element)
+    }
+  },
+
+  /**
+   * Initialize modules markup
+   */
+  _initElements() {
+    for (let i = 0; i < this.elements.length; i++) {
+      const element = this.elements[i];
+      if (this._isValidModule(element)) {
+        this._addModuleMarkup(element)
       }
     }
   },
@@ -115,26 +128,8 @@ var ShowModulesTemplate2018 = {
    * @returns {object}
    */
   _getElementPositions(element) {
-    const nextElement = element.nextElementSibling;
-
-    let bottom = 0, top = 0;
-
-    if (nextElement && nextElement.matches('[data-module]')) {
-      const styles = document.defaultView.getComputedStyle(nextElement);
-      const marginTop = parseFloat(styles['margin-top']);
-      if (marginTop < 0) {
-        bottom = marginTop * -1;
-      }
-    }
-
-    if (element.matches('.block-full-width')) {
-      const styles = document.defaultView.getComputedStyle(element);
-      const marginTop = parseFloat(styles['margin-top']);
-
-      if (marginTop < 0) {
-        top = marginTop * -1;
-      }
-    }
+    let bottom = this._getElementPositionBottom(element),
+      top = this._getElementPositionTop(element);
 
     return {
       top,
@@ -143,6 +138,45 @@ var ShowModulesTemplate2018 = {
       left: 0,
     }
   },
+
+  /**
+   * Return element position bottom
+   * @param {object} element 
+   * @returns {number}
+   */
+  _getElementPositionBottom(element) {
+    const nextElement = element.nextElementSibling;
+
+    if (nextElement && nextElement.matches('[data-module]')) {
+      const styles = document.defaultView.getComputedStyle(nextElement);
+      const marginTop = parseFloat(styles['margin-top']);
+
+      if (marginTop < 0) {
+        return marginTop * -1;
+      }
+    }
+
+    return 0;
+  },
+
+  /**
+   * Return element position top
+   * @param {object} element 
+   * @returns {number}
+   */
+  _getElementPositionTop(element) {
+    if (element.matches('.block-full-width')) {
+      const styles = document.defaultView.getComputedStyle(element);
+      const marginTop = parseFloat(styles['margin-top']);
+
+      if (marginTop < 0) {
+        return marginTop * -1;
+      }
+    }
+
+    return 0;
+  },
+
 
   /**
    * Create an HTML node
@@ -178,32 +212,25 @@ var ShowModulesTemplate2018 = {
   _getMarkupElementsObj(element) {
     const prefix = 'showModulesTemplate2018_module_';
 
-    return [
-      {
-        classList: [prefix + 'line', prefix + 'line-top'],
-        text: '',
-      },
-      {
-        classList: [prefix + 'line', prefix + 'line-right'],
-        text: '',
-      },
-      {
-        classList: [prefix + 'line', prefix + 'line-bottom'],
-        text: '',
-      },
-      {
-        classList: [prefix + 'line', prefix + 'line-left'],
-        text: '',
-      },
-      {
-        classList: [prefix + 'name', prefix + 'name-top-left'],
-        text: element.dataset.module,
-      },
-      {
-        classList: [prefix + 'name', prefix + 'name-top-right'],
-        text: element.dataset.module,
-      },
-    ];
+    return [{
+      classList: [prefix + 'line', prefix + 'line-top'],
+      text: '',
+    }, {
+      classList: [prefix + 'line', prefix + 'line-right'],
+      text: '',
+    }, {
+      classList: [prefix + 'line', prefix + 'line-bottom'],
+      text: '',
+    }, {
+      classList: [prefix + 'line', prefix + 'line-left'],
+      text: '',
+    }, {
+      classList: [prefix + 'name', prefix + 'name-top-left'],
+      text: element.dataset.module,
+    }, {
+      classList: [prefix + 'name', prefix + 'name-top-right'],
+      text: element.dataset.module,
+    }];
   },
 
   /**

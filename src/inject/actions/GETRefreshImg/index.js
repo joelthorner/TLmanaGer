@@ -29,12 +29,20 @@ var GETRefreshImg = {
     if (backgrounds.length) {
       for (let i = 0; i < backgrounds.length; i++) {
         const background = backgrounds[i];
-        let symbol = background.img.includes('?') ? '&' : '?';
-
-        if (!background.img.includes('base64') && !background.img.includes('svg+xml')) {
-          background.node.style.backgroundImage = `url('${background.img}${symbol}${this.refreshValue}')`;
-        }
+        this._initCssBackground(background);
       }
+    }
+  },
+
+  /**
+   *  Initialize refresh css image background
+   * @param {object} background 
+   */
+  _initCssBackground(background) {
+    let symbol = background.img.includes('?') ? '&' : '?';
+
+    if (!background.img.includes('base64') && !background.img.includes('svg+xml')) {
+      background.node.style.backgroundImage = `url('${background.img}${symbol}${this.refreshValue}')`;
     }
   },
 
@@ -42,23 +50,31 @@ var GETRefreshImg = {
    * Initialize refresh image and picture tags
    */
   initImgs() {
-    let elements = document.querySelectorAll('img[src], img[srcset], source[srcset]');
+    let imgs = document.querySelectorAll('img[src], img[srcset], source[srcset]');
 
-    if (elements) {
-      for (let i = 0; i < elements.length; i++) {
-        const element = elements[i];
-        let attrName = this._getElementAttrName(element),
-          symbol = '?';
-
-        if (attrName) {
-          if (element.getAttribute(attrName).includes('?')) {
-            symbol = '&';
-          }
-
-          let imageSrc = `${element.getAttribute(attrName)}${symbol}${this.refreshValue}`;
-          element.setAttribute(attrName, imageSrc);
-        }
+    if (imgs) {
+      for (let i = 0; i < imgs.length; i++) {
+        const img = imgs[i];
+        this._initImg(img);
       }
+    }
+  },
+
+  /**
+   * Initialize refresh image and picture tag
+   * @param {object} img 
+   */
+  _initImg(img) {
+    let attrName = this._getElementAttrName(img),
+      symbol = '?';
+
+    if (attrName) {
+      if (img.getAttribute(attrName).includes('?')) {
+        symbol = '&';
+      }
+
+      let imageSrc = `${img.getAttribute(attrName)}${symbol}${this.refreshValue}`;
+      img.setAttribute(attrName, imageSrc);
     }
   },
 
