@@ -92,7 +92,10 @@ export default {
                 !this.isFluid() &&
                 !this.isModular2018(),
               key: "showModulesTemplate2018",
-              directive: ["inject/actions/showModulesTemplate2018/click.js"],
+              directive: [
+                "inject/actions/showModulesTemplate2018/index.js",
+                "inject/actions/showModulesTemplate2018/index.css",
+              ],
               text: "Show '18 template modules",
               icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>

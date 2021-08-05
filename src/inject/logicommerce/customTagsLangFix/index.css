@@ -1,0 +1,18 @@
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.singlelanguage"],
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.multilanguage"] {
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.singlelanguage"]::before {
+  content: "Valor por idioma";
+  color: #747474;
+  font-size: 12px;
+}
+
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.multilanguage"]::before {
+  content: "Valor único";
+  color: #747474;
+  font-size: 12px;
+}
