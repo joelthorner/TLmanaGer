@@ -8,37 +8,53 @@
 
         <div id="release-notes">
           <section
-            class="release-block card"
+            class="release-block"
             v-for="release in releases"
             :key="release.id"
           >
-            <div class="card-body">
+            <h2>
               <a
                 class="header"
                 :href="releaseLink(release.tag_name)"
                 target="_blank"
+                >{{ getTagName(release.tag_name) }}</a
               >
-                <div class="d-flex">
-                  <div class="icon" v-html="icon"></div>
-                  <span class="version">{{
-                    getTagName(release.tag_name)
-                  }}</span>
-                </div>
-                <div class="date">
-                  <small class="text-muted">{{
-                    getReleaseDate(release.created_at)
-                  }}</small>
-                </div>
-              </a>
+            </h2>
+            <h3 v-if="getReleaseLines('features', release.body).length">
+              Features
+            </h3>
+            <ul>
+              <li
+                v-for="(line, index) in getReleaseLines(
+                  'features',
+                  release.body
+                )"
+                :key="index"
+                v-html="changelogLineParse(line)"
+              ></li>
+            </ul>
 
-              <ul class="list-unstyled">
-                <li
-                  v-for="(line, index) in getReleaseLines(release.body)"
-                  :key="index"
-                  v-html="changelogLineParse(line)"
-                ></li>
-              </ul>
-            </div>
+            <h3 v-if="getReleaseLines('fixes', release.body).length">
+              Fixes
+            </h3>
+            <ul>
+              <li
+                v-for="(line, index) in getReleaseLines('fixes', release.body)"
+                :key="index"
+                v-html="changelogLineParse(line)"
+              ></li>
+            </ul>
+
+            <h3 v-if="getReleaseLines('others', release.body).length">
+              Others
+            </h3>
+            <ul>
+              <li
+                v-for="(line, index) in getReleaseLines('others', release.body)"
+                :key="index"
+                v-html="changelogLineParse(line)"
+              ></li>
+            </ul>
           </section>
         </div>
       </main-content>
@@ -50,11 +66,11 @@
 import axios from "axios";
 import moment from "moment";
 import { setupCache } from "axios-cache-adapter";
-import { changelog as changelogIcon } from "@/data/icons";
 import watchAchievements from "@mixins/watchAchievements";
 
 import MainTitle from "@options/components/main/MainTitle";
 import MainContent from "@options/components/main/MainContent";
+import { githubChangelog as mockedData } from "@/data/mockedData";
 
 const cache = setupCache({
   maxAge: 15 * 60 * 1000,
@@ -83,47 +99,39 @@ export default {
   data() {
     return {
       releases: [],
-      icon: changelogIcon,
       firedApiGithub: false,
+      mockedData,
     };
   },
   methods: {
     getReleases() {
-      if (!this.firedApiGithub) {
-        api({
-          url: `https://api.github.com/repos/joelthorner/TLmanaGer/releases`,
-          method: "get",
-        }).then(async (response) => {
-          // console.log(response.data);
-          this.releases = response.data;
-          this.firedApiGithub = true;
-        });
+      if (process.env.NODE_ENV != "development") {
+        if (!this.firedApiGithub) {
+          api({
+            url: `https://api.github.com/repos/joelthorner/TLmanaGer/releases`,
+            method: "get",
+          }).then(async (response) => {
+            this.releases = response.data;
+            this.firedApiGithub = true;
+          });
+        }
+      } else {
+        this.releases = this.mockedData;
       }
     },
-    getReleaseLines(content) {
-      return content.split("\n").sort(function compare(a, b) {
-        if (
-          a.match(/NEW/) ||
-          (a.match(/FIXED/) && b.match(/IMPROVED/)) ||
-          (a.match(/FIXED/) && b.match(/CHANGED/)) ||
-          (a.match(/FIXED/) && b.match(/REMOVED/)) ||
-          (a.match(/IMPROVED/) && b.match(/CHANGED/)) ||
-          (a.match(/IMPROVED/) && b.match(/REMOVED/)) ||
-          (a.match(/CHANGED/) && b.match(/REMOVED/))
-        )
-          return -1;
+    getReleaseLines(type, content) {
+      let stringRexExp = "";
 
-        if (
-          b.match(/NEW/) ||
-          (a.match(/IMPROVED/) && b.match(/FIXED/)) ||
-          (a.match(/CHANGED/) && b.match(/FIXED/)) ||
-          (a.match(/CHANGED/) && b.match(/IMPROVED/)) ||
-          (a.match(/REMOVED/) && b.match(/FIXED/)) ||
-          (a.match(/REMOVED/) && b.match(/IMPROVED/)) ||
-          (a.match(/REMOVED/) && b.match(/CHANGED/))
-        )
-          return 1;
-      });
+      if (type === "features") {
+        stringRexExp = "\\*\\*NEW\\*\\*";
+      } else if (type === "fixes") {
+        stringRexExp = "\\*\\*IMPROVED\\*\\*|\\*\\*FIXED\\*\\*";
+      } else {
+        stringRexExp = "\\*\\*REMOVED\\*\\*|\\*\\*CHANGED\\*\\*";
+      }
+
+      let regExp = new RegExp(stringRexExp, "g");
+      return content.split("\n").filter((line) => regExp.test(line));
     },
     getReleaseDate(date) {
       return moment(date).format("MMMM Do YYYY");
@@ -137,17 +145,18 @@ export default {
       // list clean
       newValue = newValue.replace(/^-\s{1}/, "");
       // badge
-      newValue = newValue.replace(
-        /(\*\*[A-Z]{2,}\*\*)/,
-        function (match, capture) {
-          const _c = capture.replace(/\*/g, "");
-          return `<span class="badge badge-${_c.toLowerCase()}">${_c.toUpperCase()}</span>`;
-        }
-      );
+      newValue = newValue.replace(/(\*\*[A-Z]{2,}\*\*)/, function(
+        match,
+        capture
+      ) {
+        // const _c = capture.replace(/\*/g, "");
+        // return `<span class="badge badge-${_c.toLowerCase()}">${_c.toUpperCase()}</span>`;
+        return "";
+      });
       // issue
       newValue = newValue.replace(
         /(#\d{1,4})(#issuecomment-\d{1,20})?/,
-        function (match, capture, capture2) {
+        function(match, capture, capture2) {
           const _c = capture.replace("#", "");
           const _c2 = capture2 ? capture2 : "";
           return `<a href="${issueUrl}${_c}${_c2}" target="_blank" rel="noopener noreferrer">${capture}</a>`;
