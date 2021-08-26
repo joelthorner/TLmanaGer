@@ -78,9 +78,6 @@ var ecommerceData = {
    * @returns {String|null}
    */
   getEnvironment() {
-    if ((/[0-9]+\.logicommerce\.net/).test(location) || document.querySelector('meta[name="robots"][content="index, follow"]') != null)
-      return ENV_PRODUCTION;
-
     if ((/[0-9]+\.sandbox\.logicommerce\.net/).test(location))
       return ENV_PRE_OPENSAAS;
 
@@ -89,6 +86,9 @@ var ecommerceData = {
 
     if ((/[0-9]+\.igd\.pre\.production/).test(location))
       return ENV_IGD_PRE_PRODUCTION;
+
+    if ((/[0-9]+\.logicommerce\.net/).test(location) || document.querySelector('meta[name="robots"][content="index, follow"]') != null)
+      return ENV_PRODUCTION;
 
     return null;
   },

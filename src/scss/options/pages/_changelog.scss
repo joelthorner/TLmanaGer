@@ -1,71 +1,32 @@
 .release-block {
-  margin-bottom: 30px;
   position: relative;
+  margin-bottom: 60px;
 
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 2;
-  }
-  .header {
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e7e7e7;
-    margin-bottom: 10px;
-
-    .version {
-      font-size: 20px;
-      padding-left: 15px;
-      line-height: 26px;
-      color: $gray-1;
-    }
-    .date {
-      margin-top: 5px;
-    }
-  }
-  ul {
-    margin-bottom: 5px;
-
-    li {
-      font-size: rem(14px);
-      margin-top: 6px;
-    }
-  }
-  .badge {
-    width: 68px;
-    font-size: 10px;
-    padding: 0.35em 0.4em;
-    color: #fff;
-    margin-right: 10px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
-  .badge-new {
-    background-color: #28a745;
-  }
-  .badge-fixed,
-  .badge-improved {
-    background-color: #007bff;
-  }
-  .badge-changed {
-    background-color: #6f42c1;
-  }
-  .badge-removed {
-    background-color: #d73a49;
-  }
-  .icon {
-    width: 16px;
-    svg {
-      fill: $gray-1;
-    }
-  }
-}
-
-.release-block:first-child {
-  .version {
+  h2 {
+    font-size: rem(50px);
+    font-weight: 100;
+    margin-bottom: 20px;
     color: $logo-blue-end;
+
+    a {
+      text-decoration: none;
+    }
   }
-  svg {
-    fill: $logo-blue-end;
+
+  h2 ~ * {
+    margin-left: 30px;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: rem(24px);
+  }
+
+  ul {
+    font-size: rem(16px);
+  }
+
+  ul + h3 {
+    margin-top: 30px;
   }
 }

@@ -3,7 +3,7 @@
     <div
       class="image"
       v-bind:style="{
-        backgroundImage: 'url(' + chromeSync.options.background.image + ')',
+        backgroundImage: 'url(' + backgroundImage + ')',
       }"
     ></div>
 
@@ -28,28 +28,40 @@
 <script>
 import axios from "axios";
 import { pen as penIcon } from "@/data/icons";
+import { optionBackgroundImage as mockedData } from "@/data/mockedData";
 
 export default {
   name: "UserBackground",
   props: {
     chromeSync: Object,
   },
-  mounted() {
-    if (!this.firedDownloadLocation) {
-      let url = this.chromeSync.options.background.downloadLocation;
-      if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
-        url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
-      }
-      axios.get(url).then((response) => {
-        this.firedDownloadLocation = true;
-      });
-    }
-  },
   data() {
     return {
       penIcon,
       firedDownloadLocation: false,
+      backgroundImage: "",
+      mockedData,
     };
+  },
+  watch: {
+    chromeSync: function(val) {
+      if (process.env.NODE_ENV != "development") {
+        if (!this.firedDownloadLocation) {
+          console.log("fired");
+          let url = this.chromeSync.options.background.downloadLocation;
+          if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+            url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+          }
+          axios.get(url).then((response) => {
+            this.firedDownloadLocation = true;
+          });
+        }
+
+        this.backgroundImage = this.chromeSync.options.background.image;
+      } else {
+        this.backgroundImage = this.mockedData.image;
+      }
+    },
   },
 };
 </script>
