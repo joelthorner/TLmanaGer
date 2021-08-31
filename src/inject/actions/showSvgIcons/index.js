@@ -533,7 +533,7 @@ class ShowSvgIcons {
       let useBtn = `<button class="showSvgIcons_button-copy showSvgIcons_button-copy-use" data-type="use" type="button">Copy &lt;use&gt;</button>`;
       let useValue = encodeURIComponent('<svg class="icon"><use xlink:href="#' + icon.getName + '"></use></svg>');
       let useInput = `<input type="text" class="showSvgIcons_input-use" value="${useValue}">`;
-      let btnDownload = `<button class="showSvgIcons_button-download" data-name="${icon.getName.length ? icon.getName : 'icon'}" type="button">Download</button>`;
+      let btnDownload = `<button class="showSvgIcons_button-download" data-name="${icon.getName && icon.getName.length ? icon.getName : 'icon'}" type="button">Download</button>`;
 
       if (icon.getNode.matches('img'))
         btnDownload = `<a class="showSvgIcons_button-link" target="_blank" href="${icon.getNode.getAttribute('src')}">Download</a>`;
