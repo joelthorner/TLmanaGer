@@ -9,7 +9,7 @@ import rippleJS from 'vanilla-ripplejs' // no remove, works
 import AppPageHome from '@options/pages/home/AppPageHome'
 import AppPageOptions from '@options/pages/options/AppPageOptions'
 import AppPageAchievements from '@options/pages/achievements/AppPageAchievements'
-import AppPageUser from '@options/pages/user/AppPageUser'
+// import AppPageUser from '@options/pages/user/AppPageUser'
 import AppPageChangelog from '@options/pages/changelog/AppPageChangelog'
 import AppPageBlog from '@options/pages/blog/AppPageBlog'
 import AppPagePost from '@options/pages/blog/AppPagePost'
@@ -48,7 +48,7 @@ const router = new VueRouter({
       path: '/user',
       name: "user",
       redirect: '/user/info',
-      component: AppPageUser,
+      component: () => import('@options/pages/user/AppPageUser.vue'),
       children: [
         {
           path: 'avatar',
