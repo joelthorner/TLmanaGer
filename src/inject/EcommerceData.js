@@ -249,8 +249,6 @@ var ecommerceData = {
 
 var data = ecommerceData.getData();
 
-console.log(data);
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "getEcommerceData")
     sendResponse({ ecommerceData: data });
