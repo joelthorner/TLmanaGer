@@ -87,7 +87,7 @@ var ecommerceData = {
     if ((/[0-9]+\.igd\.pre\.production/).test(location))
       return ENV_IGD_PRE_PRODUCTION;
 
-    if ((/[0-9]+\.logicommerce\.net/).test(location) || document.querySelector('meta[name="robots"][content="index, follow"]') != null)
+    if ((/[0-9]+\.logicommerce\.net/).test(location) || (/([0-9]+)\.studio\.logicommerce\.cloud/).test(location) || document.querySelector('meta[name="robots"][content="index, follow"]') != null)
       return ENV_PRODUCTION;
 
     return null;
@@ -213,6 +213,10 @@ var ecommerceData = {
         var auxShopId = this._extractShopId(item.getAttribute('href'), /assets.logicommerce.cloud\/([0-9]{1,5})/);
         if (auxShopId) shopId = auxShopId;
       });
+      
+      if (this.getEnvironment() == ENV_PRODUCTION && shopId == null) {
+        shopId = this._extractShopId(location.href, /([0-9]+)\.studio\.logicommerce\.cloud/);
+      }
     }
 
     return shopId;
@@ -244,6 +248,8 @@ var ecommerceData = {
 };
 
 var data = ecommerceData.getData();
+
+console.log(data);
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "getEcommerceData")
