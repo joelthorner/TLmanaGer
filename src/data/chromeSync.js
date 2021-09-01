@@ -101,6 +101,7 @@ export default {
       value: '',
     },
   },
+
   metrics: {
     timesBgChanged: 0,
     zendeskActiveOptsCount: 0,
@@ -117,6 +118,7 @@ export default {
     openPopupCounter: 0,
     googleAccountSync: false,
   },
+
   achievements: {
     intallExtension: { // programed
       earned: true,
@@ -161,4 +163,6 @@ export default {
       earned: false,
     },
   },
+
+  // Si fas una nova key lvl1 vigila TabReset.vue
 };

@@ -287,5 +287,9 @@ export default {
         if (beforeResult == false) this._createNotify(archvData, result);
       });
     },
+
+    resetSyncData() {
+      this._singleClickLogic('clickedResetData', 'resetSyncData');
+    },
   },
 };
