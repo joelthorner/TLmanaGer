@@ -153,7 +153,7 @@ export default {
     changeAvatar: { // programed
       earned: false,
     },
-    resetSyncData: {
+    resetSyncData: { // programed
       earned: false,
     },
     click500TimesAnything: { // programed
