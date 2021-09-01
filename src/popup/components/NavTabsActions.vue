@@ -31,16 +31,19 @@
 </template>
 
 <script>
+import watchAchievements from "@mixins/watchAchievements";
 // import { settings as settingsIcon } from "@/data/icons";
 
 export default {
   name: "NavTabsActions",
   props: {
+    chromeSync: Object,
     ecommerceData: {
       required: true,
       validator: (prop) => typeof prop === "object" || prop === null,
     },
   },
+  mixins: [watchAchievements],
   created() {
     this.readTabCookie("containerLinesGuideCookie", "1", "containerLinesGuide");
   },
@@ -195,6 +198,8 @@ export default {
      * @param {string|string[]} directive
      */
     executeDirective(directive) {
+      this.clickAction500Times(); // achievement
+
       if (directive.includes("http")) {
         this.createTabDirective(directive);
       } else {

@@ -132,6 +132,51 @@ export default {
       }, 1000);
     },
 
+    changeBg500Times() {
+      // Update metric first
+      this.chromeSync.metrics.timesBgChanged++;
+      // Get data of achievement
+      const archvData = this.achievementsData['changeBg500Times'];
+      // Get confition() parameters
+      const timesBgChanged = this.chromeSync.metrics.timesBgChanged;
+      // Execute condition()
+      const result = archvData.condition(timesBgChanged);
+      // Get result before update achievement
+      const beforeResult = this.chromeSync.achievements['changeBg500Times'].earned;
+      // Update achievement chrome data
+      clearTimeout(this.changeBg500Times_sto);
+      this.changeBg500Times_sto = setTimeout(() => {
+        this.chromeSync.achievements["changeBg500Times"].earned = result;
+        // Save sync and launch system notify
+        chrome.storage.sync.set(this.chromeSync, () => {
+          if (beforeResult == false) {
+            this._createNotify(archvData, result);
+          }
+        });
+      }, 1000);
+    },
+
+    clickAction500Times() {
+      // Update metric first
+      this.chromeSync.metrics.clickedActionCount++;
+      // Get data of achievement
+      const archvData = this.achievementsData['clickAction500Times'];
+      // Get confition() parameters
+      const clickedActionCount = this.chromeSync.metrics.clickedActionCount;
+      // Execute condition()
+      const result = archvData.condition(clickedActionCount);
+      // Get result before update achievement
+      const beforeResult = this.chromeSync.achievements['clickAction500Times'].earned;
+      // Update achievement chrome data
+      this.chromeSync.achievements["clickAction500Times"].earned = result;
+      // Save sync and launch system notify
+      chrome.storage.sync.set(this.chromeSync, () => {
+        if (beforeResult == false) {
+          this._createNotify(archvData, result);
+        }
+      });
+    },
+
     activeAllZenOpts() {
       // Get data
       let totalZendeskOpts = 0;
@@ -170,7 +215,6 @@ export default {
 
     activeAllOptions() {
       // Get data total
-      // let totalOpts = Object.keys(this.chromeSync.options).length;
       let totalOpts = 0;
       for (const optionKey in this.chromeSync.options) {
         const show = this.optionsData[optionKey].show;
@@ -224,6 +268,24 @@ export default {
           }
         });
       }, 1000);
-    }
+    },
+
+    changeAvatar() {
+      this.chromeSync.metrics.changedAvatarOpt = this.chromeSync.profile.avatar.actived;
+      // Get data of achievement
+      const archvData = this.achievementsData.changeAvatar;
+      // Get condition() parameters
+      const changedAvatarOpt = this.chromeSync.metrics.changedAvatarOpt;
+      // Execute condition()
+      const result = archvData.condition(changedAvatarOpt);
+      // Get result before update achievement
+      const beforeResult = this.chromeSync.achievements.changeAvatar.earned;
+      // Update achievement chrome data
+      this.chromeSync.achievements.changeAvatar.earned = result;
+      // Save sync and launch system notify
+      chrome.storage.sync.set(this.chromeSync, () => {
+        if (beforeResult == false) this._createNotify(archvData, result);
+      });
+    },
   },
 };

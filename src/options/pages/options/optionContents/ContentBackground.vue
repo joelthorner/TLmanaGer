@@ -151,6 +151,7 @@
 import axios from "axios";
 import optionsData from "@/data/optionsData";
 import FullImageModal from "@options/components/FullImageModal";
+import watchAchievements from "@mixins/watchAchievements";
 import {
   zoom as zoomIcon,
   caretDoubleLeft as caretDoubleLeftIcon,
@@ -168,6 +169,7 @@ export default {
     optionKey: String,
     chromeSync: Object,
   },
+  mixins: [watchAchievements],
   components: {
     FullImageModal,
   },
@@ -349,6 +351,7 @@ export default {
     },
     selectBackground(image) {
       this.$emit("setSavedOptionsCard", true);
+      this.changeBg500Times(); // achievement
     },
     undo() {
       this.chromeSync.options.background = this.backImage;

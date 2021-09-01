@@ -60,7 +60,7 @@ export default {
       });
     },
     layoutClickHandler() {
-      this.click500TimesAnything(); // archivement
+      this.click500TimesAnything(); // achievement
     },
   },
 };

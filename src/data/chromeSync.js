@@ -121,7 +121,7 @@ export default {
     intallExtension: { // programed
       earned: true,
     },
-    changeBg500Times: {
+    changeBg500Times: { // programed
       earned: false,
     },
     activeAllZenOpts: { // programed
@@ -145,16 +145,16 @@ export default {
     clickLegalsLink: { // programed
       earned: false,
     },
-    clickAction500Times: {
+    clickAction500Times: { // programed
       earned: false,
     },
-    changeAvatar: {
+    changeAvatar: { // programed
       earned: false,
     },
     resetSyncData: {
       earned: false,
     },
-    click500TimesAnything: { // programed (falta inside popup)
+    click500TimesAnything: { // programed
       earned: false,
     },
     openPopup100Times: {
