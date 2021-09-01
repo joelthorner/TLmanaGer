@@ -37,6 +37,7 @@ export default {
     this.getSyncChromeSync();
     this.getEcommerceData();
     this.cleanUpdateAlert();
+    this.openPopup100Times(); // achievement
   },
   methods: {
     cleanUpdateAlert() {

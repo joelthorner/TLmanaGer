@@ -291,5 +291,28 @@ export default {
     resetSyncData() {
       this._singleClickLogic('clickedResetData', 'resetSyncData');
     },
+
+    openPopup100Times() {
+      setTimeout(() => {
+        // Update metric first
+        this.chromeSync.metrics.openPopupCounter++;
+        // Get data of achievement
+        const archvData = this.achievementsData['openPopup100Times'];
+        // Get confition() parameters
+        const openPopupCounter = this.chromeSync.metrics.openPopupCounter;
+        // Execute condition()
+        const result = archvData.condition(openPopupCounter);
+        // Get result before update achievement
+        const beforeResult = this.chromeSync.achievements['openPopup100Times'].earned;
+        // Update achievement chrome data
+        this.chromeSync.achievements["openPopup100Times"].earned = result;
+        // Save sync and launch system notify
+        chrome.storage.sync.set(this.chromeSync, () => {
+          if (beforeResult == false) {
+            this._createNotify(archvData, result);
+          }
+        });
+      }, 500);
+    },
   },
 };

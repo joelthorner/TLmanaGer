@@ -120,43 +120,43 @@ export default {
   },
 
   achievements: {
-    intallExtension: { // programed
+    intallExtension: {
       earned: true,
     },
-    changeBg500Times: { // programed
+    changeBg500Times: {
       earned: false,
     },
-    activeAllZenOpts: { // programed
+    activeAllZenOpts: {
       earned: false,
     },
-    activeAllOptions: { // programed
+    activeAllOptions: {
       earned: false,
     },
-    lookChangelog50Times: { // programed
+    lookChangelog50Times: {
       earned: false,
     },
-    googleAccountSync: { // programed
+    googleAccountSync: {
       earned: false,
     },
-    clickIssuesLink: { // programed
+    clickIssuesLink: {
       earned: false,
     },
-    clickGithubLink: { // programed
+    clickGithubLink: {
       earned: false,
     },
-    clickLegalsLink: { // programed
+    clickLegalsLink: {
       earned: false,
     },
-    clickAction500Times: { // programed
+    clickAction500Times: {
       earned: false,
     },
-    changeAvatar: { // programed
+    changeAvatar: {
       earned: false,
     },
-    resetSyncData: { // programed
+    resetSyncData: {
       earned: false,
     },
-    click500TimesAnything: { // programed
+    click500TimesAnything: {
       earned: false,
     },
     openPopup100Times: {
