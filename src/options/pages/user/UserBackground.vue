@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 import { pen as penIcon } from "@/data/icons";
 import { optionBackgroundImage as mockedData } from "@/data/mockedData";
 
