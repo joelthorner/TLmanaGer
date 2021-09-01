@@ -62,7 +62,6 @@ function getFirstAndLastName(username) {
  */
 function fillInputVal(value, node) {
   var nodes = node.querySelectorAll(':scope > input');
-  console.log(nodes);
   if (nodes) {
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i];
@@ -92,7 +91,6 @@ function simulateEvent(element, type) {
  */
 function checkCheckbox(input, checked) {
   if (input) {
-    console.log('asd', checked, input[0].checked);
     if (checked && input[0].checked == false) {
       simulateEvent(input[0], 'click');
     }
@@ -118,11 +116,11 @@ function formSubmit() {
   }
 }
 
-function fillBetterCountry(divField) {
-  fillNormalCountry(divField);
-}
-
-function fillNormalCountry(divField) {
+/**
+ * Fill country block
+ * @param {object} divField 
+ */
+function fillCountry(divField, mutationSelector) {
   var countryField = divField.querySelector('#userCountryField');
   if (countryField) {
     var ES = countryField.querySelector('[data-country-initials="ES"]'),
@@ -146,7 +144,7 @@ function fillNormalCountry(divField) {
         attributeOldValue: false,
         characterDataOldValue: false
       };
-      var targetCS = divField.querySelectorAll('.availableCountries');
+      var targetCS = divField.querySelectorAll(mutationSelector);
       var observerCS = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
           if (mutation.addedNodes.length != 0) {
@@ -209,11 +207,11 @@ chrome.storage.sync.get(defaults, (result) => {
         break;
 
       case 'userFieldCountryContainer':
-        var betterCountry = divField.querySelector('.addressUserField');
+        var betterCountry = divField.matches('.addressUserField');
         if (betterCountry) {
-          fillBetterCountry(divField);
+          fillCountry(divField, '.countryModesContent');
         } else {
-          fillNormalCountry(divField);
+          fillCountry(divField, '.availableCountries');
         }
         break;
 
