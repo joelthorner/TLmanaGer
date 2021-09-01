@@ -177,6 +177,10 @@
   background-color: #ff9800;
 }
 
+.showSvgIcons_icon-name {
+  word-break: break-all;
+}
+
 .showSvgIcons_info {
   display: flex;
   gap: 15px;

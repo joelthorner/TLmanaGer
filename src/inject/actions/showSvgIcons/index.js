@@ -186,20 +186,6 @@ var ShowSvgIcons = {
     }
   },
 
-  // _cleanSvgOnlyDefs() {
-  //   let icons = document.querySelectorAll('.showSvgIcons_svg-icon-wrap svg');
-  //   if (icons) {
-  //     for (let i = 0; i < icons.length; i++) {
-  //       const icon = icons[i];
-
-  //       let defs = icon.querySelectorAll('defs');
-  //       if (defs && defs.length === 1) {
-  //         this.unwrap(defs[0]);
-  //       }
-  //     }
-  //   }
-  // },
-
   /**
    * Get the icons value.
    * @returns {Array.<Icon>} The icons value.
@@ -358,18 +344,43 @@ var ShowSvgIcons = {
    * If web theme is dark set body class
    */
   setDarkTheme() {
-    let prop = window.getComputedStyle(document.documentElement, null)
+    let color = window.getComputedStyle(document.body, null)
       .getPropertyValue('background-color');
 
-    var c = prop.substring(1);   // strip #
-    var rgb = parseInt(c, 16);   // convert rrggbb to decimal
-    var r = (rgb >> 16) & 0xff;  // extract red
-    var g = (rgb >> 8) & 0xff;   // extract green
-    var b = (rgb >> 0) & 0xff;   // extract blue
+    // Check the format of the color, HEX or RGB?
+    if (color.match(/^rgb/)) {
 
-    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+      // If HEX --> store the red, green, blue values in separate variables
+      color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
 
-    if (luma < 40) {
+      r = color[1];
+      g = color[2];
+      b = color[3];
+    }
+    else {
+
+      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      color = +("0x" + color.slice(1).replace(
+        color.length < 5 && /./g, '$&$&'
+      )
+      );
+
+      r = color >> 16;
+      g = color >> 8 & 255;
+      b = color & 255;
+    }
+
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    hsp = Math.sqrt(
+      0.299 * (r * r) +
+      0.587 * (g * g) +
+      0.114 * (b * b)
+    );
+
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp > 127.5) {
+      document.body.classList.remove('showSvgIcons_themeDark');
+    } else {
       document.body.classList.add('showSvgIcons_themeDark');
     }
   },
@@ -390,22 +401,6 @@ var ShowSvgIcons = {
       switch (node.nodeName.toLowerCase()) {
         case 'svg':
           valid = node.querySelector('use') ? false : true;
-
-          let defs = node.querySelectorAll(':scope > defs');
-          let childs = node.querySelectorAll(':scope > *');
-          if (defs && childs && defs.length === childs.length) {
-            for (let i = 0; i < defs.length; i++) {
-              let defIcons = defs[i].querySelectorAll(':scope > g, :scope > svg');
-
-              if (defIcons) {
-                for (let i = 0; i < defIcons.length; i++) {
-                  const defIcon = this._parseSvgDefIcon(defIcons[i]);
-                  findedIcons.push(defIcon);
-                }
-              }
-            }
-          }
-
           icon = this._parseSvgIcon(node);
           break;
 
@@ -424,6 +419,8 @@ var ShowSvgIcons = {
       }
 
       if (valid) findedIcons.push(icon);
+
+      findedIcons = [...findedIcons, ...this._findDefsIcons(node)];
     });
 
     cssBgElements.forEach((element) => {
@@ -436,6 +433,31 @@ var ShowSvgIcons = {
 
     this.totalIcons = elements.length + cssBgElements.length;
     return this._removeDuplicateds(findedIcons);
+  },
+
+  /**
+   * Search within a node for <defs> elements to extract their svg
+   * @param {object} node 
+   * @returns {Icon[]}
+   */
+  _findDefsIcons(node) {
+    let result = [],
+      defs = node.querySelectorAll(':scope > defs'),
+      childs = node.querySelectorAll(':scope > *');
+
+    if (defs && childs && defs.length === childs.length) {
+      for (let i = 0; i < defs.length; i++) {
+        let defIcons = defs[i].querySelectorAll(':scope > g, :scope > svg');
+
+        if (defIcons) {
+          for (let i = 0; i < defIcons.length; i++) {
+            const defIcon = this._parseSvgDefIcon(defIcons[i]);
+            result.push(defIcon);
+          }
+        }
+      }
+    }
+    return result;
   },
 
   _getBgImgs(doc) {
@@ -455,18 +477,6 @@ var ShowSvgIcons = {
           return collection
         }, new Set())
     )
-  },
-
-  unwrap(wrapper) {
-    // place childNodes in document fragment
-    var docFrag = document.createDocumentFragment();
-    while (wrapper.firstChild) {
-      var child = wrapper.removeChild(wrapper.firstChild);
-      docFrag.appendChild(child);
-    }
-
-    // replace wrapper with document fragment
-    wrapper.parentNode.replaceChild(docFrag, wrapper);
   },
 
   /**
@@ -519,17 +529,14 @@ var ShowSvgIcons = {
       code = node.outerHTML;
     }
 
-    // this.renameNode(node, 'svg');
-    // code = node.outerHTML;
-    // falta regex de principi i final de valor
-    code = code.replace('<g', '<svg');
-    code = code.replace('</g>', '</svg>');
+    code = code.replace(/^<g/g, '<svg');
+    code = code.replace('/<\/g>$/g', '</svg>');
 
     let _Icon = { ...Icon };
     _Icon.constructor(
       node,
       code,
-      node.nodeName.toLowerCase(),
+      'svg',
       canGetUseCode,
       true
     );
