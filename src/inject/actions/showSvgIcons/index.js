@@ -505,15 +505,6 @@ var ShowSvgIcons = {
     return _Icon;
   },
 
-  renameNode(node, newNodeName) {
-    const newNode = node.ownerDocument.createElement(newNodeName);
-    Array.from(node.attributes).forEach(attr => newNode.setAttribute(attr.localName, attr.value));
-    Array.from(node.childNodes).forEach(childNode => newNode.appendChild(childNode));
-
-    node.parentElement.insertBefore(newNode, node);
-    node.parentElement.removeChild(node);
-  },
-
   /**
    * Get HTML parsed code from element inside defs node.
    * @param {HTMLElement} node - Svg html node.
@@ -756,4 +747,4 @@ var ShowSvgIcons = {
 };
 
 var showSvgIcons = ShowSvgIcons.constructor();
-log.info(showSvgIcons);
+// log.info(showSvgIcons);
