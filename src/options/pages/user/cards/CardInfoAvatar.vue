@@ -4,13 +4,9 @@
       <div class="card-title">Avatar</div>
     </div>
     <div class="card-body">
-      <div class="avatar-card-img">
-        <router-link to="/user/avatar" title="Change avatar">
-          <img
-            :src="chromeSync.profile.avatar.value"
-            alt="User avatar"
-            v-b-tooltip.hover
-          />
+      <div class="avatar-card-img" title="Change avatar" v-b-tooltip.hover>
+        <router-link to="/user/avatar">
+          <img :src="chromeSync.profile.avatar.value" alt="User avatar" />
           <span class="icon hover" v-html="penIcon"></span>
           <div class="rippleJS"></div>
         </router-link>
