@@ -55,7 +55,9 @@ export default {
       return this.chromeSync.metrics.googleAccountSync;
     },
     title() {
-      return this.actived ? "Google Sync active" : "Activate Google sync";
+      return this.actived
+        ? "Google Sync active, Tnks!"
+        : "Activate Google sync pls";
     },
     btnActivedClass() {
       return this.actived ? "" : "text-danger";
