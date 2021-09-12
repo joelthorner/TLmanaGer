@@ -18,6 +18,16 @@
         <div class="rippleJS"></div>
       </router-link>
     </sidebar-resume-item>
+    <sidebar-resume-item>
+      <router-link to="/hidden-features">
+        <span class="title">HIDDEN FEATURES</span>
+        <span class="content small"
+          >Que fa la extensió de forma automatica?</span
+        >
+        <span class="icon" v-html="caret"></span>
+        <div class="rippleJS"></div>
+      </router-link>
+    </sidebar-resume-item>
   </div>
 </template>
 
