@@ -45,6 +45,12 @@ export default {
           img: "https://avatars0.githubusercontent.com/u/11269504?s=120&v=4",
           role: "beta tester",
         },
+        {
+          name: "LOLCR4FT",
+          route: "https://github.com/LOLCR4FT",
+          img: "https://avatars0.githubusercontent.com/u/66711995?s=120&v=4",
+          role: "beta tester",
+        },
       ],
     };
   },
