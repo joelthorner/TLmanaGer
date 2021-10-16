@@ -446,17 +446,25 @@ var ShowSvgIcons = {
       childs = node.querySelectorAll(':scope > *');
 
     if (defs && childs && defs.length === childs.length) {
-      for (let i = 0; i < defs.length; i++) {
-        let defIcons = defs[i].querySelectorAll(':scope > g, :scope > svg');
+      result = this._pushDefsIcons(defs);
+    }
+    return result;
+  },
 
-        if (defIcons) {
-          for (let i = 0; i < defIcons.length; i++) {
-            const defIcon = this._parseSvgDefIcon(defIcons[i]);
-            result.push(defIcon);
-          }
+  _pushDefsIcons(defs) {
+    var result = [];
+
+    for (let i = 0; i < defs.length; i++) {
+      let defIcons = defs[i].querySelectorAll(':scope > g, :scope > svg');
+
+      if (defIcons) {
+        for (let i = 0; i < defIcons.length; i++) {
+          const defIcon = this._parseSvgDefIcon(defIcons[i]);
+          result.push(defIcon);
         }
       }
     }
+
     return result;
   },
 
