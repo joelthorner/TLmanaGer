@@ -224,7 +224,7 @@ chrome.storage.sync.get(defaults, (result) => {
     const onlyIncidents = result.options.ticketPriorityHighlightColors.onlyIncidents;
     const colors = result.options.ticketPriorityHighlightColors.colors;
 
-    const ticketRefLinks = new TicketPriorityHighlightColors('.ember-view tbody', onlyIncidents, colors);
-    observerZendesk.register(ticketRefLinks);
+    const ticketPriorityHighlightColors = new TicketPriorityHighlightColors('.ember-view tbody', onlyIncidents, colors);
+    observerZendesk.register(ticketPriorityHighlightColors);
   }
 });

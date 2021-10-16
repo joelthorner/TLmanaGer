@@ -27,6 +27,7 @@
 import UserBackground from "@options/pages/user/UserBackground";
 import UserNav from "@options/pages/user/UserNav";
 import MainContent from "@options/components/main/MainContent";
+import watchAchievements from "@mixins/watchAchievements";
 
 export default {
   name: "AppPageUser",
@@ -40,6 +41,7 @@ export default {
     UserNav,
     MainContent,
   },
+  mixins: [watchAchievements],
   props: {
     chromeSync: Object,
   },
@@ -48,7 +50,7 @@ export default {
       chrome.storage.sync.set(this.chromeSync, () => {
         this.showSavedOptions = value;
 
-        // here future archivement user opts
+        this.changeAvatar(); // achievement
 
         setTimeout(() => {
           this.showSavedOptions = false;

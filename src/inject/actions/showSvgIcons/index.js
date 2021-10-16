@@ -2,22 +2,22 @@
  * @file Define ShowSvgIcons class and execute script
  * @author joelthorner
  */
-'use strict';
+// 'use strict';
 
 
-class Icon {
+var Icon = {
 
-  node = undefined;
+  node: undefined,
 
-  code = '';
+  code: '',
 
-  name = '';
+  name: '',
 
-  type = 'svg';
+  type: 'svg',
 
-  canGetUseCode = false;
+  canGetUseCode: false,
 
-  canGetSvgCode = false;
+  canGetSvgCode: false,
 
   constructor(node, code, type, canGetUseCode, canGetSvgCode) {
     this.node = node;
@@ -26,60 +26,62 @@ class Icon {
     this.canGetUseCode = canGetUseCode;
     this.canGetSvgCode = canGetSvgCode;
     this._setNameFromCode();
-  }
 
-  get getNode() {
+    return this;
+  },
+
+  getNode() {
     return this.node;
-  }
+  },
 
   setNode(node) {
     this.node = node;
-  }
+  },
 
-  get getCode() {
+  getCode() {
     return this.code;
-  }
+  },
 
   setCode(code) {
     this.code = code;
-  }
+  },
 
-  get getName() {
+  getName() {
     return this.name;
-  }
+  },
 
   setName(name) {
     this.name = name;
-  }
+  },
 
-  get getType() {
+  getType() {
     return this.type;
-  }
+  },
 
   setType(type) {
     this.type = type;
-  }
+  },
 
-  get getCanGetUseCode() {
+  getCanGetUseCode() {
     return this.canGetUseCode;
-  }
+  },
 
   setCanGetUseCode(canGetUseCode) {
     this.canGetUseCode = canGetUseCode;
-  }
+  },
 
-  get getCanGetSvgCode() {
+  getCanGetSvgCode() {
     return this.canGetSvgCode;
-  }
+  },
 
   setCanGetSvgCode(canGetSvgCode) {
     this.canGetSvgCode = canGetSvgCode;
-  }
+  },
 
   _setNameFromCode() {
     let name = '';
-    let search = this.getCode.match(/id=["']([A-Za-z0-9\_\-]*)["']/);
-    let search2 = this.getCode.match(/name=["']([A-Za-zÀ-ú0-9 \_\-]*)["']/);
+    let search = this.getCode().match(/id=["']([A-Za-z0-9\_\-]*)["']/);
+    let search2 = this.getCode().match(/name=["']([A-Za-zÀ-ú0-9 \_\-]*)["']/);
 
     if (search && search[1]) {
       name = search[1];
@@ -87,7 +89,7 @@ class Icon {
       name = search2[2];
     }
     this.setName(name);
-  }
+  },
 }
 
 /**
@@ -95,55 +97,55 @@ class Icon {
  * @class
  * @classdesc Create a widget that finds and displays all svg icons on the web
  */
-class ShowSvgIcons {
+var ShowSvgIcons = {
 
   /**
    * Finded and unique svg, symbol and img svg elements
    * @type {Array.<Icon>}
    */
-  icons = [];
+  icons: [],
 
   /**
    * Inserted widget wrapper
    * @type {HTMLElement}
    */
-  el = document.getElementById('showSvgIcons_layout');
+  el: document.getElementById('showSvgIcons_layout'),
 
   /**
    * Total unique finded icons
    * @type {Number}
    */
-  uniqueIcons = 0;
+  uniqueIcons: 0,
 
   /**
    * Total finded icons
    * @type {Number}
    */
-  totalIcons = 0;
+  totalIcons: 0,
 
   /**
    * Total unique img type finded icons
    * @type {Number}
    */
-  uniqueImgIcons = 0;
+  uniqueImgIcons: 0,
 
   /**
    * Total unique svg type finded icons
    * @type {Number}
    */
-  uniqueSvgIcons = 0;
+  uniqueSvgIcons: 0,
 
   /**
    * Total unique symbol type finded icons
    * @type {Number}
    */
-  uniqueSymbolIcons = 0;
+  uniqueSymbolIcons: 0,
 
   /**
    * Total unique css bg type finded icons
    * @type {Number}
    */
-  uniqueCssBgIcons = 0;
+  uniqueCssBgIcons: 0,
 
   /**
    * Create a showSvgIcons.
@@ -153,42 +155,36 @@ class ShowSvgIcons {
     this.setIcons(this._findIcons());
     this.setUniqueIcons(this.icons.length);
 
-    let uniqueSvgIcons = this.icons.filter(obj => {
-      return obj.type === 'svg'
-    }).length;
+    let uniqueSvgIcons = this.icons.filter(obj => { return obj.type === 'svg' }).length;
     this.setUniqueSvgIcons(uniqueSvgIcons);
 
-    let uniqueSymbolIcons = this.icons.filter(obj => {
-      return obj.type === 'symbol'
-    }).length;
+    let uniqueSymbolIcons = this.icons.filter(obj => { return obj.type === 'symbol' }).length;
     this.setUniqueSymbolIcons(uniqueSymbolIcons);
 
-    let uniqueImgIcons = this.icons.filter(obj => {
-      return obj.type === 'img'
-    }).length;
+    let uniqueImgIcons = this.icons.filter(obj => { return obj.type === 'img' }).length;
     this.setUniqueImgIcons(uniqueImgIcons);
 
-    let uniqueCssBgIcons = this.icons.filter(obj => {
-      return obj.type === 'css-bg'
-    }).length;
+    let uniqueCssBgIcons = this.icons.filter(obj => { return obj.type === 'css-bg' }).length;
     this.setUniqueCssBgIcons(uniqueCssBgIcons);
 
-    if (this.getEl) {
+    if (this.getEl()) {
       this.destroy();
     } else {
       this._insertWidget();
+      // this._cleanSvgOnlyDefs();
       this.setEl(document.getElementById('showSvgIcons_layout'));
       this._events();
+      this.setDarkTheme();
     }
-  }
+  },
 
   /**
    * Get the icons value.
    * @returns {Array.<Icon>} The icons value.
    */
-  get getIcons() {
+  getIcons() {
     return this.icons;
-  }
+  },
 
   /**
    * Set the icons value.
@@ -198,15 +194,15 @@ class ShowSvgIcons {
     if (Array.isArray(icons)) {
       this.icons = icons;
     }
-  }
+  },
 
   /**
    * Get the el value.
    * @returns {HTMLElement} The el value.
    */
-  get getEl() {
+  getEl() {
     return this.el;
-  }
+  },
 
   /**
    * Set the el value.
@@ -216,15 +212,15 @@ class ShowSvgIcons {
     if (el instanceof HTMLElement) {
       this.el = el;
     }
-  }
+  },
 
   /**
    * Get the uniqueIcons value.
    * @returns {Number} The uniqueIcons value.
    */
-  get getUniqueIcons() {
+  getUniqueIcons() {
     return this.uniqueIcons;
-  }
+  },
 
   /**
    * Set the uniqueIcons value.
@@ -234,15 +230,15 @@ class ShowSvgIcons {
     if (Number.isInteger(uniqueIcons)) {
       this.uniqueIcons = uniqueIcons;
     }
-  }
+  },
 
   /**
    * Get the totalIcons value.
    * @returns {Number} The totalIcons value.
    */
-  get getTotalIcons() {
+  getTotalIcons() {
     return this.totalIcons;
-  }
+  },
 
   /**
    * Set the totalIcons value.
@@ -252,15 +248,15 @@ class ShowSvgIcons {
     if (Number.isInteger(totalIcons)) {
       this.totalIcons = totalIcons;
     }
-  }
+  },
 
   /**
    * Get the uniqueImgIcons value.
    * @returns {Number} The uniqueImgIcons value.
    */
-  get getUniqueImgIcons() {
+  getUniqueImgIcons() {
     return this.uniqueImgIcons;
-  }
+  },
 
   /**
    * Set the uniqueImgIcons value.
@@ -270,15 +266,15 @@ class ShowSvgIcons {
     if (Number.isInteger(uniqueImgIcons)) {
       this.uniqueImgIcons = uniqueImgIcons;
     }
-  }
+  },
 
   /**
    * Get the uniqueSvgIcons value.
    * @returns {Number} The uniqueSvgIcons value.
    */
-  get getUniqueSvgIcons() {
+  getUniqueSvgIcons() {
     return this.uniqueSvgIcons;
-  }
+  },
 
   /**
    * Set the uniqueSvgIcons value.
@@ -288,15 +284,15 @@ class ShowSvgIcons {
     if (Number.isInteger(uniqueSvgIcons)) {
       this.uniqueSvgIcons = uniqueSvgIcons;
     }
-  }
+  },
 
   /**
    * Get the uniqueSymbolIcons value.
    * @returns {Number} The uniqueSymbolIcons value.
    */
-  get getUniqueSymbolIcons() {
+  getUniqueSymbolIcons() {
     return this.uniqueSymbolIcons;
-  }
+  },
 
   /**
    * Set the uniqueSymbolIcons value.
@@ -306,15 +302,15 @@ class ShowSvgIcons {
     if (Number.isInteger(uniqueSymbolIcons)) {
       this.uniqueSymbolIcons = uniqueSymbolIcons;
     }
-  }
+  },
 
   /**
    * Get the uniqueCssBgIcons value.
    * @returns {Number} The uniqueCssBgIcons value.
    */
-  get getUniqueCssBgIcons() {
+  getUniqueCssBgIcons() {
     return this.uniqueCssBgIcons;
-  }
+  },
 
   /**
    * Set the uniqueCssBgIcons value.
@@ -324,7 +320,7 @@ class ShowSvgIcons {
     if (Number.isInteger(uniqueCssBgIcons)) {
       this.uniqueCssBgIcons = uniqueCssBgIcons;
     }
-  }
+  },
 
   /**
    * Destroy created widget.
@@ -332,7 +328,48 @@ class ShowSvgIcons {
   destroy() {
     this.el.remove();
     this.el = null;
-  }
+
+    document.body.classList.remove('showSvgIcons_themeDark');
+  },
+
+  /**
+   * If web theme is dark set body class
+   */
+  setDarkTheme() {
+    let color = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+
+    // Check the format of the color, HEX or RGB?
+    if (color.match(/^rgb/)) {
+      // If HEX --> store the red, green, blue values in separate variables
+      color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+
+      r = color[1];
+      g = color[2];
+      b = color[3];
+    }
+    else {
+      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      color = +("0x" + color.slice(1).replace(color.length < 5 && /./g, '$&$&'));
+
+      r = color >> 16;
+      g = color >> 8 & 255;
+      b = color & 255;
+    }
+
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    hsp = Math.sqrt(
+      0.299 * (r * r) +
+      0.587 * (g * g) +
+      0.114 * (b * b)
+    );
+
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp > 127.5) {
+      document.body.classList.remove('showSvgIcons_themeDark');
+    } else {
+      document.body.classList.add('showSvgIcons_themeDark');
+    }
+  },
 
   /**
    * Find all svg icons.
@@ -368,6 +405,8 @@ class ShowSvgIcons {
       }
 
       if (valid) findedIcons.push(icon);
+
+      findedIcons = [...findedIcons, ...this._findDefsIcons(node)];
     });
 
     cssBgElements.forEach((element) => {
@@ -380,7 +419,40 @@ class ShowSvgIcons {
 
     this.totalIcons = elements.length + cssBgElements.length;
     return this._removeDuplicateds(findedIcons);
-  }
+  },
+
+  /**
+   * Search within a node for <defs> elements to extract their svg
+   * @param {object} node 
+   * @returns {Icon[]}
+   */
+  _findDefsIcons(node) {
+    let result = [],
+      defs = node.querySelectorAll(':scope > defs'),
+      childs = node.querySelectorAll(':scope > *');
+
+    if (defs && childs && defs.length === childs.length) {
+      result = this._pushDefsIcons(defs);
+    }
+    return result;
+  },
+
+  _pushDefsIcons(defs) {
+    var result = [];
+
+    for (let i = 0; i < defs.length; i++) {
+      let defIcons = defs[i].querySelectorAll(':scope > g, :scope > svg');
+
+      if (defIcons) {
+        for (let i = 0; i < defIcons.length; i++) {
+          const defIcon = this._parseSvgDefIcon(defIcons[i]);
+          result.push(defIcon);
+        }
+      }
+    }
+
+    return result;
+  },
 
   _getBgImgs(doc) {
     const srcChecker = /url\(\s*?['"]?\s*?(\S+?\.svg)\s*?["']?\s*?\)/i
@@ -399,7 +471,7 @@ class ShowSvgIcons {
           return collection
         }, new Set())
     )
-  }
+  },
 
   /**
    * Get HTML parsed code from svg node.
@@ -416,14 +488,45 @@ class ShowSvgIcons {
       code = node.outerHTML;
     }
 
-    return new Icon(
+    let _Icon = { ...Icon };
+    _Icon.constructor(
       node,
       code,
       node.nodeName.toLowerCase(),
       canGetUseCode,
       true
     );
-  }
+    return _Icon;
+  },
+
+  /**
+   * Get HTML parsed code from element inside defs node.
+   * @param {HTMLElement} node - Svg html node.
+   * @returns {Icon} Icon object
+   */
+  _parseSvgDefIcon(node) {
+    let code = node.outerHTML;
+    const matchId = code.match(/id=["']([A-Za-z0-9\_\-]*)["']/);
+    const canGetUseCode = matchId && matchId[1] ? true : false;
+
+    if (node.getAttribute('width') && node.getAttribute('height') && node.getAttribute('viewBox') === null) {
+      node.setAttribute('viewBox', `0 0 ${node.getAttribute('width')} ${node.getAttribute('height')}`);
+      code = node.outerHTML;
+    }
+
+    code = code.replace(/^<g/g, '<svg');
+    code = code.replace('/<\/g>$/g', '</svg>');
+
+    let _Icon = { ...Icon };
+    _Icon.constructor(
+      node,
+      code,
+      'svg',
+      canGetUseCode,
+      true
+    );
+    return _Icon;
+  },
 
   /**
    * Get HTML parsed code from symbol node.
@@ -445,14 +548,16 @@ class ShowSvgIcons {
         ${node.innerHTML}
       </svg>`;
 
-    return new Icon(
+    let _Icon = { ...Icon };
+    _Icon.constructor(
       node,
       resultCode,
       node.nodeName.toLowerCase(),
       canGetUseCode,
       true
     );
-  }
+    return _Icon;
+  },
 
   /**
    * Get HTML parsed code from img node.
@@ -477,14 +582,16 @@ class ShowSvgIcons {
       code = request.response;
     }
 
-    return new Icon(
+    let _Icon = { ...Icon };
+    _Icon.constructor(
       node,
       code,
       type,
       false,
       canGetSvgCode
     );
-  }
+    return _Icon;
+  },
 
   /**
    * Remove duplicated icons from array based on code Icon property
@@ -492,11 +599,11 @@ class ShowSvgIcons {
    * @returns {Array.<Icon>} Unique Array of Icon objects
    */
   _removeDuplicateds(findedIcons) {
-    return Array.from(new Set(findedIcons.map(a => a.getCode)))
+    return Array.from(new Set(findedIcons.map(a => a.getCode())))
       .map(code => {
-        return findedIcons.find(a => a.getCode === code)
+        return findedIcons.find(a => a.getCode() === code)
       })
-  }
+  },
 
   /**
    * Insert #showSvgIcons_layout node before end <body>
@@ -507,12 +614,12 @@ class ShowSvgIcons {
         <div class="showSvgIcons_container">
           <div class="showSvgIcons_body">
             <div class="showSvgIcons_info">
-              <div><b>Total icons</b> ${this.getTotalIcons}</div>
-              <div><b>Unique icons (code)</b> ${this.getUniqueIcons}</div>
-              <div><b>Img tags</b> ${this.getUniqueImgIcons}/${this.getUniqueIcons}</div>
-              <div><b>Svg tags</b> ${this.getUniqueSvgIcons}/${this.getUniqueIcons}</div>
-              <div><b>Symbol tags</b> ${this.getUniqueSymbolIcons}/${this.getUniqueIcons}</div>
-              <div><b>Css bg</b> ${this.getUniqueCssBgIcons}/${this.getUniqueIcons}</div>
+              <div><b>Total icons</b> ${this.getTotalIcons()}</div>
+              <div><b>Unique icons (code)</b> ${this.getUniqueIcons()}</div>
+              <div><b>Img tags</b> ${this.getUniqueImgIcons()}/${this.getUniqueIcons()}</div>
+              <div><b>Svg tags</b> ${this.getUniqueSvgIcons()}/${this.getUniqueIcons()}</div>
+              <div><b>Symbol tags</b> ${this.getUniqueSymbolIcons()}/${this.getUniqueIcons()}</div>
+              <div><b>Css bg</b> ${this.getUniqueCssBgIcons()}/${this.getUniqueIcons()}</div>
             </div>
             <div class="showSvgIcons_inner">${this._insertIcons()}</div>
           </div>
@@ -520,7 +627,7 @@ class ShowSvgIcons {
       </div>`;
 
     document.body.insertAdjacentHTML('beforeend', widget);
-  }
+  },
 
   /**
    * For each icon generate html structure.
@@ -529,34 +636,34 @@ class ShowSvgIcons {
   _insertIcons() {
     var html = '';
 
-    this.getIcons.forEach(icon => {
+    this.getIcons().forEach(icon => {
       let useBtn = `<button class="showSvgIcons_button-copy showSvgIcons_button-copy-use" data-type="use" type="button">Copy &lt;use&gt;</button>`;
-      let useValue = encodeURIComponent('<svg class="icon"><use xlink:href="#' + icon.getName + '"></use></svg>');
+      let useValue = encodeURIComponent('<svg class="icon"><use xlink:href="#' + icon.getName() + '"></use></svg>');
       let useInput = `<input type="text" class="showSvgIcons_input-use" value="${useValue}">`;
-      let btnDownload = `<button class="showSvgIcons_button-download" data-name="${icon.getName.length ? icon.getName : 'icon'}" type="button">Download</button>`;
+      let btnDownload = `<button class="showSvgIcons_button-download" data-name="${icon.getName() && icon.getName().length ? icon.getName() : 'icon'}" type="button">Download</button>`;
 
-      if (icon.getNode.matches('img'))
-        btnDownload = `<a class="showSvgIcons_button-link" target="_blank" href="${icon.getNode.getAttribute('src')}">Download</a>`;
+      if (icon.getNode().matches('img'))
+        btnDownload = `<a class="showSvgIcons_button-link" target="_blank" href="${icon.getNode().getAttribute('src')}">Download</a>`;
 
       html += `
         <div class="showSvgIcons_icon-wrap">
-          <div class="showSvgIcons_svg-icon-badge showSvgIcons_svg-icon-badge-${icon.getType.toUpperCase()}">
-            ${icon.getType}
+          <div class="showSvgIcons_svg-icon-badge showSvgIcons_svg-icon-badge-${icon.getType().toUpperCase()}">
+            ${icon.getType()}
           </div>
-          <div class="showSvgIcons_svg-icon-wrap">${icon.getCode}</div>
+          <div class="showSvgIcons_svg-icon-wrap">${icon.getCode()}</div>
           <div class="showSvgIcons_hover-layer">
-            ${icon.getCanGetUseCode ? useBtn : ''}
-            ${icon.getCanGetSvgCode ? '<button class="showSvgIcons_button-copy showSvgIcons_button-copy-svg" data-type="svg" type="button">Copy &lt;svg&gt;</button>' : ''}
+            ${icon.getCanGetUseCode() ? useBtn : ''}
+            ${icon.getCanGetSvgCode() ? '<button class="showSvgIcons_button-copy showSvgIcons_button-copy-svg" data-type="svg" type="button">Copy &lt;svg&gt;</button>' : ''}
             ${btnDownload}
           </div>
-          <input type="text" class="showSvgIcons_input-svg" value="${encodeURIComponent(icon.getCode)}">
-          ${icon.getCanGetUseCode ? useInput : ''}
-          <div class="showSvgIcons_icon-name">${icon.getName}</div>
+          <input type="text" class="showSvgIcons_input-svg" value="${encodeURIComponent(icon.getCode())}">
+          ${icon.getCanGetUseCode() ? useInput : ''}
+          <div class="showSvgIcons_icon-name">${icon.getName()}</div>
         </div>`;
     });
 
     return html;
-  }
+  },
 
   /**
    * Get all HTMLElement attributes
@@ -571,7 +678,7 @@ class ShowSvgIcons {
       });
     }
     return arr;
-  }
+  },
 
   /**
    * Add event listeners
@@ -597,7 +704,7 @@ class ShowSvgIcons {
         this.destroy();
       }
     });
-  }
+  },
 
   /**
    * Download event handler
@@ -615,7 +722,7 @@ class ShowSvgIcons {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-  }
+  },
 
   /**
    * Copy event handler
@@ -630,8 +737,8 @@ class ShowSvgIcons {
       input.select();
       document.execCommand('copy');
     }
-  }
+  },
 };
 
-let showSvgIcons = new ShowSvgIcons();
-log.info(showSvgIcons);
+var showSvgIcons = ShowSvgIcons.constructor();
+// log.info(showSvgIcons);

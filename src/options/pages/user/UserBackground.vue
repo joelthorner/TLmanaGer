@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 import { pen as penIcon } from "@/data/icons";
 import { optionBackgroundImage as mockedData } from "@/data/mockedData";
 
@@ -35,6 +35,24 @@ export default {
   props: {
     chromeSync: Object,
   },
+  created() {
+    // console.log(this.chromeSyncLoaded);
+    if (process.env.NODE_ENV != "development") {
+      // if (!this.firedDownloadLocation) {
+      //   let url = this.chromeSync.options.background.downloadLocation;
+      //   if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
+      //     url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
+      //   }
+      //   axios.get(url).then((response) => {
+      //     this.firedDownloadLocation = true;
+      //   });
+      // }
+
+      this.backgroundImage = this.chromeSync.options.background.regular;
+    } else {
+      this.backgroundImage = this.mockedData.image;
+    }
+  },
   data() {
     return {
       penIcon,
@@ -42,26 +60,6 @@ export default {
       backgroundImage: "",
       mockedData,
     };
-  },
-  watch: {
-    chromeSync: function(val) {
-      if (process.env.NODE_ENV != "development") {
-        if (!this.firedDownloadLocation) {
-          console.log("fired");
-          let url = this.chromeSync.options.background.downloadLocation;
-          if (!url.includes(process.env.VUE_APP_UNSPLASH_ACCESS_KEY)) {
-            url += "?client_id=" + process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
-          }
-          axios.get(url).then((response) => {
-            this.firedDownloadLocation = true;
-          });
-        }
-
-        this.backgroundImage = this.chromeSync.options.background.image;
-      } else {
-        this.backgroundImage = this.mockedData.image;
-      }
-    },
   },
 };
 </script>

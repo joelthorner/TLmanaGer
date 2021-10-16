@@ -1,7 +1,10 @@
 <template>
-  <div id="popup">
+  <div id="popup" @click="layoutClickHandler">
     <user-header :chromeSync="chromeSync"></user-header>
-    <nav-tabs-actions :ecommerceData="ecommerceData"></nav-tabs-actions>
+    <nav-tabs-actions
+      :chromeSync="chromeSync"
+      :ecommerceData="ecommerceData"
+    ></nav-tabs-actions>
     <ecommerce-info :ecommerceData="ecommerceData"></ecommerce-info>
   </div>
 </template>
@@ -34,6 +37,7 @@ export default {
     this.getSyncChromeSync();
     this.getEcommerceData();
     this.cleanUpdateAlert();
+    this.openPopup100Times(); // achievement
   },
   methods: {
     cleanUpdateAlert() {
@@ -78,6 +82,10 @@ export default {
       chrome.storage.sync.get(chromeSync, (result) => {
         this.chromeSync = result;
       });
+    },
+
+    layoutClickHandler() {
+      this.click500TimesAnything(); // achievement
     },
   },
 };

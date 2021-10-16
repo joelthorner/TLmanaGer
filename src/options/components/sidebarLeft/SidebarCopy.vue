@@ -30,7 +30,7 @@ export default {
   mixins: [watchAchievements],
   methods: {
     setAchievement() {
-      this.clickLegalsLink(); // archivement
+      this.clickLegalsLink(); // achievement
     },
   },
 };

@@ -1,10 +1,10 @@
 export default {
   options: {
     // Zendesk
-    replyTicketConfirmPopup: { // TODO
+    replyTicketConfirmPopup: {
       actived: true,
     },
-    ticketPriorityHighlightColors: { // TODO
+    ticketPriorityHighlightColors: {
       actived: false,
       onlyIncidents: true,
       colors: {
@@ -28,11 +28,11 @@ export default {
     },
 
     // Logicommerce
-    beyondTheme: { // doing
+    beyondTheme: {
       actived: false,
       theme: 'default',
     },
-    background: { // done
+    background: {
       actived: true,
       image: 'https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjM0NjEwfQ',
       thumb: 'https://images.unsplash.com/photo-1439694458393-78ecf14da7f9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjM0NjEwfQ',
@@ -41,19 +41,19 @@ export default {
       userLink: 'https://unsplash.com/@brandon_lam',
       downloadLocation: 'https://api.unsplash.com/photos/Dd_7xDCuuUo/download',
     },
-    developerBar: { // done
+    developerBar: {
       actived: true,
     },
-    sandboxLoginButtons: { // TODO
+    sandboxLoginButtons: {
       actived: true,
     },
-    pagesWindowBetter: { // done
+    pagesWindowBetter: {
       actived: true,
-      gridView: true, // done
-      betterGroupHeaders: true, // done
-      betterTreeLevels: true, // done
+      gridView: true,
+      betterGroupHeaders: true,
+      betterTreeLevels: true,
     },
-    bigControlInputs: { // done
+    bigControlInputs: {
       actived: false,
     },
     themeColors: {
@@ -65,18 +65,18 @@ export default {
     },
 
     // FluidWebTools
-    autoForceView: { // done
+    autoForceView: {
       actived: true,
     },
-    flushRedisIgdDomain: { // untested, in progress
+    flushRedisIgdDomain: {
       actived: true,
     },
-    dumpAutoScroll: { // done
+    dumpAutoScroll: {
       actived: true,
     },
 
     // Others
-    getFontWesomeIcons: { // done
+    getFontWesomeIcons: {
       actived: true,
     },
   },
@@ -101,6 +101,7 @@ export default {
       value: '',
     },
   },
+
   metrics: {
     timesBgChanged: 0,
     zendeskActiveOptsCount: 0,
@@ -117,32 +118,33 @@ export default {
     openPopupCounter: 0,
     googleAccountSync: false,
   },
+
   achievements: {
-    intallExtension: { // programed
+    intallExtension: {
       earned: true,
     },
     changeBg500Times: {
       earned: false,
     },
-    activeAllZenOpts: { // programed
+    activeAllZenOpts: {
       earned: false,
     },
-    activeAllOptions: { // programed
+    activeAllOptions: {
       earned: false,
     },
-    lookChangelog50Times: { // programed
+    lookChangelog50Times: {
       earned: false,
     },
-    googleAccountSync: { // programed
+    googleAccountSync: {
       earned: false,
     },
-    clickIssuesLink: { // programed
+    clickIssuesLink: {
       earned: false,
     },
-    clickGithubLink: { // programed
+    clickGithubLink: {
       earned: false,
     },
-    clickLegalsLink: { // programed
+    clickLegalsLink: {
       earned: false,
     },
     clickAction500Times: {
@@ -154,11 +156,13 @@ export default {
     resetSyncData: {
       earned: false,
     },
-    click500TimesAnything: { // programed (falta inside popup)
+    click500TimesAnything: {
       earned: false,
     },
     openPopup100Times: {
       earned: false,
     },
   },
+
+  // Si fas una nova key lvl1 vigila TabReset.vue
 };

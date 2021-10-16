@@ -105,6 +105,10 @@
   flex-direction: row;
   z-index: 200;
 
+  .card-img-top-link {
+    cursor: zoom-in;
+  }
+
   .card-img,
   .card-img-top {
     border-top-right-radius: 0;
@@ -169,8 +173,6 @@
   position: relative;
   overflow: hidden;
 
-  &.empty {
-  }
   .embed-responsive {
     background-position: center;
     background-size: cover;

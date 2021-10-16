@@ -111,7 +111,7 @@ const config = {
           to: 'data/chromeSync.js',
           transform: (content) => {
             // Transform to valid plain js file
-            content = content.toString().replace('export default', 'const defaults =');
+            content = content.toString().replace('export default', 'var defaults =');
             return content;
           },
         },

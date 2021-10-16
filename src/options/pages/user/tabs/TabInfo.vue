@@ -13,7 +13,7 @@
                 id="shop-testing-username"
                 placeholder="John Doe"
                 v-model="chromeSync.profile.shopTestingUsername.value"
-                v-on:input="debouncedInputSave"
+                v-on:input="debouncedInputSave($event, 'shopTestingUsername')"
                 trim
               ></b-form-input>
             </div>
@@ -24,7 +24,7 @@
                 id="shop-testing-email"
                 placeholder="john.doe@tlgcommerce.com"
                 v-model="chromeSync.profile.shopTestingEmail.value"
-                v-on:input="debouncedInputSave"
+                v-on:input="debouncedInputSave($event, 'shopTestingEmail')"
                 trim
               ></b-form-input>
             </div>
@@ -35,7 +35,7 @@
                 id="shop-testing-password"
                 placeholder="Password"
                 v-model="chromeSync.profile.shopTestingPassword.value"
-                v-on:input="debouncedInputSave"
+                v-on:input="debouncedInputSave($event, 'shopTestingPassword')"
                 trim
               ></b-form-input>
             </div>
@@ -70,17 +70,19 @@ export default {
     CardGoogleSync,
   },
   created() {
-    this.debouncedInputSave = _.debounce(this.inputSave, 500);
+    this.debouncedInputSave = _.debounce(function(event, key) {
+      this.inputSave(event, key);
+    }, 500);
   },
   methods: {
     reciveShowSavedOptions() {
       this.$emit("savedOptionsParent", true);
     },
-    inputSave(value) {
+    inputSave(value, key) {
       if (value.length) {
-        this.chromeSync.profile.shopTestingPassword.actived = true;
+        this.chromeSync.profile[key].actived = true;
       } else {
-        this.chromeSync.profile.shopTestingPassword.actived = false;
+        this.chromeSync.profile[key].actived = false;
       }
       this.reciveShowSavedOptions();
     },
