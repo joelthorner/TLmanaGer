@@ -106,6 +106,7 @@ function formSubmit() {
 /**
  * Fill country block
  * @param {object} divField 
+ * @param {string} mutationSelector
  */
 function fillCountry(divField, mutationSelector) {
   var countryField = divField.querySelector('#userCountryField');
@@ -122,46 +123,53 @@ function fillCountry(divField, mutationSelector) {
     // Continue...
     if (ES || firstOption) {
       simulateEvent(countryField, 'change');
-
-      var configCS = {
-        attributes: false,
-        childList: true,
-        characterData: false,
-        subtree: true,
-        attributeOldValue: false,
-        characterDataOldValue: false
-      };
-      var targetCS = divField.querySelectorAll(mutationSelector);
-      var observerCS = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.addedNodes.length != 0) {
-            var select = mutation.target.querySelector('select');
-            if (select) {
-              var optionNth2 = select.querySelector('option:nth-child(2)');
-              if (optionNth2) {
-                optionNth2.selected = true;
-              } else {
-                select.querySelector('option:nth-child(1)').selected = true;
-              }
-              simulateEvent(select, 'change');
-            }
-
-            var inputs = mutation.target.querySelector('input:not(.subcountrySearchField)');
-            if (inputs) {
-              inputs.value = 'Wakanda';
-            }
-          }
-        });
-      });
-
-      for (var i = targetCS.length - 1; i >= 0; i--) {
-        if (targetCS[i]) observerCS.observe(targetCS[i], configCS);
-      };
+      mutationObserver(divField, mutationSelector);
     }
   }
 }
 
+/**
+ * Create MutationObserver for fillCountry()
+ * @param {object} divField
+ * @param {string} mutationSelector
+ */
+function mutationObserver(divField, mutationSelector) {
+  var configCS = {
+    attributes: false,
+    childList: true,
+    characterData: false,
+    subtree: true,
+    attributeOldValue: false,
+    characterDataOldValue: false,
+  };
 
+  var observerCS = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.addedNodes.length != 0) {
+        var select = mutation.target.querySelector('select');
+        if (select) {
+          var optionNth2 = select.querySelector('option:nth-child(2)');
+          if (optionNth2) {
+            optionNth2.selected = true;
+          } else {
+            select.querySelector('option:nth-child(1)').selected = true;
+          }
+          simulateEvent(select, 'change');
+        }
+
+        var inputs = mutation.target.querySelector('input:not(.subcountrySearchField)');
+        if (inputs) {
+          inputs.value = 'Wakanda';
+        }
+      }
+    });
+  });
+
+  var targetCS = divField.querySelectorAll(mutationSelector);
+  for (var i = targetCS.length - 1; i >= 0; i--) {
+    if (targetCS[i]) observerCS.observe(targetCS[i], configCS);
+  }
+}
 
 chrome.storage.sync.get(defaults, (result) => {
   // Check if defined testing user data (email and pasword)
