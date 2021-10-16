@@ -5,8 +5,8 @@
 
 .tlg-new-button-expander button {
   height: 35px;
-  background: #FFF;
-  border: 1px solid #D8DCDE;
+  background: #fff;
+  border: 1px solid #d8dcde;
   position: relative;
   float: left;
   display: block;
@@ -21,7 +21,7 @@
   margin-top: 2px;
 }
 
-.tlg-new-button-expander button+button {
+.tlg-new-button-expander button + button {
   margin-left: 5px !important;
 }
 
@@ -41,7 +41,7 @@
   color: rgb(23, 26, 29);
 }
 
-.tlg-new-button-expander button>div {
+.tlg-new-button-expander button > div {
   display: inline-block;
 }
 
@@ -62,7 +62,7 @@
   color: #fff;
   font-size: 13px;
   font-weight: 400;
-  background-color: #2F3941;
+  background-color: #2f3941;
   padding: 5px 8px 6px 8px;
 }
 
@@ -74,7 +74,7 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #2F3941 transparent transparent transparent;
+  border-color: #2f3941 transparent transparent transparent;
 }
 
 .tlg-new-button-expander button:hover .tooltip-text {
