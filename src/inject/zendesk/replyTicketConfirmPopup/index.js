@@ -11,13 +11,13 @@
 class ReplyTicketConfirmPopup extends Modifier {
 
   types = {
-		new: '#ffb648',
-		open: '#e34f32',
-		pending: '#3091ec',
-		on_hold: '#2f3941',
-		hold: '#2f3941', // same hold, duplicated performance
-		solved: '#87929d'
-	}
+    new: '#ffb648',
+    open: '#e34f32',
+    pending: '#3091ec',
+    on_hold: '#2f3941',
+    hold: '#2f3941', // same hold, duplicated performance
+    solved: '#87929d'
+  }
 
   /**
    * Create a ReplyTicketConfirmPopup.
@@ -53,24 +53,27 @@ class ReplyTicketConfirmPopup extends Modifier {
   initElement(buttonGroup) {
     let workspace = buttonGroup.closest('.ember-view.workspace');
 
-    if (this.isDestroyable(buttonGroup)) {
-      if (workspace && this.isHidden(workspace)) {
+    if (workspace) {
+      if (this.isDestroyable(buttonGroup)) {
+        if (this.isHidden(workspace)) {
+          this.destroy(workspace);
+        }
+      }
+
+      if (!this.isHidden(workspace)) {
+        let expanderButton = buttonGroup.querySelector('[data-garden-id="buttons.icon_button"]');
+        let uniqueButton = buttonGroup.querySelector('[data-garden-id="buttons.button"]');
+
+        if (this.isValidCreateMenuExpanderFull(expanderButton, buttonGroup)) {
+          this.createMenuExpanderFull(buttonGroup);
+          console.log('full');
+        } else if (this.isValidCreateMenuExpanderUnique(uniqueButton, buttonGroup)) {
+          this.createMenuExpanderUnique(buttonGroup);
+        }
+      } else {
+        // Destroy inactive workspaces
         this.destroy(workspace);
       }
-    }
-
-    if (!this.isHidden(workspace)) {
-      let expanderButton = buttonGroup.querySelector('[data-garden-id="buttons.icon_button"]');
-      let uniqueButton = buttonGroup.querySelector('[data-garden-id="buttons.button"]');
-      if (this.isValidCreateMenuExpanderFull(expanderButton, buttonGroup)) {
-        this.createMenuExpanderFull(buttonGroup);
-        console.log('full');
-      } else if (this.isValidCreateMenuExpanderUnique(uniqueButton, buttonGroup)) {
-        this.createMenuExpanderUnique(buttonGroup);
-      }
-    } else {
-      // Destroy inactive workspaces
-      this.destroy(workspace);
     }
   }
 
@@ -85,7 +88,7 @@ class ReplyTicketConfirmPopup extends Modifier {
       setTimeout(() => {
         let workspace = buttonGroup.closest('.workspace'),
           dropdownLiList = this.getDropdownLis(workspace);
-          // console.log(workspace.querySelector('[data-garden-id="buttons.button_group_view"] [data-garden-id="dropdowns.menu"]'));
+        // console.log(workspace.querySelector('[data-garden-id="buttons.button_group_view"] [data-garden-id="dropdowns.menu"]'));
 
         for (let i = 0; i < dropdownLiList.length; i++) {
           const li = dropdownLiList[i];
