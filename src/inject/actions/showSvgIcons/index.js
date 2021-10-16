@@ -336,12 +336,10 @@ var ShowSvgIcons = {
    * If web theme is dark set body class
    */
   setDarkTheme() {
-    let color = window.getComputedStyle(document.body, null)
-      .getPropertyValue('background-color');
+    let color = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
 
     // Check the format of the color, HEX or RGB?
     if (color.match(/^rgb/)) {
-
       // If HEX --> store the red, green, blue values in separate variables
       color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
 
@@ -350,12 +348,8 @@ var ShowSvgIcons = {
       b = color[3];
     }
     else {
-
       // If RGB --> Convert it to HEX: http://gist.github.com/983661
-      color = +("0x" + color.slice(1).replace(
-        color.length < 5 && /./g, '$&$&'
-      )
-      );
+      color = +("0x" + color.slice(1).replace(color.length < 5 && /./g, '$&$&'));
 
       r = color >> 16;
       g = color >> 8 & 255;
