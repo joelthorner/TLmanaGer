@@ -25,33 +25,23 @@ function showErrorUserDataNotify() {
 
 /**
  * Form user saved username define first and last names field values.
- * @param {string} username 
+ * @param {string} _username 
  * @returns {object}
  */
-function getFirstAndLastName(username) {
-  var firstName = 'Joel',
-    lastName = 'Doe';
+function getFirstAndLastName(_username) {
+  var username = _username ? _username : 'Joel Doe',
+    userNameArr = username.split(' ');
 
-  if (username.length) {
-    var userNameArr = username.split(' ');
-
-    if (userNameArr[0]) {
-      firstName = userNameArr[0];
-
-      if (userNameArr[1]) {
-        lastName = userNameArr[1];
-      } else {
-        lastName = userNameArr[0];
-      }
-    } else {
-      firstName = username;
-      lastName = username;
-    }
+  if (userNameArr.length > 1) {
+    return {
+      firstName: userNameArr[0],
+      lastName: userNameArr[1],
+    };
   }
 
   return {
-    firstName,
-    lastName,
+    firstName: username,
+    lastName: username,
   };
 }
 
