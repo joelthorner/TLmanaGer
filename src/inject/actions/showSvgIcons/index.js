@@ -155,24 +155,16 @@ var ShowSvgIcons = {
     this.setIcons(this._findIcons());
     this.setUniqueIcons(this.icons.length);
 
-    let uniqueSvgIcons = this.icons.filter(obj => {
-      return obj.type === 'svg'
-    }).length;
+    let uniqueSvgIcons = this.icons.filter(obj => { return obj.type === 'svg' }).length;
     this.setUniqueSvgIcons(uniqueSvgIcons);
 
-    let uniqueSymbolIcons = this.icons.filter(obj => {
-      return obj.type === 'symbol'
-    }).length;
+    let uniqueSymbolIcons = this.icons.filter(obj => { return obj.type === 'symbol' }).length;
     this.setUniqueSymbolIcons(uniqueSymbolIcons);
 
-    let uniqueImgIcons = this.icons.filter(obj => {
-      return obj.type === 'img'
-    }).length;
+    let uniqueImgIcons = this.icons.filter(obj => { return obj.type === 'img' }).length;
     this.setUniqueImgIcons(uniqueImgIcons);
 
-    let uniqueCssBgIcons = this.icons.filter(obj => {
-      return obj.type === 'css-bg'
-    }).length;
+    let uniqueCssBgIcons = this.icons.filter(obj => { return obj.type === 'css-bg' }).length;
     this.setUniqueCssBgIcons(uniqueCssBgIcons);
 
     if (this.getEl()) {
