@@ -272,16 +272,16 @@ chrome.storage.sync.get(defaults, (result) => {
         break;
 
       case 'userFieldPasswordContainer':
-        var input = document.getElementById('userPasswordField');
-        if (input) {
-          input.value = result.profile.shopTestingPassword.value;
+        var passwd = document.getElementById('userPasswordField');
+        if (passwd) {
+          passwd.value = result.profile.shopTestingPassword.value;
         }
         break;
 
       case 'userFieldRetypePasswordContainer':
-        var input = document.getElementById('userRetypePasswordField');
-        if (input) {
-          input.value = result.profile.shopTestingPassword.value;
+        var rePasswd = document.getElementById('userRetypePasswordField');
+        if (rePasswd) {
+          rePasswd.value = result.profile.shopTestingPassword.value;
         }
         break;
     }
