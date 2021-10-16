@@ -110,17 +110,18 @@ function formSubmit() {
  */
 function fillCountry(divField, mutationSelector) {
   var countryField = divField.querySelector('#userCountryField');
+
   if (countryField) {
     var ES = countryField.querySelector('[data-country-initials="ES"]'),
       firstOption = countryField.querySelector('option:nth-child(2)');
 
     if (ES) {
       ES.selected = true;
-    } else if (firstOption) {
-      countryField.querySelector('option:nth-child(2)').selected = true;
+    }
+    if (firstOption) {
+      firstOption.selected = true;
     }
 
-    // Continue...
     if (ES || firstOption) {
       simulateEvent(countryField, 'change');
       mutationObserver(divField, mutationSelector);
