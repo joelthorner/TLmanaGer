@@ -81,10 +81,7 @@ function simulateEvent(element, type) {
  */
 function checkCheckbox(input, checked) {
   if (input) {
-    if (checked && input[0].checked == false) {
-      simulateEvent(input[0], 'click');
-    }
-    if (!checked && input[0].checked == true) {
+    if ((checked && input[0].checked == false) || (!checked && input[0].checked == true)) {
       simulateEvent(input[0], 'click');
     }
   }
