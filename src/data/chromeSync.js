@@ -1,8 +1,9 @@
 export default {
   options: {
     // Zendesk
-    replyTicketConfirmPopup: {
+    coolTicketSubmit: {
       actived: true,
+      replyTicketConfirmPopup: true,
     },
     ticketPriorityHighlightColors: {
       actived: false,

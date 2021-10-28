@@ -1,14 +1,14 @@
 /**
- * @file Define the ReplyTicketConfirmPopup class, initialize it and register it in the observerZendesk
+ * @file Define the CoolTicketSubmit class, initialize it and register it in the observerZendesk
  * @author joelthorner
  */
 'use strict';
 
 /**
- * Creates a new ReplyTicketConfirmPopup
+ * Creates a new CoolTicketSubmit
  * @class
  */
-class ReplyTicketConfirmPopup extends Modifier {
+class CoolTicketSubmit extends Modifier {
 
   types = {
     new: '#ffb648',
@@ -19,19 +19,23 @@ class ReplyTicketConfirmPopup extends Modifier {
     solved: '#87929d'
   }
 
+  replyTicketConfirmPopup = false
+
   /**
-   * Create a ReplyTicketConfirmPopup.
+   * Create a CoolTicketSubmit.
    * @param {string} selector
+   * @param {boolean} replyTicketConfirmPopup
    */
-  constructor(selector) {
+  constructor(selector, replyTicketConfirmPopup) {
     super(selector);
+    this.replyTicketConfirmPopup = replyTicketConfirmPopup;
   }
 
   /**
    * On finded changed nodes, up to tbody and update all tbody <tr> rows
    */
   _match() {
-    document.body.classList.add('replyTicketConfirmPopup');
+    document.body.classList.add('coolTicketSubmit');
 
     clearTimeout(this.timeout);
 
@@ -69,6 +73,7 @@ class ReplyTicketConfirmPopup extends Modifier {
           console.log('full');
         } else if (this.isValidCreateMenuExpanderUnique(uniqueButton, buttonGroup)) {
           this.createMenuExpanderUnique(buttonGroup);
+          console.log('unique');
         }
       } else {
         // Destroy inactive workspaces
@@ -88,7 +93,6 @@ class ReplyTicketConfirmPopup extends Modifier {
       setTimeout(() => {
         let workspace = buttonGroup.closest('.workspace'),
           dropdownLiList = this.getDropdownLis(workspace);
-        // console.log(workspace.querySelector('[data-garden-id="buttons.button_group_view"] [data-garden-id="dropdowns.menu"]'));
 
         for (let i = 0; i < dropdownLiList.length; i++) {
           const li = dropdownLiList[i];
@@ -168,8 +172,41 @@ class ReplyTicketConfirmPopup extends Modifier {
   }
 
   createMenuExpanderUnique(buttonGroup) {
-    // TODO
 
+    let workspace = buttonGroup.closest('.ember-view.workspace');
+    if (workspace && !this.isHidden(workspace)) {
+      let label = workspace.querySelector('.ticket_status_label');
+
+      if (label) {
+        let newExpander = this.createMenuExpanderCont(),
+          text = label.innerText.trim().toLowerCase().replace('-', ' '),
+          type = label.className.split(' ')[0],
+          liHtml = this.createUniqueLiNode(text, type),
+          liHtmlNode = this.createElementFromHTML(liHtml);
+
+        const newExpanderItem = this.getNewExpanderItem(liHtmlNode, buttonGroup);
+        newExpander.appendChild(newExpanderItem);
+
+        buttonGroup.appendChild(newExpander);
+        buttonGroup.classList.add('tlg-submit-expander');
+        buttonGroup.dataset.tlgSubmitExpander = true;
+      }
+    }
+  }
+
+  createUniqueLiNode(text, type) {
+    return `
+      <li>
+        <div>
+          <div tabindex="0" style="width: 100%;">
+            <div class="flex">
+              <div style="background-color: ${this.types[type]}"></div>
+              <span class="space"> </span>
+              <span><strong>${text}</strong></span>
+            </div>
+          </div>
+        </div>
+      </li>`;
   }
 
   prevAll(element, selector) {
@@ -198,6 +235,11 @@ class ReplyTicketConfirmPopup extends Modifier {
     element.setAttribute('type', 'button');
     element.appendChild(insideNode);
     element.dataset.target = '#' + li.getAttribute('id');
+
+    element.addEventListener('click', async (event) => {
+      event.preventDefault();
+      this.executeSubmit(event.target, this.replyTicketConfirmPopup);
+    });
     return element;
   }
 
@@ -209,6 +251,7 @@ class ReplyTicketConfirmPopup extends Modifier {
 
   isValidCreateMenuExpanderUnique(uniqueButton, buttonGroup) {
     let uniqueButtonString = uniqueButton.innerText.trim().toLowerCase();
+    // TODO suppor multiple language
     if (uniqueButtonString.length && uniqueButtonString !== 'submit as') {
       if (buttonGroup.dataset.tlgSubmitExpander === undefined) {
         return true;
@@ -246,11 +289,83 @@ class ReplyTicketConfirmPopup extends Modifier {
       delete buttonGroup.dataset.tlgSubmitExpander;
     }
   }
+
+  async executeSubmit(target, replyTicketConfirmPopup) {
+    let findClickTarget = (target) => {
+      let element = null;
+      let dropdownMenus = document.querySelectorAll('[data-garden-id="dropdowns.menu"]');
+
+      if (dropdownMenus) {
+        for (let i = 0; i < dropdownMenus.length; i++) {
+          const dropdownMenu = dropdownMenus[i];
+          if (target.dataset.target) {
+            element = dropdownMenu.querySelector(target.dataset.target);
+          }
+        }
+      }
+
+      if (!element) {
+        let tlgSubmitExpander = target.closest('.tlg-submit-expander');
+        if (tlgSubmitExpander) {
+          element = tlgSubmitExpander.querySelector('[data-garden-id="buttons.button"]');
+        }
+      }
+
+      return element;
+    };
+    let executeSubmitClick = (target) => {
+      let tlgSubmitExpander = target.closest('.tlg-submit-expander');
+      if (tlgSubmitExpander) {
+        let expanderButton = tlgSubmitExpander.querySelector('[data-garden-id="buttons.icon_button"]');
+        if (expanderButton) {
+          expanderButton.click();
+
+          setTimeout(() => {
+            let workspace = target.closest('.ember-view.workspace');
+            if (workspace) {
+              let clickTarget = findClickTarget(target);
+
+              if (clickTarget) {
+                clickTarget.click();
+              }
+            }
+          }, 100);
+        }
+      }
+
+
+      // var $thisExpanderBtn = $self.closest('.tlg-submit-expander').find(SubmitExpander.expanderBtnSelector);
+      // if ($thisExpanderBtn.length) $thisExpanderBtn.click();
+
+      // setTimeout(() => {
+      //   var $clickTarget = $(SubmitExpander.expandedMenuSelector).find($self.data('target'));
+      //   if (!$clickTarget.length) {
+      //     $clickTarget = $self.closest('.tlg-submit-expander').find(SubmitExpander.mainBtnSubmitSelector);
+      //   }
+      //   $clickTarget.click();
+      // }, 75);
+    };
+
+    if (replyTicketConfirmPopup) {
+      const dialog = new ConfirmDialog({
+        trueButtonText: "Yes!",
+        falseButtonText: "Noo",
+        questionText: "Are you sure you want to see yet another picture of a cat?"
+      });
+
+      const shouldSubmit = await dialog.confirm();
+      if (shouldSubmit) {
+        executeSubmitClick(target);
+      }
+    } else {
+      executeSubmitClick(target);
+    }
+  }
 }
 
 chrome.storage.sync.get(defaults, (result) => {
-  if (result.options.replyTicketConfirmPopup.actived) {
-    const replyTicketConfirmPopup = new ReplyTicketConfirmPopup('*');
-    observerZendesk.register(replyTicketConfirmPopup);
+  if (result.options.coolTicketSubmit.actived) {
+    const coolTicketSubmit = new CoolTicketSubmit('*', result.options.coolTicketSubmit.replyTicketConfirmPopup);
+    observerZendesk.register(coolTicketSubmit);
   }
 });

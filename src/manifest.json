@@ -167,12 +167,13 @@
         "inject/zendesk/ObserverZendesk.js",
         "inject/zendesk/navigationMenu/index.js",
         "inject/zendesk/ticketPriorityHighlightColors/index.js",
-        "inject/zendesk/replyTicketConfirmPopup/index.js"
+        "inject/zendesk/coolTicketSubmit/ConfirmDialog.js",
+        "inject/zendesk/coolTicketSubmit/index.js"
       ],
       "css": [
         "inject/zendesk/navigationMenu/index.css",
         "inject/zendesk/ticketPriorityHighlightColors/index.css",
-        "inject/zendesk/replyTicketConfirmPopup/index.css"
+        "inject/zendesk/coolTicketSubmit/index.css"
       ]
     },
     {

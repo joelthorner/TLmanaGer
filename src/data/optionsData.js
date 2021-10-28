@@ -1,11 +1,11 @@
 export default {
-  replyTicketConfirmPopup: {
+  coolTicketSubmit: {
     show: true,
     priority: 301,
     category: 'zendesk',
     image: "TODO",
-    title: "replyTicketConfirmPopup",
-    description: "replyTicketConfirmPopup desc",
+    title: "coolTicketSubmit",
+    description: "coolTicketSubmit desc",
     customCardContent: null,
     infoBlock: {
 
