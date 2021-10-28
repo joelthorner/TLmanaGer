@@ -54,6 +54,10 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {object} buttonGroup 
+   */
   initElement(buttonGroup) {
     let workspace = buttonGroup.closest('.ember-view.workspace');
 
@@ -82,6 +86,10 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {object} buttonGroup 
+   */
   createMenuExpanderFull(buttonGroup) {
     let newExpander = this.createMenuExpanderCont(),
       expanderButton = buttonGroup.querySelector('[data-garden-id="buttons.icon_button"]');
@@ -112,6 +120,11 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {object} workspace
+   * @returns 
+   */
   getDropdownLis(workspace) {
     if (workspace) {
       let dropdown = workspace.querySelector('[data-garden-id="buttons.button_group_view"] [data-garden-id="dropdowns.menu"]');
@@ -123,6 +136,12 @@ class CoolTicketSubmit extends Modifier {
     return null;
   }
 
+  /**
+   * 
+   * @param {object} li
+   * @param {object} buttonGroup
+   * @returns {object}
+   */
   getNewExpanderItem(li, buttonGroup) {
     let dropdown = buttonGroup.querySelector('[data-garden-id="dropdowns.menu"]'),
       selectedItemText = '',
@@ -148,6 +167,10 @@ class CoolTicketSubmit extends Modifier {
     return this.createMenuExpanderButton(li, classes, liHtmlNode);
   }
 
+  /**
+   * 
+   * @param {object} elements
+   */
   replaceTextElements(elements) {
     if (elements) {
       for (let i = 0; i < elements.length; i++) {
@@ -157,6 +180,10 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {object} elements
+   */
   addClassPrevAllElements(elements) {
     if (elements) {
       for (let i = 0; i < elements.length; i++) {
@@ -171,8 +198,11 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {object} buttonGroup
+   */
   createMenuExpanderUnique(buttonGroup) {
-
     let workspace = buttonGroup.closest('.ember-view.workspace');
     if (workspace && !this.isHidden(workspace)) {
       let label = workspace.querySelector('.ticket_status_label');
@@ -194,6 +224,12 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {string} text 
+   * @param {string} type 
+   * @returns {string}
+   */
   createUniqueLiNode(text, type) {
     return `
       <li>
@@ -209,6 +245,12 @@ class CoolTicketSubmit extends Modifier {
       </li>`;
   }
 
+  /**
+   * 
+   * @param {object} element
+   * @param {string} selector 
+   * @returns {object[]}
+   */
   prevAll(element, selector) {
     const prevElements = []
     let prevElement = element.parentNode.firstElementChild
@@ -221,6 +263,11 @@ class CoolTicketSubmit extends Modifier {
     return prevElements
   }
 
+  /**
+   * 
+   * @param {string} htmlString 
+   * @returns {object}
+   */
   createElementFromHTML(htmlString) {
     var div = document.createElement('div');
     div.innerHTML = htmlString.trim();
@@ -229,6 +276,13 @@ class CoolTicketSubmit extends Modifier {
     return div.firstChild;
   }
 
+  /**
+   * 
+   * @param {object} li 
+   * @param {string[]} classes 
+   * @param {object} insideNode 
+   * @returns {object}
+   */
   createMenuExpanderButton(li, classes, insideNode) {
     let element = document.createElement('button');
     if (classes.length) element.classList.add(classes);
@@ -249,6 +303,12 @@ class CoolTicketSubmit extends Modifier {
     return element;
   }
 
+  /**
+   * 
+   * @param {object} uniqueButton
+   * @param {object} buttonGroup
+   * @returns {boolean}
+   */
   isValidCreateMenuExpanderUnique(uniqueButton, buttonGroup) {
     let uniqueButtonString = uniqueButton.innerText.trim().toLowerCase();
     // TODO suppor multiple language
@@ -260,10 +320,21 @@ class CoolTicketSubmit extends Modifier {
     return false;
   }
 
+  /**
+   * 
+   * @param {object} expanderButton
+   * @param {object} buttonGroup
+   * @returns {boolean}
+   */
   isValidCreateMenuExpanderFull(expanderButton, buttonGroup) {
     return expanderButton && !expanderButton.disabled && buttonGroup.dataset.tlgSubmitExpander === undefined;
   }
 
+  /**
+   * 
+   * @param {object} buttonGroup
+   * @returns {boolean}
+   */
   isDestroyable(buttonGroup) {
     let newButton = buttonGroup.querySelector('.tlg-new-button-expander button');
     if (newButton && newButton.innerText.replace('Submit as', '').trim().length === 0) {
@@ -275,10 +346,19 @@ class CoolTicketSubmit extends Modifier {
     return false;
   }
 
+  /**
+   * Return if html node is visible
+   * @param {object} el
+   * @returns {boolean}
+   */
   isHidden(el) {
     return (el.offsetParent === null)
   }
 
+  /**
+   * 
+   * @param {object} workspace
+   */
   destroy(workspace) {
     let buttonExpander = workspace.querySelector('.tlg-new-button-expander');
     if (buttonExpander) buttonExpander.remove();
@@ -290,6 +370,11 @@ class CoolTicketSubmit extends Modifier {
     }
   }
 
+  /**
+   * 
+   * @param {object} target
+   * @param {boolean} replyTicketConfirmPopup 
+   */
   async executeSubmit(target, replyTicketConfirmPopup) {
     let findClickTarget = (target) => {
       let element = null;
@@ -332,18 +417,6 @@ class CoolTicketSubmit extends Modifier {
           }, 100);
         }
       }
-
-
-      // var $thisExpanderBtn = $self.closest('.tlg-submit-expander').find(SubmitExpander.expanderBtnSelector);
-      // if ($thisExpanderBtn.length) $thisExpanderBtn.click();
-
-      // setTimeout(() => {
-      //   var $clickTarget = $(SubmitExpander.expandedMenuSelector).find($self.data('target'));
-      //   if (!$clickTarget.length) {
-      //     $clickTarget = $self.closest('.tlg-submit-expander').find(SubmitExpander.mainBtnSubmitSelector);
-      //   }
-      //   $clickTarget.click();
-      // }, 75);
     };
 
     if (replyTicketConfirmPopup) {
