@@ -6,7 +6,7 @@ export default {
     image: "TODO",
     title: "coolTicketSubmit",
     description: "coolTicketSubmit desc",
-    customCardContent: null,
+    customCardContent: 'ContentCoolTicketSubmit',
     infoBlock: {
 
     },

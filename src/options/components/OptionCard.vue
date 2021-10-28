@@ -87,6 +87,7 @@ import ContentDefault from "@options/pages/options/optionContents/ContentDefault
 import ContentBackground from "@options/pages/options/optionContents/ContentBackground";
 import ContentPagesWindowBetter from "@options/pages/options/optionContents/ContentPagesWindowBetter";
 import ContentTicketPriorityHighlightColors from "@options/pages/options/optionContents/ContentTicketPriorityHighlightColors";
+import ContentCoolTicketSubmit from "@options/pages/options/optionContents/ContentCoolTicketSubmit";
 
 export default {
   name: "OptionCard",
@@ -103,6 +104,7 @@ export default {
     ContentBackground,
     ContentPagesWindowBetter,
     ContentTicketPriorityHighlightColors,
+    ContentCoolTicketSubmit,
   },
   data() {
     return {
