@@ -20,6 +20,7 @@ import {
   achievements as achievementsIcon,
   changelog as changelogIcon,
   archive as archiveIcon,
+  fingerprint as fingerprintIcon,
 } from "@/data/icons";
 
 export default {
@@ -46,6 +47,18 @@ export default {
           exact: false,
         },
         {
+          title: "Hidden features",
+          icon: fingerprintIcon,
+          route: "/hidden-features",
+          exact: true,
+        },
+        {
+          title: "Blog",
+          icon: archiveIcon,
+          route: "/blog",
+          exact: false,
+        },
+        {
           title: "Achievements",
           icon: achievementsIcon,
           route: "/achievements",
@@ -55,12 +68,6 @@ export default {
           title: "Changelog",
           icon: changelogIcon,
           route: "/changelog",
-          exact: false,
-        },
-        {
-          title: "Blog",
-          icon: archiveIcon,
-          route: "/blog",
           exact: false,
         },
       ],

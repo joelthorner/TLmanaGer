@@ -10,3 +10,20 @@
     display: flex;
   }
 }
+
+.back-to-blog {
+  .icon {
+    width: 12px;
+        height: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        fill: currentColor;
+        margin-right: 5px;
+        svg {
+          
+            width: 100%;
+            height: 100%;
+        }
+  }
+}
