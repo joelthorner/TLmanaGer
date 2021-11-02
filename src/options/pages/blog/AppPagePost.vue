@@ -38,7 +38,6 @@ import { caretLeft as caretLeftIcon } from "@/data/icons";
 
 import MainContent from "@options/components/main/MainContent";
 import MainTitle from "@options/components/main/MainTitle";
-import StyleTag from "@options/components/StyleTag";
 
 import posts from "@/data/posts";
 
@@ -47,7 +46,6 @@ export default {
   components: {
     MainContent,
     MainTitle,
-    StyleTag,
   },
   created() {
     this.getPostData();
