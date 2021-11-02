@@ -31,13 +31,13 @@ export default {
           name: "joelthorner",
           route: "https://github.com/joelthorner",
           img: "https://avatars2.githubusercontent.com/u/16495000?s=120&v=4",
-          role: "owner",
+          role: "author",
         },
         {
           name: "pol-93",
           route: "https://github.com/pol-93",
           img: "https://avatars2.githubusercontent.com/u/16819509?s=120&v=4",
-          role: "contributor",
+          role: "old contributor",
         },
         {
           name: "Unoriginal02",
