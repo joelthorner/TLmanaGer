@@ -91,3 +91,22 @@
     margin-top: 5px;
   }
 }
+
+.card-feature {
+  .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 0.75rem;
+    svg {
+      fill: currentColor;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
