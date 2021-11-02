@@ -24,9 +24,12 @@
         />
       </svg>
 
-      <div class="caption">
+      <div
+        class="caption d-flex flex-column align-items-start justify-content-center"
+      >
         <div class="card-title text-white">{{ title }}</div>
         <button
+          v-if="!this.actived"
           type="button"
           v-on:click="openSyncSetup"
           v-bind:class="[btnClass, btnActivedClass]"
@@ -56,8 +59,8 @@ export default {
     },
     title() {
       return this.actived
-        ? "Google Sync active, Tnks!"
-        : "Activate Google sync pls";
+        ? "La sincronització de Google està activa."
+        : "Activa la sincronització de Google per guardar les dades per sempre.";
     },
     btnActivedClass() {
       return this.actived ? "" : "text-danger";
