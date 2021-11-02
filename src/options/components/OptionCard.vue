@@ -122,7 +122,12 @@ export default {
       return `1 0 ${this.maxWidth}`;
     },
     classList() {
-      return ["card", "card-option", "option-" + this.optionKey].join(" ");
+      return [
+        "card",
+        "card-option",
+        `option-${this.optionKey}`,
+        `actived-${this.chromeSync.options[this.optionKey].actived}`,
+      ].join(" ");
     },
     checkboxId() {
       return `id-switch-${this.optionKey}`;

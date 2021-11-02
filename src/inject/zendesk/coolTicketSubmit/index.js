@@ -21,6 +21,8 @@ class CoolTicketSubmit extends Modifier {
 
   replyTicketConfirmPopup = false
 
+  lang = 'en'
+
   /**
    * Create a CoolTicketSubmit.
    * @param {string} selector
@@ -29,6 +31,7 @@ class CoolTicketSubmit extends Modifier {
   constructor(selector, replyTicketConfirmPopup) {
     super(selector);
     this.replyTicketConfirmPopup = replyTicketConfirmPopup;
+    this.lang = document.documentElement.getAttribute('lang');
   }
 
   /**
@@ -148,10 +151,11 @@ class CoolTicketSubmit extends Modifier {
       classes = '',
       liHtmlNode = this.createElementFromHTML(li.innerHTML),
       spans = liHtmlNode.querySelectorAll('span'),
-      label = li.innerText,
-      tooltipTextNode = this.createElementFromHTML(
-        `<span class="tooltip-text">Submit as ${label}</span>`
-      );;
+      label = li.innerText;
+
+    let tooltipTextNode = this.createElementFromHTML(
+      `<span class="tooltip-text">${label}</span>`
+    );
 
     if (dropdown)
       selectedItemText = dropdown.innerText.trim().toLowerCase();
@@ -175,6 +179,10 @@ class CoolTicketSubmit extends Modifier {
     if (elements) {
       for (let i = 0; i < elements.length; i++) {
         const element = elements[i];
+
+        if (this.lang === 'es') {
+          element.innerHTML = element.innerHTML.replace('Enviar como', '');
+        }
         element.innerHTML = element.innerHTML.replace('Submit as', '');
       }
     }
@@ -311,8 +319,7 @@ class CoolTicketSubmit extends Modifier {
    */
   isValidCreateMenuExpanderUnique(uniqueButton, buttonGroup) {
     let uniqueButtonString = uniqueButton.innerText.trim().toLowerCase();
-    // TODO suppor multiple language
-    if (uniqueButtonString.length && uniqueButtonString !== 'submit as') {
+    if (uniqueButtonString.length) {
       if (buttonGroup.dataset.tlgSubmitExpander === undefined) {
         return true;
       }
@@ -337,7 +344,7 @@ class CoolTicketSubmit extends Modifier {
    */
   isDestroyable(buttonGroup) {
     let newButton = buttonGroup.querySelector('.tlg-new-button-expander button');
-    if (newButton && newButton.innerText.replace('Submit as', '').trim().length === 0) {
+    if (newButton) {
       let workspace = buttonGroup.closest('.ember-view.workspace');
       if (workspace && this.isHidden(workspace)) {
         return true;
@@ -423,7 +430,7 @@ class CoolTicketSubmit extends Modifier {
       const dialog = new ConfirmDialog({
         trueButtonText: "Yes!",
         falseButtonText: "Noo",
-        questionText: "Are you sure you want to see yet another picture of a cat?"
+        questionText: "Are you sure you want to continue? The answer you entered will be sent to the customer and can not be changed."
       });
 
       const shouldSubmit = await dialog.confirm();

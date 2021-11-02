@@ -15,7 +15,8 @@
           switch
           v-on:change="saveSuboption()"
           :id="checkboxId(suboption.key)"
-          >{{ suboption.name }}</b-form-checkbox
+          >{{ suboption.name }}
+          <div class="text-muted">{{ suboption.desc }}</div></b-form-checkbox
         >
       </div>
     </div>
@@ -87,6 +88,8 @@ export default {
         {
           key: "onlyIncidents",
           name: "Only highlight incident tickets",
+          desc:
+            "Resalta nomes els tickets que siguin de tipus incident (nomes funcionará en llistats de tickets on existeixi la columna que indica si es incident, task, ...)",
         },
       ],
     };

@@ -6,7 +6,7 @@ export default {
       replyTicketConfirmPopup: true,
     },
     ticketPriorityHighlightColors: {
-      actived: false,
+      actived: true,
       onlyIncidents: true,
       colors: {
         low: {

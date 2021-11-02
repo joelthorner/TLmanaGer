@@ -14,7 +14,8 @@
           switch
           v-on:change="saveSuboption()"
           :id="checkboxId(suboption.key)"
-          >{{ suboption.name }}</b-form-checkbox
+          >{{ suboption.name }}
+          <div class="text-muted">{{ suboption.desc }}</div></b-form-checkbox
         >
       </div>
     </div>
@@ -54,6 +55,7 @@ export default {
         {
           key: "replyTicketConfirmPopup",
           name: "Reply ticket confirm dialog",
+          desc: "Al fer submit de un missatge demana una confirmació previa.",
         },
       ],
     };

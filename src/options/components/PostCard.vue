@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="'card post-' + post.id"
-    data-tilt
-    data-tilt-reverse="true"
-    data-tilt-max="10"
-  >
+  <div :class="'card post-' + post.id">
     <style-tag>
       .post-{{ this.post.id }}::before { background-image: url({{
         this.post.img
@@ -36,7 +31,6 @@
 
 <script>
 import moment from "moment";
-import VanillaTilt from "vanilla-tilt";
 import StyleTag from "@options/components/StyleTag";
 
 export default {
@@ -46,9 +40,6 @@ export default {
   },
   props: {
     post: Object,
-  },
-  mounted() {
-    VanillaTilt.init(this.$el);
   },
   methods: {
     getPostRoute(id) {
