@@ -14,7 +14,8 @@
           switch
           v-on:change="saveSuboption()"
           :id="checkboxId(suboption.key)"
-          >{{ suboption.name }}</b-form-checkbox
+          >{{ suboption.name }}
+          <div class="text-muted">{{ suboption.desc }}</div></b-form-checkbox
         >
       </div>
     </div>
@@ -54,14 +55,18 @@ export default {
         {
           key: "gridView",
           name: "Grid view",
+          desc: "Mostra els grups de págines en una graella",
         },
         {
           key: "betterGroupHeaders",
           name: "Better group headers",
+          desc: "Afegeix decoradors de colors als noms dels grups de págines",
         },
         {
           key: "betterTreeLevels",
           name: "Better tree levels",
+          desc:
+            "Marca els nivells de págines i subpágines amb icones numériques",
         },
       ],
     };

@@ -72,7 +72,7 @@ export default {
     title: "Pages grid view",
     content: "lorem ipsum",
   },
-  replyTicketConfirmPopup: {
+  coolTicketSubmit: {
     title: "Pages grid view",
     content: "lorem ipsum",
   },

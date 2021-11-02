@@ -6,12 +6,6 @@
   transform: perspective(1000px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.14);
 
-  &[data-tilt]:hover {
-    .card-body {
-      transform: translateZ(20px);
-    }
-  }
-
   a {
     position: relative;
     text-decoration: none;

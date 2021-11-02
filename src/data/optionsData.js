@@ -1,14 +1,14 @@
 export default {
-  replyTicketConfirmPopup: {
+  coolTicketSubmit: {
     show: true,
     priority: 301,
     category: 'zendesk',
-    image: "TODO",
-    title: "replyTicketConfirmPopup",
-    description: "replyTicketConfirmPopup desc",
-    customCardContent: null,
+    image: chrome.extension.getURL('img/optionsData/coolTicketSubmit.jpg'),
+    title: "Cool zendesk ticket submit",
+    description: "Transforma el botó de submit + el canvi d'estat del ticket en una versió simplificada. Un botó de submit per cada estat del ticket (open, on-hold, solved, ...). A més es pot activar la confirmació del enviament del missatge per prevenir errors.",
+    customCardContent: 'ContentCoolTicketSubmit',
     infoBlock: {
-
+      Since: 'Apr 7, 2019',
     },
   },
   ticketPriorityHighlightColors: {
@@ -20,7 +20,7 @@ export default {
     description: 'Ressalta els tickets del zendesk per prioritats low, normal, high & urgent. Es poden triar els colors i que només es ressaltin els tickets de tipus "incident".',
     customCardContent: 'ContentTicketPriorityHighlightColors',
     infoBlock: {
-      Environments: `ZENDESK_DOMAIN_BASE_URL`,
+      // Environments: `ZENDESK_DOMAIN_BASE_URL`,
       Since: 'Mar 6, 2019',
     },
   },
@@ -45,7 +45,7 @@ export default {
     description: "Personalització del fons del Logicommerce amb la llibreria de fotos d'Unsplash.",
     customCardContent: 'ContentBackground',
     infoBlock: {
-      Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
+      // Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
       Since: 'Aug 26, 2018',
     },
   },
@@ -58,7 +58,7 @@ export default {
     description: "Afegeix una barra superior als Logicommerce amb el sistema de publicació de codi Opensaas i altres utils.",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
+      // Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
       Since: 'Oct 22, 2018',
     },
   },
@@ -71,7 +71,7 @@ export default {
     description: "En el login d'un client d'un Logicommerce amb el sistema de publicació de codi Opensaas, apareix un selector d'entorn, aquetsa opció ho transforma en <buttons> per accedir-hi mes ràpid.",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://8x-os.logicommerce.net/login/*, *://8x.logicommerce.net/login/*`,
+      // Environments: `*://8x-os.logicommerce.net/login/*, *://8x.logicommerce.net/login/*`,
       Since: 'Feb 1, 2019',
     },
   },
@@ -84,7 +84,7 @@ export default {
     description: "Millores de la finestra de págines, com vista en grid, headers colors tags i icones, i nivells més clars.",
     customCardContent: 'ContentPagesWindowBetter',
     infoBlock: {
-      Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
+      // Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
       Since: 'Aug 26, 2018',
     },
   },
@@ -97,7 +97,7 @@ export default {
     description: "Tots els inputs checkbox, radiobuttons i switches es fan més grans per no haver de fer mouse snipper",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
+      // Environments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*, *://adm.igd.production/*, *://adm.igd.pre.production/*`,
       Since: 'Aug 28, 2018',
     },
   },
@@ -122,8 +122,8 @@ export default {
     description: "Al entrar sempre al entorn de producció d'una botiga sense domini es recarrega amb el ?forceview=1 automàticament.",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://*.logicommerce.net/*, *://*.logicommerce.hk/*, *://*.logicommerce.cn/*, *://*.igd.production/*, *://*.igd.pre.production/*`,
-      ExcludeEnvironments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*`,
+      // Environments: `*://*.logicommerce.net/*, *://*.logicommerce.hk/*, *://*.logicommerce.cn/*, *://*.igd.production/*, *://*.igd.pre.production/*`,
+      // ExcludeEnvironments: `*://8x-hk.logicommerce.net/*, *://8x-os.logicommerce.net/*, *://8x.logicommerce.net/*, *://8x.logicommerce.cn/*`,
       Since: 'Aug 26, 2018',
     },
   },
@@ -136,8 +136,8 @@ export default {
     description: "Als entorns locals .igd.production, s'afegeix un shortcut per poder netejar la cache de redis.",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://*.igd.production/*`,
-      ExcludeEnvironments: `*://adm.igd.production/*, *://fluiddoc.igd.production/*, *://management.igd.production/*, *://tlgcommerce-hk.igd.production/*`,
+      // Environments: `*://*.igd.production/*`,
+      // ExcludeEnvironments: `*://adm.igd.production/*, *://fluiddoc.igd.production/*, *://management.igd.production/*, *://tlgcommerce-hk.igd.production/*`,
       Since: 'Dec 12, 2018',
     },
   },
@@ -150,7 +150,7 @@ export default {
     description: "Automàticament la web fa scroll al dump i el deixa clarament visible, en entorns de development.",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://*.sandbox.logicommerce.net/*, *://*.igd.production/*`,
+      // Environments: `*://*.sandbox.logicommerce.net/*, *://*.igd.production/*`,
       Since: 'Apr 18, 2019',
     },
   },
@@ -163,7 +163,7 @@ export default {
     description: "Descarrega cualsevol icona de FontWesome, tant els normals com els PRO, en format svg, use i svg en css. També et permet guardar en un fitxer.",
     customCardContent: null,
     infoBlock: {
-      Environments: `*://fontawesome.com/*`,
+      // Environments: `*://fontawesome.com/*`,
       Since: 'Aug 26, 2018',
     },
   },

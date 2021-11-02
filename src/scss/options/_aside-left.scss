@@ -51,10 +51,10 @@
   }
 
   .menu {
-    height: $menu-height;
+    // height: $menu-height;
     // background: linear-gradient(0deg, rgba($blue-3, 1) 0%, rgba($blue-2, 1) 100%);
-    flex: 1 0 $menu-height;
-    max-height: $menu-height;
+    // flex: 1 0 $menu-height;
+    // max-height: $menu-height;
     position: relative;
     z-index: 2;
     backdrop-filter: blur(4px);

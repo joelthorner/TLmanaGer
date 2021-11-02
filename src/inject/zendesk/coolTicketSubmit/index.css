@@ -21,7 +21,7 @@
   margin-top: 2px;
 }
 
-.tlg-new-button-expander button + button {
+.tlg-new-button-expander button+button {
   margin-left: 5px !important;
 }
 
@@ -41,7 +41,7 @@
   color: rgb(23, 26, 29);
 }
 
-.tlg-new-button-expander button > div {
+.tlg-new-button-expander button>div {
   display: inline-block;
 }
 
@@ -149,4 +149,84 @@ div[data-garden-id="buttons.button_group_view"] [data-garden-id="buttons.button"
   border: 0;
   -webkit-transform: translate(-50000px, -50000px);
   transform: translate(-50000px, -50000px);
+}
+
+.confirm-dialog-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s ease-in-out 0s, box-shadow 0.1s ease-in-out 0s, background-color 0.25s ease-in-out 0s, color 0.25s ease-in-out 0s, z-index 0.25s ease-in-out 0s;
+  margin: 0px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: inherit;
+  font-weight: 400;
+  -webkit-font-smoothing: subpixel-antialiased;
+  box-sizing: border-box;
+  user-select: none;
+  padding: 0px 1.07143em;
+  height: 40px;
+  line-height: 38px;
+  font-size: 14px;
+  background-color: rgb(47, 57, 65);
+  color: rgb(255, 255, 255);
+}
+
+
+.confirm-dialog-button:hover {
+  background: rgb(73, 84, 92);
+}
+
+.confirm-dialog-button--false {
+  color: rgb(47, 57, 65);
+  background: rgb(255, 255, 255);
+  border-color: rgb(216, 220, 222);
+}
+
+.confirm-dialog-button--false:hover {
+  background-color: rgb(231, 235, 238);
+  color: rgb(27, 31, 34);
+  border-color: rgb(160, 172, 180);
+}
+
+.confirm-dialog {
+  padding: 20px;
+  width: 400px;
+  border: 1px solid rgb(216, 220, 222);
+  border-radius: 4px;
+  box-shadow: rgb(23 73 77 / 15%) 0px 20px 30px 0px;
+  background-color: rgb(255, 255, 255);
+  cursor: default;
+  text-align: left;
+  white-space: normal;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.confirm-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.confirm-dialog-question {
+  color: #68737D;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+
+.confirm-dialog-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem -1rem -1rem;
+}
+
+.confirm-dialog-button-group>* {
+  margin: 1rem;
 }

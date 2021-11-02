@@ -13,11 +13,7 @@ import AppPageAchievements from '@options/pages/achievements/AppPageAchievements
 import AppPageChangelog from '@options/pages/changelog/AppPageChangelog'
 import AppPageBlog from '@options/pages/blog/AppPageBlog'
 import AppPagePost from '@options/pages/blog/AppPagePost'
-
-// import TabLogicommerce from '@options/pages/options/tabs/TabLogicommerce'
-// import TabFluidTools from '@options/pages/options/tabs/TabFluidTools'
-// import TabZendesk from '@options/pages/options/tabs/TabZendesk'
-// import TabOthers from '@options/pages/options/tabs/TabOthers'
+import AppPageHiddenFeatures from '@options/pages/hiddenFeatures/AppPageHiddenFeatures'
 
 import TabAvatar from '@options/pages/user/tabs/TabAvatar'
 import TabInfo from '@options/pages/user/tabs/TabInfo'
@@ -82,6 +78,11 @@ const router = new VueRouter({
       path: '/blog/:id',
       name: "blog",
       component: AppPagePost,
+    },
+    {
+      path: '/hidden-features',
+      name: 'hidden-features',
+      component: AppPageHiddenFeatures,
     }
   ]
 });
