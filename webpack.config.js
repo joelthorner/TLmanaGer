@@ -17,6 +17,7 @@ const config = {
     'background': './background.js',
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
+    'welcome/welcome': './welcome/welcome.js',
   },
   output: {
     path: __dirname + '/dist',
@@ -29,6 +30,7 @@ const config = {
       '@options': path.resolve('src/options'),
       '@mixins': path.resolve('src/mixins'),
       '@popup': path.resolve('src/popup'),
+      '@welcome': path.resolve('src/welcome'),
     },
   },
   module: {
@@ -123,6 +125,11 @@ const config = {
         {
           from: 'options/options.html',
           to: 'options/options.html',
+          transform: transformHtml
+        },
+        {
+          from: 'welcome/welcome.html',
+          to: 'welcome/welcome.html',
           transform: transformHtml
         },
         {
