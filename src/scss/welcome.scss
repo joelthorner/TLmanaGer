@@ -1,0 +1,66 @@
+@import "utils/variables";
+@import "popup/variables";
+
+@import "~bootstrap";
+@import "~bootstrap-vue";
+
+@import "utils/common";
+
+html {
+  font-size: $main-font-size;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#welcome {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+
+  .bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    // background-image: linear-gradient(
+    //   to right top,
+    //   rgba(5, 25, 55, 0.3),
+    //   rgba(0, 77, 122, 0.3),
+    //   rgba(0, 135, 147, 0.3),
+    //   rgba(0, 191, 114, 0.3),
+    //   rgba(168, 235, 18, 0.3)
+    // );
+  }
+
+  .center {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    svg {
+      width: 20vw;
+      height: 20vw;
+      fill: #fff;
+    }
+
+    .btn {
+      font-weight: 500;
+      width: 190px;
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin-bottom: 50px;
+    font-size: 3vw;
+    text-shadow: 0 0 18px #00000059;
+  }
+}
