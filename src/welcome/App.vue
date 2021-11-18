@@ -15,7 +15,7 @@
         </svg>
         <h1>TLmanaGer</h1>
 
-        <b-button pill variant="primary" href="#" block size="lg"
+        <b-button pill variant="light" :href="link" block size="lg"
           >Let's start!</b-button
         >
       </div>
@@ -42,6 +42,9 @@ export default {
     this.getSyncChromeSync();
   },
   computed: {
+    link() {
+      return chrome.extension.getURL("options/options.html");
+    },
     getBackgroundImage() {
       return chrome.extension.getURL("img/welcome.jpg");
     },
