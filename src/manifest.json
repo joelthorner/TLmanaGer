@@ -85,7 +85,8 @@
         "inject/logicommerce/ticketRefLinks/index.js",
         "inject/logicommerce/background/index.js",
         "inject/logicommerce/bigControlInputs/index.js",
-        "inject/logicommerce/customTagsLangFix/index.js"
+        "inject/logicommerce/customTagsLangFix/index.js",
+        "inject/logicommerce/devTrackers/index.js"
       ],
       "css": [
         "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",
@@ -94,7 +95,8 @@
         "inject/logicommerce/developerBar/index.css",
         "inject/logicommerce/background/index.css",
         "inject/logicommerce/bigControlInputs/index.css",
-        "inject/logicommerce/customTagsLangFix/index.css"
+        "inject/logicommerce/customTagsLangFix/index.css",
+        "inject/logicommerce/devTrackers/index.css"
       ]
     },
     {

@@ -4,7 +4,7 @@
  */
 'use strict';
 
-let refLangItem = document.querySelectorAll('#desktop .shortcut[onclick*="openOrders"]>div');
+let refLangItem = document.querySelector('#desktop .shortcut[onclick*="openOrders"]>div');
 if (refLangItem) {
   let ordersWord = refLangItem.textContent.trim().toLowerCase();
 

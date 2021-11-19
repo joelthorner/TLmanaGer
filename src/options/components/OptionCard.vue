@@ -14,16 +14,27 @@
       </div>
 
       <div class="list-group list-group-flush">
-        <div class="list-group-item d-flex">
-          <b-form-checkbox
-            v-model="chromeSync.options[optionKey].actived"
-            :name="checkboxName"
-            switch
-            v-on:change="sendChangeActived()"
-            :id="checkboxId"
-          ></b-form-checkbox>
-          <span class="text-primary">{{ activedText }}</span>
-          <label class="rippleJS" :for="checkboxId"></label>
+        <div class="list-group-item d-flex justify-content-between">
+          <div class="item d-flex">
+            <b-form-checkbox
+              v-model="chromeSync.options[optionKey].actived"
+              :name="checkboxName"
+              switch
+              v-on:change="sendChangeActived()"
+              :id="checkboxId"
+            ></b-form-checkbox>
+            <label class="text-primary" :for="checkboxId">{{
+              activedText
+            }}</label>
+          </div>
+          <a
+            href="#"
+            v-on:click.prevent="openCard()"
+            class="item d-flex"
+            v-if="hasSubOptions && !opened"
+          >
+            Edit settings
+          </a>
         </div>
 
         <a href="#" class="list-group-item" v-if="opened"
@@ -117,6 +128,12 @@ export default {
   computed: {
     data() {
       return this.optionsData[this.optionKey];
+    },
+    /**
+     * Si la struct de la opt te mes que la key de 'actived'
+     */
+    hasSubOptions() {
+      return Object.keys(this.chromeSync.options[this.optionKey]).length > 1;
     },
     flex() {
       return `1 0 ${this.maxWidth}`;

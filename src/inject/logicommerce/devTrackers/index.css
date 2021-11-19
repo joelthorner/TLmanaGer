@@ -1,0 +1,17 @@
+textarea[name="trackingCode"] {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: scroll;
+}
+
+textarea[name="trackingCode"].textarea-devTracker {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
