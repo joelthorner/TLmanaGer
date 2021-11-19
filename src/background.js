@@ -72,7 +72,7 @@ const MANIFEST_DATA = chrome.runtime.getManifest();
  * On install extension create tab with configuration landing
  */
 function onInstallExtension() {
-  const url = chrome.extension.getURL("install/install.html");
+  const url = chrome.extension.getURL("welcome/welcome.html");
   chrome.tabs.create({ url });
 }
 

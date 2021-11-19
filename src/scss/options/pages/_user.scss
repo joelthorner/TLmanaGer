@@ -276,7 +276,9 @@
   }
   .icon-google {
     width: 60px;
+    flex: 1 0 60px;
     margin-right: 20px;
+    max-width: 60px;
   }
   .btn {
     margin-top: 8px;
