@@ -10,7 +10,10 @@ This template homepage can be found at https://github.com/Kocal/vue-web-extensio
 
 https://www.sitepoint.com/build-vue-chrome-extension/
 
-
+Generar dist:
+  
+  npm run build:dev
+  npm run build
 
 
 # .env
