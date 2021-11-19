@@ -22,22 +22,7 @@ class DevTrackers extends Modifier {
 
       this.insertAfter(div, textarea);
 
-      let script = document.createElement("script");
-      script.innerHTML = `
-        if (ace) {
-          var textarea = document.getElementById('${textareaId}');
-          if (textarea) {
-            textarea.classList.add('textarea-devTracker')
-
-            var editor = ace.edit('${divId}');
-            editor.session.setMode("ace/mode/html");
-            editor.getSession().setValue(textarea.value);
-            editor.getSession().on('change', () => {
-              textarea.value = editor.getSession().getValue();
-            });
-          }
-        }
-      `;
+      let script = this.getInsertScript(textareaId, divId);
       document.head.appendChild(script);
 
       let newEditor = this.node.querySelector('.ace_editor');
@@ -49,6 +34,27 @@ class DevTrackers extends Modifier {
 
   insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  }
+
+  getInsertScript(textareaId, divId) {
+    let script = document.createElement("script");
+    script.innerHTML = `
+      if (ace) {
+        var textarea = document.getElementById('${textareaId}');
+        if (textarea) {
+          textarea.classList.add('textarea-devTracker')
+
+          var editor = ace.edit('${divId}');
+          editor.session.setMode("ace/mode/html");
+          editor.getSession().setValue(textarea.value);
+          editor.getSession().on('change', () => {
+            textarea.value = editor.getSession().getValue();
+          });
+        }
+      }
+    `;
+
+    return script;
   }
 }
 
