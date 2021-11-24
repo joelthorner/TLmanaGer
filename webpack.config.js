@@ -90,6 +90,10 @@ const config = {
     new CopyPlugin({
       patterns: [
         {
+          from: '_locales',
+          to: '_locales',
+        },
+        {
           from: 'icons',
           to: 'icons',
         },
