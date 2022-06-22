@@ -11,12 +11,7 @@
         >Welcome, <span class="user-name">{{ userName }}</span></span
       >
     </div>
-    <a
-      :href="optionsLink"
-      class="options-btn"
-      title="Open settings"
-      target="_blank"
-    >
+    <a :href="optionsLink" class="options-btn" title="Open settings" target="_blank">
       <span v-html="settingsIcon"></span>
       <div class="rippleJS"></div>
     </a>
@@ -40,15 +35,13 @@ export default {
   },
   computed: {
     userName() {
-      return this.chromeSync.profile.shopTestingUsername.value.length
-        ? this.chromeSync.profile.shopTestingUsername.value
-        : this.defaultUserName;
+      return this.chromeSync.profile.shopTestingUsername.value.length ? this.chromeSync.profile.shopTestingUsername.value : this.defaultUserName;
     },
     optionsLink() {
-      return chrome.extension.getURL("options/options.html") + "#/options";
+      return chrome.runtime.getURL("options/options.html") + "#/options";
     },
     profileLink() {
-      return chrome.extension.getURL("options/options.html") + "#/user/avatar";
+      return chrome.runtime.getURL("options/options.html") + "#/user/avatar";
     },
   },
 };

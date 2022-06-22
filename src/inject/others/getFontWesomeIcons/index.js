@@ -194,7 +194,7 @@ var getFontWesomeIcons = {
         ${this.getOutputElement('use', 'Use')}
         ${this.getOutputElement('bg', 'Background css')}
       </div>
-      <div id="getFontWesomeIcons_title"> Get Font Awesome Powered by <a href="${chrome.extension.getURL("options/options.html")}#/options" target="_blank">TLmanaGer</a></div>`;
+      <div id="getFontWesomeIcons_title"> Get Font Awesome Powered by <a href="${chrome.runtime.getURL("options/options.html")}#/options" target="_blank">TLmanaGer</a></div>`;
   },
 
   /**

@@ -14,7 +14,7 @@ export default {
   name: "BackgroundWidget",
   computed: {
     getBackgroundImage() {
-      return chrome.extension.getURL("img/home-bg.jpg");
+      return chrome.runtime.getURL("img/home-bg.jpg");
     },
   },
 };

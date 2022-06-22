@@ -40,7 +40,7 @@ export default {
           if (notificationId == uniqid && buttonIndex == 0) {
             chrome.notifications.clear(notificationId);
           } else if (notificationId == uniqid && buttonIndex == 1) {
-            chrome.tabs.create({ url: chrome.extension.getURL('/options/options.html') + '#/achievements' });
+            chrome.tabs.create({ url: chrome.runtime.getURL('/options/options.html') + '#/achievements' });
           }
         });
       }

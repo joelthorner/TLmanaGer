@@ -5,205 +5,29 @@
   "author": "joelthorner",
   "version": null,
   "default_locale": "en",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "browser_action": {
-    "default_icon": "icons/icon32.png",
-    "default_title": "TLmanaGer",
-    "default_popup": "popup/popup.html"
-  },
-  "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
-  },
-  "options_page": "options/options.html",
-  "web_accessible_resources": [
-    "options/options.html"
-  ],
   "permissions": [
     "storage",
     "notifications",
     "tabs",
     "cookies",
     "identity",
-    "identity.email",
+    "identity.email"
+  ],
+  "host_permissions": [
     "<all_urls>"
   ],
-  "content_scripts": [{
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "inject/EcommerceData.js",
-        "inject/actions/containerLinesGuide/index.js",
-        "inject/actions/containerLinesGuide/load.js"
-      ],
-      "css": [
-        "inject/actions/containerLinesGuide/index.css"
-      ]
-    },
-    {
-      "matches": [
-        "*://fontawesome.com/*"
-      ],
-      "js": [
-        "data/chromeSync.js",
-        "inject/log.js",
-        "inject/others/getFontWesomeIcons/index.js"
-      ],
-      "css": [
-        "inject/others/getFontWesomeIcons/index.css"
-      ]
-    },
-    {
-      "matches": [
-        "*://8x-hk.logicommerce.net/*",
-        "*://8x-os.logicommerce.net/*",
-        "*://8x.logicommerce.net/*",
-        "*://8x.logicommerce.cn/*",
-        "*://adm.igd.production/*",
-        "*://adm.igd.pre.production/*"
-      ],
-      "js": [
-        "data/chromeSync.js",
-        "inject/log.js",
-        "inject/Observer.js",
-        "inject/Modifier.js",
-        "inject/logicommerce/ObserverLC.js",
-        "inject/logicommerce/LogiInfo.js",
-        "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.js",
-        "inject/logicommerce/pagesWindowBetter/gridView/index.js",
-        "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.js",
-        "inject/logicommerce/developerBar/index.js",
-        "inject/logicommerce/autoIncrVersionPublish/index.js",
-        "inject/logicommerce/ticketRefLinks/index.js",
-        "inject/logicommerce/background/index.js",
-        "inject/logicommerce/bigControlInputs/index.js",
-        "inject/logicommerce/customTagsLangFix/index.js",
-        "inject/logicommerce/devTrackers/index.js"
-      ],
-      "css": [
-        "inject/logicommerce/pagesWindowBetter/betterGroupHeaders/index.css",
-        "inject/logicommerce/pagesWindowBetter/gridView/index.css",
-        "inject/logicommerce/pagesWindowBetter/betterTreeLevels/index.css",
-        "inject/logicommerce/developerBar/index.css",
-        "inject/logicommerce/background/index.css",
-        "inject/logicommerce/bigControlInputs/index.css",
-        "inject/logicommerce/customTagsLangFix/index.css",
-        "inject/logicommerce/devTrackers/index.css"
-      ]
-    },
-    {
-      "matches": [
-        "*://*.logicommerce.net/*",
-        "*://*.logicommerce.hk/*",
-        "*://*.logicommerce.cn/*",
-        "*://*.igd.production/*",
-        "*://*.igd.pre.production/*"
-      ],
-      "exclude_matches": [
-        "*://8x-hk.logicommerce.net/*",
-        "*://8x-os.logicommerce.net/*",
-        "*://8x.logicommerce.net/*",
-        "*://8x.logicommerce.cn/*"
-      ],
-      "js": [
-        "data/chromeSync.js",
-        "inject/fluidWebTools/autoForceView/index.js"
-      ]
-    },
-    {
-      "matches": [
-        "*://*.igd.production/*"
-      ],
-      "exclude_matches": [
-        "*://adm.igd.production/*",
-        "*://fluiddoc.igd.production/*",
-        "*://management.igd.production/*",
-        "*://tlgcommerce-hk.igd.production/*"
-      ],
-      "css": [
-        "inject/fluidWebTools/flushRedisIgdDomain/index.css"
-      ],
-      "js": [
-        "data/chromeSync.js",
-        "inject/fluidWebTools/flushRedisIgdDomain/index.js"
-      ]
-    },
-    {
-      "matches": [
-        "*://*.sandbox.logicommerce.net/*",
-        "*://*.igd.production/*"
-      ],
-      "js": [
-        "inject/fluidWebTools/dumpAutoScroll/index.js"
-      ]
-    },
-    {
-      "matches": [
-        "*://8x-os.logicommerce.net/login/*",
-        "*://8x.logicommerce.net/login/*"
-      ],
-      "js": [
-        "inject/logicommerce/sandboxLoginButtons/index.js"
-      ],
-      "css": [
-        "inject/logicommerce/sandboxLoginButtons/index.css"
-      ]
-    },
-    {
-      "matches": [
-        "ZENDESK_DOMAIN_BASE_URL"
-      ],
-      "js": [
-        "data/chromeSync.js",
-        "inject/zendesk/api.js",
-        "inject/log.js",
-        "inject/Observer.js",
-        "inject/Modifier.js",
-        "inject/zendesk/ObserverZendesk.js",
-        "inject/zendesk/navigationMenu/index.js",
-        "inject/zendesk/ticketPriorityHighlightColors/index.js",
-        "inject/zendesk/coolTicketSubmit/ConfirmDialog.js",
-        "inject/zendesk/coolTicketSubmit/index.js"
-      ],
-      "css": [
-        "inject/zendesk/navigationMenu/index.css",
-        "inject/zendesk/ticketPriorityHighlightColors/index.css",
-        "inject/zendesk/coolTicketSubmit/index.css"
-      ]
-    },
-    {
-      "matches": [
-        "*://8x-os.logicommerce.net/*"
-      ],
-      "js": [
-        "inject/trello/api.js",
-        "inject/trello/sandboxConnect/index.js"
-      ],
-      "css": [
-        "inject/zendesk/navigationMenu/index.css"
-      ]
-    },
-    {
-      "matches": [
-        "*://admin.beyond/*"
-      ],
-      "js": [
-        "data/chromeSync.js",
-        "inject/log.js",
-        "inject/logicommerce/background/index.js"
-      ],
-      "css": [
-        "inject/logicommerce/background/index.css"
-      ]
-    }
-  ]
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "options_page": "options/options.html"
 }

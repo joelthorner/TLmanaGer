@@ -12,7 +12,7 @@ export default [
       Salut!
     `,
     date: '01-30-2021',
-    img: chrome.extension.getURL('img/posts/new3x.png'),
+    img: chrome.runtime.getURL('img/posts/new3x.png'),
     tags: ['releases', 'v3'],
   },
   {
@@ -25,7 +25,7 @@ export default [
       Això permet anar més ràpid a consultar a què fa referència el commit, el merge o la publicació.<br>
       El sistema busca en tots els llocs on podem veure commits, les branques o les publicacións i els seus històrics.`,
     date: '12-22-2020',
-    img: chrome.extension.getURL('img/posts/ticketRefLinks.png'),
+    img: chrome.runtime.getURL('img/posts/ticketRefLinks.png'),
     tags: ['features', 'v3'],
   },
   // {
@@ -33,7 +33,7 @@ export default [
   //   name: 'New LC themes!',
   //   content: `El primer dels temes per al nou Logicommerce ja està disponible. Es pot canviar a la página d\'opcions/Logicommerce`,
   //   date: '08-12-2020',
-  //   img: chrome.extension.getURL('img/posts/theme.png'),
+  //   img: chrome.runtime.getURL('img/posts/theme.png'),
   //   tags: ['features', 'v3'],
   // },
   {
@@ -47,7 +47,7 @@ export default [
       que es guardin per sempre no sols els "logros" sino tambè totes les opcions que haguis modificat.
     `,
     date: '08-12-2020',
-    img: chrome.extension.getURL('img/posts/arch.png'),
+    img: chrome.runtime.getURL('img/posts/arch.png'),
     tags: ['features', 'v3'],
   },
   {
@@ -68,7 +68,7 @@ export default [
       </ul>
     `,
     date: '15-04-2019',
-    img: chrome.extension.getURL('img/posts/ver.png'),
+    img: chrome.runtime.getURL('img/posts/ver.png'),
     tags: ['features', 'releases', 'v2'],
   },
   {
@@ -86,7 +86,7 @@ export default [
       </ul>
     `,
     date: '17-02-2019',
-    img: chrome.extension.getURL('img/posts/optsred.png'),
+    img: chrome.runtime.getURL('img/posts/optsred.png'),
     tags: ['features', 'releases', 'v2'],
   },
   {
@@ -100,7 +100,7 @@ export default [
       Això es tot, fin del comunicado.
     `,
     date: '08-02-2019',
-    img: chrome.extension.getURL('img/posts/opsas.png'),
+    img: chrome.runtime.getURL('img/posts/opsas.png'),
     tags: ['features', 'v2'],
   },
   {
@@ -120,7 +120,7 @@ export default [
       es pot triar el background de LC i desactivar-lo si es vol, etc.
     `,
     date: '08-26-2018',
-    img: chrome.extension.getURL('img/posts/new2x.png'),
+    img: chrome.runtime.getURL('img/posts/new2x.png'),
     tags: ['releases', 'v2'],
   },
 ];

@@ -8,7 +8,7 @@
  * Inject script with small error notify with Fluid.notify plugin
  */
 function showErrorUserDataNotify() {
-  var url = chrome.extension.getURL("options/options.html") + "#/user/info",
+  var url = chrome.runtime.getURL("options/options.html") + "#/user/info",
     link = `<a href="${url}" target="_blank">user settings</a>`;
 
   var script = document.createElement("script");

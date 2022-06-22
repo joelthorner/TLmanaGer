@@ -1,10 +1,7 @@
 <template>
   <div id="popup" @click="layoutClickHandler">
     <user-header :chromeSync="chromeSync"></user-header>
-    <nav-tabs-actions
-      :chromeSync="chromeSync"
-      :ecommerceData="ecommerceData"
-    ></nav-tabs-actions>
+    <nav-tabs-actions :chromeSync="chromeSync" :ecommerceData="ecommerceData"></nav-tabs-actions>
     <ecommerce-info :ecommerceData="ecommerceData"></ecommerce-info>
   </div>
 </template>
@@ -45,8 +42,7 @@ export default {
         if (result === "!") {
           chrome.browserAction.setBadgeText({ text: "" });
           chrome.tabs.create({
-            url:
-              chrome.extension.getURL("options/options.html") + "#/changelog",
+            url: chrome.runtime.getURL("options/options.html") + "#/changelog",
           });
         }
       });

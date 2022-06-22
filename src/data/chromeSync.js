@@ -85,7 +85,7 @@ export default {
   profile: {
     avatar: {
       actived: false,
-      value: chrome.extension.getURL('img/user.svg'),
+      value: chrome.runtime.getURL('img/user.svg'),
       name: 'Default',
       description: 'Nothing to say!',
     },

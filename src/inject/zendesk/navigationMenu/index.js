@@ -43,7 +43,7 @@ class NavigationMenu {
   }
 
   event() {
-    window.open(`${chrome.extension.getURL("options/options.html")}#/options`, '_blank');
+    window.open(`${chrome.runtime.getURL("options/options.html")}#/options`, '_blank');
   }
 
   appendButtonMenu() {

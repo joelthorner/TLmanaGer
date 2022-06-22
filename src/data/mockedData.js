@@ -1,8 +1,8 @@
 const optionBackgroundImage = {
   actived: true,
-  image: chrome.extension.getURL('img/mocked_background_image.jpg'),
-  thumb: chrome.extension.getURL('img/mocked_background_regular.jpg'),
-  regular: chrome.extension.getURL('img/mocked_background_thumb.jpg'),
+  image: chrome.runtime.getURL('img/mocked_background_image.jpg'),
+  thumb: chrome.runtime.getURL('img/mocked_background_regular.jpg'),
+  regular: chrome.runtime.getURL('img/mocked_background_thumb.jpg'),
   userName: 'Brandon Lam',
   userLink: 'https://unsplash.com/@brandon_lam',
   downloadLocation: 'https://api.unsplash.com/photos/Dd_7xDCuuUo/download',
